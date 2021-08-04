@@ -1,0 +1,37 @@
+{
+	"manifest_version": 2,
+	"name": "Wikistories",
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\Wikistories\\": "includes/"
+	},
+	"ContentHandlers": {
+		"story": "MediaWiki\\Extension\\Wikistories\\StoryContentHandler"
+	},
+	"namespaces": [
+		{
+			"id": 1704,
+			"constant": "NS_STORY",
+			"name": "Story",
+			"content": true,
+			"defaultcontentmodel": "story"
+		},
+		{
+			"id": 1705,
+			"constant": "NS_STORY_TALK",
+			"name": "StoryTalk",
+			"content": true,
+			"defaultcontentmodel": "wikitext"
+		}
+	],
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "Wikistories/resources"
+	},
+	"ResourceModules": {
+		"mw.ext.story.viewer-nojs": {
+			"styles": [
+				"./mw.ext.wikistories.viewer-nojs/viewer-nojs.less"
+			]
+		}
+	}
+}
