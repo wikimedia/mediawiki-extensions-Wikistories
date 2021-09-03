@@ -20,7 +20,7 @@ class StoryEditPage extends EditPage {
 		$form = '<div class="story-editor">';
 		for ( $i = 0; $i < StoryContent::MAX_FRAMES; $i++ ) {
 			$frame = $currentFrames[ $i ] ?? $emptyFrame;
-			$form .= Html::element( 'h3', null, "Frame " . ( $i + 1 ));
+			$form .= Html::element( 'h3', null, "Frame " . ( $i + 1 ) );
 			$form .= new FieldLayout(
 				new TextInputWidget( [ 'name' => "story_frame_{$i}_img", 'value' => $frame->img ] ),
 				[ 'label' => 'Image', 'align' => 'left' ]
@@ -31,19 +31,22 @@ class StoryEditPage extends EditPage {
 			);
 		}
 
-
 		$form .= '</div>';
 		$out->enableOOUI();
 		$out->addHTML( $form );
 	}
 
+	/**
+	 * @param \WebRequest &$request
+	 * @return false|string|null
+	 */
 	protected function importContentFormData( &$request ) {
 		$story = [ 'frames' => [] ];
 
 		$i = 0;
 		while ( true ) {
-			$img = $request->getText("story_frame_{$i}_img");
-			$text = $request->getText("story_frame_{$i}_text");
+			$img = $request->getText( "story_frame_{$i}_img" );
+			$text = $request->getText( "story_frame_{$i}_text" );
 			if ( empty( $img ) && empty( $text ) ) {
 				// stop reading as soon as both are empty
 				break;

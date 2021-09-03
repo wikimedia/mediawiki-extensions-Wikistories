@@ -12,10 +12,17 @@ class StoryContent extends JsonContent {
 
 	public const MAX_FRAMES = 5;
 
+	/**
+	 * @param string $text
+	 * @param string $modelId
+	 */
 	public function __construct( $text, $modelId = 'story' ) {
 		parent::__construct( $text, $modelId );
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getFrames() {
 		$story = $this->getData()->getValue();
 		return $story->frames ?? [];
@@ -42,6 +49,13 @@ class StoryContent extends JsonContent {
 		return parent::isValid() && $this->framesAreValid();
 	}
 
+	/**
+	 * @param Title $title
+	 * @param int $revId
+	 * @param ParserOptions $options
+	 * @param bool $generateHtml
+	 * @param ParserOutput &$output
+	 */
 	protected function fillParserOutput( Title $title, $revId,
 			ParserOptions $options, $generateHtml, ParserOutput &$output
 		) {
@@ -57,9 +71,12 @@ class StoryContent extends JsonContent {
 		$html .= Html::rawElement(
 			'div',
 			[ 'class' => 'story-viewer-nojs-root' ],
-			implode('', array_map( function ( $frame ) {
+			implode( '', array_map( static function ( $frame ) {
 				return Html::rawElement(
-					'div', [ 'class' => 'story-viewer-frame', 'style' => 'background-image:url(' .  $frame->img . ' );' ],
+					'div', [
+						'class' => 'story-viewer-frame',
+						'style' => 'background-image:url(' . $frame->img . ' );',
+					],
 					Html::element( 'p', [], $frame->text )
 				);
 			}, $this->getFrames() ) )
