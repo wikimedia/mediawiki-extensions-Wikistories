@@ -14,13 +14,14 @@ class StoryEditPage extends EditPage {
 
 		/** @var StoryContent $story */
 		$story = $this->getCurrentContent();
+		'@phan-var StoryContent $story';
 		$currentFrames = $story->getFrames();
 		$emptyFrame = (object)[ 'img' => '', 'text' => '' ];
 
 		$form = '<div class="story-editor">';
 		for ( $i = 0; $i < StoryContent::MAX_FRAMES; $i++ ) {
 			$frame = $currentFrames[ $i ] ?? $emptyFrame;
-			$form .= Html::element( 'h3', null, "Frame " . ( $i + 1 ) );
+			$form .= Html::element( 'h3', [], "Frame " . ( $i + 1 ) );
 			$form .= new FieldLayout(
 				new TextInputWidget( [ 'name' => "story_frame_{$i}_img", 'value' => $frame->img ] ),
 				[ 'label' => 'Image', 'align' => 'left' ]
