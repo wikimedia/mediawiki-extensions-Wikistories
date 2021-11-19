@@ -2,11 +2,7 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Html;
 use JsonContent;
-use ParserOptions;
-use ParserOutput;
-use Title;
 
 class StoryContent extends JsonContent {
 
@@ -47,40 +43,5 @@ class StoryContent extends JsonContent {
 
 	public function isValid() {
 		return parent::isValid() && $this->framesAreValid();
-	}
-
-	/**
-	 * @param Title $title
-	 * @param int $revId
-	 * @param ParserOptions $options
-	 * @param bool $generateHtml
-	 * @param ParserOutput &$output
-	 */
-	protected function fillParserOutput( Title $title, $revId,
-			ParserOptions $options, $generateHtml, ParserOutput &$output
-		) {
-		$html = '';
-
-		// todo: js version
-//		$output->addModules( 'mw.ext.story.viewer-js' );
-//		$output->addJsConfigVars( 'story', $this->getData()->getValue() );
-//		$html .= Html::element( 'div', [ 'class' => 'story-viewer-js-root' ] );
-
-		// nojs
-		$output->addModuleStyles( 'mw.ext.story.viewer-nojs' );
-		$html .= Html::rawElement(
-			'div',
-			[ 'class' => 'story-viewer-nojs-root' ],
-			implode( '', array_map( static function ( $frame ) {
-				return Html::rawElement(
-					'div', [
-						'class' => 'story-viewer-frame',
-						'style' => 'background-image:url(' . $frame->img . ' );',
-					],
-					Html::element( 'p', [], $frame->text )
-				);
-			}, $this->getFrames() ) )
-		);
-		$output->setText( $html );
 	}
 }
