@@ -13,7 +13,7 @@ class StoryEditPage extends EditPage {
 		$out = $this->context->getOutput();
 
 		/** @var StoryContent $story */
-		$story = $this->getCurrentContent();
+		$story = $this->getContentObject();
 		'@phan-var StoryContent $story';
 		$currentFrames = $story->getFrames();
 		$emptyFrame = (object)[ 'img' => '', 'text' => '' ];
@@ -29,6 +29,10 @@ class StoryEditPage extends EditPage {
 			$form .= new FieldLayout(
 				new TextInputWidget( [ 'name' => "story_frame_{$i}_text", 'value' => $frame->text ] ),
 				[ 'label' => 'Text', 'align' => 'left' ]
+			);
+			$form .= new FieldLayout(
+				new TextInputWidget( [ 'name' => "story_frame_{$i}_source", 'value' => $frame->source ?? '' ] ),
+				[ 'label' => 'Source (article title)', 'align' => 'left' ]
 			);
 		}
 
@@ -48,11 +52,12 @@ class StoryEditPage extends EditPage {
 		while ( true ) {
 			$img = $request->getText( "story_frame_{$i}_img" );
 			$text = $request->getText( "story_frame_{$i}_text" );
+			$source = $request->getText( "story_frame_{$i}_source" );
 			if ( empty( $img ) && empty( $text ) ) {
 				// stop reading as soon as both are empty
 				break;
 			}
-			$story['frames'][] = [ 'img' => $img, 'text' => $text ];
+			$story['frames'][] = [ 'img' => $img, 'text' => $text, 'source' => $source ];
 			$i++;
 		}
 

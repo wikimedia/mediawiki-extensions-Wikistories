@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use Content;
-use Html;
 use MediaWiki\Content\Renderer\ContentParseParams;
 use ParserOutput;
+use Title;
 
 class StoryContentHandler extends \JsonContentHandler {
 
@@ -55,27 +55,37 @@ class StoryContentHandler extends \JsonContentHandler {
 		}
 
 		$html = '';
+		/** @var StoryContent $story */
+		$story = $content;
+		$renderer = new StoryRenderer( $story );
 
-		// todo: js version
-//		$output->addModules( 'mw.ext.story.viewer-js' );
-//		$output->addJsConfigVars( 'story', $this->getData()->getValue() );
-//		$html .= Html::element( 'div', [ 'class' => 'story-viewer-js-root' ] );
+		// register links from story frames to source articles
+		foreach ( $story->getFrames() as $frame ) {
+			if ( isset( $frame->source ) ) {
+				$title = Title::newFromText( $frame->source );
+				if ( $title ) {
+					$output->addLink( $title );
+				}
+			}
+		}
 
-		// nojs
-		$output->addModuleStyles( 'mw.ext.story.viewer-nojs' );
-		$html .= Html::rawElement(
-			'div',
-			[ 'class' => 'story-viewer-nojs-root' ],
-			implode( '', array_map( static function ( $frame ) {
-				return Html::rawElement(
-					'div', [
-					'class' => 'story-viewer-frame',
-					'style' => 'background-image:url(' . $frame->img . ');',
-				],
-					Html::element( 'p', [], $frame->text )
-				);
-			}, $content->getFrames() ) )
-		);
+		// js
+		$parts = $renderer->renderJs();
+		$output->addModuleStyles( $parts['style'] );
+		$output->addModules( $parts['script'] );
+		$output->addJsConfigVars( $parts['configVars'] );
+		$html .= $parts['html'];
+
+		// no-js
+		$parts = $renderer->renderNoJS();
+		$output->addModuleStyles( $parts['style'] );
+		$html .= $parts['html'];
+
+		// Show the story title instead of the standard Ns:Title (Story:Boat) as h1 on the page
+		if ( count( $story->getFrames() ) >= 1 ) {
+			$output->setDisplayTitle( $story->getFrames()[0]->text );
+		}
+
 		$output->setText( $html );
 	}
 }
