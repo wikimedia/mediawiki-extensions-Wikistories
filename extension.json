@@ -1,6 +1,9 @@
 {
 	"manifest_version": 2,
 	"name": "Wikistories",
+	"requires": {
+		"MediaWiki": ">= 1.31.0"
+	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\Wikistories\\": "includes/"
 	},
