@@ -10,6 +10,13 @@
 	"ContentHandlers": {
 		"story": "MediaWiki\\Extension\\Wikistories\\StoryContentHandler"
 	},
+	"Hooks": {
+		"ParserFirstCallInit": "MediaWiki\\Extension\\Wikistories\\Hooks::onParserFirstCallInit",
+		"ArticleViewHeader": "MediaWiki\\Extension\\Wikistories\\Hooks::onArticleViewHeader"
+	},
+	"ExtensionMessagesFiles": {
+		"WikistoriesAlias": "Wikistories.i18n.alias.php"
+	},
 	"namespaces": [
 		{
 			"id": 1704,
@@ -35,6 +42,16 @@
 			"styles": [
 				"./mw.ext.wikistories.viewer-nojs/viewer-nojs.less"
 			]
+		},
+		"mw.ext.story.viewer": {
+			"packageFiles": [
+				"./mw.ext.wikistories.viewer/viewer.js",
+				"./mw.ext.wikistories.viewer/StoryViewer.vue"
+			],
+			"styles": [
+				"./mw.ext.wikistories.viewer/viewer.less"
+			],
+			"dependencies": [ "vue" ]
 		}
 	}
 }
