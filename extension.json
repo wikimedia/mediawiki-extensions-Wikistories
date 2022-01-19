@@ -12,7 +12,8 @@
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "MediaWiki\\Extension\\Wikistories\\Hooks::onParserFirstCallInit",
-		"ArticleViewHeader": "MediaWiki\\Extension\\Wikistories\\Hooks::onArticleViewHeader"
+		"ArticleViewHeader": "MediaWiki\\Extension\\Wikistories\\Hooks::onArticleViewHeader",
+		"SkinTemplateNavigation::Universal": "MediaWiki\\Extension\\Wikistories\\Hooks::onSkinTemplateNavigationUniversal"
 	},
 	"ExtensionMessagesFiles": {
 		"WikistoriesAlias": "Wikistories.i18n.alias.php"
@@ -44,14 +45,31 @@
 			]
 		},
 		"mw.ext.story.viewer": {
+			"targets": [ "desktop", "mobile" ],
 			"packageFiles": [
-				"./mw.ext.wikistories.viewer/viewer.js",
+				"./mw.ext.wikistories.viewer/index.js",
 				"./mw.ext.wikistories.viewer/StoryViewer.vue"
 			],
 			"styles": [
 				"./mw.ext.wikistories.viewer/viewer.less"
 			],
 			"dependencies": [ "vue" ]
+		},
+		"mw.ext.story.builder": {
+			"targets": [ "desktop", "mobile" ],
+			"packageFiles": [
+				"./mw.ext.wikistories.builder/index.js",
+				"./mw.ext.wikistories.builder/router.js",
+				"./mw.ext.wikistories.builder/App.vue",
+				"./mw.ext.wikistories.builder/views/Story.vue",
+				"./mw.ext.wikistories.builder/store/index.js",
+				"./mw.ext.wikistories.builder/store/story.js",
+				"./lib/vue-router/vue-router.common.js"
+			],
+			"styles": [
+				"./mw.ext.wikistories.builder/builder.less"
+			],
+			"dependencies": [ "vue", "vuex" ]
 		}
 	}
 }

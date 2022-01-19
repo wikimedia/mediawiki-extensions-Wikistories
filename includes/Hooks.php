@@ -8,6 +8,7 @@ use MediaWiki\MediaWikiServices;
 use MWException;
 use Parser;
 use ParserOutput;
+use SkinTemplate;
 
 class Hooks {
 
@@ -30,6 +31,7 @@ class Hooks {
 	 */
 	public static function onArticleViewHeader( &$article, &$outputDone, &$pcache ) {
 		if ( $article->getTitle()->getNamespace() === NS_MAIN && $article->getPage()->exists() ) {
+			$out = $article->getContext()->getOutput();
 			$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 			$rows = $dbr->newSelectQueryBuilder()
 				->table( 'pagelinks' )
@@ -48,12 +50,31 @@ class Hooks {
 				foreach ( $rows as $row ) {
 					$storyIds[] = $row->pl_from;
 				}
-				$article->getContext()->getOutput()->addHTML(
-					Html::element( 'h2', [], "Related stories: $nb (" . implode( ", ", $storyIds ) . ")" )
-				);
+				// todo: output thumbnails of existing stories
+//				$out->addHTML(
+//					Html::element( 'h2', [], "Related stories: $nb (" . implode( ", ", $storyIds ) . ")" )
+//				);
 			}
-
+			$out->addModules( 'mw.ext.story.builder' );
+			$out->addHTML(
+				Html::element(
+					'a',
+					[ 'class' => 'wikistories-create', 'style' => 'display: none;' ],
+					'Create a story'
+				)
+			);
 		}
+	}
+
+	/**
+	 * @param SkinTemplate $sktemplate
+	 * @param array &$links
+	 */
+	public static function onSkinTemplateNavigationUniversal( SkinTemplate $sktemplate, array &$links ) {
+		if ( $sktemplate->getTitle()->getNamespace() !== NS_STORY ) {
+			return;
+		}
+		// todo: consider changing the edit action for "edit" (builder) and "edit raw" (no js)
 	}
 
 }

@@ -18,7 +18,7 @@ class StoryEditPage extends EditPage {
 		$currentFrames = $story->getFrames();
 		$emptyFrame = (object)[ 'img' => '', 'text' => '' ];
 
-		$form = '<div class="story-editor">';
+		$form = '<div class="story-builder-nojs-root">';
 		for ( $i = 0; $i < StoryContent::MAX_FRAMES; $i++ ) {
 			$frame = $currentFrames[ $i ] ?? $emptyFrame;
 			$form .= Html::element( 'h3', [], "Frame " . ( $i + 1 ) );
