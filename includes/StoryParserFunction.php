@@ -29,8 +29,8 @@ class StoryParserFunction {
 			$renderer = new StoryRenderer( $story );
 			$parts = $renderer->renderJs();
 
-			$parser->getOutput()->addModuleStyles( $parts['style'] );
-			$parser->getOutput()->addModules( $parts['script'] );
+			$parser->getOutput()->addModuleStyles( [ $parts['style'] ] );
+			$parser->getOutput()->addModules( [ $parts['script'] ] );
 			$parser->getOutput()->addJsConfigVars( $parts['configVars'] );
 
 			// Special:WhatLinksHere/Story:$storyTitle will list the articles embedding this story

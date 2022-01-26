@@ -55,7 +55,7 @@ class Hooks {
 //					Html::element( 'h2', [], "Related stories: $nb (" . implode( ", ", $storyIds ) . ")" )
 //				);
 			}
-			$out->addModules( 'mw.ext.story.builder' );
+			$out->addModules( [ 'mw.ext.story.builder' ] );
 			$out->addHTML(
 				Html::element(
 					'a',

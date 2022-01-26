@@ -71,14 +71,14 @@ class StoryContentHandler extends \JsonContentHandler {
 
 		// js
 		$parts = $renderer->renderJs();
-		$output->addModuleStyles( $parts['style'] );
-		$output->addModules( $parts['script'] );
+		$output->addModuleStyles( [ $parts['style'] ] );
+		$output->addModules( [ $parts['script'] ] );
 		$output->addJsConfigVars( $parts['configVars'] );
 		$html .= $parts['html'];
 
 		// no-js
 		$parts = $renderer->renderNoJS();
-		$output->addModuleStyles( $parts['style'] );
+		$output->addModuleStyles( [ $parts['style'] ] );
 		$html .= $parts['html'];
 
 		// Show the story title instead of the standard Ns:Title (Story:Boat) as h1 on the page
