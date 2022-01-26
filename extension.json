@@ -64,18 +64,22 @@
 				"./mw.ext.wikistories.builder/components/CurrentFrame.vue",
 				"./mw.ext.wikistories.builder/components/Frames.vue",
 				"./mw.ext.wikistories.builder/components/ImageAttribution.vue",
+				"./mw.ext.wikistories.builder/components/ImageListView.vue",
+				"./mw.ext.wikistories.builder/components/Navigator.vue",
 				"./mw.ext.wikistories.builder/components/PrimaryButton.vue",
-				"./mw.ext.wikistories.builder/views/Article.vue",
-				"./mw.ext.wikistories.builder/views/Story.vue",
-				"./mw.ext.wikistories.builder/store/index.js",
 				"./mw.ext.wikistories.builder/store/article.js",
+				"./mw.ext.wikistories.builder/store/index.js",
+				"./mw.ext.wikistories.builder/store/search.js",
 				"./mw.ext.wikistories.builder/store/story.js",
+				"./mw.ext.wikistories.builder/views/Article.vue",
+				"./mw.ext.wikistories.builder/views/Search.vue",
+				"./mw.ext.wikistories.builder/views/Story.vue",
 				"./lib/vue-router/vue-router.common.js"
 			],
 			"styles": [
 				"./mw.ext.wikistories.builder/builder.less"
 			],
-			"dependencies": [ "vue", "vuex" ]
+			"dependencies": [ "vue", "vuex", "mediawiki.ForeignApi" ]
 		}
 	}
 }

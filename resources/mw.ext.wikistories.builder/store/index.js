@@ -1,10 +1,12 @@
 var Vuex = require( 'vuex' );
 var article = require( './article.js' );
 var story = require( './story.js' );
+var search = require( './search.js' );
 
 module.exports = new Vuex.Store( {
   modules: {
     article: article,
-    story: story
+    story: story,
+    search: search
   }
 } );

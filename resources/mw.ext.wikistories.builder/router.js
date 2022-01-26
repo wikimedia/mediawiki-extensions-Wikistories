@@ -1,6 +1,7 @@
 var VueRouter = require( '../lib/vue-router/vue-router.common.js' );
 var Article = require( './views/Article.vue' );
 var Story = require( './views/Story.vue' );
+var Search = require( './views/Search.vue' );
 
 window.process = {
   env: {
@@ -19,6 +20,11 @@ var routes = [
     path: '/story',
     name: 'Story',
     component: Story
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: Search
   }
 ];
 

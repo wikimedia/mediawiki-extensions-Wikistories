@@ -3,7 +3,7 @@ var App = require('./App.vue');
 var router = require( './router.js' );
 var store = require( './store/index.js' );
 
-router.replace('/story');
+router.replace('/search');
 
 $( 'body' ).append( $( '<div>' ).addClass( 'wikistories-container' ) );
 
