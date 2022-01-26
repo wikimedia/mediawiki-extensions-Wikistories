@@ -1,19 +1,21 @@
 <template>
     <div class="current-frame" :style="currentFrame.style">
         <p v-if="currentFrame.text" v-html="currentFrame.text"></p>
+<!--        TODO: Replace the link below with the proper CTA (design not finalized)-->
+        <router-link class="select-text-btn" to="/article">Select text from article</router-link>
         <image-attribution></image-attribution>
     </div>
 </template>
 
 <script>
-    var mapGetters = require( 'vuex' ).mapGetters;
-    var ImageAttribution = require( './ImageAttribution.vue' )
+    const mapGetters = require( 'vuex' ).mapGetters;
+    const ImageAttribution = require( './ImageAttribution.vue' );
     module.exports = {
         name: 'CurrentFrame',
         components: {
             'image-attribution': ImageAttribution
         },
-        computed: mapGetters(['currentFrame'])
+        computed: mapGetters( [ 'currentFrame' ] )
     }
 </script>
 
@@ -33,6 +35,15 @@
             margin: 0;
             padding: 10px;
         }
+
+        .select-text-btn {
+            color: #fff;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            font-size: 0.5em;
+
+        }
     }
-    
 </style>

@@ -1,4 +1,5 @@
 var VueRouter = require( '../lib/vue-router/vue-router.common.js' );
+var Article = require( './views/Article.vue' );
 var Story = require( './views/Story.vue' );
 
 window.process = {
@@ -8,6 +9,12 @@ window.process = {
 };
 
 var routes = [
+  {
+    path: '/article/:article?',
+    name: 'Article',
+    component: Article,
+    props: true
+  },
   {
     path: '/story',
     name: 'Story',

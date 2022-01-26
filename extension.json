@@ -65,8 +65,10 @@
 				"./mw.ext.wikistories.builder/components/Frames.vue",
 				"./mw.ext.wikistories.builder/components/ImageAttribution.vue",
 				"./mw.ext.wikistories.builder/components/PrimaryButton.vue",
+				"./mw.ext.wikistories.builder/views/Article.vue",
 				"./mw.ext.wikistories.builder/views/Story.vue",
 				"./mw.ext.wikistories.builder/store/index.js",
+				"./mw.ext.wikistories.builder/store/article.js",
 				"./mw.ext.wikistories.builder/store/story.js",
 				"./lib/vue-router/vue-router.common.js"
 			],
