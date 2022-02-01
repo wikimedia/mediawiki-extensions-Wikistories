@@ -1,30 +1,34 @@
 <template>
-    <div class="current-frame" :style="currentFrame.style">
+	<div class="current-frame" :style="currentFrame.style">
 		<div class="story-text">
-			<router-link class="select-text-btn" to="/article">Edit</router-link>
-			<p v-html="currentFrame.text" @click="selectTextFromArticle"></p>
+			<router-link class="select-text-btn" to="/article">
+				Edit
+			</router-link>
+			<p @click="selectTextFromArticle" v-html="currentFrame.text"></p>
 		</div>
-        <image-attribution></image-attribution>
-    </div>
+		<image-attribution></image-attribution>
+	</div>
 </template>
 
 <script>
-    const mapGetters = require( 'vuex' ).mapGetters;
-    const ImageAttribution = require( './ImageAttribution.vue' );
-    module.exports = {
-        name: 'CurrentFrame',
-        components: {
-            'image-attribution': ImageAttribution
-        },
-        computed: mapGetters( [ 'currentFrame' ] )
-    }
+const mapGetters = require( 'vuex' ).mapGetters;
+const ImageAttribution = require( './ImageAttribution.vue' );
+
+// @vue/component
+module.exports = {
+	name: 'CurrentFrame',
+	components: {
+		'image-attribution': ImageAttribution
+	},
+	computed: mapGetters( [ 'currentFrame' ] )
+};
 </script>
 
 <style lang="less">
-    .current-frame {
-        height: 90%;
-        position: relative;
-        text-align: center;
+	.current-frame {
+		height: 90%;
+		position: relative;
+		text-align: center;
 
 		.story-text {
 			position: absolute;
@@ -32,7 +36,7 @@
 			left: 20px;
 			right: 20px;
 			border-radius: 10px;
-			background-color: white;
+			background-color: #fff;
 			margin: 0;
 			padding: 10px;
 
@@ -47,5 +51,5 @@
 				text-align: end;
 			}
 		}
-    }
+	}
 </style>

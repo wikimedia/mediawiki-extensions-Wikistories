@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint resources",
+    "lint:js:fix": "eslint resources --fix",
+    "lint:css": "stylelint resources/**/*.{vue,less}",
+    "lint:css:fix": "stylelint resources/**/*.{vue,less} --fix",
+    "lint:fix": "npm run lint:js:fix && npm run lint:css:fix"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint-config-wikimedia": "0.21.0",
+    "stylelint-config-wikimedia": "0.11.1"
+  }
+}

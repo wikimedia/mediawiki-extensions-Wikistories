@@ -1,0 +1,33 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/client-common",
+		"wikimedia/vue3-es6"
+	],
+	"env": {
+		"es6": true
+	},
+	"globals": {
+		"$": true,
+		"module": true,
+		"require": true,
+		"mw": true
+	},
+	"rules": {
+		"vue/html-self-closing": [ "error", {
+			"html": {
+				"void": "never",
+				"normal": "never",
+				"component": "never"
+			},
+			"svg": "never",
+			"math": "never"
+		} ],
+		"vue/multi-word-component-names": [ "off" ],
+		"vue/no-unregistered-components": [ "error", {
+			"ignorePatterns": [ "router-link", "router-view" ]
+		}],
+		"vue/no-v-html": [ "off" ], // @todo check again after we include i18n
+		"vue/no-undef-properties": [ "off" ] // @toto check vuex mapGetters mapActions
+	}
+}
