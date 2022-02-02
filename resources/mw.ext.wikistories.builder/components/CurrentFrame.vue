@@ -1,8 +1,9 @@
 <template>
     <div class="current-frame" :style="currentFrame.style">
-        <p v-if="currentFrame.text" v-html="currentFrame.text"></p>
-<!--        TODO: Replace the link below with the proper CTA (design not finalized)-->
-        <router-link class="select-text-btn" to="/article">Select text from article</router-link>
+		<div class="story-text">
+			<router-link class="select-text-btn" to="/article">Edit</router-link>
+			<p v-html="currentFrame.text" @click="selectTextFromArticle"></p>
+		</div>
         <image-attribution></image-attribution>
     </div>
 </template>
@@ -25,25 +26,26 @@
         position: relative;
         text-align: center;
 
-        p {
-            position: absolute;
-            bottom: 60px;
-            left: 20px;
-            right: 20px;
-            border-radius: 10px;
-            background-color: white;
-            margin: 0;
-            padding: 10px;
-        }
+		.story-text {
+			position: absolute;
+			bottom: 60px;
+			left: 20px;
+			right: 20px;
+			border-radius: 10px;
+			background-color: white;
+			margin: 0;
+			padding: 10px;
 
-        .select-text-btn {
-            color: #fff;
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            font-size: 0.5em;
+			p {
+				padding: 0;
+			}
 
-        }
+			.select-text-btn {
+				display: block;
+				width: 100%;
+				font-size: 0.5em;
+				text-align: end;
+			}
+		}
     }
 </style>
