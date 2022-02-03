@@ -6,7 +6,7 @@
 		></navigator>
 		<form @submit="onSubmit( $event )">
 			<div class="label">
-				Search
+				{{ $i18n( 'wikistories-imagesearch-inputlabel' ).text() }}
 			</div>
 			<input
 				class="query"

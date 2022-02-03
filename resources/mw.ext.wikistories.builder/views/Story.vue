@@ -2,7 +2,7 @@
 	<div class="storybuilder-story">
 		<primary-button
 			class="publish-button"
-			text="Next"
+			:text="$i18n( 'wikistories-story-goto-publish' ).text()"
 		></primary-button>
 		<current-frame></current-frame>
 		<frames></frames>

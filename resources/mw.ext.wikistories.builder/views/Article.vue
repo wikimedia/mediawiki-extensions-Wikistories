@@ -1,24 +1,24 @@
 <template>
 	<div class="article-view">
 		<router-link to="/story">
-			Back
+			{{ $i18n( 'wikistories-article-back' ).text() }}
 		</router-link>
 		<div
 			v-if="currentArticle.html"
 			class="article-view-content"
 			v-html="currentArticle.html"></div>
 		<div v-else class="article-view-loading">
-			<h1>Loading...</h1>
+			<h1>{{ $i18n( 'wikistories-article-loading' ).text() }}</h1>
 		</div>
 		<div class="article-view-toolbar">
 			<div
 				class="article-view-toolbar-button"
 				@touchstart="onUseText"
 				@mousedown="onUseText">
-				Use text
+				{{ $i18n( 'wikistories-article-usetext' ).text() }}
 			</div>
 			<div class="article-view-toolbar-button" @click="onDismiss">
-				Cancel
+				{{ $i18n( 'wikistories-article-cancelselection' ).text() }}
 			</div>
 		</div>
 	</div>

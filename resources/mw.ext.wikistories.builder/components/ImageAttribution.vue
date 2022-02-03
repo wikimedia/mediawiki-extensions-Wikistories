@@ -8,7 +8,8 @@
 			</div>
 			<bdi
 				class="image-attribution-info-author"
-				v-html="currentFrame.imgAttribution.author || $i18n( 'unknown-author' )">
+				v-html="currentFrame.imgAttribution.author ||
+					$i18n( 'wikistories-imageattribution-author-unknown' ).text()">
 			</bdi>
 		</div>
 		<div class="image-attribution-more-info">

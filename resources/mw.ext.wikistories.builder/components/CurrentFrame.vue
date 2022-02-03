@@ -2,7 +2,7 @@
 	<div class="current-frame" :style="currentFrame.style">
 		<div class="story-text">
 			<router-link class="select-text-btn" to="/article">
-				Edit
+				{{ $i18n( 'wikistories-story-edittext' ).text() }}
 			</router-link>
 			<p @click="selectTextFromArticle" v-html="currentFrame.text"></p>
 		</div>

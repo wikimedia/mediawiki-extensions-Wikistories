@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Medina"
+		]
+	},
+	"wikistories-extensionname": "Text for the name of the project",
+	"wikistories-extensiondesc": "Text for the general project description",
+	"wikistories-hooks-createstory": "Text for creating a story button used in the Wikipedia article view header",
+	"wikistories-imagesearch-inputlabel": "Text used for the search bar label in the Search view",
+	"wikistories-story-goto-publish": "Text for a button in the Story view to continue to publish step",
+	"wikistories-story-edittext": "Text used for an edit button in the CurrentFrame view",
+	"wikistories-imageattribution-author-unknown": "Text used in the ImageAttribution component when the image author is unknown",
+	"wikistories-article-back": "Text used for a back button in the Article view",
+	"wikistories-article-cancelselection": "Text for cancel button used in the Article view",
+	"wikistories-article-loading": "Text used for a header in the Article view as the article loads",
+	"wikistories-article-usetext": "Text used for a button in the Article view",
+	"wikistories-navigator-next": "Text for a button in the Navigator component to continue to next step"
+}

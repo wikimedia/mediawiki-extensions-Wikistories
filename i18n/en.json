@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Medina"
+		]
+	},
+	"wikistories-extensionname": "Wikistories",
+	"wikistories-extensiondesc": "Wikistories lets editors create short, visual and reliable knowledge from Wikimedia projects",
+	"wikistories-hooks-createstory": "Create a story",
+	"wikistories-imagesearch-inputlabel": "Search",
+	"wikistories-story-goto-publish": "Next",
+	"wikistories-story-edittext": "Edit",
+	"wikistories-imageattribution-author-unknown": "Author unknown",
+	"wikistories-article-back": "Back",
+	"wikistories-article-cancelselection": "Cancel",
+	"wikistories-article-loading": "Loading...",
+	"wikistories-article-usetext": "Use text",
+	"wikistories-navigator-next": "Next"
+}

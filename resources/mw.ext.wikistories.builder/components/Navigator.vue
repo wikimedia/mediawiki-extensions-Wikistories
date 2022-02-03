@@ -8,7 +8,7 @@
 			v-if="info > 0"
 			class="next"
 			@click="next">
-			Next
+			{{ $i18n( 'wikistories-navigator-next' ).text() }}
 		</div>
 		<span v-if="info" class="info">{{ info }}</span>
 	</div>

@@ -1,6 +1,7 @@
 {
-	"manifest_version": 2,
 	"name": "Wikistories",
+	"namemsg": "wikistories-extensionname",
+	"descriptionmsg": "wikistories-extensiondesc",
 	"requires": {
 		"MediaWiki": ">= 1.31.0"
 	},
@@ -17,6 +18,9 @@
 	},
 	"ExtensionMessagesFiles": {
 		"WikistoriesAlias": "Wikistories.i18n.alias.php"
+	},
+	"MessagesDirs": {
+		"Wikistories": [ "i18n" ]
 	},
 	"namespaces": [
 		{
@@ -79,7 +83,19 @@
 			"styles": [
 				"./mw.ext.wikistories.builder/builder.less"
 			],
-			"dependencies": [ "vue", "vuex", "mediawiki.ForeignApi" ]
+			"dependencies": [ "vue", "vuex", "mediawiki.ForeignApi" ],
+			"messages": [
+				"wikistories-imagesearch-inputlabel",
+				"wikistories-story-goto-publish",
+				"wikistories-story-edittext",
+				"wikistories-imageattribution-author-unknown",
+				"wikistories-article-back",
+				"wikistories-article-cancelselection",
+				"wikistories-article-loading",
+				"wikistories-article-usetext",
+				"wikistories-navigator-next"
+			]
 		}
-	}
+	},
+	"manifest_version": 2
 }

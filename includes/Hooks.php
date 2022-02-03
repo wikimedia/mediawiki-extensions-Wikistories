@@ -60,7 +60,7 @@ class Hooks {
 				Html::element(
 					'a',
 					[ 'class' => 'wikistories-create', 'style' => 'display: none;' ],
-					'Create a story'
+					$out->msg( 'wikistories-hooks-createstory' )->text()
 				)
 			);
 		}
