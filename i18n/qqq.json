@@ -16,5 +16,7 @@
 	"wikistories-article-cancelselection": "Text for cancel button used in the Article view\n{{identical|Cancel}}",
 	"wikistories-article-loading": "Text used for a header in the Article view as the article loads",
 	"wikistories-article-usetext": "Text used for a button in the Article view",
+	"wikistories-article-info-banner": "Text used for the info section in the Article view as the feature introduction",
+	"wikistories-article-info-expanded-banner": "Text used for the info section in the Article view as the extended feature introduction",
 	"wikistories-navigator-next": "Text for a button in the Navigator component to continue to next step\n{{identical|Next}}"
 }

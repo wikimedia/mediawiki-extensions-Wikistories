@@ -10,14 +10,27 @@
 		<div v-else class="article-view-loading">
 			<h1>{{ $i18n( 'wikistories-article-loading' ).text() }}</h1>
 		</div>
-		<div class="article-view-toolbar">
+		<div v-if="display === 'info'" class="article-view-info">
+			<div v-if="!expanded" class="article-view-info-banner">
+				<div class="article-view-info-banner-icon" @click="toggleExpandInfo"></div>
+				<span>{{ $i18n( 'wikistories-article-info-banner' ).text() }}</span>
+			</div>
+			<div v-if="expanded" class="article-view-info-expanded-banner">
+				<div
+					class="article-view-info-expanded-banner-close-icon"
+					@click="toggleExpandInfo">
+				</div>
+				<span>{{ $i18n( 'wikistories-article-info-expanded-banner' ).text() }}</span>
+			</div>
+		</div>
+		<div v-if="display === 'tools'" class="article-view-toolbar">
 			<div
-				class="article-view-toolbar-button"
+				class="article-view-toolbar-confirm-button"
 				@touchstart="onUseText"
 				@mousedown="onUseText">
 				{{ $i18n( 'wikistories-article-usetext' ).text() }}
 			</div>
-			<div class="article-view-toolbar-button" @click="onDismiss">
+			<div class="article-view-toolbar-discard-button" @click="onDismiss">
 				{{ $i18n( 'wikistories-article-cancelselection' ).text() }}
 			</div>
 		</div>
@@ -28,6 +41,10 @@
 const mapActions = require( 'vuex' ).mapActions;
 const mapGetters = require( 'vuex' ).mapGetters;
 
+const isNodeWithinArticleView = ( node ) => {
+	return document.querySelector( '.article-view-content' ).contains( node );
+};
+
 // @vue/component
 module.exports = {
 	name: 'Article', // eslint-disable-line vue/no-reserved-component-names
@@ -36,13 +53,15 @@ module.exports = {
 	},
 	data: function () {
 		return {
-			selectedText: null
+			selectedText: null,
+			display: 'info',
+			expanded: false
 		};
 	},
 	computed: mapGetters( [ 'currentArticle' ] ),
 	methods: $.extend( mapActions( [ 'fetchArticle', 'setText' ] ), {
-		setToolbarDisplay: function () {
-			// TODO: toggle between infobar and toolbar
+		setToolbarDisplay: function ( status ) {
+			this.display = status;
 		},
 		showSelectionToolbar: function () {
 			this.setToolbarDisplay( 'tools' );
@@ -50,13 +69,21 @@ module.exports = {
 		hideSelectionToolbar: function () {
 			this.setToolbarDisplay( 'info' );
 		},
+		toggleExpandInfo: function () {
+			this.expanded = !this.expanded;
+		},
 		onSelectionChange: function () {
 			const s = document.getSelection();
 			if ( s.isCollapsed ) {
 				this.hideSelectionToolbar();
-			} else {
-				this.selectedText = s.toString();
-				this.showSelectionToolbar();
+			} else if ( s.type === 'Range' &&
+				isNodeWithinArticleView( s.anchorNode ) &&
+				isNodeWithinArticleView( s.focusNode )
+			) {
+				this.selectedText = s.toString().trim();
+				if ( this.selectedText ) {
+					this.showSelectionToolbar();
+				}
 			}
 		},
 		onUseText: function ( e ) {
@@ -115,25 +142,72 @@ module.exports = {
 		flex-grow: 1;
 	}
 
+	&-info {
+		display: flex;
+		flex-direction: row;
+		align-content: stretch;
+		align-items: center;
+		background-color: #202122;
+		color: #fff;
+
+		&-banner {
+			flex: auto;
+			margin: 0;
+			padding: 16px;
+
+			&-icon {
+				position: absolute;
+				cursor: pointer;
+				width: 20px;
+				height: 20px;
+				background-image: url( ../images/attribution-icon-info.svg );
+				background-repeat: no-repeat;
+				right: 10px;
+			}
+		}
+
+		&-expanded-banner {
+			position: relative;
+			flex: auto;
+			margin: 0;
+			padding: 30px 16px;
+
+			&-close-icon {
+				position: absolute;
+				cursor: pointer;
+				width: 18px;
+				height: 18px;
+				background-image: url( ../images/close-white.svg );
+				background-repeat: no-repeat;
+				right: 10px;
+				top: 10px;
+			}
+		}
+	}
+
 	&-toolbar {
 		display: flex;
 		flex-direction: row;
 		align-content: stretch;
 		align-items: center;
-		background-color: #000;
-		opacity: 0.75;
+		cursor: pointer;
 
-		& > &-button {
+		& > &-confirm-button {
 			flex: auto;
 			margin: 0;
 			padding: 10px;
 			color: #fff;
-			cursor: pointer;
 			text-align: center;
+			background-color: #36c;
 		}
 
-		& > &-button:nth-of-type( 1 ) {
-			border-right: solid #fff 1px;
+		& > &-discard-button {
+			flex: auto;
+			margin: 0;
+			padding: 10px;
+			color: #fff;
+			text-align: center;
+			background-color: #d33;
 		}
 	}
 }

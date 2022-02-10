@@ -93,6 +93,8 @@
 				"wikistories-article-cancelselection",
 				"wikistories-article-loading",
 				"wikistories-article-usetext",
+				"wikistories-article-info-banner",
+				"wikistories-article-info-expanded-banner",
 				"wikistories-navigator-next"
 			]
 		}
