@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use Content;
+use IContextSource;
 use MediaWiki\Content\Renderer\ContentParseParams;
 use ParserOutput;
 use Title;
@@ -69,13 +70,6 @@ class StoryContentHandler extends \JsonContentHandler {
 			}
 		}
 
-		// js
-		$parts = $renderer->renderJs();
-		$output->addModuleStyles( [ $parts['style'] ] );
-		$output->addModules( [ $parts['script'] ] );
-		$output->addJsConfigVars( $parts['configVars'] );
-		$html .= $parts['html'];
-
 		// no-js
 		$parts = $renderer->renderNoJS();
 		$output->addModuleStyles( [ $parts['style'] ] );
@@ -87,5 +81,14 @@ class StoryContentHandler extends \JsonContentHandler {
 		}
 
 		$output->setText( $html );
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @param array $options
+	 * @return StorySlotDiffRenderer
+	 */
+	public function getSlotDiffRendererWithOptions( IContextSource $context, $options = [] ) {
+		return new StorySlotDiffRenderer();
 	}
 }
