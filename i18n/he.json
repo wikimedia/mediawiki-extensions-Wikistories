@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"wikistories-extensiondesc": "הרחבת סיפורי ויקי (Wikistories) מאפשרת לעורכים ליצור ידע קצר, חזותי, ואמין ממיזמי ויקימדיה",
+	"wikistories-hooks-createstory": "יצירת סיפור",
+	"wikistories-imagesearch-inputlabel": "חיפוש",
+	"wikistories-story-goto-publish": "הבא",
+	"wikistories-story-edittext": "עריכה",
+	"wikistories-imageattribution-author-unknown": "מחבר לא ידוע",
+	"wikistories-article-back": "חזרה",
+	"wikistories-article-cancelselection": "ביטול",
+	"wikistories-article-loading": "טעינה...",
+	"wikistories-article-usetext": "להשתמש בטקסט",
+	"wikistories-navigator-next": "הבא"
+}

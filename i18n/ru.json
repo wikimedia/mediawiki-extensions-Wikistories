@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tanzun"
+		]
+	},
+	"wikistories-extensiondesc": "Викиистории позволяют редакторам извлекать краткую, наглядную и достоверную информацию из проектов Викимедиа.",
+	"wikistories-hooks-createstory": "Создать историю",
+	"wikistories-imagesearch-inputlabel": "Найти",
+	"wikistories-story-goto-publish": "Далее",
+	"wikistories-story-edittext": "Править",
+	"wikistories-imageattribution-author-unknown": "Автор неизвестен",
+	"wikistories-article-back": "Назад",
+	"wikistories-article-cancelselection": "Отменить",
+	"wikistories-article-loading": "Загрузка...",
+	"wikistories-article-usetext": "Использовать текст",
+	"wikistories-navigator-next": "Далее"
+}

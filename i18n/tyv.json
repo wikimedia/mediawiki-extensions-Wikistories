@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Riverman"
+		]
+	},
+	"wikistories-hooks-createstory": "Төөгү чаяар",
+	"wikistories-imagesearch-inputlabel": "Дилээр",
+	"wikistories-story-goto-publish": "Улаштыр",
+	"wikistories-story-edittext": "Эдер",
+	"wikistories-imageattribution-author-unknown": "Автору билдинмес",
+	"wikistories-article-back": "Дедир",
+	"wikistories-article-cancelselection": "Ойталал",
+	"wikistories-article-loading": "Чүдүрүг...",
+	"wikistories-navigator-next": "Улаштыр"
+}

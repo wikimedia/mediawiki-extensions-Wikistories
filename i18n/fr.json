@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Verdy p"
+		]
+	},
+	"wikistories-extensiondesc": "''Wikistories'' permet à des rédacteurs de créer des récits courts, visuels et fiables portant sur les connaissances des projets de Wikimedia.",
+	"wikistories-hooks-createstory": "Créer un récit",
+	"wikistories-imagesearch-inputlabel": "Rechercher",
+	"wikistories-story-goto-publish": "Suivant",
+	"wikistories-story-edittext": "Modifier",
+	"wikistories-imageattribution-author-unknown": "Auteur inconnu",
+	"wikistories-article-back": "Retour",
+	"wikistories-article-cancelselection": "Annuler",
+	"wikistories-article-loading": "Chargement en cours...",
+	"wikistories-article-usetext": "Utiliser le texte",
+	"wikistories-navigator-next": "Suivant"
+}
