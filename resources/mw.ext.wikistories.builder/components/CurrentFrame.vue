@@ -1,9 +1,9 @@
 <template>
 	<div class="current-frame" :style="currentFrame.style">
 		<div class="story-text">
-			<router-link class="select-text-btn" to="/article">
+			<div class="select-text-btn" @click="$emit( 'edit' )">
 				{{ $i18n( 'wikistories-story-edittext' ).text() }}
-			</router-link>
+			</div>
 			<p @click="selectTextFromArticle" v-html="currentFrame.text"></p>
 		</div>
 		<image-attribution></image-attribution>
@@ -20,6 +20,7 @@ module.exports = {
 	components: {
 		'image-attribution': ImageAttribution
 	},
+	emits: [ 'edit' ],
 	computed: mapGetters( [ 'currentFrame' ] )
 };
 </script>

@@ -1,8 +1,5 @@
 <template>
 	<div class="article-view">
-		<router-link to="/story">
-			{{ $i18n( 'wikistories-article-back' ).text() }}
-		</router-link>
 		<div
 			v-if="currentArticle.html"
 			class="article-view-content"
@@ -51,6 +48,7 @@ module.exports = {
 	props: {
 		article: { type: String, required: true }
 	},
+	emits: [ 'textSelected' ],
 	data: function () {
 		return {
 			selectedText: null,
@@ -91,7 +89,7 @@ module.exports = {
 			e.stopPropagation();
 			this.hideSelectionToolbar();
 			this.setText( this.selectedText );
-			this.$router.replace( { name: 'Story' } );
+			this.$emit( 'textSelected' );
 		},
 		onDismiss: function () {
 			this.hideSelectionToolbar();
@@ -115,10 +113,12 @@ module.exports = {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	font-size: 14px;
 
 	&-content {
 		overflow: scroll;
 		padding: 16px;
+		margin-top: 10px;
 
 		p {
 			position: inherit;
@@ -149,6 +149,7 @@ module.exports = {
 		align-items: center;
 		background-color: #202122;
 		color: #fff;
+		margin-bottom: 13px;
 
 		&-banner {
 			flex: auto;
@@ -191,6 +192,7 @@ module.exports = {
 		align-content: stretch;
 		align-items: center;
 		cursor: pointer;
+		margin-bottom: 13px;
 
 		& > &-confirm-button {
 			flex: auto;
