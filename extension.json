@@ -17,11 +17,14 @@
 		"SkinTemplateNavigation::Universal": "MediaWiki\\Extension\\Wikistories\\Hooks::onSkinTemplateNavigationUniversal",
 		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile"
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"ExtensionMessagesFiles": {
 		"WikistoriesAlias": "Wikistories.i18n.alias.php"
 	},
 	"MessagesDirs": {
-		"Wikistories": [ "i18n" ]
+		"Wikistories": [ "i18n", "i18n/api" ]
 	},
 	"namespaces": [
 		{
@@ -109,5 +112,18 @@
 			]
 		}
 	},
+	"RestRoutes": [
+		{
+			"path": "/wikistories/v0/page/{title}/stories",
+			"method": "GET",
+			"class": "MediaWiki\\Extension\\Wikistories\\RelatedStoriesRestRoutes",
+			"services": [
+				"TitleFormatter",
+				"TitleParser",
+				"PageStore",
+				"Wikistories.Cache"
+			]
+		}
+	],
 	"manifest_version": 2
 }

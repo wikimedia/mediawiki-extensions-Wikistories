@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephane Bisson"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "Namespace ($1) not supported by this API endpoint. Stories can only be associated with articles in the main namespace."
+}
