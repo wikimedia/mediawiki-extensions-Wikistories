@@ -13,6 +13,7 @@
 	"wikistories-article-back": "Назад",
 	"wikistories-article-cancelselection": "Отменить",
 	"wikistories-article-loading": "Загрузка...",
-	"wikistories-article-usetext": "Использовать текст",
+	"wikistories-article-usetext": "Добавить в историю",
+	"wikistories-article-info-banner": "Выберите текст, чтобы добавить его в свою историю",
 	"wikistories-navigator-next": "Далее"
 }

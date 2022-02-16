@@ -11,6 +11,8 @@
 	"wikistories-article-back": "Zurück",
 	"wikistories-article-cancelselection": "Abbrechen",
 	"wikistories-article-loading": "Laden …",
-	"wikistories-article-usetext": "Text verwenden",
+	"wikistories-article-usetext": "Zur Geschichte hinzufügen",
+	"wikistories-article-info-banner": "Text auswählen, um ihn zu deiner Geschichte hinzuzufügen",
+	"wikistories-article-info-expanded-banner": "Tippen und halte ein Wort im Text und ziehe dann die Schieberegler, um den gesamten Text zu markieren, den du für die Geschichte wünscht. Um Text hinzuzufügen, tippe auf „Zur Geschichte hinzufügen“, das unten auf dem Bildschirm angezeigt wird.",
 	"wikistories-navigator-next": "Nächster"
 }

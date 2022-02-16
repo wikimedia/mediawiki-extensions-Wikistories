@@ -13,6 +13,8 @@
 	"wikistories-article-back": "חזרה",
 	"wikistories-article-cancelselection": "ביטול",
 	"wikistories-article-loading": "טעינה...",
-	"wikistories-article-usetext": "להשתמש בטקסט",
+	"wikistories-article-usetext": "להוסיף לסיפור",
+	"wikistories-article-info-banner": "נא לבחור טקסט כדי להוסיף אותו לסיפור שלך",
+	"wikistories-article-info-expanded-banner": "נא ללחוץ על מילה בטקסט ולהחזיק אותה ואז לגרור את הסמנים כדי לבחור את כל הטקסט {{GENDER:|שאתה|שאת}} רוצה לסיפור. כדי להוסיף טקסט, נא ללחוץ על \"להוסיף לסיפור\", שמוצג בתחתית המסך.",
 	"wikistories-navigator-next": "הבא"
 }

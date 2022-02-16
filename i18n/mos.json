@@ -1,16 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Hasslaebetch"
 		]
 	},
-	"wikistories-hooks-createstory": "Naane Solemde",
+	"wikistories-hooks-createstory": "Naane solemde",
 	"wikistories-imagesearch-inputlabel": "Bao",
-	"wikistories-story-goto-publish": "Sen Pugdé",
-	"wikistories-story-edittext": "Tetré",
-	"wikistories-imageattribution-author-unknown": "Ka mi Gulsda",
+	"wikistories-story-goto-publish": "Sen pugdē",
+	"wikistories-story-edittext": "Tekre",
+	"wikistories-imageattribution-author-unknown": "Ka mi gulsda",
 	"wikistories-article-back": "Pooré",
 	"wikistories-article-cancelselection": "Yeesē",
-	"wikistories-article-usetext": "Rig from Sigdim",
+	"wikistories-article-usetext": "Rig from sigdim",
 	"wikistories-navigator-next": "Sen pugdē"
 }

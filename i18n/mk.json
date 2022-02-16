@@ -13,6 +13,8 @@
 	"wikistories-article-back": "Назад",
 	"wikistories-article-cancelselection": "Откажи",
 	"wikistories-article-loading": "Вчитувам...",
-	"wikistories-article-usetext": "Употреби текст",
+	"wikistories-article-usetext": "Додај во приказна",
+	"wikistories-article-info-banner": "Изберете текст за да го додадете во вашата приказна",
+	"wikistories-article-info-expanded-banner": "Допрете и држете збор во текстот, и потоа повлечете ги лизгачите за да го обележите текстот што сакате да оди во приказната. За да го додадете, допрете на „Додај во приказна“ на дното од екранот.",
 	"wikistories-navigator-next": "Следно"
 }

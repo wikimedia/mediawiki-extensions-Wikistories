@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"MITO"
+		]
+	},
+	"wikistories-extensiondesc": "Wikistories antaa muokkaajien luoda lyhyttä, visuaalista ja luotettavaa tietoa Wikimedian projekteista",
+	"wikistories-hooks-createstory": "Luo tarina",
+	"wikistories-imagesearch-inputlabel": "Etsi",
+	"wikistories-story-goto-publish": "Seuraava",
+	"wikistories-story-edittext": "Muokkaa",
+	"wikistories-imageattribution-author-unknown": "Tuntematon tekijä",
+	"wikistories-article-back": "Takaisin",
+	"wikistories-article-cancelselection": "Peruuta",
+	"wikistories-article-loading": "Ladataan...",
+	"wikistories-article-usetext": "Käytä tekstiä",
+	"wikistories-navigator-next": "Seuraava"
+}
