@@ -2,13 +2,11 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Article;
-use Html;
 use MWException;
 use OutputPage;
 use Parser;
-use ParserOutput;
 use SkinTemplate;
+use SpecialPage;
 
 class Hooks {
 
@@ -20,27 +18,6 @@ class Hooks {
 	 */
 	public static function onParserFirstCallInit( Parser $parser ) {
 		$parser->setFunctionHook( 'story', [ StoryParserFunction::class, 'renderStory' ] );
-	}
-
-	/**
-	 * Show related story on article pages
-	 *
-	 * @param Article &$article
-	 * @param bool|ParserOutput &$outputDone
-	 * @param bool &$pcache
-	 */
-	public static function onArticleViewHeader( &$article, &$outputDone, &$pcache ) {
-		if ( $article->getTitle()->getNamespace() === NS_MAIN && $article->getPage()->exists() ) {
-			$out = $article->getContext()->getOutput();
-			$out->addModules( [ 'mw.ext.story.builder' ] );
-			$out->addHTML(
-				Html::element(
-					'a',
-					[ 'class' => 'wikistories-create', 'style' => 'display: none;' ],
-					$out->msg( 'wikistories-hooks-createstory' )->text()
-				)
-			);
-		}
 	}
 
 	/**
@@ -59,6 +36,10 @@ class Hooks {
 	 */
 	public static function onBeforePageDisplayMobile( OutputPage $out ) {
 		if ( $out->isArticle() ) {
+			$out->addJsConfigVars(
+				'wgWikistoriesCreateUrl',
+				SpecialPage::getTitleFor( 'CreateStory', $out->getTitle() )->getLinkURL()
+			);
 			$out->addModules( [ 'mw.ext.story.discover' ] );
 		}
 	}

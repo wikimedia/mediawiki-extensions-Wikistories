@@ -10,6 +10,8 @@
 	"wikistories-extensionname": "Text for the name of the project",
 	"wikistories-extensiondesc": "Text for the general project description",
 	"wikistories-hooks-createstory": "Text for creating a story button used in the Wikipedia article view header",
+	"wikistories-specialcreatestory-loading": "Temporary message indicating that the story builder is currently loading on Special:CreateStory",
+	"wikistories-specialcreatestory-nojswarning": "Message indicating that JavaScript is required to use Special:CreateStory",
 	"wikistories-imagesearch-inputlabel": "Text used for the search bar label in the Search view\n{{identical|Search}}",
 	"wikistories-story-goto-publish": "Text for a button in the Story view to continue to publish step\n{{identical|Next}}",
 	"wikistories-story-edittext": "Text used for an edit button in the CurrentFrame view\n{{identical|Edit}}",

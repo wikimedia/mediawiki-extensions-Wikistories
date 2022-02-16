@@ -1,5 +1,6 @@
-const $cta = $( '<div>' ).addClass( 'ext-wikistories-discover-container-cta' )
-	.append( $( '<div>' ).addClass( 'ext-wikistories-discover-container-cta-btn' ).text( '+' ) )
+const $cta = $( '<a>' ).addClass( 'ext-wikistories-discover-container-cta' )
+	.attr( 'href', mw.config.get( 'wgWikistoriesCreateUrl' ) )
+	.append( $( '<span>' ).addClass( 'ext-wikistories-discover-container-cta-btn' ).text( '+' ) )
 	.append( $( '<span>' ).text( mw.message( 'wikistories-discover-cta-text' ).text() ) );
 
 const $container = $( '<div>' )

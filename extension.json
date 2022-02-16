@@ -11,9 +11,11 @@
 	"ContentHandlers": {
 		"story": "MediaWiki\\Extension\\Wikistories\\StoryContentHandler"
 	},
+	"SpecialPages": {
+		"CreateStory": "MediaWiki\\Extension\\Wikistories\\SpecialCreateStory"
+	},
 	"Hooks": {
 		"ParserFirstCallInit": "MediaWiki\\Extension\\Wikistories\\Hooks::onParserFirstCallInit",
-		"ArticleViewHeader": "MediaWiki\\Extension\\Wikistories\\Hooks::onArticleViewHeader",
 		"SkinTemplateNavigation::Universal": "MediaWiki\\Extension\\Wikistories\\Hooks::onSkinTemplateNavigationUniversal",
 		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile"
 	},
@@ -21,7 +23,8 @@
 		"includes/ServiceWiring.php"
 	],
 	"ExtensionMessagesFiles": {
-		"WikistoriesAlias": "Wikistories.i18n.alias.php"
+		"WikistoriesAliasMagic": "Wikistories.alias.magic.php",
+		"WikistoriesAliasSpecial": "Wikistories.alias.special.php"
 	},
 	"MessagesDirs": {
 		"Wikistories": [ "i18n", "i18n/api" ]
@@ -62,6 +65,17 @@
 				"mw.ext.wikistories.viewer/viewer.less"
 			],
 			"dependencies": [ "vue" ]
+		},
+		"mw.ext.story.builder.styles": {
+			"targets": [ "desktop", "mobile" ],
+			"styles": [
+				"mw.ext.wikistories.builder/builder.less"
+			],
+			"skinStyles": {
+				"minerva": [
+					"mw.ext.wikistories.builder/builder.minerva.less"
+				]
+			}
 		},
 		"mw.ext.story.builder": {
 			"targets": [ "desktop", "mobile" ],

@@ -52,22 +52,22 @@ module.exports = {
 <style lang="less">
 .storybuilder-story {
 	font-size: 24px;
-	height: 100vh;
+	height: 100%;
 	overflow: hidden;
 	position: relative;
 
 	&-popup {
 		position: absolute;
-		height: 100vh;
-		width: 100vw;
+		width: 100%;
 		top: 0;
+		bottom: 0;
 		z-index: 102;
 
 		&-overlay {
 			background-color: #808080;
 			position: absolute;
-			height: 100vh;
-			width: 100vw;
+			height: 100%;
+			width: 100%;
 			opacity: 0.5;
 			z-index: 103;
 		}

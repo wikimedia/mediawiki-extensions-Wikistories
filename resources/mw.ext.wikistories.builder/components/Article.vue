@@ -96,7 +96,7 @@ module.exports = {
 		}
 	} ),
 	created: function () {
-		this.fetchArticle( this.article || mw.config.get( 'wgTitle' ) );
+		this.fetchArticle( this.article || mw.config.get( 'wgStoryArticle' ) );
 	},
 	mounted: function () {
 		document.addEventListener( 'selectionchange', this.onSelectionChange );

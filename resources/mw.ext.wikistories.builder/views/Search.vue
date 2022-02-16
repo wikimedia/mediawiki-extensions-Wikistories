@@ -79,50 +79,52 @@ module.exports = {
 	height: 100%;
 	padding: 0 15px 0 15px;
 	background-color: #fff;
-}
+	display: flex;
+	flex-direction: column;
 
-form {
-	position: relative;
-	text-align: left;
-	padding: 10px 0;
-}
+	form {
+		position: relative;
+		text-align: left;
+		padding: 10px 0;
 
-.label {
-	font-size: 18px;
-	font-style: normal;
-	font-weight: bold;
-	line-height: 25px;
-	letter-spacing: 0;
-	margin: 5px 10px;
-}
+		.label {
+			font-size: 18px;
+			font-style: normal;
+			font-weight: bold;
+			line-height: 25px;
+			letter-spacing: 0;
+			margin: 5px 10px;
+		}
 
-.query {
-	height: 36px;
-	border: 2px solid #36c;
-	box-sizing: border-box;
-	border-radius: 2px;
-	padding-left: 35px;
-	width: 100%;
-}
+		.query {
+			height: 36px;
+			border: 2px solid #36c;
+			box-sizing: border-box;
+			border-radius: 2px;
+			padding-left: 35px;
+			width: 100%;
+		}
 
-.icon {
-	background-image: url( ../images/search.svg );
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	bottom: 18px;
-	left: 10px;
-}
+		.icon {
+			background-image: url( ../images/search.svg );
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			bottom: 18px;
+			left: 10px;
+		}
 
-.close {
-	background-image: url( ../images/close.svg );
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	bottom: 18px;
-	right: 10px;
-	padding: 0;
-	cursor: pointer;
+		.close {
+			background-image: url( ../images/close.svg );
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			bottom: 18px;
+			right: 10px;
+			padding: 0;
+			cursor: pointer;
+		}
+	}
 }
 
 .loading-bar {

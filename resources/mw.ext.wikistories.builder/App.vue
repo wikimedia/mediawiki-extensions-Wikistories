@@ -1,5 +1,5 @@
 <template>
-	<div class="storybuilder-app">
+	<div class="storybuilder-app" :style="style">
 		<router-view></router-view>
 	</div>
 </template>
@@ -7,17 +7,26 @@
 <script>
 // @vue/component
 module.exports = {
-	name: 'App'
+	name: 'App',
+	data: function () {
+		return { height: 0 };
+	},
+	computed: {
+		style: function () {
+			return { height: this.height + 'px' };
+		}
+	},
+	methods: {
+		updateHeight: function () {
+			this.height = window.innerHeight - $( 'header' ).height();
+		}
+	},
+	beforeMount: function () {
+		this.updateHeight();
+		window.addEventListener( 'resize', this.updateHeight );
+	},
+	unmounted: function () {
+		window.removeEventListener( 'resize', this.updateHeight );
+	}
 };
 </script>
-
-<style lang="less">
-.storybuilder-app {
-	background-color: #fff;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-}
-</style>

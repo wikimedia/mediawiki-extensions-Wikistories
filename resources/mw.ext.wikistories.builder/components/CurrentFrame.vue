@@ -40,6 +40,8 @@ module.exports = {
 		background-color: #fff;
 		margin: 0;
 		padding: 10px;
+		max-height: 40%;
+		overflow: hidden;
 
 		p {
 			padding: 0;

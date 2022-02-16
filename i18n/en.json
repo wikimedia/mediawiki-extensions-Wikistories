@@ -7,6 +7,8 @@
 	"wikistories-extensionname": "Wikistories",
 	"wikistories-extensiondesc": "Wikistories lets editors create short, visual and reliable knowledge from Wikimedia projects",
 	"wikistories-hooks-createstory": "Create a story",
+	"wikistories-specialcreatestory-loading": "Loading...",
+	"wikistories-specialcreatestory-nojswarning": "This special page requires JavaScript to work",
 	"wikistories-imagesearch-inputlabel": "Search",
 	"wikistories-story-goto-publish": "Next",
 	"wikistories-story-edittext": "Edit",
