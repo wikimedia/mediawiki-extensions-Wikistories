@@ -79,4 +79,13 @@ class StoryContent extends JsonContent {
 			);
 		}
 	}
+
+	/**
+	 * @return string A simple version of the story frames as text for diff
+	 */
+	public function getTextForDiff() {
+		return implode( "\n\n", array_map( static function ( $frame ) {
+			return $frame->img . "\n" . $frame->text;
+		}, $this->getFrames() ) );
+	}
 }
