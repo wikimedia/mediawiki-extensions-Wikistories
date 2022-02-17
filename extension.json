@@ -65,6 +65,7 @@
 				"./mw.ext.wikistories.builder/index.js",
 				"./mw.ext.wikistories.builder/router.js",
 				"./mw.ext.wikistories.builder/App.vue",
+				"./mw.ext.wikistories.builder/components/Article.vue",
 				"./mw.ext.wikistories.builder/components/CurrentFrame.vue",
 				"./mw.ext.wikistories.builder/components/Frames.vue",
 				"./mw.ext.wikistories.builder/components/ImageAttribution.vue",
@@ -75,7 +76,6 @@
 				"./mw.ext.wikistories.builder/store/index.js",
 				"./mw.ext.wikistories.builder/store/search.js",
 				"./mw.ext.wikistories.builder/store/story.js",
-				"./mw.ext.wikistories.builder/views/Article.vue",
 				"./mw.ext.wikistories.builder/views/Search.vue",
 				"./mw.ext.wikistories.builder/views/Story.vue",
 				"./lib/vue-router/vue-router.common.js"
@@ -89,7 +89,6 @@
 				"wikistories-story-goto-publish",
 				"wikistories-story-edittext",
 				"wikistories-imageattribution-author-unknown",
-				"wikistories-article-back",
 				"wikistories-article-cancelselection",
 				"wikistories-article-loading",
 				"wikistories-article-usetext",

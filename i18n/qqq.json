@@ -13,7 +13,6 @@
 	"wikistories-story-goto-publish": "Text for a button in the Story view to continue to publish step\n{{identical|Next}}",
 	"wikistories-story-edittext": "Text used for an edit button in the CurrentFrame view\n{{identical|Edit}}",
 	"wikistories-imageattribution-author-unknown": "Text used in the ImageAttribution component when the image author is unknown",
-	"wikistories-article-back": "Text used for a back button in the Article view\n{{identical|Back}}",
 	"wikistories-article-cancelselection": "Text for cancel button used in the Article view\n{{identical|Cancel}}",
 	"wikistories-article-loading": "Text used for a header in the Article view as the article loads",
 	"wikistories-article-usetext": "Text used for a button in the Article view.",

@@ -1,5 +1,4 @@
 const VueRouter = require( '../lib/vue-router/vue-router.common.js' );
-const Article = require( './views/Article.vue' );
 const Story = require( './views/Story.vue' );
 const Search = require( './views/Search.vue' );
 
@@ -10,12 +9,6 @@ window.process = {
 };
 
 const routes = [
-	{
-		path: '/article/:article?',
-		name: 'Article',
-		component: Article,
-		props: true
-	},
 	{
 		path: '/story',
 		name: 'Story',
