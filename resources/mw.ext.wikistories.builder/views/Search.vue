@@ -75,100 +75,100 @@ module.exports = {
 </script>
 
 <style lang="less">
-		.storybuilder-search {
-			height: 100%;
-			padding: 0 15px 0 15px;
-			background-color: #fff;
-		}
+.storybuilder-search {
+	height: 100%;
+	padding: 0 15px 0 15px;
+	background-color: #fff;
+}
 
-		form {
-			position: relative;
-			text-align: left;
-			padding: 10px 0;
-		}
+form {
+	position: relative;
+	text-align: left;
+	padding: 10px 0;
+}
 
-		.label {
-			font-size: 18px;
-			font-style: normal;
-			font-weight: bold;
-			line-height: 25px;
-			letter-spacing: 0;
-			margin: 5px 10px;
-		}
+.label {
+	font-size: 18px;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 25px;
+	letter-spacing: 0;
+	margin: 5px 10px;
+}
 
-		.query {
-			height: 36px;
-			border: 2px solid #36c;
-			box-sizing: border-box;
-			border-radius: 2px;
-			padding-left: 35px;
-			width: 100%;
-		}
+.query {
+	height: 36px;
+	border: 2px solid #36c;
+	box-sizing: border-box;
+	border-radius: 2px;
+	padding-left: 35px;
+	width: 100%;
+}
 
-		.icon {
-			background-image: url( ../images/search.svg );
-			width: 20px;
-			height: 20px;
-			position: absolute;
-			bottom: 18px;
-			left: 10px;
-		}
+.icon {
+	background-image: url( ../images/search.svg );
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	bottom: 18px;
+	left: 10px;
+}
 
-		.close {
-			background-image: url( ../images/close.svg );
-			width: 20px;
-			height: 20px;
-			position: absolute;
-			bottom: 18px;
-			right: 10px;
-			padding: 0;
-			cursor: pointer;
-		}
+.close {
+	background-image: url( ../images/close.svg );
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	bottom: 18px;
+	right: 10px;
+	padding: 0;
+	cursor: pointer;
+}
 
-		.loading-bar {
-			position: absolute;
-			height: 3px;
-			width: 130px;
-			border-radius: 3px;
-			margin-top: 10px;
-			background: #36c;
-			animation-name: loader;
-			animation-duration: 2s;
-			animation-iteration-count: infinite;
-			animation-timing-function: ease;
-		}
+.loading-bar {
+	position: absolute;
+	height: 3px;
+	width: 130px;
+	border-radius: 3px;
+	margin-top: 10px;
+	background: #36c;
+	animation-name: loader;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease;
+}
 
-		@keyframes loader {
-			0% {
-				transform: translateX( 0 );
-			}
+@keyframes loader {
+	0% {
+		transform: translateX( 0 );
+	}
 
-			50% {
-				transform: translateX( calc( 100vw - 40px ) );
-			}
+	50% {
+		transform: translateX( calc( 100vw - 40px ) );
+	}
 
-			100% {
-				transform: translateX( 0 );
-			}
-		}
+	100% {
+		transform: translateX( 0 );
+	}
+}
 
-		@keyframes loader-desktop {
-			0% {
-				transform: translateX( 0 );
-			}
+@keyframes loader-desktop {
+	0% {
+		transform: translateX( 0 );
+	}
 
-			50% {
-				transform: translateX( calc( 500px - 175px ) );
-			}
+	50% {
+		transform: translateX( calc( 500px - 175px ) );
+	}
 
-			100% {
-				transform: translateX( 0 );
-			}
-		}
+	100% {
+		transform: translateX( 0 );
+	}
+}
 
-		@media screen and ( min-width: 500px ) {
-			.loading-bar {
-				animation-name: loader-desktop;
-			}
-		}
+@media screen and ( min-width: 500px ) {
+	.loading-bar {
+		animation-name: loader-desktop;
+	}
+}
 </style>

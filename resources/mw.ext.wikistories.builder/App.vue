@@ -12,12 +12,12 @@ module.exports = {
 </script>
 
 <style lang="less">
-	.storybuilder-app {
-		background-color: #fff;
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
+.storybuilder-app {
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
 </style>

@@ -26,31 +26,31 @@ module.exports = {
 </script>
 
 <style lang="less">
-	.current-frame {
-		height: 90%;
-		position: relative;
-		text-align: center;
+.current-frame {
+	height: 90%;
+	position: relative;
+	text-align: center;
 
-		.story-text {
-			position: absolute;
-			bottom: 60px;
-			left: 20px;
-			right: 20px;
-			border-radius: 10px;
-			background-color: #fff;
-			margin: 0;
-			padding: 10px;
+	.story-text {
+		position: absolute;
+		bottom: 60px;
+		left: 20px;
+		right: 20px;
+		border-radius: 10px;
+		background-color: #fff;
+		margin: 0;
+		padding: 10px;
 
-			p {
-				padding: 0;
-			}
+		p {
+			padding: 0;
+		}
 
-			.select-text-btn {
-				display: block;
-				width: 100%;
-				font-size: 0.5em;
-				text-align: end;
-			}
+		.select-text-btn {
+			display: block;
+			width: 100%;
+			font-size: 0.5em;
+			text-align: end;
 		}
 	}
+}
 </style>
