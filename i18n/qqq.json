@@ -3,7 +3,8 @@
 		"authors": [
 			"Amire80",
 			"Eduardo Medina",
-			"Robby"
+			"Robby",
+			"Huei Tan"
 		]
 	},
 	"wikistories-extensionname": "Text for the name of the project",
@@ -19,5 +20,6 @@
 	"wikistories-article-usetext": "Text used for a button in the Article view.",
 	"wikistories-article-info-banner": "Text used for the info section in the Article view as the feature introduction",
 	"wikistories-article-info-expanded-banner": "Text used for the info section in the Article view as the extended feature introduction.\n\n\"Add to story\" is {{msg-mw|Wikistories-article-usetext}}",
-	"wikistories-navigator-next": "Text for a button in the Navigator component to continue to next step\n{{identical|Next}}"
+	"wikistories-navigator-next": "Text for a button in the Navigator component to continue to next step\n{{identical|Next}}",
+	"wikistories-discover-cta-text": "Text for a button in the Discover section to start the builder step"
 }
