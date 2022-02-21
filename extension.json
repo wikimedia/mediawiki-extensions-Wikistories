@@ -46,40 +46,40 @@
 	"ResourceModules": {
 		"mw.ext.story.viewer-nojs": {
 			"styles": [
-				"./mw.ext.wikistories.viewer-nojs/viewer-nojs.less"
+				"mw.ext.wikistories.viewer-nojs/viewer-nojs.less"
 			]
 		},
 		"mw.ext.story.viewer": {
 			"targets": [ "desktop", "mobile" ],
 			"packageFiles": [
-				"./mw.ext.wikistories.viewer/index.js",
-				"./mw.ext.wikistories.viewer/StoryViewer.vue"
+				"mw.ext.wikistories.viewer/index.js",
+				"mw.ext.wikistories.viewer/StoryViewer.vue"
 			],
 			"styles": [
-				"./mw.ext.wikistories.viewer/viewer.less"
+				"mw.ext.wikistories.viewer/viewer.less"
 			],
 			"dependencies": [ "vue" ]
 		},
 		"mw.ext.story.builder": {
 			"targets": [ "desktop", "mobile" ],
 			"packageFiles": [
-				"./mw.ext.wikistories.builder/index.js",
-				"./mw.ext.wikistories.builder/router.js",
-				"./mw.ext.wikistories.builder/App.vue",
-				"./mw.ext.wikistories.builder/components/Article.vue",
-				"./mw.ext.wikistories.builder/components/CurrentFrame.vue",
-				"./mw.ext.wikistories.builder/components/Frames.vue",
-				"./mw.ext.wikistories.builder/components/ImageAttribution.vue",
-				"./mw.ext.wikistories.builder/components/ImageListView.vue",
-				"./mw.ext.wikistories.builder/components/Navigator.vue",
-				"./mw.ext.wikistories.builder/components/PrimaryButton.vue",
-				"./mw.ext.wikistories.builder/store/article.js",
-				"./mw.ext.wikistories.builder/store/index.js",
-				"./mw.ext.wikistories.builder/store/search.js",
-				"./mw.ext.wikistories.builder/store/story.js",
-				"./mw.ext.wikistories.builder/views/Search.vue",
-				"./mw.ext.wikistories.builder/views/Story.vue",
-				"./lib/vue-router/vue-router.common.js"
+				"mw.ext.wikistories.builder/index.js",
+				"mw.ext.wikistories.builder/router.js",
+				"mw.ext.wikistories.builder/App.vue",
+				"mw.ext.wikistories.builder/components/Article.vue",
+				"mw.ext.wikistories.builder/components/CurrentFrame.vue",
+				"mw.ext.wikistories.builder/components/Frames.vue",
+				"mw.ext.wikistories.builder/components/ImageAttribution.vue",
+				"mw.ext.wikistories.builder/components/ImageListView.vue",
+				"mw.ext.wikistories.builder/components/Navigator.vue",
+				"mw.ext.wikistories.builder/components/PrimaryButton.vue",
+				"mw.ext.wikistories.builder/store/article.js",
+				"mw.ext.wikistories.builder/store/index.js",
+				"mw.ext.wikistories.builder/store/search.js",
+				"mw.ext.wikistories.builder/store/story.js",
+				"mw.ext.wikistories.builder/views/Search.vue",
+				"mw.ext.wikistories.builder/views/Story.vue",
+				"lib/vue-router/vue-router.common.js"
 			],
 			"dependencies": [ "vue", "vuex", "mediawiki.ForeignApi" ],
 			"messages": [
@@ -98,11 +98,11 @@
 		"mw.ext.story.discover": {
 			"targets": [ "mobile" ],
 			"packageFiles": [
-				"./mw.ext.wikistories.discover/index.js",
-				"./mw.ext.wikistories.discover/Discover.js"
+				"mw.ext.wikistories.discover/index.js",
+				"mw.ext.wikistories.discover/Discover.js"
 			],
 			"styles": [
-				"./mw.ext.wikistories.discover/discover.less"
+				"mw.ext.wikistories.discover/discover.less"
 			],
 			"messages": [
 				"wikistories-discover-cta-text"
