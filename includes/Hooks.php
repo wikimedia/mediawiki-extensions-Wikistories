@@ -6,6 +6,7 @@ use Article;
 use Html;
 use MediaWiki\MediaWikiServices;
 use MWException;
+use OutputPage;
 use Parser;
 use ParserOutput;
 use SkinTemplate;
@@ -75,6 +76,15 @@ class Hooks {
 			return;
 		}
 		// todo: consider changing the edit action for "edit" (builder) and "edit raw" (no js)
+	}
+
+	/**
+	 * @param OutputPage $out
+	 */
+	public static function onBeforePageDisplayMobile( OutputPage $out ) {
+		if ( $out->isArticle() ) {
+			$out->addModules( [ 'mw.ext.story.discover' ] );
+		}
 	}
 
 }

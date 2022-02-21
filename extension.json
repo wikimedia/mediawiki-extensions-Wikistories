@@ -14,7 +14,8 @@
 	"Hooks": {
 		"ParserFirstCallInit": "MediaWiki\\Extension\\Wikistories\\Hooks::onParserFirstCallInit",
 		"ArticleViewHeader": "MediaWiki\\Extension\\Wikistories\\Hooks::onArticleViewHeader",
-		"SkinTemplateNavigation::Universal": "MediaWiki\\Extension\\Wikistories\\Hooks::onSkinTemplateNavigationUniversal"
+		"SkinTemplateNavigation::Universal": "MediaWiki\\Extension\\Wikistories\\Hooks::onSkinTemplateNavigationUniversal",
+		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile"
 	},
 	"ExtensionMessagesFiles": {
 		"WikistoriesAlias": "Wikistories.i18n.alias.php"
@@ -80,9 +81,6 @@
 				"./mw.ext.wikistories.builder/views/Story.vue",
 				"./lib/vue-router/vue-router.common.js"
 			],
-			"styles": [
-				"./mw.ext.wikistories.builder/builder.less"
-			],
 			"dependencies": [ "vue", "vuex", "mediawiki.ForeignApi" ],
 			"messages": [
 				"wikistories-imagesearch-inputlabel",
@@ -95,6 +93,19 @@
 				"wikistories-article-info-banner",
 				"wikistories-article-info-expanded-banner",
 				"wikistories-navigator-next"
+			]
+		},
+		"mw.ext.story.discover": {
+			"targets": [ "mobile" ],
+			"packageFiles": [
+				"./mw.ext.wikistories.discover/index.js",
+				"./mw.ext.wikistories.discover/Discover.js"
+			],
+			"styles": [
+				"./mw.ext.wikistories.discover/discover.less"
+			],
+			"messages": [
+				"wikistories-discover-cta-text"
 			]
 		}
 	},
