@@ -15,5 +15,6 @@
 	"wikistories-article-usetext": "להוסיף לסיפור",
 	"wikistories-article-info-banner": "נא לבחור טקסט כדי להוסיף אותו לסיפור שלך",
 	"wikistories-article-info-expanded-banner": "נא ללחוץ על מילה בטקסט ולהחזיק אותה ואז לגרור את הסמנים כדי לבחור את כל הטקסט {{GENDER:|שאתה|שאת}} רוצה לסיפור. כדי להוסיף טקסט, נא ללחוץ על \"להוסיף לסיפור\", שמוצג בתחתית המסך.",
-	"wikistories-navigator-next": "הבא"
+	"wikistories-navigator-next": "הבא",
+	"wikistories-discover-cta-text": "יצירת סיפור ויקי"
 }
