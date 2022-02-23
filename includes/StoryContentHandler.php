@@ -4,11 +4,13 @@ namespace MediaWiki\Extension\Wikistories;
 
 use Content;
 use IContextSource;
+use JsonContentHandler;
 use MediaWiki\Content\Renderer\ContentParseParams;
+use MediaWiki\MediaWikiServices;
 use ParserOutput;
 use Title;
 
-class StoryContentHandler extends \JsonContentHandler {
+class StoryContentHandler extends JsonContentHandler {
 
 	/**
 	 * @param string $modelId
@@ -61,13 +63,22 @@ class StoryContentHandler extends \JsonContentHandler {
 		$renderer = new StoryRenderer( $story );
 
 		// register links from story frames to source articles
+		$relatedArticles = [];
 		foreach ( $story->getFrames() as $frame ) {
 			if ( isset( $frame->source ) ) {
 				$title = Title::newFromText( $frame->source );
 				if ( $title ) {
-					$output->addLink( $title );
+					$relatedArticles[] = $title;
 				}
 			}
+		}
+		// todo: inject
+		/** @var StoriesCache $cache */
+		$cache = MediaWikiServices::getInstance()->get( 'Wikistories.Cache' );
+		foreach ( array_unique( $relatedArticles ) as $relatedArticle ) {
+			$output->addLink( $relatedArticle );
+			// todo: only invalidate the cache if the links have changed
+			$cache->invalidateForArticle( $relatedArticle );
 		}
 
 		// no-js
@@ -81,6 +92,13 @@ class StoryContentHandler extends \JsonContentHandler {
 		}
 
 		$output->setText( $html );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function isParserCacheSupported() {
+		return true;
 	}
 
 	/**

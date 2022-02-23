@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephane Bisson"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "API response message when a title with a namespace other than 0 (main) is provided. Parameters:\n* $1 The namespace of the provided title."
+}
