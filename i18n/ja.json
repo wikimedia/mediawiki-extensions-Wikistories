@@ -5,6 +5,7 @@
 		]
 	},
 	"wikistories-hooks-createstory": "ストーリーを作成",
+	"wikistories-specialcreatestory-loading": "読み込み中...",
 	"wikistories-imagesearch-inputlabel": "検索",
 	"wikistories-story-goto-publish": "次へ",
 	"wikistories-story-edittext": "編集",

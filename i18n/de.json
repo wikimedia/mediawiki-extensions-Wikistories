@@ -4,6 +4,8 @@
 	},
 	"wikistories-extensiondesc": "Mit Wikistories können Benutzer kurzes, visuelles und zuverlässiges Wissen aus Wikimedia-Projekten erstellen",
 	"wikistories-hooks-createstory": "Erstellen einer Geschichte",
+	"wikistories-specialcreatestory-loading": "Laden …",
+	"wikistories-specialcreatestory-nojswarning": "Diese Spezialseite erfordert JavaScript, um zu funktionieren",
 	"wikistories-imagesearch-inputlabel": "Suchen",
 	"wikistories-story-goto-publish": "Nächster",
 	"wikistories-story-edittext": "Bearbeiten",
