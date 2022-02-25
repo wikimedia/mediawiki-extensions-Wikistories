@@ -15,15 +15,12 @@
 		"CreateStory": "MediaWiki\\Extension\\Wikistories\\SpecialCreateStory"
 	},
 	"Hooks": {
-		"ParserFirstCallInit": "MediaWiki\\Extension\\Wikistories\\Hooks::onParserFirstCallInit",
-		"SkinTemplateNavigation::Universal": "MediaWiki\\Extension\\Wikistories\\Hooks::onSkinTemplateNavigationUniversal",
 		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
 	"ExtensionMessagesFiles": {
-		"WikistoriesAliasMagic": "Wikistories.alias.magic.php",
 		"WikistoriesAliasSpecial": "Wikistories.alias.special.php"
 	},
 	"MessagesDirs": {
