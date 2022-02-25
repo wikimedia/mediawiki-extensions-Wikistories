@@ -6,6 +6,8 @@
 	},
 	"wikistories-extensiondesc": "הרחבת סיפורי ויקי (Wikistories) מאפשרת לעורכים ליצור ידע קצר, חזותי, ואמין ממיזמי ויקימדיה",
 	"wikistories-hooks-createstory": "יצירת סיפור",
+	"wikistories-specialcreatestory-loading": "טעינה...",
+	"wikistories-specialcreatestory-nojswarning": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",
 	"wikistories-imagesearch-inputlabel": "חיפוש",
 	"wikistories-story-goto-publish": "הבא",
 	"wikistories-story-edittext": "עריכה",

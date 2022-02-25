@@ -1,18 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
+			"Pacha Tchernof",
 			"Tanzun"
 		]
 	},
-	"wikistories-extensiondesc": "Викиистории позволяют редакторам извлекать краткую, наглядную и достоверную информацию из проектов Викимедиа.",
+	"wikistories-extensiondesc": "ВикиИстории позволяют редакторам извлекать краткую, наглядную и достоверную информацию из проектов Викимедиа.",
 	"wikistories-hooks-createstory": "Создать историю",
-	"wikistories-imagesearch-inputlabel": "Найти",
+	"wikistories-specialcreatestory-loading": "Загружается…",
+	"wikistories-specialcreatestory-nojswarning": "Для работы этой служебной страницы требуется JavaScript",
+	"wikistories-imagesearch-inputlabel": "Поиск",
 	"wikistories-story-goto-publish": "Далее",
-	"wikistories-story-edittext": "Править",
+	"wikistories-story-edittext": "Изменить",
 	"wikistories-imageattribution-author-unknown": "Автор неизвестен",
 	"wikistories-article-cancelselection": "Отменить",
-	"wikistories-article-loading": "Загрузка...",
+	"wikistories-article-loading": "Загружается…",
 	"wikistories-article-usetext": "Добавить в историю",
 	"wikistories-article-info-banner": "Выберите текст, чтобы добавить его в свою историю",
-	"wikistories-navigator-next": "Далее"
+	"wikistories-article-info-expanded-banner": "Нажмите на слово в тексте и задержитесь, затем перетащите ползунки, чтобы выделить весь желаемый текст для истории. Чтобы добавить текст, нажмите на «Добавить в историю» в нижней части экрана.",
+	"wikistories-navigator-next": "Далее",
+	"wikistories-discover-cta-text": "Создать ВикиИсторию"
 }

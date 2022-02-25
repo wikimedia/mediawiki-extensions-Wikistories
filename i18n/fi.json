@@ -6,6 +6,7 @@
 	},
 	"wikistories-extensiondesc": "Wikistories antaa muokkaajien luoda lyhyttä, visuaalista ja luotettavaa tietoa Wikimedian projekteista",
 	"wikistories-hooks-createstory": "Luo tarina",
+	"wikistories-specialcreatestory-loading": "Ladataan...",
 	"wikistories-imagesearch-inputlabel": "Etsi",
 	"wikistories-story-goto-publish": "Seuraava",
 	"wikistories-story-edittext": "Muokkaa",
