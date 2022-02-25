@@ -1,5 +1,6 @@
-const MAX_FRAMES = 5;
 const INITIAL_FRAME_ID = 1;
+const MIN_FRAMES = mw.config.get( 'wgWikistoriesMinFrames' );
+const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
 
 const makeFrameStyle = f => {
 	return f.img ?
@@ -33,7 +34,7 @@ const getNextFrameId = state => {
 module.exports = {
 	state: {
 		storyTitle: null,
-		creationDate: null,
+		fromArticle: mw.config.get( 'wgWikistoriesFromArticle' ),
 		currentFrameId: INITIAL_FRAME_ID,
 		frames: [
 			{
@@ -75,9 +76,6 @@ module.exports = {
 			// TODO: clarify that this should really find a frame by attribution id
 			const f = state.frames.find( frame => frame.id === attribution.id );
 			f.attribution = attribution;
-		},
-		setCreationDate: ( state, date ) => {
-			state.creationDate = date;
 		},
 		updateStoryTitle: ( state, title ) => {
 			state.storyTitle = title;
@@ -127,9 +125,6 @@ module.exports = {
 					context.commit( 'setImgAttribution', attribution );
 				}
 			} );
-		},
-		setCreationDate: ( context ) => {
-			context.commit( 'setCreationDate', Date.now() );
 		}
 	},
 	getters: {
@@ -165,9 +160,11 @@ module.exports = {
 				creationDate: state.creationDate
 			};
 		},
-		valid: ( state ) => {
-			return state.frames.length >= 2 && state.frames.every( f => f.img && f.text );
+		missingFrames: ( state ) => {
+			return state.frames.length < MIN_FRAMES ?
+				MIN_FRAMES - state.frames.length : 0;
 		},
+		framesWithoutText: ( state ) => state.frames.filter( f => !f.text ).length,
 		attributionData: ( state ) => {
 			return state.frames.map( f => {
 				return {
@@ -176,6 +173,19 @@ module.exports = {
 					attribution: f.attribution
 				};
 			} );
+		},
+		frames: ( state ) => state.frames,
+		fromArticle: ( state ) => state.fromArticle,
+		storyForSave: ( state ) => {
+			return {
+				fromArticle: state.fromArticle,
+				frames: state.frames.map( ( f ) => {
+					return {
+						img: f.img,
+						text: f.text
+					};
+				} )
+			};
 		}
 	}
 };

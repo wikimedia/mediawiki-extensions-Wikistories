@@ -10,6 +10,7 @@ use OOUI\TextInputWidget;
 class StoryEditPage extends EditPage {
 
 	protected function showContentForm() {
+		$maxFrames = $this->context->getConfig()->get( 'WikistoriesMaxFrames' );
 		$out = $this->context->getOutput();
 
 		/** @var StoryContent $story */
@@ -19,7 +20,7 @@ class StoryEditPage extends EditPage {
 		$emptyFrame = (object)[ 'img' => '', 'text' => '' ];
 
 		$form = '<div class="story-builder-nojs-root">';
-		for ( $i = 0; $i < StoryContent::MAX_FRAMES; $i++ ) {
+		for ( $i = 0; $i < $maxFrames; $i++ ) {
 			$frame = $currentFrames[ $i ] ?? $emptyFrame;
 			$form .= Html::element( 'h3', [], "Frame " . ( $i + 1 ) );
 			$form .= new FieldLayout(

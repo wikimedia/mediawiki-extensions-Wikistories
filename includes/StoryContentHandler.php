@@ -9,6 +9,7 @@ use MediaWiki\Content\Renderer\ContentParseParams;
 use MediaWiki\MediaWikiServices;
 use ParserOutput;
 use Title;
+use TitleValue;
 
 class StoryContentHandler extends JsonContentHandler {
 
@@ -63,7 +64,7 @@ class StoryContentHandler extends JsonContentHandler {
 		$renderer = new StoryRenderer( $story );
 
 		// register links from story frames to source articles
-		$relatedArticles = [];
+		$relatedArticles = [ $story->getFromArticle() ];
 		foreach ( $story->getFrames() as $frame ) {
 			if ( isset( $frame->source ) ) {
 				$title = Title::newFromText( $frame->source );
@@ -76,7 +77,7 @@ class StoryContentHandler extends JsonContentHandler {
 		/** @var StoriesCache $cache */
 		$cache = MediaWikiServices::getInstance()->get( 'Wikistories.Cache' );
 		foreach ( array_unique( $relatedArticles ) as $relatedArticle ) {
-			$output->addLink( $relatedArticle );
+			$output->addLink( new TitleValue( NS_MAIN, $relatedArticle ) );
 			// todo: only invalidate the cache if the links have changed
 			$cache->invalidateForArticle( $relatedArticle );
 		}

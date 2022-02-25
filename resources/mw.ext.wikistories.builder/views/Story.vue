@@ -1,100 +1,122 @@
 <template>
-	<div class="storybuilder-story">
-		<primary-button
-			class="publish-button"
-			:text="$i18n( 'wikistories-story-goto-publish' ).text()"
-		></primary-button>
-		<current-frame @edit="showPopup"></current-frame>
+	<div class="ext-wikistories-storybuilder-story">
+		<current-frame @edit="showArticlePopup"></current-frame>
+		<div
+			class="ext-wikistories-storybuilder-story-publish-button"
+			@click="showPublishPopup"
+		></div>
 		<frames></frames>
-		<div v-if="viewPopup" class="storybuilder-story-popup">
-			<div class="storybuilder-story-popup-overlay" @click="hidePopup"></div>
-			<div class="storybuilder-story-popup-content">
-				<div class="storybuilder-story-popup-cue"></div>
-				<article-view @text-selected="hidePopup"></article-view>
-			</div>
-		</div>
+
+		<popup v-if="viewArticlePopup" @overlay-click="hideArticlePopup">
+			<article-view @text-selected="hideArticlePopup"></article-view>
+		</popup>
+		<popup v-if="viewPublishPopup" @overlay-click="hidePublishPopup">
+			<publish-form @cancel-publish="hidePublishPopup"></publish-form>
+		</popup>
+		<alert
+			v-if="alert.show"
+			:title="alert.title"
+			@ok-click="hideAlert">
+			{{ alert.message }}
+		</alert>
 	</div>
 </template>
 
 <script>
 const mapGetters = require( 'vuex' ).mapGetters;
-const PrimaryButton = require( '../components/PrimaryButton.vue' );
 const CurrentFrame = require( '../components/CurrentFrame.vue' );
 const Article = require( '../components/Article.vue' );
 const Frames = require( '../components/Frames.vue' );
+const Popup = require( '../components/Popup.vue' );
+const PublishForm = require( '../components/PublishForm.vue' );
+const Alert = require( '../components/Alert.vue' );
 
 // @vue/component
 module.exports = {
 	name: 'Story',
 	components: {
-		'primary-button': PrimaryButton,
 		'current-frame': CurrentFrame,
 		'article-view': Article,
-		frames: Frames
+		frames: Frames,
+		popup: Popup,
+		'publish-form': PublishForm,
+		alert: Alert
 	},
 	data: function () {
 		return {
-			viewPopup: false
+			viewArticlePopup: false,
+			viewPublishPopup: false,
+			alert: {
+				show: false,
+				title: '',
+				message: ''
+			}
 		};
 	},
-	computed: mapGetters( [ 'currentFrame' ] ),
+	computed: mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText' ] ),
 	methods: {
-		showPopup: function () {
-			this.viewPopup = true;
+		showArticlePopup: function () {
+			this.viewArticlePopup = true;
 		},
-		hidePopup: function () {
-			this.viewPopup = false;
+		hideArticlePopup: function () {
+			this.viewArticlePopup = false;
+		},
+		showPublishPopup: function () {
+			if ( this.missingFrames ) {
+				const minFrames = this.getConfig( 'wgWikistoriesMinFrames' );
+				this.showNotEnoughFrameAlert( minFrames, this.missingFrames );
+				return;
+			}
+			if ( this.framesWithoutText > 0 ) {
+				this.showFramesWithoutTextAlert( this.framesWithoutText );
+				return;
+			}
+			this.viewPublishPopup = true;
+		},
+		hidePublishPopup: function () {
+			this.viewPublishPopup = false;
+		},
+		showNotEnoughFrameAlert: function ( min, missing ) {
+			this.alert.title = mw.message( 'wikistories-error-notenoughframes-title' ).text();
+			this.alert.message = mw.message( 'wikistories-error-notenoughframes-message' )
+				.params( [ min, missing ] ).text();
+			this.alert.show = true;
+		},
+		showFramesWithoutTextAlert: function ( nb ) {
+			this.alert.title = mw.message( 'wikistories-error-frameswithouttext-title' ).text();
+			this.alert.message = mw.message( 'wikistories-error-frameswithouttext-message' )
+				.params( [ nb ] ).text();
+			this.alert.show = true;
+		},
+		hideAlert: function () {
+			this.alert.title = '';
+			this.alert.message = '';
+			this.alert.show = false;
 		}
 	}
 };
 </script>
 
 <style lang="less">
-.storybuilder-story {
+.ext-wikistories-storybuilder-story {
 	font-size: 24px;
 	height: 100%;
 	overflow: hidden;
 	position: relative;
 
-	&-popup {
+	&-publish-button {
 		position: absolute;
-		width: 100%;
-		top: 0;
-		bottom: 0;
-		z-index: 102;
-
-		&-overlay {
-			background-color: #808080;
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			opacity: 0.5;
-			z-index: 103;
-		}
-
-		&-content {
-			position: absolute;
-			height: 90%;
-			width: 100%;
-			top: 10%;
-			background-color: #fff;
-			z-index: 104;
-			border-radius: 14px;
-		}
-
-		&-cue {
-			height: 3px;
-			width: 30px;
-			background-color: #808080;
-			margin: auto;
-			margin-top: 10px;
-		}
+		top: 24px;
+		right: 24px;
+		background-image: url( ../images/back.svg );
+		width: 26px;
+		height: 26px;
+		cursor: pointer;
+		transform: rotate( 180deg );
+		background-color: #fff;
+		background-repeat: no-repeat;
+		background-position: center;
+		border-radius: 13px;
 	}
-}
-
-.publish-button {
-	position: absolute;
-	right: 24px;
-	top: 24px;
 }
 </style>
