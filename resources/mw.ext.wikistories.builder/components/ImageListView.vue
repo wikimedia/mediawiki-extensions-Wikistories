@@ -1,18 +1,18 @@
 <template>
-	<div class="imagelistview">
-		<div class="imagelistview__list-wrapper">
-			<div class="imagelistview__list">
+	<div class="ext-wikistories-imagelistview">
+		<div class="ext-wikistories-imagelistview__list-wrapper">
+			<div class="ext-wikistories-imagelistview__list">
 				<div
 					v-for="item in items"
 					:key="item.id"
 					:data-id="item.id"
-					class="imagelistview__list-image"
+					class="ext-wikistories-imagelistview__list-image"
 					:style="{ width: `${item.width}px` }"
 					@click="onSelect">
-					<img
-						:src="item.thumb"
+					<list-image
+						:source="item.thumb"
 						:alt="item.title"
-						loading="lazy">
+					></list-image>
 					<div
 						:class="{ checkbox: true, selected: selected.indexOf( item.id ) !== -1 }">
 					</div>
@@ -23,9 +23,14 @@
 </template>
 
 <script>
+const ListImage = require( './ListImage.vue' );
+
 // @vue/component
 module.exports = {
 	name: 'ImageListView',
+	components: {
+		'list-image': ListImage
+	},
 	props: {
 		items: {
 			type: Array,
@@ -61,8 +66,9 @@ module.exports = {
 </script>
 
 <style lang="less">
-.imagelistview {
+.ext-wikistories-imagelistview {
 	width: 100%;
+	height: 100%;
 	background-color: #fff;
 	text-align: left;
 	overflow: scroll;
@@ -90,7 +96,6 @@ module.exports = {
 		flex-wrap: wrap;
 		align-content: flex-start;
 		justify-content: flex-start;
-		margin: -8px;
 		max-width: calc( 100% + 16px );
 
 		&-image {
