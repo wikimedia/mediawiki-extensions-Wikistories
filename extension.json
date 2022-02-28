@@ -67,12 +67,14 @@
 			"targets": [ "desktop", "mobile" ],
 			"packageFiles": [
 				"mw.ext.wikistories.viewer/index.js",
-				"mw.ext.wikistories.viewer/StoryViewer.vue"
+				"mw.ext.wikistories.viewer/StoryViewer.vue",
+				"mw.ext.wikistories.viewer/store/index.js",
+				"mw.ext.wikistories.viewer/store/story.js"
 			],
 			"styles": [
 				"mw.ext.wikistories.viewer/viewer.less"
 			],
-			"dependencies": [ "vue" ]
+			"dependencies": [ "vue", "vuex" ]
 		},
 		"mw.ext.story.builder.styles": {
 			"targets": [ "desktop", "mobile" ],
@@ -147,9 +149,11 @@
 		},
 		"mw.ext.story.discover": {
 			"targets": [ "mobile" ],
+			"dependencies": [ "mediawiki.api", "mediawiki.Title" ],
 			"packageFiles": [
 				"mw.ext.wikistories.discover/index.js",
-				"mw.ext.wikistories.discover/Discover.js"
+				"mw.ext.wikistories.discover/Discover.js",
+				"mw.ext.wikistories.discover/api/getStories.js"
 			],
 			"styles": [
 				"mw.ext.wikistories.discover/discover.less"

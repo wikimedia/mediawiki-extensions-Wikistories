@@ -1,9 +1,17 @@
 const Vue = require( 'vue' );
 const StoryViewer = require( './StoryViewer.vue' );
+const store = require( './store/index.js' );
 
-const story = mw.config.get( 'story' ).frames.map( function ( s, i ) {
-	s.id = i + 1;
-	return s;
-} );
+const initStoryViewer = function ( stories, storyId ) {
+	// add Story Viewer container
+	const storyViewerContainerClassName = 'ext-wikistories-viewer';
+	const $storyViewerContainer = $( '<div>' ).addClass( storyViewerContainerClassName );
+	$( 'body' ).append( $storyViewerContainer );
 
-Vue.createMwApp( StoryViewer, { story: story } ).mount( '.story-viewer-js-root' );
+	// Setup Story View App
+	Vue.createMwApp( StoryViewer, { stories: stories, storyId: storyId } )
+		.use( store )
+		.mount( '.' + storyViewerContainerClassName );
+};
+
+module.exports = initStoryViewer;
