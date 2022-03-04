@@ -9,7 +9,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 
 class StoriesCache {
 
-	private const CACHE_VERSION = 1;
+	private const CACHE_VERSION = 2;
 
 	/** @var WANObjectCache */
 	private $wanObjectCache;
@@ -94,7 +94,11 @@ class StoriesCache {
 			/** @var StoryContent $content */
 			$content = $page->getContent();
 			'@phan-var StoryContent $content';
-			$result[] = $content->getFrames();
+			$result[] = [
+				'pageId' => $page->getId(),
+				'title' => $page->getTitle()->getText(),
+				'frames' => $content->getFrames(),
+			];
 		}
 		return $result;
 	}
