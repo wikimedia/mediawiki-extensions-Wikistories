@@ -88,4 +88,14 @@ class StoryContent extends JsonContent {
 			return $frame->img . "\n" . $frame->text;
 		}, $this->getFrames() ) );
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getTextForSummary( $maxlength = 250 ) {
+		$framesText = implode( "\n\n", array_map( static function ( $frame ) {
+			return $frame->text;
+		}, $this->getFrames() ) );
+		return mb_substr( $framesText, 0, $maxlength );
+	}
 }
