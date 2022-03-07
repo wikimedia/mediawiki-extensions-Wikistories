@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\Wikistories;
 
 use EditPage;
 use Html;
+use MediaWiki\MediaWikiServices;
 use OOUI\FieldLayout;
 use OOUI\TextInputWidget;
 
@@ -12,28 +13,47 @@ class StoryEditPage extends EditPage {
 	protected function showContentForm() {
 		$maxFrames = $this->context->getConfig()->get( 'WikistoriesMaxFrames' );
 		$out = $this->context->getOutput();
+		/** @var StoryConverter $storyConverter */
+		$storyConverter = MediaWikiServices::getInstance()
+			->get( 'Wikistories.StoryConverter' );
 
-		/** @var StoryContent $story */
-		$story = $this->getContentObject();
-		'@phan-var StoryContent $story';
+		/** @var StoryContent $originalStory */
+		$originalStory = $this->getContentObject();
+		'@phan-var StoryContent $originalStory';
+
+		$story = $storyConverter->toLatest( $originalStory );
+
 		$currentFrames = $story->getFrames();
-		$emptyFrame = (object)[ 'img' => '', 'text' => '' ];
+		$emptyFrame = (object)[
+			'image' => (object)[ 'filename' => '', 'repo' => '' ],
+			'text' => (object)[ 'value' => '' ],
+		];
 
-		$form = '<div class="story-builder-nojs-root">';
+		$form = '<div class="ext-wikistories-editform">';
+		$form .= new FieldLayout(
+			new TextInputWidget( [ 'name' => "story_from_article", 'value' => $story->getFromArticle() ] ),
+			[ 'label' => 'Related Article', 'align' => 'left' ]
+		);
 		for ( $i = 0; $i < $maxFrames; $i++ ) {
 			$frame = $currentFrames[ $i ] ?? $emptyFrame;
 			$form .= Html::element( 'h3', [], "Frame " . ( $i + 1 ) );
 			$form .= new FieldLayout(
-				new TextInputWidget( [ 'name' => "story_frame_{$i}_img", 'value' => $frame->img ] ),
+				new TextInputWidget(
+					[ 'name' => "story_frame_{$i}_image_filename", 'value' => $frame->image->filename ]
+				),
 				[ 'label' => 'Image', 'align' => 'left' ]
 			);
 			$form .= new FieldLayout(
-				new TextInputWidget( [ 'name' => "story_frame_{$i}_text", 'value' => $frame->text ] ),
-				[ 'label' => 'Text', 'align' => 'left' ]
+				new TextInputWidget(
+					[ 'name' => "story_frame_{$i}_image_repo", 'value' => $frame->image->repo ]
+				),
+				[ 'label' => 'Repo', 'align' => 'left' ]
 			);
 			$form .= new FieldLayout(
-				new TextInputWidget( [ 'name' => "story_frame_{$i}_source", 'value' => $frame->source ?? '' ] ),
-				[ 'label' => 'Source (article title)', 'align' => 'left' ]
+				new TextInputWidget(
+					[ 'name' => "story_frame_{$i}_text_value", 'value' => $frame->text->value ]
+				),
+				[ 'label' => 'Text', 'align' => 'left' ]
 			);
 		}
 
@@ -47,18 +67,29 @@ class StoryEditPage extends EditPage {
 	 * @return false|string|null
 	 */
 	protected function importContentFormData( &$request ) {
-		$story = [ 'frames' => [] ];
+		$story = [
+			'fromArticle' => $request->getText( 'story_from_article' ),
+			'frames' => []
+		];
 
 		$i = 0;
 		while ( true ) {
-			$img = $request->getText( "story_frame_{$i}_img" );
-			$text = $request->getText( "story_frame_{$i}_text" );
-			$source = $request->getText( "story_frame_{$i}_source" );
-			if ( empty( $img ) && empty( $text ) ) {
-				// stop reading as soon as both are empty
+			$filename = $request->getText( "story_frame_{$i}_image_filename" );
+			$repo = $request->getText( "story_frame_{$i}_image_repo" );
+			$text = $request->getText( "story_frame_{$i}_text_value" );
+			if ( empty( $filename ) && empty( $repo ) && empty( $text ) ) {
+				// stop reading as soon as all fields are empty
 				break;
 			}
-			$story['frames'][] = [ 'img' => $img, 'text' => $text, 'source' => $source ];
+			$story['frames'][] = [
+				'image' => [
+					'filename' => $filename,
+					'repo' => $repo,
+				],
+				'text' => [
+					'value' => $text
+				],
+			];
 			$i++;
 		}
 

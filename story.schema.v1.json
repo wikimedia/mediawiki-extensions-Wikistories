@@ -1,0 +1,75 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"description": "Wikistories Story schema",
+	"type": "object",
+	"additionalProperties": false,
+	"required": [ "schemaVersion", "fromArticle", "frames" ],
+	"properties": {
+		"schemaVersion": {
+			"description": "Version of the schema this story should conform to.",
+			"type": "integer",
+			"minimum": 1
+		},
+		"fromArticle": {
+			"description": "Title of the Wikipedia article from which the story builder was launched",
+			"type": "string",
+			"maxLength": 255
+		},
+		"frames": {
+			"description": "List of frames of the story. Min/max number of frames are configurable and validated in code.",
+			"type": "array",
+			"items": {
+				"description": "A story frame",
+				"type": "object",
+				"required": [ "image", "text" ],
+				"properties": {
+					"image": {
+						"description": "The image on a story frame",
+						"type": "object",
+						"required": [ "filename", "repo" ],
+						"properties": {
+							"filename": {
+								"description": "Name of the image file. Example: Cat_poster_1.jpg",
+								"type": "string",
+								"maxLength": 255
+							},
+							"repo": {
+								"description": "Where the image is hosted. Can be 'commons' or the language code of a Wikipedia ('en', 'fr', etc).",
+								"type": "string",
+								"minLength": 2,
+								"maxLength": 25
+							}
+						}
+					},
+					"text": {
+						"description": "The text on a story frame",
+						"type": "object",
+						"required": [ "value" ],
+						"properties": {
+							"value": {
+								"description": "The current text that should be displayed on a story frame",
+								"type": "string"
+							},
+							"fromArticle": {
+								"description": "Information about the article the text was taken from",
+								"type": "object",
+								"required": [ "articleTitle", "originalText" ],
+								"properties": {
+									"articleTitle": {
+										"description": "Title of the article where the text was taken from",
+										"type": "string",
+										"maxLength": 255
+									},
+									"originalText": {
+										"description": "Original text taken from the article",
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

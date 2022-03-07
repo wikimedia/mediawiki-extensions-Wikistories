@@ -37,7 +37,7 @@ const getDiscoverSection = function ( stories, articleThumbnail ) {
 
 	// existing stories
 	stories.forEach( story => {
-		const storyThumbnail = story.frames[ 0 ].img;
+		const storyThumbnail = story.thumbnail;
 		const storyId = story.pageId;
 		$discover.append( generateStoryDiscoverElement( story.title, storyThumbnail, storyId ) );
 	} );
