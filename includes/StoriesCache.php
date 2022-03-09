@@ -9,7 +9,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 
 class StoriesCache {
 
-	private const CACHE_VERSION = 2;
+	private const CACHE_VERSION = 3;
 
 	/** @var WANObjectCache */
 	private $wanObjectCache;
@@ -77,16 +77,19 @@ class StoriesCache {
 	 * @return array Stories linked to the given title
 	 */
 	private function fetchStories( string $titleDbKey ): array {
+		$limit = 10;
 		$result = [];
 		$rows = $this->loadBalancer->getConnectionRef( DB_REPLICA )->newSelectQueryBuilder()
 			->table( 'pagelinks' )
+			->join( 'page', null, 'pl_from=page_id' )
 			->fields( [ 'pl_from' ] )
 			->conds( [
 				'pl_from_namespace' => NS_STORY,
 				'pl_namespace' => NS_MAIN,
 				'pl_title' => $titleDbKey,
 			] )
-			->limit( 10 )
+			->orderBy( 'page_touched', 'DESC' )
+			->limit( $limit )
 			->caller( __METHOD__ )
 			->fetchResultSet();
 		foreach ( $rows as $row ) {
