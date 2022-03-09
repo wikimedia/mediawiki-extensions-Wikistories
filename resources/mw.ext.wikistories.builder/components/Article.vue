@@ -111,6 +111,8 @@ module.exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.ui/variables.less';
+
 .ext-wikistories-article-view {
 	width: 100%;
 	height: 100%;
@@ -150,7 +152,7 @@ module.exports = {
 		flex-direction: row;
 		align-content: stretch;
 		align-items: center;
-		background-color: #202122;
+		background-color: @colorGray2;
 		color: #fff;
 		margin-bottom: 13px;
 
@@ -203,7 +205,7 @@ module.exports = {
 			padding: 10px;
 			color: #fff;
 			text-align: center;
-			background-color: #36c;
+			background-color: @color-primary;
 		}
 
 		& > &-discard-button {
@@ -212,7 +214,7 @@ module.exports = {
 			padding: 10px;
 			color: #fff;
 			text-align: center;
-			background-color: #d33;
+			background-color: @color-destructive;
 		}
 	}
 }

@@ -66,6 +66,8 @@ module.exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.ui/variables.less';
+
 .ext-wikistories-imagelistview {
 	width: 100%;
 	height: 100%;
@@ -110,7 +112,7 @@ module.exports = {
 			display: -ms-flexbox;
 			display: flex;
 			align-items: center;
-			background-color: #eaecf0;
+			background-color: @colorGray14;
 			box-sizing: border-box;
 			height: 180px;
 			margin: 8px;
@@ -120,7 +122,7 @@ module.exports = {
 
 		&-image:hover,
 		&-image:focus {
-			box-shadow: 4px 4px 5px -2px #a2a9b1;
+			box-shadow: 4px 4px 5px -2px @border-color-base;
 		}
 
 		&-image img {
@@ -142,13 +144,13 @@ module.exports = {
 			position: absolute;
 			left: 10px;
 			top: 10px;
-			border: 1px solid #2a4b8d;
+			border: 1px solid @border-color-base;
 			box-sizing: border-box;
 			border-radius: 2px;
 		}
 
 		.checkbox.selected {
-			background-color: #2a4b8d;
+			background-color: @border-color-base;
 		}
 	}
 }

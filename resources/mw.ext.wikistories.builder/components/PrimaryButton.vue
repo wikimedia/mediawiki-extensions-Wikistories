@@ -16,8 +16,10 @@ module.exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.ui/variables.less';
+
 .ext-wikistories-primarybutton {
-	background: #36c;
+	background: @color-primary;
 	border-radius: 2px;
 	padding: 6px 12px;
 	// stylelint-disable-next-line font-family-no-missing-generic-family-keyword
