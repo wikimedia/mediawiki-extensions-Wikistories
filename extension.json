@@ -3,7 +3,7 @@
 	"namemsg": "wikistories-extensionname",
 	"descriptionmsg": "wikistories-extensiondesc",
 	"requires": {
-		"MediaWiki": ">= 1.31.0"
+		"MediaWiki": ">= 1.38.0"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\Wikistories\\": "includes/"
@@ -25,6 +25,16 @@
 	},
 	"MessagesDirs": {
 		"Wikistories": [ "i18n", "i18n/api" ]
+	},
+	"config": {
+		"WikistoriesMinFrames": {
+			"description": "Minimum number of frames a story needs to have to be valid.",
+			"value": 2
+		},
+		"WikistoriesMaxFrames": {
+			"description": "Maximum number of frames a story needs to have to be valid.",
+			"value": 10
+		}
 	},
 	"namespaces": [
 		{
@@ -48,6 +58,7 @@
 	},
 	"ResourceModules": {
 		"mw.ext.story.viewer-nojs": {
+			"targets": [ "desktop", "mobile" ],
 			"styles": [
 				"mw.ext.wikistories.viewer-nojs/viewer-nojs.less"
 			]
@@ -80,25 +91,37 @@
 				"mw.ext.wikistories.builder/index.js",
 				"mw.ext.wikistories.builder/router.js",
 				"mw.ext.wikistories.builder/App.vue",
+				"mw.ext.wikistories.builder/api/getPageInfo.js",
+				"mw.ext.wikistories.builder/api/saveStory.js",
+				"mw.ext.wikistories.builder/components/Alert.vue",
 				"mw.ext.wikistories.builder/components/Article.vue",
 				"mw.ext.wikistories.builder/components/CurrentFrame.vue",
 				"mw.ext.wikistories.builder/components/Frames.vue",
 				"mw.ext.wikistories.builder/components/ImageAttribution.vue",
 				"mw.ext.wikistories.builder/components/ImageListView.vue",
 				"mw.ext.wikistories.builder/components/Navigator.vue",
+				"mw.ext.wikistories.builder/components/Popup.vue",
 				"mw.ext.wikistories.builder/components/PrimaryButton.vue",
+				"mw.ext.wikistories.builder/components/PublishForm.vue",
+				"mw.ext.wikistories.builder/plugins/config.js",
 				"mw.ext.wikistories.builder/store/article.js",
 				"mw.ext.wikistories.builder/store/index.js",
 				"mw.ext.wikistories.builder/store/search.js",
 				"mw.ext.wikistories.builder/store/story.js",
+				"mw.ext.wikistories.builder/util/validateTitle.js",
 				"mw.ext.wikistories.builder/views/Search.vue",
 				"mw.ext.wikistories.builder/views/Story.vue",
 				"lib/vue-router/vue-router.common.js"
 			],
-			"dependencies": [ "vue", "vuex", "mediawiki.ForeignApi" ],
+			"dependencies": [
+				"vue",
+				"vuex",
+				"mediawiki.Title",
+				"mediawiki.api",
+				"mediawiki.ForeignApi"
+			],
 			"messages": [
 				"wikistories-imagesearch-inputlabel",
-				"wikistories-story-goto-publish",
 				"wikistories-story-edittext",
 				"wikistories-imageattribution-author-unknown",
 				"wikistories-article-cancelselection",
@@ -106,7 +129,20 @@
 				"wikistories-article-usetext",
 				"wikistories-article-info-banner",
 				"wikistories-article-info-expanded-banner",
-				"wikistories-navigator-next"
+				"wikistories-navigator-next",
+				"wikistories-alert-okbuttontext",
+				"wikistories-error-notenoughframes-title",
+				"wikistories-error-notenoughframes-message",
+				"wikistories-error-frameswithouttext-title",
+				"wikistories-error-frameswithouttext-message",
+				"wikistories-builder-publishform-header",
+				"wikistories-builder-publishform-placeholder",
+				"wikistories-builder-publishform-publishbutton",
+				"wikistories-builder-publishform-info",
+				"wikistories-builder-publishform-invalidtitle-empty",
+				"wikistories-builder-publishform-invalidtitle-format",
+				"wikistories-builder-publishform-invalidtitle-duplicate",
+				"wikistories-builder-publishform-saveerror"
 			]
 		},
 		"mw.ext.story.discover": {

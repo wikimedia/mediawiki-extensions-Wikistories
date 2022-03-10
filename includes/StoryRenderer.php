@@ -26,11 +26,11 @@ class StoryRenderer {
 	public function renderNoJS() {
 		$html = Html::rawElement(
 			'div',
-			[ 'class' => 'story-viewer-nojs-root' ],
+			[ 'class' => 'ext-wikistories-viewer-nojs-root' ],
 			implode( '', array_map( static function ( $frame ) {
 				return Html::rawElement(
 					'div', [
-					'class' => 'story-viewer-frame',
+					'class' => 'ext-wikistories-viewer-frame',
 					'style' => 'background-image:url(' . $frame->img . ');',
 				],
 					Html::element( 'p', [], $frame->text )

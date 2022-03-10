@@ -46,7 +46,7 @@ const isNodeWithinArticleView = ( node ) => {
 module.exports = {
 	name: 'Article', // eslint-disable-line vue/no-reserved-component-names
 	props: {
-		article: { type: String, required: true }
+		article: { type: String, required: false, default: '' }
 	},
 	emits: [ 'textSelected' ],
 	data: function () {
@@ -56,7 +56,7 @@ module.exports = {
 			expanded: false
 		};
 	},
-	computed: mapGetters( [ 'currentArticle' ] ),
+	computed: mapGetters( [ 'currentArticle', 'fromArticle' ] ),
 	methods: $.extend( mapActions( [ 'fetchArticle', 'setText' ] ), {
 		setToolbarDisplay: function ( status ) {
 			this.display = status;
@@ -96,7 +96,7 @@ module.exports = {
 		}
 	} ),
 	created: function () {
-		this.fetchArticle( this.article || mw.config.get( 'wgStoryArticle' ) );
+		this.fetchArticle( this.article || this.fromArticle );
 	},
 	mounted: function () {
 		document.addEventListener( 'selectionchange', this.onSelectionChange );

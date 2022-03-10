@@ -1,8 +1,5 @@
 <template>
-	<button
-		name="button"
-		class="primary-button"
-		@click="onClick">
+	<button class="ext-wikistories-primarybutton" @click="$emit( 'click' )">
 		{{ text }}
 	</button>
 </template>
@@ -12,14 +9,14 @@
 module.exports = {
 	name: 'PrimaryButton',
 	props: {
-		text: { type: String, required: true },
-		onClick: { type: Function, required: true }
-	}
+		text: { type: String, required: true }
+	},
+	emits: [ 'click' ]
 };
 </script>
 
 <style lang="less">
-.primary-button {
+.ext-wikistories-primarybutton {
 	background: #36c;
 	border-radius: 2px;
 	padding: 6px 12px;

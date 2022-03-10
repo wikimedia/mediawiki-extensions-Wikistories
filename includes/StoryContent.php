@@ -4,10 +4,9 @@ namespace MediaWiki\Extension\Wikistories;
 
 use Html;
 use JsonContent;
+use MediaWiki\MediaWikiServices;
 
 class StoryContent extends JsonContent {
-
-	public const MAX_FRAMES = 5;
 
 	/**
 	 * @param string $text
@@ -26,12 +25,21 @@ class StoryContent extends JsonContent {
 	}
 
 	/**
+	 * @return string The title of the article this story was created from
+	 */
+	public function getFromArticle(): string {
+		$story = $this->getData()->getValue();
+		return $story->fromArticle ?? '';
+	}
+
+	/**
 	 * @return bool True when all frames contain an image URL and some text
 	 */
 	private function framesAreValid() {
+		$maxFrames = MediaWikiServices::getInstance()->getMainConfig()->get( 'WikistoriesMaxFrames' );
 		$frames = $this->getFrames();
 		$frameCount = count( $frames );
-		if ( $frameCount === 0 || $frameCount <= self::MAX_FRAMES ) {
+		if ( $frameCount === 0 || $frameCount <= $maxFrames ) {
 			foreach ( $frames as $frame ) {
 				if ( empty( $frame->img ) || empty( $frame->text ) ) {
 					return false;

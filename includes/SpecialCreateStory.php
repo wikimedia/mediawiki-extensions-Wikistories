@@ -20,10 +20,10 @@ class SpecialCreateStory extends SpecialPage {
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 		$out = $this->getOutput();
-		$out->setPageTitle( '' );
+		$out->setPageTitle( $this->msg( 'wikistories-specialcreatestory-title' )->text() );
 		$out->addModuleStyles( [ 'mw.ext.story.builder.styles' ] );
 		$out->addModules( [ 'mw.ext.story.builder' ] );
-		$out->addJsConfigVars( [ 'wgStoryArticle' => $subPage ] );
+		$out->addJsConfigVars( $this->getConfigForStoryBuilder( $subPage ) );
 		$out->addHTML(
 			Html::rawElement(
 				'div',
@@ -42,6 +42,18 @@ class SpecialCreateStory extends SpecialPage {
 				$this->msg( 'wikistories-specialcreatestory-nojswarning' )->text()
 			)
 		);
+	}
+
+	/**
+	 * @param string $subPage Context article to init the story builder with
+	 * @return array Configuration needed by the story builder
+	 */
+	private function getConfigForStoryBuilder( string $subPage ): array {
+		return [
+			'wgWikistoriesFromArticle' => $subPage,
+			'wgWikistoriesMinFrames' => $this->getConfig()->get( 'WikistoriesMinFrames' ),
+			'wgWikistoriesMaxFrames' => $this->getConfig()->get( 'WikistoriesMaxFrames' ),
+		];
 	}
 
 }
