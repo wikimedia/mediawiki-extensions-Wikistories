@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Verdy p"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "Espace de noms ($1) non pris en charge par ce point de terminaison de l’API. Les récits ne peuvent être associés qu’avec des articles dans l’espace de noms principal."
+}

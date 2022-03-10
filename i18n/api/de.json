@@ -1,0 +1,6 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"wikistories-rest-unsupported-namespace": "Der Namensraum ($1) wird von diesem API-Endpunkt nicht unterstützt. Geschichten können nur mit Artikeln im Hauptnamensraum verknüpft werden."
+}
