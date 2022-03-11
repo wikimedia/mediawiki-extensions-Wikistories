@@ -9,14 +9,13 @@
 	"wikistories-specialcreatestory-loading": "טעינה...",
 	"wikistories-specialcreatestory-nojswarning": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",
 	"wikistories-imagesearch-inputlabel": "חיפוש",
-	"wikistories-story-goto-publish": "הבא",
 	"wikistories-story-edittext": "עריכה",
 	"wikistories-imageattribution-author-unknown": "מחבר לא ידוע",
 	"wikistories-article-cancelselection": "ביטול",
 	"wikistories-article-loading": "טעינה...",
 	"wikistories-article-usetext": "להוסיף לסיפור",
 	"wikistories-article-info-banner": "נא לבחור טקסט כדי להוסיף אותו לסיפור שלך",
-	"wikistories-article-info-expanded-banner": "נא ללחוץ על מילה בטקסט ולהחזיק אותה ואז לגרור את הסמנים כדי לבחור את כל הטקסט {{GENDER:|שאתה|שאת}} רוצה לסיפור. כדי להוסיף טקסט, נא ללחוץ על \"להוסיף לסיפור\", שמוצג בתחתית המסך.",
+	"wikistories-article-info-expanded-banner": "נא ללחוץ על מילה בטקסט ולהחזיק אותה ואז לגרור את הסמנים כדי לבחור את כל הטקסט {{GENDER:|שאתה|שאת}} רוצה לסיפור שלך. כדי להוסיף טקסט, נא ללחוץ על \"להוסיף לסיפור\", שמוצג בתחתית המסך.",
 	"wikistories-navigator-next": "הבא",
 	"wikistories-discover-cta-text": "יצירת סיפור ויקי"
 }

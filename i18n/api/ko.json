@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "이 API 엔드포인트가 지원하지 않는 이름공간($1)입니다. 스토리는 일반 이름공간의 문서와만 연결할 수 있습니다."
+}

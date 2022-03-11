@@ -8,7 +8,6 @@
 	"wikistories-specialcreatestory-loading": "読み込み中...",
 	"wikistories-specialcreatestory-nojswarning": "この特別ページの動作にはJavaScriptが必要です",
 	"wikistories-imagesearch-inputlabel": "検索",
-	"wikistories-story-goto-publish": "次へ",
 	"wikistories-story-edittext": "編集",
 	"wikistories-imageattribution-author-unknown": "作者不詳",
 	"wikistories-article-cancelselection": "キャンセル",
@@ -16,5 +15,10 @@
 	"wikistories-article-usetext": "ストーリーに追加",
 	"wikistories-article-info-banner": "ストーリに追加するテキストを選択して下さい。",
 	"wikistories-navigator-next": "次へ",
+	"wikistories-alert-okbuttontext": "OK",
+	"wikistories-builder-publishform-placeholder": "ストーリーの題名を入力してください",
+	"wikistories-builder-publishform-publishbutton": "公開",
+	"wikistories-builder-publishform-invalidtitle-empty": "ストーリーの題名を入力してください",
+	"wikistories-builder-publishform-saveerror": "ストーリーを公開中にエラーが発生しました。後ほどお試しください。",
 	"wikistories-discover-cta-text": "ストーリーを作成"
 }
