@@ -60,7 +60,7 @@ module.exports = {
 		};
 	},
 	computed: mapGetters( [ 'currentArticle', 'fromArticle' ] ),
-	methods: $.extend( mapActions( [ 'fetchArticle', 'setText' ] ), {
+	methods: $.extend( mapActions( [ 'fetchArticle', 'setText', 'setTextFromArticle' ] ), {
 		setToolbarDisplay: function ( status ) {
 			this.display = status;
 		},
@@ -91,6 +91,7 @@ module.exports = {
 			e.preventDefault();
 			e.stopPropagation();
 			this.hideSelectionToolbar();
+			this.setTextFromArticle( this.selectedText );
 			this.setText( this.selectedText );
 			this.$emit( 'textSelected' );
 		},
