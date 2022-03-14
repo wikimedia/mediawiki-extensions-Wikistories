@@ -1,14 +1,51 @@
-const $cta = $( '<a>' ).addClass( 'ext-wikistories-discover-container-cta' )
-	.attr( 'href', mw.config.get( 'wgWikistoriesCreateUrl' ) )
-	.append( $( '<span>' ).addClass( 'ext-wikistories-discover-container-cta-btn' ).text( '+' ) )
-	.append( $( '<span>' ).text( mw.message( 'wikistories-discover-cta-text' ).text() ) );
+const generateCtaElement = function ( link, thumbnail, thumbnailText, text ) {
+	const $thumbnail = $( '<span>' )
+		.addClass( 'ext-wikistories-discover-container-cta-btn' )
+		.text( thumbnailText );
+	const $text = $( '<span>' )
+		.addClass( 'ext-wikistories-discover-container-cta-text' )
+		.text( text );
 
-const $container = $( '<div>' )
-	.addClass( 'ext-wikistories-discover-container' )
-	.append( $cta );
+	if ( thumbnail ) {
+		$thumbnail.css( 'background-image', 'url(' + thumbnail + ')' );
+	}
 
-const $discover = $( '<div>' )
-	.addClass( 'ext-wikistories-discover' )
-	.append( $container );
+	return $( '<a>' ).addClass( 'ext-wikistories-discover-container-cta' )
+		.attr( 'href', link )
+		.append( $thumbnail )
+		.append( $text );
+};
 
-module.exports = $discover;
+const generateStoryDiscoverElement = function ( title, thumbnail, storyId ) {
+	return $( '<div>' )
+		.addClass( 'ext-wikistories-discover-container' )
+		.append( generateCtaElement( '#/story/' + storyId, thumbnail, '', title ) );
+};
+
+const generateCreateElement = function ( hasStories, thumbnail ) {
+	const link = mw.config.get( 'wgWikistoriesCreateUrl' );
+	const text = mw.message( 'wikistories-discover-cta-text' ).text();
+	return $( '<div>' )
+		.addClass( 'ext-wikistories-discover-container' )
+		.addClass( hasStories ? 'ext-wikistories-discover-container-create' : '' )
+		.append( generateCtaElement( link, thumbnail, '+', text ) );
+};
+
+const getDiscoverSection = function ( stories, articleThumbnail ) {
+
+	const $discover = $( '<div>' ).addClass( 'ext-wikistories-discover' );
+
+	// existing stories
+	stories.forEach( story => {
+		const storyThumbnail = story.frames[ 0 ].img;
+		const storyId = story.pageId;
+		$discover.append( generateStoryDiscoverElement( story.title, storyThumbnail, storyId ) );
+	} );
+
+	// create story cta
+	$discover.append( generateCreateElement( !!stories.length, articleThumbnail ) );
+
+	return $discover;
+};
+
+module.exports = getDiscoverSection;

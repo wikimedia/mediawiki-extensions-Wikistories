@@ -1,15 +1,7 @@
 <template>
-	<div class="ext-wikistories-viewer-container">
-		<div
-			v-if="story.length"
-			class="ext-wikistories-viewer-container-overlay"
-			@click="discardStory"
-		></div>
-		<div
-			v-if="story.length"
-			class="ext-wikistories-viewer-container-content"
-			:style="style"
-		>
+	<div v-show="story.length" class="ext-wikistories-viewer-container">
+		<div class="ext-wikistories-viewer-container-overlay" @click="discardStory"></div>
+		<div class="ext-wikistories-viewer-container-content" :style="style">
 			<div
 				class="ext-wikistories-viewer-container-content-close-icon"
 				@click="discardStory"
@@ -102,7 +94,6 @@ module.exports = {
 		discardStory: function () {
 			this.setStories( [] );
 			this.setStoryId( null );
-			// @todo mediawiki history solution?
 			window.location.hash = '';
 		}
 	} ),

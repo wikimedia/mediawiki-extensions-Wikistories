@@ -160,7 +160,8 @@
 			"packageFiles": [
 				"mw.ext.wikistories.discover/index.js",
 				"mw.ext.wikistories.discover/Discover.js",
-				"mw.ext.wikistories.discover/api/getStories.js"
+				"mw.ext.wikistories.discover/api/getStories.js",
+				"mw.ext.wikistories.discover/api/getArticleThumbnail.js"
 			],
 			"styles": [
 				"mw.ext.wikistories.discover/discover.less"
