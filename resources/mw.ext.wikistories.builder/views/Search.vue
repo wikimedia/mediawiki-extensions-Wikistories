@@ -1,25 +1,29 @@
 <template>
-	<div class="storybuilder-search">
+	<div class="ext-wikistories-storybuilder-search">
 		<navigator
 			:next="editStory"
 			:info="selection.length"
 		></navigator>
-		<form @submit="onSubmit( $event )">
-			<div class="label">
-				{{ $i18n( 'wikistories-imagesearch-inputlabel' ).text() }}
-			</div>
+		<form class="ext-wikistories-storybuilder-search-form" @submit="onSubmit( $event )">
 			<input
-				class="query"
+				class="ext-wikistories-storybuilder-search-form-query"
 				type="text"
 				:value="query"
+				:placeholder="$i18n( 'wikistories-search-inputplaceholder' ).text()"
 				@input="onInput">
-			<div class="icon"></div>
+			<div class="ext-wikistories-storybuilder-search-form-icon"></div>
 			<div
 				v-if="query"
-				class="close"
+				class="ext-wikistories-storybuilder-search-form-close"
 				@click="onClear"></div>
-			<div v-if="loading" class="loading-bar"></div>
+			<div v-if="loading" class="ext-wikistories-storybuilder-search-loading-bar"></div>
 		</form>
+		<div v-if="!query" class="ext-wikistories-storybuilder-search-empty">
+			{{ $i18n( 'wikistories-search-cuetext' ).text() }}
+		</div>
+		<div v-if="noResults" class="ext-wikistories-storybuilder-search-empty">
+			{{ $i18n( 'wikistories-search-noresultstext' ).text() }}
+		</div>
 		<image-list
 			:items="results"
 			:select="onItemSelect"
@@ -40,13 +44,12 @@ module.exports = {
 		'image-list': ImageListView,
 		navigator: Navigator
 	},
-	computed: mapGetters( [ 'selection', 'loading', 'results', 'query' ] ),
+	computed: mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle' ] ),
 	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'resetFrame' ] ), {
 		onSubmit: function ( e ) { return e.preventDefault(); },
-		onInput: function ( e ) {
-			e.preventDefault();
+		onInput: mw.util.debounce( function ( e ) {
 			this.search( e.target.value );
-		},
+		}, 500 ),
 		onClear: function ( e ) {
 			e.preventDefault();
 			this.clear();
@@ -70,33 +73,27 @@ module.exports = {
 			this.resetFrame( array );
 			this.$router.push( { name: 'Story' } );
 		}
-	} )
+	} ),
+	created: function () {
+		this.search( this.fromArticle );
+	}
 };
 </script>
 
 <style lang="less">
-.storybuilder-search {
+.ext-wikistories-storybuilder-search {
 	height: 100%;
 	padding: 0 15px 0 15px;
 	background-color: #fff;
 	display: flex;
 	flex-direction: column;
 
-	form {
+	&-form {
 		position: relative;
 		text-align: left;
 		padding: 10px 0;
 
-		.label {
-			font-size: 18px;
-			font-style: normal;
-			font-weight: bold;
-			line-height: 25px;
-			letter-spacing: 0;
-			margin: 5px 10px;
-		}
-
-		.query {
+		&-query {
 			height: 36px;
 			border: 2px solid #36c;
 			box-sizing: border-box;
@@ -105,7 +102,7 @@ module.exports = {
 			width: 100%;
 		}
 
-		.icon {
+		&-icon {
 			background-image: url( ../images/search.svg );
 			width: 20px;
 			height: 20px;
@@ -114,7 +111,7 @@ module.exports = {
 			left: 10px;
 		}
 
-		.close {
+		&-close {
 			background-image: url( ../images/close.svg );
 			width: 20px;
 			height: 20px;
@@ -125,52 +122,58 @@ module.exports = {
 			cursor: pointer;
 		}
 	}
-}
 
-.loading-bar {
-	position: absolute;
-	height: 3px;
-	width: 130px;
-	border-radius: 3px;
-	margin-top: 10px;
-	background: #36c;
-	animation-name: loader;
-	animation-duration: 2s;
-	animation-iteration-count: infinite;
-	animation-timing-function: ease;
-}
-
-@keyframes loader {
-	0% {
-		transform: translateX( 0 );
+	&-empty {
+		color: #54595d;
+		align-self: center;
+		margin-top: 6px;
 	}
 
-	50% {
-		transform: translateX( calc( 100vw - 40px ) );
+	&-loading-bar {
+		position: absolute;
+		height: 3px;
+		width: 130px;
+		border-radius: 3px;
+		margin-top: 10px;
+		background: #36c;
+		animation-name: ext-wikistories-search-loader;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-timing-function: ease;
 	}
 
-	100% {
-		transform: translateX( 0 );
-	}
-}
+	@keyframes ext-wikistories-search-loader {
+		0% {
+			transform: translateX( 0 );
+		}
 
-@keyframes loader-desktop {
-	0% {
-		transform: translateX( 0 );
+		50% {
+			transform: translateX( calc( 100vw - 40px ) );
+		}
+
+		100% {
+			transform: translateX( 0 );
+		}
 	}
 
-	50% {
-		transform: translateX( calc( 500px - 175px ) );
+	@keyframes ext-wikistories-search-loader-desktop {
+		0% {
+			transform: translateX( 0 );
+		}
+
+		50% {
+			transform: translateX( calc( 500px - 175px ) );
+		}
+
+		100% {
+			transform: translateX( 0 );
+		}
 	}
 
-	100% {
-		transform: translateX( 0 );
-	}
-}
-
-@media screen and ( min-width: 500px ) {
-	.loading-bar {
-		animation-name: loader-desktop;
+	@media screen and ( min-width: 500px ) {
+		.ext-wikistories-storybuilder-search-loading-bar {
+			animation-name: ext-wikistories-search-loader-desktop;
+		}
 	}
 }
 </style>
