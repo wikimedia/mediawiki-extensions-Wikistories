@@ -23,6 +23,10 @@ const strip = ( html ) => {
 			span.remove();
 		}
 	}
+	for ( const sup of doc.querySelectorAll( 'sup' ) ) {
+		sup.remove();
+	}
+
 	return doc.body.textContent || '';
 };
 
@@ -87,7 +91,7 @@ const getCommonsImages = ( lang, queryString ) => {
 			return {
 				fromCommons: true,
 				title: page.title,
-				desc: description || page.snippet,
+				desc: strip( description || page.snippet ),
 				thumb: responsiveUrls || imageinfo.url,
 				width: imageinfo.thumbwidth,
 				attribution: {

@@ -4,7 +4,9 @@
 			<div class="ext-wikistories-select-text-btn" @click="$emit( 'edit' )">
 				{{ $i18n( 'wikistories-story-edittext' ).text() }}
 			</div>
-			<p @click="selectTextFromArticle" v-html="currentFrame.text"></p>
+			<p @click="selectTextFromArticle">
+				{{ currentFrame.text }}
+			</p>
 		</div>
 		<image-attribution></image-attribution>
 	</div>

@@ -31,9 +31,9 @@
 			</div>
 			<div
 				v-if="currentFrame.text"
-				class="ext-wikistories-viewer-container-content-story-text"
-				v-html="currentFrame.text"
-			></div>
+				class="ext-wikistories-viewer-container-content-story-text">
+				{{ currentFrame.text }}
+			</div>
 			<!--    <ImageAttribution />-->
 			<div
 				v-if="storyEnd"
