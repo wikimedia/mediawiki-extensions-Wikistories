@@ -6,10 +6,12 @@
 		]
 	},
 	"wikistories-hooks-createstory": "Naane solemde",
+	"wikistories-specialcreatestory-title": "Naane Solemde",
 	"wikistories-imagesearch-inputlabel": "Bao",
 	"wikistories-story-edittext": "Tekre",
 	"wikistories-imageattribution-author-unknown": "Ka mi gulsda",
 	"wikistories-article-cancelselection": "Yeesē",
 	"wikistories-article-usetext": "Rig from sigdim",
-	"wikistories-navigator-next": "Sen pugdē"
+	"wikistories-navigator-next": "Sen pugdē",
+	"wikistories-alert-okbuttontext": "Woo"
 }

@@ -1,12 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Marty5550"
 		]
 	},
+	"wikistories-specialcreatestory-title": "Crea storia",
 	"wikistories-imagesearch-inputlabel": "Ricerca",
 	"wikistories-story-edittext": "Modifica",
 	"wikistories-imageattribution-author-unknown": "Autore sconosciuto",
 	"wikistories-article-cancelselection": "Annulla",
-	"wikistories-article-loading": "Caricamento..."
+	"wikistories-article-loading": "Caricamento...",
+	"wikistories-alert-okbuttontext": "Ok",
+	"wikistories-error-frameswithouttext-title": "Testo mancante",
+	"wikistories-builder-publishform-placeholder": "Inserisci il titolo della storia...",
+	"wikistories-builder-publishform-publishbutton": "Pubblica",
+	"wikistories-builder-publishform-info": "Le storie pubblicate saranno disponibili sulla pagina della voce.",
+	"wikistories-builder-publishform-invalidtitle-empty": "Inserisci il titolo della storia",
+	"wikistories-builder-publishform-invalidtitle-format": "Titolo della storia non valido",
+	"wikistories-builder-publishform-saveerror": "C'è stato un errore nel pubblicare la storia. Riprova più tardi."
 }

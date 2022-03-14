@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"FiberAhmed"
+			"FiberAhmed",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"wikistories-specialcreatestory-loading": "جارٍ التحميل...",
@@ -10,5 +11,8 @@
 	"wikistories-imageattribution-author-unknown": "المؤلف غير معروف",
 	"wikistories-article-cancelselection": "إلغاء",
 	"wikistories-article-loading": "جارٍ التحميل...",
-	"wikistories-navigator-next": "التالي"
+	"wikistories-navigator-next": "التالي",
+	"wikistories-alert-okbuttontext": "حسنًا",
+	"wikistories-error-frameswithouttext-title": "نص مفقود",
+	"wikistories-builder-publishform-publishbutton": "انشر"
 }
