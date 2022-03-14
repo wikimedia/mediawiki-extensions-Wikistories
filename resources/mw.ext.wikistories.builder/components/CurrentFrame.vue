@@ -1,7 +1,7 @@
 <template>
-	<div class="current-frame" :style="currentFrame.style">
-		<div class="story-text">
-			<div class="select-text-btn" @click="$emit( 'edit' )">
+	<div class="ext-wikistories-current-frame" :style="currentFrame.style">
+		<div class="ext-wikistories-story-text">
+			<div class="ext-wikistories-select-text-btn" @click="$emit( 'edit' )">
 				{{ $i18n( 'wikistories-story-edittext' ).text() }}
 			</div>
 			<p @click="selectTextFromArticle" v-html="currentFrame.text"></p>
@@ -26,12 +26,12 @@ module.exports = {
 </script>
 
 <style lang="less">
-.current-frame {
+.ext-wikistories-current-frame {
 	height: 90%;
 	position: relative;
 	text-align: center;
 
-	.story-text {
+	.ext-wikistories-story-text {
 		position: absolute;
 		bottom: 60px;
 		left: 20px;
@@ -47,7 +47,7 @@ module.exports = {
 			padding: 0;
 		}
 
-		.select-text-btn {
+		.ext-wikistories-select-text-btn {
 			display: block;
 			width: 100%;
 			font-size: 0.5em;

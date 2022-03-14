@@ -1,21 +1,21 @@
 <template>
-	<div v-if="attributionReady" class="image-attribution">
-		<div class="image-attribution-info">
+	<div v-if="attributionReady" class="ext-wikistories-image-attribution">
+		<div class="ext-wikistories-image-attribution-info">
 			<div
 				v-for="license in presentLicenses"
 				:key="license"
-				:class="`image-attribution-info-${license.toLowerCase()}`">
+				:class="`ext-wikistories-image-attribution-info-${license.toLowerCase()}`">
 			</div>
 			<bdi
-				class="image-attribution-info-author"
+				class="ext-wikistories-image-attribution-info-author"
 				v-html="currentFrame.imgAttribution.author ||
 					$i18n( 'wikistories-imageattribution-author-unknown' ).text()">
 			</bdi>
 		</div>
-		<div class="image-attribution-more-info">
+		<div class="ext-wikistories-image-attribution-more-info">
 			<a
 				:href="currentFrame.imgAttribution.url"
-				class="image-attribution-more-info-link"
+				class="ext-wikistories-image-attribution-more-info-link"
 				target="_blank"></a>
 		</div>
 	</div>
@@ -46,7 +46,7 @@ module.exports = {
 </script>
 
 <style lang="less">
-.image-attribution {
+.ext-wikistories-image-attribution {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -55,77 +55,77 @@ module.exports = {
 	border: #f8f9fa;
 	display: flex;
 	justify-content: space-between;
-}
 
-.image-attribution-info {
-	display: flex;
-	align-items: center;
-	padding-left: 14px;
-}
+	&-info {
+		display: flex;
+		align-items: center;
+		padding-left: 14px;
 
-.image-attribution-info-cc {
-	background-image: url( ../images/attribution-cc.svg );
-	background-repeat: no-repeat;
-	width: 14px;
-	height: 14px;
-	margin-right: 8px;
-}
+		&-cc {
+			background-image: url( ../images/attribution-cc.svg );
+			background-repeat: no-repeat;
+			width: 14px;
+			height: 14px;
+			margin-right: 8px;
+		}
 
-.image-attribution-info-by {
-	background-image: url( ../images/attribution-author.svg );
-	background-repeat: no-repeat;
-	width: 14px;
-	height: 14px;
-	margin-right: 8px;
-}
+		&-by {
+			background-image: url( ../images/attribution-author.svg );
+			background-repeat: no-repeat;
+			width: 14px;
+			height: 14px;
+			margin-right: 8px;
+		}
 
-.image-attribution-info-sa {
-	background-image: url( ../images/attribution-icon-share-a-like.svg );
-	background-repeat: no-repeat;
-	width: 14px;
-	height: 14px;
-	margin-right: 8px;
-}
+		&-sa {
+			background-image: url( ../images/attribution-icon-share-a-like.svg );
+			background-repeat: no-repeat;
+			width: 14px;
+			height: 14px;
+			margin-right: 8px;
+		}
 
-.image-attribution-info-fair {
-	background-image: url( ../images/attribution-license-generic-gnu-free.svg );
-	background-repeat: no-repeat;
-	width: 14px;
-	height: 14px;
-	margin-right: 8px;
-}
+		&-fair {
+			background-image: url( ../images/attribution-license-generic-gnu-free.svg );
+			background-repeat: no-repeat;
+			width: 14px;
+			height: 14px;
+			margin-right: 8px;
+		}
 
-.image-attribution-info-public {
-	background-image: url( ../images/attribution-license-public-domain.svg );
-	background-repeat: no-repeat;
-	width: 14px;
-	height: 14px;
-	margin-right: 8px;
-}
+		&-public {
+			background-image: url( ../images/attribution-license-public-domain.svg );
+			background-repeat: no-repeat;
+			width: 14px;
+			height: 14px;
+			margin-right: 8px;
+		}
 
-.image-attribution-info-author {
-	max-width: 220px;
-	height: 14px;
-	margin-right: 4px;
-	font-size: 12px;
-	color: #fff;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
+		&-author {
+			max-width: 220px;
+			height: 14px;
+			margin-right: 4px;
+			font-size: 12px;
+			color: #fff;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
 
-.image-attribution-more-info {
-	height: 44px;
-	width: 44px;
-	display: flex;
-	background-image: url( ../images/attribution-icon-info.svg );
-	background-repeat: no-repeat;
-	background-position: center;
-}
+	&-more-info {
+		height: 44px;
+		width: 44px;
+		display: flex;
+		background-image: url( ../images/attribution-icon-info.svg );
+		background-repeat: no-repeat;
+		background-position: center;
 
-.image-attribution-more-info-link {
-	display: block;
-	height: 44px;
-	width: 44px;
+		&-link {
+			display: block;
+			height: 44px;
+			width: 44px;
+		}
+	}
 }
 </style>

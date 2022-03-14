@@ -1,13 +1,13 @@
 <template>
-	<div class="frames">
+	<div class="ext-wikistories-frames">
 		<div
 			v-for="frame in thumbnails"
 			:key="frame.id"
-			class="frame"
-			:class="{ 'selected-frame': frame.selected }"
+			class="ext-wikistories-frame"
+			:class="{ 'ext-wikistories-selected-frame': frame.selected }"
 			:style="frame.style"
 			@click="selectFrame( frame.id )"></div>
-		<div class="frame btn-add-frame" @click="addFrame">
+		<div class="ext-wikistories-frame ext-wikistories-btn-add-frame" @click="addFrame">
 			+
 		</div>
 	</div>
@@ -26,40 +26,42 @@ module.exports = {
 </script>
 
 <style lang="less">
-.frames {
-	width: 100%;
-	padding: 14px 0;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	overflow: hidden;
-	border-top: solid #000 1px;
-}
+.ext-wikistories {
+	&-frames {
+		width: 100%;
+		padding: 14px 0;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		overflow: hidden;
+		border-top: solid #000 1px;
+	}
 
-.frame {
-	width: 28px;
-	height: 36px;
-	margin-left: 15px;
-	flex: none;
-	cursor: pointer;
-}
+	&-frame {
+		width: 28px;
+		height: 36px;
+		margin-left: 15px;
+		flex: none;
+		cursor: pointer;
+	}
 
-.btn-add-frame {
-	display: grid;
-	place-items: center;
-	background-size: 20px;
-	border: 1px dashed #000;
-	box-sizing: border-box;
-	border-radius: 2px;
-	font-size: 24px;
-	text-align: center;
-	vertical-align: middle;
-	margin-left: auto;
-	margin-right: 15px;
-}
+	&-btn-add-frame {
+		display: grid;
+		place-items: center;
+		background-size: 20px;
+		border: 1px dashed #000;
+		box-sizing: border-box;
+		border-radius: 2px;
+		font-size: 24px;
+		text-align: center;
+		vertical-align: middle;
+		margin-left: auto;
+		margin-right: 15px;
+	}
 
-.selected-frame {
-	outline: #36c auto 4px;
-	outline-offset: 2px;
+	&-selected-frame {
+		outline: #36c auto 4px;
+		outline-offset: 2px;
+	}
 }
 </style>

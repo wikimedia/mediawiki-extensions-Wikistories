@@ -1,33 +1,36 @@
 <template>
-	<div class="article-view">
+	<div class="ext-wikistories-article-view">
 		<div
 			v-if="currentArticle.html"
-			class="article-view-content"
+			class="ext-wikistories-article-view-content"
 			v-html="currentArticle.html"></div>
-		<div v-else class="article-view-loading">
+		<div v-else class="ext-wikistories-article-view-loading">
 			<h1>{{ $i18n( 'wikistories-article-loading' ).text() }}</h1>
 		</div>
-		<div v-if="display === 'info'" class="article-view-info">
-			<div v-if="!expanded" class="article-view-info-banner">
-				<div class="article-view-info-banner-icon" @click="toggleExpandInfo"></div>
+		<div v-if="display === 'info'" class="ext-wikistories-article-view-info">
+			<div v-if="!expanded" class="ext-wikistories-article-view-info-banner">
+				<div
+					class="ext-wikistories-article-view-info-banner-icon"
+					@click="toggleExpandInfo"
+				></div>
 				<span>{{ $i18n( 'wikistories-article-info-banner' ).text() }}</span>
 			</div>
-			<div v-if="expanded" class="article-view-info-expanded-banner">
+			<div v-if="expanded" class="ext-wikistories-article-view-info-expanded-banner">
 				<div
-					class="article-view-info-expanded-banner-close-icon"
+					class="ext-wikistories-article-view-info-expanded-banner-close-icon"
 					@click="toggleExpandInfo">
 				</div>
 				<span>{{ $i18n( 'wikistories-article-info-expanded-banner' ).text() }}</span>
 			</div>
 		</div>
-		<div v-if="display === 'tools'" class="article-view-toolbar">
+		<div v-if="display === 'tools'" class="ext-wikistories-article-view-toolbar">
 			<div
-				class="article-view-toolbar-confirm-button"
+				class="ext-wikistories-article-view-toolbar-confirm-button"
 				@touchstart="onUseText"
 				@mousedown="onUseText">
 				{{ $i18n( 'wikistories-article-usetext' ).text() }}
 			</div>
-			<div class="article-view-toolbar-discard-button" @click="onDismiss">
+			<div class="ext-wikistories-article-view-toolbar-discard-button" @click="onDismiss">
 				{{ $i18n( 'wikistories-article-cancelselection' ).text() }}
 			</div>
 		</div>
@@ -39,7 +42,7 @@ const mapActions = require( 'vuex' ).mapActions;
 const mapGetters = require( 'vuex' ).mapGetters;
 
 const isNodeWithinArticleView = ( node ) => {
-	return document.querySelector( '.article-view-content' ).contains( node );
+	return document.querySelector( '.ext-wikistories-article-view-content' ).contains( node );
 };
 
 // @vue/component
@@ -108,7 +111,7 @@ module.exports = {
 </script>
 
 <style lang="less">
-.article-view {
+.ext-wikistories-article-view {
 	width: 100%;
 	height: 100%;
 	display: flex;

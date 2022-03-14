@@ -1,16 +1,16 @@
 <template>
-	<div class="navigator">
+	<div class="ext-wikistories-navigator">
 		<router-link
 			v-if="history"
 			to="/story"
-			class="back"></router-link>
+			class="ext-wikistories-navigator-back"></router-link>
 		<div
 			v-if="info"
-			class="next"
+			class="ext-wikistories-navigator-next"
 			@click="next">
 			{{ $i18n( 'wikistories-navigator-next' ).text() }}
 		</div>
-		<span v-if="info" class="info">{{ info }}</span>
+		<span v-if="info" class="ext-wikistories-navigator-info">{{ info }}</span>
 	</div>
 </template>
 
@@ -31,20 +31,20 @@ module.exports = {
 </script>
 
 <style lang="less">
-.navigator {
+.ext-wikistories-navigator {
 	height: 40px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
-	.info {
+	&-info {
 		margin: 15px 0;
 		font-size: 17.6px;
 		line-height: 25px;
 		color: #000;
 	}
 
-	.back {
+	&-back {
 		background-image: url( ../images/back.svg );
 		width: 16px;
 		height: 16px;
@@ -52,7 +52,7 @@ module.exports = {
 		cursor: pointer;
 	}
 
-	.next {
+	&-next {
 		min-width: 16px;
 		min-height: 16px;
 		margin: 20px 0;
