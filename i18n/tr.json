@@ -1,21 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda"
+			"Can",
+			"Hedda",
+			"SaldırganSincap"
 		]
 	},
 	"wikistories-extensiondesc": "Vikihikayeler; editörlerin Wikimedia projelerinden kısa, görsel ve güvenilir bilgiler oluşturmasına olanak tanır",
 	"wikistories-hooks-createstory": "Bir hikaye oluştur",
 	"wikistories-specialcreatestory-loading": "Yükleniyor...",
 	"wikistories-specialcreatestory-nojswarning": "Bu özel sayfanın çalışması için JavaScript gereklidir",
-	"wikistories-imagesearch-inputlabel": "Ara",
+	"wikistories-story-goto-publish": "Sonraki",
 	"wikistories-story-edittext": "Düzenle",
 	"wikistories-imageattribution-author-unknown": "Yazar bilinmiyor",
 	"wikistories-article-cancelselection": "İptal",
 	"wikistories-article-loading": "Yükleniyor...",
 	"wikistories-article-usetext": "Hikayeye ekle",
 	"wikistories-article-info-banner": "Hikayenize eklemek için metni seçin",
-	"wikistories-article-info-expanded-banner": "Metindeki bir kelimeye dokunup basılı tutun, ardından hikaye için istediğiniz tüm metni vurgulamak için kaydırıcıları sürükleyin. Metin eklemek için ekranın alt kısmında görünen hikayeye ekle'ye dokunun.",
+	"wikistories-article-info-expanded-banner": "Metindeki bir kelimeye dokunup basılı tutun, ardından hikayeniz için istediğiniz tüm metni vurgulamak için kaydırıcıları sürükleyin. Metin eklemek için ekranın alt kısmında görünen hikayeye ekle'ye dokunun.",
 	"wikistories-navigator-next": "Sonraki",
+	"wikistories-builder-publishform-placeholder": "Hikaye başlığı girin...",
+	"wikistories-builder-publishform-publishbutton": "Yayımla",
+	"wikistories-builder-publishform-saveerror": "Hikaye yayımlanırken bir hata meydana geldi. Lütfen daha sonra tekrar deneyin.",
 	"wikistories-discover-cta-text": "Vikihikaye oluştur"
 }
