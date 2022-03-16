@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Danniel07"
+		]
+	},
+	"wikistories-search-inputplaceholder": "Buscar imágenes",
+	"wikistories-search-cuetext": "Buscar imágenes relacionadas al artículo.",
+	"wikistories-search-noresultstext": "Sin resultados"
+}
