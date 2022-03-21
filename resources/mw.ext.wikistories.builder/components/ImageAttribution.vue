@@ -55,6 +55,7 @@ module.exports = {
 	border: #f8f9fa;
 	display: flex;
 	justify-content: space-between;
+	background: linear-gradient( 180deg, rgba( 0, 0, 0, 0 ) -108.75%, rgba( 0, 0, 0, 0.6 ) 100% );
 
 	&-info {
 		display: flex;
@@ -103,7 +104,6 @@ module.exports = {
 
 		&-author {
 			max-width: 220px;
-			height: 14px;
 			margin-right: 4px;
 			font-size: 12px;
 			color: #fff;
