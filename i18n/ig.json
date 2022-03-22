@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Edith Nwobu",
 			"Izuchi Onyeike"
 		]
 	},
-	"wikistories-search-inputplaceholder": "Chọọ onyonyo",
-	"wikistories-search-cuetext": "Chọọ\n onyonyo metụtara akụkọ.",
-	"wikistories-search-noresultstext": "enweghị nsonaazụ"
+	"wikistories-search-inputplaceholder": "Chọọ inyege",
+	"wikistories-search-cuetext": "Chọọ inyege metụtara ndebanye.",
+	"wikistories-search-noresultstext": "Mpụtara adịghị"
 }
