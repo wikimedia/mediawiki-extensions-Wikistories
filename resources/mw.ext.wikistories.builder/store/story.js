@@ -41,6 +41,7 @@ module.exports = {
 				id: INITIAL_FRAME_ID,
 				img: null,
 				text: '',
+				textFromArticle: '',
 				imgTitle: '',
 				attribution: null
 			}
@@ -63,6 +64,10 @@ module.exports = {
 		setText: ( state, text ) => {
 			const f = state.frames.find( frame => frame.id === state.currentFrameId );
 			f.text = text;
+		},
+		setTextFromArticle: ( state, textFromArticle ) => {
+			const f = state.frames.find( frame => frame.id === state.currentFrameId );
+			f.textFromArticle = textFromArticle;
 		},
 		setImg: ( state, img ) => {
 			const f = state.frames.find( frame => frame.id === state.currentFrameId );
@@ -93,6 +98,9 @@ module.exports = {
 		},
 		setText: ( context, text ) => {
 			context.commit( 'setText', text );
+		},
+		setTextFromArticle: ( context, textFromArticle ) => {
+			context.commit( 'setTextFromArticle', textFromArticle );
 		},
 		setImg: ( context, img ) => {
 			context.commit( 'setImg', img );
@@ -145,6 +153,7 @@ module.exports = {
 				state.frames.find( frame => frame.id === state.currentFrameId );
 			return {
 				text: isCoverFrame ? state.storyTitle : f.text,
+				textFromArticle: isCoverFrame ? state.storyTitle : f.textFromArticle,
 				style: makeFrameStyle( f ),
 				noImage: f.img === '',
 				id: state.currentFrameId,

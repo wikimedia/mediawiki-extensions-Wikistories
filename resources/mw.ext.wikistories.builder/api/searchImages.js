@@ -61,7 +61,7 @@ const getCommonsImages = ( lang, queryString ) => {
 		gsrnamespace: 6,
 		iiprop: 'url|extmetadata|mediatype',
 		iiurlheight: 180,
-		iiextmetadatafilter: 'License|LicenseShortName|ImageDescription|Artist',
+		iiextmetadatafilter: 'License|LicenseShortName|Artist',
 		iiextmetadatalanguage: lang
 	};
 
@@ -83,15 +83,12 @@ const getCommonsImages = ( lang, queryString ) => {
 				Object.keys( imageinfo.responsiveUrls )
 					.map( ( p ) => imageinfo.responsiveUrls[ p ] )[ 0 ];
 			const extmetadata = imageinfo.extmetadata;
-			const description = extmetadata && extmetadata.ImageDescription &&
-				extmetadata.ImageDescription.value;
 			const artist = extmetadata && extmetadata.Artist;
 			const license = extmetadata && extmetadata.LicenseShortName;
 
 			return {
 				fromCommons: true,
 				title: page.title,
-				desc: strip( description || page.snippet ),
 				thumb: responsiveUrls || imageinfo.url,
 				width: imageinfo.thumbwidth,
 				attribution: {
@@ -132,7 +129,6 @@ const getArticleImages = ( lang, queryString ) => {
 		return images.map( ( img ) => {
 			return {
 				title: img.title,
-				desc: img.caption ? img.caption.text : null,
 				thumb: img.srcset[ 0 ].src,
 				width: 300,
 				attribution: null

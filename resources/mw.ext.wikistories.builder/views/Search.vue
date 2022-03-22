@@ -65,7 +65,6 @@ module.exports = {
 				return {
 					id: index + 1,
 					img: item.thumb,
-					text: item.desc,
 					imgTitle: item.title,
 					attribution: item.attribution
 				};

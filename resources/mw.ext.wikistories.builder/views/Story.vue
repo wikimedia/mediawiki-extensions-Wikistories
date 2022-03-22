@@ -1,7 +1,11 @@
 <template>
 	<div class="ext-wikistories-storybuilder-story">
-		<current-frame @edit="showArticlePopup"></current-frame>
+		<current-frame
+			@select-text="showArticlePopup"
+			@edit-text="handleTextEditFocus"
+		></current-frame>
 		<div
+			v-show="viewPublishButton"
 			class="ext-wikistories-storybuilder-story-publish-button"
 			@click="showPublishPopup"
 		></div>
@@ -46,6 +50,7 @@ module.exports = {
 		return {
 			viewArticlePopup: false,
 			viewPublishPopup: false,
+			viewPublishButton: true,
 			alert: {
 				show: false,
 				title: '',
@@ -92,6 +97,9 @@ module.exports = {
 			this.alert.title = '';
 			this.alert.message = '';
 			this.alert.show = false;
+		},
+		handleTextEditFocus: function ( editing ) {
+			this.viewPublishButton = !editing;
 		}
 	}
 };
