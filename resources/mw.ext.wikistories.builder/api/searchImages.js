@@ -146,8 +146,11 @@ const getArticleImages = ( lang, queryString ) => {
  * if no images are found
  */
 const searchAllImages = ( queryString ) => {
-	const lang = mw.config.get( 'wgContentLanguage' );
+	if ( !queryString ) {
+		return $.Deferred().resolve( [] );
+	}
 
+	const lang = mw.config.get( 'wgContentLanguage' );
 	abortAllRequests();
 
 	return $.when(
