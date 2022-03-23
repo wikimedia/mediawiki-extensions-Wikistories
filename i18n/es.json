@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Danniel07"
+			"Danniel07",
+			"DiegoAmbrocio"
 		]
 	},
 	"wikistories-search-inputplaceholder": "Buscar imágenes",
 	"wikistories-search-cuetext": "Buscar imágenes relacionadas al artículo.",
-	"wikistories-search-noresultstext": "Sin resultados"
+	"wikistories-search-noresultstext": "Sin resultados",
+	"wikistories-builder-publishform-publishbutton": "Publicar",
+	"wikistories-builder-publishform-invalidtitle-format": "Título de la historia inválido",
+	"wikistories-builder-publishform-saveerror": "Se ha producido un error al publicar la historia. Por favor, inténtalo de nuevo más tarde."
 }
