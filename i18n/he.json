@@ -13,6 +13,8 @@
 	"wikistories-search-cuetext": "חיפוש תמונות שקשורות לערך.",
 	"wikistories-search-noresultstext": "אין תוצאות",
 	"wikistories-story-goto-publish": "הבא",
+	"wikistories-story-selecttext": "{{GENDER:|בחר|בחרי}} את טקסט הסיפור מתוך <span class=\"ext-wikistories-wikipedia\">ויקיפדיה</span>",
+	"wikistories-story-editdone": "בוצע",
 	"wikistories-imageattribution-author-unknown": "מחבר לא ידוע",
 	"wikistories-article-cancelselection": "ביטול",
 	"wikistories-article-loading": "טעינה...",
