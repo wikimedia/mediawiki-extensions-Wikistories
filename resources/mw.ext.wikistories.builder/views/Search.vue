@@ -47,9 +47,9 @@ module.exports = {
 	computed: mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle' ] ),
 	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'resetFrame' ] ), {
 		onSubmit: function ( e ) { return e.preventDefault(); },
-		onInput: mw.util.debounce( function ( e ) {
+		onInput: function ( e ) {
 			this.search( e.target.value );
-		}, 500 ),
+		},
 		onClear: function ( e ) {
 			e.preventDefault();
 			this.clear();
@@ -147,7 +147,7 @@ module.exports = {
 		}
 
 		50% {
-			transform: translateX( calc( 100vw - 40px ) );
+			transform: translateX( calc( 100vw - 45px ) );
 		}
 
 		100% {

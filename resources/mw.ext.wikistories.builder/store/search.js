@@ -2,6 +2,15 @@ const searchTools = require( '../api/searchImages.js' );
 const searchImages = searchTools.searchImages;
 const abortSearch = searchTools.abortSearch;
 
+const debouncedSearch = mw.util.debounce( function ( context, queryString ) {
+	context.commit( 'setLoading', true );
+	searchImages( queryString ).then( ( images ) => {
+		context.commit( 'setResults', images );
+		context.commit( 'setSelection', [] );
+		context.commit( 'setLoading', false );
+	} );
+}, 500 );
+
 module.exports = {
 	state: {
 		selection: [],
@@ -18,25 +27,13 @@ module.exports = {
 	actions: {
 		search: ( context, query ) => {
 			const queryString = query.trim();
-
-			context.commit( 'setQuery', query );
-
-			if ( !queryString ) {
-				abortSearch();
-				context.commit( 'setSelection', [] );
-				context.commit( 'setLoading', false );
-				context.commit( 'setResults', [] );
-				return;
-			}
-
-			context.commit( 'setLoading', true );
 			context.commit( 'setResults', [] );
-
-			searchImages( queryString ).then( ( images ) => {
-				context.commit( 'setResults', images );
-				context.commit( 'setSelection', [] );
-				context.commit( 'setLoading', false );
-			} );
+			abortSearch();
+			context.commit( 'setQuery', query );
+			context.commit( 'setResults', [] );
+			context.commit( 'setSelection', [] );
+			context.commit( 'setLoading', !!queryString );
+			debouncedSearch( context, queryString );
 		},
 		clear: ( context ) => {
 			abortSearch();
