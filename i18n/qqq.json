@@ -39,5 +39,6 @@
 	"wikistories-builder-publishform-invalidtitle-format": "Error message when the provided story title is invalid.",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Error message when trying to create a story with a title that already exists.",
 	"wikistories-builder-publishform-saveerror": "An error occured when publishing the story. Please try again later.",
-	"wikistories-discover-cta-text": "Text for a button in the Discover section to start the builder step"
+	"wikistories-discover-cta-text": "Text for a button in the Discover section to start the builder step",
+	"wikistories-storyviewer-next-story-button": "Text for the button when press and go to the next story viewer"
 }

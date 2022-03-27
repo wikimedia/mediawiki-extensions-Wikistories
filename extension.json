@@ -74,7 +74,10 @@
 			"styles": [
 				"mw.ext.wikistories.viewer/viewer.less"
 			],
-			"dependencies": [ "vue", "vuex" ]
+			"dependencies": [ "vue", "vuex" ],
+			"messages": [
+				"wikistories-storyviewer-next-story-button"
+			]
 		},
 		"mw.ext.story.builder.styles": {
 			"targets": [ "desktop", "mobile" ],

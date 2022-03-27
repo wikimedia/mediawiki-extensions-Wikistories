@@ -2,13 +2,17 @@
 	<div v-show="story.length" class="ext-wikistories-viewer-container">
 		<div class="ext-wikistories-viewer-container-overlay" @click="discardStory"></div>
 		<div class="ext-wikistories-viewer-container-content" :style="style">
+			<span class="ext-wikistories-viewer-container-index">
+				{{ frameId }} / {{ story.length }}
+			</span>
 			<div
 				class="ext-wikistories-viewer-container-content-close-icon"
 				@click="discardStory"
 			></div>
+			<!--
 			<div class="ext-wikistories-viewer-container-content-progress">
 				<div
-					v-for="n in storyLength"
+					v-for="n in story.length"
 					:key="n"
 					class="ext-wikistories-viewer-container-content-progress-container">
 					<div
@@ -21,6 +25,7 @@
 					></div>
 				</div>
 			</div>
+			-->
 			<div
 				v-if="currentFrame.text"
 				class="ext-wikistories-viewer-container-content-story-text">
@@ -28,10 +33,10 @@
 			</div>
 			<!--    <ImageAttribution />-->
 			<div
-				v-if="storyEnd"
-				class="ext-wikistories-viewer-container-content-restart-btn"
-				@click="restartStory">
-				Replay
+				v-if="isStoryEnd && !isLastStory"
+				class="ext-wikistories-viewer-container-content-next-btn"
+				@click="playNextStory">
+				{{ $i18n( "wikistories-storyviewer-next-story-button" ).text() }}
 			</div>
 		</div>
 	</div>
@@ -55,14 +60,14 @@ module.exports = {
 	},
 	data: function () {
 		return {
-			index: 1,
 			frameDuration: 2000,
-			storyEnd: false
+			timeoutId: null
 		};
 	},
-	computed: $.extend( mapGetters( [ 'story' ] ), {
-		currentFrame: function () { return this.story[ this.index - 1 ] || {}; },
-		storyLength: function () { return this.story.length; },
+	computed: $.extend( mapGetters( [
+		'story', 'currentFrame', 'frameId',
+		'isStoryEnd', 'isLastStory'
+	] ), {
 		style: function () {
 			return {
 				backgroundImage: 'url(' + this.currentFrame.img + ')',
@@ -71,47 +76,49 @@ module.exports = {
 			};
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'setStories', 'setStoryId' ] ), {
-		selectFrame: function ( i ) {
-			this.index = i;
-		},
+	methods: $.extend( mapActions( [
+		'setStories', 'setStoryId', 'nextStory',
+		'nextFrame', 'resetFrame', 'setIsStoryEnd'
+	] ), {
 		playNextFrame: function () {
-			const timeoutId = setTimeout( function () {
-				this.selectFrame( this.currentFrame.id + 1 );
-				clearTimeout( timeoutId );
+			this.timeoutId = setTimeout( function () {
+				this.nextFrame();
 			}.bind( this ), this.frameDuration );
 		},
-		restartStory: function () {
-			this.storyEnd = false;
-			this.selectFrame( 1 );
+		playNextStory: function () {
+			this.nextStory();
 		},
 		endStory: function () {
-			const timeoutId = setTimeout( function () {
-				this.storyEnd = true;
-				clearTimeout( timeoutId );
+			this.timeoutId = setTimeout( function () {
+				this.setIsStoryEnd( true );
 			}.bind( this ), this.frameDuration );
 		},
 		discardStory: function () {
-			this.setStories( [] );
 			this.setStoryId( null );
+			clearTimeout( this.timeoutId );
 			window.location.hash = '';
+		},
+		preloadStory: function () {
+			this.story.forEach( ( frame ) => {
+				const img = new Image();
+				img.src = frame.img;
+			} );
 		}
 	} ),
-	beforeMount: function () {
-		if ( this.currentFrame.id > 1 ) {
-			this.restartStory();
-		}
-	},
-	mounted: function () {
-		if ( this.currentFrame.id < this.storyLength ) {
-			this.playNextFrame();
-		}
-	},
-	updated: function () {
-		if ( this.currentFrame.id < this.storyLength ) {
-			this.playNextFrame();
-		} else if ( !this.storyEnd ) {
-			this.endStory();
+	watch: {
+		story: function ( newStory ) {
+			if ( newStory.length ) {
+				this.preloadStory();
+				this.setIsStoryEnd( false );
+				this.resetFrame();
+			}
+		},
+		currentFrame: function () {
+			if ( this.currentFrame.id < this.story.length ) {
+				this.playNextFrame();
+			} else if ( this.currentFrame.id === this.story.length ) {
+				this.endStory();
+			}
 		}
 	},
 	created: function () {
@@ -122,6 +129,8 @@ module.exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.ui/variables.less';
+
 .ext-wikistories-viewer-container {
 	position: fixed;
 	top: 0;
@@ -137,13 +146,21 @@ module.exports = {
 		width: 100%;
 	}
 
+	&-index {
+		position: relative;
+		color: #fff;
+		top: 10px;
+	}
+
 	&-content {
-		max-width: 500px;
 		height: 100%;
-		width: 100%;
 		margin: 0 auto;
 		position: relative;
 		text-align: center;
+
+		@media screen and ( min-width: 720px ) {
+			max-width: 993.3px;
+		}
 
 		&-story-text {
 			position: absolute;
@@ -156,16 +173,23 @@ module.exports = {
 			padding: 10px;
 		}
 
-		&-restart-btn {
+		&-next-btn {
 			position: absolute;
 			bottom: 40px;
 			left: 0;
 			right: 0;
 			margin: auto;
-			background-color: #fff;
-			padding: 8px;
+			background-color: @color-primary;
+			width: fit-content;
+			border-radius: 2px;
+			padding: 6px 12px;
+			// stylelint-disable-next-line font-family-no-missing-generic-family-keyword
+			font-family: 'Helvetica Neue';
+			font-style: normal;
 			font-weight: bold;
-			width: 90px;
+			font-size: 16px;
+			line-height: 22px;
+			color: #fff;
 			cursor: pointer;
 		}
 
