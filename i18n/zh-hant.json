@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"DinoWP",
 			"Winston Sung"
 		]
 	},
 	"wikistories-specialcreatestory-loading": "正在載入…",
+	"wikistories-search-inputplaceholder": "搜尋圖片",
+	"wikistories-search-noresultstext": "沒有結果",
+	"wikistories-story-editdone": "完成",
 	"wikistories-builder-publishform-publishbutton": "發布"
 }

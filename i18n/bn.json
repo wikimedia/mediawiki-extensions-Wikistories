@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Yahya",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -8,6 +9,7 @@
 	"wikistories-specialcreatestory-loading": "লোড করা হচ্ছে...",
 	"wikistories-search-noresultstext": "ফলাফল নেই",
 	"wikistories-story-goto-publish": "পরবর্তী",
+	"wikistories-story-editdone": "সম্পন্ন",
 	"wikistories-imageattribution-author-unknown": "লেখক অজানা",
 	"wikistories-article-cancelselection": "বাতিল",
 	"wikistories-article-loading": "লোড করা হচ্ছে...",
