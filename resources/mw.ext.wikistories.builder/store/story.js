@@ -1,3 +1,5 @@
+const router = require( '../router.js' );
+
 const INITIAL_FRAME_ID = 1;
 const MIN_FRAMES = mw.config.get( 'wgWikistoriesMinFrames' );
 const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
@@ -57,6 +59,17 @@ module.exports = {
 			state.frames.push( { text: '', img: '', imgTitle: '', id: newId, attribution: null } );
 			state.currentFrameId = newId;
 		},
+		removeFrame: ( state ) => {
+			const f = state.frames.find( frame => frame.id === state.currentFrameId );
+			const index = state.frames.indexOf( f );
+			state.frames.splice( index, 1 );
+			if ( state.frames.length < 1 ) {
+				router.replace( '/search' );
+			} else {
+				const newCurrentFrame = state.frames.length === index ? index - 1 : index;
+				state.currentFrameId = state.frames[ newCurrentFrame ].id;
+			}
+		},
 		resetFrame: ( state, frames ) => {
 			state.frames = frames;
 			state.currentFrameId = frames[ frames.length - 1 ].id;
@@ -92,6 +105,9 @@ module.exports = {
 		},
 		addFrame: ( context ) => {
 			context.commit( 'addFrame' );
+		},
+		removeFrame: ( context ) => {
+			context.commit( 'removeFrame' );
 		},
 		resetFrame: ( context, frames ) => {
 			context.commit( 'resetFrame', frames );
