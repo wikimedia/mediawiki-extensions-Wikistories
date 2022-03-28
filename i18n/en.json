@@ -16,6 +16,8 @@
 	"wikistories-story-goto-publish": "Next",
 	"wikistories-story-selecttext": "Select story text from <span class=\"ext-wikistories-wikipedia\">Wikipedia</span>",
 	"wikistories-story-editdone": "Done",
+	"wikistories-story-replaceimage": "Replace this image",
+	"wikistories-story-deleteframe": "Delete this page",
 	"wikistories-imageattribution-author-unknown": "Author unknown",
 	"wikistories-article-cancelselection": "Cancel",
 	"wikistories-article-loading": "Loading...",

@@ -44,8 +44,11 @@ module.exports = {
 		'image-list': ImageListView,
 		navigator: Navigator
 	},
+	props: {
+		mode: { type: String, default: 'many' }
+	},
 	computed: mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle' ] ),
-	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'resetFrame' ] ), {
+	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'resetFrame', 'setFrameImage' ] ), {
 		onSubmit: function ( e ) { return e.preventDefault(); },
 		onInput: function ( e ) {
 			this.search( e.target.value );
@@ -55,7 +58,12 @@ module.exports = {
 			this.clear();
 		},
 		onItemSelect: function ( data ) {
-			this.select( data );
+			if ( this.mode === 'one' ) {
+				this.setFrameImage( this.results.find( ( r ) => r.id === data[ 0 ] ) );
+				this.$router.push( '/story' );
+			} else {
+				this.select( data );
+			}
 		},
 		editStory: function () {
 			const array = this.selection.map( function ( id, index ) {

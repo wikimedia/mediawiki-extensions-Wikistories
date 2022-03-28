@@ -149,6 +149,10 @@ module.exports = {
 					context.commit( 'setImgAttribution', attribution );
 				}
 			} );
+		},
+		setFrameImage: ( context, data ) => {
+			context.commit( 'setImg', data.thumb );
+			context.commit( 'setImgTitle', data.title );
 		}
 	},
 	getters: {

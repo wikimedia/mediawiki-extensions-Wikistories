@@ -15,9 +15,10 @@ const routes = [
 		component: Story
 	},
 	{
-		path: '/search',
+		path: '/search/:mode?',
 		name: 'Search',
-		component: Search
+		component: Search,
+		props: true
 	}
 ];
 
