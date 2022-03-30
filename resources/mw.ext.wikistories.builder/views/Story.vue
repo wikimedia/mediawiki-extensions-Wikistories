@@ -1,5 +1,8 @@
 <template>
 	<div class="ext-wikistories-storybuilder-story">
+		<div class="ext-wikistories-storybuilder-story-delete" @click="showConfirmationDialog">
+			X
+		</div>
 		<current-frame
 			@select-text="showArticlePopup"
 			@edit-text="handleTextEditFocus"
@@ -23,17 +26,27 @@
 			@ok-click="hideAlert">
 			{{ alert.message }}
 		</alert>
+		<confirm-dialog
+			v-if="viewConfirmDialog"
+			:title="$i18n( 'wikistories-confirmdialog-delete-title' ).text()"
+			:message="$i18n( 'wikistories-confirmdialog-delete-message' ).text()"
+			:accept="$i18n( 'wikistories-confirmdialog-delete-accept' ).text()"
+			@cancel="hideConfirmDialog"
+			@confirm="deleteFrame">
+		</confirm-dialog>
 	</div>
 </template>
 
 <script>
 const mapGetters = require( 'vuex' ).mapGetters;
+const mapActions = require( 'vuex' ).mapActions;
 const CurrentFrame = require( '../components/CurrentFrame.vue' );
 const Article = require( '../components/Article.vue' );
 const Frames = require( '../components/Frames.vue' );
 const Popup = require( '../components/Popup.vue' );
 const PublishForm = require( '../components/PublishForm.vue' );
 const Alert = require( '../components/Alert.vue' );
+const ConfirmDialog = require( '../components/ConfirmDialog.vue' );
 
 // @vue/component
 module.exports = {
@@ -44,12 +57,14 @@ module.exports = {
 		frames: Frames,
 		popup: Popup,
 		'publish-form': PublishForm,
-		alert: Alert
+		alert: Alert,
+		'confirm-dialog': ConfirmDialog
 	},
 	data: function () {
 		return {
 			viewArticlePopup: false,
 			viewPublishPopup: false,
+			viewConfirmDialog: false,
 			viewPublishButton: true,
 			alert: {
 				show: false,
@@ -59,7 +74,7 @@ module.exports = {
 		};
 	},
 	computed: mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText' ] ),
-	methods: {
+	methods: $.extend( mapActions( [ 'removeFrame' ] ), {
 		showArticlePopup: function () {
 			this.viewArticlePopup = true;
 		},
@@ -81,15 +96,21 @@ module.exports = {
 		hidePublishPopup: function () {
 			this.viewPublishPopup = false;
 		},
+		showConfirmationDialog: function () {
+			this.viewConfirmDialog = true;
+		},
+		hideConfirmDialog: function () {
+			this.viewConfirmDialog = false;
+		},
 		showNotEnoughFrameAlert: function ( min, missing ) {
-			this.alert.title = mw.message( 'wikistories-error-notenoughframes-title' ).text();
-			this.alert.message = mw.message( 'wikistories-error-notenoughframes-message' )
+			this.alert.title = this.$i18n( 'wikistories-error-notenoughframes-title' ).text();
+			this.alert.message = this.$i18n( 'wikistories-error-notenoughframes-message' )
 				.params( [ min, missing ] ).text();
 			this.alert.show = true;
 		},
 		showFramesWithoutTextAlert: function ( nb ) {
-			this.alert.title = mw.message( 'wikistories-error-frameswithouttext-title' ).text();
-			this.alert.message = mw.message( 'wikistories-error-frameswithouttext-message' )
+			this.alert.title = this.$i18n( 'wikistories-error-frameswithouttext-title' ).text();
+			this.alert.message = this.$i18n( 'wikistories-error-frameswithouttext-message' )
 				.params( [ nb ] ).text();
 			this.alert.show = true;
 		},
@@ -100,8 +121,12 @@ module.exports = {
 		},
 		handleTextEditFocus: function ( editing ) {
 			this.viewPublishButton = !editing;
+		},
+		deleteFrame: function () {
+			this.removeFrame();
+			this.viewConfirmDialog = false;
 		}
-	}
+	} )
 };
 </script>
 
@@ -125,6 +150,16 @@ module.exports = {
 		background-repeat: no-repeat;
 		background-position: center;
 		border-radius: 13px;
+	}
+
+	&-delete {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		height: 37px;
+		width: 16px;
+		z-index: 300;
+		background-color: #fff;
 	}
 }
 </style>

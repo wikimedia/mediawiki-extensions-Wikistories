@@ -2,7 +2,6 @@
 	<div class="ext-wikistories-navigator">
 		<router-link
 			v-if="history"
-			to="/story"
 			class="ext-wikistories-navigator-back"></router-link>
 		<div
 			v-if="info"
