@@ -20,7 +20,7 @@
 	"wikistories-article-loading": "טעינה...",
 	"wikistories-article-usetext": "להוסיף לסיפור",
 	"wikistories-article-info-banner": "נא לבחור טקסט כדי להוסיף אותו לסיפור שלך",
-	"wikistories-article-info-expanded-banner": "נא ללחוץ על מילה בטקסט ולהחזיק אותה ואז לגרור את הסמנים כדי לבחור את כל הטקסט {{GENDER:|שאתה|שאת}} רוצה לסיפור שלך. כדי להוסיף טקסט, נא ללחוץ על \"להוסיף לסיפור\", שמוצג בתחתית המסך.",
+	"wikistories-article-info-expanded-banner": "נא ללחוץ על מילה בטקסט ולהחזיק אותה ואז לגרור את סמני ההחלקה כדי לבחור את כל הטקסט {{GENDER:|שאתה|שאת}} רוצה לסיפור שלך. כדי להוסיף טקסט, נא ללחוץ על \"להוסיף לסיפור\", שמוצג בתחתית המסך.",
 	"wikistories-navigator-next": "הבא",
 	"wikistories-alert-okbuttontext": "בסדר",
 	"wikistories-error-notenoughframes-title": "אין מספיק דפים",
