@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Atej2*",
-			"Gadarawamo"
+			"Gadarawamo",
+			"Samatics"
 		]
 	},
-	"wikistories-imagesearch-inputlabel": "Dín",
+	"wikistories-story-goto-publish": "Yinukọn",
 	"wikistories-story-edittext": "Jlado",
 	"wikistories-imageattribution-author-unknown": "Mẹhe kàn ẹn ma yin yinyọnẹn"
 }

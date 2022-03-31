@@ -4,12 +4,16 @@
 			"Bjankuloski06"
 		]
 	},
+	"wikistories-extensionname": "Википриказни",
 	"wikistories-extensiondesc": "Википриказни им овозможува на корисниците да создаваат кратки, нагледни и проверени информации од Викимедиините проекти",
 	"wikistories-hooks-createstory": "Создај приказна",
 	"wikistories-specialcreatestory-title": "Создај приказна",
 	"wikistories-specialcreatestory-loading": "Вчитувам...",
 	"wikistories-specialcreatestory-nojswarning": "Оваа службена страница бара JavaScript за да работи",
-	"wikistories-imagesearch-inputlabel": "Пребарај",
+	"wikistories-search-inputplaceholder": "Пребарај слики",
+	"wikistories-search-cuetext": "Пребарај слики поврзани со статијава.",
+	"wikistories-search-noresultstext": "Нема исход",
+	"wikistories-story-goto-publish": "Следно",
 	"wikistories-story-edittext": "Уреди",
 	"wikistories-imageattribution-author-unknown": "Непознат автор",
 	"wikistories-article-cancelselection": "Откажи",

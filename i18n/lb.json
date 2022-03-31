@@ -7,12 +7,19 @@
 	"wikistories-extensiondesc": "Wikistories erlaabt et Auteure fir kuerzt, visuellt an zouverlässegt Wëssen aus Wikimedia-Projeten zesummenzestellen.",
 	"wikistories-hooks-createstory": "Eng Geschicht ufänken",
 	"wikistories-specialcreatestory-loading": "Lueden...",
-	"wikistories-imagesearch-inputlabel": "Sichen",
+	"wikistories-search-inputplaceholder": "Biller sichen",
+	"wikistories-search-noresultstext": "Keng Resultater",
+	"wikistories-story-goto-publish": "Weider",
 	"wikistories-story-edittext": "Änneren",
 	"wikistories-imageattribution-author-unknown": "Auteur onbekannt",
 	"wikistories-article-cancelselection": "Ofbriechen",
 	"wikistories-article-loading": "Lueden...",
 	"wikistories-article-usetext": "Bei d'Geschicht derbäisetzen",
 	"wikistories-article-info-banner": "Text eraussiche fir bei Är Geschicht derbäizesetzen",
-	"wikistories-navigator-next": "Weider"
+	"wikistories-navigator-next": "Weider",
+	"wikistories-alert-okbuttontext": "OK",
+	"wikistories-error-notenoughframes-title": "Net genuch Säiten",
+	"wikistories-error-frameswithouttext-title": "Text feelt",
+	"wikistories-builder-publishform-header": "Wikistory verëffentlechen",
+	"wikistories-builder-publishform-publishbutton": "Verëffentlechen"
 }
