@@ -6,12 +6,13 @@ const initStoryViewer = function ( stories, storyId ) {
 	const storyViewerContainerClassName = 'ext-wikistories-viewer';
 	const $storyViewerContainer = $( '<div>' ).addClass( storyViewerContainerClassName );
 
-	// add Story Viewer container, remove if it existed
-	// @todo refactor Story Viewer component to be reusable
+	// update Story Viewer state when it existed
 	if ( $( '.' + storyViewerContainerClassName ).length ) {
-		$( '.' + storyViewerContainerClassName ).remove();
+		store.dispatch( 'setStoryId', storyId );
+		return;
 	}
 
+	// Add Story Viewer to the body
 	$( 'body' ).append( $storyViewerContainer );
 
 	// Setup Story View App
