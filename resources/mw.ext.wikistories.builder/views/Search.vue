@@ -143,35 +143,15 @@ module.exports = {
 
 	@keyframes ext-wikistories-search-loader {
 		0% {
-			transform: translateX( 0 );
+			left: 0;
 		}
 
 		50% {
-			transform: translateX( calc( 100vw - 45px ) );
+			left: calc( ~'100% - 130px' );
 		}
 
 		100% {
-			transform: translateX( 0 );
-		}
-	}
-
-	@keyframes ext-wikistories-search-loader-desktop {
-		0% {
-			transform: translateX( 0 );
-		}
-
-		50% {
-			transform: translateX( calc( 500px - 175px ) );
-		}
-
-		100% {
-			transform: translateX( 0 );
-		}
-	}
-
-	@media screen and ( min-width: 500px ) {
-		.ext-wikistories-storybuilder-search-loading-bar {
-			animation-name: ext-wikistories-search-loader-desktop;
+			left: 0;
 		}
 	}
 }
