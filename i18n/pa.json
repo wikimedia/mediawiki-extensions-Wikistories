@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"AnupamM"
+		]
+	},
+	"wikistories-confirmdialog-delete-title": "ਇਹ ਸਫ਼ਾ ਮਿਟਾਓ",
+	"wikistories-confirmdialog-delete-message": "ਇਸ ਨੂੰ ਤੁਹਾਡੀ ਕਹਾਣੀ ਤੋਂ ਪੱਕੇ ਤੌਰ 'ਤੇ ਹਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ",
+	"wikistories-confirmdialog-delete-accept": "ਮਿਟਾਓ",
+	"wikistories-confirmdialog-delete-cancel": "ਰੱਦ ਕਰੋ"
+}

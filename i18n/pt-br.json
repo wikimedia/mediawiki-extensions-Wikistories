@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"YuriNikolai"
+		]
+	},
+	"wikistories-hooks-createstory": "Criar uma história",
+	"wikistories-specialcreatestory-title": "Criar história",
+	"wikistories-specialcreatestory-loading": "Carregando...",
+	"wikistories-search-noresultstext": "Sem resultados",
+	"wikistories-story-goto-publish": "Próximo",
+	"wikistories-story-editdone": "Concluído",
+	"wikistories-imageattribution-author-unknown": "Autor desconhecido",
+	"wikistories-article-cancelselection": "Cancelar",
+	"wikistories-article-loading": "Carregando...",
+	"wikistories-navigator-next": "Próximo",
+	"wikistories-alert-okbuttontext": "Ok",
+	"wikistories-confirmdialog-delete-title": "Excluir esta página?",
+	"wikistories-confirmdialog-delete-message": "Ela será removida de sua história permanentemente",
+	"wikistories-confirmdialog-delete-accept": "Excluir",
+	"wikistories-confirmdialog-delete-cancel": "Cancelar",
+	"wikistories-error-frameswithouttext-title": "Texto Faltando",
+	"wikistories-builder-publishform-placeholder": "Insira título da história...",
+	"wikistories-builder-publishform-publishbutton": "Publicar",
+	"wikistories-builder-publishform-invalidtitle-empty": "Insira título da história",
+	"wikistories-builder-publishform-invalidtitle-format": "Título de história inválido",
+	"wikistories-builder-publishform-invalidtitle-duplicate": "Outra história com o mesmo título já existe. Por favor, escreva um título único para a história.",
+	"wikistories-builder-publishform-saveerror": "Um erro ocorreu ao publicar a história. Por favor tente novamente mais tarde."
+}
