@@ -37,5 +37,6 @@
 	"wikistories-builder-publishform-invalidtitle-format": "Ungültiger Titel der Geschichte",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Es gibt bereits eine andere Geschichte mit demselben Titel. Bitte schreibe einen eindeutigen Titel für die Geschichte.",
 	"wikistories-builder-publishform-saveerror": "Bei der Veröffentlichung der Geschichte ist ein Fehler aufgetreten. Bitte versuche es später noch einmal.",
-	"wikistories-discover-cta-text": "Geschichte erstellen"
+	"wikistories-discover-cta-text": "Geschichte erstellen",
+	"wikistories-storyviewer-next-story-button": "Nächste Geschichte lesen"
 }

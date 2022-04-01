@@ -5,10 +5,21 @@
 			"DiegoAmbrocio"
 		]
 	},
+	"wikistories-specialcreatestory-title": "Crear historia",
 	"wikistories-search-inputplaceholder": "Buscar imágenes",
 	"wikistories-search-cuetext": "Buscar imágenes relacionadas al artículo.",
 	"wikistories-search-noresultstext": "Sin resultados",
+	"wikistories-story-editdone": "Hecho",
+	"wikistories-alert-okbuttontext": "Aceptar",
+	"wikistories-confirmdialog-delete-title": "¿Eliminar esta página?",
+	"wikistories-confirmdialog-delete-accept": "Eliminar",
+	"wikistories-confirmdialog-delete-cancel": "Cancelar",
+	"wikistories-error-notenoughframes-title": "No hay suficientes páginas",
+	"wikistories-builder-publishform-header": "Publica wikistory",
+	"wikistories-builder-publishform-placeholder": "Introduce el título de la historia...",
 	"wikistories-builder-publishform-publishbutton": "Publicar",
+	"wikistories-builder-publishform-info": "Las historias publicadas estarán disponibles en la página de artículos.",
+	"wikistories-builder-publishform-invalidtitle-empty": "Introduce el título de la historia",
 	"wikistories-builder-publishform-invalidtitle-format": "Título de la historia inválido",
 	"wikistories-builder-publishform-saveerror": "Se ha producido un error al publicar la historia. Por favor, inténtalo de nuevo más tarde."
 }

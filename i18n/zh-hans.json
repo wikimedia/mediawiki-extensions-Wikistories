@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"NACHOgao3"
+			"NACHOgao3",
+			"沈澄心"
 		]
 	},
-	"wikistories-story-editdone": "完成"
+	"wikistories-story-editdone": "完成",
+	"wikistories-confirmdialog-delete-title": "删除本页？",
+	"wikistories-confirmdialog-delete-accept": "删除",
+	"wikistories-confirmdialog-delete-cancel": "取消"
 }

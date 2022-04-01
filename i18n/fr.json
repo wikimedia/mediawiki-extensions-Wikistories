@@ -40,5 +40,6 @@
 	"wikistories-builder-publishform-invalidtitle-format": "Titre de récit non valide",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Un autre récit avec le même titre existe déjà. Veuillez saisir un titre de récit unique.",
 	"wikistories-builder-publishform-saveerror": "Une erreur s’est produite en publiant le récit. Veuillez réessayer ultérieurement.",
-	"wikistories-discover-cta-text": "Créer un récit wiki"
+	"wikistories-discover-cta-text": "Créer un récit wiki",
+	"wikistories-storyviewer-next-story-button": "Lire l’histoire suivante"
 }
