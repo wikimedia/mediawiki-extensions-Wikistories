@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Norhorn"
+		]
+	},
+	"wikistories-search-inputplaceholder": "Αναζήτηση εικόνων",
+	"wikistories-alert-okbuttontext": "Εντάξει",
+	"wikistories-confirmdialog-delete-title": "Διαγραφή αυτής της σελίδας;",
+	"wikistories-confirmdialog-delete-accept": "Διαγραφή",
+	"wikistories-confirmdialog-delete-cancel": "Ακύρωση",
+	"wikistories-builder-publishform-publishbutton": "Δημοσίευση",
+	"wikistories-storyviewer-next-story-button": "Ανάγνωση επόμενης ιστορίας"
+}

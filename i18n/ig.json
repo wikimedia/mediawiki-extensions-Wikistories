@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Edith Nwobu",
-			"Izuchi Onyeike"
+			"Izuchi Onyeike",
+			"Pasjoesscc"
 		]
 	},
 	"wikistories-search-inputplaceholder": "Chọọ inyege",
 	"wikistories-search-cuetext": "Chọọ inyege metụtara ndebanye.",
 	"wikistories-search-noresultstext": "Mpụtara adịghị",
 	"wikistories-story-selecttext": "Họrọ okwu akụkọ na <span class=\"ext-wikistories-wikipedia\">Wikipedia</span>",
-	"wikistories-story-editdone": "Ọ gwụ"
+	"wikistories-story-editdone": "Ọ gwụ",
+	"wikistories-storyviewer-next-story-button": "Gụọ akụkọ na-esotenụ"
 }

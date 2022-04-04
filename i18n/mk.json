@@ -40,5 +40,6 @@
 	"wikistories-builder-publishform-invalidtitle-format": "Неважечки насов на приказна",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Веќе постои друга приказна со тој насов. Внесете друг.",
 	"wikistories-builder-publishform-saveerror": "Се јави грешка при објавувањето на приказната. Обидете се подоцна.",
-	"wikistories-discover-cta-text": "Создај википриказна"
+	"wikistories-discover-cta-text": "Создај википриказна",
+	"wikistories-storyviewer-next-story-button": "Следна приказна"
 }

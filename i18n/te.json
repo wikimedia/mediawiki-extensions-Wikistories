@@ -11,6 +11,10 @@
 	"wikistories-search-noresultstext": "ఫలితాలేమీ లేవు",
 	"wikistories-story-editdone": "పూర్తయింది",
 	"wikistories-alert-okbuttontext": "సరే",
+	"wikistories-confirmdialog-delete-title": "ఈ పేజీని తొలగించాలా?",
+	"wikistories-confirmdialog-delete-message": "దాన్ని మీ కథ నుండి తీసేస్తాం",
+	"wikistories-confirmdialog-delete-accept": "తొలగించు",
+	"wikistories-confirmdialog-delete-cancel": "రద్దుచేయి",
 	"wikistories-error-notenoughframes-title": "సరిపడినన్ని పేజీలు లేవు",
 	"wikistories-error-notenoughframes-message": "వికీకథలో కనీసం {{PLURAL:$1|$1 పేజీ|$1 పేజీలు}} ఉండాలి. ప్రచురించడానికి మరో {{PLURAL:$2|పేజీని|$2 పేజీలను}} చేర్చండి.",
 	"wikistories-error-frameswithouttext-title": "లోపించిన పాఠ్యం",
@@ -22,5 +26,6 @@
 	"wikistories-builder-publishform-invalidtitle-empty": "కథ శీర్షిక ఇవ్వండి",
 	"wikistories-builder-publishform-invalidtitle-format": "చెల్లని కథ శీర్షిక",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "ఇదే శీర్షికతో మరో కథ ఉంది. ఎన్నడూ వాడని శీర్షికను పెట్టండి.",
-	"wikistories-builder-publishform-saveerror": "కథనాన్ని ప్రచురించేటపుడు లోపం జరిగింది. కాస్సేపాగి మళ్ళీ ప్రయత్నించండి."
+	"wikistories-builder-publishform-saveerror": "కథనాన్ని ప్రచురించేటపుడు లోపం జరిగింది. కాస్సేపాగి మళ్ళీ ప్రయత్నించండి.",
+	"wikistories-storyviewer-next-story-button": "తరువాతి కథనం చదవండి"
 }

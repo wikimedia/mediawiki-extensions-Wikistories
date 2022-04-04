@@ -5,7 +5,8 @@
 			"Verdy p"
 		]
 	},
-	"wikistories-extensiondesc": "''Wikistories'' permet à des rédacteurs de créer des récits courts, visuels et fiables portant sur les connaissances des projets de Wikimedia.",
+	"wikistories-extensionname": "Wikirécits",
+	"wikistories-extensiondesc": "Wikirécits (''Wikistories'') permet à des rédacteurs de créer des récits courts, visuels et fiables portant sur les connaissances des projets de Wikimedia.",
 	"wikistories-hooks-createstory": "Créer un récit",
 	"wikistories-specialcreatestory-title": "Créer un récit",
 	"wikistories-specialcreatestory-loading": "Chargement en cours...",
@@ -41,5 +42,5 @@
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Un autre récit avec le même titre existe déjà. Veuillez saisir un titre de récit unique.",
 	"wikistories-builder-publishform-saveerror": "Une erreur s’est produite en publiant le récit. Veuillez réessayer ultérieurement.",
 	"wikistories-discover-cta-text": "Créer un récit wiki",
-	"wikistories-storyviewer-next-story-button": "Lire l’histoire suivante"
+	"wikistories-storyviewer-next-story-button": "Lire le récit suivant"
 }

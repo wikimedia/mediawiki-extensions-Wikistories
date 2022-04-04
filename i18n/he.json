@@ -39,5 +39,6 @@
 	"wikistories-builder-publishform-invalidtitle-format": "כותרת סיפור בלתי־תקינה",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "סיפור אחר עם אותה כותרת כבר קיים. נא לכתוב כותרת סיפור ייחודית.",
 	"wikistories-builder-publishform-saveerror": "אירעה שגיאה באות פרסום הסיפור. נא לנסות שוב מאוחר יותר.",
-	"wikistories-discover-cta-text": "יצירת סיפור ויקי"
+	"wikistories-discover-cta-text": "יצירת סיפור ויקי",
+	"wikistories-storyviewer-next-story-button": "קריאת הסיפור הבא"
 }

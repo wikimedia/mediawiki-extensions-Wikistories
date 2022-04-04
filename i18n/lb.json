@@ -10,6 +10,7 @@
 	"wikistories-search-inputplaceholder": "Biller sichen",
 	"wikistories-search-noresultstext": "Keng Resultater",
 	"wikistories-story-goto-publish": "Weider",
+	"wikistories-story-editdone": "Fäerdeg",
 	"wikistories-imageattribution-author-unknown": "Auteur onbekannt",
 	"wikistories-article-cancelselection": "Ofbriechen",
 	"wikistories-article-loading": "Lueden...",
@@ -20,5 +21,6 @@
 	"wikistories-error-notenoughframes-title": "Net genuch Säiten",
 	"wikistories-error-frameswithouttext-title": "Text feelt",
 	"wikistories-builder-publishform-header": "Wikistory verëffentlechen",
-	"wikistories-builder-publishform-publishbutton": "Verëffentlechen"
+	"wikistories-builder-publishform-publishbutton": "Verëffentlechen",
+	"wikistories-storyviewer-next-story-button": "Nächst Geschicht liesen"
 }

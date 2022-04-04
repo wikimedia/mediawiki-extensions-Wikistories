@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"YuriNikolai"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "O espaço nominal ($1) não tem suporte neste ponto da API. Histórias só podem ser associadas com artigos no espaço nominal principal."
+}
