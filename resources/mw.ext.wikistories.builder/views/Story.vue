@@ -1,17 +1,23 @@
 <template>
 	<div class="ext-wikistories-storybuilder-story">
-		<div class="ext-wikistories-storybuilder-story-delete" @click="showConfirmationDialog">
-			X
-		</div>
 		<current-frame
 			@select-text="showArticlePopup"
 			@edit-text="handleTextEditFocus"
 		></current-frame>
-		<div
-			v-show="viewPublishButton"
-			class="ext-wikistories-storybuilder-story-publish-button"
-			@click="showPublishPopup"
-		></div>
+		<div class="ext-wikistories-storybuilder-story-topbar"></div>
+		<dots-menu v-show="!isEditingText" class="ext-wikistories-storybuilder-story-menu">
+			<dots-menu-item
+				:text="$i18n( 'wikistories-story-replaceimage' ).text()"
+				route-to="/search/one"
+			></dots-menu-item>
+			<dots-menu-item
+				:text="$i18n( 'wikistories-story-deleteframe' ).text()"
+				@click="showDeleteFrameConfirmationDialog"
+			></dots-menu-item>
+			<!-- Not localizing the "publish" string since it will be replaced by an arrow -->
+			<dots-menu-item text="Publish" @click="showPublishPopup">
+			</dots-menu-item>
+		</dots-menu>
 		<frames></frames>
 
 		<popup v-if="viewArticlePopup" @overlay-click="hideArticlePopup">
@@ -27,11 +33,11 @@
 			{{ alert.message }}
 		</alert>
 		<confirm-dialog
-			v-if="viewConfirmDialog"
+			v-if="viewDeleteFrameConfirmDialog"
 			:title="$i18n( 'wikistories-confirmdialog-delete-title' ).text()"
 			:message="$i18n( 'wikistories-confirmdialog-delete-message' ).text()"
 			:accept="$i18n( 'wikistories-confirmdialog-delete-accept' ).text()"
-			@cancel="hideConfirmDialog"
+			@cancel="hideDeleteFrameConfirmDialog"
 			@confirm="deleteFrame">
 		</confirm-dialog>
 	</div>
@@ -47,6 +53,8 @@ const Popup = require( '../components/Popup.vue' );
 const PublishForm = require( '../components/PublishForm.vue' );
 const Alert = require( '../components/Alert.vue' );
 const ConfirmDialog = require( '../components/ConfirmDialog.vue' );
+const DotsMenu = require( '../components/DotsMenu.vue' );
+const DotsMenuItem = require( '../components/DotsMenuItem.vue' );
 
 // @vue/component
 module.exports = {
@@ -58,14 +66,17 @@ module.exports = {
 		popup: Popup,
 		'publish-form': PublishForm,
 		alert: Alert,
-		'confirm-dialog': ConfirmDialog
+		'confirm-dialog': ConfirmDialog,
+		// x-menu because 'menu' is a reserved HTML word
+		'dots-menu': DotsMenu,
+		'dots-menu-item': DotsMenuItem
 	},
 	data: function () {
 		return {
 			viewArticlePopup: false,
 			viewPublishPopup: false,
-			viewConfirmDialog: false,
-			viewPublishButton: true,
+			viewDeleteFrameConfirmDialog: false,
+			isEditingText: false,
 			alert: {
 				show: false,
 				title: '',
@@ -96,11 +107,11 @@ module.exports = {
 		hidePublishPopup: function () {
 			this.viewPublishPopup = false;
 		},
-		showConfirmationDialog: function () {
-			this.viewConfirmDialog = true;
+		showDeleteFrameConfirmationDialog: function () {
+			this.viewDeleteFrameConfirmDialog = true;
 		},
-		hideConfirmDialog: function () {
-			this.viewConfirmDialog = false;
+		hideDeleteFrameConfirmDialog: function () {
+			this.viewDeleteFrameConfirmDialog = false;
 		},
 		showNotEnoughFrameAlert: function ( min, missing ) {
 			this.alert.title = this.$i18n( 'wikistories-error-notenoughframes-title' ).text();
@@ -120,11 +131,11 @@ module.exports = {
 			this.alert.show = false;
 		},
 		handleTextEditFocus: function ( editing ) {
-			this.viewPublishButton = !editing;
+			this.isEditingText = editing;
 		},
 		deleteFrame: function () {
 			this.removeFrame();
-			this.viewConfirmDialog = false;
+			this.viewDeleteFrameConfirmDialog = false;
 		}
 	} )
 };
@@ -137,29 +148,19 @@ module.exports = {
 	overflow: hidden;
 	position: relative;
 
-	&-publish-button {
+	&-topbar {
 		position: absolute;
-		top: 24px;
-		right: 24px;
-		background-image: url( ../images/back.svg );
-		width: 26px;
-		height: 26px;
-		cursor: pointer;
-		transform: rotate( 180deg );
-		background-color: #fff;
-		background-repeat: no-repeat;
-		background-position: center;
-		border-radius: 13px;
+		top: 0;
+		right: 0;
+		left: 0;
+		height: 40px;
+		background: linear-gradient( to bottom, rgba( 0, 0, 0, 0.5 ), rgba( 255, 255, 255, 0 ) );
 	}
 
-	&-delete {
+	&-menu {
 		position: absolute;
-		top: 10px;
-		left: 10px;
-		height: 37px;
-		width: 16px;
-		z-index: 300;
-		background-color: #fff;
+		top: 0;
+		right: 0;
 	}
 }
 </style>

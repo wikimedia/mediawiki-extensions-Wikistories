@@ -20,6 +20,8 @@
 	"wikistories-story-goto-publish": "Text for a button in the Story view to continue to publish step\n{{identical|Next}}",
 	"wikistories-story-selecttext": "Text used for an text selection button in the CurrentFrame view",
 	"wikistories-story-editdone": "Text used for a done selection button in the CurrentFrame view when editing story text",
+	"wikistories-story-replaceimage": "Text used for the menu option to replace an image in the Story view",
+	"wikistories-story-deleteframe": "Text used for the menu option to delete a story frame in the Story view",
 	"wikistories-imageattribution-author-unknown": "Text used in the ImageAttribution component when the image author is unknown",
 	"wikistories-article-cancelselection": "Text for cancel button used in the Article view\n{{identical|Cancel}}",
 	"wikistories-article-loading": "Text used for a header in the Article view as the article loads",
