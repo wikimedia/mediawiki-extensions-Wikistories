@@ -17,6 +17,8 @@
 	"wikistories-story-goto-publish": "Suivant",
 	"wikistories-story-selecttext": "Sélectionner le texte d’un récit depuis <span class=\"ext-wikistories-wikipedia\">Wikipédia</span>",
 	"wikistories-story-editdone": "Terminé",
+	"wikistories-story-replaceimage": "Remplacer cette image",
+	"wikistories-story-deleteframe": "Supprimer cette page",
 	"wikistories-imageattribution-author-unknown": "Auteur inconnu",
 	"wikistories-article-cancelselection": "Annuler",
 	"wikistories-article-loading": "Chargement en cours...",
