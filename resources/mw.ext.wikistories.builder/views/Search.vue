@@ -48,7 +48,7 @@ module.exports = {
 		mode: { type: String, default: 'many' }
 	},
 	computed: mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle' ] ),
-	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'resetFrame', 'setFrameImage' ] ), {
+	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'addFrames', 'setFrameImage' ] ), {
 		onSubmit: function ( e ) { return e.preventDefault(); },
 		onInput: function ( e ) {
 			this.search( e.target.value );
@@ -66,18 +66,17 @@ module.exports = {
 			}
 		},
 		editStory: function () {
-			const array = this.selection.map( function ( id, index ) {
+			const array = this.selection.map( function ( id ) {
 				const item = this.results.find(
 					function ( result ) { return result.id === id; }
 				);
 				return {
-					id: index + 1,
 					img: item.thumb,
 					imgTitle: item.title,
 					attribution: item.attribution
 				};
 			}.bind( this ) );
-			this.resetFrame( array );
+			this.addFrames( array );
 			this.$router.push( { name: 'Story' } );
 		}
 	} ),

@@ -1,15 +1,18 @@
 <template>
 	<div class="ext-wikistories-frames">
-		<div
-			v-for="frame in thumbnails"
-			:key="frame.id"
-			class="ext-wikistories-frame"
-			:class="{ 'ext-wikistories-selected-frame': frame.selected }"
-			:style="frame.style"
-			@click="selectFrame( frame.id )"></div>
-		<div class="ext-wikistories-frame ext-wikistories-btn-add-frame" @click="addFrame">
-			+
+		<div class="ext-wikistories-frames-thumbnails">
+			<div
+				v-for="( frame, index ) in thumbnails"
+				:key="index"
+				class="ext-wikistories-frames-thumbnails-frame"
+				:class="{ 'ext-wikistories-frames-thumbnails-frame-selected': frame.selected }"
+				:style="frame.style"
+				@click="selectFrame( index )"
+			></div>
 		</div>
+		<router-link to="/search/many" class="ext-wikistories-frames-btn-add">
+			+
+		</router-link>
 	</div>
 </template>
 
@@ -21,7 +24,7 @@ const mapActions = require( 'vuex' ).mapActions;
 module.exports = {
 	name: 'Frames',
 	computed: mapGetters( [ 'thumbnails' ] ),
-	methods: mapActions( [ 'selectFrame', 'addFrame' ] )
+	methods: mapActions( [ 'selectFrame' ] )
 };
 </script>
 
@@ -29,39 +32,52 @@ module.exports = {
 .ext-wikistories {
 	&-frames {
 		width: 100%;
-		padding: 14px 0;
 		display: flex;
 		flex-direction: row;
-		align-items: center;
-		overflow: hidden;
 		border-top: solid #000 1px;
-	}
 
-	&-frame {
-		width: 28px;
-		height: 36px;
-		margin-left: 15px;
-		flex: none;
-		cursor: pointer;
-	}
+		&-thumbnails {
+			padding: 12px 0;
+			flex-grow: 1;
+			overflow: scroll;
+			display: flex;
+			flex-direction: row;
 
-	&-btn-add-frame {
-		display: grid;
-		place-items: center;
-		background-size: 20px;
-		border: 1px dashed #000;
-		box-sizing: border-box;
-		border-radius: 2px;
-		font-size: 24px;
-		text-align: center;
-		vertical-align: middle;
-		margin-left: auto;
-		margin-right: 15px;
-	}
+			&-frame {
+				width: 28px;
+				height: 36px;
+				margin-left: 12px;
+				cursor: pointer;
+				flex-shrink: 0;
 
-	&-selected-frame {
-		outline: #36c auto 4px;
-		outline-offset: 2px;
+				&:last-of-type {
+					margin-right: 12px;
+				}
+
+				&-selected {
+					outline: #36c auto 4px;
+					outline-offset: 2px;
+				}
+			}
+		}
+
+		&-btn-add {
+			width: 28px;
+			height: 36px;
+			margin: 12px;
+			cursor: pointer;
+			border: 1px dashed #000;
+			border-radius: 2px;
+			font-size: 24px;
+			line-height: 32px;
+			text-align: center;
+			flex-shrink: 0;
+
+			&:active,
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 }
 </style>

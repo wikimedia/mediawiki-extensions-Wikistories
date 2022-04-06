@@ -1,8 +1,7 @@
 const router = require( '../router.js' );
 
-const INITIAL_FRAME_ID = 1;
 const MIN_FRAMES = mw.config.get( 'wgWikistoriesMinFrames' );
-const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
+// const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
 
 const makeFrameStyle = f => {
 	return f.img ?
@@ -24,93 +23,54 @@ const strip = ( html ) => {
 	return doc.body.textContent || '';
 };
 
-const getNextFrameId = state => {
-	if ( state.frames && state.frames.length > 0 ) {
-		// Find the max frame id and increment by 1
-		return state.frames.reduce( ( max, f ) => Math.max( max, f.id ), INITIAL_FRAME_ID ) + 1;
-	}
-	// No frames yet, start with id=1
-	return INITIAL_FRAME_ID;
-};
-
 module.exports = {
 	state: {
-		storyTitle: null,
 		fromArticle: mw.config.get( 'wgWikistoriesFromArticle' ),
-		currentFrameId: INITIAL_FRAME_ID,
-		frames: [
-			{
-				id: INITIAL_FRAME_ID,
-				img: null,
-				text: '',
-				textFromArticle: '',
-				imgTitle: '',
-				attribution: null
-			}
-		]
+		currentFrameIndex: null,
+		frames: []
 	},
 	mutations: {
-		selectFrame: ( state, id ) => { state.currentFrameId = id; },
-		addFrame: ( state ) => {
-			if ( state.frames.length === MAX_FRAMES ) {
-				return;
-			}
-			const newId = getNextFrameId( state );
-			state.frames.push( { text: '', img: '', imgTitle: '', id: newId, attribution: null } );
-			state.currentFrameId = newId;
-		},
+		selectFrame: ( state, index ) => { state.currentFrameIndex = index; },
 		removeFrame: ( state ) => {
-			const f = state.frames.find( frame => frame.id === state.currentFrameId );
-			const index = state.frames.indexOf( f );
-			state.frames.splice( index, 1 );
+			state.frames.splice( state.currentFrameIndex, 1 );
 			if ( state.frames.length < 1 ) {
 				router.replace( '/search' );
 			} else {
-				const newCurrentFrame = state.frames.length === index ? index - 1 : index;
-				state.currentFrameId = state.frames[ newCurrentFrame ].id;
+				if ( state.frames.length === state.currentFrameIndex ) {
+					state.currentFrameIndex--;
+				}
 			}
 		},
-		resetFrame: ( state, frames ) => {
-			state.frames = frames;
-			state.currentFrameId = frames[ frames.length - 1 ].id;
+		addFrames: ( state, frames ) => {
+			const newSelectedFrameIndex = state.frames.length;
+			state.frames = state.frames.concat( frames );
+			state.currentFrameIndex = newSelectedFrameIndex;
 		},
 		setText: ( state, text ) => {
-			const f = state.frames.find( frame => frame.id === state.currentFrameId );
-			f.text = text;
+			state.frames[ state.currentFrameIndex ].text = text;
 		},
 		setTextFromArticle: ( state, textFromArticle ) => {
-			const f = state.frames.find( frame => frame.id === state.currentFrameId );
-			f.textFromArticle = textFromArticle;
+			state.frames[ state.currentFrameIndex ].textFromArticle = textFromArticle;
 		},
 		setImg: ( state, img ) => {
-			const f = state.frames.find( frame => frame.id === state.currentFrameId );
-			f.img = img;
+			state.frames[ state.currentFrameIndex ].img = img;
 		},
 		setImgTitle: ( state, title ) => {
-			const f = state.frames.find( frame => frame.id === state.currentFrameId );
-			f.imgTitle = title;
+			state.frames[ state.currentFrameIndex ].imgTitle = title;
 		},
 		setImgAttribution: ( state, attribution ) => {
-			// TODO: clarify that this should really find a frame by attribution id
-			const f = state.frames.find( frame => frame.id === attribution.id );
-			f.attribution = attribution;
-		},
-		updateStoryTitle: ( state, title ) => {
-			state.storyTitle = title;
+			state.frames[ state.currentFrameIndex ].attribution = attribution;
 		}
 	},
 	actions: {
 		selectFrame: ( context, id ) => {
 			context.commit( 'selectFrame', id );
 		},
-		addFrame: ( context ) => {
-			context.commit( 'addFrame' );
-		},
 		removeFrame: ( context ) => {
 			context.commit( 'removeFrame' );
 		},
-		resetFrame: ( context, frames ) => {
-			context.commit( 'resetFrame', frames );
+		addFrames: ( context, frames ) => {
+			context.commit( 'addFrames', frames );
 		},
 		setText: ( context, text ) => {
 			context.commit( 'setText', text );
@@ -123,9 +83,6 @@ module.exports = {
 		},
 		setImgTitle: ( context, title ) => {
 			context.commit( 'setImgTitle', title );
-		},
-		updateStoryTitle: ( context, title ) => {
-			context.commit( 'updateStoryTitle', title );
 		},
 		fetchImgAttribution: function async( context, image ) {
 			const api = new mw.Api();
@@ -157,9 +114,9 @@ module.exports = {
 	},
 	getters: {
 		thumbnails: ( state ) => {
-			return state.frames.map( f => {
+			return state.frames.map( ( f, index ) => {
 				const newFrame = $.extend( {}, f );
-				if ( f.id === state.currentFrameId ) {
+				if ( index === state.currentFrameIndex ) {
 					newFrame.selected = true;
 				}
 				newFrame.style = makeFrameStyle( f );
@@ -167,26 +124,11 @@ module.exports = {
 			} );
 		},
 		currentFrame: ( state ) => {
-			const isCoverFrame = state.currentFrameId === 0;
-			const f = isCoverFrame ?
-				state.frames[ 0 ] :
-				state.frames.find( frame => frame.id === state.currentFrameId );
+			const f = state.frames[ state.currentFrameIndex ];
 			return {
-				text: isCoverFrame ? state.storyTitle : f.text,
-				textFromArticle: isCoverFrame ? state.storyTitle : f.textFromArticle,
+				text: f.text,
 				style: makeFrameStyle( f ),
-				noImage: f.img === '',
-				id: state.currentFrameId,
-				imgAttribution: f.attribution,
-				imgTitle: isCoverFrame ? state.storyTitle : f.imgTitle
-			};
-		},
-		storyLength: state => state.frames.length,
-		storyViewerLength: state => state.frames.length + 1,
-		storyInfo: ( state ) => {
-			return {
-				title: state.storyTitle,
-				creationDate: state.creationDate
+				imgAttribution: f.attribution
 			};
 		},
 		missingFrames: ( state ) => {
