@@ -16,6 +16,8 @@
 	"wikistories-story-goto-publish": "Следно",
 	"wikistories-story-selecttext": "Изберете текст за приказната од <span class=\"ext-wikistories-wikipedia\">Википедија</span>",
 	"wikistories-story-editdone": "Готово",
+	"wikistories-story-replaceimage": "Замени ја сликава",
+	"wikistories-story-deleteframe": "Избриши ја страницава",
 	"wikistories-imageattribution-author-unknown": "Непознат автор",
 	"wikistories-article-cancelselection": "Откажи",
 	"wikistories-article-loading": "Вчитувам...",

@@ -15,6 +15,8 @@
 	"wikistories-story-goto-publish": "הבא",
 	"wikistories-story-selecttext": "{{GENDER:|בחר|בחרי}} את טקסט הסיפור מתוך <span class=\"ext-wikistories-wikipedia\">ויקיפדיה</span>",
 	"wikistories-story-editdone": "בוצע",
+	"wikistories-story-replaceimage": "החלפת התמונה הזאת",
+	"wikistories-story-deleteframe": "מחיקת התמונה הזאת",
 	"wikistories-imageattribution-author-unknown": "מחבר לא ידוע",
 	"wikistories-article-cancelselection": "ביטול",
 	"wikistories-article-loading": "טעינה...",
