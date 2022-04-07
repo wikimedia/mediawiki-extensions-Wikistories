@@ -5,7 +5,8 @@
 			"Verdy p"
 		]
 	},
-	"wikistories-extensiondesc": "''Wikistories'' permet à des rédacteurs de créer des récits courts, visuels et fiables portant sur les connaissances des projets de Wikimedia.",
+	"wikistories-extensionname": "Wikirécits",
+	"wikistories-extensiondesc": "Wikirécits (''Wikistories'') permet à des rédacteurs de créer des récits courts, visuels et fiables portant sur les connaissances des projets de Wikimedia.",
 	"wikistories-hooks-createstory": "Créer un récit",
 	"wikistories-specialcreatestory-title": "Créer un récit",
 	"wikistories-specialcreatestory-loading": "Chargement en cours...",
