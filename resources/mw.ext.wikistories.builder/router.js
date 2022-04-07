@@ -1,6 +1,8 @@
 const VueRouter = require( '../lib/vue-router/vue-router.common.js' );
 const Story = require( './views/Story.vue' );
 const Search = require( './views/Search.vue' );
+const PublishForm = require( './views/PublishForm.vue' );
+const Article = require( './views/Article.vue' );
 
 window.process = {
 	env: {
@@ -19,6 +21,16 @@ const routes = [
 		name: 'Search',
 		component: Search,
 		props: true
+	},
+	{
+		path: '/publish',
+		name: 'PublishForm',
+		component: PublishForm
+	},
+	{
+		path: '/article',
+		name: 'Article',
+		component: Article
 	}
 ];
 

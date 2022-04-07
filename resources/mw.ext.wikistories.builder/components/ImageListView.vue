@@ -69,16 +69,14 @@ module.exports = {
 @import 'mediawiki.ui/variables.less';
 
 .ext-wikistories-imagelistview {
-	width: 100%;
 	height: 100%;
 	background-color: #fff;
-	text-align: left;
 	overflow: scroll;
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-wrap: nowrap;
 	flex-wrap: nowrap;
-	margin: 6px 0 16px;
+	margin: 6px 10px 16px 10px;
 	flex-grow: 1;
 
 	&__list-wrapper {

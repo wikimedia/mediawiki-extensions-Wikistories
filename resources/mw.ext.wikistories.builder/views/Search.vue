@@ -1,8 +1,10 @@
 <template>
 	<div class="ext-wikistories-storybuilder-search">
 		<navigator
-			:next="editStory"
-			:info="selection.length"
+			:title="navigatorMessage"
+			:forward-button-visible="forwardVisibility"
+			@backward="onClose"
+			@forward="editStory"
 		></navigator>
 		<form class="ext-wikistories-storybuilder-search-form" @submit="onSubmit( $event )">
 			<input
@@ -14,7 +16,7 @@
 			<div class="ext-wikistories-storybuilder-search-form-icon"></div>
 			<div
 				v-if="query"
-				class="ext-wikistories-storybuilder-search-form-close"
+				class="ext-wikistories-storybuilder-search-form-clear"
 				@click="onClear"></div>
 			<div v-if="loading" class="ext-wikistories-storybuilder-search-loading-bar"></div>
 		</form>
@@ -47,7 +49,18 @@ module.exports = {
 	props: {
 		mode: { type: String, default: 'many' }
 	},
-	computed: mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle' ] ),
+	computed: $.extend( mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle' ] ), {
+		navigatorMessage: function () {
+			if ( this.selection.length === 0 ) {
+				return this.$i18n( 'wikistories-search-navigator-title' ).text();
+			}
+			return this.$i18n( 'wikistories-search-navigator-title-selected-info' )
+				.params( [ this.selection.length ] ).text();
+		},
+		forwardVisibility: function () {
+			return this.selection.length > 0;
+		}
+	} ),
 	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'addFrames', 'setFrameImage' ] ), {
 		onSubmit: function ( e ) { return e.preventDefault(); },
 		onInput: function ( e ) {
@@ -56,6 +69,14 @@ module.exports = {
 		onClear: function ( e ) {
 			e.preventDefault();
 			this.clear();
+		},
+		onClose: function () {
+			if ( this.$router.history.stack.length === 1 ) {
+				const titleObj = mw.Title.newFromText( this.fromArticle );
+				window.location = titleObj.getUrl();
+			} else {
+				this.$router.back();
+			}
 		},
 		onItemSelect: function ( data ) {
 			if ( this.mode === 'one' ) {
@@ -89,7 +110,6 @@ module.exports = {
 <style lang="less">
 .ext-wikistories-storybuilder-search {
 	height: 100%;
-	padding: 0 15px 0 15px;
 	background-color: #fff;
 	display: flex;
 	flex-direction: column;
@@ -98,6 +118,7 @@ module.exports = {
 		position: relative;
 		text-align: left;
 		padding: 10px 0;
+		margin: 0 15px 0 15px;
 
 		&-query {
 			height: 36px;
@@ -117,8 +138,8 @@ module.exports = {
 			left: 10px;
 		}
 
-		&-close {
-			background-image: url( ../images/close.svg );
+		&-clear {
+			background-image: url( ../images/clear.svg );
 			width: 20px;
 			height: 20px;
 			position: absolute;

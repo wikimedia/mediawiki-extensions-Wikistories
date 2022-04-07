@@ -1,34 +1,37 @@
 <template>
 	<div class="ext-wikistories-publishform">
-		<div class="ext-wikistories-publishform-header">
-			<span @click="$emit( 'cancel-publish' )">X</span>
-			<span>{{ $i18n( 'wikistories-builder-publishform-header' ).text() }}</span>
-		</div>
-		<textarea
-			ref="storyTitleTextarea"
-			v-model="storyTitle"
-			:placeholder="$i18n( 'wikistories-builder-publishform-placeholder' ).text()"
-		></textarea>
-		<div class="ext-wikistories-publishform-error">
-			{{ error }}
-		</div>
-		<primary-button
-			:text="$i18n( 'wikistories-builder-publishform-publishbutton' ).text()"
-			@click="onSaveClick"
-		></primary-button>
-		<div class="ext-wikistories-publishform-info">
-			{{ $i18n( 'wikistories-builder-publishform-info' ).text() }}
-		</div>
-		<div class="ext-wikistories-publishform-license">
-			<!-- TODO: add license here-->
-			Licence
+		<navigator
+			:title="$i18n( 'wikistories-builder-publishform-navigator-title' ).text()"
+			backward-button-style="back"
+			:forward-button-visible="true"
+			:forward-button-text="$i18n( 'wikistories-builder-publishform-publishbutton' ).text()"
+			@backward="onBack"
+			@forward="onSaveClick"
+		></navigator>
+		<div class="ext-wikistories-publishform-content">
+			<textarea
+				ref="storyTitleTextarea"
+				v-model="storyTitle"
+				class="ext-wikistories-publishform-content-textarea"
+				:placeholder="$i18n( 'wikistories-builder-publishform-placeholder' ).text()"
+			></textarea>
+			<div class="ext-wikistories-publishform-content-error">
+				{{ error }}
+			</div>
+			<div class="ext-wikistories-publishform-content-info">
+				{{ $i18n( 'wikistories-builder-publishform-info' ).text() }}
+			</div>
+			<div class="ext-wikistories-publishform-content-license">
+				<!-- TODO: add license here-->
+				Licence
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 const mapGetters = require( 'vuex' ).mapGetters;
-const PrimaryButton = require( '../components/PrimaryButton.vue' );
+const Navigator = require( '../components/Navigator.vue' );
 const saveStory = require( '../api/saveStory.js' );
 const validateTitle = require( '../util/validateTitle.js' );
 const NS_STORY = mw.config.get( 'wgNamespaceIds' ).story;
@@ -37,9 +40,8 @@ const NS_STORY = mw.config.get( 'wgNamespaceIds' ).story;
 module.exports = {
 	name: 'PublishForm',
 	components: {
-		'primary-button': PrimaryButton
+		navigator: Navigator
 	},
-	emits: [ 'cancel-publish' ],
 	data: function () {
 		return {
 			storyTitle: '',
@@ -74,6 +76,9 @@ module.exports = {
 					}.bind( this )
 				);
 			}.bind( this ) );
+		},
+		onBack: function () {
+			this.$router.back();
 		}
 	},
 	mounted: function () {
@@ -84,39 +89,42 @@ module.exports = {
 
 <style lang="less">
 .ext-wikistories-publishform {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 20px;
-	height: 100%;
-	gap: 20px;
+	position: relative;
+	height: 94%;
 
-	&-header {
-		border-bottom: 1px solid #000;
-		padding-bottom: 5px;
-		width: 100%;
-	}
-
-	textarea {
-		width: 100%;
-		border: 0;
-	}
-
-	&-error {
-		color: #a22;
-		min-height: 40px;
-	}
-
-	&-info {
-		font-size: 0.7em;
-	}
-
-	&-license {
-		margin: auto 0 20px 0;
-		font-size: 0.5em;
-		background-color: #919fb9;
+	&-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		padding: 20px;
-		width: 100%;
+		height: 100%;
+
+		&-textarea {
+			width: 100%;
+			border: 0;
+			border: 1px solid #a2a9b1;
+			box-sizing: border-box;
+			border-radius: 2px;
+			resize: none;
+		}
+
+		&-error {
+			color: #a22;
+			min-height: 40px;
+			text-align: center;
+		}
+
+		&-info {
+			font-size: 0.7em;
+		}
+
+		&-license {
+			margin: auto 0 20px 0;
+			font-size: 0.5em;
+			background-color: #919fb9;
+			padding: 20px;
+			width: 100%;
+		}
 	}
 }
 </style>

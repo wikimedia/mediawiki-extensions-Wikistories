@@ -1,5 +1,11 @@
 <template>
 	<div class="ext-wikistories-article-view">
+		<navigator
+			:title="$i18n( 'wikistories-article-navigator-title' ).text()"
+			:forward-button-visible="false"
+			backward-button-style="back"
+			@backward="onBack"
+		></navigator>
 		<div
 			v-if="currentArticle.html"
 			class="ext-wikistories-article-view-content"
@@ -40,6 +46,7 @@
 <script>
 const mapActions = require( 'vuex' ).mapActions;
 const mapGetters = require( 'vuex' ).mapGetters;
+const Navigator = require( '../components/Navigator.vue' );
 
 const isNodeWithinArticleView = ( node ) => {
 	return document.querySelector( '.ext-wikistories-article-view-content' ).contains( node );
@@ -48,10 +55,12 @@ const isNodeWithinArticleView = ( node ) => {
 // @vue/component
 module.exports = {
 	name: 'Article', // eslint-disable-line vue/no-reserved-component-names
+	components: {
+		navigator: Navigator
+	},
 	props: {
 		article: { type: String, required: false, default: '' }
 	},
-	emits: [ 'textSelected' ],
 	data: function () {
 		return {
 			selectedText: null,
@@ -93,10 +102,13 @@ module.exports = {
 			this.hideSelectionToolbar();
 			this.setTextFromArticle( this.selectedText );
 			this.setText( this.selectedText );
-			this.$emit( 'textSelected' );
+			this.$router.push( { name: 'Story' } );
 		},
 		onDismiss: function () {
 			this.hideSelectionToolbar();
+		},
+		onBack: function () {
+			this.$router.back();
 		}
 	} ),
 	created: function () {
