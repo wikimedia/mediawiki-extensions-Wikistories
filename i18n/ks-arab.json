@@ -1,11 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
+			"Iflaq",
 			"Tajamul9"
 		]
 	},
+	"wikistories-search-inputplaceholder": "شَکلہٕ ژھٲنٛڈِیو",
+	"wikistories-search-noresultstext": "بے نٕتیٖجہٕ",
+	"wikistories-story-deleteframe": "یہِ صفہٕ مِٹٲوِیو؟",
 	"wikistories-confirmdialog-delete-title": "یہِ صفہٕ مِٹٲوِیو؟",
 	"wikistories-confirmdialog-delete-accept": "مِٹٲیو",
-	"wikistories-confirmdialog-delete-cancel": "مَنسوخت",
+	"wikistories-confirmdialog-delete-cancel": "مَنسوخ",
 	"wikistories-storyviewer-next-story-button": "اَمہِ پتہٕ پٕریٚو بِیاکھ دٕلیٖل"
 }
