@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jeeputer"
+			"Jeeputer",
+			"Mojtabakd"
 		]
 	},
+	"wikistories-story-editdone": "انجام شد",
 	"wikistories-story-replaceimage": "جایگزینی این تصویر",
-	"wikistories-story-deleteframe": "حذف این صفحه"
+	"wikistories-story-deleteframe": "حذف این صفحه",
+	"wikistories-confirmdialog-delete-title": "این صفحه حذف شود؟",
+	"wikistories-confirmdialog-delete-accept": "حذف",
+	"wikistories-confirmdialog-delete-cancel": "لغو",
+	"wikistories-storyviewer-next-story-button": "روایت بعدی را بخوانید"
 }
