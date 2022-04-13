@@ -1,16 +1,23 @@
 {
-  "private": true,
-  "scripts": {
-    "test": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint resources",
-    "lint:js:fix": "eslint resources --fix",
-    "lint:css": "stylelint resources/**/*.{vue,less}",
-    "lint:css:fix": "stylelint resources/**/*.{vue,less} --fix",
-    "lint:fix": "npm run lint:js:fix && npm run lint:css:fix"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "eslint-config-wikimedia": "0.21.0",
-    "stylelint-config-wikimedia": "0.11.1"
-  }
+	"private": true,
+	"scripts": {
+		"test": "npm run lint:js && npm run lint:css && jest",
+		"lint:js": "eslint .",
+		"lint:js:fix": "eslint . --fix",
+		"lint:css": "stylelint **/*.{vue,less}",
+		"lint:css:fix": "stylelint **/*.{vue,less} --fix",
+		"lint:fix": "npm run lint:js:fix && npm run lint:css:fix"
+	},
+	"devDependencies": {
+		"@babel/preset-env": "7.16.11",
+		"@vue/compat": "3.2.32",
+		"@vue/test-utils": "2.0.0-rc.20",
+		"@vue/vue3-jest": "27.0.0-alpha.4",
+		"eslint-config-wikimedia": "0.21.0",
+		"eslint-plugin-jest": "26.1.4",
+		"jest": "27.5.1",
+		"jquery": "3.6.0",
+		"stylelint-config-wikimedia": "0.11.1",
+		"vuex": "4.0.2"
+	}
 }
