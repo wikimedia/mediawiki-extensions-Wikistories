@@ -59,7 +59,7 @@ module.exports = {
 @import 'mediawiki.ui/variables.less';
 
 .ext-wikistories-current-frame {
-	height: 90%;
+	flex-grow: 1;
 	position: relative;
 	text-align: center;
 

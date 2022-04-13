@@ -147,6 +147,8 @@ module.exports = {
 	height: 100%;
 	overflow: hidden;
 	position: relative;
+	display: flex;
+	flex-direction: column;
 
 	&-topbar {
 		position: absolute;

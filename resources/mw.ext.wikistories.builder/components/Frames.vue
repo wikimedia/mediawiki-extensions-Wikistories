@@ -39,7 +39,7 @@ module.exports = {
 		&-thumbnails {
 			padding: 12px 0;
 			flex-grow: 1;
-			overflow: scroll;
+			overflow-x: auto;
 			display: flex;
 			flex-direction: row;
 
