@@ -1,1 +1,9 @@
 resources/lib
+vendor/
+.eslintrc.json
+coverage/
+node_modules/
+jest.config.js
+jest.setup.js
+package.json
+package-lock.json
