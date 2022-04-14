@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Iflaq"
+			"Iflaq",
+			"Tajamul9"
 		]
 	},
+	"wikistories-search-inputplaceholder": "شَکلہٕ ژھٲنٛڈِیو",
+	"wikistories-search-noresultstext": "بے نٕتیٖجہٕ",
 	"wikistories-story-edittext": "اؠڈِت"
 }
