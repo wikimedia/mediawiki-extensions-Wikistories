@@ -21,7 +21,7 @@
 	"wikistories-error-notenoughframes-message": "వికీకథలో కనీసం {{PLURAL:$1|$1 పేజీ|$1 పేజీలు}} ఉండాలి. ప్రచురించడానికి మరో {{PLURAL:$2|పేజీని|$2 పేజీలను}} చేర్చండి.",
 	"wikistories-error-frameswithouttext-title": "లోపించిన పాఠ్యం",
 	"wikistories-error-frameswithouttext-message": "{{PLURAL:$1|ఒక కథ పేజీలో|$1 కథ పేజీల్లో}} పాఠ్యం లేదు. పాఠ్యం చేర్చి, ప్రచురించండి.",
-	"wikistories-builder-publishform-header": "వికీకథను ప్రచురించండి",
+	"wikistories-builder-publishform-navigator-title": "వికీకథను ప్రచురించండి",
 	"wikistories-builder-publishform-placeholder": "కథ శీర్షిక ఇవ్వండి...",
 	"wikistories-builder-publishform-publishbutton": "ప్రచురించు",
 	"wikistories-builder-publishform-info": "ప్రచురించిన కథలు వ్యాసం పేజీలో ఉంటాయి.",

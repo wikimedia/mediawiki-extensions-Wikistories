@@ -18,14 +18,13 @@
 	"wikistories-article-loading": "Lueden...",
 	"wikistories-article-usetext": "Bei d'Geschicht derbäisetzen",
 	"wikistories-article-info-banner": "Text eraussiche fir bei Är Geschicht derbäizesetzen",
-	"wikistories-navigator-next": "Weider",
 	"wikistories-alert-okbuttontext": "OK",
 	"wikistories-confirmdialog-delete-title": "Dës Säit läschen?",
 	"wikistories-confirmdialog-delete-accept": "Läschen",
 	"wikistories-confirmdialog-delete-cancel": "Ofbriechen",
 	"wikistories-error-notenoughframes-title": "Net genuch Säiten",
 	"wikistories-error-frameswithouttext-title": "Text feelt",
-	"wikistories-builder-publishform-header": "Wikistory verëffentlechen",
+	"wikistories-builder-publishform-navigator-title": "Wikistory verëffentlechen",
 	"wikistories-builder-publishform-publishbutton": "Verëffentlechen",
 	"wikistories-storyviewer-next-story-button": "Nächst Geschicht liesen"
 }
