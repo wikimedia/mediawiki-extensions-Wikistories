@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kakonjo"
+		]
+	},
+	"wikistories-search-navigator-title": "Toraana ebishushani",
+	"wikistories-search-navigator-title-selected-info": "$1 kyatoranwa",
+	"wikistories-story-navigator-title": "Hangaho EbitebyobyaWiki",
+	"wikistories-article-navigator-title": "Shoroora Ebigambo",
+	"wikistories-confirmdialog-discardstory-title": "Sangura eki EbitebyobyaWiki ?",
+	"wikistories-confirmdialog-discardstory-message": "Noza kufeerwa Embaju zoona, Ebishushani nana Ebigambo ebiwaba waakora.",
+	"wikistories-confirmdialog-discardstory-accept": "Sangura",
+	"wikistories-builder-publishform-navigator-title": "Shohoza EbitebyobyaWiki"
+}
