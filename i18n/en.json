@@ -46,7 +46,7 @@
 	"wikistories-builder-publishform-info": "Published stories will be available on the article page.",
 	"wikistories-builder-publishform-invalidtitle-empty": "Enter story title",
 	"wikistories-builder-publishform-invalidtitle-format": "Invalid story title",
-	"wikistories-builder-publishform-invalidtitle-duplicate": "Another story with the same title already exist. Please write a unique story title.",
+	"wikistories-builder-publishform-invalidtitle-duplicate": "Another story with the same title already exists. Please enter a unique story title.",
 	"wikistories-builder-publishform-saveerror": "An error occured when publishing the story. Please try again later.",
 	"wikistories-discover-cta-text": "Create Wikistory",
 	"wikistories-storyviewer-next-story-button": "Read next story"

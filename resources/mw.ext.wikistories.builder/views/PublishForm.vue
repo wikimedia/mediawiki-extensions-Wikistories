@@ -9,12 +9,14 @@
 			@forward="onSaveClick"
 		></navigator>
 		<div class="ext-wikistories-publishform-content">
-			<textarea
-				ref="storyTitleTextarea"
+			<input
+				ref="storyTitleInput"
 				v-model="storyTitle"
-				class="ext-wikistories-publishform-content-textarea"
+				type="text"
+				maxlength="255"
+				class="ext-wikistories-publishform-content-input-title"
 				:placeholder="$i18n( 'wikistories-builder-publishform-placeholder' ).text()"
-			></textarea>
+			>
 			<div class="ext-wikistories-publishform-content-error">
 				{{ error }}
 			</div>
@@ -82,12 +84,14 @@ module.exports = {
 		}
 	},
 	mounted: function () {
-		this.$refs.storyTitleTextarea.focus();
+		this.$refs.storyTitleInput.focus();
 	}
 };
 </script>
 
 <style lang="less">
+@import 'mediawiki.ui/variables.less';
+
 .ext-wikistories-publishform {
 	position: relative;
 	height: 94%;
@@ -99,19 +103,19 @@ module.exports = {
 		padding: 20px;
 		height: 100%;
 
-		&-textarea {
+		&-input-title {
 			width: 100%;
-			border: 0;
 			border: 1px solid #a2a9b1;
 			box-sizing: border-box;
 			border-radius: 2px;
-			resize: none;
+			height: 2em;
+			padding: 10px;
 		}
 
 		&-error {
-			color: #a22;
-			min-height: 40px;
-			text-align: center;
+			color: @color-error;
+			min-height: 60px;
+			width: 100%;
 		}
 
 		&-info {
