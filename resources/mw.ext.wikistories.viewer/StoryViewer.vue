@@ -51,17 +51,19 @@ module.exports = {
 	},
 	props: {
 		stories: { type: Array, default: () => [] },
-		storyId: { type: String, default: '' }
+		storyId: { type: String, default: '' },
+		logStoryViewFn: { type: Function, default: () => {} }
 	},
 	data: function () {
 		return {
 			frameDuration: 5000,
-			timeoutId: null
+			timeoutId: null,
+			storyStart: 0
 		};
 	},
 	computed: $.extend( mapGetters( [
 		'story', 'currentFrame',
-		'isStoryEnd', 'isLastStory'
+		'isStoryEnd', 'isLastStory', 'currentStoryTitle'
 	] ), {
 		style: function () {
 			return {
@@ -82,13 +84,32 @@ module.exports = {
 		},
 		playNextStory: function () {
 			this.nextStory();
+			this.storyStart = Date.now();
 		},
 		endStory: function () {
 			this.timeoutId = setTimeout( function () {
 				this.setIsStoryEnd( true );
+				const storyOpenTime = Date.now() - this.storyStart;
+				this.logStoryViewFn(
+					this.currentStoryTitle,
+					this.story.length,
+					this.currentFrame.id,
+					storyOpenTime,
+					this.stories.length
+				);
 			}.bind( this ), this.frameDuration );
 		},
 		discardStory: function () {
+			if ( !this.isStoryEnd ) {
+				const storyOpenTime = Date.now() - this.storyStart;
+				this.logStoryViewFn(
+					this.currentStoryTitle,
+					this.story.length,
+					this.currentFrame.id,
+					storyOpenTime,
+					this.stories.length
+				);
+			}
 			this.setStoryId( null );
 			clearTimeout( this.timeoutId );
 			window.location.hash = '';
@@ -119,6 +140,7 @@ module.exports = {
 	created: function () {
 		this.setStories( this.stories );
 		this.setStoryId( this.storyId );
+		this.storyStart = Date.now();
 	}
 };
 </script>

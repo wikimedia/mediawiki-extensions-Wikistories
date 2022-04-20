@@ -2,7 +2,12 @@ const Vue = require( 'vue' );
 const StoryViewer = require( './StoryViewer.vue' );
 const store = require( './store/index.js' );
 
-const initStoryViewer = function ( stories, storyId ) {
+/**
+ * @param {Array} stories All the stories attaches to an article
+ * @param {number} storyId ID of the current story to view
+ * @param {Function} logStoryViewFn Function that can be used to log 'story_view' events
+ */
+const initStoryViewer = function ( stories, storyId, logStoryViewFn ) {
 	const storyViewerContainerClassName = 'ext-wikistories-viewer';
 	const $storyViewerContainer = $( '<div>' ).addClass( storyViewerContainerClassName );
 
@@ -16,7 +21,8 @@ const initStoryViewer = function ( stories, storyId ) {
 	$( 'body' ).append( $storyViewerContainer );
 
 	// Setup Story View App
-	Vue.createMwApp( StoryViewer, { stories: stories, storyId: storyId } )
+	const options = { stories: stories, storyId: storyId, logStoryViewFn: logStoryViewFn };
+	Vue.createMwApp( StoryViewer, options )
 		.use( store )
 		.mount( '.' + storyViewerContainerClassName );
 };
