@@ -95,6 +95,7 @@
 			"packageFiles": [
 				"mw.ext.wikistories.builder/index.js",
 				"mw.ext.wikistories.builder/router.js",
+				"mw.ext.wikistories.builder/contributionEvents.js",
 				"mw.ext.wikistories.builder/App.vue",
 				"mw.ext.wikistories.builder/api/getPageInfo.js",
 				"mw.ext.wikistories.builder/api/saveStory.js",
