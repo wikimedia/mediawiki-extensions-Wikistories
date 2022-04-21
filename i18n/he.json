@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Ex-Diktator"
 		]
 	},
 	"wikistories-extensiondesc": "הרחבת סיפורי ויקי (Wikistories) מאפשרת לעורכים ליצור ידע קצר, חזותי, ואמין ממיזמי ויקימדיה",
@@ -26,7 +27,7 @@
 	"wikistories-article-loading": "טעינה...",
 	"wikistories-article-usetext": "להוסיף לסיפור",
 	"wikistories-article-info-banner": "נא לבחור טקסט כדי להוסיף אותו לסיפור שלך",
-	"wikistories-article-info-expanded-banner": "נא ללחוץ על מילה בטקסט ולהחזיק אותה ואז לגרור את סמני ההחלקה כדי לבחור את כל הטקסט {{GENDER:|שאתה|שאת}} רוצה לסיפור שלך. כדי להוסיף טקסט, נא ללחוץ על \"להוסיף לסיפור\", שמוצג בתחתית המסך.",
+	"wikistories-article-info-expanded-banner": "נא ללחוץ על מילה בטקסט ולהחזיק אותה ואז לגרור את סמני ההחלקה כדי לבחור את כל הטקסט {{GENDER:|שאתה|שאת}} רוצה לסיפור שלך. כדי להוסיף טקסט, נא ללחוץ על כפתור \"להוסיף לסיפור\", שמוצג בתחתית המסך.",
 	"wikistories-alert-okbuttontext": "בסדר",
 	"wikistories-confirmdialog-delete-title": "למחוק את הדף הזה?",
 	"wikistories-confirmdialog-delete-message": "הוא יוסר מהסיפור שלך לצמיתות",

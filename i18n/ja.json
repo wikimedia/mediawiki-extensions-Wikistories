@@ -31,6 +31,7 @@
 	"wikistories-builder-publishform-placeholder": "ストーリーの題名を入力してください",
 	"wikistories-builder-publishform-publishbutton": "公開",
 	"wikistories-builder-publishform-invalidtitle-empty": "ストーリーの題名を入力してください",
+	"wikistories-builder-publishform-invalidtitle-duplicate": "同名のストーリーが既に存在します。重複しない題名を入力してください。",
 	"wikistories-builder-publishform-saveerror": "ストーリーを公開中にエラーが発生しました。後ほどお試しください。",
 	"wikistories-discover-cta-text": "ストーリーを作成",
 	"wikistories-storyviewer-next-story-button": "次のストーリーを読む"
