@@ -12,9 +12,6 @@ module.exports = {
 			const currentStory = stories.find( story => story.pageId.toString() === storyId );
 			return currentStory ? currentStory.frames : [];
 		},
-		frameId: ( state ) => {
-			return state.frameId;
-		},
 		isStoryEnd: ( state ) => {
 			return state.isStoryEnd;
 		},

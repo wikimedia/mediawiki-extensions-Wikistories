@@ -2,14 +2,10 @@
 	<div v-show="story.length" class="ext-wikistories-viewer-container">
 		<div class="ext-wikistories-viewer-container-overlay" @click="discardStory"></div>
 		<div class="ext-wikistories-viewer-container-content" :style="style">
-			<span class="ext-wikistories-viewer-container-index">
-				{{ frameId }} / {{ story.length }}
-			</span>
 			<div
 				class="ext-wikistories-viewer-container-content-close-icon"
 				@click="discardStory"
 			></div>
-			<!--
 			<div class="ext-wikistories-viewer-container-content-progress">
 				<div
 					v-for="n in story.length"
@@ -25,7 +21,6 @@
 					></div>
 				</div>
 			</div>
-			-->
 			<div
 				v-if="currentFrame.text"
 				class="ext-wikistories-viewer-container-content-story-text">
@@ -60,12 +55,12 @@ module.exports = {
 	},
 	data: function () {
 		return {
-			frameDuration: 2000,
+			frameDuration: 5000,
 			timeoutId: null
 		};
 	},
 	computed: $.extend( mapGetters( [
-		'story', 'currentFrame', 'frameId',
+		'story', 'currentFrame',
 		'isStoryEnd', 'isLastStory'
 	] ), {
 		style: function () {
@@ -146,12 +141,6 @@ module.exports = {
 		width: 100%;
 	}
 
-	&-index {
-		position: relative;
-		color: #fff;
-		top: 10px;
-	}
-
 	&-content {
 		height: 100%;
 		margin: 0 auto;
@@ -202,7 +191,7 @@ module.exports = {
 			&-container {
 				height: 4px;
 				flex-grow: 1;
-				margin: 0 5px;
+				margin: 0 2px;
 				display: flex;
 				background-color: #c4c4c4;
 
@@ -214,7 +203,8 @@ module.exports = {
 					animation-iteration-count: 1;
 					/* TODO - ideally the animation duration is
 						set as var related to frameDuration  */
-					animation-duration: 2s;
+					animation-duration: 5s;
+					animation-timing-function: linear;
 				}
 
 				&-loaded {
