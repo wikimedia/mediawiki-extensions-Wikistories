@@ -16,6 +16,12 @@ const transforms = {
 			span.innerHTML = a.innerHTML;
 			a.replaceWith( span );
 		}
+	},
+	'remove sections after fold and the fold itself': ( doc ) => {
+		for ( const section of doc.querySelectorAll( '.pcs-fold-hr ~ section' ) ) {
+			section.remove();
+		}
+		doc.querySelector( '.pcs-fold-hr' ).remove();
 	}
 };
 
