@@ -12,7 +12,8 @@ class Hooks {
 	 */
 	public static function onBeforePageDisplayMobile( OutputPage $out ) {
 		$title = $out->getTitle();
-		if ( $title->getNamespace() === NS_MAIN && $title->exists() ) {
+		$storiesFlag = $out->getRequest()->getBool( 'wikistories' );
+		if ( $storiesFlag && $title->getNamespace() === NS_MAIN && $title->exists() ) {
 			$out->addJsConfigVars(
 				'wgWikistoriesCreateUrl',
 				SpecialPage::getTitleFor( 'CreateStory', $out->getTitle() )->getLinkURL()
