@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"StarrySky"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "此 API 端点不支持命名空间 ($1)。 故事只能与主命名空间中的文章相关联。"
+}
