@@ -134,6 +134,7 @@ module.exports = {
 	font-size: 14px;
 
 	&-content {
+		position: relative;
 		overflow: scroll;
 		padding: 16px;
 		margin-top: 10px;
