@@ -152,8 +152,17 @@ module.exports = {
 				fromArticle: state.fromArticle,
 				frames: state.frames.map( ( f ) => {
 					return {
-						img: f.img,
-						text: f.text
+						image: {
+							filename: f.imgTitle.split( ':' )[ 1 ],
+							repo: ( new mw.Uri( f.img ).path ).split( '/' )[ 2 ]
+						},
+						text: {
+							value: f.text,
+							fromArticle: {
+								articleTitle: state.fromArticle,
+								originalText: f.textFromArticle
+							}
+						}
 					};
 				} )
 			};

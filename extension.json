@@ -8,8 +8,19 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\Wikistories\\": "includes/"
 	},
+	"TestAutoloadNamespaces": {
+		"MediaWiki\\Extension\\Wikistories\\Tests\\": "tests/phpunit/"
+	},
 	"ContentHandlers": {
-		"story": "MediaWiki\\Extension\\Wikistories\\StoryContentHandler"
+		"story": {
+			"class": "MediaWiki\\Extension\\Wikistories\\StoryContentHandler",
+			"services": [
+				"Wikistories.StoryConverter",
+				"Wikistories.StoryValidator",
+				"Wikistories.Cache",
+				"Wikistories.StoryRenderer"
+			]
+		}
 	},
 	"SpecialPages": {
 		"CreateStory": "MediaWiki\\Extension\\Wikistories\\SpecialCreateStory"

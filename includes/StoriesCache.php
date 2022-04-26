@@ -2,14 +2,16 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
+use MediaWiki\Content\Transform\ContentTransformer;
 use MediaWiki\Page\PageLookup;
 use MediaWiki\Page\WikiPageFactory;
+use ParserOptions;
 use WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class StoriesCache {
 
-	private const CACHE_VERSION = 3;
+	private const CACHE_VERSION = 4;
 
 	/** @var WANObjectCache */
 	private $wanObjectCache;
@@ -23,22 +25,34 @@ class StoriesCache {
 	/** @var PageLookup */
 	private $pageLookup;
 
+	/** @var StoryRenderer */
+	private $storyRenderer;
+
+	/** @var ContentTransformer */
+	private $contentTransformer;
+
 	/**
 	 * @param WANObjectCache $wanObjectCache
 	 * @param ILoadBalancer $loadBalancer
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param PageLookup $pageLookup
+	 * @param StoryRenderer $storyRenderer
+	 * @param ContentTransformer $contentTransformer
 	 */
 	public function __construct(
 		WANObjectCache $wanObjectCache,
 		ILoadBalancer $loadBalancer,
 		WikiPageFactory $wikiPageFactory,
-		PageLookup $pageLookup
+		PageLookup $pageLookup,
+		StoryRenderer $storyRenderer,
+		ContentTransformer $contentTransformer
 	) {
 		$this->wanObjectCache = $wanObjectCache;
 		$this->loadBalancer = $loadBalancer;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->pageLookup = $pageLookup;
+		$this->storyRenderer = $storyRenderer;
+		$this->contentTransformer = $contentTransformer;
 	}
 
 	/**
@@ -94,14 +108,18 @@ class StoriesCache {
 			->fetchResultSet();
 		foreach ( $rows as $row ) {
 			$page = $this->wikiPageFactory->newFromID( $row->pl_from );
-			/** @var StoryContent $content */
-			$content = $page->getContent();
-			'@phan-var StoryContent $content';
-			$result[] = [
-				'pageId' => $page->getId(),
-				'title' => $page->getTitle()->getText(),
-				'frames' => $content->getFrames(),
-			];
+			/** @var StoryContent $story */
+			$story = $this->contentTransformer->preloadTransform(
+				$page->getContent(),
+				$page,
+				ParserOptions::newFromAnon()
+			);
+			'@phan-var StoryContent $story';
+			$result[] = $this->storyRenderer->getStoryForViewer(
+				$story,
+				$page->getId(),
+				$page->getTitle()->getText()
+			);
 		}
 		return $result;
 	}

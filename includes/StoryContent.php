@@ -4,16 +4,16 @@ namespace MediaWiki\Extension\Wikistories;
 
 use Html;
 use JsonContent;
-use MediaWiki\MediaWikiServices;
 
 class StoryContent extends JsonContent {
 
+	public const SCHEMA_VERSION = 1;
+
 	/**
 	 * @param string $text
-	 * @param string $modelId
 	 */
-	public function __construct( $text, $modelId = 'story' ) {
-		parent::__construct( $text, $modelId );
+	public function __construct( $text ) {
+		parent::__construct( $text, 'story' );
 	}
 
 	/**
@@ -30,28 +30,6 @@ class StoryContent extends JsonContent {
 	public function getFromArticle(): string {
 		$story = $this->getData()->getValue();
 		return $story->fromArticle ?? '';
-	}
-
-	/**
-	 * @return bool True when all frames contain an image URL and some text
-	 */
-	private function framesAreValid() {
-		$maxFrames = MediaWikiServices::getInstance()->getMainConfig()->get( 'WikistoriesMaxFrames' );
-		$frames = $this->getFrames();
-		$frameCount = count( $frames );
-		if ( $frameCount === 0 || $frameCount <= $maxFrames ) {
-			foreach ( $frames as $frame ) {
-				if ( empty( $frame->img ) || empty( $frame->text ) ) {
-					return false;
-				}
-			}
-			return true;
-		}
-		return false;
-	}
-
-	public function isValid() {
-		return parent::isValid() && $this->framesAreValid();
 	}
 
 	/**
@@ -93,7 +71,7 @@ class StoryContent extends JsonContent {
 	 */
 	public function getTextForDiff() {
 		return implode( "\n\n", array_map( static function ( $frame ) {
-			return $frame->img . "\n" . $frame->text;
+			return $frame->image->filename . "\n" . $frame->text->value;
 		}, $this->getFrames() ) );
 	}
 
@@ -101,9 +79,24 @@ class StoryContent extends JsonContent {
 	 * @inheritDoc
 	 */
 	public function getTextForSummary( $maxlength = 250 ) {
-		$framesText = implode( "\n\n", array_map( static function ( $frame ) {
-			return $frame->text;
+		$framesText = implode( "\n", array_map( static function ( $frame ) {
+			return $frame->text->value;
 		}, $this->getFrames() ) );
 		return mb_substr( $framesText, 0, $maxlength );
+	}
+
+	/**
+	 * @return bool This story is using the latest schema version
+	 */
+	public function isLatestVersion(): bool {
+		return $this->getSchemaVersion() === self::SCHEMA_VERSION;
+	}
+
+	/**
+	 * @return int Schema version used by this story
+	 */
+	public function getSchemaVersion(): int {
+		$content = $this->getData()->getValue();
+		return $content->schemaVersion ?? 0;
 	}
 }
