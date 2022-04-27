@@ -3,10 +3,21 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use Content;
+use Exception;
 use SlotDiffRenderer;
 use TextSlotDiffRenderer;
 
 class StorySlotDiffRenderer extends SlotDiffRenderer {
+
+	/** @var StoryConverter */
+	private $storyConverter;
+
+	/**
+	 * @param StoryConverter $storyConverter
+	 */
+	public function __construct( StoryConverter $storyConverter ) {
+		$this->storyConverter = $storyConverter;
+	}
 
 	/**
 	 * Get a diff between two content objects. One of them might be null (meaning a slot was
@@ -20,13 +31,14 @@ class StorySlotDiffRenderer extends SlotDiffRenderer {
 	 * @param Content|null $oldContent
 	 * @param Content|null $newContent
 	 * @return string HTML, one or more <tr> tags.
+	 * @throws Exception When the story structure is unexpected
 	 */
 	public function getDiff( Content $oldContent = null, Content $newContent = null ) {
 		'@phan-var StoryContent $oldContent';
 		'@phan-var StoryContent $newContent';
 		return TextSlotDiffRenderer::diff(
-			$oldContent->getTextForDiff(),
-			$newContent->getTextForDiff()
+			$this->storyConverter->toLatest( $oldContent )->getTextForDiff(),
+			$this->storyConverter->toLatest( $newContent )->getTextForDiff()
 		);
 	}
 }
