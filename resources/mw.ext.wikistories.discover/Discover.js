@@ -7,7 +7,7 @@ const generateCtaElement = function ( link, thumbnail, thumbnailText, text ) {
 		.text( text );
 
 	if ( thumbnail ) {
-		$thumbnail.css( 'background-image', 'url(' + thumbnail + ')' );
+		$thumbnail.css( 'background-image', 'url(\'' + thumbnail + '\')' );
 	}
 
 	return $( '<a>' ).addClass( 'ext-wikistories-discover-container-cta' )
