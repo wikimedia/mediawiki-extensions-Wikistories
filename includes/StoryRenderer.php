@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use Html;
+use TitleValue;
 
 class StoryRenderer {
 
@@ -72,9 +73,11 @@ class StoryRenderer {
 	 * @return string Thumb url for given file, repo and size
 	 */
 	private function getFileUrl( string $file, string $repo, int $size ): string {
-		$md5 = md5( $file );
+		$title = new TitleValue( NS_FILE, $file );
+		$dbKey = $title->getDBkey();
+		$md5 = md5( $dbKey );
 		$a = substr( $md5, 0, 1 );
 		$b = substr( $md5, 0, 2 );
-		return "https://upload.wikimedia.org/wikipedia/$repo/thumb/$a/$b/$file/${size}px-$file";
+		return "https://upload.wikimedia.org/wikipedia/$repo/thumb/$a/$b/$dbKey/${size}px-$dbKey";
 	}
 }
