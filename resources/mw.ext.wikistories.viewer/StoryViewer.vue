@@ -65,7 +65,7 @@ module.exports = {
 	] ), {
 		style: function () {
 			return {
-				backgroundImage: 'url(\'' + this.currentFrame.img + '\')',
+				backgroundImage: 'url(' + this.currentFrame.img + ')',
 				backgroundPosition: 'center',
 				backgroundSize: 'cover'
 			};
