@@ -1,4 +1,5 @@
 const router = require( '../router.js' );
+const getImageInfo = require( '../api/getImageInfo.js' );
 
 const MIN_FRAMES = mw.config.get( 'wgWikistoriesMinFrames' );
 // const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
@@ -11,16 +12,6 @@ const makeFrameStyle = f => {
 			backgroundSize: 'cover'
 		} :
 		{ background: 'linear-gradient(338.27deg, #0BD564 -70.53%, #3366CC 71.84%)' };
-};
-
-const strip = ( html ) => {
-	const doc = new window.DOMParser().parseFromString( html, 'text/html' );
-	for ( const span of doc.querySelectorAll( 'span' ) ) {
-		if ( span.style.display === 'none' ) {
-			span.remove();
-		}
-	}
-	return doc.body.textContent || '';
 };
 
 module.exports = {
@@ -58,8 +49,8 @@ module.exports = {
 		setImgTitle: ( state, title ) => {
 			state.frames[ state.currentFrameIndex ].imgTitle = title;
 		},
-		setImgAttribution: ( state, attribution ) => {
-			state.frames[ state.currentFrameIndex ].attribution = attribution;
+		setImgAttribution: ( state, payload ) => {
+			state.frames[ payload.index ].attribution = payload.attribution;
 		}
 	},
 	actions: {
@@ -84,27 +75,14 @@ module.exports = {
 		setImgTitle: ( context, title ) => {
 			context.commit( 'setImgTitle', title );
 		},
-		fetchImgAttribution: function async( context, image ) {
-			const api = new mw.Api();
-			api.get( {
-				prop: 'imageinfo',
-				iiextmetadatafilter: [ 'License', 'LicenseShortName', 'ImageDescription', 'Artist' ],
-				iiextmetadatalanguage: mw.config.get( 'wgContentLanguage' ),
-				iiextmetadatamultilang: 1,
-				iiprop: [ 'url', 'extmetadata' ],
-				titles: image.title
-			} ).then( parsedAttribution => {
-				const imageInfo = parsedAttribution.query.pages[ 0 ].imageinfo[ 0 ];
-				if ( imageInfo ) {
-					const { Artist, LicenseShortName } = imageInfo.extmetadata;
-					const attribution = {
-						author: Artist ? strip( Artist.value ) : '',
-						url: imageInfo.descriptionshorturl,
-						license: LicenseShortName && LicenseShortName.value,
-						id: image.id
-					};
-					context.commit( 'setImgAttribution', attribution );
-				}
+		fetchImgAttribution: function ( context, imageTitle ) {
+			getImageInfo( imageTitle ).then( data => {
+				data.forEach( d => {
+					if ( d.title ) {
+						const index = context.state.frames.findIndex( f => f.imgTitle === d.title.replaceAll( ' ', '_' ) );
+						context.commit( 'setImgAttribution', { attribution: d.attribution, index: index } );
+					}
+				} );
 			} );
 		},
 		setFrameImage: ( context, data ) => {
@@ -136,15 +114,7 @@ module.exports = {
 				MIN_FRAMES - state.frames.length : 0;
 		},
 		framesWithoutText: ( state ) => state.frames.filter( f => !f.text ).length,
-		attributionData: ( state ) => {
-			return state.frames.map( f => {
-				return {
-					id: f.id,
-					title: f.imgTitle,
-					attribution: f.attribution
-				};
-			} );
-		},
+		framesWithoutAttribution: ( state ) => state.frames.filter( f => !f.attribution ),
 		frames: ( state ) => state.frames,
 		fromArticle: ( state ) => state.fromArticle,
 		storyForSave: ( state ) => {

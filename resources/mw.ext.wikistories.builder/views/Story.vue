@@ -83,8 +83,8 @@ module.exports = {
 			}
 		};
 	},
-	computed: mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle' ] ),
-	methods: $.extend( mapActions( [ 'removeFrame' ] ), {
+	computed: mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'framesWithoutAttribution' ] ),
+	methods: $.extend( mapActions( [ 'removeFrame', 'fetchImgAttribution' ] ), {
 		showDeleteFrameConfirmationDialog: function () {
 			this.viewDeleteFrameConfirmDialog = true;
 		},
@@ -141,7 +141,14 @@ module.exports = {
 		onSelectText: function () {
 			this.$router.push( { name: 'Article' } );
 		}
-	} )
+	} ),
+	created: function () {
+		const missingAttribution = this.framesWithoutAttribution.map( ( f ) => f.imgTitle );
+
+		if ( missingAttribution.length > 0 ) {
+			this.fetchImgAttribution( missingAttribution );
+		}
+	}
 };
 </script>
 
