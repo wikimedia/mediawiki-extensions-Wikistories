@@ -11,7 +11,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 
 class StoriesCache {
 
-	private const CACHE_VERSION = 5;
+	private const CACHE_VERSION = 6;
 
 	/** @var WANObjectCache */
 	private $wanObjectCache;

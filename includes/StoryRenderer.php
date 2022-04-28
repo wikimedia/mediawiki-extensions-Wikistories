@@ -78,6 +78,7 @@ class StoryRenderer {
 		$md5 = md5( $dbKey );
 		$a = substr( $md5, 0, 1 );
 		$b = substr( $md5, 0, 2 );
-		return "https://upload.wikimedia.org/wikipedia/$repo/thumb/$a/$b/$dbKey/${size}px-$dbKey";
+		$encodedKey = urlencode( $dbKey );
+		return "https://upload.wikimedia.org/wikipedia/$repo/thumb/$a/$b/$encodedKey/${size}px-$encodedKey";
 	}
 }
