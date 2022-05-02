@@ -109,8 +109,9 @@ const getCommonsImages = ( lang, queryString ) => {
  * Wikipedia article (if any), or an empty array if no images are found
  */
 const getArticleImages = ( lang, queryString ) => {
-	const mediaListUrl = 'https://' + lang + '.wikipedia.org';
-	const mwForeignRest = new mw.ForeignRest( mediaListUrl, '', { anonymous: true } );
+	const baseUrl = 'https://' + lang + '.wikipedia.org';
+	const actionApi = new mw.ForeignApi( baseUrl + '/w/api.php' );
+	const mwForeignRest = new mw.ForeignRest( baseUrl, actionApi, { anonymous: true } );
 	const mwTitle = mw.Title.newFromUserInput( queryString, 0 );
 	const normalizedTitle = mwTitle.getPrefixedDb();
 	const mediaList = '/api/rest_v1/page/media-list/' + encodeURIComponent( normalizedTitle );
