@@ -36,6 +36,7 @@ const mapGetters = require( 'vuex' ).mapGetters;
 const Navigator = require( '../components/Navigator.vue' );
 const saveStory = require( '../api/saveStory.js' );
 const validateTitle = require( '../util/validateTitle.js' );
+const events = require( '../contributionEvents.js' );
 const NS_STORY = mw.config.get( 'wgNamespaceIds' ).story;
 
 // @vue/component
@@ -61,6 +62,7 @@ module.exports = {
 			validateTitle( this.storyTitle ).then( function ( validity ) {
 				if ( !validity.valid ) {
 					this.error = this.$i18n( validity.message ).text();
+					events.logPublishFailure( this.storyTitle, this.error );
 					return;
 				}
 				const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
@@ -68,13 +70,19 @@ module.exports = {
 					function ( response ) {
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
+							events.logPublishSuccess( this.storyTitle );
 							this.navigateToArticle( response.pageid );
 						} else {
 							this.error = this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
+							events.logPublishFailure(
+								this.storyTitle,
+								response.error.code || this.error
+							);
 						}
 					}.bind( this ),
 					function () {
 						this.error = this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
+						events.logPublishFailure( this.storyTitle, this.error );
 					}.bind( this )
 				);
 			}.bind( this ) );

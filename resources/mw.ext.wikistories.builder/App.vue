@@ -5,6 +5,8 @@
 </template>
 
 <script>
+const events = require( './contributionEvents.js' );
+
 // @vue/component
 module.exports = {
 	name: 'App',
@@ -20,6 +22,9 @@ module.exports = {
 		updateHeight: function () {
 			this.height = window.innerHeight - $( 'header' ).height();
 		}
+	},
+	created: function () {
+		events.logStoryBuilderOpen();
 	},
 	beforeMount: function () {
 		this.updateHeight();
