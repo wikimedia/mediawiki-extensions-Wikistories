@@ -102,7 +102,8 @@ module.exports = {
 		}
 	} ),
 	created: function () {
-		this.search( this.fromArticle );
+		const titleObj = mw.Title.newFromText( this.fromArticle );
+		this.search( titleObj.getMainText() );
 	}
 };
 </script>
