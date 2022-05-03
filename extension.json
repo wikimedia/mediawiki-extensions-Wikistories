@@ -182,7 +182,8 @@
 				"wikistories-builder-publishform-invalidtitle-empty",
 				"wikistories-builder-publishform-invalidtitle-format",
 				"wikistories-builder-publishform-invalidtitle-duplicate",
-				"wikistories-builder-publishform-saveerror"
+				"wikistories-builder-publishform-saveerror",
+				"wikistories-builder-licensing-with-terms"
 			]
 		},
 		"mw.ext.story.discover": {

@@ -23,10 +23,8 @@
 			<div class="ext-wikistories-publishform-content-info">
 				{{ $i18n( 'wikistories-builder-publishform-info' ).text() }}
 			</div>
-			<div class="ext-wikistories-publishform-content-license">
-				<!-- TODO: add license here-->
-				Licence
-			</div>
+		</div>
+		<div class="ext-wikistories-publishform-license" v-html="licenseHtml">
 		</div>
 	</div>
 </template>
@@ -51,7 +49,21 @@ module.exports = {
 			error: null
 		};
 	},
-	computed: mapGetters( [ 'frames', 'valid', 'fromArticle', 'storyForSave' ] ),
+	computed: $.extend( mapGetters( [ 'frames', 'valid', 'fromArticle', 'storyForSave' ] ), {
+		licenseHtml: function () {
+			const html = this.$i18n(
+				'wikistories-builder-licensing-with-terms',
+				'https://foundation.wikimedia.org/wiki/Terms_of_Use',
+				'https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License',
+				'https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License'
+			).parse();
+			const doc = new DOMParser().parseFromString( html, 'text/html' );
+			for ( const a of doc.querySelectorAll( 'a' ) ) {
+				a.target = '_blank';
+			}
+			return doc.body.outerHTML;
+		}
+	} ),
 	methods: {
 		navigateToArticle: function ( storyPageId ) {
 			const titleObj = mw.Title.newFromText( this.fromArticle + '#/story/' + storyPageId );
@@ -102,14 +114,16 @@ module.exports = {
 
 .ext-wikistories-publishform {
 	position: relative;
-	height: 94%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 
 	&-content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		padding: 20px;
-		height: 100%;
+		flex-grow: 1;
 
 		&-input-title {
 			width: 100%;
@@ -129,14 +143,12 @@ module.exports = {
 		&-info {
 			font-size: 0.7em;
 		}
+	}
 
-		&-license {
-			margin: auto 0 20px 0;
-			font-size: 0.5em;
-			background-color: #919fb9;
-			padding: 20px;
-			width: 100%;
-		}
+	&-license {
+		font-size: 0.7em;
+		background-color: @colorGray15;
+		padding: 20px;
 	}
 }
 </style>
