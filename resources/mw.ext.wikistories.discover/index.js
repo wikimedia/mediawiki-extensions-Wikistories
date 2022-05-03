@@ -1,6 +1,8 @@
 const getDiscoverSection = require( './Discover.js' );
 const getStories = require( './api/getStories.js' );
 const getArticleThumbnail = require( './api/getArticleThumbnail.js' );
+const events = require( './consumptionEvents.js' );
+
 const loadingViewer = mw.loader.using( 'mw.ext.story.viewer' );
 const articleTitle = mw.config.get( 'wgTitle' );
 
@@ -17,7 +19,7 @@ $.when(
 		if ( storyId && stories.find( story => story.pageId.toString() === storyId ) ) {
 			loadingViewer.then( function () {
 				const initStoryViewer = require( 'mw.ext.story.viewer' );
-				initStoryViewer( stories, storyId );
+				initStoryViewer( stories, storyId, events.logStoryView );
 			} );
 		}
 	};
@@ -25,6 +27,10 @@ $.when(
 	// @todo show stories thumbnail in discover section
 	// add Discover UI below the article title
 	getDiscoverSection( stories, thumbnail ).insertAfter( '.page-heading' );
+
+	if ( stories.length ) {
+		events.logStoriesImpression( stories.length );
+	}
 
 	// Load Story Viewer App if necessary
 	renderStoryViewer();

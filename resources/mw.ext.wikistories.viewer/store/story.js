@@ -22,6 +22,12 @@ module.exports = {
 				return {};
 			}
 		},
+		currentStoryTitle: ( state ) => {
+			const stories = state.stories;
+			const storyId = state.storyId;
+			const currentStory = stories.find( story => story.pageId.toString() === storyId );
+			return currentStory.title;
+		},
 		isLastStory: ( state ) => {
 			return state.stories[ state.stories.length - 1 ].pageId.toString() === state.storyId;
 		}
