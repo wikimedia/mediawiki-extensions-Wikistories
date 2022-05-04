@@ -143,17 +143,11 @@ const searchAllImages = ( queryString ) => {
 		getArticleImages( lang, queryString ),
 		getCommonsImages( lang, queryString )
 	).then( function ( article, commons ) {
-		const allImages = article.concat( commons )
-			.filter( ( element ) => {
-				// todo: fix thumb url generation and allow SVGs
-				return !element.title.toLowerCase().endsWith( '.svg' );
-			} )
+		return article.concat( commons )
 			.map( ( element, index ) => {
 				element.id = index.toString();
 				return element;
 			} );
-
-		return allImages;
 	} );
 };
 

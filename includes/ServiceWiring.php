@@ -31,8 +31,8 @@ return [
 		);
 	},
 
-	'Wikistories.StoryRenderer' => static function () {
-		return new StoryRenderer();
+	'Wikistories.StoryRenderer' => static function ( MediaWikiServices $services ) {
+		return new StoryRenderer( $services->getRepoGroup() );
 	},
 
 ];

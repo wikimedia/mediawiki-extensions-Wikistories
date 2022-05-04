@@ -11,7 +11,19 @@ use Wikimedia\Rdbms\ILoadBalancer;
 
 class StoriesCache {
 
-	private const CACHE_VERSION = 6;
+	/**
+	 * This needs to be incremented every time we change
+	 * the structure of the cached stories so they can
+	 * be invalidated and re-created with the most recent
+	 * structure.
+	 */
+	private const CACHE_VERSION = 7;
+
+	/**
+	 * This defines how long stories will stay in the cache if they not edited.
+	 * For testing use WANObjectCache::TTL_UNCACHEABLE
+	 */
+	private const CACHE_TTL = WANObjectCache::TTL_WEEK;
 
 	/** @var WANObjectCache */
 	private $wanObjectCache;
@@ -65,7 +77,7 @@ class StoriesCache {
 	public function getRelatedStories( string $titleDbKey, int $pageId ): array {
 		return $this->wanObjectCache->getWithSetCallback(
 			$this->makeRelatedStoriesKey( $pageId ),
-			WANObjectCache::TTL_WEEK,
+			self::CACHE_TTL,
 			function () use ( $titleDbKey ) {
 				return $this->fetchStories( $titleDbKey );
 			}

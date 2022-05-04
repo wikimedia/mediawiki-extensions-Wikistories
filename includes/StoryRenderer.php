@@ -2,10 +2,23 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
+use Exception;
+use File;
 use Html;
+use RepoGroup;
 use TitleValue;
 
 class StoryRenderer {
+
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	/**
+	 * @param RepoGroup $repoGroup
+	 */
+	public function __construct( RepoGroup $repoGroup ) {
+		$this->repoGroup = $repoGroup;
+	}
 
 	/**
 	 * @param StoryContent $story
@@ -41,44 +54,40 @@ class StoryRenderer {
 	 * @return array Data structure expected by the discovery module and the story viewer
 	 */
 	public function getStoryForViewer( StoryContent $story, int $pageId, string $pageTitle ): array {
+		$frames = $story->getFrames();
+		$filesUsed = array_map( static function ( $frame ) {
+			return $frame->image->filename;
+		}, $frames );
+		$files = $this->repoGroup->findFiles( $filesUsed );
+		$firstFrame = reset( $frames );
+		$thumb = $firstFrame ? $this->getUrl( $files, $firstFrame->image->filename, 52 ) : '';
 		return [
 			'pageId' => $pageId,
 			'title' => $pageTitle,
-			'thumbnail' => $this->getThumbUrl( $story ),
-			'frames' => array_map( function ( $frame ) {
+			'thumbnail' => $thumb,
+			'frames' => array_map( function ( $frame ) use ( $files ) {
 				return [
-					'img' => $this->getFileUrl( $frame->image->filename, $frame->image->repo, 640 ),
+					'img' => $this->getUrl( $files, $frame->image->filename, 640 ),
 					'text' => $frame->text->value,
 				];
-			}, $story->getFrames() )
+			}, $frames )
 		];
 	}
 
 	/**
-	 * @param StoryContent $story
-	 * @return string Thumb url of the first frame of this story
-	 */
-	private function getThumbUrl( StoryContent $story ): string {
-		if ( count( $story->getFrames() ) === 0 ) {
-			return '';
-		}
-		$frame = $story->getFrames()[0];
-		return $this->getFileUrl( $frame->image->filename, $frame->image->repo, 52 );
-	}
-
-	/**
-	 * @param string $file
-	 * @param string $repo
+	 * @param array $files
+	 * @param string $filename
 	 * @param int $size
-	 * @return string Thumb url for given file, repo and size
+	 * @return string
+	 * @throws Exception
 	 */
-	private function getFileUrl( string $file, string $repo, int $size ): string {
-		$title = new TitleValue( NS_FILE, $file );
-		$dbKey = $title->getDBkey();
-		$md5 = md5( $dbKey );
-		$a = substr( $md5, 0, 1 );
-		$b = substr( $md5, 0, 2 );
-		$encodedKey = urlencode( $dbKey );
-		return "https://upload.wikimedia.org/wikipedia/$repo/thumb/$a/$b/$encodedKey/${size}px-$encodedKey";
+	private function getUrl( array $files, string $filename, int $size ): string {
+		$title = new TitleValue( NS_FILE, $filename );
+		/** @var File $file */
+		$file = $files[ $title->getDBkey() ];
+		if ( !$file ) {
+			throw new Exception( "Image not found: $filename" );
+		}
+		return $file->createThumb( $size );
 	}
 }
