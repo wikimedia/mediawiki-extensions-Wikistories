@@ -58,7 +58,7 @@ const getCommonsImages = ( lang, queryString ) => {
 		gsrinfo: 'totalhits',
 		prop: 'imageinfo',
 		gsrnamespace: 6,
-		iiprop: 'url|extmetadata|mediatype',
+		iiprop: 'url|extmetadata|mediatype|size',
 		iiurlheight: 180,
 		iiextmetadatafilter: 'License|LicenseShortName|Artist',
 		iiextmetadatalanguage: lang
@@ -73,7 +73,12 @@ const getCommonsImages = ( lang, queryString ) => {
 
 		const pages = Object.keys( data.query.pages )
 			.map( ( p ) => data.query.pages[ p ] )
-			.filter( p => p.imageinfo[ 0 ].mediatype === 'BITMAP' || p.imageinfo[ 0 ].mediatype === 'DRAWING' )
+			.filter( p => {
+				const type = p.imageinfo[ 0 ].mediatype;
+				return ( type === 'BITMAP' || type === 'DRAWING' ) &&
+					p.imageinfo[ 0 ].width >= 640 &&
+					p.imageinfo[ 0 ].height >= 640;
+			} )
 			.sort( ( a, b ) => a.index - b.index );
 
 		return pages.map( ( page ) => {
@@ -119,8 +124,12 @@ const getArticleImages = ( lang, queryString ) => {
 	requests.push( mwForeignRest );
 
 	return mwForeignRest.get( mediaList ).then( function ( data ) {
-		const items = data.items;
-		const images = items && items.filter( i => i.type === 'image' && i.srcset );
+		const images = data.items && data.items.filter( i => {
+			return i.type === 'image' &&
+				i.srcset &&
+				// keep only images hosted on Commons
+				i.srcset[ 0 ].src.startsWith( '//upload.wikimedia.org/wikipedia/commons/' );
+		} );
 
 		if ( !images ) {
 			return [];
