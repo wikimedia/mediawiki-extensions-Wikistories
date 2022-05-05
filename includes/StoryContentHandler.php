@@ -69,16 +69,14 @@ class StoryContentHandler extends JsonContentHandler {
 	 *
 	 * @param Content $content
 	 * @param ContentParseParams $cpoParams
-	 * @param ParserOutput &$output
+	 * @param ParserOutput &$parserOutput
 	 */
-	public function fillParserOutput( Content $content, ContentParseParams $cpoParams, ParserOutput &$output ) {
+	public function fillParserOutput(
+		Content $content,
+		ContentParseParams $cpoParams,
+		ParserOutput &$parserOutput
+	) {
 		'@phan-var StoryContent $content';
-
-		if ( !$cpoParams->getGenerateHtml() ) {
-			return;
-		}
-
-		$html = '';
 		/** @var StoryContent $story */
 		$story = $this->storyConverter->toLatest( $content );
 
@@ -90,17 +88,17 @@ class StoryContentHandler extends JsonContentHandler {
 			}
 		}
 		foreach ( array_unique( $relatedArticles ) as $relatedArticle ) {
-			$output->addLink( new TitleValue( NS_MAIN, $relatedArticle ) );
+			$parserOutput->addLink( new TitleValue( NS_MAIN, $relatedArticle ) );
 			// todo: only invalidate the cache if the links have changed
 			$this->storiesCache->invalidateForArticle( $relatedArticle );
 		}
 
-		// no-js
-		$parts = $this->storyRenderer->renderNoJS( $story );
-		$output->addModuleStyles( [ $parts['style'] ] );
-		$html .= $parts['html'];
-
-		$output->setText( $html );
+		if ( $cpoParams->getGenerateHtml() ) {
+			// no-js
+			$parts = $this->storyRenderer->renderNoJS( $story );
+			$parserOutput->addModuleStyles( [ $parts['style'] ] );
+			$parserOutput->setText( $parts['html'] );
+		}
 	}
 
 	/**
