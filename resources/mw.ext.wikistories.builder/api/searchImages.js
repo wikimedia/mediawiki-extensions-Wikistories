@@ -1,3 +1,6 @@
+const strip = require( '../util/strip.js' );
+const convertUrlToMobile = require( '../util/convertUrlToMobile.js' );
+
 /**
  * Keeps track of all on-going requests
  * from both getCommonsImages and getArticleImages
@@ -10,32 +13,6 @@ let requests = [];
 const abortAllRequests = () => {
 	requests.forEach( ( x ) => x && x.abort() );
 	requests = [];
-};
-
-/**
- * @param {string} html
- * @return {string} text content of the given html
- */
-const strip = ( html ) => {
-	const doc = new window.DOMParser().parseFromString( html, 'text/html' );
-	for ( const span of doc.querySelectorAll( 'span' ) ) {
-		if ( span.style.display === 'none' ) {
-			span.remove();
-		}
-	}
-	for ( const sup of doc.querySelectorAll( 'sup' ) ) {
-		sup.remove();
-	}
-
-	return doc.body.textContent || '';
-};
-
-/**
- * @param {string} url
- * @return {string} returns url suited for mobile viewing
- */
-const convertUrlToMobile = ( url ) => {
-	return url.replace( /https:\/\/(.*?)\./, ( subDomain ) => subDomain + 'm.' );
 };
 
 /**
