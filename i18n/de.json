@@ -45,6 +45,7 @@
 	"wikistories-builder-publishform-invalidtitle-format": "Ungültiger Titel der Geschichte",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Es gibt bereits eine andere Geschichte mit demselben Titel. Bitte schreibe einen eindeutigen Titel für die Geschichte.",
 	"wikistories-builder-publishform-saveerror": "Bei der Veröffentlichung der Geschichte ist ein Fehler aufgetreten. Bitte versuche es später noch einmal.",
+	"wikistories-builder-licensing-with-terms": "Indem du fortfährst, stimmst du den [$1 Nutzungsbedingungen] zu und erklärst dich unwiderruflich bereit, deinen Beitrag unter den Lizenzen [$2 CC BY-SA 3.0] und [$3 GFDL] zu veröffentlichen.",
 	"wikistories-discover-cta-text": "Geschichte erstellen",
 	"wikistories-storyviewer-next-story-button": "Nächste Geschichte lesen"
 }
