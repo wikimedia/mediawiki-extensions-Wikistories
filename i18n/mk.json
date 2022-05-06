@@ -48,6 +48,7 @@
 	"wikistories-builder-publishform-invalidtitle-format": "Неважечки насов на приказна",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Веќе постои друга приказна со тој насов. Внесете друг.",
 	"wikistories-builder-publishform-saveerror": "Се јави грешка при објавувањето на приказната. Обидете се подоцна.",
+	"wikistories-builder-licensing-with-terms": "Продолжувајќи, се согласувате со [$1 Условите на употреба], и дека неотповикливо се согласувате дека го објавувате вашиот придонес под лиценците [$2 CC BY-SA 3.0] и [$3 ГЛСД].",
 	"wikistories-discover-cta-text": "Создај википриказна",
 	"wikistories-storyviewer-next-story-button": "Следна приказна"
 }
