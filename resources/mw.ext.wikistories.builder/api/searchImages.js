@@ -47,41 +47,35 @@ const getCommonsImages = ( lang, queryString ) => {
 		if ( data.query.searchinfo.totalhits === 0 ) {
 			return [];
 		}
-
-		const pages = Object.keys( data.query.pages )
-			.map( ( p ) => data.query.pages[ p ] )
-			.filter( p => {
-				const type = p.imageinfo[ 0 ].mediatype;
-				return ( type === 'BITMAP' || type === 'DRAWING' ) &&
-					p.imageinfo[ 0 ].width >= 640 &&
-					p.imageinfo[ 0 ].height >= 640;
-			} )
-			.sort( ( a, b ) => a.index - b.index );
-
-		return pages.map( ( page ) => {
-			const imageinfo = page.imageinfo[ 0 ];
-			const responsiveUrls = imageinfo.responsiveUrls &&
-				Object.keys( imageinfo.responsiveUrls )
-					.map( ( p ) => imageinfo.responsiveUrls[ p ] )[ 0 ];
-			const extmetadata = imageinfo.extmetadata;
-			const artist = extmetadata && extmetadata.Artist;
-			const license = extmetadata && extmetadata.LicenseShortName;
-
-			return {
-				fromCommons: true,
-				title: page.title,
-				thumb: responsiveUrls || imageinfo.url,
-				width: imageinfo.thumbwidth,
-				attribution: {
-					author: artist ? strip( artist.value ) : '',
-					url: convertUrlToMobile( imageinfo.descriptionshorturl ),
-					license: license && license.value
-				}
-			};
+		return Object.keys( data.query.pages ).map( pageId => {
+			return data.query.pages[ pageId ];
 		} );
 	} ).catch( function () {
 		return [];
 	} );
+};
+
+/**
+ * @param {Array} titles includes image filenames as strings
+ * @param {string} lang Language to use for metadata
+ * @return {jQuery.Promise} resolves with image attribution data
+ */
+const getImageInfo = function ( titles, lang ) {
+	const commonsUrl = 'https://commons.wikimedia.org/w/api.php';
+	const mwForeign = new mw.ForeignApi( commonsUrl, { anonymous: true } );
+	const params = {
+		action: 'query',
+		format: 'json',
+		titles: titles,
+		prop: 'imageinfo',
+		iiprop: 'url|extmetadata|mediatype|size',
+		iiextmetadatafilter: 'License|LicenseShortName|Artist',
+		iiextmetadatalanguage: lang
+	};
+
+	requests.push( mwForeign );
+
+	return mwForeign.get( params );
 };
 
 /**
@@ -100,8 +94,8 @@ const getArticleImages = ( lang, queryString ) => {
 
 	requests.push( mwForeignRest );
 
-	return mwForeignRest.get( mediaList ).then( function ( data ) {
-		const images = data.items && data.items.filter( i => {
+	return mwForeignRest.get( mediaList ).then( function ( articleImages ) {
+		const images = articleImages.items && articleImages.items.filter( i => {
 			return i.type === 'image' &&
 				i.srcset &&
 				// keep only images hosted on Commons
@@ -112,13 +106,20 @@ const getArticleImages = ( lang, queryString ) => {
 			return [];
 		}
 
-		return images.map( ( img ) => {
-			return {
-				title: img.title,
-				thumb: img.srcset[ 0 ].src,
-				width: 300,
-				attribution: null
-			};
+		const fileUrlMap = {};
+		images.forEach( i => {
+			fileUrlMap[ i.title ] = i.srcset[ 0 ].src;
+		} );
+
+		return getImageInfo( images.map( i => i.title ), lang ).then( data => {
+			if ( !data.query || !data.query.pages ) {
+				return [];
+			}
+			return Object.keys( data.query.pages ).map( pageId => {
+				const page = data.query.pages[ pageId ];
+				page.imageinfo[ 0 ].responsiveUrls = { 1: fileUrlMap[ page.title ] };
+				return page;
+			} );
 		} );
 	} ).catch( function () {
 		return [];
@@ -143,10 +144,36 @@ const searchAllImages = ( queryString ) => {
 		getArticleImages( lang, queryString ),
 		getCommonsImages( lang, queryString )
 	).then( function ( article, commons ) {
+		let id = 0;
 		return article.concat( commons )
-			.map( ( element, index ) => {
-				element.id = index.toString();
-				return element;
+			.filter( p => {
+				const type = p.imageinfo[ 0 ].mediatype;
+				// keep only images that are big enough
+				return ( type === 'BITMAP' || type === 'DRAWING' ) &&
+					p.imageinfo[ 0 ].width >= 640 &&
+					p.imageinfo[ 0 ].height >= 640;
+			} )
+			.map( ( page ) => {
+				const imageinfo = page.imageinfo[ 0 ];
+				const responsiveUrls = imageinfo.responsiveUrls &&
+					Object.keys( imageinfo.responsiveUrls )
+						.map( ( p ) => imageinfo.responsiveUrls[ p ] )[ 0 ];
+				const extmetadata = imageinfo.extmetadata;
+				const artist = extmetadata && extmetadata.Artist;
+				const license = extmetadata && extmetadata.LicenseShortName;
+
+				return {
+					fromCommons: true,
+					id: ( id++ ).toString(),
+					title: page.title,
+					thumb: responsiveUrls || imageinfo.url,
+					width: imageinfo.thumbwidth,
+					attribution: {
+						author: artist ? strip( artist.value ) : '',
+						url: convertUrlToMobile( imageinfo.descriptionshorturl ),
+						license: license && license.value
+					}
+				};
 			} );
 	} );
 };

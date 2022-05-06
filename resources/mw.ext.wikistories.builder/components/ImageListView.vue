@@ -102,6 +102,7 @@ module.exports = {
 			position: relative;
 			-ms-flex-pack: justify;
 			width: auto;
+			min-width: 300px;
 			-ms-flex: 1 1 auto;
 			flex: 1 1 auto;
 			-ms-flex-order: 1;

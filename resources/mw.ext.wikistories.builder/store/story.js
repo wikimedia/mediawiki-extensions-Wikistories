@@ -1,5 +1,4 @@
 const router = require( '../router.js' );
-const getImageInfo = require( '../api/getImageInfo.js' );
 
 const MIN_FRAMES = mw.config.get( 'wgWikistoriesMinFrames' );
 // const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
@@ -48,9 +47,6 @@ module.exports = {
 		},
 		setImgTitle: ( state, title ) => {
 			state.frames[ state.currentFrameIndex ].imgTitle = title;
-		},
-		setImgAttribution: ( state, payload ) => {
-			state.frames[ payload.index ].attribution = payload.attribution;
 		}
 	},
 	actions: {
@@ -74,16 +70,6 @@ module.exports = {
 		},
 		setImgTitle: ( context, title ) => {
 			context.commit( 'setImgTitle', title );
-		},
-		fetchImgAttribution: function ( context, imageTitle ) {
-			getImageInfo( imageTitle ).then( data => {
-				data.forEach( d => {
-					if ( d.title ) {
-						const index = context.state.frames.findIndex( f => f.imgTitle === d.title.replaceAll( ' ', '_' ) );
-						context.commit( 'setImgAttribution', { attribution: d.attribution, index: index } );
-					}
-				} );
-			} );
 		},
 		setFrameImage: ( context, data ) => {
 			context.commit( 'setImg', data.thumb );
@@ -114,7 +100,6 @@ module.exports = {
 				MIN_FRAMES - state.frames.length : 0;
 		},
 		framesWithoutText: ( state ) => state.frames.filter( f => !f.text ).length,
-		framesWithoutAttribution: ( state ) => state.frames.filter( f => !f.attribution ),
 		frames: ( state ) => state.frames,
 		fromArticle: ( state ) => state.fromArticle,
 		storyForSave: ( state ) => {
