@@ -4,7 +4,7 @@
 			<div class="ext-wikistories-imagelistview__list">
 				<div
 					v-for="item in items"
-					:key="item.id"
+					:key="item.title"
 					:data-id="item.id"
 					class="ext-wikistories-imagelistview__list-image"
 					:style="{ width: `${item.width}px` }"
