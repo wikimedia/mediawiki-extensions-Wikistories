@@ -1,3 +1,17 @@
+const strip = ( html ) => {
+	const doc = new window.DOMParser().parseFromString( html, 'text/html' );
+	for ( const span of doc.querySelectorAll( 'span' ) ) {
+		if ( span.style.display === 'none' ) {
+			span.remove();
+		}
+	}
+	for ( const sup of doc.querySelectorAll( 'sup' ) ) {
+		sup.remove();
+	}
+
+	return doc.body.textContent || '';
+};
+
 module.exports = {
 	state: {
 		stories: [],
@@ -18,6 +32,21 @@ module.exports = {
 		currentFrame: ( state, getters ) => {
 			if ( getters.story.length ) {
 				return getters.story[ state.frameId - 1 ];
+			} else {
+				return {};
+			}
+		},
+		imgAttribution: ( state, getters ) => {
+			if ( getters.story.length ) {
+				const attribution = getters.story[ state.frameId - 1 ].attribution;
+				const artist = attribution.extmetadata.Artist;
+				const license = attribution.extmetadata.LicenseShortName.value;
+
+				return {
+					author: artist ? strip( artist.value ) : '',
+					license: license,
+					url: attribution.url
+				};
 			} else {
 				return {};
 			}

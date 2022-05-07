@@ -68,6 +68,7 @@ class StoryRenderer {
 				return [
 					'img' => $this->getUrl( $files, $frame->image->filename, 640 ),
 					'text' => $frame->text->value,
+					'attribution' => $this->getAttribution( $files, $frame->image->filename ),
 				];
 			}, $frames )
 		];
@@ -87,5 +88,26 @@ class StoryRenderer {
 			throw new Exception( "Image not found: $filename" );
 		}
 		return $file->createThumb( $size );
+	}
+
+	/**
+	 * @param array $files
+	 * @param string $filename
+	 * @return array Data structure with attribution information such author or license
+	 * @throws Exception
+	 */
+	private function getAttribution( array $files, string $filename ): array {
+		/** @var File $file */
+		$file = $files[ strtr( $filename, ' ', '_' ) ];
+		if ( !$file ) {
+			throw new Exception( "Image not found: $filename" );
+		}
+
+		return [
+			'extmetadata' => array_intersect_key(
+				$file->getExtendedMetadata(), array_fill_keys( [ 'Artist', 'LicenseShortName' ], true )
+			),
+			'url' => $file->getDescriptionUrl(),
+		];
 	}
 }
