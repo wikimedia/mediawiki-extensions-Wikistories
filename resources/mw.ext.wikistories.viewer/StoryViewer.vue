@@ -2,6 +2,7 @@
 	<div v-show="story.length" class="ext-wikistories-viewer-container">
 		<div class="ext-wikistories-viewer-container-overlay" @click="discardStory"></div>
 		<div class="ext-wikistories-viewer-container-content" :style="style">
+			<div class="ext-wikistories-viewer-container-topbar"></div>
 			<div
 				class="ext-wikistories-viewer-container-content-close-icon"
 				@click="discardStory"
@@ -163,6 +164,14 @@ module.exports = {
 		width: 100%;
 	}
 
+	&-topbar {
+		position: absolute;
+		right: 0;
+		left: 0;
+		height: 140px;
+		background: linear-gradient( 180deg, rgba( 0, 0, 0, 0.35 ) 0%, rgba( 0, 0, 0, 0 ) 100% );
+	}
+
 	&-content {
 		height: 100%;
 		margin: 0 auto;
@@ -178,8 +187,9 @@ module.exports = {
 			bottom: 90px;
 			left: 20px;
 			right: 20px;
-			border-radius: 10px;
-			background-color: #fff;
+			border-radius: 2px;
+			background: linear-gradient( 0deg, #fff, #fff, #fff );
+			box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
 			margin: 0;
 			padding: 10px;
 		}
@@ -205,6 +215,7 @@ module.exports = {
 		}
 
 		&-progress {
+			position: absolute;
 			display: flex;
 			flex-direction: row;
 			width: 100%;

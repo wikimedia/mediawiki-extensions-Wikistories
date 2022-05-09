@@ -72,8 +72,9 @@ module.exports = {
 		margin: auto;
 		max-height: 40%;
 		min-height: 10%;
-		border-radius: 10px;
-		background-color: #fff;
+		border-radius: 2px;
+		background: linear-gradient( 0deg, #fff, #fff, #fff );
+		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
 		outline: 0;
 		border: 0;
 		width: 90%;
@@ -93,8 +94,9 @@ module.exports = {
 		left: 0;
 		right: 0;
 		margin: auto;
-		border-radius: 10px;
-		background-color: #fff;
+		border-radius: 2px;
+		background: linear-gradient( 0deg, #fff, #fff, #fff );
+		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
 		display: flex;
 		align-items: center;
 		width: 85%;

@@ -166,8 +166,8 @@ module.exports = {
 		top: 48px;
 		right: 0;
 		left: 0;
-		height: 44px;
-		background: linear-gradient( to bottom, rgba( 0, 0, 0, 0.5 ), rgba( 255, 255, 255, 0 ) );
+		height: 140px;
+		background: linear-gradient( 180deg, rgba( 0, 0, 0, 0.35 ) 0%, rgba( 0, 0, 0, 0 ) 100% );
 	}
 
 	&-menu {
