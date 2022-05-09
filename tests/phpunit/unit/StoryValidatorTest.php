@@ -2,12 +2,32 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
+use File;
 use FormatJson;
 use HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWikiUnitTestCase;
+use RepoGroup;
 
 class StoryValidatorTest extends MediaWikiUnitTestCase {
+
+	private function createRepoGroupMock() {
+		$catPosterFile = $this->createMock( File::class );
+		$catPosterFile->method( 'createThumb' )->willReturn( 'cat-poster-url' );
+
+		$catNappingFile = $this->createMock( File::class );
+		$catNappingFile->method( 'createThumb' )->willReturn( 'cat-napping-url' );
+
+		$repoGroup = $this->createMock( RepoGroup::class );
+		$repoGroup->method( 'findFiles' )->willReturn(
+			[
+				'Cat_poster_1.jpg' => $catPosterFile,
+				'Cat_napping.jpg' => $catNappingFile,
+			]
+		);
+
+		return $repoGroup;
+	}
 
 	/**
 	 * @dataProvider provideIsValidStories
@@ -25,7 +45,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 		);
 
 		$story = new StoryContent( FormatJson::encode( $obj ) );
-		$validator = new StoryValidator( $options );
+		$validator = new StoryValidator( $options, $this->createRepoGroupMock() );
 		$this->assertEquals( $expectedValid, $validator->isValid( $story )->isGood() );
 	}
 

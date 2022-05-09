@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\Wikistories;
 
 use JsonSchema\Validator;
 use MediaWiki\Config\ServiceOptions;
+use RepoGroup;
 use StatusValue;
 
 class StoryValidator {
@@ -16,12 +17,17 @@ class StoryValidator {
 	/** @var ServiceOptions */
 	private $options;
 
+	/** @var RepoGroup */
+	private $repoGroup;
+
 	/**
 	 * @param ServiceOptions $options
+	 * @param RepoGroup $repoGroup
 	 */
-	public function __construct( ServiceOptions $options ) {
+	public function __construct( ServiceOptions $options, RepoGroup $repoGroup ) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
+		$this->repoGroup = $repoGroup;
 	}
 
 	/**
@@ -51,6 +57,18 @@ class StoryValidator {
 		}
 		if ( $frameCount > $this->options->get( 'WikistoriesMaxFrames' ) ) {
 			return StatusValue::newFatal( 'too-many-frames' );
+		}
+
+		// Files exist
+		$filesUsed = array_map( static function ( $frame ) {
+			return strtr( $frame->image->filename, ' ', '_' );
+		}, $story->getFrames() );
+		$files = $this->repoGroup->findFiles( $filesUsed );
+
+		foreach ( $filesUsed as $name ) {
+			if ( !isset( $files[ $name ] ) ) {
+				return StatusValue::newFatal( 'wikistories-file-not-found', $name );
+			}
 		}
 
 		return StatusValue::newGood();

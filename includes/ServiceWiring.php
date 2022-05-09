@@ -27,7 +27,8 @@ return [
 			new ServiceOptions(
 				StoryValidator::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
-			)
+			),
+			$services->getRepoGroup()
 		);
 	},
 

@@ -6,7 +6,6 @@ use Exception;
 use File;
 use Html;
 use RepoGroup;
-use TitleValue;
 
 class StoryRenderer {
 
@@ -82,9 +81,8 @@ class StoryRenderer {
 	 * @throws Exception
 	 */
 	private function getUrl( array $files, string $filename, int $size ): string {
-		$title = new TitleValue( NS_FILE, $filename );
 		/** @var File $file */
-		$file = $files[ $title->getDBkey() ];
+		$file = $files[ strtr( $filename, ' ', '_' ) ];
 		if ( !$file ) {
 			throw new Exception( "Image not found: $filename" );
 		}
