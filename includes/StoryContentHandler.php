@@ -82,15 +82,20 @@ class StoryContentHandler extends JsonContentHandler {
 
 		// register links from story frames to source articles
 		$relatedArticles = [ $story->getFromArticle() ];
+		$usedFiles = [];
 		foreach ( $story->getFrames() as $frame ) {
 			if ( isset( $frame->text->fromArticle->articleTitle ) ) {
 				$relatedArticles[] = $frame->text->fromArticle->articleTitle;
+				$usedFiles[] = strtr( $frame->image->filename, ' ', '_' );
 			}
 		}
 		foreach ( array_unique( $relatedArticles ) as $relatedArticle ) {
 			$parserOutput->addLink( new TitleValue( NS_MAIN, $relatedArticle ) );
 			// todo: only invalidate the cache if the links have changed
 			$this->storiesCache->invalidateForArticle( $relatedArticle );
+		}
+		foreach ( array_unique( $usedFiles ) as $file ) {
+			$parserOutput->addImage( $file );
 		}
 
 		if ( $cpoParams->getGenerateHtml() ) {
