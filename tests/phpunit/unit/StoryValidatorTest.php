@@ -123,6 +123,20 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 					],
 				]
 			] ],
+			'File does not exist' => [ false, [
+				'schemaVersion' => 1,
+				'fromArticle' => 'Cat',
+				'frames' => [
+					[
+						'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+						'text' => [ 'value' => 'This is a cat' ]
+					],
+					[
+						'image' => [ 'filename' => 'NOT-A-FILE.jpg', 'repo' => 'en' ],
+						'text' => [ 'value' => 'Sleeping now...' ]
+					],
+				]
+			] ],
 			'Empty is OK' => [ true, (object)[] ]
 		];
 	}
