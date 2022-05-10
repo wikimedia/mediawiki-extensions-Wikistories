@@ -50,5 +50,6 @@
 	"wikistories-builder-publishform-saveerror": "An error occured when publishing the story. Please try again later.",
 	"wikistories-builder-licensing-with-terms": "By continuing, you agree to the [$1 Terms of Use], and you irrevocably agree to release your contribution under the [$2 CC BY-SA 3.0] and [$3 GFDL] licenses.\n\n",
 	"wikistories-discover-cta-text": "Create Wikistory",
-	"wikistories-storyviewer-next-story-button": "Read next story"
+	"wikistories-storyviewer-next-story-button": "Read next story",
+	"wikistories-file-not-found": "File \"$1\" not found"
 }

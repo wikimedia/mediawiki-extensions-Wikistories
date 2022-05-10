@@ -2,19 +2,21 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
+use File;
 use MediaWiki\Extension\Wikistories\Tests\StoryFactory;
 use MediaWikiUnitTestCase;
+use RepoGroup;
 
 class StoryRendererTest extends MediaWikiUnitTestCase {
 
 	private function createRepoGroupMock() {
-		$catPosterFile = $this->getMockBuilder( 'File' )->disableOriginalConstructor()->getMock();
+		$catPosterFile = $this->createMock( File::class );
 		$catPosterFile->method( 'createThumb' )->willReturn( 'cat-poster-url' );
 
-		$catNappingFile = $this->getMockBuilder( 'File' )->disableOriginalConstructor()->getMock();
+		$catNappingFile = $this->createMock( File::class );
 		$catNappingFile->method( 'createThumb' )->willReturn( 'cat-napping-url' );
 
-		$repoGroup = $this->getMockBuilder( 'RepoGroup' )->disableOriginalConstructor()->getMock();
+		$repoGroup = $this->createMock( RepoGroup::class );
 		$repoGroup->method( 'findFiles' )->willReturn(
 			[
 				'Cat_poster_1.jpg' => $catPosterFile,
