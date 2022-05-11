@@ -134,7 +134,7 @@ module.exports = {
 		}
 
 		.checkbox {
-			background-image: url( ../images/check.svg );
+			background-image: url( ../../images/check.svg );
 			width: 20px;
 			height: 20px;
 			background-color: #fff;

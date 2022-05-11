@@ -17,7 +17,7 @@ class StoriesCache {
 	 * be invalidated and re-created with the most recent
 	 * structure.
 	 */
-	private const CACHE_VERSION = 7;
+	private const CACHE_VERSION = 8;
 
 	/**
 	 * This defines how long stories will stay in the cache if they not edited.

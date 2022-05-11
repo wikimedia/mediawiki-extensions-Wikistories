@@ -1,5 +1,5 @@
 <template>
-	<div v-if="attributionReady" class="ext-wikistories-image-attribution">
+	<div class="ext-wikistories-image-attribution">
 		<div class="ext-wikistories-image-attribution-info">
 			<div
 				v-for="license in presentLicenses"
@@ -12,14 +12,14 @@
 			<bdi
 				class="ext-wikistories-image-attribution-info-author">
 				{{
-					currentFrame.imgAttribution.author ||
+					imgAttribution.author ||
 						$i18n( 'wikistories-imageattribution-author-unknown' ).text()
 				}}
 			</bdi>
 		</div>
 		<div class="ext-wikistories-image-attribution-more-info">
 			<a
-				:href="currentFrame.imgAttribution.url"
+				:href="imgAttribution.url"
 				class="ext-wikistories-image-attribution-more-info-link"
 				target="_blank"></a>
 		</div>
@@ -37,14 +37,14 @@ module.exports = {
 			licenseTypes: [ 'CC', 'BY', 'SA', 'Fair', 'Public' ]
 		};
 	},
-	computed: $.extend( mapGetters( [ 'currentFrame' ] ), {
+	computed: $.extend( mapGetters( [ 'imgAttribution' ] ), {
 		presentLicenses: function () {
 			return this.licenseTypes.filter(
-				( license ) => this.currentFrame.imgAttribution.license.indexOf( license ) !== -1
+				( licenseType ) => {
+					const imageLicense = this.imgAttribution.license;
+					return imageLicense && imageLicense.indexOf( licenseType ) !== -1;
+				}
 			);
-		},
-		attributionReady: function () {
-			return this.currentFrame.imgAttribution;
 		}
 	} )
 };

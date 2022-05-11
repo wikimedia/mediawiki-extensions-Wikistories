@@ -79,6 +79,7 @@
 			"packageFiles": [
 				"mw.ext.wikistories.viewer/index.js",
 				"mw.ext.wikistories.viewer/StoryViewer.vue",
+				"mw.ext.wikistories.viewer/components/ImageAttribution.vue",
 				"mw.ext.wikistories.viewer/store/index.js",
 				"mw.ext.wikistories.viewer/store/story.js"
 			],
@@ -87,7 +88,8 @@
 			],
 			"dependencies": [ "vue", "vuex" ],
 			"messages": [
-				"wikistories-storyviewer-next-story-button"
+				"wikistories-storyviewer-next-story-button",
+				"wikistories-imageattribution-author-unknown"
 			]
 		},
 		"mw.ext.story.builder.styles": {

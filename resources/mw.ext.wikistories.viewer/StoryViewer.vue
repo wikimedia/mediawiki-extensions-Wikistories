@@ -27,7 +27,7 @@
 				class="ext-wikistories-viewer-container-content-story-text">
 				{{ currentFrame.text }}
 			</div>
-			<!--    <ImageAttribution />-->
+			<image-attribution></image-attribution>
 			<div
 				v-if="isStoryEnd && !isLastStory"
 				class="ext-wikistories-viewer-container-content-next-btn"
@@ -42,13 +42,13 @@
 
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
+const ImageAttribution = require( './components/ImageAttribution.vue' );
 
-// import ImageAttribution from '@components/ImageAttribution.vue'
 // @vue/component
 module.exports = {
 	name: 'StoryViewer',
 	components: {
-		// ImageAttribution
+		'image-attribution': ImageAttribution
 	},
 	props: {
 		stories: { type: Array, default: () => [] },
@@ -64,7 +64,7 @@ module.exports = {
 	},
 	computed: $.extend( mapGetters( [
 		'story', 'currentFrame',
-		'isStoryEnd', 'isLastStory', 'currentStoryTitle'
+		'isStoryEnd', 'isLastStory', 'currentStoryTitle', 'imgAttribution'
 	] ), {
 		style: function () {
 			return {
@@ -196,7 +196,7 @@ module.exports = {
 
 		&-next-btn {
 			position: absolute;
-			bottom: 40px;
+			bottom: 50px;
 			left: 0;
 			right: 0;
 			margin: auto;
@@ -264,7 +264,7 @@ module.exports = {
 			width: 18px;
 			height: 18px;
 			padding: 15px;
-			background-image: url( ./images/close-white.svg );
+			background-image: url( ../images/close-white.svg );
 			background-position: center;
 			background-repeat: no-repeat;
 			right: 10px;

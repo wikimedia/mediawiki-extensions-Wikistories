@@ -131,7 +131,7 @@ module.exports = {
 		}
 
 		&-icon {
-			background-image: url( ../images/search.svg );
+			background-image: url( ../../images/search.svg );
 			width: 20px;
 			height: 20px;
 			position: absolute;
@@ -140,7 +140,7 @@ module.exports = {
 		}
 
 		&-clear {
-			background-image: url( ../images/clear.svg );
+			background-image: url( ../../images/clear.svg );
 			width: 20px;
 			height: 20px;
 			position: absolute;
