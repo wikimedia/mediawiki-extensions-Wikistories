@@ -6,10 +6,14 @@
 
 <script>
 const events = require( './contributionEvents.js' );
+const RouterView = require( '../lib/vue-router/vue-router.common.js' ).RouterView;
 
 // @vue/component
 module.exports = {
 	name: 'App',
+	components: {
+		'router-view': RouterView
+	},
 	data: function () {
 		return { height: 0 };
 	},

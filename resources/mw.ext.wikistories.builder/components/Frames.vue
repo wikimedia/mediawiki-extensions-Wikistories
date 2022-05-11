@@ -19,10 +19,14 @@
 <script>
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
+const RouterLink = require( '../../lib/vue-router/vue-router.common.js' ).RouterLink;
 
 // @vue/component
 module.exports = {
 	name: 'Frames',
+	components: {
+		'router-link': RouterLink
+	},
 	computed: mapGetters( [ 'thumbnails' ] ),
 	methods: mapActions( [ 'selectFrame' ] )
 };

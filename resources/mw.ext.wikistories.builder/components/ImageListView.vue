@@ -14,7 +14,8 @@
 						:alt="item.title"
 					></list-image>
 					<div
-						:class="{ checkbox: true, selected: selected.indexOf( item.id ) !== -1 }">
+						class="checkbox"
+						:class="{ selected: selected.indexOf( item.id ) !== -1 }">
 					</div>
 				</div>
 			</div>
