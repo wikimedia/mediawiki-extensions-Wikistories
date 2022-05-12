@@ -58,7 +58,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 				'fromArticle' => 'Cat',
 				'frames' => [
 					[
-						'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 						'text' => [ 'value' => 'This is a cat' ]
 					],
 				]
@@ -67,7 +67,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 				'schemaVersion' => 1,
 				'fromArticle' => 'Cat',
 				'frames' => array_fill( 0, 4, [
-					'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+					'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 					'text' => [ 'value' => 'This is a cat' ]
 				] )
 			] ],
@@ -76,7 +76,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 				'fromArticle' => 'Cat',
 				'frames' => [
 					[
-						'image' => [ 'repo' => 'en' ],
+						'image' => [],
 						'text' => [ 'value' => 'This is a cat' ]
 					],
 					[
@@ -89,10 +89,10 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 				'fromArticle' => 'Cat',
 				'frames' => [
 					[
-						'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 					],
 					[
-						'image' => [ 'filename' => 'Cat_napping.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'Cat_napping.jpg' ],
 						'text' => [ 'value' => '' ]
 					],
 				]
@@ -101,11 +101,11 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 				'schemaVersion' => 1,
 				'frames' => [
 					[
-						'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 						'text' => [ 'value' => 'This is a cat' ]
 					],
 					[
-						'image' => [ 'filename' => 'Cat_napping.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'Cat_napping.jpg' ],
 						'text' => [ 'value' => 'Sleeping now...' ]
 					],
 				]
@@ -115,11 +115,11 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 				'fromArticle' => 'Cat',
 				'frames' => [
 					[
-						'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 						'text' => [ 'value' => 'This is a cat' ]
 					],
 					[
-						'image' => [ 'filename' => 'Cat_napping.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'Cat_napping.jpg' ],
 						'text' => [ 'value' => 'Sleeping now...' ]
 					],
 				]
@@ -129,11 +129,11 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 				'fromArticle' => 'Cat',
 				'frames' => [
 					[
-						'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 						'text' => [ 'value' => 'This is a cat' ]
 					],
 					[
-						'image' => [ 'filename' => 'Cat_napping.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'Cat_napping.jpg' ],
 						'text' => [ 'value' => '123456789 123456789 123456789 123456789 123456789 asdf' ]
 					],
 				]
@@ -143,11 +143,11 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 				'fromArticle' => 'Cat',
 				'frames' => [
 					[
-						'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 						'text' => [ 'value' => 'This is a cat' ]
 					],
 					[
-						'image' => [ 'filename' => 'NOT-A-FILE.jpg', 'repo' => 'en' ],
+						'image' => [ 'filename' => 'NOT-A-FILE.jpg' ],
 						'text' => [ 'value' => 'Sleeping now...' ]
 					],
 				]

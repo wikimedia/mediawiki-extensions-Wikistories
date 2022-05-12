@@ -26,7 +26,7 @@ class StoryEditPage extends EditPage {
 
 		$currentFrames = $story->getFrames();
 		$emptyFrame = (object)[
-			'image' => (object)[ 'filename' => '', 'repo' => '' ],
+			'image' => (object)[ 'filename' => '' ],
 			'text' => (object)[ 'value' => '' ],
 		];
 
@@ -46,17 +46,7 @@ class StoryEditPage extends EditPage {
 			);
 			$form .= new FieldLayout(
 				new TextInputWidget(
-					[ 'name' => "story_frame_{$i}_image_repo", 'value' => $frame->image->repo ]
-				),
-				[ 'label' => 'Repo', 'align' => 'left' ]
-			);
-			$form .= new FieldLayout(
-				new TextInputWidget(
-					[
-						'name' => "story_frame_{$i}_text_value",
-						'value' => $frame->text->value,
-						'maxlength' => $maxTextLength,
-					]
+					[ 'name' => "story_frame_{$i}_text_value", 'value' => $frame->text->value ]
 				),
 				[ 'label' => 'Text', 'align' => 'left' ]
 			);
@@ -80,16 +70,14 @@ class StoryEditPage extends EditPage {
 		$i = 0;
 		while ( true ) {
 			$filename = $request->getText( "story_frame_{$i}_image_filename" );
-			$repo = $request->getText( "story_frame_{$i}_image_repo" );
 			$text = $request->getText( "story_frame_{$i}_text_value" );
-			if ( empty( $filename ) && empty( $repo ) && empty( $text ) ) {
+			if ( empty( $filename ) && empty( $text ) ) {
 				// stop reading as soon as all fields are empty
 				break;
 			}
 			$story['frames'][] = [
 				'image' => [
 					'filename' => $filename,
-					'repo' => $repo,
 				],
 				'text' => [
 					'value' => $text

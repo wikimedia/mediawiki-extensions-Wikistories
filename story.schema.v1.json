@@ -26,18 +26,12 @@
 					"image": {
 						"description": "The image on a story frame",
 						"type": "object",
-						"required": [ "filename", "repo" ],
+						"required": [ "filename" ],
 						"properties": {
 							"filename": {
 								"description": "Name of the image file. Example: Cat_poster_1.jpg",
 								"type": "string",
 								"maxLength": 255
-							},
-							"repo": {
-								"description": "Where the image is hosted. Can be 'commons' or the language code of a Wikipedia ('en', 'fr', etc).",
-								"type": "string",
-								"minLength": 2,
-								"maxLength": 25
 							}
 						}
 					},

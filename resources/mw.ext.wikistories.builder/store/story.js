@@ -110,8 +110,7 @@ module.exports = {
 				frames: state.frames.map( ( f ) => {
 					return {
 						image: {
-							filename: f.imgTitle.split( ':' )[ 1 ],
-							repo: ( new mw.Uri( f.img ).path ).split( '/' )[ 2 ]
+							filename: f.imgTitle.split( ':' )[ 1 ]
 						},
 						text: {
 							value: f.text,

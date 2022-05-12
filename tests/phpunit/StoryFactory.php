@@ -13,11 +13,11 @@ class StoryFactory {
 			'fromArticle' => 'Cat',
 			'frames' => [
 				[
-					'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'commons' ],
+					'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 					'text' => [ 'value' => 'This is a cat' ],
 				],
 				[
-					'image' => [ 'filename' => 'Cat_napping.jpg', 'repo' => 'en' ],
+					'image' => [ 'filename' => 'Cat_napping.jpg' ],
 					'text' => [ 'value' => 'Sleeping now...' ],
 				],
 			]

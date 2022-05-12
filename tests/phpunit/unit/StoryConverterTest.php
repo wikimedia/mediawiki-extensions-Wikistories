@@ -15,11 +15,11 @@ class StoryConverterTest extends MediaWikiUnitTestCase {
 			'fromArticle' => 'Cat',
 			'frames' => [
 				[
-					'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+					'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 					'text' => [ 'value' => 'This is a cat' ]
 				],
 				[
-					'image' => [ 'filename' => 'Cat_napping.jpg', 'repo' => 'en' ],
+					'image' => [ 'filename' => 'Cat_napping.jpg' ],
 					'text' => [ 'value' => 'Sleeping now...' ]
 				],
 			]
@@ -60,15 +60,15 @@ class StoryConverterTest extends MediaWikiUnitTestCase {
 			'fromArticle' => 'Cat',
 			'frames' => [
 				[
-					'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+					'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 					'text' => [ 'value' => 'This is a cat' ]
 				],
 				[
-					'image' => [ 'filename' => 'Cat_napping.jpg', 'repo' => 'commons' ],
+					'image' => [ 'filename' => 'Cat_napping.jpg' ],
 					'text' => [ 'value' => 'Sleeping now...' ]
 				],
 				[
-					'image' => [ 'filename' => 'Titanic_(1997_film)_poster.png', 'repo' => 'en' ],
+					'image' => [ 'filename' => 'Titanic_(1997_film)_poster.png' ],
 					'text' => [ 'value' => 'Something else entirely' ]
 				],
 			]

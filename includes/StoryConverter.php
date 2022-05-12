@@ -20,7 +20,6 @@ class StoryConverter {
 				return [
 					'image' => [
 						'filename' => $filename,
-						'repo' => $parts[ 2 ],
 					],
 					'text' => [
 						'value' => $f->text
