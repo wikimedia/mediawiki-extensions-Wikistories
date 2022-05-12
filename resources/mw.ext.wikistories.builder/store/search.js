@@ -26,6 +26,11 @@ module.exports = {
 	},
 	actions: {
 		search: ( context, query ) => {
+			if ( context.state.query === query && context.state.results ) {
+				// keep the results, but reset the selection
+				context.commit( 'setSelection', [] );
+				return;
+			}
 			const queryString = query.trim();
 			context.commit( 'setResults', [] );
 			abortSearch();
