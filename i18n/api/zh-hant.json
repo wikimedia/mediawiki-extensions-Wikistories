@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "此 API 端點尚未支援命名空間（$1）。故事只能與在主命名空間的條目關聯。"
+}
