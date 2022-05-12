@@ -45,6 +45,10 @@
 		"WikistoriesMaxFrames": {
 			"description": "Maximum number of frames a story needs to have to be valid.",
 			"value": 10
+		},
+		"WikistoriesMaxTextLength": {
+			"description": "Maximum number of characters a story frame can have.",
+			"value": 1000
 		}
 	},
 	"namespaces": [

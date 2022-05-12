@@ -12,6 +12,7 @@ class StoryEditPage extends EditPage {
 
 	protected function showContentForm() {
 		$maxFrames = $this->context->getConfig()->get( 'WikistoriesMaxFrames' );
+		$maxTextLength = $this->context->getConfig()->get( 'WikistoriesMaxTextLength' );
 		$out = $this->context->getOutput();
 		/** @var StoryConverter $storyConverter */
 		$storyConverter = MediaWikiServices::getInstance()
@@ -51,7 +52,11 @@ class StoryEditPage extends EditPage {
 			);
 			$form .= new FieldLayout(
 				new TextInputWidget(
-					[ 'name' => "story_frame_{$i}_text_value", 'value' => $frame->text->value ]
+					[
+						'name' => "story_frame_{$i}_text_value",
+						'value' => $frame->text->value,
+						'maxlength' => $maxTextLength,
+					]
 				),
 				[ 'label' => 'Text', 'align' => 'left' ]
 			);
