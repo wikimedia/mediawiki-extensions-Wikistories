@@ -22,4 +22,14 @@ class Hooks {
 		}
 	}
 
+	/**
+	 * Register a message to make sure Special:CreateStory can redirect
+	 * to the login page when the user is logged out.
+	 *
+	 * @param string[] &$messages List of messages valid on login screen
+	 */
+	public static function onLoginFormValidErrorMessages( &$messages ) {
+		$messages[] = 'wikistories-specialcreatestory-mostbeloggedin';
+	}
+
 }
