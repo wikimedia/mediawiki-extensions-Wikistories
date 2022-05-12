@@ -103,7 +103,7 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		$story = StoryFactory::makeValidStory();
 		$repoGroup = $this->createRepoGroupMock();
 		$renderer = new StoryRenderer( $repoGroup, MediaWikiServices::getInstance()->getTitleFormatter() );
-		$parts = $renderer->renderNoJS( $story );
+		$parts = $renderer->renderNoJS( $story, 12 );
 
 		$this->assertArrayHasKey( 'html', $parts );
 		$this->assertArrayHasKey( 'style', $parts );
