@@ -7,5 +7,5 @@ $specialPageAliases = [];
 
 /** English (English) */
 $specialPageAliases['en'] = [
-	'CreateStory' => [ 'CreateStory' ],
+	'StoryBuilder' => [ 'StoryBuilder' ],
 ];

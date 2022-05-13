@@ -8,20 +8,20 @@ namespace MediaWiki\Extension\Wikistories;
 use Html;
 use SpecialPage;
 
-class SpecialCreateStory extends SpecialPage {
+class SpecialStoryBuilder extends SpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'CreateStory' );
+		parent::__construct( 'StoryBuilder' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function execute( $subPage ) {
-		$this->requireLogin( 'wikistories-specialcreatestory-mostbeloggedin' );
+		$this->requireLogin( 'wikistories-specialstorybuilder-mustbeloggedin' );
 		parent::execute( $subPage );
 		$out = $this->getOutput();
-		$out->setPageTitle( $this->msg( 'wikistories-specialcreatestory-title' )->text() );
+		$out->setPageTitle( $this->msg( 'wikistories-specialstorybuilder-title' )->text() );
 		$out->addModuleStyles( [ 'mw.ext.story.builder.styles' ] );
 		$out->addModules( [ 'mw.ext.story.builder' ] );
 		$out->addJsConfigVars( $this->getConfigForStoryBuilder( $subPage ) );
@@ -32,7 +32,7 @@ class SpecialCreateStory extends SpecialPage {
 				Html::element(
 					'span',
 					[ 'class' => 'ext-wikistories-loading' ],
-					$this->msg( 'wikistories-specialcreatestory-loading' )->text()
+					$this->msg( 'wikistories-specialstorybuilder-loading' )->text()
 				)
 			)
 		);
@@ -40,7 +40,7 @@ class SpecialCreateStory extends SpecialPage {
 			Html::element(
 				'div',
 				[ 'class' => 'ext-wikistories-nojswarning' ],
-				$this->msg( 'wikistories-specialcreatestory-nojswarning' )->text()
+				$this->msg( 'wikistories-specialstorybuilder-nojswarning' )->text()
 			)
 		);
 	}
