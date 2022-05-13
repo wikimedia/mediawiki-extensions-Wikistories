@@ -51,5 +51,6 @@
 	"wikistories-builder-licensing-with-terms": "By continuing, you agree to the [$1 Terms of Use], and you irrevocably agree to release your contribution under the [$2 CC BY-SA 3.0] and [$3 GFDL] licenses.\n\n",
 	"wikistories-discover-cta-text": "Create Wikistory",
 	"wikistories-storyviewer-next-story-button": "Read next story",
-	"wikistories-file-not-found": "File \"$1\" not found"
+	"wikistories-file-not-found": "File \"$1\" not found",
+	"wikistories-text-too-long": "The text on frame #$1 is too long. It has $2 characters but the maximum allowed is $3."
 }

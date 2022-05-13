@@ -2,6 +2,7 @@ const router = require( '../router.js' );
 
 const MIN_FRAMES = mw.config.get( 'wgWikistoriesMinFrames' );
 // const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
+const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
 
 const makeFrameStyle = f => {
 	return f.img ?
@@ -37,10 +38,11 @@ module.exports = {
 			state.currentFrameIndex = newSelectedFrameIndex;
 		},
 		setText: ( state, text ) => {
-			state.frames[ state.currentFrameIndex ].text = text;
+			state.frames[ state.currentFrameIndex ].text = text.slice( 0, MAX_TEXT_LENGTH );
 		},
 		setTextFromArticle: ( state, textFromArticle ) => {
-			state.frames[ state.currentFrameIndex ].textFromArticle = textFromArticle;
+			const frame = state.frames[ state.currentFrameIndex ];
+			frame.textFromArticle = textFromArticle.slice( 0, MAX_TEXT_LENGTH );
 		},
 		setImg: ( state, img ) => {
 			state.frames[ state.currentFrameIndex ].img = img;

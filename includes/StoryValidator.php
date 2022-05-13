@@ -12,6 +12,7 @@ class StoryValidator {
 	public const CONSTRUCTOR_OPTIONS = [
 		'WikistoriesMinFrames',
 		'WikistoriesMaxFrames',
+		'WikistoriesMaxTextLength',
 	];
 
 	/** @var ServiceOptions */
@@ -57,6 +58,18 @@ class StoryValidator {
 		}
 		if ( $frameCount > $this->options->get( 'WikistoriesMaxFrames' ) ) {
 			return StatusValue::newFatal( 'too-many-frames' );
+		}
+		$maxTextLength = $this->options->get( 'WikistoriesMaxTextLength' );
+		foreach ( $story->getFrames() as $index => $frame ) {
+			$textLength = strlen( $frame->text->value );
+			if ( $textLength > $maxTextLength ) {
+				return StatusValue::newFatal(
+					'wikistories-text-too-long',
+					$index + 1,
+					$textLength,
+					$maxTextLength
+				);
+			}
 		}
 
 		// Files exist

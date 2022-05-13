@@ -2,6 +2,7 @@
 	<textarea
 		ref="textarea"
 		v-model="storyText"
+		:maxlength="maxLength"
 		@focus="onFocus"
 		@blur="onBlur"
 	></textarea>
@@ -10,6 +11,7 @@
 <script>
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
+const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
 
 // @vue/component
 module.exports = {
@@ -32,6 +34,9 @@ module.exports = {
 			set: function ( value ) {
 				return this.setText( value );
 			}
+		},
+		maxLength: function () {
+			return MAX_TEXT_LENGTH;
 		}
 	} ),
 	methods: $.extend( mapActions( [ 'setText' ] ), {

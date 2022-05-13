@@ -53,6 +53,7 @@ class SpecialCreateStory extends SpecialPage {
 			'wgWikistoriesFromArticle' => $subPage,
 			'wgWikistoriesMinFrames' => $this->getConfig()->get( 'WikistoriesMinFrames' ),
 			'wgWikistoriesMaxFrames' => $this->getConfig()->get( 'WikistoriesMaxFrames' ),
+			'wgWikistoriesMaxTextLength' => $this->getConfig()->get( 'WikistoriesMaxTextLength' ),
 		];
 	}
 

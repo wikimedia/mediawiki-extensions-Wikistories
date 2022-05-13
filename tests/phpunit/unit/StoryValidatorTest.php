@@ -41,6 +41,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 			new HashConfig( [
 				'WikistoriesMinFrames' => 2,
 				'WikistoriesMaxFrames' => 3,
+				'WikistoriesMaxTextLength' => 50,
 			] )
 		);
 
@@ -120,6 +121,20 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 					[
 						'image' => [ 'filename' => 'Cat_napping.jpg', 'repo' => 'en' ],
 						'text' => [ 'value' => 'Sleeping now...' ]
+					],
+				]
+			] ],
+			'Text too long' => [ false, [
+				'schemaVersion' => 1,
+				'fromArticle' => 'Cat',
+				'frames' => [
+					[
+						'image' => [ 'filename' => 'Cat_poster_1.jpg', 'repo' => 'en' ],
+						'text' => [ 'value' => 'This is a cat' ]
+					],
+					[
+						'image' => [ 'filename' => 'Cat_napping.jpg', 'repo' => 'en' ],
+						'text' => [ 'value' => '123456789 123456789 123456789 123456789 123456789 asdf' ]
 					],
 				]
 			] ],
