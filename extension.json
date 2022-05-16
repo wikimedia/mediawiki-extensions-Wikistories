@@ -26,7 +26,8 @@
 		"CreateStory": "MediaWiki\\Extension\\Wikistories\\SpecialCreateStory"
 	},
 	"Hooks": {
-		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile"
+		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile",
+		"LoginFormValidErrorMessages": "MediaWiki\\Extension\\Wikistories\\Hooks::onLoginFormValidErrorMessages"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
@@ -57,7 +58,8 @@
 			"constant": "NS_STORY",
 			"name": "Story",
 			"content": true,
-			"defaultcontentmodel": "story"
+			"defaultcontentmodel": "story",
+			"protection": "user"
 		},
 		{
 			"id": 1705,

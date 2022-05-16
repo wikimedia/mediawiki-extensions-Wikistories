@@ -18,6 +18,7 @@ class SpecialCreateStory extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function execute( $subPage ) {
+		$this->requireLogin( 'wikistories-specialcreatestory-mostbeloggedin' );
 		parent::execute( $subPage );
 		$out = $this->getOutput();
 		$out->setPageTitle( $this->msg( 'wikistories-specialcreatestory-title' )->text() );
