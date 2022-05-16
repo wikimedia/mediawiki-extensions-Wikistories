@@ -51,5 +51,6 @@
 	"wikistories-builder-licensing-with-terms": "Продолжувајќи, се согласувате со [$1 Условите на употреба], и дека неотповикливо се согласувате дека го објавувате вашиот придонес под лиценците [$2 CC BY-SA 3.0] и [$3 ГЛСД].",
 	"wikistories-discover-cta-text": "Создај википриказна",
 	"wikistories-storyviewer-next-story-button": "Следна приказна",
-	"wikistories-file-not-found": "Податотеката „$1“ не е пронајдена"
+	"wikistories-file-not-found": "Податотеката „$1“ не е пронајдена",
+	"wikistories-text-too-long": "Текстот на рамката #$1 е предолг. Има $2 знаци, но дозволени се највеќе $3."
 }

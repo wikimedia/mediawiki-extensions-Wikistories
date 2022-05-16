@@ -51,5 +51,6 @@
 	"wikistories-builder-licensing-with-terms": "המשך התהליך מהווה את הסכמתך ל[$1 תנאי השימוש], ואת הסכמתך הבלתי־חוזרת לשחרר את התרומות שלך לפי תנאי רישיונות [$2 CC BY-SA 3.0] ו־[$3 GFDL].",
 	"wikistories-discover-cta-text": "יצירת סיפור ויקי",
 	"wikistories-storyviewer-next-story-button": "קריאת הסיפור הבא",
-	"wikistories-file-not-found": "הקובץ \"$1\" לא נמצא."
+	"wikistories-file-not-found": "הקובץ \"$1\" לא נמצא.",
+	"wikistories-text-too-long": "הטקסט בתמונה מס' $1 ארוך מדי. יש בו $2 תווים, אבל המספר המרבי המותר הוא $3."
 }

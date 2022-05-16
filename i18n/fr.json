@@ -52,5 +52,6 @@
 	"wikistories-builder-licensing-with-terms": "En continuant, vous acceptez les [$1 Conditions d’utilisation] et vous acceptez irrévocablement de publier votre contribution sous les licences [$2 CC BY-SA 3.0] et [$3 GFDL].",
 	"wikistories-discover-cta-text": "Créer un récit wiki",
 	"wikistories-storyviewer-next-story-button": "Lire le récit suivant",
-	"wikistories-file-not-found": "Fichier « $1 » introuvable."
+	"wikistories-file-not-found": "Fichier « $1 » introuvable.",
+	"wikistories-text-too-long": "Le texte du cadre nº $1 est trop long. Il comporte $2 caractères mais le maximum autorisé est $3."
 }

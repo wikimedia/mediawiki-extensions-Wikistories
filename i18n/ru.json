@@ -26,5 +26,6 @@
 	"wikistories-confirmdialog-delete-accept": "Удалить",
 	"wikistories-confirmdialog-delete-cancel": "Отмена",
 	"wikistories-builder-publishform-publishbutton": "Опубликовать",
-	"wikistories-discover-cta-text": "Создать ВикиИсторию"
+	"wikistories-discover-cta-text": "Создать ВикиИсторию",
+	"wikistories-text-too-long": "Текст в #$1-й рамке очень длинный. В нём $2 {{PLURAL:$2|символ|символа|символов}}, когда максимально допустимо — $3 {{PLURAL:$3|символ|символа|символов}}."
 }
