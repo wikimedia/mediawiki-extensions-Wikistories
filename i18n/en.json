@@ -52,5 +52,5 @@
 	"wikistories-discover-cta-text": "Create Wikistory",
 	"wikistories-storyviewer-next-story-button": "Read next story",
 	"wikistories-file-not-found": "File \"$1\" not found",
-	"wikistories-text-too-long": "The text on frame #$1 is too long. It has $2 characters but the maximum allowed is $3."
+	"wikistories-text-too-long": "The text on frame #$1 is too long. It has {{PLURAL:$2|$2 character|$2 characters}} but the maximum allowed is $3."
 }
