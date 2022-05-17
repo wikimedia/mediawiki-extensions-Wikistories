@@ -23,7 +23,7 @@
 		}
 	},
 	"SpecialPages": {
-		"CreateStory": "MediaWiki\\Extension\\Wikistories\\SpecialCreateStory"
+		"StoryBuilder": "MediaWiki\\Extension\\Wikistories\\SpecialStoryBuilder"
 	},
 	"Hooks": {
 		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile",
