@@ -3,6 +3,13 @@
 		<div class="ext-wikistories-viewer-container-overlay" @click="discardStory"></div>
 		<div class="ext-wikistories-viewer-container-content" :style="style">
 			<div class="ext-wikistories-viewer-container-topbar"></div>
+			<dots-menu class="ext-wikistories-viewer-container-menu">
+				<dots-menu-item
+					:text="$i18n( 'wikistories-storyviewer-edit' ).text()"
+					icon="edit"
+					@click="edit"
+				></dots-menu-item>
+			</dots-menu>
 			<div
 				class="ext-wikistories-viewer-container-content-close-icon"
 				@click="discardStory"
@@ -43,12 +50,16 @@
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
 const ImageAttribution = require( './components/ImageAttribution.vue' );
+const DotsMenu = require( '../../components/DotsMenu.vue' );
+const DotsMenuItem = require( '../../components/DotsMenuItem.vue' );
 
 // @vue/component
 module.exports = {
 	name: 'StoryViewer',
 	components: {
-		'image-attribution': ImageAttribution
+		'image-attribution': ImageAttribution,
+		'dots-menu': DotsMenu,
+		'dots-menu-item': DotsMenuItem
 	},
 	props: {
 		stories: { type: Array, default: () => [] },
@@ -63,12 +74,12 @@ module.exports = {
 		};
 	},
 	computed: $.extend( mapGetters( [
-		'story', 'currentFrame',
+		'story', 'currentFrame', 'editUrl',
 		'isStoryEnd', 'isLastStory', 'currentStoryTitle', 'imgAttribution'
 	] ), {
 		style: function () {
 			return {
-				backgroundImage: 'url(' + this.currentFrame.img + ')',
+				backgroundImage: 'url(' + this.currentFrame.url + ')',
 				backgroundPosition: 'center',
 				backgroundSize: 'cover'
 			};
@@ -118,8 +129,11 @@ module.exports = {
 		preloadStory: function () {
 			this.story.forEach( ( frame ) => {
 				const img = new Image();
-				img.src = frame.img;
+				img.src = frame.url;
 			} );
+		},
+		edit: function () {
+			window.location = this.editUrl;
 		}
 	} ),
 	watch: {
@@ -172,11 +186,16 @@ module.exports = {
 		background: linear-gradient( 180deg, rgba( 0, 0, 0, 0.35 ) 0%, rgba( 0, 0, 0, 0 ) 100% );
 	}
 
+	&-menu {
+		position: absolute;
+		top: 30px;
+		right: 5px;
+	}
+
 	&-content {
 		height: 100%;
 		margin: 0 auto;
 		position: relative;
-		text-align: center;
 		background-color: @colorGray1;
 
 		@media screen and ( min-width: 720px ) {
@@ -194,7 +213,6 @@ module.exports = {
 			margin: 0;
 			padding: 10px;
 			font-size: 18px;
-			text-align: left;
 			line-height: 27px;
 		}
 
@@ -270,7 +288,7 @@ module.exports = {
 			background-image: url( ../images/close-white.svg );
 			background-position: center;
 			background-repeat: no-repeat;
-			right: 10px;
+			left: 10px;
 			top: 18px;
 		}
 	}

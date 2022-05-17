@@ -5,18 +5,27 @@ namespace MediaWiki\Extension\Wikistories;
 use Exception;
 use File;
 use Html;
+use MediaWiki\Linker\LinkTarget;
 use RepoGroup;
+use SpecialPage;
+use TitleFormatter;
+use TitleValue;
 
 class StoryRenderer {
 
 	/** @var RepoGroup */
 	private $repoGroup;
 
+	/** @var TitleFormatter */
+	private $titleFormatter;
+
 	/**
 	 * @param RepoGroup $repoGroup
+	 * @param TitleFormatter $titleFormatter
 	 */
-	public function __construct( RepoGroup $repoGroup ) {
+	public function __construct( RepoGroup $repoGroup, TitleFormatter $titleFormatter ) {
 		$this->repoGroup = $repoGroup;
+		$this->titleFormatter = $titleFormatter;
 	}
 
 	/**
@@ -24,7 +33,7 @@ class StoryRenderer {
 	 * @return array [ 'html', 'style' ]
 	 */
 	public function renderNoJS( StoryContent $story ): array {
-		$story = $this->getStoryForViewer( $story, 0, '' );
+		$story = $this->getStoryForViewer( $story, 0, new TitleValue( NS_STORY, 'Unused' ) );
 		$html = Html::rawElement(
 			'div',
 			[ 'class' => 'ext-wikistories-viewer-nojs-root' ],
@@ -33,7 +42,7 @@ class StoryRenderer {
 					'div',
 					[
 						'class' => 'ext-wikistories-viewer-frame',
-						'style' => 'background-image:url(' . $frame[ 'img' ] . ');',
+						'style' => 'background-image:url(' . $frame[ 'url' ] . ');',
 					],
 					Html::element( 'p', [], $frame[ 'text' ] )
 				);
@@ -49,10 +58,10 @@ class StoryRenderer {
 	/**
 	 * @param StoryContent $story
 	 * @param int $pageId Page Id of this story
-	 * @param string $pageTitle Title of this story
+	 * @param LinkTarget $title Title of this story
 	 * @return array Data structure expected by the discovery module and the story viewer
 	 */
-	public function getStoryForViewer( StoryContent $story, int $pageId, string $pageTitle ): array {
+	public function getStoryForViewer( StoryContent $story, int $pageId, LinkTarget $title ): array {
 		$frames = $story->getFrames();
 		$filesUsed = array_map( static function ( $frame ) {
 			return $frame->image->filename;
@@ -60,14 +69,42 @@ class StoryRenderer {
 		$files = $this->repoGroup->findFiles( $filesUsed );
 		$firstFrame = reset( $frames );
 		$thumb = $firstFrame ? $this->getUrl( $files, $firstFrame->image->filename, 52 ) : '';
+		$storyFullTitle = $this->titleFormatter->getPrefixedDBkey( $title );
 		return [
 			'pageId' => $pageId,
-			'title' => $pageTitle,
+			'title' => $title->getText(),
+			'editUrl' => SpecialPage::getTitleFor( 'StoryBuilder', $storyFullTitle )->getLinkURL(),
 			'thumbnail' => $thumb,
 			'frames' => array_map( function ( $frame ) use ( $files ) {
 				return [
-					'img' => $this->getUrl( $files, $frame->image->filename, 640 ),
+					'url' => $this->getUrl( $files, $frame->image->filename, 640 ),
 					'text' => $frame->text->value,
+					'attribution' => $this->getAttribution( $files, $frame->image->filename ),
+				];
+			}, $frames )
+		];
+	}
+
+	/**
+	 * @param StoryContent $story
+	 * @param string $pageTitle
+	 * @return array
+	 */
+	public function getStoryForBuilder( StoryContent $story, string $pageTitle ): array {
+		$frames = $story->getFrames();
+		$filesUsed = array_map( static function ( $frame ) {
+			return $frame->image->filename;
+		}, $frames );
+		$files = $this->repoGroup->findFiles( $filesUsed );
+		return [
+			'title' => $pageTitle,
+			'fromArticle' => $story->getFromArticle(),
+			'frames' => array_map( function ( $frame ) use ( $files ) {
+				return [
+					'url' => $this->getUrl( $files, $frame->image->filename, 640 ),
+					'filename' => $frame->image->filename,
+					'text' => $frame->text->value,
+					'textFromArticle' => $frame->text->fromArticle->originalText ?? '',
 					'attribution' => $this->getAttribution( $files, $frame->image->filename ),
 				];
 			}, $frames )
@@ -102,11 +139,13 @@ class StoryRenderer {
 		if ( !$file ) {
 			throw new Exception( "Image not found: $filename" );
 		}
+		$metadata = $file->getExtendedMetadata();
+		$author = strip_tags( $metadata[ 'Artist' ][ 'value' ] ?? '' );
+		$license = $metadata[ 'LicenseShortName' ][ 'value' ];
 
 		return [
-			'extmetadata' => array_intersect_key(
-				$file->getExtendedMetadata(), array_fill_keys( [ 'Artist', 'LicenseShortName' ], true )
-			),
+			'author' => $author,
+			'license' => $license,
 			'url' => $file->getDescriptionUrl(),
 		];
 	}

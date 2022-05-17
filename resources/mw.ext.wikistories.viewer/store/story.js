@@ -1,17 +1,3 @@
-const strip = ( html ) => {
-	const doc = new window.DOMParser().parseFromString( html, 'text/html' );
-	for ( const span of doc.querySelectorAll( 'span' ) ) {
-		if ( span.style.display === 'none' ) {
-			span.remove();
-		}
-	}
-	for ( const sup of doc.querySelectorAll( 'sup' ) ) {
-		sup.remove();
-	}
-
-	return doc.body.textContent || '';
-};
-
 module.exports = {
 	state: {
 		stories: [],
@@ -20,11 +6,13 @@ module.exports = {
 		isStoryEnd: false
 	},
 	getters: {
-		story: ( state ) => {
-			const stories = state.stories;
-			const storyId = state.storyId;
-			const currentStory = stories.find( story => story.pageId.toString() === storyId );
-			return currentStory ? currentStory.frames : [];
+		currentStory: ( state ) => {
+			return state.stories.find( story => {
+				return story.pageId.toString() === state.storyId;
+			} ) || {};
+		},
+		story: ( state, getters ) => {
+			return getters.currentStory.frames || [];
 		},
 		isStoryEnd: ( state ) => {
 			return state.isStoryEnd;
@@ -38,15 +26,7 @@ module.exports = {
 		},
 		imgAttribution: ( state, getters ) => {
 			if ( getters.story.length ) {
-				const attribution = getters.story[ state.frameId - 1 ].attribution;
-				const artist = attribution.extmetadata.Artist;
-				const license = attribution.extmetadata.LicenseShortName.value;
-
-				return {
-					author: artist ? strip( artist.value ) : '',
-					license: license,
-					url: attribution.url
-				};
+				return getters.story[ state.frameId - 1 ].attribution;
 			} else {
 				return {};
 			}
@@ -59,6 +39,9 @@ module.exports = {
 		},
 		isLastStory: ( state ) => {
 			return state.stories[ state.stories.length - 1 ].pageId.toString() === state.storyId;
+		},
+		editUrl: ( state, getters ) => {
+			return getters.currentStory.editUrl;
 		}
 	},
 	mutations: {

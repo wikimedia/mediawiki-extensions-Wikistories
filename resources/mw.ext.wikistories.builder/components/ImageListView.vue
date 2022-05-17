@@ -4,14 +4,14 @@
 			<div class="ext-wikistories-imagelistview__list">
 				<div
 					v-for="item in items"
-					:key="item.title"
+					:key="item.filename"
 					:data-id="item.id"
 					class="ext-wikistories-imagelistview__list-image"
 					:style="{ width: `${item.width}px` }"
 					@click="onSelect">
 					<list-image
-						:source="item.thumb"
-						:alt="item.title"
+						:source="item.url"
+						:alt="item.filename"
 					></list-image>
 					<div
 						class="checkbox"

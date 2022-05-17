@@ -23,7 +23,14 @@
 		}
 	},
 	"SpecialPages": {
-		"StoryBuilder": "MediaWiki\\Extension\\Wikistories\\SpecialStoryBuilder"
+		"StoryBuilder": {
+			"class": "MediaWiki\\Extension\\Wikistories\\SpecialStoryBuilder",
+			"services": [
+				"WikiPageFactory",
+				"Wikistories.StoryRenderer",
+				"PageStore"
+			]
+		}
 	},
 	"Hooks": {
 		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile",
@@ -95,7 +102,9 @@
 				"mw.ext.wikistories.viewer/StoryViewer.vue",
 				"mw.ext.wikistories.viewer/components/ImageAttribution.vue",
 				"mw.ext.wikistories.viewer/store/index.js",
-				"mw.ext.wikistories.viewer/store/story.js"
+				"mw.ext.wikistories.viewer/store/story.js",
+				"components/DotsMenu.vue",
+				"components/DotsMenuItem.vue"
 			],
 			"styles": [
 				"mw.ext.wikistories.viewer/viewer.less"
@@ -103,6 +112,7 @@
 			"dependencies": [ "vue", "vuex" ],
 			"messages": [
 				"wikistories-storyviewer-next-story-button",
+				"wikistories-storyviewer-edit",
 				"wikistories-imageattribution-author-unknown"
 			]
 		},
@@ -131,8 +141,6 @@
 				"mw.ext.wikistories.builder/components/ConfirmDialog.vue",
 				"mw.ext.wikistories.builder/components/CurrentFrame.vue",
 				"mw.ext.wikistories.builder/components/AutoHeightTextarea.vue",
-				"mw.ext.wikistories.builder/components/DotsMenu.vue",
-				"mw.ext.wikistories.builder/components/DotsMenuItem.vue",
 				"mw.ext.wikistories.builder/components/Frames.vue",
 				"mw.ext.wikistories.builder/components/ListImage.vue",
 				"mw.ext.wikistories.builder/components/ImageAttribution.vue",
@@ -154,6 +162,8 @@
 				"mw.ext.wikistories.builder/views/PublishForm.vue",
 				"mw.ext.wikistories.builder/views/Search.vue",
 				"mw.ext.wikistories.builder/views/Story.vue",
+				"components/DotsMenu.vue",
+				"components/DotsMenuItem.vue",
 				"lib/vue-router/vue-router.common.js"
 			],
 			"dependencies": [
@@ -176,6 +186,7 @@
 				"wikistories-story-replaceimage",
 				"wikistories-story-deleteframe",
 				"wikistories-story-navigator-title",
+				"wikistories-story-navigator-title-edit",
 				"wikistories-imageattribution-author-unknown",
 				"wikistories-article-navigator-title",
 				"wikistories-article-cancelselection",
@@ -190,6 +201,8 @@
 				"wikistories-confirmdialog-delete-cancel",
 				"wikistories-confirmdialog-discardstory-title",
 				"wikistories-confirmdialog-discardstory-message",
+				"wikistories-confirmdialog-discardedits-title",
+				"wikistories-confirmdialog-discardedits-message",
 				"wikistories-confirmdialog-discardstory-accept",
 				"wikistories-toast-maxframes-addingmore",
 				"wikistories-toast-maxframes-selecting",
@@ -204,6 +217,7 @@
 				"wikistories-builder-publishform-invalidtitle-empty",
 				"wikistories-builder-publishform-invalidtitle-format",
 				"wikistories-builder-publishform-invalidtitle-duplicate",
+				"wikistories-builder-publishform-invalidtitle-notfound",
 				"wikistories-builder-publishform-saveerror",
 				"wikistories-builder-licensing-with-terms"
 			]

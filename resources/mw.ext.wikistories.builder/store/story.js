@@ -3,13 +3,15 @@ const router = require( '../router.js' );
 const MIN_FRAMES = mw.config.get( 'wgWikistoriesMinFrames' );
 const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
 const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
+const storyContent = mw.config.get( 'wgWikistoriesStoryContent' );
+const storyEditMode = mw.config.get( 'wgWikistoriesMode' );
 
 let orderKey = 10;
 
 const makeFrameStyle = f => {
-	return f.img ?
+	return f.url ?
 		{
-			backgroundImage: 'url(' + f.img + ')',
+			backgroundImage: 'url(' + f.url + ')',
 			backgroundPosition: 'center',
 			backgroundSize: 'cover'
 		} :
@@ -18,9 +20,14 @@ const makeFrameStyle = f => {
 
 module.exports = {
 	state: {
-		fromArticle: mw.config.get( 'wgWikistoriesFromArticle' ),
+		fromArticle: storyContent.fromArticle,
 		currentFrameIndex: null,
-		frames: []
+		/*
+			frames: [ { url, filename, text, textFromArticle } ]
+		 */
+		frames: storyContent.frames,
+		mode: storyEditMode,
+		title: storyContent.title
 	},
 	mutations: {
 		selectFrame: ( state, index ) => { state.currentFrameIndex = index; },
@@ -56,11 +63,11 @@ module.exports = {
 			const frame = state.frames[ state.currentFrameIndex ];
 			frame.textFromArticle = textFromArticle.slice( 0, MAX_TEXT_LENGTH );
 		},
-		setImg: ( state, img ) => {
-			state.frames[ state.currentFrameIndex ].img = img;
+		setImageUrl: ( state, url ) => {
+			state.frames[ state.currentFrameIndex ].url = url;
 		},
-		setImgTitle: ( state, title ) => {
-			state.frames[ state.currentFrameIndex ].imgTitle = title;
+		setImageFilename: ( state, title ) => {
+			state.frames[ state.currentFrameIndex ].filename = title;
 		}
 	},
 	actions: {
@@ -79,21 +86,23 @@ module.exports = {
 		setTextFromArticle: ( context, textFromArticle ) => {
 			context.commit( 'setTextFromArticle', textFromArticle );
 		},
-		setImg: ( context, img ) => {
-			context.commit( 'setImg', img );
+		setImageUrl: ( context, url ) => {
+			context.commit( 'setImageUrl', url );
 		},
-		setImgTitle: ( context, title ) => {
-			context.commit( 'setImgTitle', title );
+		setImageFilename: ( context, filename ) => {
+			context.commit( 'setImageFilename', filename );
 		},
 		setFrameImage: ( context, data ) => {
-			context.commit( 'setImg', data.thumb );
-			context.commit( 'setImgTitle', data.title );
+			context.commit( 'setImageUrl', data.url );
+			context.commit( 'setImageFilename', data.filename );
 		},
 		reorderFrames: ( context, data ) => {
 			context.commit( 'reorderFrames', data );
 		}
 	},
 	getters: {
+		mode: ( state ) => state.mode,
+		title: ( state ) => state.title,
 		thumbnails: ( state ) => {
 			return state.frames.map( ( f, index ) => {
 				const newFrame = $.extend( {}, f );
@@ -126,18 +135,21 @@ module.exports = {
 			return {
 				fromArticle: state.fromArticle,
 				frames: state.frames.map( ( f ) => {
-					return {
+					const frame = {
 						image: {
-							filename: f.imgTitle.split( ':' )[ 1 ]
+							filename: f.filename
 						},
 						text: {
-							value: f.text,
-							fromArticle: {
-								articleTitle: state.fromArticle,
-								originalText: f.textFromArticle
-							}
+							value: f.text
 						}
 					};
+					if ( f.textFromArticle ) {
+						frame.text.fromArticle = {
+							articleTitle: state.fromArticle,
+							originalText: f.textFromArticle
+						};
+					}
+					return frame;
 				} )
 			};
 		}
