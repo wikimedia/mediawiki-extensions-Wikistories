@@ -85,15 +85,17 @@ module.exports = {
 							events.logPublishSuccess( this.storyTitle );
 							this.navigateToArticle( response.pageid );
 						} else {
-							this.error = this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
+							this.error = ( response && response.error && response.error.info ) ||
+								this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
 							events.logPublishFailure(
 								this.storyTitle,
 								response.error.code || this.error
 							);
 						}
 					}.bind( this ),
-					function () {
-						this.error = this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
+					function ( code, response ) {
+						this.error = ( response && response.error && response.error.info ) ||
+							this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
 						events.logPublishFailure( this.storyTitle, this.error );
 					}.bind( this )
 				);
