@@ -58,8 +58,7 @@
 			"constant": "NS_STORY",
 			"name": "Story",
 			"content": true,
-			"defaultcontentmodel": "story",
-			"protection": "user"
+			"defaultcontentmodel": "story"
 		},
 		{
 			"id": 1705,
