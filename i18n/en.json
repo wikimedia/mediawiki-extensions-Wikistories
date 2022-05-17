@@ -6,6 +6,8 @@
 	},
 	"wikistories-extensionname": "Wikistories",
 	"wikistories-extensiondesc": "Wikistories lets editors create short, visual and reliable knowledge from Wikimedia projects",
+	"right-edit-story": "Edit stories",
+	"action-edit-story": "edit stories",
 	"wikistories-specialstorybuilder-title": "Create story",
 	"wikistories-specialstorybuilder-loading": "Loading...",
 	"wikistories-specialstorybuilder-nojswarning": "This special page requires JavaScript to work",
