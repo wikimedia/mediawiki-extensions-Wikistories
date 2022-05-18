@@ -6,8 +6,7 @@
 			"আফতাবুজ্জামান"
 		]
 	},
-	"wikistories-hooks-createstory": "গল্প তৈরি করুন",
-	"wikistories-specialcreatestory-loading": "লোড করা হচ্ছে...",
+	"wikistories-specialstorybuilder-loading": "লোড করা হচ্ছে...",
 	"wikistories-search-noresultstext": "ফলাফল নেই",
 	"wikistories-search-navigator-title": "চিত্র নির্বাচন করুন",
 	"wikistories-search-navigator-title-selected-info": "$1টি নির্বাচিত হয়েছে",

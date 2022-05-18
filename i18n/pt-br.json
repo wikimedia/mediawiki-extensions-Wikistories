@@ -4,9 +4,8 @@
 			"YuriNikolai"
 		]
 	},
-	"wikistories-hooks-createstory": "Criar uma história",
-	"wikistories-specialcreatestory-title": "Criar história",
-	"wikistories-specialcreatestory-loading": "Carregando...",
+	"wikistories-specialstorybuilder-title": "Criar história",
+	"wikistories-specialstorybuilder-loading": "Carregando...",
 	"wikistories-search-inputplaceholder": "Pesquisar imagens",
 	"wikistories-search-noresultstext": "Sem resultados",
 	"wikistories-search-navigator-title": "Selecionar imagens",

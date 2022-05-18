@@ -7,10 +7,10 @@
 	},
 	"wikistories-extensionname": "Wikirécits",
 	"wikistories-extensiondesc": "Wikirécits (''Wikistories'') permet à des rédacteurs de créer des récits courts, visuels et fiables portant sur les connaissances des projets de Wikimedia.",
-	"wikistories-hooks-createstory": "Créer un récit",
-	"wikistories-specialcreatestory-title": "Créer un récit",
-	"wikistories-specialcreatestory-loading": "Chargement en cours...",
-	"wikistories-specialcreatestory-nojswarning": "Cette page spéciale nécessite JavaScript pour fonctionner",
+	"wikistories-specialstorybuilder-title": "Créer un récit",
+	"wikistories-specialstorybuilder-loading": "Chargement en cours...",
+	"wikistories-specialstorybuilder-nojswarning": "Cette page spéciale nécessite JavaScript pour fonctionner",
+	"wikistories-specialstorybuilder-mustbeloggedin": "Veuillez vous connecter ou créer un compte pour créer des récits",
 	"wikistories-search-inputplaceholder": "Rechercher des images",
 	"wikistories-search-cuetext": "Rechercher des images relatives à l’article.",
 	"wikistories-search-noresultstext": "Aucun résultat",
@@ -53,5 +53,5 @@
 	"wikistories-discover-cta-text": "Créer un récit wiki",
 	"wikistories-storyviewer-next-story-button": "Lire le récit suivant",
 	"wikistories-file-not-found": "Fichier « $1 » introuvable.",
-	"wikistories-text-too-long": "Le texte du cadre nº $1 est trop long. Il comporte $2 caractères mais le maximum autorisé est $3."
+	"wikistories-text-too-long": "Le texte du cadre nº $1 est trop long. Il comporte $2 caractère{{PLURAL:$2||s}} mais le maximum autorisé est $3."
 }

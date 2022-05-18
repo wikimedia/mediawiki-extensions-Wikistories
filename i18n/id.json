@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"BAPerdana-WMF"
+		]
+	},
+	"wikistories-specialstorybuilder-title": "Buat Wikistories",
+	"wikistories-specialstorybuilder-loading": "Memuat...",
+	"wikistories-specialstorybuilder-nojswarning": "Halaman ini membutuhkan JavaScript agar bisa bekerja",
+	"wikistories-specialstorybuilder-mustbeloggedin": "Harap masuk log atau buat akun baru untuk membuat Wikistories",
+	"wikistories-search-inputplaceholder": "Cari gambar",
+	"wikistories-search-cuetext": "Cari gambar yang berhubungan dengan artikel.",
+	"wikistories-search-noresultstext": "Tidak ada hasil",
+	"wikistories-search-navigator-title": "Pilih gambar",
+	"wikistories-search-navigator-title-selected-info": "$1 dipilih",
+	"wikistories-story-goto-publish": "Selanjutnya",
+	"wikistories-story-selecttext": "Pilih teks dari <span class=\"ext-wikistories-wikipedia\">artikel Wikipedia</span> yang akan digunakan untuk Wikistories Anda",
+	"wikistories-story-editdone": "Selesai",
+	"wikistories-story-replaceimage": "Ganti gambar ini",
+	"wikistories-story-deleteframe": "Hapus bagian ini",
+	"wikistories-story-navigator-title": "Buat Wikistories",
+	"wikistories-imageattribution-author-unknown": "Pembuat tidak diketahui",
+	"wikistories-article-navigator-title": "Sorot teks",
+	"wikistories-article-cancelselection": "Batal",
+	"wikistories-article-loading": "Memuat...",
+	"wikistories-alert-okbuttontext": "Oke",
+	"wikistories-confirmdialog-delete-accept": "Hapus",
+	"wikistories-confirmdialog-delete-cancel": "Batal",
+	"wikistories-confirmdialog-discardstory-accept": "Buang",
+	"wikistories-error-frameswithouttext-title": "Teks tidak ditemukan",
+	"wikistories-builder-publishform-publishbutton": "Terbitkan",
+	"wikistories-file-not-found": "Berkas \"$1\" tidak ditemukan"
+}

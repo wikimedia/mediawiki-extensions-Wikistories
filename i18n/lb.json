@@ -5,8 +5,7 @@
 		]
 	},
 	"wikistories-extensiondesc": "Wikistories erlaabt et Auteure fir kuerzt, visuellt an zouverlässegt Wëssen aus Wikimedia-Projeten zesummenzestellen.",
-	"wikistories-hooks-createstory": "Eng Geschicht ufänken",
-	"wikistories-specialcreatestory-loading": "Lueden...",
+	"wikistories-specialstorybuilder-loading": "Lueden...",
 	"wikistories-search-inputplaceholder": "Biller sichen",
 	"wikistories-search-noresultstext": "Keng Resultater",
 	"wikistories-story-goto-publish": "Weider",
@@ -26,5 +25,6 @@
 	"wikistories-error-frameswithouttext-title": "Text feelt",
 	"wikistories-builder-publishform-navigator-title": "Wikistory verëffentlechen",
 	"wikistories-builder-publishform-publishbutton": "Verëffentlechen",
-	"wikistories-storyviewer-next-story-button": "Nächst Geschicht liesen"
+	"wikistories-storyviewer-next-story-button": "Nächst Geschicht liesen",
+	"wikistories-file-not-found": "Fichier \"$1\" net fonnt"
 }

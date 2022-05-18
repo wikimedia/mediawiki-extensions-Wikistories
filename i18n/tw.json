@@ -7,8 +7,7 @@
 			"Rsaawah"
 		]
 	},
-	"wikistories-hooks-createstory": "Yɛ ayɛsɛm",
-	"wikistories-specialcreatestory-nojswarning": "Saa kratafa soronko yi hia JavaScript de adi dwuma",
+	"wikistories-specialstorybuilder-nojswarning": "Saa kratafa soronko yi hia JavaScript de adi dwuma",
 	"wikistories-story-goto-publish": "Deɛ adi so",
 	"wikistories-article-cancelselection": "Pepa",
 	"wikistories-article-usetext": "Fa ka nsem ho",

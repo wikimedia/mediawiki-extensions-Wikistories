@@ -6,10 +6,10 @@
 		]
 	},
 	"wikistories-extensiondesc": "הרחבת סיפורי ויקי (Wikistories) מאפשרת לעורכים ליצור ידע קצר, חזותי, ואמין ממיזמי ויקימדיה",
-	"wikistories-hooks-createstory": "יצירת סיפור",
-	"wikistories-specialcreatestory-title": "יצירת סיפור",
-	"wikistories-specialcreatestory-loading": "טעינה...",
-	"wikistories-specialcreatestory-nojswarning": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",
+	"wikistories-specialstorybuilder-title": "יצירת סיפור",
+	"wikistories-specialstorybuilder-loading": "טעינה...",
+	"wikistories-specialstorybuilder-nojswarning": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",
+	"wikistories-specialstorybuilder-mustbeloggedin": "נא להיכנס או ליצור חשבון כדי ליצור סיפורים",
 	"wikistories-search-inputplaceholder": "חיפוש תמונות",
 	"wikistories-search-cuetext": "חיפוש תמונות שקשורות לערך.",
 	"wikistories-search-noresultstext": "אין תוצאות",
@@ -52,5 +52,5 @@
 	"wikistories-discover-cta-text": "יצירת סיפור ויקי",
 	"wikistories-storyviewer-next-story-button": "קריאת הסיפור הבא",
 	"wikistories-file-not-found": "הקובץ \"$1\" לא נמצא.",
-	"wikistories-text-too-long": "הטקסט בתמונה מס' $1 ארוך מדי. יש בו $2 תווים, אבל המספר המרבי המותר הוא $3."
+	"wikistories-text-too-long": "הטקסט בתמונה מס' $1 ארוך מדי. יש בו {{PLURAL:$2|תו אחד|$2 תווים}}, אבל המספר המרבי המותר הוא $3."
 }

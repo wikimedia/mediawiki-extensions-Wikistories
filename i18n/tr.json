@@ -7,10 +7,9 @@
 		]
 	},
 	"wikistories-extensiondesc": "Vikihikayeler; editörlerin Wikimedia projelerinden kısa, görsel ve güvenilir bilgiler oluşturmasına olanak tanır",
-	"wikistories-hooks-createstory": "Bir hikaye oluştur",
-	"wikistories-specialcreatestory-title": "Hikaye oluştur",
-	"wikistories-specialcreatestory-loading": "Yükleniyor...",
-	"wikistories-specialcreatestory-nojswarning": "Bu özel sayfanın çalışması için JavaScript gereklidir",
+	"wikistories-specialstorybuilder-title": "Hikaye oluştur",
+	"wikistories-specialstorybuilder-loading": "Yükleniyor...",
+	"wikistories-specialstorybuilder-nojswarning": "Bu özel sayfanın çalışması için JavaScript gereklidir",
 	"wikistories-search-inputplaceholder": "Görsel ara",
 	"wikistories-search-cuetext": "Madde ile ilgili görsel arayın.",
 	"wikistories-search-noresultstext": "Sonuç yok",

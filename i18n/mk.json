@@ -6,10 +6,10 @@
 	},
 	"wikistories-extensionname": "Википриказни",
 	"wikistories-extensiondesc": "Википриказни им овозможува на корисниците да создаваат кратки, нагледни и проверени информации од Викимедиините проекти",
-	"wikistories-hooks-createstory": "Создај приказна",
-	"wikistories-specialcreatestory-title": "Создај приказна",
-	"wikistories-specialcreatestory-loading": "Вчитувам...",
-	"wikistories-specialcreatestory-nojswarning": "Оваа службена страница бара JavaScript за да работи",
+	"wikistories-specialstorybuilder-title": "Создај приказна",
+	"wikistories-specialstorybuilder-loading": "Вчитувам...",
+	"wikistories-specialstorybuilder-nojswarning": "Оваа службена страница бара JavaScript за да работи",
+	"wikistories-specialstorybuilder-mustbeloggedin": "Најавете се или направете сметка за да создавате приказни",
 	"wikistories-search-inputplaceholder": "Пребарај слики",
 	"wikistories-search-cuetext": "Пребарај слики поврзани со статијава.",
 	"wikistories-search-noresultstext": "Нема исход",
@@ -52,5 +52,5 @@
 	"wikistories-discover-cta-text": "Создај википриказна",
 	"wikistories-storyviewer-next-story-button": "Следна приказна",
 	"wikistories-file-not-found": "Податотеката „$1“ не е пронајдена",
-	"wikistories-text-too-long": "Текстот на рамката #$1 е предолг. Има $2 знаци, но дозволени се највеќе $3."
+	"wikistories-text-too-long": "Текстот на рамката #$1 е предолг. Има {{PLURAL:$2|$2 знак|$2 знаци}}, но дозволени се највеќе $3."
 }

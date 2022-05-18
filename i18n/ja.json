@@ -4,10 +4,9 @@
 			"MathXplore"
 		]
 	},
-	"wikistories-hooks-createstory": "ストーリーを作成",
-	"wikistories-specialcreatestory-title": "ストーリーを作成",
-	"wikistories-specialcreatestory-loading": "読み込み中...",
-	"wikistories-specialcreatestory-nojswarning": "この特別ページの動作にはJavaScriptが必要です",
+	"wikistories-specialstorybuilder-title": "ストーリーを作成",
+	"wikistories-specialstorybuilder-loading": "読み込み中...",
+	"wikistories-specialstorybuilder-nojswarning": "この特別ページの動作にはJavaScriptが必要です",
 	"wikistories-search-inputplaceholder": "画像を検索",
 	"wikistories-search-cuetext": "記事に関連する画像を検索する",
 	"wikistories-search-noresultstext": "結果なし",

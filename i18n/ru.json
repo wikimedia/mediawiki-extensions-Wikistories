@@ -7,9 +7,8 @@
 		]
 	},
 	"wikistories-extensiondesc": "ВикиИстории позволяют редакторам извлекать краткую, наглядную и достоверную информацию из проектов Викимедиа.",
-	"wikistories-hooks-createstory": "Создать историю",
-	"wikistories-specialcreatestory-loading": "Загружается…",
-	"wikistories-specialcreatestory-nojswarning": "Для работы этой служебной страницы требуется JavaScript",
+	"wikistories-specialstorybuilder-loading": "Загружается…",
+	"wikistories-specialstorybuilder-nojswarning": "Для работы этой служебной страницы требуется JavaScript",
 	"wikistories-search-inputplaceholder": "Искать изображения",
 	"wikistories-search-noresultstext": "Ничего не найдено",
 	"wikistories-story-goto-publish": "Далее",
