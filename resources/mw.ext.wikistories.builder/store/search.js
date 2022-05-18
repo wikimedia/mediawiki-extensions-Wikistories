@@ -2,6 +2,7 @@ const searchTools = require( '../api/searchImages.js' );
 const searchImages = searchTools.searchImages;
 const abortSearch = searchTools.abortSearch;
 
+const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
 const debouncedSearch = mw.util.debounce( function ( context, queryString ) {
 	context.commit( 'setLoading', true );
 	searchImages( queryString ).then( ( images ) => {
@@ -56,6 +57,11 @@ module.exports = {
 		loading: ( state ) => state.loading,
 		results: ( state ) => state.results,
 		query: ( state ) => state.query,
-		noResults: ( state ) => state.results.length < 1 && state.query && !state.loading
+		noResults: ( state ) => state.results.length < 1 && state.query && !state.loading,
+		maxFramesSelected: ( state, getters, rootState, rootGetters ) => {
+			const numAlreadySelected = rootGetters.frames.length;
+			const totalSelected = state.selection.length + numAlreadySelected;
+			return totalSelected >= MAX_FRAMES;
+		}
 	}
 };

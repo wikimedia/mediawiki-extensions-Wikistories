@@ -24,6 +24,7 @@
 </template>
 
 <script>
+const mapGetters = require( 'vuex' ).mapGetters;
 const ListImage = require( './ListImage.vue' );
 
 // @vue/component
@@ -44,8 +45,14 @@ module.exports = {
 		selected: {
 			type: Array,
 			default: () => []
+		},
+		mode: {
+			type: String,
+			default: 'many'
 		}
 	},
+	emits: [ 'max-selected' ],
+	computed: mapGetters( [ 'maxFramesSelected' ] ),
 	methods: {
 		onSelect: function ( e ) {
 			const id = e.target.getAttribute( 'data-id' ) ||
@@ -55,6 +62,8 @@ module.exports = {
 			/* eslint-disable vue/no-mutating-props */
 			if ( this.selected.indexOf( id ) !== -1 ) {
 				this.selected.splice( this.selected.indexOf( id ), 1 );
+			} else if ( this.maxFramesSelected && this.mode === 'many' ) {
+				this.$emit( 'max-selected' );
 			} else {
 				this.selected.push( id );
 			}

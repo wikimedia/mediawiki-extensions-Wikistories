@@ -1,7 +1,7 @@
 const router = require( '../router.js' );
 
 const MIN_FRAMES = mw.config.get( 'wgWikistoriesMinFrames' );
-// const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
+const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
 const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
 
 let orderKey = 10;
@@ -115,6 +115,9 @@ module.exports = {
 		missingFrames: ( state ) => {
 			return state.frames.length < MIN_FRAMES ?
 				MIN_FRAMES - state.frames.length : 0;
+		},
+		maxFrames: ( state ) => {
+			return state.frames.length === MAX_FRAMES;
 		},
 		framesWithoutText: ( state ) => state.frames.filter( f => !f.text ).length,
 		frames: ( state ) => state.frames,
