@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"BAPerdana-WMF"
+		]
+	},
+	"wikistories-search-inputplaceholder": "Cari gambar",
+	"wikistories-search-cuetext": "Cari gambar yang berhubungan dengan artikel.",
+	"wikistories-search-noresultstext": "Tidak ada hasil",
+	"wikistories-story-goto-publish": "Selanjutnya",
+	"wikistories-imageattribution-author-unknown": "Pembuat tidak diketahui",
+	"wikistories-article-cancelselection": "Batal",
+	"wikistories-article-loading": "Memuat...",
+	"wikistories-alert-okbuttontext": "Oke",
+	"wikistories-error-frameswithouttext-title": "Teks tidak ditemukan",
+	"wikistories-builder-publishform-publishbutton": "Terbitkan"
+}
