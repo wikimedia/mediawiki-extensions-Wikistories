@@ -58,7 +58,8 @@
 			"constant": "NS_STORY",
 			"name": "Story",
 			"content": true,
-			"defaultcontentmodel": "story"
+			"defaultcontentmodel": "story",
+			"protection": "edit-story"
 		},
 		{
 			"id": 1705,
@@ -68,6 +69,14 @@
 			"defaultcontentmodel": "wikitext"
 		}
 	],
+	"AvailableRights": [
+		"edit-story"
+	],
+	"GroupPermissions": {
+		"user": {
+			"edit-story": true
+		}
+	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
 		"remoteExtPath": "Wikistories/resources"
