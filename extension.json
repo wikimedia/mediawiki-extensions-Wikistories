@@ -132,6 +132,7 @@
 				"mw.ext.wikistories.builder/store/search.js",
 				"mw.ext.wikistories.builder/store/story.js",
 				"mw.ext.wikistories.builder/util/validateTitle.js",
+				"mw.ext.wikistories.builder/util/sortableFrames.js",
 				"mw.ext.wikistories.builder/util/strip.js",
 				"mw.ext.wikistories.builder/util/convertUrlToMobile.js",
 				"mw.ext.wikistories.builder/views/Article.vue",
