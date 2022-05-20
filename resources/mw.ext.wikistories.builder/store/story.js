@@ -4,6 +4,8 @@ const MIN_FRAMES = mw.config.get( 'wgWikistoriesMinFrames' );
 // const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
 const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
 
+let orderKey = 10;
+
 const makeFrameStyle = f => {
 	return f.img ?
 		{
@@ -31,6 +33,16 @@ module.exports = {
 					state.currentFrameIndex--;
 				}
 			}
+		},
+		reorderFrames: ( state, order ) => {
+			const newFramesObject = new Array( order.length );
+			order.forEach( ( value, index ) => {
+				newFramesObject[ value ] = state.frames[ index ];
+				newFramesObject[ value ].key = orderKey++;
+			} );
+
+			state.frames = newFramesObject;
+			state.currentFrameIndex = order[ state.currentFrameIndex ];
 		},
 		addFrames: ( state, frames ) => {
 			const newSelectedFrameIndex = state.frames.length;
@@ -76,6 +88,9 @@ module.exports = {
 		setFrameImage: ( context, data ) => {
 			context.commit( 'setImg', data.thumb );
 			context.commit( 'setImgTitle', data.title );
+		},
+		reorderFrames: ( context, data ) => {
+			context.commit( 'reorderFrames', data );
 		}
 	},
 	getters: {

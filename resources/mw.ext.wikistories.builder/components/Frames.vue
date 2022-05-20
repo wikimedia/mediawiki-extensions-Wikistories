@@ -3,7 +3,7 @@
 		<div class="ext-wikistories-frames-thumbnails">
 			<div
 				v-for="( frame, index ) in thumbnails"
-				:key="index"
+				:key="frame.key || index"
 				class="ext-wikistories-frames-thumbnails-frame"
 				:class="{ 'ext-wikistories-frames-thumbnails-frame-selected': frame.selected }"
 				:style="frame.style"
@@ -20,6 +20,7 @@
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
 const RouterLink = require( '../../lib/vue-router/vue-router.common.js' ).RouterLink;
+const sortable = require( '../util/sortableFrames.js' );
 
 // @vue/component
 module.exports = {
@@ -28,7 +29,17 @@ module.exports = {
 		'router-link': RouterLink
 	},
 	computed: mapGetters( [ 'thumbnails' ] ),
-	methods: mapActions( [ 'selectFrame' ] )
+	methods: mapActions( [ 'selectFrame', 'reorderFrames' ] ),
+	mounted: function () {
+		sortable.setup(
+			'ext-wikistories-frames-thumbnails',
+			'ext-wikistories-frames-thumbnails-frame',
+			this.reorderFrames
+		);
+	},
+	unmounted: function () {
+		sortable.kill();
+	}
 };
 </script>
 
@@ -62,6 +73,20 @@ module.exports = {
 					outline: #36c auto 4px;
 					outline-offset: 2px;
 				}
+
+				// style for the sortable used
+				position: relative;
+				left: 0;
+				transition: all 0.3s;
+				z-index: 100;
+
+				&-scale {
+					transform: scale( 1.3 );
+					transition: unset;
+					z-index: 99;
+					cursor: move !important; /* stylelint-disable-line declaration-no-important */
+				}
+				// end style for the sortable used
 			}
 		}
 
