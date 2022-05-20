@@ -1,3 +1,5 @@
+const convertUrlToThumbnail = require( './util/convertUrlToThumbnail.js' );
+
 const generateCtaElement = function ( link, thumbnail, thumbnailText, text ) {
 	const $thumbnail = $( '<span>' )
 		.addClass( 'ext-wikistories-discover-container-cta-btn' )
@@ -31,7 +33,23 @@ const generateCreateElement = function ( hasStories, thumbnail ) {
 		.append( generateCtaElement( link, thumbnail, '+', text ) );
 };
 
-const getDiscoverSection = function ( stories, articleThumbnail ) {
+const getArticleThumbnail = function () {
+	const ogImageMetaTag = $( 'meta[property="og:image"]' )[ 0 ];
+	if ( ogImageMetaTag ) {
+		const content = ogImageMetaTag.content;
+		const imageUrl = mw.util.parseImageUrl( content );
+
+		if ( imageUrl.width ) {
+			return imageUrl.resizeUrl( 52 );
+		} else {
+			return convertUrlToThumbnail( content );
+		}
+	}
+
+	return '';
+};
+
+const getDiscoverSection = function ( stories ) {
 
 	const $discover = $( '<div>' ).addClass( 'ext-wikistories-discover' );
 
@@ -43,7 +61,7 @@ const getDiscoverSection = function ( stories, articleThumbnail ) {
 	} );
 
 	// create story cta
-	$discover.append( generateCreateElement( !!stories.length, articleThumbnail ) );
+	$discover.append( generateCreateElement( !!stories.length, getArticleThumbnail() ) );
 
 	return $discover;
 };
