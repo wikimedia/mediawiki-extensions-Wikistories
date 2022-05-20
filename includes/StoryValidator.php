@@ -61,7 +61,7 @@ class StoryValidator {
 		}
 		$maxTextLength = $this->options->get( 'WikistoriesMaxTextLength' );
 		foreach ( $story->getFrames() as $index => $frame ) {
-			$textLength = strlen( $frame->text->value );
+			$textLength = mb_strlen( $frame->text->value );
 			if ( $textLength > $maxTextLength ) {
 				return StatusValue::newFatal(
 					'wikistories-text-too-long',
