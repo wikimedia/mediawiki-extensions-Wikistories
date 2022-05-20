@@ -3,6 +3,8 @@
 		"authors": []
 	},
 	"wikistories-extensiondesc": "Mit Wikistories können Benutzer kurzes, visuelles und zuverlässiges Wissen aus Wikimedia-Projekten erstellen",
+	"right-edit-story": "Geschichten bearbeiten",
+	"action-edit-story": "Geschichten bearbeiten",
 	"wikistories-specialstorybuilder-title": "Geschichte erstellen",
 	"wikistories-specialstorybuilder-loading": "Laden …",
 	"wikistories-specialstorybuilder-nojswarning": "Diese Spezialseite erfordert JavaScript, um zu funktionieren",
