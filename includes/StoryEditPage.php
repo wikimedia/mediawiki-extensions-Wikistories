@@ -46,7 +46,12 @@ class StoryEditPage extends EditPage {
 			);
 			$form .= new FieldLayout(
 				new TextInputWidget(
-					[ 'name' => "story_frame_{$i}_text_value", 'value' => $frame->text->value ]
+					[
+						'name' => "story_frame_{$i}_text_value",
+						'value' => $frame->text->value,
+						'maxlength' => $maxTextLength,
+					]
+
 				),
 				[ 'label' => 'Text', 'align' => 'left' ]
 			);
