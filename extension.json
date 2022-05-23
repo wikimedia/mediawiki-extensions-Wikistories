@@ -207,13 +207,13 @@
 		},
 		"mw.ext.story.discover": {
 			"targets": [ "mobile" ],
-			"dependencies": [ "mediawiki.api", "mediawiki.Title" ],
+			"dependencies": [ "mediawiki.api", "mediawiki.Title", "mediawiki.util" ],
 			"packageFiles": [
 				"mw.ext.wikistories.discover/index.js",
 				"mw.ext.wikistories.discover/consumptionEvents.js",
 				"mw.ext.wikistories.discover/Discover.js",
 				"mw.ext.wikistories.discover/api/getStories.js",
-				"mw.ext.wikistories.discover/api/getArticleThumbnail.js"
+				"mw.ext.wikistories.discover/util/convertUrlToThumbnail.js"
 			],
 			"styles": [
 				"mw.ext.wikistories.discover/discover.less"
