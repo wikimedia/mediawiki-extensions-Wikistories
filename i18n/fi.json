@@ -5,6 +5,8 @@
 		]
 	},
 	"wikistories-extensiondesc": "Wikistories antaa muokkaajien luoda lyhyttä, visuaalista ja luotettavaa tietoa Wikimedian projekteista",
+	"right-edit-story": "Muokata tarinoita",
+	"action-edit-story": "muokkaa tarinoita",
 	"wikistories-specialstorybuilder-loading": "Ladataan...",
 	"wikistories-story-goto-publish": "Seuraava",
 	"wikistories-imageattribution-author-unknown": "Tuntematon tekijä",

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dnlweijers",
 			"Mainframe98"
 		]
 	},
+	"right-edit-story": "Verhalen bewerken",
 	"wikistories-story-goto-publish": "Volgende",
 	"wikistories-imageattribution-author-unknown": "Auteur onbekend",
 	"wikistories-article-cancelselection": "Annuleren",

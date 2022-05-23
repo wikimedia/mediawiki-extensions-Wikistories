@@ -6,6 +6,8 @@
 	},
 	"wikistories-extensionname": "Википриказни",
 	"wikistories-extensiondesc": "Википриказни им овозможува на корисниците да создаваат кратки, нагледни и проверени информации од Викимедиините проекти",
+	"right-edit-story": "Уредување на приказни",
+	"action-edit-story": "уредување на приказни",
 	"wikistories-specialstorybuilder-title": "Создај приказна",
 	"wikistories-specialstorybuilder-loading": "Вчитувам...",
 	"wikistories-specialstorybuilder-nojswarning": "Оваа службена страница бара JavaScript за да работи",

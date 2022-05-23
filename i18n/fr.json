@@ -7,6 +7,8 @@
 	},
 	"wikistories-extensionname": "Wikirécits",
 	"wikistories-extensiondesc": "Wikirécits (''Wikistories'') permet à des rédacteurs de créer des récits courts, visuels et fiables portant sur les connaissances des projets de Wikimedia.",
+	"right-edit-story": "Modifier des récits",
+	"action-edit-story": "modifier des récits",
 	"wikistories-specialstorybuilder-title": "Créer un récit",
 	"wikistories-specialstorybuilder-loading": "Chargement en cours...",
 	"wikistories-specialstorybuilder-nojswarning": "Cette page spéciale nécessite JavaScript pour fonctionner",
