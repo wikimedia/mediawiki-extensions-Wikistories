@@ -177,6 +177,7 @@ module.exports = {
 		margin: 0 auto;
 		position: relative;
 		text-align: center;
+		background-color: @colorGray1;
 
 		@media screen and ( min-width: 720px ) {
 			max-width: 993.3px;
