@@ -13,10 +13,12 @@
 		<div class="ext-wikistories-storybuilder-story-topbar"></div>
 		<dots-menu v-show="!isEditingText" class="ext-wikistories-storybuilder-story-menu">
 			<dots-menu-item
+				icon="replace"
 				:text="$i18n( 'wikistories-story-replaceimage' ).text()"
 				route-to="/search/one"
 			></dots-menu-item>
 			<dots-menu-item
+				icon="delete"
 				:text="$i18n( 'wikistories-story-deleteframe' ).text()"
 				@click="showDeleteFrameConfirmationDialog"
 			></dots-menu-item>
@@ -166,7 +168,7 @@ module.exports = {
 	&-menu {
 		position: absolute;
 		top: 48px;
-		right: 5px;
+		right: 0;
 	}
 }
 </style>

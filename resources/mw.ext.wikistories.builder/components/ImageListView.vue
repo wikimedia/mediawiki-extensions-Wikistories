@@ -132,25 +132,27 @@ module.exports = {
 			object-position: center center;
 			pointer-events: none;
 			width: 100%;
+			border-radius: 2px;
 		}
 
 		.checkbox {
 			background-image: url( ../../images/check.svg );
-			width: 20px;
-			height: 20px;
+			width: 24px;
+			height: 24px;
 			background-color: #fff;
 			background-repeat: no-repeat;
 			background-position: center center;
 			position: absolute;
 			left: 10px;
 			top: 10px;
-			border: 1px solid @border-color-base;
+			border: 1px solid @colorGray7;
 			box-sizing: border-box;
 			border-radius: 2px;
 		}
 
 		.checkbox.selected {
-			background-color: @border-color-base;
+			background-color: @color-primary;
+			border-color: @color-primary;
 		}
 	}
 }
