@@ -44,6 +44,8 @@ module.exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.ui/variables.less';
+
 .ext-wikistories {
 	&-frames {
 		width: 100%;
@@ -61,17 +63,19 @@ module.exports = {
 			&-frame {
 				width: 28px;
 				height: 36px;
-				margin-left: 12px;
+				margin-left: 16px;
 				cursor: pointer;
 				flex-shrink: 0;
+				background-color: @colorGray14;
+				border-radius: 2px;
 
 				&:last-of-type {
-					margin-right: 12px;
+					margin-right: 16px;
 				}
 
 				&-selected {
 					outline: #36c auto 4px;
-					outline-offset: 2px;
+					outline-offset: 4px;
 				}
 
 				// style for the sortable used
@@ -93,7 +97,7 @@ module.exports = {
 		&-btn-add {
 			width: 28px;
 			height: 36px;
-			margin: 12px;
+			margin: 12px 16px;
 			cursor: pointer;
 			border: 1px dashed #000;
 			border-radius: 2px;
