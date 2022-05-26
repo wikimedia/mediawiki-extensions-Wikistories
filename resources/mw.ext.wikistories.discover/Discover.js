@@ -9,7 +9,10 @@ const generateCtaElement = function ( link, thumbnail, thumbnailText, text ) {
 		.text( text );
 
 	if ( thumbnail ) {
-		$thumbnail.css( 'background-image', 'url(' + thumbnail + ')' );
+		const overlay = thumbnailText === '+' ?
+			'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), ' :
+			'';
+		$thumbnail.css( 'background-image', overlay + 'url(' + thumbnail + ')' );
 	}
 
 	return $( '<a>' ).addClass( 'ext-wikistories-discover-container-cta' )
