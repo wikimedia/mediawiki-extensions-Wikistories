@@ -193,6 +193,9 @@ module.exports = {
 			box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
 			margin: 0;
 			padding: 10px;
+			font-size: 18px;
+			text-align: left;
+			line-height: 27px;
 		}
 
 		&-next-btn {
@@ -216,18 +219,17 @@ module.exports = {
 		}
 
 		&-progress {
-			position: absolute;
+			position: relative;
 			display: flex;
 			flex-direction: row;
-			width: 100%;
-			padding: 10px 0;
+			padding: 8px 16px;
 
 			&-container {
-				height: 4px;
+				height: 2px;
 				flex-grow: 1;
 				margin: 0 2px;
 				display: flex;
-				background-color: #c4c4c4;
+				background-color: @colorGray10;
 
 				&-loading {
 					height: 100%;
@@ -269,7 +271,7 @@ module.exports = {
 			background-position: center;
 			background-repeat: no-repeat;
 			right: 10px;
-			top: 20px;
+			top: 18px;
 		}
 	}
 }
