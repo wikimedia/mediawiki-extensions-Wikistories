@@ -26,18 +26,18 @@
 					class="ext-wikistories-article-view-info-expanded-banner-close-icon"
 					@click="toggleExpandInfo">
 				</div>
-				<span>{{ $i18n( 'wikistories-article-info-expanded-banner' ).text() }}</span>
+				<div v-html="$i18n( 'wikistories-article-info-expanded-banner' ).text()"></div>
 			</div>
 		</div>
 		<div v-if="display === 'tools'" class="ext-wikistories-article-view-toolbar">
+			<div class="ext-wikistories-article-view-toolbar-discard-button" @click="onDismiss">
+				{{ $i18n( 'wikistories-article-cancelselection' ).text() }}
+			</div>
 			<div
 				class="ext-wikistories-article-view-toolbar-confirm-button"
 				@touchstart="onUseText"
 				@mousedown="onUseText">
 				{{ $i18n( 'wikistories-article-usetext' ).text() }}
-			</div>
-			<div class="ext-wikistories-article-view-toolbar-discard-button" @click="onDismiss">
-				{{ $i18n( 'wikistories-article-cancelselection' ).text() }}
 			</div>
 		</div>
 	</div>
@@ -138,6 +138,7 @@ module.exports = {
 		overflow: scroll;
 		padding: 16px;
 		margin-top: 10px;
+		font-size: 18px;
 
 		p {
 			position: inherit;
@@ -208,10 +209,13 @@ module.exports = {
 	&-toolbar {
 		display: flex;
 		flex-direction: row;
-		align-content: stretch;
 		align-items: center;
 		cursor: pointer;
-		margin-bottom: 13px;
+		height: 34px;
+		font-weight: bold;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
 
 		& > &-confirm-button {
 			flex: auto;
@@ -220,15 +224,17 @@ module.exports = {
 			color: #fff;
 			text-align: center;
 			background-color: @color-primary;
+			border: 1px solid @color-primary;
 		}
 
 		& > &-discard-button {
 			flex: auto;
 			margin: 0;
 			padding: 10px;
-			color: #fff;
+			color: @colorGray2;
 			text-align: center;
-			background-color: @color-destructive;
+			background-color: @colorGray15;
+			border: 1px solid @colorGray10;
 		}
 	}
 }

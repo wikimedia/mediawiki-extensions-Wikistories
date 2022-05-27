@@ -79,9 +79,11 @@ module.exports = {
 		border: 0;
 		width: 90%;
 		resize: none;
-		font-size: 16px;
 		z-index: 92;
 		box-sizing: border-box;
+		text-align: left;
+		font-size: 18px;
+		line-height: 27px;
 
 		&::-webkit-scrollbar {
 			display: none;
