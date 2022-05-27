@@ -38,6 +38,8 @@
 	"wikistories-confirmdialog-discardstory-title": "Discard this Wikistory?",
 	"wikistories-confirmdialog-discardstory-message": "You’ll lose any pages, images and text additions that you’ve made.",
 	"wikistories-confirmdialog-discardstory-accept": "Discard",
+	"wikistories-toast-maxframes-addingmore": "Each story can have a maximum of {{PLURAL:$1|$1 page|$1 pages}}. To add a new page, please delete an existing one.",
+	"wikistories-toast-maxframes-selecting": "A maximum of {{PLURAL:$1|$1 image is |$1 images are}} allowed per story.",
 	"wikistories-error-notenoughframes-title": "Not enough pages",
 	"wikistories-error-notenoughframes-message": "Wikistory needs at least {{PLURAL:$1|$1 page|$1 pages}}. Add {{PLURAL:$2|one more page|$2 more pages}} to publish.",
 	"wikistories-error-frameswithouttext-title": "Missing Text",

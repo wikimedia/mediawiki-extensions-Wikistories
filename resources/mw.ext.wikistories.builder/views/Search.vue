@@ -1,5 +1,5 @@
 <template>
-	<div class="ext-wikistories-storybuilder-search">
+	<div class="ext-wikistories-storybuilder-search" v-on="toast.show ? { click: hideToast } : {}">
 		<navigator
 			:title="navigatorMessage"
 			:forward-button-visible="forwardVisibility"
@@ -26,10 +26,17 @@
 		<div v-if="noResults" class="ext-wikistories-storybuilder-search-empty">
 			{{ $i18n( 'wikistories-search-noresultstext' ).text() }}
 		</div>
+		<toast
+			v-if="toast.show"
+			:message="toast.message"
+			@hide-toast="hideToast">
+		</toast>
 		<image-list
 			:items="results"
 			:select="onItemSelect"
-			:selected="selection"></image-list>
+			:selected="selection"
+			:mode="mode"
+			@max-selected="showMaxSelectedToast"></image-list>
 	</div>
 </template>
 
@@ -38,18 +45,28 @@ const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
 const ImageListView = require( '../components/ImageListView.vue' );
 const Navigator = require( '../components/Navigator.vue' );
+const Toast = require( '../components/Toast.vue' );
 
 // @vue/component
 module.exports = {
 	name: 'Search',
 	components: {
 		'image-list': ImageListView,
-		navigator: Navigator
+		navigator: Navigator,
+		toast: Toast
 	},
 	props: {
 		mode: { type: String, default: 'many' }
 	},
-	computed: $.extend( mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle' ] ), {
+	data: function () {
+		return {
+			toast: {
+				show: false,
+				message: ''
+			}
+		};
+	},
+	computed: $.extend( mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle', 'maxFramesSelected' ] ), {
 		navigatorMessage: function () {
 			if ( this.selection.length === 0 ) {
 				return this.$i18n( 'wikistories-search-navigator-title' ).text();
@@ -85,6 +102,16 @@ module.exports = {
 			} else {
 				this.select( data );
 			}
+		},
+		showMaxSelectedToast: function () {
+			const maxFrames = this.getConfig( 'wgWikistoriesMaxFrames' );
+			this.toast.message = this.$i18n( 'wikistories-toast-maxframes-selecting' )
+				.params( [ maxFrames ] ).text();
+			this.toast.show = true;
+		},
+		hideToast: function () {
+			this.toast.message = '';
+			this.toast.show = false;
 		},
 		editStory: function () {
 			const array = this.selection.map( function ( id ) {

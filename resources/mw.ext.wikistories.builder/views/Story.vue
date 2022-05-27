@@ -1,5 +1,5 @@
 <template>
-	<div class="ext-wikistories-storybuilder-story">
+	<div class="ext-wikistories-storybuilder-story" v-on="toast.show ? { click: hideToast } : {}">
 		<navigator
 			:title="$i18n( 'wikistories-story-navigator-title' ).text()"
 			:forward-button-visible="true"
@@ -23,7 +23,12 @@
 				@click="showDeleteFrameConfirmationDialog"
 			></dots-menu-item>
 		</dots-menu>
-		<frames></frames>
+		<frames @max-limit="showMaxFramesToast"></frames>
+		<toast
+			v-if="toast.show"
+			:message="toast.message"
+			@hide-toast="hideToast">
+		</toast>
 		<alert
 			v-if="alert.show"
 			:title="alert.title"
@@ -59,6 +64,7 @@ const ConfirmDialog = require( '../components/ConfirmDialog.vue' );
 const Navigator = require( '../components/Navigator.vue' );
 const DotsMenu = require( '../components/DotsMenu.vue' );
 const DotsMenuItem = require( '../components/DotsMenuItem.vue' );
+const Toast = require( '../components/Toast.vue' );
 
 // @vue/component
 module.exports = {
@@ -71,7 +77,8 @@ module.exports = {
 		navigator: Navigator,
 		// x-menu because 'menu' is a reserved HTML word
 		'dots-menu': DotsMenu,
-		'dots-menu-item': DotsMenuItem
+		'dots-menu-item': DotsMenuItem,
+		toast: Toast
 	},
 	data: function () {
 		return {
@@ -81,6 +88,10 @@ module.exports = {
 			alert: {
 				show: false,
 				title: '',
+				message: ''
+			},
+			toast: {
+				show: false,
 				message: ''
 			}
 		};
@@ -98,6 +109,16 @@ module.exports = {
 		},
 		hideDiscardStoryConfirmDialog: function () {
 			this.viewDiscardStoryConfirmDialog = false;
+		},
+		showMaxFramesToast: function () {
+			const maxFrames = this.getConfig( 'wgWikistoriesMaxFrames' );
+			this.toast.message = this.$i18n( 'wikistories-toast-maxframes-addingmore' )
+				.params( [ maxFrames ] ).text();
+			this.toast.show = true;
+		},
+		hideToast: function () {
+			this.toast.message = '';
+			this.toast.show = false;
 		},
 		showNotEnoughFrameAlert: function ( min, missing ) {
 			this.alert.title = this.$i18n( 'wikistories-error-notenoughframes-title' ).text();

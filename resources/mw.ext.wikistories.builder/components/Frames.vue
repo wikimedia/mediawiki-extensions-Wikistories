@@ -10,26 +10,31 @@
 				@click="selectFrame( index )"
 			></div>
 		</div>
-		<router-link to="/search/many" class="ext-wikistories-frames-btn-add">
+		<div class="ext-wikistories-frames-btn-add" @click="addFrames">
 			+
-		</router-link>
+		</div>
 	</div>
 </template>
 
 <script>
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
-const RouterLink = require( '../../lib/vue-router/vue-router.common.js' ).RouterLink;
 const sortable = require( '../util/sortableFrames.js' );
 
 // @vue/component
 module.exports = {
 	name: 'Frames',
-	components: {
-		'router-link': RouterLink
-	},
-	computed: mapGetters( [ 'thumbnails' ] ),
-	methods: mapActions( [ 'selectFrame', 'reorderFrames' ] ),
+	emits: [ 'max-limit' ],
+	computed: mapGetters( [ 'thumbnails', 'maxFrames' ] ),
+	methods: $.extend( mapActions( [ 'selectFrame', 'reorderFrames' ] ), {
+		addFrames: function () {
+			if ( this.maxFrames ) {
+				this.$emit( 'max-limit' );
+			} else {
+				this.$router.push( '/search/many' );
+			}
+		}
+	} ),
 	mounted: function () {
 		sortable.setup(
 			'ext-wikistories-frames-thumbnails',
