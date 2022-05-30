@@ -129,26 +129,31 @@ module.exports = {
 
 		&-input-title {
 			width: 100%;
-			border: 1px solid #a2a9b1;
+			border: 2px solid @colorGray10;
 			box-sizing: border-box;
 			border-radius: 2px;
-			height: 2em;
+			height: 36px;
 			padding: 10px;
+
+			&:focus {
+				outline-color: @color-primary;
+			}
 		}
 
 		&-error {
+			font-size: 14px;
 			color: @color-error;
 			min-height: 60px;
 			width: 100%;
 		}
 
 		&-info {
-			font-size: 0.7em;
+			font-size: 14px;
 		}
 	}
 
 	&-license {
-		font-size: 0.7em;
+		font-size: 12px;
 		background-color: @colorGray15;
 		padding: 20px;
 	}
