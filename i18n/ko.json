@@ -3,6 +3,7 @@
 		"authors": [
 			"Ellif",
 			"Jerrykim306",
+			"Theshinster123",
 			"Ykhwong"
 		]
 	},
@@ -22,6 +23,7 @@
 	"wikistories-article-cancelselection": "취소",
 	"wikistories-article-loading": "불러오는 중...",
 	"wikistories-article-usetext": "스토리에 추가",
+	"wikistories-article-info-banner": "스토리에 참가할 텍스트 선택",
 	"wikistories-alert-okbuttontext": "확인",
 	"wikistories-confirmdialog-delete-title": "이 스토리 페이지를 삭제하시겠습니까?",
 	"wikistories-confirmdialog-delete-message": "당신의 스토리에서 영구적으로 삭제될 것입니다",
