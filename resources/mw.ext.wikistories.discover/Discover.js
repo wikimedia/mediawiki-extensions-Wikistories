@@ -1,11 +1,11 @@
 const convertUrlToThumbnail = require( './util/convertUrlToThumbnail.js' );
 
-const generateCtaElement = function ( link, thumbnail, thumbnailText, text ) {
+const generateItem = function ( link, thumbnail, thumbnailText, text ) {
 	const $thumbnail = $( '<span>' )
-		.addClass( 'ext-wikistories-discover-container-cta-btn' )
+		.addClass( 'ext-wikistories-discover-item-btn' )
 		.text( thumbnailText );
 	const $text = $( '<span>' )
-		.addClass( 'ext-wikistories-discover-container-cta-text' )
+		.addClass( 'ext-wikistories-discover-item-text' )
 		.text( text );
 
 	if ( thumbnail ) {
@@ -15,25 +15,16 @@ const generateCtaElement = function ( link, thumbnail, thumbnailText, text ) {
 		$thumbnail.css( 'background-image', overlay + 'url(' + thumbnail + ')' );
 	}
 
-	return $( '<a>' ).addClass( 'ext-wikistories-discover-container-cta' )
+	return $( '<a>' ).addClass( 'ext-wikistories-discover-item' )
 		.attr( 'href', link )
 		.append( $thumbnail )
 		.append( $text );
 };
 
-const generateStoryDiscoverElement = function ( title, thumbnail, storyId ) {
-	return $( '<div>' )
-		.addClass( 'ext-wikistories-discover-container' )
-		.append( generateCtaElement( '#/story/' + storyId, thumbnail, '', title ) );
-};
-
-const generateCreateElement = function ( hasStories, thumbnail ) {
+const generateCTA = function ( thumbnail ) {
 	const link = mw.config.get( 'wgWikistoriesCreateUrl' );
 	const text = mw.message( 'wikistories-discover-cta-text' ).text();
-	return $( '<div>' )
-		.addClass( 'ext-wikistories-discover-container' )
-		.addClass( hasStories ? 'ext-wikistories-discover-container-create' : '' )
-		.append( generateCtaElement( link, thumbnail, '+', text ) );
+	return generateItem( link, thumbnail, '+', text );
 };
 
 const getArticleThumbnail = function () {
@@ -52,21 +43,20 @@ const getArticleThumbnail = function () {
 	return '';
 };
 
-const getDiscoverSection = function ( stories ) {
-
-	const $discover = $( '<div>' ).addClass( 'ext-wikistories-discover' );
-
-	// existing stories
-	stories.forEach( story => {
-		const storyThumbnail = story.thumbnail;
-		const storyId = story.pageId;
-		$discover.append( generateStoryDiscoverElement( story.title, storyThumbnail, storyId ) );
-	} );
-
-	// create story cta
-	$discover.append( generateCreateElement( !!stories.length, getArticleThumbnail() ) );
-
-	return $discover;
+const getDiscoverSection = function () {
+	return $( '<div>' )
+		.addClass( 'ext-wikistories-discover' )
+		.append( generateCTA( getArticleThumbnail() ) );
 };
 
-module.exports = getDiscoverSection;
+const addStoriesToDiscoverSection = function ( $discover, stories ) {
+	stories.forEach( story => {
+		const link = '#/story/' + story.pageId;
+		$discover.append( generateItem( link, story.thumbnail, '', story.title ) );
+	} );
+};
+
+module.exports = {
+	getDiscoverSection: getDiscoverSection,
+	addStoriesToDiscoverSection: addStoriesToDiscoverSection
+};

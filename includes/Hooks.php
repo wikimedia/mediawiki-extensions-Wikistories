@@ -19,6 +19,7 @@ class Hooks {
 				SpecialPage::getTitleFor( 'StoryBuilder', $out->getTitle() )->getLinkURL()
 			);
 			$out->addModules( [ 'mw.ext.story.discover' ] );
+			$out->addModuleStyles( 'mw.ext.story.discover.styles' );
 		}
 	}
 

@@ -1,9 +1,12 @@
-const getDiscoverSection = require( './Discover.js' );
+const getDiscoverSection = require( './Discover.js' ).getDiscoverSection;
+const addStoriesToDiscoverSection = require( './Discover.js' ).addStoriesToDiscoverSection;
 const getStories = require( './api/getStories.js' );
 const events = require( './consumptionEvents.js' );
 
 const loadingViewer = mw.loader.using( 'mw.ext.story.viewer' );
 const articleTitle = mw.config.get( 'wgTitle' );
+
+const $discover = getDiscoverSection().insertAfter( '.page-heading' );
 
 // add Story discover thumbnail and Story Viewer
 getStories( articleTitle ).then( function ( stories ) {
@@ -19,8 +22,7 @@ getStories( articleTitle ).then( function ( stories ) {
 		}
 	};
 
-	// add Discover UI below the article title
-	getDiscoverSection( stories ).insertAfter( '.page-heading' );
+	addStoriesToDiscoverSection( $discover, stories );
 
 	if ( stories.length ) {
 		events.logStoriesImpression( stories.length );
