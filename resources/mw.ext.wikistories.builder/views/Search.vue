@@ -146,7 +146,7 @@ module.exports = {
 		position: relative;
 		text-align: left;
 		padding: 10px 0;
-		margin: 0 15px 0 15px;
+		margin: 0 16px;
 
 		&-query {
 			height: 36px;
@@ -189,7 +189,7 @@ module.exports = {
 		height: 3px;
 		width: 130px;
 		border-radius: 3px;
-		margin-top: 10px;
+		margin-top: 4px;
 		background: #36c;
 		animation-name: ext-wikistories-search-loader;
 		animation-duration: 2s;

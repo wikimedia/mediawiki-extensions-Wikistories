@@ -10,7 +10,7 @@ const generateCtaElement = function ( link, thumbnail, thumbnailText, text ) {
 
 	if ( thumbnail ) {
 		const overlay = thumbnailText === '+' ?
-			'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), ' :
+			'linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), ' :
 			'';
 		$thumbnail.css( 'background-image', overlay + 'url(' + thumbnail + ')' );
 	}
