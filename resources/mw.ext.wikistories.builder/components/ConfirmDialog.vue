@@ -53,44 +53,49 @@ module.exports = {
 	&-content {
 		background-color: #fff;
 		z-index: 104;
-		border-radius: 4px;
+		border-radius: 2px;
 		max-width: 85%;
 		margin: auto;
 		font-size: 16px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
 
 		&-title {
-			margin: 10px 0 10px 0;
+			margin: 12px 0 2px 0;
 			font-size: 24px;
+			line-height: 34px;
+			color: @colorGray1;
 		}
 
 		&-message {
 			text-align: center;
-			margin-bottom: 10px;
-			padding-left: 20px;
-			padding-right: 20px;
+			margin-bottom: 24px;
+			padding-left: 16px;
+			padding-right: 16px;
+			font-size: 18px;
+			line-height: 25px;
+			color: @colorGray2;
 		}
 
 		&-buttons {
 			width: 100%;
 			text-align: center;
+			line-height: 22px;
 			font-weight: bold;
 			cursor: pointer;
 
 			&-confirm {
 				background: @color-primary;
-				border-bottom-left-radius: 4px;
-				border-bottom-right-radius: 4px;
 				color: #fff;
-				padding: 6px 0 6px 0;
+				padding: 6px 12px;
 			}
 
 			&-cancel {
 				border-top: solid 1px;
 				border-color: #a2a9b1;
-				padding: 6px 0 6px 0;
+				padding: 6px 12px;
 			}
 		}
 	}
