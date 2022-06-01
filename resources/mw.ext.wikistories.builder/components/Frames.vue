@@ -1,6 +1,6 @@
 <template>
 	<div class="ext-wikistories-frames">
-		<div class="ext-wikistories-frames-thumbnails">
+		<div ref="thumbnails" class="ext-wikistories-frames-thumbnails">
 			<div
 				v-for="( frame, index ) in thumbnails"
 				:key="frame.key || index"
@@ -41,6 +41,12 @@ module.exports = {
 			'ext-wikistories-frames-thumbnails-frame',
 			this.reorderFrames
 		);
+		const selected = this.$refs.thumbnails.querySelector(
+			'.ext-wikistories-frames-thumbnails-frame-selected'
+		);
+		if ( selected ) {
+			selected.scrollIntoView();
+		}
 	},
 	unmounted: function () {
 		sortable.kill();
