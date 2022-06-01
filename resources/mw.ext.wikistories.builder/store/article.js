@@ -18,10 +18,13 @@ const transforms = {
 		}
 	},
 	'remove sections after fold and the fold itself': ( doc ) => {
+		const foldHr = doc.querySelector( '.pcs-fold-hr' );
 		for ( const section of doc.querySelectorAll( '.pcs-fold-hr ~ section' ) ) {
 			section.remove();
 		}
-		doc.querySelector( '.pcs-fold-hr' ).remove();
+		if ( foldHr ) {
+			foldHr.remove();
+		}
 	}
 };
 

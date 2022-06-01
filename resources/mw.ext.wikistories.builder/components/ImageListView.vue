@@ -86,7 +86,7 @@ module.exports = {
 	display: flex;
 	-ms-flex-wrap: nowrap;
 	flex-wrap: nowrap;
-	margin: 6px 10px 16px 10px;
+	margin: 0 8px 16px 8px;
 	flex-grow: 1;
 
 	&__list-wrapper {

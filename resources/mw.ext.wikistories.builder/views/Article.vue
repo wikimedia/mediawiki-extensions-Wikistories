@@ -135,6 +135,7 @@ module.exports = {
 
 	&-content {
 		position: relative;
+		flex-grow: 1;
 		overflow: scroll;
 		padding: 16px;
 		margin-top: 10px;
@@ -157,9 +158,11 @@ module.exports = {
 		}
 	}
 
-	&-content,
 	&-loading {
+		display: flex;
 		flex-grow: 1;
+		justify-content: center;
+		align-items: center;
 	}
 
 	&-info {
