@@ -17,7 +17,7 @@
 			@click="$emit( 'select-text' )"
 			v-html="$i18n( 'wikistories-story-selecttext' ).text()"
 		></div>
-		<image-attribution></image-attribution>
+		<image-attribution v-show="!editingText"></image-attribution>
 	</div>
 </template>
 
@@ -122,14 +122,14 @@ module.exports = {
 		z-index: 90;
 
 		&-done {
-			width: 60px;
-			height: 40px;
 			position: absolute;
 			color: #fff;
 			z-index: 91;
-			top: 45px;
-			right: 20px;
+			top: 0;
+			right: 0;
+			padding: 16px;
 			font-size: 16px;
+			cursor: pointer;
 		}
 	}
 }

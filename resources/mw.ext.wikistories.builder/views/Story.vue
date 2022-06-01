@@ -23,7 +23,7 @@
 				@click="showDeleteFrameConfirmationDialog"
 			></dots-menu-item>
 		</dots-menu>
-		<frames @max-limit="showMaxFramesToast"></frames>
+		<frames v-show="!isEditingText" @max-limit="showMaxFramesToast"></frames>
 		<toast
 			v-if="toast.show"
 			:message="toast.message"
@@ -32,9 +32,9 @@
 		<alert
 			v-if="alert.show"
 			:title="alert.title"
-			@ok-click="hideAlert">
-			{{ alert.message }}
-		</alert>
+			:message="alert.message"
+			@dismiss="hideAlert"
+		></alert>
 		<confirm-dialog
 			v-if="viewDeleteFrameConfirmDialog"
 			:title="$i18n( 'wikistories-confirmdialog-delete-title' ).text()"
