@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Dnlweijers",
-			"Mainframe98"
+			"Mainframe98",
+			"McDutchie"
 		]
 	},
 	"right-edit-story": "Verhalen bewerken",
 	"wikistories-story-goto-publish": "Volgende",
 	"wikistories-imageattribution-author-unknown": "Auteur onbekend",
 	"wikistories-article-cancelselection": "Annuleren",
-	"wikistories-article-loading": "Laden..."
+	"wikistories-article-loading": "Artikel wordt geladen…"
 }

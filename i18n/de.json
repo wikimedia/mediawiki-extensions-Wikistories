@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Brettchenweber"
+		]
 	},
 	"wikistories-extensiondesc": "Mit Wikistories können Benutzer kurzes, visuelles und zuverlässiges Wissen aus Wikimedia-Projekten erstellen",
 	"right-edit-story": "Geschichten bearbeiten",
@@ -40,7 +42,7 @@
 	"wikistories-error-notenoughframes-title": "Nicht genug Seiten",
 	"wikistories-error-notenoughframes-message": "Wikistory benötigt mindestens {{PLURAL:$1|1=eine|2=zwei|3=drei|4=vier|5=fünf|10=zehn|$1}} {{PLURAL:$1|$1 Seite|$1 Seiten}}. Füge {{PLURAL:$2|1=eine|2=zwei|3=drei|4=vier|5=fünf|10=zehn|$1}} {{PLURAL:$2|weitere Seite|$2 weitere Seiten}} zur Veröffentlichung hinzu.",
 	"wikistories-error-frameswithouttext-title": "Fehlender Text",
-	"wikistories-error-frameswithouttext-message": "Alle Wikistory-Seiten brauchen Text. Bitte füge Text {{PLURAL:$1|zur   Story-Seite|zu $1 Story-Seiten}} hinzu.",
+	"wikistories-error-frameswithouttext-message": "Alle Wikistory-Seiten brauchen Text. Bitte füge Text {{PLURAL:$1|zur Story-Seite|zu $1 Story-Seiten}} hinzu.",
 	"wikistories-builder-publishform-navigator-title": "Wikistory veröffentlichen",
 	"wikistories-builder-publishform-placeholder": "Titel der Geschichte eingeben …",
 	"wikistories-builder-publishform-publishbutton": "Veröffentlichen",
