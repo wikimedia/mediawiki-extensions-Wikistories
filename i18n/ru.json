@@ -3,6 +3,7 @@
 		"authors": [
 			"Gulka.nik",
 			"Kareyac",
+			"Okras",
 			"Pacha Tchernof",
 			"Tanzun"
 		]
@@ -18,7 +19,7 @@
 	"wikistories-story-deleteframe": "Удалить эту страницу",
 	"wikistories-imageattribution-author-unknown": "Автор неизвестен",
 	"wikistories-article-cancelselection": "Отменить",
-	"wikistories-article-loading": "Загружается…",
+	"wikistories-article-loading": "Загрузка статьи…",
 	"wikistories-article-usetext": "Добавить в историю",
 	"wikistories-article-info-banner": "Выберите текст, чтобы добавить его в свою историю",
 	"wikistories-article-info-expanded-banner": "Нажмите и удерживайте слово, а затем перетащите ползунки, чтобы выделить текст для добавления в Викисторию. Нажмите <strong>Добавить в историю</strong>.",
