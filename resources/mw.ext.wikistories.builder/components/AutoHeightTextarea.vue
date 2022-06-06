@@ -42,7 +42,7 @@ module.exports = {
 	methods: $.extend( mapActions( [ 'setText' ] ), {
 		setHeight: function () {
 			const textarea = this.$refs.textarea;
-			// the 'height: auto' reset the textarea height before setting the height to scrollHeight
+			// 'height: auto' resets the textarea height before setting the height to scrollHeight
 			textarea.style.height = 'auto';
 			textarea.style.height = textarea.scrollHeight + 'px';
 		}
