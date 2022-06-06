@@ -1,17 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
+			"Asma",
 			"FiberAhmed",
 			"أَحمد",
 			"محمد أحمد عبد الفتاح"
 		]
 	},
+	"right-edit-story": "تعديل القصص",
+	"action-edit-story": "تعديل القصص",
 	"wikistories-specialstorybuilder-loading": "جارٍ التحميل...",
 	"wikistories-story-goto-publish": "التالي",
 	"wikistories-imageattribution-author-unknown": "المؤلف غير معروف",
 	"wikistories-article-cancelselection": "إلغاء",
-	"wikistories-article-loading": "جارٍ التحميل...",
+	"wikistories-article-loading": "تحميل المقالة ...",
+	"wikistories-article-info-banner": "حدد النص لإضافته إلى قصتك",
 	"wikistories-alert-okbuttontext": "حسنًا",
+	"wikistories-confirmdialog-delete-message": "سيتم حذفه من قصتك بشكل دائم.",
+	"wikistories-error-notenoughframes-message": "كل قصص الويكي تحتاج على الأقل {{PLURAL:$1|1=one|2=two|3=three|4=four|5=five|10=ten|$1}} {{PLURAL:$1|page|pages}}. اضف من فضلك {{PLURAL:$2|1=one|2=two|3=three|4=four|5=five|10=ten|$2}} {{PLURAL:$2|more page|more pages}}.",
 	"wikistories-error-frameswithouttext-title": "نص مفقود",
 	"wikistories-builder-publishform-publishbutton": "انشر"
 }
