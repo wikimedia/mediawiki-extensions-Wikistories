@@ -14,6 +14,7 @@
 				v-model="storyTitle"
 				type="text"
 				maxlength="255"
+				:disabled="titleInputDisabled"
 				class="ext-wikistories-publishform-content-input-title"
 				:placeholder="$i18n( 'wikistories-builder-publishform-placeholder' ).text()"
 			>
@@ -46,10 +47,11 @@ module.exports = {
 	data: function () {
 		return {
 			storyTitle: '',
-			error: null
+			error: null,
+			titleInputDisabled: false
 		};
 	},
-	computed: $.extend( mapGetters( [ 'frames', 'valid', 'fromArticle', 'storyForSave' ] ), {
+	computed: $.extend( mapGetters( [ 'frames', 'valid', 'fromArticle', 'storyForSave', 'mode', 'title' ] ), {
 		licenseHtml: function () {
 			const html = this.$i18n(
 				'wikistories-builder-licensing-with-terms',
@@ -71,14 +73,15 @@ module.exports = {
 		},
 		onSaveClick: function () {
 			this.error = null;
-			validateTitle( this.storyTitle ).then( function ( validity ) {
+			const mustExist = this.mode === 'edit';
+			validateTitle( this.storyTitle, mustExist ).then( function ( validity ) {
 				if ( !validity.valid ) {
 					this.error = this.$i18n( validity.message ).text();
 					events.logPublishFailure( this.storyTitle, this.error );
 					return;
 				}
 				const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
-				saveStory( title.getPrefixedDb(), this.storyForSave ).then(
+				saveStory( title.getPrefixedDb(), this.storyForSave, this.mode ).then(
 					function ( response ) {
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
@@ -106,7 +109,12 @@ module.exports = {
 		}
 	},
 	mounted: function () {
-		this.$refs.storyTitleInput.focus();
+		if ( this.mode === 'edit' ) {
+			this.storyTitle = this.title.replace( /_/g, ' ' );
+			this.titleInputDisabled = true;
+		} else {
+			this.$refs.storyTitleInput.focus();
+		}
 	}
 };
 </script>

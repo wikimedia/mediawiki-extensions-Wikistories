@@ -17,7 +17,7 @@ class StoriesCache {
 	 * be invalidated and re-created with the most recent
 	 * structure.
 	 */
-	private const CACHE_VERSION = 8;
+	private const CACHE_VERSION = 9;
 
 	/**
 	 * This defines how long stories will stay in the cache if they not edited.
@@ -130,7 +130,7 @@ class StoriesCache {
 			$result[] = $this->storyRenderer->getStoryForViewer(
 				$story,
 				$page->getId(),
-				$page->getTitle()->getText()
+				$page->getTitle()
 			);
 		}
 		return $result;

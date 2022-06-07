@@ -119,8 +119,8 @@ module.exports = {
 					function ( result ) { return result.id === id; }
 				);
 				return {
-					img: item.thumb,
-					imgTitle: item.title,
+					url: item.url,
+					filename: item.filename,
 					attribution: item.attribution
 				};
 			}.bind( this ) );

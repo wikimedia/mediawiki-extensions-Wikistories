@@ -163,10 +163,9 @@ const searchAllImages = ( queryString ) => {
 				const license = extmetadata && extmetadata.LicenseShortName;
 
 				return {
-					fromCommons: true,
 					id: ( id++ ).toString(),
-					title: page.title,
-					thumb: responsiveUrls || imageinfo.url,
+					filename: page.title.split( ':' )[ 1 ],
+					url: responsiveUrls || imageinfo.url,
 					width: imageinfo.thumbwidth,
 					attribution: {
 						author: artist ? strip( artist.value ) : '',

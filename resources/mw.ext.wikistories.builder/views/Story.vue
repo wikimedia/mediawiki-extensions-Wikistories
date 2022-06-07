@@ -1,7 +1,7 @@
 <template>
 	<div class="ext-wikistories-storybuilder-story" v-on="toast.show ? { click: hideToast } : {}">
 		<navigator
-			:title="$i18n( 'wikistories-story-navigator-title' ).text()"
+			:title="messages.navTitle"
 			:forward-button-visible="true"
 			@backward="showDiscardStoryConfirmationDialog"
 			@forward="onNext"
@@ -45,8 +45,8 @@
 		</confirm-dialog>
 		<confirm-dialog
 			v-if="viewDiscardStoryConfirmDialog"
-			:title="$i18n( 'wikistories-confirmdialog-discardstory-title' ).text()"
-			:message="$i18n( 'wikistories-confirmdialog-discardstory-message' ).text()"
+			:title="messages.discardTitle"
+			:message="messages.discardMessage"
 			:accept="$i18n( 'wikistories-confirmdialog-discardstory-accept' ).text()"
 			@cancel="hideDiscardStoryConfirmDialog"
 			@confirm="onDiscard">
@@ -62,8 +62,8 @@ const Frames = require( '../components/Frames.vue' );
 const Alert = require( '../components/Alert.vue' );
 const ConfirmDialog = require( '../components/ConfirmDialog.vue' );
 const Navigator = require( '../components/Navigator.vue' );
-const DotsMenu = require( '../components/DotsMenu.vue' );
-const DotsMenuItem = require( '../components/DotsMenuItem.vue' );
+const DotsMenu = require( '../../components/DotsMenu.vue' );
+const DotsMenuItem = require( '../../components/DotsMenuItem.vue' );
 const Toast = require( '../components/Toast.vue' );
 
 // @vue/component
@@ -75,7 +75,6 @@ module.exports = {
 		alert: Alert,
 		'confirm-dialog': ConfirmDialog,
 		navigator: Navigator,
-		// x-menu because 'menu' is a reserved HTML word
 		'dots-menu': DotsMenu,
 		'dots-menu-item': DotsMenuItem,
 		toast: Toast
@@ -96,7 +95,20 @@ module.exports = {
 			}
 		};
 	},
-	computed: mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle' ] ),
+	computed: $.extend( mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'mode' ] ), {
+		messages: function () {
+			return this.mode === 'edit' ?
+				{
+					navTitle: this.$i18n( 'wikistories-story-navigator-title-edit' ).text(),
+					discardTitle: this.$i18n( 'wikistories-confirmdialog-discardedits-title' ).text(),
+					discardMessage: this.$i18n( 'wikistories-confirmdialog-discardedits-message' ).text()
+				} : {
+					navTitle: this.$i18n( 'wikistories-story-navigator-title' ).text(),
+					discardTitle: this.$i18n( 'wikistories-confirmdialog-discardstory-title' ).text(),
+					discardMessage: this.$i18n( 'wikistories-confirmdialog-discardstory-message' ).text()
+				};
+		}
+	} ),
 	methods: $.extend( mapActions( [ 'removeFrame', 'fetchImgAttribution' ] ), {
 		showDeleteFrameConfirmationDialog: function () {
 			this.viewDeleteFrameConfirmDialog = true;
@@ -146,7 +158,7 @@ module.exports = {
 		},
 		onDiscard: function () {
 			const titleObj = mw.Title.newFromText( this.fromArticle );
-			window.location = titleObj.getUrl();
+			window.location = titleObj.getUrl( { wikistories: 1 } );
 		},
 		onNext: function () {
 			if ( this.missingFrames ) {

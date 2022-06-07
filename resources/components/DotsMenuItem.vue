@@ -50,22 +50,24 @@ module.exports = {
 	width: 176px;
 	margin: 0;
 	font-size: 20px;
-	padding: 6px 12px;
-	padding-left: 38px;
+	padding: 6px 12px 6px 38px;
 	background-repeat: no-repeat;
 	background-position: 12px 13px;
 
 	&:last-of-type {
 		border: 0;
-		padding-bottom: 12px;
 	}
 
 	&-replace {
-		background-image: url( ../../images/replace.svg );
+		background-image: url( ../images/replace.svg );
 	}
 
 	&-delete {
-		background-image: url( ../../images/delete.svg );
+		background-image: url( ../images/delete.svg );
+	}
+
+	&-edit {
+		background-image: url( ../images/edit.svg );
 	}
 
 	@media screen and ( min-width: 720px ) {

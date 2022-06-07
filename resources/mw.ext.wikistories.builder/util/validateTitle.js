@@ -3,9 +3,10 @@ const getPageInfo = require( '../api/getPageInfo.js' );
 
 /**
  * @param {string} userInput Potential title for a story, without the namespace
+ * @param {boolean} mustExist
  * @return {jQuery.Promise} resolves with validity and optional error message
  */
-const validateTitle = function ( userInput ) {
+const validateTitle = function ( userInput, mustExist ) {
 	// Not empty
 	if ( !userInput || !userInput.trim() ) {
 		return $.Deferred().resolve( {
@@ -23,13 +24,16 @@ const validateTitle = function ( userInput ) {
 		} );
 	}
 
-	// Server side format validation and uniqueness (cannot edit an existing story)
+	// Server side format validation and uniqueness
 	return getPageInfo( titleObject.getPrefixedDb() )
 		.then( function ( pageInfo ) {
-			if ( pageInfo ) {
+			const exists = !!pageInfo;
+			if ( exists !== mustExist ) {
 				return {
 					valid: false,
-					message: 'wikistories-builder-publishform-invalidtitle-duplicate'
+					message: mustExist ?
+						'wikistories-builder-publishform-invalidtitle-notfound' :
+						'wikistories-builder-publishform-invalidtitle-duplicate'
 				};
 			}
 			return { valid: true };

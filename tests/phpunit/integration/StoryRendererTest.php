@@ -4,23 +4,31 @@ namespace MediaWiki\Extension\Wikistories;
 
 use ForeignAPIFile;
 use MediaWiki\Extension\Wikistories\Tests\StoryFactory;
-use MediaWikiUnitTestCase;
+use MediaWiki\MediaWikiServices;
+use MediaWikiIntegrationTestCase;
 use RepoGroup;
+use TitleValue;
 
-class StoryRendererTest extends MediaWikiUnitTestCase {
+class StoryRendererTest extends MediaWikiIntegrationTestCase {
 
 	private function createRepoGroupMock() {
 		$catPosterFile = $this->createMock( ForeignAPIFile::class );
 		$catPosterFile->method( 'createThumb' )->willReturn( 'cat-poster-url' );
 		$catPosterFile->method( 'getExtendedMetadata' )->willReturn(
-			[ 'Artist' => 'cat-poster-artist', 'LicenseShortName' => 'cat-poster-license' ]
+			[
+				'Artist' => [ 'value' => 'cat-poster-artist' ],
+				'LicenseShortName' => [ 'value' => 'cat-poster-license' ],
+			]
 		);
 		$catPosterFile->method( 'getDescriptionUrl' )->willReturn( 'cat-poster-attribution-url' );
 
 		$catNappingFile = $this->createMock( ForeignAPIFile::class );
 		$catNappingFile->method( 'createThumb' )->willReturn( 'cat-napping-url' );
 		$catNappingFile->method( 'getExtendedMetadata' )->willReturn(
-			[ 'Artist' => 'cat-napping-artist', 'LicenseShortName' => 'cat-napping-license' ]
+			[
+				'Artist' => [ 'value' => 'cat-napping-artist' ],
+				'LicenseShortName' => [ 'value' => 'cat-napping-license' ],
+			]
 		);
 		$catNappingFile->method( 'getDescriptionUrl' )->willReturn( 'cat-napping-attribution-url' );
 
@@ -41,15 +49,20 @@ class StoryRendererTest extends MediaWikiUnitTestCase {
 	public function testGetStoryForViewer() {
 		$story = StoryFactory::makeValidStory();
 		$repoGroup = $this->createRepoGroupMock();
-		$renderer = new StoryRenderer( $repoGroup );
-		$storyForViewer = $renderer->getStoryForViewer( $story, 12, 'Story about Cats' );
+		$renderer = new StoryRenderer( $repoGroup, MediaWikiServices::getInstance()->getTitleFormatter() );
+		$storyForViewer = $renderer->getStoryForViewer(
+			$story,
+			12,
+			new TitleValue( NS_STORY, 'Story about Cats' )
+		);
 
 		$this->assertEquals( 'Story about Cats', $storyForViewer[ 'title' ] );
 		$this->assertEquals( 12, $storyForViewer[ 'pageId' ] );
+		$this->assertStringEndsWith( 'Special:StoryBuilder/Story:Story_about_Cats', $storyForViewer[ 'editUrl' ] );
 		$this->assertCount( 2, $storyForViewer[ 'frames' ] );
 		$this->assertEquals(
 			'cat-poster-url',
-			$storyForViewer[ 'frames' ][ 0 ][ 'img' ]
+			$storyForViewer[ 'frames' ][ 0 ][ 'url' ]
 		);
 		$this->assertEquals( 'This is a cat', $storyForViewer[ 'frames' ][ 0 ][ 'text' ] );
 		$this->assertEquals(
@@ -57,12 +70,16 @@ class StoryRendererTest extends MediaWikiUnitTestCase {
 			$storyForViewer[ 'frames' ][ 0 ][ 'attribution' ][ 'url' ]
 		);
 		$this->assertEquals(
-			[ 'Artist' => 'cat-poster-artist', 'LicenseShortName' => 'cat-poster-license' ],
-			$storyForViewer[ 'frames' ][ 0 ][ 'attribution' ][ 'extmetadata' ]
+			'cat-poster-artist',
+			$storyForViewer[ 'frames' ][ 0 ][ 'attribution' ][ 'author' ]
+		);
+		$this->assertEquals(
+			'cat-poster-license',
+			$storyForViewer[ 'frames' ][ 0 ][ 'attribution' ][ 'license' ]
 		);
 		$this->assertEquals(
 			'cat-napping-url',
-			$storyForViewer[ 'frames' ][ 1 ][ 'img' ]
+			$storyForViewer[ 'frames' ][ 1 ][ 'url' ]
 		);
 		$this->assertEquals( 'Sleeping now...', $storyForViewer[ 'frames' ][ 1 ][ 'text' ] );
 		$this->assertEquals(
@@ -70,8 +87,12 @@ class StoryRendererTest extends MediaWikiUnitTestCase {
 			$storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'url' ]
 		);
 		$this->assertEquals(
-			[ 'Artist' => 'cat-napping-artist', 'LicenseShortName' => 'cat-napping-license' ],
-			$storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'extmetadata' ]
+			'cat-napping-artist',
+			$storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'author' ]
+		);
+		$this->assertEquals(
+			'cat-napping-license',
+			$storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'license' ]
 		);
 	}
 
@@ -81,7 +102,7 @@ class StoryRendererTest extends MediaWikiUnitTestCase {
 	public function testRenderNoJS() {
 		$story = StoryFactory::makeValidStory();
 		$repoGroup = $this->createRepoGroupMock();
-		$renderer = new StoryRenderer( $repoGroup );
+		$renderer = new StoryRenderer( $repoGroup, MediaWikiServices::getInstance()->getTitleFormatter() );
 		$parts = $renderer->renderNoJS( $story );
 
 		$this->assertArrayHasKey( 'html', $parts );
