@@ -45,7 +45,7 @@ module.exports = {
 			'.ext-wikistories-frames-thumbnails-frame-selected'
 		);
 		if ( selected ) {
-			selected.scrollIntoView();
+			selected.scrollIntoView( false );
 		}
 	},
 	unmounted: function () {
