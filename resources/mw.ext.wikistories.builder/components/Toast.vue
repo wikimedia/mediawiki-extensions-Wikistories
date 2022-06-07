@@ -38,10 +38,9 @@ module.exports = {
 .ext-wikistories-toast {
 	background-color: @background-color-warning;
 	position: absolute;
-	max-width: 80%;
-	margin: auto;
+	margin: 0 15px;
 	padding: 20px;
-	top: 108px;
+	top: 103px;
 	left: 0;
 	right: 0;
 	z-index: 100;
