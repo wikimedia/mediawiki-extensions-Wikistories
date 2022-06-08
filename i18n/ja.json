@@ -17,7 +17,7 @@
 	"wikistories-story-deleteframe": "このページを削除する",
 	"wikistories-imageattribution-author-unknown": "作者不詳",
 	"wikistories-article-navigator-title": "文字列を強調表示する",
-	"wikistories-article-cancelselection": "キャンセル",
+	"wikistories-article-cancelselection": "クリア",
 	"wikistories-article-loading": "記事を読み込んでいます...",
 	"wikistories-article-usetext": "ストーリーに追加",
 	"wikistories-article-info-banner": "ストーリに追加するテキストを選択して下さい。",
@@ -25,13 +25,16 @@
 	"wikistories-confirmdialog-delete-title": "このページを削除しますか？",
 	"wikistories-confirmdialog-delete-accept": "削除",
 	"wikistories-confirmdialog-delete-cancel": "キャンセル",
+	"wikistories-confirmdialog-discardedits-title": "編集内容を破棄しますか？",
 	"wikistories-confirmdialog-discardstory-accept": "破棄する",
 	"wikistories-error-notenoughframes-title": "ページ数が不十分です",
 	"wikistories-builder-publishform-placeholder": "ストーリーの題名を入力してください",
 	"wikistories-builder-publishform-publishbutton": "公開",
 	"wikistories-builder-publishform-invalidtitle-empty": "ストーリーの題名を入力してください",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "同名のストーリーが既に存在します。重複しない題名を入力してください。",
+	"wikistories-builder-publishform-invalidtitle-notfound": "ストーリーが見つかりません。",
 	"wikistories-builder-publishform-saveerror": "ストーリーを公開中にエラーが発生しました。後ほどお試しください。",
 	"wikistories-discover-cta-text": "ストーリーを作成",
-	"wikistories-storyviewer-next-story-button": "次のストーリーを読む"
+	"wikistories-storyviewer-next-story-button": "次のストーリーを読む",
+	"wikistories-storyviewer-edit": "編集"
 }
