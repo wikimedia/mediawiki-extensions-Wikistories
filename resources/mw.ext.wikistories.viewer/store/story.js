@@ -11,25 +11,37 @@ module.exports = {
 				return story.pageId.toString() === state.storyId;
 			} ) || {};
 		},
-		story: ( state, getters ) => {
-			return getters.currentStory.frames || [];
+		story: ( state ) => {
+			const stories = state.stories;
+			const storyId = state.storyId;
+			const currentStory = stories.find( story => story.pageId.toString() === storyId );
+			if ( currentStory ) {
+				const coverFrame = [ {
+					id: 0,
+					attribution: currentStory.frames[ 0 ].attribution,
+					url: currentStory.frames[ 0 ].url,
+					text: null
+				} ];
+				return coverFrame.concat( currentStory.frames );
+			}
+
+			return [];
+		},
+		isStoryBeginning: ( state ) => {
+			return state.frameId === 0;
 		},
 		isStoryEnd: ( state ) => {
 			return state.isStoryEnd;
 		},
 		currentFrame: ( state, getters ) => {
 			if ( getters.story.length ) {
-				return getters.story[ state.frameId - 1 ];
+				return getters.story[ state.frameId ];
 			} else {
 				return {};
 			}
 		},
 		imgAttribution: ( state, getters ) => {
-			if ( getters.story.length ) {
-				return getters.story[ state.frameId - 1 ].attribution;
-			} else {
-				return {};
-			}
+			return getters.currentFrame.attribution;
 		},
 		currentStoryTitle: ( state ) => {
 			const stories = state.stories;
@@ -75,7 +87,7 @@ module.exports = {
 			context.commit( 'setStoryFrameId', context.state.frameId + 1 );
 		},
 		resetFrame: ( context ) => {
-			context.commit( 'setStoryFrameId', 1 );
+			context.commit( 'setStoryFrameId', 0 );
 		},
 		nextStory: ( context ) => {
 			const stories = context.state.stories;

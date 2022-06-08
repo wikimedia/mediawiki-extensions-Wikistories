@@ -1,7 +1,14 @@
 <template>
 	<div v-show="story.length" class="ext-wikistories-viewer-container">
-		<div class="ext-wikistories-viewer-container-overlay" @click="discardStory"></div>
+		<div
+			class="ext-wikistories-viewer-container-overlay"
+			@click="discardStory"
+		></div>
 		<div class="ext-wikistories-viewer-container-content" :style="style">
+			<div
+				v-if="isStoryBeginning"
+				class="ext-wikistories-viewer-container-cover-overlay"
+			></div>
 			<div class="ext-wikistories-viewer-container-topbar"></div>
 			<dots-menu class="ext-wikistories-viewer-container-menu">
 				<dots-menu-item
@@ -20,11 +27,11 @@
 					:key="n"
 					class="ext-wikistories-viewer-container-content-progress-container">
 					<div
-						v-if="currentFrame.id === n"
+						v-if="isFramePlaying( n )"
 						class="ext-wikistories-viewer-container-content-progress-container-loading"
 					></div>
 					<div
-						v-else-if="currentFrame.id > n"
+						v-else-if="isFrameDonePlaying( n )"
 						class="ext-wikistories-viewer-container-content-progress-container-loaded"
 					></div>
 				</div>
@@ -33,6 +40,18 @@
 				v-if="currentFrame.text"
 				class="ext-wikistories-viewer-container-content-story-text">
 				{{ currentFrame.text }}
+			</div>
+			<div
+				v-if="isStoryBeginning"
+				class="ext-wikistories-viewer-container-content-story-cover">
+				<div
+					class="ext-wikistories-viewer-container-content-story-cover-wikistory">
+					{{ $i18n( 'wikistories-storyviewer-cover-page-heading' ).text() }}
+				</div>
+				<div
+					class="ext-wikistories-viewer-container-content-story-cover-title">
+					{{ currentStoryTitle }}
+				</div>
 			</div>
 			<image-attribution></image-attribution>
 			<div
@@ -75,7 +94,8 @@ module.exports = {
 	},
 	computed: $.extend( mapGetters( [
 		'story', 'currentFrame', 'editUrl',
-		'isStoryEnd', 'isLastStory', 'currentStoryTitle', 'imgAttribution'
+		'isStoryEnd', 'isStoryBeginning', 'isLastStory',
+		'currentStoryTitle'
 	] ), {
 		style: function () {
 			return {
@@ -134,6 +154,12 @@ module.exports = {
 		},
 		edit: function () {
 			window.location = this.editUrl;
+		},
+		isFramePlaying: function ( n ) {
+			return this.currentFrame.id === n - 1;
+		},
+		isFrameDonePlaying: function ( n ) {
+			return this.currentFrame.id > n - 1;
 		}
 	} ),
 	watch: {
@@ -145,9 +171,9 @@ module.exports = {
 			}
 		},
 		currentFrame: function () {
-			if ( this.currentFrame.id < this.story.length ) {
+			if ( this.currentFrame.id < this.story.length - 1 ) {
 				this.playNextFrame();
-			} else if ( this.currentFrame.id === this.story.length ) {
+			} else if ( this.currentFrame.id === this.story.length - 1 ) {
 				this.endStory();
 			}
 		}
@@ -163,6 +189,9 @@ module.exports = {
 <style lang="less">
 @import 'mediawiki.ui/variables.less';
 
+@z-level-one: 100;
+@z-level-two: 300;
+
 .ext-wikistories-viewer-container {
 	position: fixed;
 	top: 0;
@@ -172,10 +201,20 @@ module.exports = {
 	width: 100%;
 
 	&-overlay {
-		background-color: #00000087;
+		background-color: #000;
 		position: absolute;
 		height: 100%;
 		width: 100%;
+		opacity: 0.7;
+	}
+
+	&-cover-overlay {
+		background-color: #000;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		opacity: 0.7;
+		z-index: @z-level-one;
 	}
 
 	&-topbar {
@@ -190,6 +229,7 @@ module.exports = {
 		position: absolute;
 		top: 30px;
 		right: 5px;
+		z-index: @z-level-two;
 	}
 
 	&-content {
@@ -214,6 +254,20 @@ module.exports = {
 			padding: 10px;
 			font-size: 18px;
 			line-height: 27px;
+		}
+
+		&-story-cover {
+			position: absolute;
+			bottom: 90px;
+			left: 16px;
+			width: 80%;
+			color: #fff;
+			z-index: @z-level-two;
+			text-align: left;
+
+			&-title {
+				font-size: 32px;
+			}
 		}
 
 		&-next-btn {
@@ -241,6 +295,7 @@ module.exports = {
 			display: flex;
 			flex-direction: row;
 			padding: 8px 16px;
+			z-index: @z-level-two;
 
 			&-container {
 				height: 2px;
@@ -290,6 +345,7 @@ module.exports = {
 			background-repeat: no-repeat;
 			left: 10px;
 			top: 18px;
+			z-index: @z-level-two;
 		}
 	}
 }
