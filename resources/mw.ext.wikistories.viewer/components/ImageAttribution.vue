@@ -51,6 +51,8 @@ module.exports = {
 </script>
 
 <style lang="less">
+@z-level-two: 300;
+
 .ext-wikistories-image-attribution {
 	position: absolute;
 	bottom: 0;
@@ -60,6 +62,7 @@ module.exports = {
 	border: #f8f9fa;
 	display: flex;
 	justify-content: space-between;
+	z-index: @z-level-two;
 	background: linear-gradient( 180deg, rgba( 0, 0, 0, 0 ) -108.75%, rgba( 0, 0, 0, 0.6 ) 100% );
 
 	&-info {

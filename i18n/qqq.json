@@ -64,6 +64,7 @@
 	"wikistories-discover-cta-text": "Text for a button in the Discover section to start the builder step",
 	"wikistories-storyviewer-next-story-button": "Text for the button when press and go to the next story viewer",
 	"wikistories-storyviewer-edit": "Text for the button to edit a story from the viewer",
+	"wikistories-storyviewer-cover-page-heading": "Heading text to accompany the story title for each cover page at the beggining of each story in the viewer",
 	"wikistories-file-not-found": "Error message when a file used in a story is not found in any known repo.\nParameters:\n* $1 - name of the file",
 	"wikistories-text-too-long": "Error message when the text on a frame is too long.\nParameters:\n* $1 - index of the frame (starting at 1)\n* $2 - Length of the text\n* $3 - Maximum length allowed"
 }
