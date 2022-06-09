@@ -13,7 +13,7 @@
 	"wikistories-story-replaceimage": "Dëst Bild ersetzen",
 	"wikistories-story-deleteframe": "Dës Säit läschen",
 	"wikistories-imageattribution-author-unknown": "Auteur onbekannt",
-	"wikistories-article-cancelselection": "Ofbriechen",
+	"wikistories-article-cancelselection": "Eidel maachen",
 	"wikistories-article-loading": "Lueden...",
 	"wikistories-article-usetext": "Bei d'Geschicht derbäisetzen",
 	"wikistories-article-info-banner": "Text eraussiche fir bei Är Geschicht derbäizesetzen",
@@ -21,10 +21,13 @@
 	"wikistories-confirmdialog-delete-title": "Dës Säit läschen?",
 	"wikistories-confirmdialog-delete-accept": "Läschen",
 	"wikistories-confirmdialog-delete-cancel": "Ofbriechen",
+	"wikistories-confirmdialog-discardedits-title": "Ännerungen ignoréieren?",
 	"wikistories-error-notenoughframes-title": "Net genuch Säiten",
 	"wikistories-error-frameswithouttext-title": "Text feelt",
 	"wikistories-builder-publishform-navigator-title": "Wikistory verëffentlechen",
 	"wikistories-builder-publishform-publishbutton": "Verëffentlechen",
+	"wikistories-builder-publishform-invalidtitle-notfound": "Geschicht net fonnt.",
 	"wikistories-storyviewer-next-story-button": "Nächst Geschicht liesen",
+	"wikistories-storyviewer-edit": "Änneren",
 	"wikistories-file-not-found": "Fichier \"$1\" net fonnt"
 }

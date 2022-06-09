@@ -59,6 +59,7 @@
 	"wikistories-discover-cta-text": "Geschichte erstellen",
 	"wikistories-storyviewer-next-story-button": "Nächste Geschichte lesen",
 	"wikistories-storyviewer-edit": "Bearbeiten",
+	"wikistories-storyviewer-cover-page-heading": "Wikistory",
 	"wikistories-file-not-found": "Datei „$1“ nicht gefunden",
 	"wikistories-text-too-long": "Der Text im Rahmen #$1 ist zu lang. Er hat {{PLURAL:$2|$2 Zeichen}}, aber es sind maximal $3 erlaubt."
 }

@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"BAPerdana-WMF"
+			"BAPerdana-WMF",
+			"WillsonEP09"
 		]
 	},
-	"wikistories-specialstorybuilder-title": "Buat Wikistories",
+	"right-edit-story": "Penyunting Wikistories",
+	"action-edit-story": "menyunting Wikistories",
+	"wikistories-specialstorybuilder-title": "Pembuat Cerita",
 	"wikistories-specialstorybuilder-loading": "Memuat...",
 	"wikistories-specialstorybuilder-nojswarning": "Halaman ini membutuhkan JavaScript agar bisa bekerja",
 	"wikistories-specialstorybuilder-mustbeloggedin": "Harap masuk log atau buat akun baru untuk membuat Wikistories",
@@ -21,13 +24,20 @@
 	"wikistories-story-navigator-title": "Buat Wikistories",
 	"wikistories-imageattribution-author-unknown": "Pembuat tidak diketahui",
 	"wikistories-article-navigator-title": "Sorot teks",
-	"wikistories-article-cancelselection": "Batal",
-	"wikistories-article-loading": "Memuat...",
+	"wikistories-article-cancelselection": "Bersihkan",
+	"wikistories-article-loading": "Memuat artikel...",
 	"wikistories-alert-okbuttontext": "Oke",
+	"wikistories-confirmdialog-delete-title": "Hapus halaman ini?",
 	"wikistories-confirmdialog-delete-accept": "Hapus",
 	"wikistories-confirmdialog-delete-cancel": "Batal",
+	"wikistories-confirmdialog-discardedits-title": "Buang suntingan",
 	"wikistories-confirmdialog-discardstory-accept": "Buang",
 	"wikistories-error-frameswithouttext-title": "Teks tidak ditemukan",
 	"wikistories-builder-publishform-publishbutton": "Terbitkan",
+	"wikistories-builder-publishform-invalidtitle-notfound": "Wikistories tersebut tidak ditemukan.",
+	"wikistories-discover-cta-text": "Buat Wikistories",
+	"wikistories-storyviewer-next-story-button": "Lihat Wikistories selanjutnya",
+	"wikistories-storyviewer-edit": "Sunting",
+	"wikistories-storyviewer-cover-page-heading": "Wikistories",
 	"wikistories-file-not-found": "Berkas \"$1\" tidak ditemukan"
 }

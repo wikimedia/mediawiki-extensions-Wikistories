@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chinamoonroll",
 			"Joseagush"
 		]
 	},
 	"wikistories-alert-okbuttontext": "Oké",
-	"wikistories-builder-publishform-publishbutton": "Wedar"
+	"wikistories-builder-publishform-publishbutton": "Wedar",
+	"wikistories-storyviewer-edit": "Uah"
 }

@@ -61,6 +61,7 @@
 	"wikistories-discover-cta-text": "Créer un récit wiki",
 	"wikistories-storyviewer-next-story-button": "Lire le récit suivant",
 	"wikistories-storyviewer-edit": "Modifier",
+	"wikistories-storyviewer-cover-page-heading": "Récit wiki",
 	"wikistories-file-not-found": "Fichier « $1 » introuvable.",
 	"wikistories-text-too-long": "Le texte du cadre nº $1 est trop long. Il comporte $2 caractère{{PLURAL:$2||s}} mais le maximum autorisé est $3."
 }
