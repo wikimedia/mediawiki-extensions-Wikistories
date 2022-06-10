@@ -60,6 +60,7 @@
 	"wikistories-discover-cta-text": "Создај википриказна",
 	"wikistories-storyviewer-next-story-button": "Следна приказна",
 	"wikistories-storyviewer-edit": "Уреди",
+	"wikistories-storyviewer-cover-page-heading": "Википриказна",
 	"wikistories-file-not-found": "Податотеката „$1“ не е пронајдена",
 	"wikistories-text-too-long": "Текстот на рамката #$1 е предолг. Има {{PLURAL:$2|$2 знак|$2 знаци}}, но дозволени се највеќе $3."
 }
