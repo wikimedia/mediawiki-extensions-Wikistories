@@ -10,6 +10,7 @@ use MediaWiki\Content\Transform\PreloadTransformParams;
 use MediaWiki\Content\Transform\PreSaveTransformParams;
 use MediaWiki\Content\ValidationParams;
 use ParserOutput;
+use Title;
 use TitleValue;
 
 class StoryContentHandler extends JsonContentHandler {
@@ -100,7 +101,9 @@ class StoryContentHandler extends JsonContentHandler {
 
 		if ( $cpoParams->getGenerateHtml() ) {
 			// no-js
-			$parts = $this->storyRenderer->renderNoJS( $story );
+			$storyPage = $cpoParams->getPage();
+			$storyTitle = Title::makeTitle( $storyPage->getNamespace(), $storyPage->getDBkey() );
+			$parts = $this->storyRenderer->renderNoJS( $story, $storyTitle->getId() );
 			$parserOutput->addModuleStyles( [ $parts['style'] ] );
 			$parserOutput->setText( $parts['html'] );
 		}

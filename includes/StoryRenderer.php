@@ -8,6 +8,7 @@ use Html;
 use MediaWiki\Linker\LinkTarget;
 use RepoGroup;
 use SpecialPage;
+use Title;
 use TitleFormatter;
 use TitleValue;
 
@@ -30,11 +31,18 @@ class StoryRenderer {
 
 	/**
 	 * @param StoryContent $story
+	 * @param int $pageId
 	 * @return array [ 'html', 'style' ]
 	 */
-	public function renderNoJS( StoryContent $story ): array {
-		$story = $this->getStoryForViewer( $story, 0, new TitleValue( NS_STORY, 'Unused' ) );
-		$html = Html::rawElement(
+	public function renderNoJS( StoryContent $story, int $pageId ): array {
+		$storyView = $this->getStoryForViewer( $story, 0, new TitleValue( NS_STORY, 'Unused' ) );
+		$articleTitle = Title::makeTitle( NS_MAIN, $story->getFromArticle(), '/story/' . $pageId );
+		$html = Html::element(
+			'a',
+			[ 'href' => $articleTitle->getLinkURL( [ 'wikistories' => 1 ] ) ],
+			$articleTitle->getText()
+		);
+		$html .= Html::rawElement(
 			'div',
 			[ 'class' => 'ext-wikistories-viewer-nojs-root' ],
 			implode( '', array_map( static function ( $frame ) {
@@ -46,7 +54,7 @@ class StoryRenderer {
 					],
 					Html::element( 'p', [], $frame[ 'text' ] )
 				);
-			}, $story[ 'frames' ] ) )
+			}, $storyView[ 'frames' ] ) )
 		);
 
 		return [
