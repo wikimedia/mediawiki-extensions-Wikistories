@@ -43,6 +43,7 @@ module.exports = {
 		text-align: center;
 		color: #fff;
 		background-image: url( ../images/menu.svg );
+		background-position: center;
 	}
 
 	&-content {

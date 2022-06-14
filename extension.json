@@ -103,6 +103,7 @@
 				"mw.ext.wikistories.viewer/components/ImageAttribution.vue",
 				"mw.ext.wikistories.viewer/store/index.js",
 				"mw.ext.wikistories.viewer/store/story.js",
+				"mw.ext.wikistories.viewer/util/timer.js",
 				"components/DotsMenu.vue",
 				"components/DotsMenuItem.vue"
 			],

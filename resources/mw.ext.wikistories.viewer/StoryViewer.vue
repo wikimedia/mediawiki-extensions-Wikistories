@@ -10,6 +10,18 @@
 				class="ext-wikistories-viewer-container-cover-overlay"
 			></div>
 			<div class="ext-wikistories-viewer-container-topbar"></div>
+			<div
+				class="ext-wikistories-viewer-container-content-close-icon"
+				@click="discardStory"
+			></div>
+			<div
+				v-if="!isStoryEnd"
+				:class="{
+					'ext-wikistories-viewer-container-content-pause-icon': !timer.isPaused,
+					'ext-wikistories-viewer-container-content-play-icon': timer.isPaused
+				}"
+				@click="toggleStory"
+			></div>
 			<dots-menu class="ext-wikistories-viewer-container-menu">
 				<dots-menu-item
 					:text="$i18n( 'wikistories-storyviewer-edit' ).text()"
@@ -17,10 +29,6 @@
 					@click="edit"
 				></dots-menu-item>
 			</dots-menu>
-			<div
-				class="ext-wikistories-viewer-container-content-close-icon"
-				@click="discardStory"
-			></div>
 			<div class="ext-wikistories-viewer-container-content-progress">
 				<div
 					v-for="n in story.length"
@@ -29,6 +37,7 @@
 					<div
 						v-if="isFramePlaying( n )"
 						class="ext-wikistories-viewer-container-content-progress-container-loading"
+						:style="{ 'animation-play-state': timer.isPaused ? 'paused' : 'running' }"
 					></div>
 					<div
 						v-else-if="isFrameDonePlaying( n )"
@@ -71,6 +80,7 @@ const mapActions = require( 'vuex' ).mapActions;
 const ImageAttribution = require( './components/ImageAttribution.vue' );
 const DotsMenu = require( '../../components/DotsMenu.vue' );
 const DotsMenuItem = require( '../../components/DotsMenuItem.vue' );
+const Timer = require( './util/timer.js' );
 
 // @vue/component
 module.exports = {
@@ -88,7 +98,7 @@ module.exports = {
 	data: function () {
 		return {
 			frameDuration: 5000,
-			timeoutId: null,
+			timer: new Timer(),
 			storyStart: 0
 		};
 	},
@@ -110,7 +120,7 @@ module.exports = {
 		'nextFrame', 'resetFrame', 'setIsStoryEnd'
 	] ), {
 		playNextFrame: function () {
-			this.timeoutId = setTimeout( function () {
+			this.timer.setup( function () {
 				this.nextFrame();
 			}.bind( this ), this.frameDuration );
 		},
@@ -119,7 +129,7 @@ module.exports = {
 			this.storyStart = Date.now();
 		},
 		endStory: function () {
-			this.timeoutId = setTimeout( function () {
+			this.timer.setup( function () {
 				this.setIsStoryEnd( true );
 				const storyOpenTime = Date.now() - this.storyStart;
 				this.logStoryViewFn(
@@ -143,8 +153,15 @@ module.exports = {
 				);
 			}
 			this.setStoryId( null );
-			clearTimeout( this.timeoutId );
+			this.timer.clear();
 			window.location.hash = '';
+		},
+		toggleStory: function () {
+			if ( this.timer.isPaused ) {
+				this.timer.play();
+			} else {
+				this.timer.pause();
+			}
 		},
 		preloadStory: function () {
 			this.story.forEach( ( frame ) => {
@@ -354,6 +371,33 @@ module.exports = {
 			background-position: center;
 			background-repeat: no-repeat;
 			left: 0;
+			top: 18px;
+			z-index: @z-level-two;
+		}
+
+		&-pause-icon {
+			position: absolute;
+			cursor: pointer;
+			width: 48px;
+			height: 48px;
+			background-image: url( ../images/pause.svg );
+			background-position: center;
+			background-repeat: no-repeat;
+			right: 50px;
+			top: 18px;
+			z-index: @z-level-two;
+		}
+
+		&-play-icon {
+			position: absolute;
+			cursor: pointer;
+			width: 18px;
+			height: 18px;
+			padding: 15px;
+			background-image: url( ../images/play.svg );
+			background-position: center;
+			background-repeat: no-repeat;
+			right: 50px;
 			top: 18px;
 			z-index: @z-level-two;
 		}
