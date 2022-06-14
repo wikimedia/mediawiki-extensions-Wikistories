@@ -46,13 +46,12 @@ module.exports = {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
-	max-width: 80vw;
-	width: 176px;
+	max-width: 50vw;
 	margin: 0;
 	font-size: 20px;
 	padding: 6px 12px 6px 38px;
 	background-repeat: no-repeat;
-	background-position: 12px 13px;
+	background-position: 10px center;
 
 	&:last-of-type {
 		border: 0;

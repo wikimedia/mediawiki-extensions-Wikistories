@@ -227,8 +227,8 @@ module.exports = {
 
 	&-menu {
 		position: absolute;
-		top: 30px;
-		right: 5px;
+		top: 18px;
+		right: 0;
 		z-index: @z-level-two;
 	}
 
@@ -265,8 +265,19 @@ module.exports = {
 			z-index: @z-level-two;
 			text-align: left;
 
+			&-wikistory {
+				font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+			}
+
 			&-title {
+				overflow: hidden;
+				line-height: 44px;
 				font-size: 32px;
+				display: -webkit-box;
+				max-height: 50vh;
+				word-wrap: break-word;
+				-webkit-line-clamp: 6;
+				-webkit-box-orient: vertical;
 			}
 		}
 
@@ -337,13 +348,12 @@ module.exports = {
 		&-close-icon {
 			position: absolute;
 			cursor: pointer;
-			width: 18px;
-			height: 18px;
-			padding: 15px;
+			width: 48px;
+			height: 48px;
 			background-image: url( ../images/close-white.svg );
 			background-position: center;
 			background-repeat: no-repeat;
-			left: 10px;
+			left: 0;
 			top: 18px;
 			z-index: @z-level-two;
 		}

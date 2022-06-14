@@ -38,8 +38,8 @@ module.exports = {
 .ext-wikistories-dotsmenu {
 	&-button {
 		cursor: pointer;
-		height: 44px;
-		width: 44px;
+		height: 48px;
+		width: 48px;
 		text-align: center;
 		color: #fff;
 		background-image: url( ../images/menu.svg );
