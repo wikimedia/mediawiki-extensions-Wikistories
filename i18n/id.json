@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BAPerdana-WMF"
+			"BAPerdana-WMF",
+			"WillsonEP09"
 		]
 	},
 	"wikistories-search-inputplaceholder": "Cari gambar",
@@ -13,5 +14,6 @@
 	"wikistories-article-loading": "Memuat...",
 	"wikistories-alert-okbuttontext": "Oke",
 	"wikistories-error-frameswithouttext-title": "Teks tidak ditemukan",
-	"wikistories-builder-publishform-publishbutton": "Terbitkan"
+	"wikistories-builder-publishform-publishbutton": "Terbitkan",
+	"wikistories-discover-cta-text": "Buat Wikistories"
 }
