@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\Wikistories;
 
 use JsonSchema\Validator;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Page\PageLookup;
 use RepoGroup;
 use StatusValue;
 
@@ -21,14 +22,23 @@ class StoryValidator {
 	/** @var RepoGroup */
 	private $repoGroup;
 
+	/** @var PageLookup */
+	private $pageLookup;
+
 	/**
 	 * @param ServiceOptions $options
 	 * @param RepoGroup $repoGroup
+	 * @param PageLookup $pageLookup
 	 */
-	public function __construct( ServiceOptions $options, RepoGroup $repoGroup ) {
+	public function __construct(
+		ServiceOptions $options,
+		RepoGroup $repoGroup,
+		PageLookup $pageLookup
+	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
 		$this->repoGroup = $repoGroup;
+		$this->pageLookup = $pageLookup;
 	}
 
 	/**
@@ -49,6 +59,12 @@ class StoryValidator {
 		if ( !$validator->isValid() ) {
 			// todo: find a way to include error messages from the schema validator
 			return StatusValue::newFatal( 'invalid-format' );
+		}
+
+		// fromArticle exists
+		$page = $this->pageLookup->getExistingPageByText( $story->getFromArticle() );
+		if ( !$page ) {
+			return StatusValue::newFatal( 'wikistories-from-article-not-found', $story->getFromArticle() );
 		}
 
 		// Validation based on config

@@ -62,5 +62,6 @@
 	"wikistories-storyviewer-edit": "Edit",
 	"wikistories-storyviewer-cover-page-heading": "Wikistory",
 	"wikistories-file-not-found": "File \"$1\" not found",
+	"wikistories-from-article-not-found": "Article \"$1\" not found",
 	"wikistories-text-too-long": "The text on frame #$1 is too long. It has {{PLURAL:$2|$2 character|$2 characters}} but the maximum allowed is $3."
 }
