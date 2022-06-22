@@ -16,7 +16,7 @@ const logContributionEvent = ( data ) => {
 		user_name: mw.user.isAnon() ? undefined : mw.config.get( 'wgUserName' ),
 		user_edit_count_bucket: mw.user.isAnon() ? undefined : mw.config.get( 'wgUserEditCountBucket' ).slice( 0, -6 ),
 		user_is_anonymous: mw.user.isAnon(),
-		context_page_title: mw.config.get( 'wgWikistoriesFromArticle' ),
+		context_page_title: mw.config.get( 'wgWikistoriesStoryContent' ).fromArticle,
 		story_already_exists: false,
 		activity_session_id: mw.eventLog.id.getSessionId()
 		/* eslint-enable camelcase */
