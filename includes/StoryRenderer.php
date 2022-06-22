@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\Wikistories;
 
 use Exception;
 use File;
+use FormatMetadata;
 use Html;
 use MediaWiki\Linker\LinkTarget;
 use RepoGroup;
@@ -147,9 +148,11 @@ class StoryRenderer {
 		if ( !$file ) {
 			throw new Exception( "Image not found: $filename" );
 		}
-		$metadata = $file->getExtendedMetadata();
+
+		$formatMetadata = new FormatMetadata();
+		$metadata = $formatMetadata->fetchExtendedMetadata( $file );
 		$author = strip_tags( $metadata[ 'Artist' ][ 'value' ] ?? '' );
-		$license = $metadata[ 'LicenseShortName' ][ 'value' ];
+		$license = $metadata[ 'LicenseShortName' ][ 'value' ] ?? '';
 
 		return [
 			'author' => $author,
