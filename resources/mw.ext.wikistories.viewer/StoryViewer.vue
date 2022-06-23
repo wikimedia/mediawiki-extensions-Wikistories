@@ -4,9 +4,12 @@
 			class="ext-wikistories-viewer-container-overlay"
 			@click="discardStory"
 		></div>
-		<div class="ext-wikistories-viewer-container-content" :style="style">
+		<div
+			class="ext-wikistories-viewer-container-content"
+			:style="style"
+			@click="navigateFrame">
 			<div
-				v-if="isStoryBeginning"
+				v-if="isFirstFrame"
 				class="ext-wikistories-viewer-container-cover-overlay"
 			></div>
 			<div class="ext-wikistories-viewer-container-topbar"></div>
@@ -51,7 +54,7 @@
 				{{ currentFrame.text }}
 			</div>
 			<div
-				v-if="isStoryBeginning"
+				v-if="isFirstFrame"
 				class="ext-wikistories-viewer-container-content-story-cover">
 				<div
 					class="ext-wikistories-viewer-container-content-story-cover-wikistory">
@@ -70,6 +73,16 @@
 				{{ $i18n( "wikistories-storyviewer-next-story-button" ).text() }}
 			</div>
 		</div>
+		<div
+			v-if="!isFirstFrame"
+			class="ext-wikistories-viewer-container-prev"
+			@click="prevFrame"
+		></div>
+		<div
+			v-if="!isLastFrame"
+			class="ext-wikistories-viewer-container-next"
+			@click="nextFrame"
+		></div>
 	</div>
 </template>
 
@@ -81,6 +94,7 @@ const ImageAttribution = require( './components/ImageAttribution.vue' );
 const DotsMenu = require( '../../components/DotsMenu.vue' );
 const DotsMenuItem = require( '../../components/DotsMenuItem.vue' );
 const Timer = require( './util/timer.js' );
+const isTouchDevice = require( './util/isTouchDevice.js' );
 
 // @vue/component
 module.exports = {
@@ -104,7 +118,7 @@ module.exports = {
 	},
 	computed: $.extend( mapGetters( [
 		'story', 'currentFrame', 'editUrl',
-		'isStoryEnd', 'isStoryBeginning', 'isLastStory',
+		'isStoryEnd', 'isLastStory', 'isFirstFrame', 'isLastFrame',
 		'currentStoryTitle'
 	] ), {
 		style: function () {
@@ -117,7 +131,7 @@ module.exports = {
 	} ),
 	methods: $.extend( mapActions( [
 		'setStories', 'setStoryId', 'nextStory',
-		'nextFrame', 'resetFrame', 'setIsStoryEnd'
+		'prevFrame', 'nextFrame', 'resetFrame', 'setIsStoryEnd'
 	] ), {
 		playNextFrame: function () {
 			this.timer.setup( function () {
@@ -169,6 +183,29 @@ module.exports = {
 				img.src = frame.url;
 			} );
 		},
+		navigateFrame: function ( e ) {
+
+			if ( !isTouchDevice ) {
+				return;
+			}
+
+			const pressTargetClassName = e.target.className;
+
+			if (
+				pressTargetClassName === 'ext-wikistories-viewer-container-content' ||
+				pressTargetClassName === 'ext-wikistories-viewer-container-cover-overlay'
+			) {
+				const screenWidth = window.innerWidth;
+				const pressAxisX = e.clientX;
+
+				if ( pressAxisX >= screenWidth / 2 ) {
+					this.nextFrame();
+				} else {
+					this.prevFrame();
+				}
+			}
+
+		},
 		edit: function () {
 			window.location = this.editUrl;
 		},
@@ -190,7 +227,8 @@ module.exports = {
 		currentFrame: function () {
 			if ( this.currentFrame.id < this.story.length - 1 ) {
 				this.playNextFrame();
-			} else if ( this.currentFrame.id === this.story.length - 1 ) {
+				this.setIsStoryEnd( false );
+			} else if ( this.isLastFrame ) {
 				this.endStory();
 			}
 		}
@@ -247,6 +285,31 @@ module.exports = {
 		top: 18px;
 		right: 0;
 		z-index: @z-level-two;
+	}
+
+	.arrow() {
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top: 50%;
+		z-index: @z-level-two;
+		background: url( ../images/arrow.svg );
+		background-size: contain;
+		cursor: pointer;
+	}
+
+	@media screen and ( min-width: 1000px ) {
+		&-prev {
+			.arrow();
+			left: 10px;
+		}
+
+		&-next {
+			.arrow();
+			right: 10px;
+			-webkit-transform: rotate( 180deg );
+			transform: rotate( 180deg );
+		}
 	}
 
 	&-content {

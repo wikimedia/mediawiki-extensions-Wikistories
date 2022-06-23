@@ -27,8 +27,11 @@ module.exports = {
 
 			return [];
 		},
-		isStoryBeginning: ( state ) => {
+		isFirstFrame: ( state ) => {
 			return state.frameId === 0;
+		},
+		isLastFrame: ( state, getters ) => {
+			return state.frameId === getters.story.length - 1;
 		},
 		isStoryEnd: ( state ) => {
 			return state.isStoryEnd;
@@ -80,8 +83,15 @@ module.exports = {
 		setIsStoryEnd: ( context, isStoryEnd ) => {
 			context.commit( 'setIsStoryEnd', isStoryEnd );
 		},
+		prevFrame: ( context ) => {
+			if ( !context.getters.isFirstFrame ) {
+				context.commit( 'setStoryFrameId', context.state.frameId - 1 );
+			}
+		},
 		nextFrame: ( context ) => {
-			context.commit( 'setStoryFrameId', context.state.frameId + 1 );
+			if ( !context.getters.isLastFrame ) {
+				context.commit( 'setStoryFrameId', context.state.frameId + 1 );
+			}
 		},
 		resetFrame: ( context ) => {
 			context.commit( 'setStoryFrameId', 0 );
