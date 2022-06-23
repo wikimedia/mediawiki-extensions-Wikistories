@@ -6,6 +6,8 @@ use File;
 use FormatJson;
 use HashConfig;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Page\ExistingPageRecord;
+use MediaWiki\Page\PageLookup;
 use MediaWikiUnitTestCase;
 use RepoGroup;
 
@@ -29,6 +31,15 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 		return $repoGroup;
 	}
 
+	private function createPageStoreMock() {
+		$pageStore = $this->createMock( PageLookup::class );
+		$pageStore->method( 'getExistingPageByText' )->willReturnMap( [
+			[ 'Cat', 0, 0, $this->createMock( ExistingPageRecord::class ) ],
+			[ 'Dog', 0, 0, null ],
+		] );
+		return $pageStore;
+	}
+
 	/**
 	 * @dataProvider provideIsValidStories
 	 * @covers MediaWiki\Extension\Wikistories\StoryValidator::isValid
@@ -46,7 +57,11 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 		);
 
 		$story = new StoryContent( FormatJson::encode( $obj ) );
-		$validator = new StoryValidator( $options, $this->createRepoGroupMock() );
+		$validator = new StoryValidator(
+			$options,
+			$this->createRepoGroupMock(),
+			$this->createPageStoreMock()
+		);
 		$this->assertEquals( $expectedValid, $validator->isValid( $story )->isGood() );
 	}
 
@@ -99,6 +114,20 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 			] ],
 			'Missing fromArticle' => [ false, [
 				'schemaVersion' => 1,
+				'frames' => [
+					[
+						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
+						'text' => [ 'value' => 'This is a cat' ]
+					],
+					[
+						'image' => [ 'filename' => 'Cat_napping.jpg' ],
+						'text' => [ 'value' => 'Sleeping now...' ]
+					],
+				]
+			] ],
+			'from article not found' => [ false, [
+				'schemaVersion' => 1,
+				'fromArticle' => 'Dog',
 				'frames' => [
 					[
 						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],

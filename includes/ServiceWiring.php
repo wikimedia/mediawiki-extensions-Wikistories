@@ -28,7 +28,8 @@ return [
 				StoryValidator::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
 			),
-			$services->getRepoGroup()
+			$services->getRepoGroup(),
+			$services->getPageStore()
 		);
 	},
 

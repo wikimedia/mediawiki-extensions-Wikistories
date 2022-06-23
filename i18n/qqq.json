@@ -66,5 +66,6 @@
 	"wikistories-storyviewer-edit": "Text for the button to edit a story from the viewer",
 	"wikistories-storyviewer-cover-page-heading": "Heading text to accompany the story title for each cover page at the beggining of each story in the viewer",
 	"wikistories-file-not-found": "Error message when a file used in a story is not found in any known repo.\nParameters:\n* $1 - name of the file",
+	"wikistories-from-article-not-found": "Error message when the specific related article doesn't exist.\nParameters:\n* $1 - article title",
 	"wikistories-text-too-long": "Error message when the text on a frame is too long.\nParameters:\n* $1 - index of the frame (starting at 1)\n* $2 - Length of the text\n* $3 - Maximum length allowed"
 }
