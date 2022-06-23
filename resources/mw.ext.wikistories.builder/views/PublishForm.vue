@@ -69,7 +69,7 @@ module.exports = {
 	methods: {
 		navigateToArticle: function ( storyPageId ) {
 			const titleObj = mw.Title.newFromText( this.fromArticle + '#/story/' + storyPageId );
-			window.location = titleObj.getUrl( { wikistories: 1 } );
+			window.location = titleObj.getUrl();
 		},
 		onSaveClick: function () {
 			this.error = null;

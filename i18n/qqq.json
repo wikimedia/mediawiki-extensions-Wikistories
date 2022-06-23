@@ -12,6 +12,8 @@
 	"wikistories-extensiondesc": "Text for the general project description",
 	"right-edit-story": "{{doc-right|edit-story}}",
 	"action-edit-story": "{{doc-action|edit-story}}",
+	"wikistories-beta-feature-message": "Title of the beta feature to show stories on article pages.",
+	"wikistories-beta-feature-description": "Description of the beta feature to show stories on article pages.",
 	"wikistories-specialstorybuilder-title": "Title of the special page to create a story.",
 	"wikistories-specialstorybuilder-loading": "Temporary message indicating that the story builder is currently loading on Special:StoryBuilder",
 	"wikistories-specialstorybuilder-nojswarning": "Message indicating that JavaScript is required to use Special:StoryBuilder",

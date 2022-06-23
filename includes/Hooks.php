@@ -3,26 +3,68 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use DeferredUpdates;
+use ExtensionRegistry;
+use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
 use OutputPage;
 use SpecialPage;
+use Title;
+use User;
 use WikiPage;
 
 class Hooks {
+
+	private const WIKISTORIES_BETA_FEATURE = 'wikistories-storiesonarticles';
+
+	/**
+	 * Register a beta feature that lets users show stories on article pages
+	 *
+	 * @param User $user
+	 * @param array &$betaPrefs
+	 */
+	public static function onGetBetaFeaturePreferences( User $user, array &$betaPrefs ) {
+		$extensionAssetsPath = MediaWikiServices::getInstance()
+			->getMainConfig()
+			->get( 'ExtensionAssetsPath' );
+		$betaPrefs[ self::WIKISTORIES_BETA_FEATURE ] = [
+			'label-message' => 'wikistories-beta-feature-message',
+			'desc-message' => 'wikistories-beta-feature-description',
+			'screenshot' => [
+				'ltr' => "$extensionAssetsPath/Wikistories/resources/images/wikistories-betafeature-ltr.svg",
+				'rtl' => "$extensionAssetsPath/Wikistories/resources/images/wikistories-betafeature-rtl.svg",
+			],
+			'info-link' => 'https://www.mediawiki.org/wiki/Wikistories',
+			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Wikistories',
+		];
+	}
+
+	/**
+	 * @param User $user
+	 * @param Title $title
+	 * @return bool
+	 */
+	private static function shouldShowStories( User $user, Title $title ): bool {
+		return $user->isRegistered()
+			&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
+			// @phan-suppress-next-line PhanUndeclaredClassMethod
+			&& BetaFeatures::isFeatureEnabled( $user, self::WIKISTORIES_BETA_FEATURE )
+			&& !$title->isMainPage()
+			&& $title->inNamespace( NS_MAIN )
+			&& $title->exists();
+	}
 
 	/**
 	 * @param OutputPage $out
 	 */
 	public static function onBeforePageDisplayMobile( OutputPage $out ) {
 		$title = $out->getTitle();
-		$storiesFlag = $out->getRequest()->getBool( 'wikistories' );
-		if ( $storiesFlag && $title->getNamespace() === NS_MAIN && $title->exists() ) {
+		if ( self::shouldShowStories( $out->getUser(), $title ) ) {
 			$out->addJsConfigVars(
 				'wgWikistoriesCreateUrl',
-				SpecialPage::getTitleFor( 'StoryBuilder', $out->getTitle() )->getLinkURL()
+				SpecialPage::getTitleFor( 'StoryBuilder', $title )->getLinkURL()
 			);
 			$out->addModules( [ 'mw.ext.story.discover' ] );
 			$out->addModuleStyles( 'mw.ext.story.discover.styles' );
