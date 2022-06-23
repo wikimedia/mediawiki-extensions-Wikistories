@@ -12,8 +12,6 @@ global.mw = {
 					return 2;
 				case 'wgWikistoriesMaxFrames':
 					return 5;
-				case 'wgWikistoriesFromArticle':
-					return 'Coconut';
 				default:
 					return {};
 			}
