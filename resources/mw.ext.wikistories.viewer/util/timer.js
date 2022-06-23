@@ -6,6 +6,9 @@ const Timer = function () {
 
 	return {
 		setup: function ( cb, delay ) {
+			if ( timerId ) {
+				window.clearTimeout( timerId );
+			}
 			callback = cb;
 			remaining = delay;
 			this.play();
