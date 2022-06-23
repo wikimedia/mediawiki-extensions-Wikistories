@@ -12,6 +12,7 @@
 	"wikistories-specialstorybuilder-loading": "Loading...",
 	"wikistories-specialstorybuilder-nojswarning": "This special page requires JavaScript to work",
 	"wikistories-specialstorybuilder-mustbeloggedin": "Please log in or create an account to create stories",
+	"wikistories-specialstorybuilder-invalidsubpage": "Please specify a valid subpage in the URL. It can be an article you want to create a story about or the title of a story to edit.",
 	"wikistories-search-inputplaceholder": "Search images",
 	"wikistories-search-cuetext": "Search images related to article.",
 	"wikistories-search-noresultstext": "No results",

@@ -5,8 +5,9 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Exception;
+use ErrorPageError;
 use Html;
+use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
 use MediaWiki\Page\WikiPageFactory;
 use SpecialPage;
@@ -49,7 +50,7 @@ class SpecialStoryBuilder extends SpecialPage {
 		parent::execute( $subPage );
 		$out = $this->getOutput();
 		$out->setPageTitle( $this->msg( 'wikistories-specialstorybuilder-title' )->text() );
-		$out->addJsConfigVars( $this->getConfigForStoryBuilder( $subPage ) );
+		$out->addJsConfigVars( $this->getConfigForStoryBuilder( $this->getSubPage( $subPage ) ) );
 		$out->addModuleStyles( [ 'mw.ext.story.builder.styles' ] );
 		$out->addModules( [ 'mw.ext.story.builder' ] );
 		$out->addHTML(
@@ -73,15 +74,32 @@ class SpecialStoryBuilder extends SpecialPage {
 	}
 
 	/**
-	 * @param string $subPage Context article to init the story builder with
-	 * @return array Configuration needed by the story builder
-	 * @throws Exception When the subpage doesn't exist
+	 * @param string|null $subPage
+	 * @return ExistingPageRecord
+	 * @throws ErrorPageError when the subpage is empty or invalid
 	 */
-	private function getConfigForStoryBuilder( string $subPage ): array {
+	private function getSubPage( $subPage ): ExistingPageRecord {
+		if ( !$subPage ) {
+			throw new ErrorPageError(
+				'wikistories-specialstorybuilder-title',
+				'wikistories-specialstorybuilder-invalidsubpage'
+			);
+		}
 		$page = $this->pageLookup->getExistingPageByText( $subPage );
 		if ( !$page ) {
-			throw new Exception( "Page '$subPage' does't exist" );
+			throw new ErrorPageError(
+				'wikistories-specialstorybuilder-title',
+				'wikistories-specialstorybuilder-invalidsubpage'
+			);
 		}
+		return $page;
+	}
+
+	/**
+	 * @param ExistingPageRecord $page
+	 * @return array Configuration needed by the story builder
+	 */
+	private function getConfigForStoryBuilder( ExistingPageRecord $page ): array {
 		if ( $page->getNamespace() === NS_STORY ) {
 			$wikiPage = $this->wikiPageFactory->newFromTitle( $page );
 			/** @var StoryContent $story */
@@ -92,7 +110,7 @@ class SpecialStoryBuilder extends SpecialPage {
 		} else {
 			$mode = self::MODE_NEW;
 			$storyContent = [
-				'fromArticle' => $subPage,
+				'fromArticle' => $page->getDBkey(),
 				'frames' => [],
 			];
 		}
