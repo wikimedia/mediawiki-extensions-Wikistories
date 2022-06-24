@@ -113,7 +113,8 @@ module.exports = {
 		return {
 			frameDuration: 5000,
 			timer: new Timer(),
-			storyStart: 0
+			storyStart: 0,
+			frameViewedCount: 0
 		};
 	},
 	computed: $.extend( mapGetters( [
@@ -139,33 +140,28 @@ module.exports = {
 			}.bind( this ), this.frameDuration );
 		},
 		playNextStory: function () {
+			this.logStoryViewEvent();
 			this.nextStory();
+		},
+		logStoryViewEvent: function () {
+			const storyOpenTime = Date.now() - this.storyStart;
+			this.logStoryViewFn(
+				this.currentStoryTitle,
+				this.story.length,
+				this.frameViewedCount,
+				storyOpenTime,
+				this.stories.length
+			);
 			this.storyStart = Date.now();
+			this.frameViewedCount = 0;
 		},
 		endStory: function () {
 			this.timer.setup( function () {
 				this.setIsStoryEnd( true );
-				const storyOpenTime = Date.now() - this.storyStart;
-				this.logStoryViewFn(
-					this.currentStoryTitle,
-					this.story.length,
-					this.currentFrame.id,
-					storyOpenTime,
-					this.stories.length
-				);
 			}.bind( this ), this.frameDuration );
 		},
 		discardStory: function () {
-			if ( !this.isStoryEnd ) {
-				const storyOpenTime = Date.now() - this.storyStart;
-				this.logStoryViewFn(
-					this.currentStoryTitle,
-					this.story.length,
-					this.currentFrame.id,
-					storyOpenTime,
-					this.stories.length
-				);
-			}
+			this.logStoryViewEvent();
 			this.setStoryId( null );
 			this.timer.clear();
 			window.location.hash = '';
@@ -207,6 +203,7 @@ module.exports = {
 
 		},
 		edit: function () {
+			this.logStoryViewEvent();
 			window.location = this.editUrl;
 		},
 		isFramePlaying: function ( n ) {
@@ -222,6 +219,8 @@ module.exports = {
 				this.preloadStory();
 				this.setIsStoryEnd( false );
 				this.resetFrame();
+				this.storyStart = Date.now();
+				this.frameViewedCount = 0;
 			}
 		},
 		currentFrame: function () {
@@ -230,6 +229,11 @@ module.exports = {
 				this.setIsStoryEnd( false );
 			} else if ( this.isLastFrame ) {
 				this.endStory();
+			}
+
+			// log events used
+			if ( this.frameViewedCount <= this.currentFrame.id ) {
+				this.frameViewedCount++;
 			}
 		}
 	},
