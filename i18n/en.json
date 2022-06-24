@@ -57,6 +57,7 @@
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Another story with the same title already exists. Please enter a unique story title.",
 	"wikistories-builder-publishform-invalidtitle-notfound": "Story not found.",
 	"wikistories-builder-publishform-saveerror": "An error occured when publishing the story. Please try again later.",
+	"wikistories-builder-publishform-saving": "Publishing Wikistory...",
 	"wikistories-builder-licensing-with-terms": "By continuing, you agree to the [$1 Terms of Use], and you irrevocably agree to release your contribution under the [$2 CC BY-SA 3.0] and [$3 GFDL] licenses.",
 	"wikistories-discover-cta-text": "Create Wikistory",
 	"wikistories-storyviewer-next-story-button": "Read next story",

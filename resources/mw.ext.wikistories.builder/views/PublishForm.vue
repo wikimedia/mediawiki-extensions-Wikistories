@@ -8,6 +8,16 @@
 			@backward="onBack"
 			@forward="onSaveClick"
 		></navigator>
+		<div v-if="savingInProgress" class="ext-wikistories-publishform-saving">
+			<div class="ext-wikistories-publishform-saving-spinner">
+				<div class="ext-wikistories-publishform-saving-spinner-animation">
+					<div class="ext-wikistories-publishform-saving-spinner-animation-bounce"></div>
+				</div>
+			</div>
+			<div class="ext-wikistories-publishform-saving-text">
+				{{ $i18n( 'wikistories-builder-publishform-saving' ).text() }}
+			</div>
+		</div>
 		<div class="ext-wikistories-publishform-content">
 			<input
 				ref="storyTitleInput"
@@ -48,7 +58,8 @@ module.exports = {
 		return {
 			storyTitle: '',
 			error: null,
-			titleInputDisabled: false
+			titleInputDisabled: false,
+			savingInProgress: false
 		};
 	},
 	computed: $.extend( mapGetters( [ 'frames', 'valid', 'fromArticle', 'storyForSave', 'mode', 'title' ] ), {
@@ -73,9 +84,11 @@ module.exports = {
 		},
 		onSaveClick: function () {
 			this.error = null;
+			this.savingInProgress = true;
 			const mustExist = this.mode === 'edit';
 			validateTitle( this.storyTitle, mustExist ).then( function ( validity ) {
 				if ( !validity.valid ) {
+					this.savingInProgress = false;
 					this.error = this.$i18n( validity.message ).text();
 					events.logPublishFailure( this.storyTitle, this.error );
 					return;
@@ -88,6 +101,7 @@ module.exports = {
 							events.logPublishSuccess( this.storyTitle );
 							this.navigateToArticle( response.pageid );
 						} else {
+							this.savingInProgress = false;
 							this.error = ( response && response.error && response.error.info ) ||
 								this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
 							events.logPublishFailure(
@@ -97,6 +111,7 @@ module.exports = {
 						}
 					}.bind( this ),
 					function ( code, response ) {
+						this.savingInProgress = false;
 						this.error = ( response && response.error && response.error.info ) ||
 							this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
 						events.logPublishFailure( this.storyTitle, this.error );
@@ -164,6 +179,90 @@ module.exports = {
 		font-size: 12px;
 		background-color: @colorGray15;
 		padding: 20px;
+	}
+
+	&-saving {
+		height: 100%;
+		position: absolute;
+		left: 0;
+		right: 0;
+		background-color: #fff;
+		opacity: 0.9;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+
+		&-text {
+			font-weight: bold;
+		}
+
+		&-spinner {
+			&-animation {
+				width: 70px;
+				opacity: 0.8;
+				display: inline-block;
+				white-space: nowrap;
+			}
+
+			&-animation &-animation-bounce,
+			&-animation:before,
+			&-animation:after {
+				content: '';
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				background-color: #c8ccd1;
+				border-radius: 100%;
+				-webkit-animation: bounce 1.4s infinite ease-in-out;
+				animation: bounce 1.4s infinite ease-in-out;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+				-webkit-animation-delay: -0.16s;
+				animation-delay: -0.16s;
+			}
+
+			&-animation:before {
+				-webkit-animation-delay: -0.33s;
+				animation-delay: -0.33s;
+			}
+
+			&-animation:after {
+				-webkit-animation-delay: -0.01s;
+				animation-delay: -0.01s;
+			}
+
+			@-webkit-keyframes bounce {
+				0%,
+				100%,
+				80% {
+					-webkit-transform: scale( 0.6 );
+					transform: scale( 0.6 );
+				}
+
+				40% {
+					-webkit-transform: scale( 1 );
+					transform: scale( 1 );
+					background-color: #bbb;
+				}
+			}
+
+			@keyframes bounce {
+				0%,
+				100%,
+				80% {
+					-webkit-transform: scale( 0.6 );
+					-ms-transform: scale( 0.6 );
+					transform: scale( 0.6 );
+				}
+
+				40% {
+					-webkit-transform: scale( 1 );
+					-ms-transform: scale( 1 );
+					transform: scale( 1 );
+				}
+			}
+		}
 	}
 }
 </style>
