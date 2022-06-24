@@ -242,6 +242,12 @@
 			"messages": [
 				"wikistories-discover-cta-text"
 			]
+		},
+		"mw.ext.story.discover.styles": {
+			"targets": [ "mobile" ],
+			"styles": [
+				"mw.ext.wikistories.discover/discover-initial.less"
+			]
 		}
 	},
 	"RestRoutes": [
