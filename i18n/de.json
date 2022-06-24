@@ -11,6 +11,7 @@
 	"wikistories-specialstorybuilder-loading": "Laden …",
 	"wikistories-specialstorybuilder-nojswarning": "Diese Spezialseite erfordert JavaScript, um zu funktionieren",
 	"wikistories-specialstorybuilder-mustbeloggedin": "Bitte melde dich an oder erstelle ein Konto, um Geschichten zu erstellen",
+	"wikistories-specialstorybuilder-invalidsubpage": "Bitte gib eine gültige Unterseite in der URL an. Dies kann ein Artikel sein, über den du einen Beitrag erstellen möchtest, oder der Titel eines Beitrags, den Sie bearbeiten möchtest.",
 	"wikistories-search-inputplaceholder": "Bilder suchen",
 	"wikistories-search-cuetext": "Bilder zu diesem Artikel suchen.",
 	"wikistories-search-noresultstext": "Keine Ergebnisse",
@@ -61,5 +62,6 @@
 	"wikistories-storyviewer-edit": "Bearbeiten",
 	"wikistories-storyviewer-cover-page-heading": "Wikistory",
 	"wikistories-file-not-found": "Datei „$1“ nicht gefunden",
+	"wikistories-from-article-not-found": "Artikel „$1“ nicht gefunden",
 	"wikistories-text-too-long": "Der Text im Rahmen #$1 ist zu lang. Er hat {{PLURAL:$2|$2 Zeichen}}, aber es sind maximal $3 erlaubt."
 }

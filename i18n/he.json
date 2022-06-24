@@ -12,6 +12,7 @@
 	"wikistories-specialstorybuilder-loading": "טעינה...",
 	"wikistories-specialstorybuilder-nojswarning": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",
 	"wikistories-specialstorybuilder-mustbeloggedin": "נא להיכנס או ליצור חשבון כדי ליצור סיפורים",
+	"wikistories-specialstorybuilder-invalidsubpage": "נא לציין דף־משנה תקין ב־URL. זה יכול להיות ערך שברצונך ליצור סיפור עליו או כותרת של סיפור לערוך.",
 	"wikistories-search-inputplaceholder": "חיפוש תמונות",
 	"wikistories-search-cuetext": "חיפוש תמונות שקשורות לערך.",
 	"wikistories-search-noresultstext": "אין תוצאות",
@@ -62,5 +63,6 @@
 	"wikistories-storyviewer-edit": "עריכה",
 	"wikistories-storyviewer-cover-page-heading": "ויקיסיפור",
 	"wikistories-file-not-found": "הקובץ \"$1\" לא נמצא.",
+	"wikistories-from-article-not-found": "הערך \"$1\" לא נמצא",
 	"wikistories-text-too-long": "הטקסט בתמונה מס' $1 ארוך מדי. יש בו {{PLURAL:$2|תו אחד|$2 תווים}}, אבל המספר המרבי המותר הוא $3."
 }

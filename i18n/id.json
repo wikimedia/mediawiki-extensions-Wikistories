@@ -5,6 +5,7 @@
 			"WillsonEP09"
 		]
 	},
+	"wikistories-extensiondesc": "Wikistories merupakan proyek di mana kontributor dapat membuat konten singkat yang menarik secara visual, serta tetap mengutamakan kebijakan dan pedoman yang berlaku di proyek Wikimedia.",
 	"right-edit-story": "Penyunting Wikistories",
 	"action-edit-story": "menyunting Wikistories",
 	"wikistories-specialstorybuilder-title": "Pembuat Cerita",
@@ -33,11 +34,16 @@
 	"wikistories-confirmdialog-discardedits-title": "Buang suntingan",
 	"wikistories-confirmdialog-discardstory-accept": "Buang",
 	"wikistories-error-frameswithouttext-title": "Teks tidak ditemukan",
+	"wikistories-error-frameswithouttext-message": "Seluruh halaman Wikistories wajib menyertakan teks di dalamnya. Silakan tambahkan teks di {{PLURAL:$1|$1 halaman}} berikut.",
+	"wikistories-builder-publishform-navigator-title": "Terbitkan Wikistories",
 	"wikistories-builder-publishform-publishbutton": "Terbitkan",
 	"wikistories-builder-publishform-invalidtitle-notfound": "Wikistories tersebut tidak ditemukan.",
+	"wikistories-builder-licensing-with-terms": "Dengan membuat Wikistories, Anda setuju dengan [$1 Ketentuan Penggunaan] serta melepaskan kontribusi Anda di bawah lisensi [$2 CC BY-SA 3.0] dan [$3 GFDL].",
 	"wikistories-discover-cta-text": "Buat Wikistories",
 	"wikistories-storyviewer-next-story-button": "Lihat Wikistories selanjutnya",
 	"wikistories-storyviewer-edit": "Sunting",
 	"wikistories-storyviewer-cover-page-heading": "Wikistories",
-	"wikistories-file-not-found": "Berkas \"$1\" tidak ditemukan"
+	"wikistories-file-not-found": "Berkas \"$1\" tidak ditemukan",
+	"wikistories-from-article-not-found": "Artikel \"$1\" tidak ditemukan",
+	"wikistories-text-too-long": "Tulisan yang ada di bingkai #$1 terlalu panjang. Terdapat {{PLURAL:$2|$2 karakter}} di dalamnya, sementara batas maksimum yang diperbolehkan adalah $3."
 }
