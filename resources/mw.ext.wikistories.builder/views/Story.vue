@@ -158,7 +158,7 @@ module.exports = {
 		},
 		onDiscard: function () {
 			const titleObj = mw.Title.newFromText( this.fromArticle );
-			window.location = titleObj.getUrl( { wikistories: 1 } );
+			window.location = titleObj.getUrl();
 		},
 		onNext: function () {
 			if ( this.missingFrames ) {

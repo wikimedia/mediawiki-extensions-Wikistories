@@ -33,6 +33,7 @@
 		}
 	},
 	"Hooks": {
+		"GetBetaFeaturePreferences": "MediaWiki\\Extension\\Wikistories\\Hooks::onGetBetaFeaturePreferences",
 		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile",
 		"LoginFormValidErrorMessages": "MediaWiki\\Extension\\Wikistories\\Hooks::onLoginFormValidErrorMessages",
 		"PageSaveComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onPageSaveComplete"
