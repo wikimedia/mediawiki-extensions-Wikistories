@@ -1,5 +1,5 @@
 <template>
-	<div class="ext-wikistories-toast">
+	<div class="ext-wikistories-toast" :class="{ 'ext-wikistories-toast-error': mode === 'error' }">
 		<div class="ext-wikistories-toast-icon"></div>
 		<div class="ext-wikistories-toast-message">
 			{{ message }}
@@ -12,7 +12,8 @@
 module.exports = {
 	name: 'Toast',
 	props: {
-		message: { type: String, required: true }
+		message: { type: String, required: true },
+		mode: { type: String, required: false, default: 'warning' }
 	},
 	emits: [ 'hide-toast' ],
 	data: function () {
@@ -61,6 +62,21 @@ module.exports = {
 		font-size: 16px;
 		width: 90%;
 		line-height: 22px;
+	}
+}
+
+.ext-wikistories-toast.ext-wikistories-toast-error {
+	background-color: @background-color-error;
+	border: 1px solid @border-color-error;
+	top: 60px;
+
+	.ext-wikistories-toast-icon {
+		background-image: url( ../../images/error.svg );
+		height: 20px;
+	}
+
+	.ext-wikistories-toast-message {
+		color: @colorGray1;
 	}
 }
 </style>
