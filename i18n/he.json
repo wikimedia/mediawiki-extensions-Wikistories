@@ -8,6 +8,8 @@
 	"wikistories-extensiondesc": "הרחבת סיפורי ויקי (Wikistories) מאפשרת לעורכים ליצור ידע קצר, חזותי, ואמין ממיזמי ויקימדיה",
 	"right-edit-story": "עריכת סיפורים",
 	"action-edit-story": "לערוך סיפורים",
+	"wikistories-beta-feature-message": "ויקיסיפורים",
+	"wikistories-beta-feature-description": "כלי שמאפשר לך לבחור תמונות ולהבליט עובדות מתוך ערך כדי ליצור ידע קצר, חזותי, ואמין מוויקיפדיה לצריכה מהירה. אפשר להפעיל אותו כדי לעשות את הדברים הבאים:<br>- לגלות סיפורים שמוצמדים לערך.<br>- ללחוץ על סמל [+] מתחת לכותרת הערך כדי ליצור סיפור חדש.",
 	"wikistories-specialstorybuilder-title": "בונה הסיפורים",
 	"wikistories-specialstorybuilder-loading": "טעינה...",
 	"wikistories-specialstorybuilder-nojswarning": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",

@@ -16,5 +16,6 @@
 	"wikistories-article-usetext": "Lisää tarinaan",
 	"wikistories-builder-publishform-invalidtitle-notfound": "Tarinaa ei löytynyt.",
 	"wikistories-discover-cta-text": "Luo Wikistory",
-	"wikistories-storyviewer-edit": "Muokkaa"
+	"wikistories-storyviewer-edit": "Muokkaa",
+	"wikistories-from-article-not-found": "Artikkelia \"$1\" ei löytynyt"
 }
