@@ -338,6 +338,8 @@ module.exports = {
 			padding: 10px;
 			font-size: 18px;
 			line-height: 27px;
+			max-height: 40%;
+			overflow: scroll;
 		}
 
 		&-story-cover {
