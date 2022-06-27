@@ -10,6 +10,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
 use OutputPage;
+use Skin;
 use SpecialPage;
 use Title;
 use User;
@@ -44,10 +45,12 @@ class Hooks {
 	/**
 	 * @param User $user
 	 * @param Title $title
+	 * @param Skin $skin
 	 * @return bool
 	 */
-	private static function shouldShowStories( User $user, Title $title ): bool {
+	private static function shouldShowStories( User $user, Title $title, Skin $skin ): bool {
 		return $user->isRegistered()
+			&& $skin->getSkinName() === 'minerva'
 			&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
 			// @phan-suppress-next-line PhanUndeclaredClassMethod
 			&& BetaFeatures::isFeatureEnabled( $user, self::WIKISTORIES_BETA_FEATURE )
@@ -61,7 +64,7 @@ class Hooks {
 	 */
 	public static function onBeforePageDisplayMobile( OutputPage $out ) {
 		$title = $out->getTitle();
-		if ( self::shouldShowStories( $out->getUser(), $title ) ) {
+		if ( self::shouldShowStories( $out->getUser(), $title, $out->getSkin() ) ) {
 			$out->addJsConfigVars(
 				'wgWikistoriesCreateUrl',
 				SpecialPage::getTitleFor( 'StoryBuilder', $title )->getLinkURL()
