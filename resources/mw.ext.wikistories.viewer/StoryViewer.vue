@@ -189,7 +189,8 @@ module.exports = {
 
 			if (
 				pressTargetClassName === 'ext-wikistories-viewer-container-content' ||
-				pressTargetClassName === 'ext-wikistories-viewer-container-cover-overlay'
+				pressTargetClassName === 'ext-wikistories-viewer-container-cover-overlay' ||
+				pressTargetClassName.indexOf( 'ext-wikistories-viewer-container-content-story-' ) !== -1 // cover, text
 			) {
 				const screenWidth = window.innerWidth;
 				const pressAxisX = e.clientX;
