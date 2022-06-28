@@ -59,6 +59,7 @@
 	"wikistories-builder-publishform-invalidtitle-duplicate": "סיפור אחר עם אותה כותרת כבר קיים. נא לכתוב כותרת סיפור ייחודית.",
 	"wikistories-builder-publishform-invalidtitle-notfound": "הסיפור לא נמצא.",
 	"wikistories-builder-publishform-saveerror": "אירעה שגיאה באות פרסום הסיפור. נא לנסות שוב מאוחר יותר.",
+	"wikistories-builder-publishform-saving": "פרסום ויקיסיפור...",
 	"wikistories-builder-licensing-with-terms": "המשך התהליך מהווה את הסכמתך ל[$1 תנאי השימוש], ואת הסכמתך הבלתי־חוזרת לשחרר את התרומות שלך לפי תנאי רישיונות [$2 CC BY-SA 3.0] ו־[$3 GFDL].",
 	"wikistories-discover-cta-text": "יצירת סיפור ויקי",
 	"wikistories-storyviewer-next-story-button": "קריאת הסיפור הבא",

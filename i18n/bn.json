@@ -6,18 +6,25 @@
 			"আফতাবুজ্জামান"
 		]
 	},
+	"wikistories-beta-feature-message": "উইকিগল্প",
 	"wikistories-specialstorybuilder-loading": "লোড করা হচ্ছে...",
-	"wikistories-search-noresultstext": "ফলাফল নেই",
+	"wikistories-search-noresultstext": "কোনও ফলাফল নেই",
 	"wikistories-search-navigator-title": "চিত্র নির্বাচন করুন",
 	"wikistories-search-navigator-title-selected-info": "$1টি নির্বাচিত হয়েছে",
 	"wikistories-story-goto-publish": "পরবর্তী",
+	"wikistories-story-selecttext": "<span class=\"ext-wikistories-wikipedia\">উইকিপিডিয়া থেকে</span> গল্পের পাঠ্য নির্বাচন করুন",
 	"wikistories-story-editdone": "সম্পন্ন",
 	"wikistories-imageattribution-author-unknown": "লেখক অজানা",
 	"wikistories-article-navigator-title": "লেখা আলোকপাত করুন",
-	"wikistories-article-cancelselection": "বাতিল",
-	"wikistories-article-loading": "লোড করা হচ্ছে...",
+	"wikistories-article-cancelselection": "পরিষ্কার করুন",
+	"wikistories-article-loading": "নিবন্ধ লোড করা হচ্ছে...",
 	"wikistories-article-usetext": "গল্পে যোগ করুন",
 	"wikistories-article-info-banner": "আপনার গল্পে পাঠ্য যুক্ত করতে পাঠ্য নির্বাচন করুন",
+	"wikistories-alert-okbuttontext": "ঠিক আছে",
+	"wikistories-confirmdialog-delete-accept": "মুছুন",
+	"wikistories-confirmdialog-delete-cancel": "বাতিল",
 	"wikistories-confirmdialog-discardstory-accept": "বাতিল করুন",
-	"wikistories-builder-publishform-publishbutton": "প্রকাশ করুন"
+	"wikistories-builder-publishform-publishbutton": "প্রকাশ করুন",
+	"wikistories-storyviewer-edit": "সম্পাদনা করুন",
+	"wikistories-storyviewer-cover-page-heading": "উইকিগল্প"
 }
