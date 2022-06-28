@@ -18,6 +18,12 @@
 				{{ $i18n( 'wikistories-builder-publishform-saving' ).text() }}
 			</div>
 		</div>
+		<toast
+			v-if="toast.show"
+			:message="toast.message"
+			:mode="toast.mode"
+			@hide-toast="hideToast">
+		</toast>
 		<div class="ext-wikistories-publishform-content">
 			<input
 				ref="storyTitleInput"
@@ -28,7 +34,7 @@
 				class="ext-wikistories-publishform-content-input-title"
 				:placeholder="$i18n( 'wikistories-builder-publishform-placeholder' ).text()"
 			>
-			<div class="ext-wikistories-publishform-content-error">
+			<div v-if="knownError" class="ext-wikistories-publishform-content-error">
 				{{ error }}
 			</div>
 			<div class="ext-wikistories-publishform-content-info">
@@ -43,6 +49,7 @@
 <script>
 const mapGetters = require( 'vuex' ).mapGetters;
 const Navigator = require( '../components/Navigator.vue' );
+const Toast = require( '../components/Toast.vue' );
 const saveStory = require( '../api/saveStory.js' );
 const validateTitle = require( '../util/validateTitle.js' );
 const events = require( '../contributionEvents.js' );
@@ -52,12 +59,18 @@ const NS_STORY = mw.config.get( 'wgNamespaceIds' ).story;
 module.exports = {
 	name: 'PublishForm',
 	components: {
-		navigator: Navigator
+		navigator: Navigator,
+		toast: Toast
 	},
 	data: function () {
 		return {
 			storyTitle: '',
 			error: null,
+			toast: {
+				show: false,
+				message: '',
+				mode: 'error'
+			},
 			titleInputDisabled: false,
 			savingInProgress: false
 		};
@@ -75,6 +88,9 @@ module.exports = {
 				a.target = '_blank';
 			}
 			return doc.body.outerHTML;
+		},
+		knownError: function () {
+			return this.error && !this.toast.show;
 		}
 	} ),
 	methods: {
@@ -96,31 +112,45 @@ module.exports = {
 				const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
 				saveStory( title.getPrefixedDb(), this.storyForSave, this.mode ).then(
 					function ( response ) {
+						this.savingInProgress = false;
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
 							events.logPublishSuccess( this.storyTitle );
 							this.navigateToArticle( response.pageid );
 						} else {
-							this.savingInProgress = false;
-							this.error = ( response && response.error && response.error.info ) ||
-								this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
-							events.logPublishFailure(
-								this.storyTitle,
-								response.error.code || this.error
-							);
+							this.setErrorFeedback( response );
 						}
 					}.bind( this ),
 					function ( code, response ) {
 						this.savingInProgress = false;
-						this.error = ( response && response.error && response.error.info ) ||
-							this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
-						events.logPublishFailure( this.storyTitle, this.error );
+						this.setErrorFeedback( response );
 					}.bind( this )
 				);
 			}.bind( this ) );
 		},
 		onBack: function () {
 			this.$router.back();
+		},
+		setErrorFeedback: function ( response ) {
+			if ( response && response.error && response.error.info ) {
+				this.error = response.error.info;
+			} else {
+				this.error = this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
+				this.showUnknownErrorToast();
+			}
+			events.logPublishFailure(
+				this.storyTitle,
+				this.error
+			);
+		},
+		showUnknownErrorToast: function () {
+			this.toast.message = this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
+			this.toast.show = true;
+		},
+		hideToast: function () {
+			this.toast.message = '';
+			this.toast.show = false;
+			this.error = null;
 		}
 	},
 	mounted: function () {
@@ -172,6 +202,7 @@ module.exports = {
 
 		&-info {
 			font-size: 14px;
+			margin-top: 45px;
 		}
 	}
 
