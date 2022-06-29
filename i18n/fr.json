@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Cuzy",
 			"Gomoko",
 			"Verdy p"
 		]
@@ -57,7 +58,7 @@
 	"wikistories-builder-publishform-info": "Les récits publiés seront disponibles sur la page de l’article.",
 	"wikistories-builder-publishform-invalidtitle-empty": "Veuillez saisir un titre pour le récit",
 	"wikistories-builder-publishform-invalidtitle-format": "Titre de récit non valide",
-	"wikistories-builder-publishform-invalidtitle-duplicate": "Un autre récit avec le même titre existe déjà. Veuillez saisir un titre de récit unique.",
+	"wikistories-builder-publishform-invalidtitle-duplicate": "Un autre récit avec le même titre existe déjà.  Veuillez saisir un titre de récit unique.",
 	"wikistories-builder-publishform-invalidtitle-notfound": "Récit introuvable.",
 	"wikistories-builder-publishform-saveerror": "Une erreur s’est produite en publiant le récit. Veuillez réessayer ultérieurement.",
 	"wikistories-builder-publishform-saving": "Publication du Wikirécit...",
