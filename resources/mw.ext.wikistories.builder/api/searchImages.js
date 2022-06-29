@@ -1,5 +1,6 @@
 const strip = require( '../util/strip.js' );
 const convertUrlToMobile = require( '../util/convertUrlToMobile.js' );
+const safeAssignString = require( '../util/safeAssignString.js' );
 
 /**
  * Keeps track of all on-going requests
@@ -108,7 +109,7 @@ const getArticleImages = ( lang, queryString ) => {
 
 		const fileUrlMap = {};
 		images.forEach( i => {
-			fileUrlMap[ i.title ] = i.srcset[ 0 ].src;
+			safeAssignString( fileUrlMap, i.title, i.srcset[ 0 ].src );
 		} );
 
 		return getImageInfo( images.map( i => i.title ), lang ).then( data => {
