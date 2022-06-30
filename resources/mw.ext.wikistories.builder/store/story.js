@@ -68,6 +68,9 @@ module.exports = {
 		},
 		setImageFilename: ( state, title ) => {
 			state.frames[ state.currentFrameIndex ].filename = title;
+		},
+		setImageAttribution: ( state, attribution ) => {
+			state.frames[ state.currentFrameIndex ].attribution = attribution;
 		}
 	},
 	actions: {
@@ -95,6 +98,7 @@ module.exports = {
 		setFrameImage: ( context, data ) => {
 			context.commit( 'setImageUrl', data.url );
 			context.commit( 'setImageFilename', data.filename );
+			context.commit( 'setImageAttribution', data.attribution );
 		},
 		reorderFrames: ( context, data ) => {
 			context.commit( 'reorderFrames', data );
