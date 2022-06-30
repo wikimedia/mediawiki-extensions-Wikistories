@@ -5,6 +5,7 @@
 			"WillsonEP09"
 		]
 	},
+	"wikistories-extensiondesc": "Wikistories merupakan proyek di mana kontributor dapat membuat konten singkat yang menarik secara visual, serta tetap mengutamakan kebijakan dan pedoman yang berlaku di proyek Wikimedia.",
 	"wikistories-search-inputplaceholder": "Cari gambar",
 	"wikistories-search-cuetext": "Cari gambar yang berhubungan dengan artikel.",
 	"wikistories-search-noresultstext": "Tidak ada hasil",
@@ -12,8 +13,14 @@
 	"wikistories-imageattribution-author-unknown": "Pembuat tidak diketahui",
 	"wikistories-article-cancelselection": "Batal",
 	"wikistories-article-loading": "Memuat...",
+	"wikistories-article-usetext": "Tambahkan ke Wikistories",
 	"wikistories-alert-okbuttontext": "Oke",
+	"wikistories-error-notenoughframes-title": "Tidak cukup halaman",
 	"wikistories-error-frameswithouttext-title": "Teks tidak ditemukan",
+	"wikistories-builder-publishform-placeholder": "Masukkan judul Wikistories...",
 	"wikistories-builder-publishform-publishbutton": "Terbitkan",
+	"wikistories-builder-publishform-info": "Wikistories yang sudah terbit akan tampil di halaman artikel.",
+	"wikistories-builder-publishform-invalidtitle-empty": "Masukkan judul Wikistories",
+	"wikistories-builder-publishform-invalidtitle-format": "Judul Wikistories tidak valid",
 	"wikistories-discover-cta-text": "Buat Wikistories"
 }

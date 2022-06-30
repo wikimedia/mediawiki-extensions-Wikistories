@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"আফতাবুজ্জামান",
-			"Yahya"
+			"Yahya",
+			"Meghmollar2017"
 		]
 	},
 	"wikistories-hooks-createstory": "গল্প তৈরি করুন",
 	"wikistories-specialcreatestory-loading": "লোড করা হচ্ছে...",
-	"wikistories-search-noresultstext": "ফলাফল নেই",
+	"wikistories-search-noresultstext": "কোনও ফলাফল নেই",
 	"wikistories-story-goto-publish": "পরবর্তী",
 	"wikistories-story-edittext": "সম্পাদনা",
 	"wikistories-imageattribution-author-unknown": "লেখক অজানা",
@@ -16,5 +17,6 @@
 	"wikistories-article-usetext": "গল্পে যোগ করুন",
 	"wikistories-article-info-banner": "আপনার গল্পে পাঠ্য যুক্ত করতে পাঠ্য নির্বাচন করুন",
 	"wikistories-navigator-next": "পরবর্তী",
+	"wikistories-alert-okbuttontext": "ঠিক আছে",
 	"wikistories-builder-publishform-publishbutton": "প্রকাশ করুন"
 }
