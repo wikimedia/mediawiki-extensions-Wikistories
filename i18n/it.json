@@ -26,6 +26,6 @@
 	"wikistories-builder-publishform-info": "Le storie pubblicate saranno disponibili sulla pagina della voce.",
 	"wikistories-builder-publishform-invalidtitle-empty": "Inserisci il titolo della storia",
 	"wikistories-builder-publishform-invalidtitle-format": "Titolo della storia non valido",
-	"wikistories-builder-publishform-saveerror": "C'è stato un errore nel pubblicare la storia. Riprova più tardi.",
+	"wikistories-builder-publishform-saveerror": "C'è stato un errore nel pubblicare la wikistoria. Riprova a pubblicarla.",
 	"wikistories-storyviewer-edit": "Modifica"
 }

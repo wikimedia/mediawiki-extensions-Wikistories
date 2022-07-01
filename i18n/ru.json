@@ -18,7 +18,7 @@
 	"wikistories-story-replaceimage": "Заменить это изображение",
 	"wikistories-story-deleteframe": "Удалить эту страницу",
 	"wikistories-imageattribution-author-unknown": "Автор неизвестен",
-	"wikistories-article-cancelselection": "Отменить",
+	"wikistories-article-cancelselection": "Очистить",
 	"wikistories-article-loading": "Загрузка статьи…",
 	"wikistories-article-usetext": "Добавить в историю",
 	"wikistories-article-info-banner": "Выберите текст, чтобы добавить его в свою историю",
@@ -27,6 +27,7 @@
 	"wikistories-confirmdialog-delete-accept": "Удалить",
 	"wikistories-confirmdialog-delete-cancel": "Отмена",
 	"wikistories-builder-publishform-publishbutton": "Опубликовать",
+	"wikistories-builder-publishform-saving": "ВикиИстория публикуется…",
 	"wikistories-discover-cta-text": "Создать ВикиИсторию",
 	"wikistories-text-too-long": "Текст в #$1-й рамке очень длинный. В нём {{PLURAL:$2|$2 символ|$2 символа|$2 символов}}, когда максимально допустимо — $3 {{PLURAL:$3|символ|символа|символов}}."
 }

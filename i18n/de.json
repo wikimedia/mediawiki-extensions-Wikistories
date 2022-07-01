@@ -13,7 +13,7 @@
 	"wikistories-specialstorybuilder-loading": "Laden …",
 	"wikistories-specialstorybuilder-nojswarning": "Diese Spezialseite erfordert JavaScript, um zu funktionieren",
 	"wikistories-specialstorybuilder-mustbeloggedin": "Bitte melde dich an oder erstelle ein Konto, um Geschichten zu erstellen",
-	"wikistories-specialstorybuilder-invalidsubpage": "Bitte gib eine gültige Unterseite in der URL an. Dies kann ein Artikel sein, über den du einen Beitrag erstellen möchtest, oder der Titel eines Beitrags, den Sie bearbeiten möchtest.",
+	"wikistories-specialstorybuilder-invalidsubpage": "Gib in der URL einen Artikel an, über den ein Beitrag erstellt werden soll, oder den Titel eines zu bearbeitenden Beitrags. Du musst auch den Namensraum der Story angeben.",
 	"wikistories-search-inputplaceholder": "Bilder suchen",
 	"wikistories-search-cuetext": "Bilder zu diesem Artikel suchen.",
 	"wikistories-search-noresultstext": "Keine Ergebnisse",
