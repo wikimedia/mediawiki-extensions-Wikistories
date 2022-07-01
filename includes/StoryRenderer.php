@@ -40,7 +40,7 @@ class StoryRenderer {
 		$articleTitle = Title::makeTitle( NS_MAIN, $story->getFromArticle(), '/story/' . $pageId );
 		$html = Html::element(
 			'a',
-			[ 'href' => $articleTitle->getLinkURL( [ 'wikistories' => 1 ] ) ],
+			[ 'href' => $articleTitle->getLinkURL() ],
 			$articleTitle->getText()
 		);
 		$html .= Html::rawElement(
