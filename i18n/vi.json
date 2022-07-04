@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ngoxuannguyenchuong"
+			"Ngoxuannguyenchuong",
+			"RiceCracker12"
 		]
 	},
+	"wikistories-specialstorybuilder-invalidsubpage": "Trong URL, chỉ định một bài viết bạn muốn tạo một câu chuyện về hoặc tiêu đề của một câu chuyện để sủa đổi. Bạn cũng cần phải kèm theo không gian tên của câu chuyện.",
 	"wikistories-search-inputplaceholder": "Tìm hình ảnh",
 	"wikistories-search-noresultstext": "Không có kết quả",
 	"wikistories-story-editdone": "Xong",

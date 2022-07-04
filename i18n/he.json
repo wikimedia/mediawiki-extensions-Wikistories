@@ -14,7 +14,7 @@
 	"wikistories-specialstorybuilder-loading": "טעינה...",
 	"wikistories-specialstorybuilder-nojswarning": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",
 	"wikistories-specialstorybuilder-mustbeloggedin": "נא להיכנס או ליצור חשבון כדי ליצור סיפורים",
-	"wikistories-specialstorybuilder-invalidsubpage": "נא לציין דף־משנה תקין ב־URL. זה יכול להיות ערך שברצונך ליצור סיפור עליו או כותרת של סיפור לערוך.",
+	"wikistories-specialstorybuilder-invalidsubpage": "ב־URL, יש לציין ערך שיש ליצור עליו סיפור או כותרת של סיפור לעריכה. חובה לכלול גם את מרחב השם של הסיפור.",
 	"wikistories-search-inputplaceholder": "חיפוש תמונות",
 	"wikistories-search-cuetext": "חיפוש תמונות שקשורות לערך.",
 	"wikistories-search-noresultstext": "אין תוצאות",

@@ -3,12 +3,14 @@
 		"authors": [
 			"Dnlweijers",
 			"Mainframe98",
-			"McDutchie"
+			"McDutchie",
+			"Rots61"
 		]
 	},
 	"right-edit-story": "Verhalen bewerken",
 	"wikistories-story-goto-publish": "Volgende",
 	"wikistories-imageattribution-author-unknown": "Auteur onbekend",
 	"wikistories-article-cancelselection": "Wissen",
-	"wikistories-article-loading": "Artikel wordt geladen…"
+	"wikistories-article-loading": "Artikel wordt geladen…",
+	"wikistories-confirmdialog-delete-cancel": "Annuleren"
 }

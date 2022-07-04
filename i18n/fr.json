@@ -16,7 +16,7 @@
 	"wikistories-specialstorybuilder-loading": "Chargement en cours...",
 	"wikistories-specialstorybuilder-nojswarning": "Cette page spéciale nécessite JavaScript pour fonctionner",
 	"wikistories-specialstorybuilder-mustbeloggedin": "Veuillez vous connecter ou créer un compte pour créer des récits",
-	"wikistories-specialstorybuilder-invalidsubpage": "Veuillez spécifier une sous-page valide dans l’URL. Ce peut être un article sur lequel vous souhaitez créer un récit, ou bien le titre d’un récit à modifier.",
+	"wikistories-specialstorybuilder-invalidsubpage": "Dans l’URL, indiquez un article pour en créer un récit ou le titre d’un récit à modifier. Vous devez également inclure l’espace de noms du récit.",
 	"wikistories-search-inputplaceholder": "Rechercher des images",
 	"wikistories-search-cuetext": "Rechercher des images relatives à l’article.",
 	"wikistories-search-noresultstext": "Aucun résultat",
