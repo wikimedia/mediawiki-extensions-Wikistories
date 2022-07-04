@@ -112,7 +112,6 @@ module.exports = {
 				const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
 				saveStory( title.getPrefixedDb(), this.storyForSave, this.mode ).then(
 					function ( response ) {
-						this.savingInProgress = false;
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
 							events.logPublishSuccess( this.storyTitle );
@@ -122,20 +121,22 @@ module.exports = {
 						}
 					}.bind( this ),
 					function ( code, response ) {
-						this.savingInProgress = false;
 						this.setErrorFeedback( response );
 					}.bind( this )
 				);
+			}.bind( this ) ).catch( function ( e ) {
+				this.setErrorFeedback( e );
 			}.bind( this ) );
 		},
 		onBack: function () {
 			this.$router.back();
 		},
 		setErrorFeedback: function ( response ) {
+			this.savingInProgress = false;
 			if ( response && response.error && response.error.info ) {
 				this.error = response.error.info;
 			} else {
-				this.error = this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
+				this.error = response;
 				this.showUnknownErrorToast();
 			}
 			events.logPublishFailure(
