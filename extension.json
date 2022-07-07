@@ -251,7 +251,8 @@
 				"discover.less"
 			],
 			"messages": [
-				"wikistories-discover-cta-text"
+				"wikistories-discover-cta-text",
+				"wikistories-discover-cta-text-subheader"
 			]
 		},
 		"ext.wikistories.discover.styles": {

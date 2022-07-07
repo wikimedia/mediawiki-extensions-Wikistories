@@ -1,12 +1,18 @@
 const convertUrlToThumbnail = require( './util/convertUrlToThumbnail.js' );
 
-const generateItem = function ( link, thumbnail, thumbnailText, text ) {
+const generateItem = function ( link, thumbnail, thumbnailText, title, cta = false ) {
+	const className = cta ? 'ext-wikistories-discover-item-cta' : 'ext-wikistories-discover-item';
 	const $thumbnail = $( '<span>' )
-		.addClass( 'ext-wikistories-discover-item-btn' )
+		.addClass( `${className}-btn` )
 		.text( thumbnailText );
-	const $text = $( '<span>' )
-		.addClass( 'ext-wikistories-discover-item-text' )
-		.text( text );
+
+	const $title = $( '<p>' )
+		.addClass( `${className}-text-title` )
+		.text( title );
+
+	const $text = $( '<div>' )
+		.addClass( `${className}-text` )
+		.append( $title );
 
 	if ( thumbnail ) {
 		const overlay = thumbnailText === '+' ?
@@ -15,7 +21,7 @@ const generateItem = function ( link, thumbnail, thumbnailText, text ) {
 		$thumbnail.css( 'background-image', overlay + 'url(' + thumbnail + ')' );
 	}
 
-	return $( '<a>' ).addClass( 'ext-wikistories-discover-item' )
+	return $( '<a>' ).addClass( className )
 		.attr( 'href', link )
 		.append( $thumbnail )
 		.append( $text );
@@ -25,8 +31,22 @@ const generateCTA = function ( thumbnail ) {
 	const storyBuilder = require( './data.json' ).storyBuilder;
 	const pageName = mw.config.get( 'wgPageName' );
 	const url = mw.Title.newFromText( 'Special:' + storyBuilder + '/' + pageName ).getUrl();
-	const text = mw.message( 'wikistories-discover-cta-text' ).text();
-	return generateItem( url, thumbnail, '+', text );
+	return generateItem( url, thumbnail, '+', '', true );
+};
+
+const addCtaText = function () {
+	const $cta = $( '.ext-wikistories-discover-item-cta' );
+	const $text = $( '.ext-wikistories-discover-item-cta-text' );
+	const $title = $( '.ext-wikistories-discover-item-cta-text-title' );
+	const $subtitle = $( '<p>' )
+		.addClass( 'ext-wikistories-discover-item-cta-text-subtitle' )
+		.text( mw.message( 'wikistories-discover-cta-text-subheader' ).text() );
+
+	$title.text( mw.message( 'wikistories-discover-cta-text' ).text() );
+	$text.append( $subtitle );
+	$cta.addClass( 'ext-wikistories-discover-item-no-border' );
+
+	$cta.append( $text );
 };
 
 const getArticleThumbnail = function () {
@@ -52,10 +72,16 @@ const getDiscoverSection = function () {
 };
 
 const addStoriesToDiscoverSection = function ( $discover, stories ) {
-	stories.forEach( story => {
-		const link = '#/story/' + story.pageId;
-		$discover.append( generateItem( link, story.thumbnail, '', story.title ) );
-	} );
+	if ( stories.length > 0 ) {
+		const $stories = $( '<div>' ).addClass( 'ext-wikistories-discover-stories' );
+		$discover.append( $stories );
+		stories.forEach( story => {
+			const link = '#/story/' + story.pageId;
+			$stories.append( generateItem( link, story.thumbnail, '', story.title ) );
+		} );
+	} else {
+		addCtaText();
+	}
 };
 
 module.exports = {
