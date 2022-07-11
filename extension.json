@@ -42,7 +42,8 @@
 		"includes/ServiceWiring.php"
 	],
 	"ExtensionMessagesFiles": {
-		"WikistoriesAliasSpecial": "Wikistories.alias.special.php"
+		"WikistoriesAliasSpecial": "Wikistories.alias.special.php",
+		"WikistoriesNamespaces": "Wikistories.i18n.namespaces.php"
 	},
 	"MessagesDirs": {
 		"Wikistories": [ "i18n", "i18n/api" ]
@@ -73,7 +74,7 @@
 		{
 			"id": 1705,
 			"constant": "NS_STORY_TALK",
-			"name": "StoryTalk",
+			"name": "Story_Talk",
 			"content": true,
 			"defaultcontentmodel": "wikitext"
 		}
