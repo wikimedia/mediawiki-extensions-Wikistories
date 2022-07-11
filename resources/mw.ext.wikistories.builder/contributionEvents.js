@@ -1,8 +1,4 @@
 const logContributionEvent = ( data ) => {
-	if ( !mw.eventLog ) {
-		return;
-	}
-
 	const streamName = 'mediawiki.wikistories_contribution_event';
 	const event = $.extend( {
 		/* eslint-disable camelcase */
