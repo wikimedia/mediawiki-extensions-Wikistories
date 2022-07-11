@@ -7,7 +7,7 @@ const logConsumptionEvent = ( data ) => {
 		$schema: '/analytics/mediawiki/wikistories_consumption_event/1.0.0',
 		meta: {
 			stream: 'mediawiki.wikistories_consumption_event',
-			domain: new mw.Uri().host,
+			domain: location.host,
 			dt: new Date().toISOString()
 		},
 		/* eslint-disable camelcase */

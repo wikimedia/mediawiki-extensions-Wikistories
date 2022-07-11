@@ -9,7 +9,7 @@ const logContributionEvent = ( data ) => {
 		$schema: '/analytics/mediawiki/wikistories_contribution_event/1.0.0',
 		meta: {
 			stream: streamName,
-			domain: new mw.Uri().host,
+			domain: location.host,
 			dt: new Date().toISOString()
 		},
 		access_method: mw.config.get( 'skin' ) === 'minerva' ? 'mobile web' : 'desktop',
