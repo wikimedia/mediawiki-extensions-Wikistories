@@ -33,16 +33,24 @@ class StoryEditPage extends EditPage {
 		$form = '<div class="ext-wikistories-editform">';
 		$form .= new FieldLayout(
 			new TextInputWidget( [ 'name' => "story_from_article", 'value' => $story->getFromArticle() ] ),
-			[ 'label' => 'Related Article', 'align' => 'left' ]
+			[
+				'label' => $this->context->msg( 'wikistories-nojs-form-label-related-article' )->text(),
+				'align' => 'left'
+ ]
 		);
 		for ( $i = 0; $i < $maxFrames; $i++ ) {
 			$frame = $currentFrames[ $i ] ?? $emptyFrame;
-			$form .= Html::element( 'h3', [], "Frame " . ( $i + 1 ) );
+			$form .= Html::element( 'h3', [],
+				$this->context->msg( 'wikistories-nojs-form-label-frame' )->params( $i + 1 )->text()
+ );
 			$form .= new FieldLayout(
 				new TextInputWidget(
 					[ 'name' => "story_frame_{$i}_image_filename", 'value' => $frame->image->filename ]
 				),
-				[ 'label' => 'Image', 'align' => 'left' ]
+				[
+					'label' => $this->context->msg( 'wikistories-nojs-form-label-image' )->text(),
+					'align' => 'left'
+				]
 			);
 			$form .= new FieldLayout(
 				new TextInputWidget(
@@ -53,7 +61,10 @@ class StoryEditPage extends EditPage {
 					]
 
 				),
-				[ 'label' => 'Text', 'align' => 'left' ]
+				[
+					'label' => $this->context->msg( 'wikistories-nojs-form-label-text' )->text(),
+					'align' => 'left'
+				]
 			);
 		}
 
