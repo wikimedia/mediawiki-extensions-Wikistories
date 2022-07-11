@@ -4,7 +4,7 @@ const getStories = require( './api/getStories.js' );
 const events = require( './consumptionEvents.js' );
 
 const loadingViewer = mw.loader.using( 'mw.ext.story.viewer' );
-const articleTitle = mw.config.get( 'wgTitle' );
+const articleTitle = mw.config.get( 'wgPageName' );
 
 const $discover = getDiscoverSection().insertAfter( '.page-heading' );
 
