@@ -65,13 +65,16 @@ class Hooks {
 	public static function onBeforePageDisplayMobile( OutputPage $out ) {
 		$title = $out->getTitle();
 		if ( self::shouldShowStories( $out->getUser(), $title, $out->getSkin() ) ) {
-			$out->addJsConfigVars(
-				'wgWikistoriesCreateUrl',
-				SpecialPage::getTitleFor( 'StoryBuilder', $title )->getLinkURL()
-			);
 			$out->addModules( [ 'ext.wikistories.discover' ] );
 			$out->addModuleStyles( 'ext.wikistories.discover.styles' );
 		}
+	}
+
+	/**
+	 * @return array Data used by the 'discover' module
+	 */
+	public static function getDiscoverBundleData(): array {
+		return [ 'storyBuilder' => SpecialPage::getTitleValueFor( 'StoryBuilder' )->getText() ];
 	}
 
 	/**
