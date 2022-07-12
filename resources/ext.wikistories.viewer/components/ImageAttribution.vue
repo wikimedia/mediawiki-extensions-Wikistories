@@ -78,23 +78,23 @@ module.exports = {
 		}
 
 		&-cc {
-			background-image: url( ../../images/attribution-cc.svg );
+			background-image: url( ./../images/attribution-cc.svg );
 		}
 
 		&-by {
-			background-image: url( ../../images/attribution-author.svg );
+			background-image: url( ./../images/attribution-author.svg );
 		}
 
 		&-sa {
-			background-image: url( ../../images/attribution-icon-share-a-like.svg );
+			background-image: url( ./../images/attribution-icon-share-a-like.svg );
 		}
 
 		&-fair {
-			background-image: url( ../../images/attribution-license-generic-gnu-free.svg );
+			background-image: url( ./../images/attribution-license-generic-gnu-free.svg );
 		}
 
 		&-public {
-			background-image: url( ../../images/attribution-license-public-domain.svg );
+			background-image: url( ./../images/attribution-license-public-domain.svg );
 		}
 
 		&-author {
@@ -112,7 +112,7 @@ module.exports = {
 		height: 44px;
 		width: 44px;
 		display: flex;
-		background-image: url( ../../images/attribution-icon-info.svg );
+		background-image: url( ./../images/attribution-icon-info.svg );
 		background-repeat: no-repeat;
 		background-position: center;
 

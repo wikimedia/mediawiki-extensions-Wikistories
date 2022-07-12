@@ -1,4 +1,4 @@
-const VueRouter = require( '../lib/vue-router/vue-router.common.js' );
+const VueRouter = require( './vue-router.common.js' );
 const Story = require( './views/Story.vue' );
 const Search = require( './views/Search.vue' );
 const PublishForm = require( './views/PublishForm.vue' );

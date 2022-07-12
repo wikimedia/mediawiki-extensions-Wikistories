@@ -58,15 +58,15 @@ module.exports = {
 	}
 
 	&-replace {
-		background-image: url( ../images/replace.svg );
+		background-image: url( ./images/replace.svg );
 	}
 
 	&-delete {
-		background-image: url( ../images/delete.svg );
+		background-image: url( ./images/delete.svg );
 	}
 
 	&-edit {
-		background-image: url( ../images/edit.svg );
+		background-image: url( ./images/edit.svg );
 	}
 
 	@media screen and ( min-width: 720px ) {

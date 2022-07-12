@@ -1,4 +1,4 @@
-const convertUrlToThumbnail = require( '../../../../resources/mw.ext.wikistories.discover/util/convertUrlToThumbnail.js' );
+const convertUrlToThumbnail = require( '../../../../resources/ext.wikistories.discover/util/convertUrlToThumbnail.js' );
 
 describe( 'convertUrlToThumbnail', function () {
 

@@ -184,7 +184,7 @@ module.exports = {
 				cursor: pointer;
 				width: 20px;
 				height: 20px;
-				background-image: url( ../../images/attribution-icon-info.svg );
+				background-image: url( ./../images/attribution-icon-info.svg );
 				background-repeat: no-repeat;
 				right: 10px;
 			}
@@ -201,7 +201,7 @@ module.exports = {
 				cursor: pointer;
 				width: 18px;
 				height: 18px;
-				background-image: url( ../../images/close-white.svg );
+				background-image: url( ./../images/close-white.svg );
 				background-repeat: no-repeat;
 				right: 10px;
 				top: 10px;

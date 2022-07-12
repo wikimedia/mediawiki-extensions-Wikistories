@@ -62,8 +62,8 @@ const Frames = require( '../components/Frames.vue' );
 const Alert = require( '../components/Alert.vue' );
 const ConfirmDialog = require( '../components/ConfirmDialog.vue' );
 const Navigator = require( '../components/Navigator.vue' );
-const DotsMenu = require( '../../components/DotsMenu.vue' );
-const DotsMenuItem = require( '../../components/DotsMenuItem.vue' );
+const DotsMenu = require( '../DotsMenu.vue' );
+const DotsMenuItem = require( '../DotsMenuItem.vue' );
 const Toast = require( '../components/Toast.vue' );
 
 // @vue/component

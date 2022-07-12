@@ -60,7 +60,7 @@ class StoryRenderer {
 
 		return [
 			'html' => $html,
-			'style' => 'mw.ext.story.viewer-nojs'
+			'style' => 'ext.wikistories.viewer-nojs'
 		];
 	}
 

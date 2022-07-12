@@ -92,27 +92,29 @@
 		"remoteExtPath": "Wikistories/resources"
 	},
 	"ResourceModules": {
-		"mw.ext.story.viewer-nojs": {
+		"ext.wikistories.viewer-nojs": {
+			"localBasePath": "resources/ext.wikistories.viewer-nojs",
 			"targets": [ "desktop", "mobile" ],
 			"styles": [
-				"mw.ext.wikistories.viewer-nojs/viewer-nojs.less"
+				"viewer-nojs.less"
 			]
 		},
-		"mw.ext.story.viewer": {
+		"ext.wikistories.viewer": {
+			"localBasePath": "resources/ext.wikistories.viewer",
 			"targets": [ "desktop", "mobile" ],
 			"packageFiles": [
-				"mw.ext.wikistories.viewer/index.js",
-				"mw.ext.wikistories.viewer/StoryViewer.vue",
-				"mw.ext.wikistories.viewer/components/ImageAttribution.vue",
-				"mw.ext.wikistories.viewer/store/index.js",
-				"mw.ext.wikistories.viewer/store/story.js",
-				"mw.ext.wikistories.viewer/util/isTouchDevice.js",
-				"mw.ext.wikistories.viewer/util/timer.js",
-				"components/DotsMenu.vue",
-				"components/DotsMenuItem.vue"
+				"index.js",
+				"StoryViewer.vue",
+				"components/ImageAttribution.vue",
+				"store/index.js",
+				"store/story.js",
+				"util/isTouchDevice.js",
+				"util/timer.js",
+				{ "name": "DotsMenu.vue", "file": "../components/DotsMenu.vue" },
+				{ "name": "DotsMenuItem.vue", "file": "../components/DotsMenuItem.vue" }
 			],
 			"styles": [
-				"mw.ext.wikistories.viewer/viewer.less"
+				"viewer.less"
 			],
 			"dependencies": [ "vue", "vuex" ],
 			"messages": [
@@ -122,56 +124,58 @@
 				"wikistories-imageattribution-author-unknown"
 			]
 		},
-		"mw.ext.story.builder.styles": {
+		"ext.wikistories.builder.styles": {
+			"localBasePath": "resources/ext.wikistories.builder",
 			"targets": [ "desktop", "mobile" ],
 			"styles": [
-				"mw.ext.wikistories.builder/builder.less"
+				"builder.less"
 			],
 			"skinStyles": {
 				"minerva": [
-					"mw.ext.wikistories.builder/builder.minerva.less"
+					"builder.minerva.less"
 				]
 			}
 		},
-		"mw.ext.story.builder": {
+		"ext.wikistories.builder": {
+			"localBasePath": "resources/ext.wikistories.builder",
 			"targets": [ "desktop", "mobile" ],
 			"packageFiles": [
-				"mw.ext.wikistories.builder/index.js",
-				"mw.ext.wikistories.builder/router.js",
-				"mw.ext.wikistories.builder/contributionEvents.js",
-				"mw.ext.wikistories.builder/App.vue",
-				"mw.ext.wikistories.builder/api/getPageInfo.js",
-				"mw.ext.wikistories.builder/api/saveStory.js",
-				"mw.ext.wikistories.builder/api/searchImages.js",
-				"mw.ext.wikistories.builder/components/Alert.vue",
-				"mw.ext.wikistories.builder/components/ConfirmDialog.vue",
-				"mw.ext.wikistories.builder/components/CurrentFrame.vue",
-				"mw.ext.wikistories.builder/components/AutoHeightTextarea.vue",
-				"mw.ext.wikistories.builder/components/Frames.vue",
-				"mw.ext.wikistories.builder/components/ListImage.vue",
-				"mw.ext.wikistories.builder/components/ImageAttribution.vue",
-				"mw.ext.wikistories.builder/components/ImageListView.vue",
-				"mw.ext.wikistories.builder/components/Navigator.vue",
-				"mw.ext.wikistories.builder/components/PrimaryButton.vue",
-				"mw.ext.wikistories.builder/components/Toast.vue",
-				"mw.ext.wikistories.builder/plugins/config.js",
-				"mw.ext.wikistories.builder/mixins/observer.js",
-				"mw.ext.wikistories.builder/store/article.js",
-				"mw.ext.wikistories.builder/store/index.js",
-				"mw.ext.wikistories.builder/store/search.js",
-				"mw.ext.wikistories.builder/store/story.js",
-				"mw.ext.wikistories.builder/util/convertUrlToMobile.js",
-				"mw.ext.wikistories.builder/util/safeAssignString.js",
-				"mw.ext.wikistories.builder/util/sortableFrames.js",
-				"mw.ext.wikistories.builder/util/strip.js",
-				"mw.ext.wikistories.builder/util/validateTitle.js",
-				"mw.ext.wikistories.builder/views/Article.vue",
-				"mw.ext.wikistories.builder/views/PublishForm.vue",
-				"mw.ext.wikistories.builder/views/Search.vue",
-				"mw.ext.wikistories.builder/views/Story.vue",
-				"components/DotsMenu.vue",
-				"components/DotsMenuItem.vue",
-				"lib/vue-router/vue-router.common.js"
+				"index.js",
+				"router.js",
+				"contributionEvents.js",
+				"App.vue",
+				"api/getPageInfo.js",
+				"api/saveStory.js",
+				"api/searchImages.js",
+				"components/Alert.vue",
+				"components/ConfirmDialog.vue",
+				"components/CurrentFrame.vue",
+				"components/AutoHeightTextarea.vue",
+				"components/Frames.vue",
+				"components/ListImage.vue",
+				"components/ImageAttribution.vue",
+				"components/ImageListView.vue",
+				"components/Navigator.vue",
+				"components/PrimaryButton.vue",
+				"components/Toast.vue",
+				"plugins/config.js",
+				"mixins/observer.js",
+				"store/article.js",
+				"store/index.js",
+				"store/search.js",
+				"store/story.js",
+				"util/convertUrlToMobile.js",
+				"util/safeAssignString.js",
+				"util/sortableFrames.js",
+				"util/strip.js",
+				"util/validateTitle.js",
+				"views/Article.vue",
+				"views/PublishForm.vue",
+				"views/Search.vue",
+				"views/Story.vue",
+				{ "name": "DotsMenu.vue", "file": "../components/DotsMenu.vue" },
+				{ "name": "DotsMenuItem.vue", "file": "../components/DotsMenuItem.vue" },
+				{ "name": "vue-router.common.js", "file": "../lib/vue-router/vue-router.common.js" }
 			],
 			"dependencies": [
 				"vue",
@@ -231,27 +235,29 @@
 				"wikistories-builder-licensing-with-terms"
 			]
 		},
-		"mw.ext.story.discover": {
+		"ext.wikistories.discover": {
+			"localBasePath": "resources/ext.wikistories.discover",
 			"targets": [ "mobile" ],
 			"dependencies": [ "mediawiki.api", "mediawiki.Title", "mediawiki.util", "ext.eventLogging" ],
 			"packageFiles": [
-				"mw.ext.wikistories.discover/index.js",
-				"mw.ext.wikistories.discover/consumptionEvents.js",
-				"mw.ext.wikistories.discover/Discover.js",
-				"mw.ext.wikistories.discover/api/getStories.js",
-				"mw.ext.wikistories.discover/util/convertUrlToThumbnail.js"
+				"index.js",
+				"consumptionEvents.js",
+				"Discover.js",
+				"api/getStories.js",
+				"util/convertUrlToThumbnail.js"
 			],
 			"styles": [
-				"mw.ext.wikistories.discover/discover.less"
+				"discover.less"
 			],
 			"messages": [
 				"wikistories-discover-cta-text"
 			]
 		},
-		"mw.ext.story.discover.styles": {
+		"ext.wikistories.discover.styles": {
+			"localBasePath": "resources/ext.wikistories.discover",
 			"targets": [ "mobile" ],
 			"styles": [
-				"mw.ext.wikistories.discover/discover-initial.less"
+				"discover-initial.less"
 			]
 		}
 	},

@@ -1,4 +1,4 @@
-const safeAssignString = require( '../../../../resources/mw.ext.wikistories.builder/util/safeAssignString.js' );
+const safeAssignString = require( '../../../../resources/ext.wikistories.builder/util/safeAssignString.js' );
 
 describe( 'safeAssignString', function () {
 	let obj;

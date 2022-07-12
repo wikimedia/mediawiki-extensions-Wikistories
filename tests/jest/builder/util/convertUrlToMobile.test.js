@@ -1,4 +1,4 @@
-const convertUrlToMobile = require( '../../../../resources/mw.ext.wikistories.builder/util/convertUrlToMobile.js' );
+const convertUrlToMobile = require( '../../../../resources/ext.wikistories.builder/util/convertUrlToMobile.js' );
 
 describe( 'convertUrlToMobile', function () {
 

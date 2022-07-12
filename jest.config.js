@@ -23,6 +23,8 @@ module.exports = {
 		'.*\\.(vue)$': '<rootDir>/node_modules/@vue/vue3-jest'
 	},
 
+	resolver: './jest.resolver.js',
+
 	testEnvironment: 'jsdom',
 
 	// Indicates whether the coverage information should be collected while executing the test

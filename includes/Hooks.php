@@ -69,8 +69,8 @@ class Hooks {
 				'wgWikistoriesCreateUrl',
 				SpecialPage::getTitleFor( 'StoryBuilder', $title )->getLinkURL()
 			);
-			$out->addModules( [ 'mw.ext.story.discover' ] );
-			$out->addModuleStyles( 'mw.ext.story.discover.styles' );
+			$out->addModules( [ 'ext.wikistories.discover' ] );
+			$out->addModuleStyles( 'ext.wikistories.discover.styles' );
 		}
 	}
 

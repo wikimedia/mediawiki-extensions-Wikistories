@@ -51,8 +51,8 @@ class SpecialStoryBuilder extends SpecialPage {
 		$out = $this->getOutput();
 		$out->setPageTitle( $this->msg( 'wikistories-specialstorybuilder-title' )->text() );
 		$out->addJsConfigVars( $this->getConfigForStoryBuilder( $this->getSubPage( $subPage ) ) );
-		$out->addModuleStyles( [ 'mw.ext.story.builder.styles' ] );
-		$out->addModules( [ 'mw.ext.story.builder' ] );
+		$out->addModuleStyles( [ 'ext.wikistories.builder.styles' ] );
+		$out->addModules( [ 'ext.wikistories.builder' ] );
 		$out->addHTML(
 			Html::rawElement(
 				'div',

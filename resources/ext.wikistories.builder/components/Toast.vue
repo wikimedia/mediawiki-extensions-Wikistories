@@ -50,7 +50,7 @@ module.exports = {
 	display: flex;
 
 	&-icon {
-		background-image: url( ../../images/union.svg );
+		background-image: url( ./../images/union.svg );
 		background-repeat: no-repeat;
 		height: 18px;
 		width: 26px;
@@ -71,7 +71,7 @@ module.exports = {
 	top: 60px;
 
 	.ext-wikistories-toast-icon {
-		background-image: url( ../../images/error.svg );
+		background-image: url( ./../images/error.svg );
 		height: 20px;
 	}
 

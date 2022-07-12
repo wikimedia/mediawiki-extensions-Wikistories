@@ -91,8 +91,8 @@
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
 const ImageAttribution = require( './components/ImageAttribution.vue' );
-const DotsMenu = require( '../../components/DotsMenu.vue' );
-const DotsMenuItem = require( '../../components/DotsMenuItem.vue' );
+const DotsMenu = require( './DotsMenu.vue' );
+const DotsMenuItem = require( './DotsMenuItem.vue' );
 const Timer = require( './util/timer.js' );
 const isTouchDevice = require( './util/isTouchDevice.js' );
 
@@ -298,7 +298,7 @@ module.exports = {
 		position: absolute;
 		top: 50%;
 		z-index: @z-level-two;
-		background: url( ../images/arrow.svg );
+		background: url( ./images/arrow.svg );
 		background-size: contain;
 		cursor: pointer;
 	}
@@ -437,7 +437,7 @@ module.exports = {
 			cursor: pointer;
 			width: 48px;
 			height: 48px;
-			background-image: url( ../images/close-white.svg );
+			background-image: url( ./images/close-white.svg );
 			background-position: center;
 			background-repeat: no-repeat;
 			left: 0;
@@ -450,7 +450,7 @@ module.exports = {
 			cursor: pointer;
 			width: 48px;
 			height: 48px;
-			background-image: url( ../images/pause.svg );
+			background-image: url( ./images/pause.svg );
 			background-position: center;
 			background-repeat: no-repeat;
 			right: 50px;
@@ -464,7 +464,7 @@ module.exports = {
 			width: 18px;
 			height: 18px;
 			padding: 15px;
-			background-image: url( ../images/play.svg );
+			background-image: url( ./images/play.svg );
 			background-position: center;
 			background-repeat: no-repeat;
 			right: 50px;

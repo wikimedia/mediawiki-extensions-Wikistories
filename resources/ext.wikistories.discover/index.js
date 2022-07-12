@@ -3,7 +3,7 @@ const addStoriesToDiscoverSection = require( './Discover.js' ).addStoriesToDisco
 const getStories = require( './api/getStories.js' );
 const events = require( './consumptionEvents.js' );
 
-const loadingViewer = mw.loader.using( 'mw.ext.story.viewer' );
+const loadingViewer = mw.loader.using( 'ext.wikistories.viewer' );
 const articleTitle = mw.config.get( 'wgPageName' );
 
 const $discover = getDiscoverSection().insertAfter( '.page-heading' );
@@ -16,7 +16,7 @@ getStories( articleTitle ).then( function ( stories ) {
 
 		if ( storyId && stories.find( story => story.pageId.toString() === storyId ) ) {
 			loadingViewer.then( function () {
-				const initStoryViewer = require( 'mw.ext.story.viewer' );
+				const initStoryViewer = require( 'ext.wikistories.viewer' );
 				initStoryViewer( stories, storyId, events.logStoryView );
 			} );
 		}

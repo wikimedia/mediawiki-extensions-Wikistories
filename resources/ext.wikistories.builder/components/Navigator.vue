@@ -60,15 +60,15 @@ module.exports = {
 	}
 
 	.close {
-		background-image: url( ../../images/close.svg );
+		background-image: url( ./../images/close.svg );
 	}
 
 	.back {
-		background-image: url( ../../images/back.svg );
+		background-image: url( ./../images/back.svg );
 	}
 
 	.next {
-		background-image: url( ../../images/next.svg );
+		background-image: url( ./../images/next.svg );
 		background-color: @color-primary;
 		box-shadow: none;
 	}

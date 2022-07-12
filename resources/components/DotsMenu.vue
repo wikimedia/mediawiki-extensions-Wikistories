@@ -42,7 +42,7 @@ module.exports = {
 		width: 48px;
 		text-align: center;
 		color: #fff;
-		background-image: url( ../images/menu.svg );
+		background-image: url( ./images/menu.svg );
 		background-position: center;
 	}
 
