@@ -39,6 +39,9 @@
 	"wikistories-builder-publishform-invalidtitle-empty": "스토리 제목 입력",
 	"wikistories-builder-publishform-invalidtitle-format": "유효하지 않은 스토리 제목",
 	"wikistories-builder-publishform-saveerror": "스토리를 게시할 때 오류가 발생했습니다. 나중에 다시 시도해 주십시오.",
+	"wikistories-nojs-form-label-related-article": "관련 문서",
+	"wikistories-nojs-form-label-image": "이미지",
+	"wikistories-nojs-form-label-text": "텍스트",
 	"wikistories-storyviewer-next-story-button": "다음 이야기 읽기",
 	"wikistories-from-article-not-found": "\"$1\" 문서가 없습니다"
 }

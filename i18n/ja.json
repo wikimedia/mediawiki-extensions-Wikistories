@@ -37,6 +37,9 @@
 	"wikistories-builder-publishform-invalidtitle-notfound": "ストーリーが見つかりません。",
 	"wikistories-builder-publishform-saveerror": "ストーリーを公開中にエラーが発生しました。後ほどお試しください。",
 	"wikistories-discover-cta-text": "ストーリーを作成",
+	"wikistories-nojs-form-label-related-article": "関連記事",
+	"wikistories-nojs-form-label-image": "画像",
+	"wikistories-nojs-form-label-text": "テキスト",
 	"wikistories-storyviewer-next-story-button": "次のストーリーを読む",
 	"wikistories-storyviewer-edit": "編集"
 }
