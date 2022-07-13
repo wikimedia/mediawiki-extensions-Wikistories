@@ -27,5 +27,7 @@
 	"wikistories-builder-publishform-invalidtitle-empty": "Inserisci il titolo della storia",
 	"wikistories-builder-publishform-invalidtitle-format": "Titolo della storia non valido",
 	"wikistories-builder-publishform-saveerror": "C'è stato un errore nel pubblicare la wikistoria. Riprova a pubblicarla.",
+	"wikistories-nojs-form-label-image": "Immagine",
+	"wikistories-nojs-form-label-text": "Testo",
 	"wikistories-storyviewer-edit": "Modifica"
 }

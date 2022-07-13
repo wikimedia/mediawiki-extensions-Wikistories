@@ -4,7 +4,8 @@
 			"Dnlweijers",
 			"Mainframe98",
 			"McDutchie",
-			"Rots61"
+			"Rots61",
+			"Siebrand"
 		]
 	},
 	"right-edit-story": "Verhalen bewerken",
@@ -12,5 +13,9 @@
 	"wikistories-imageattribution-author-unknown": "Auteur onbekend",
 	"wikistories-article-cancelselection": "Wissen",
 	"wikistories-article-loading": "Artikel wordt geladen…",
-	"wikistories-confirmdialog-delete-cancel": "Annuleren"
+	"wikistories-confirmdialog-delete-cancel": "Annuleren",
+	"wikistories-nojs-form-label-related-article": "Gerelateerd artikel",
+	"wikistories-nojs-form-label-frame": "Kader $1",
+	"wikistories-nojs-form-label-image": "Afbeelding",
+	"wikistories-nojs-form-label-text": "Tekst"
 }

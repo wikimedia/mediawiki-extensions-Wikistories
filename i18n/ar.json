@@ -22,6 +22,9 @@
 	"wikistories-error-frameswithouttext-title": "نص مفقود",
 	"wikistories-builder-publishform-publishbutton": "انشر",
 	"wikistories-builder-publishform-invalidtitle-notfound": "لم يتم العثور على القصة.",
+	"wikistories-nojs-form-label-related-article": "مقالة ذات صلة",
+	"wikistories-nojs-form-label-image": "صورة",
+	"wikistories-nojs-form-label-text": "نص",
 	"wikistories-storyviewer-edit": "تعديل",
 	"wikistories-storyviewer-cover-page-heading": "ويكيستوري"
 }
