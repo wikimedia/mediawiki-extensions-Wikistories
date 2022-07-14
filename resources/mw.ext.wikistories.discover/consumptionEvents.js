@@ -1,7 +1,4 @@
 const logConsumptionEvent = ( data ) => {
-	if ( !mw.eventLog ) {
-		return;
-	}
 	const streamName = 'analytics/mediawiki/wikistories_consumption_event';
 	const event = $.extend( {
 		$schema: '/analytics/mediawiki/wikistories_consumption_event/1.0.0',

@@ -179,7 +179,8 @@
 				"mediawiki.Title",
 				"mediawiki.api",
 				"mediawiki.ForeignApi",
-				"mediawiki.util"
+				"mediawiki.util",
+				"ext.eventLogging"
 			],
 			"messages": [
 				"wikistories-search-inputplaceholder",
@@ -232,7 +233,7 @@
 		},
 		"mw.ext.story.discover": {
 			"targets": [ "mobile" ],
-			"dependencies": [ "mediawiki.api", "mediawiki.Title", "mediawiki.util" ],
+			"dependencies": [ "mediawiki.api", "mediawiki.Title", "mediawiki.util", "ext.eventLogging" ],
 			"packageFiles": [
 				"mw.ext.wikistories.discover/index.js",
 				"mw.ext.wikistories.discover/consumptionEvents.js",
