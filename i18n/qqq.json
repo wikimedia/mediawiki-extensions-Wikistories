@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Amire80",
 			"Eduardo Medina",
 			"Huei Tan",
@@ -68,7 +69,7 @@
 	"wikistories-discover-cta-text": "Text for a button in the Discover section to start the builder step",
 	"wikistories-nojs-form-label-related-article": "Text for the no js form input label for related article",
 	"wikistories-nojs-form-label-frame": "Text for the no js form input label for frame.\nParameters:\n* $1 - Frame number, starting at 1",
-	"wikistories-nojs-form-label-image": "Text for the no js form input label for image",
+	"wikistories-nojs-form-label-image": "Text for the no js form input label for image\n\n{{Identical|Image}}",
 	"wikistories-nojs-form-label-text": "Text for the no js form input label for text",
 	"wikistories-storyviewer-next-story-button": "Text for the button when press and go to the next story viewer",
 	"wikistories-storyviewer-edit": "Text for the button to edit a story from the viewer",
