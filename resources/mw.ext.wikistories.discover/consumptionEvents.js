@@ -11,7 +11,7 @@ const logConsumptionEvent = ( data ) => {
 		activity_session_id: mw.eventLog.id.getSessionId(),
 		pageview_id: mw.user.getPageviewToken(),
 		access_method: mw.config.get( 'skin' ) === 'minerva' ? 'mobile web' : 'desktop',
-		page_title: mw.config.get( 'wgTitle' )
+		page_title: mw.config.get( 'wgPageName' )
 		/* eslint-enable camelcase */
 	}, data );
 	mw.eventLog.submit( streamName, event );
