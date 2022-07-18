@@ -10,6 +10,7 @@
 	"action-edit-story": "לערוך סיפורים",
 	"wikistories-beta-feature-message": "ויקיסיפורים",
 	"wikistories-beta-feature-description": "כלי שמאפשר לך לבחור תמונות ולהבליט עובדות מתוך ערך כדי ליצור ידע קצר, חזותי, ואמין מוויקיפדיה לצריכה מהירה. אפשר להפעיל אותו כדי לעשות את הדברים הבאים:<br>- לגלות סיפורים שמוצמדים לערך.<br>- ללחוץ על סמל [+] מתחת לכותרת הערך כדי ליצור סיפור חדש.",
+	"storybuilder": "בונה הסיפורים",
 	"wikistories-specialstorybuilder-title": "בונה הסיפורים",
 	"wikistories-specialstorybuilder-loading": "טעינה...",
 	"wikistories-specialstorybuilder-nojswarning": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",

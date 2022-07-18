@@ -6,6 +6,8 @@
 			"Mojtabakd"
 		]
 	},
+	"wikistories-beta-feature-message": "ویکی‌داستان",
+	"storybuilder": "داستان‌ساز",
 	"wikistories-search-navigator-title": "انتخاب تصاویر",
 	"wikistories-search-navigator-title-selected-info": "$1 انتخاب‌شده",
 	"wikistories-story-editdone": "انجام شد",
@@ -14,5 +16,11 @@
 	"wikistories-confirmdialog-delete-title": "این صفحه حذف شود؟",
 	"wikistories-confirmdialog-delete-accept": "حذف",
 	"wikistories-confirmdialog-delete-cancel": "لغو",
-	"wikistories-storyviewer-next-story-button": "روایت بعدی را بخوانید"
+	"wikistories-builder-publishform-saving": "در حال انتشار ویکی‌داستان...",
+	"wikistories-nojs-form-label-related-article": "مقالهٔ مرتبط",
+	"wikistories-nojs-form-label-frame": "قاب $1",
+	"wikistories-nojs-form-label-image": "تصویر",
+	"wikistories-nojs-form-label-text": "متن",
+	"wikistories-storyviewer-next-story-button": "روایت بعدی را بخوانید",
+	"wikistories-from-article-not-found": "مقالهٔ «$1» یافت نشد"
 }
