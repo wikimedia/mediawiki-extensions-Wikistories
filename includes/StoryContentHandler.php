@@ -102,8 +102,13 @@ class StoryContentHandler extends JsonContentHandler {
 		if ( $cpoParams->getGenerateHtml() ) {
 			// no-js
 			$storyPage = $cpoParams->getPage();
-			$storyTitle = Title::makeTitle( $storyPage->getNamespace(), $storyPage->getDBkey() );
-			$parts = $this->storyRenderer->renderNoJS( $story, $storyTitle->getId() );
+			if ( $storyPage instanceof Title ) {
+				$id = $storyPage->getArticleID();
+			} else {
+				$storyTitle = Title::makeTitle( $storyPage->getNamespace(), $storyPage->getDBkey() );
+				$id = $storyTitle->getArticleID( Title::READ_LATEST );
+			}
+			$parts = $this->storyRenderer->renderNoJS( $story, $id );
 			$parserOutput->addModuleStyles( [ $parts['style'] ] );
 			$parserOutput->setText( $parts['html'] );
 		}
