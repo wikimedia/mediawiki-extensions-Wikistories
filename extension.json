@@ -244,7 +244,8 @@
 				"consumptionEvents.js",
 				"Discover.js",
 				"api/getStories.js",
-				"util/convertUrlToThumbnail.js"
+				"util/convertUrlToThumbnail.js",
+				{ "name": "data.json", "callback": "MediaWiki\\Extension\\Wikistories\\Hooks::getDiscoverBundleData" }
 			],
 			"styles": [
 				"discover.less"

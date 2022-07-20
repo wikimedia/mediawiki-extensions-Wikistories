@@ -22,9 +22,11 @@ const generateItem = function ( link, thumbnail, thumbnailText, text ) {
 };
 
 const generateCTA = function ( thumbnail ) {
-	const link = mw.config.get( 'wgWikistoriesCreateUrl' );
+	const storyBuilder = require( './data.json' ).storyBuilder;
+	const pageName = mw.config.get( 'wgPageName' );
+	const url = mw.Title.newFromText( 'Special:' + storyBuilder + '/' + pageName ).getUrl();
 	const text = mw.message( 'wikistories-discover-cta-text' ).text();
-	return generateItem( link, thumbnail, '+', text );
+	return generateItem( url, thumbnail, '+', text );
 };
 
 const getArticleThumbnail = function () {
