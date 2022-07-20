@@ -30,7 +30,7 @@ const getCommonsImages = ( lang, queryString ) => {
 		format: 'json',
 		uselang: lang,
 		generator: 'search',
-		gsrsearch: queryString,
+		gsrsearch: 'filetype:bitmap|drawing filew:>639 fileh:>639 ' + queryString,
 		gsrlimit: 40,
 		gsroffset: 0,
 		gsrinfo: 'totalhits',
@@ -116,7 +116,14 @@ const getArticleImages = ( lang, queryString ) => {
 			if ( !data.query || !data.query.pages ) {
 				return [];
 			}
-			return Object.keys( data.query.pages ).map( pageId => {
+			return Object.keys( data.query.pages ).filter( pageId => {
+				const imageinfo = data.query.pages[ pageId ].imageinfo[ 0 ];
+				const type = imageinfo.mediatype;
+				// keep only images that are big enough
+				return ( type === 'BITMAP' || type === 'DRAWING' ) &&
+					imageinfo.width >= 640 &&
+					imageinfo.height >= 640;
+			} ).map( pageId => {
 				const page = data.query.pages[ pageId ];
 				page.imageinfo[ 0 ].responsiveUrls = { 1: fileUrlMap[ page.title ] };
 				return page;
@@ -147,13 +154,6 @@ const searchAllImages = ( queryString ) => {
 	).then( function ( article, commons ) {
 		let id = 0;
 		return article.concat( commons )
-			.filter( p => {
-				const type = p.imageinfo[ 0 ].mediatype;
-				// keep only images that are big enough
-				return ( type === 'BITMAP' || type === 'DRAWING' ) &&
-					p.imageinfo[ 0 ].width >= 640 &&
-					p.imageinfo[ 0 ].height >= 640;
-			} )
 			.map( ( page ) => {
 				const imageinfo = page.imageinfo[ 0 ];
 				const responsiveUrls = imageinfo.responsiveUrls &&
