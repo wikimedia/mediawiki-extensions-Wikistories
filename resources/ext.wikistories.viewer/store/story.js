@@ -33,6 +33,15 @@ module.exports = {
 		isLastFrame: ( state, getters ) => {
 			return state.frameId === getters.story.length - 1;
 		},
+		isFramePlaying: ( state ) => ( n ) => {
+			return state.frameId === n - 1;
+		},
+		isFrameDonePlaying: ( state ) => ( n ) => {
+			return state.frameId > n - 1;
+		},
+		isFrameViewed: ( state ) => ( n ) => {
+			return n <= state.frameId;
+		},
 		isStoryEnd: ( state ) => {
 			return state.isStoryEnd;
 		},
@@ -85,6 +94,7 @@ module.exports = {
 		},
 		prevFrame: ( context ) => {
 			if ( !context.getters.isFirstFrame ) {
+				context.commit( 'setIsStoryEnd', false );
 				context.commit( 'setStoryFrameId', context.state.frameId - 1 );
 			}
 		},
