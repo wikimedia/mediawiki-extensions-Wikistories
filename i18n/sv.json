@@ -21,5 +21,9 @@
 	"wikistories-article-info-expanded-banner": "Klicka och håll på ett ord i texten, dra sen reglagen för att markera alla text du vill ha för din berättelse. För att lägga till text kan du klicka på \"Lägg till i berättelse\" som visas längst ner på skärmen.",
 	"wikistories-confirmdialog-delete-title": "Radera denna sida?",
 	"wikistories-confirmdialog-delete-accept": "Radera",
-	"wikistories-confirmdialog-delete-cancel": "Avbryt"
+	"wikistories-confirmdialog-delete-cancel": "Avbryt",
+	"wikistories-nojs-form-label-related-article": "Relaterad artikel",
+	"wikistories-nojs-form-label-frame": "Ram $1",
+	"wikistories-nojs-form-label-image": "Bild",
+	"wikistories-nojs-form-label-text": "Text"
 }
