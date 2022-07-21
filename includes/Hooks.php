@@ -9,6 +9,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
+use Monolog\Logger;
 use OutputPage;
 use Skin;
 use SpecialPage;
@@ -118,15 +119,44 @@ class Hooks {
 			return;
 		}
 
-		DeferredUpdates::addCallableUpdate( static function () use ( $revisionRecord ) {
+		DeferredUpdates::addCallableUpdate( static function () use ( $wikiPage, $revisionRecord ) {
 			$services = MediaWikiServices::getInstance();
-			$previousRevision = $services->getRevisionStore()->getRevisionById( $revisionRecord->getParentId() );
+			/** @var Logger $logger */
+			$logger = $services->get( 'Wikistories.Logger' );
+
+			$context = [
+				'method' => 'onPageSaveComplete::HandleFromArticleUpdate',
+				'Title' => $wikiPage->getDBkey(),
+				'revId' => $revisionRecord->getId(),
+			];
+
+			$previousRevId = $revisionRecord->getParentId();
+			if ( !$previousRevId ) {
+				$logger->warning( 'Cannot get previous revision id', $context );
+				return;
+			}
+
+			$previousRevision = $services->getRevisionStore()->getRevisionById( $previousRevId );
+			if ( $previousRevision === null ) {
+				$logger->warning( 'Cannot get previous revision object', $context );
+				return;
+			}
+
 			/** @var StoryContent $previousStory */
 			$previousStory = $previousRevision->getContent( 'main' );
 			'@phan-var StoryContent $previousStory';
+			if ( $previousStory === null ) {
+				$logger->warning( 'Cannot get previous story content', $context );
+				return;
+			}
+
 			/** @var StoryContent $newStory */
 			$newStory = $revisionRecord->getContent( 'main' );
 			'@phan-var StoryContent $newStory';
+			if ( $newStory === null ) {
+				$logger->warning( 'Cannot get new story content', $context );
+				return;
+			}
 
 			if ( $newStory->getFromArticle() !== $previousStory->getFromArticle() ) {
 				/** @var StoriesCache $cache */

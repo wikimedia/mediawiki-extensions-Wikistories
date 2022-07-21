@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
@@ -35,6 +36,10 @@ return [
 
 	'Wikistories.StoryRenderer' => static function ( MediaWikiServices $services ) {
 		return new StoryRenderer( $services->getRepoGroup(), $services->getTitleFormatter() );
+	},
+
+	'Wikistories.Logger' => static function () {
+		return LoggerFactory::getInstance( 'Wikistories' );
 	},
 
 ];
