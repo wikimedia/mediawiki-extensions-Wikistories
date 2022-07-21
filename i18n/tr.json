@@ -42,5 +42,9 @@
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Aynı başlığa sahip başka bir hikaye zaten var. Lütfen, farklı bir hikaye başlığı yazın.",
 	"wikistories-builder-publishform-saveerror": "Hikaye yayımlanırken bir hata meydana geldi. Lütfen daha sonra tekrar deneyin.",
 	"wikistories-discover-cta-text": "Vikihikaye oluştur",
+	"wikistories-nojs-form-label-related-article": "İlgili Makale",
+	"wikistories-nojs-form-label-frame": "Çerçeve $1",
+	"wikistories-nojs-form-label-image": "Resim",
+	"wikistories-nojs-form-label-text": "Metin",
 	"wikistories-storyviewer-next-story-button": "Sonraki hikayeyi oku"
 }
