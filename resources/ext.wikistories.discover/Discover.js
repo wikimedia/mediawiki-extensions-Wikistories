@@ -40,9 +40,9 @@ const addCtaText = function () {
 	const $title = $( '.ext-wikistories-discover-item-cta-text-title' );
 	const $subtitle = $( '<p>' )
 		.addClass( 'ext-wikistories-discover-item-cta-text-subtitle' )
-		.text( mw.message( 'wikistories-discover-cta-text-subheader' ).text() );
+		.text( mw.msg( 'wikistories-discover-cta-text-subheader' ) );
 
-	$title.text( mw.message( 'wikistories-discover-cta-text' ).text() );
+	$title.text( mw.msg( 'wikistories-discover-cta-text' ) );
 	$text.append( $subtitle );
 	$cta.addClass( 'ext-wikistories-discover-item-no-border' );
 
