@@ -9,5 +9,8 @@
 	"wikistories-article-cancelselection": "Kuârad",
 	"wikistories-confirmdialog-delete-title": "Haaʹlääk-a tän seeid jaukkeed?",
 	"wikistories-confirmdialog-delete-accept": "Jaukkâd",
-	"wikistories-builder-publishform-publishbutton": "Õlmstââʹtt"
+	"wikistories-builder-publishform-publishbutton": "Õlmstââʹtt",
+	"wikistories-nojs-form-label-text": "Teʹkstt",
+	"wikistories-file-not-found": "Teâttõs \"$1\" ij käunnʼjam",
+	"wikistories-from-article-not-found": "Artikkel \"$1\" ij käunnʼjam"
 }

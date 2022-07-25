@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"NGC 54"
+		]
+	},
+	"wikistories-extensiondesc": "Wikipovești le permite editorilor să creeze cunoștințe scurte, vizuale și de încredere din proiectele Wikimedia",
+	"right-edit-story": "Editează povești",
+	"action-edit-story": "edita povești",
+	"wikistories-beta-feature-message": "Wikipovești",
+	"storybuilder": "Constructor de povești",
+	"wikistories-specialstorybuilder-title": "Constructor de povești",
+	"wikistories-specialstorybuilder-loading": "Se încarcă...",
+	"wikistories-specialstorybuilder-nojswarning": "Această pagină specială necesită JavaScript pentru a funcționa",
+	"wikistories-specialstorybuilder-mustbeloggedin": "Vă rugăm să vă autentificați sau să creați un cont pentru a crea povești",
+	"wikistories-specialstorybuilder-invalidsubpage": "În URL, specificați un articol despre care să creați o poveste sau o poveste pe care să o editați. Trebuie să includeți și spațiul de nume poveste.",
+	"wikistories-search-inputplaceholder": "Căutare imagini",
+	"wikistories-search-cuetext": "Căutați imagini legate de articol.",
+	"wikistories-search-noresultstext": "Niciun rezultat",
+	"wikistories-search-navigator-title": "Selectați imagini",
+	"wikistories-search-navigator-title-selected-info": "$1 {{PLURAL:|selectată|selectate}}",
+	"wikistories-story-goto-publish": "Înainte",
+	"wikistories-story-selecttext": "Selectați textul poveștii <span class=\"ext-wikistories-wikipedia\">din Wikipedia</span>",
+	"wikistories-story-editdone": "Realizat",
+	"wikistories-story-replaceimage": "Înlocuiți această imagine",
+	"wikistories-story-deleteframe": "Ștergeți această pagină",
+	"wikistories-story-navigator-title": "Creare Wikipoveste",
+	"wikistories-story-navigator-title-edit": "Editează Wikipoveste",
+	"wikistories-imageattribution-author-unknown": "Autor necunoscut",
+	"wikistories-article-navigator-title": "Evidențiază text",
+	"wikistories-article-cancelselection": "Anulare",
+	"wikistories-article-loading": "Se încarcă articolul...",
+	"wikistories-article-usetext": "Adaugă la poveste",
+	"wikistories-article-info-banner": "Selectați text pe care să îl adăugați poveștii",
+	"wikistories-storyviewer-next-story-button": "Citiți următoare poveste",
+	"wikistories-storyviewer-edit": "Editare",
+	"wikistories-storyviewer-cover-page-heading": "Wikipoveste"
+}

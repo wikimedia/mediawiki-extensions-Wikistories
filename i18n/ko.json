@@ -10,6 +10,7 @@
 	"right-edit-story": "스토리 편집",
 	"action-edit-story": "스토리를 편집할",
 	"wikistories-beta-feature-message": "위키스토리",
+	"storybuilder": "스토리 빌더",
 	"wikistories-specialstorybuilder-title": "스토리 만들기",
 	"wikistories-specialstorybuilder-loading": "불러오는 중...",
 	"wikistories-search-inputplaceholder": "이미지 검색",
@@ -45,6 +46,7 @@
 	"wikistories-nojs-form-label-frame": "프레임 $1",
 	"wikistories-nojs-form-label-image": "이미지",
 	"wikistories-nojs-form-label-text": "텍스트",
+	"wikistories-discover-cta-text": "위키스토리 만들기",
 	"wikistories-storyviewer-next-story-button": "다음 이야기 읽기",
 	"wikistories-from-article-not-found": "\"$1\" 문서가 없습니다"
 }
