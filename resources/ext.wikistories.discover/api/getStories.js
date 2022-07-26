@@ -7,16 +7,7 @@ const getStories = function ( title ) {
 	const mwTitle = mw.Title.newFromText( title );
 	const normalizedTitle = mwTitle.getPrefixedDb();
 	const url = '/wikistories/v0/page/' + normalizedTitle + '/stories';
-	return api.get( url )
-		.then( stories => {
-			stories.forEach( story => {
-				story.frames.forEach( function ( s, i ) {
-					s.id = i + 1;
-				} );
-			} );
-
-			return stories;
-		} );
+	return api.get( url );
 };
 
 module.exports = getStories;

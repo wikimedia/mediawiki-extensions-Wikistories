@@ -120,7 +120,7 @@ module.exports = {
 	computed: $.extend( mapGetters( [
 		'story', 'currentFrame', 'editUrl',
 		'isStoryEnd', 'isLastStory', 'isFirstFrame', 'isLastFrame',
-		'currentStoryTitle'
+		'isFramePlaying', 'isFrameDonePlaying', 'isFrameViewed', 'currentStoryTitle'
 	] ), {
 		style: function () {
 			return {
@@ -180,7 +180,6 @@ module.exports = {
 			} );
 		},
 		navigateFrame: function ( e ) {
-
 			if ( !isTouchDevice ) {
 				return;
 			}
@@ -201,17 +200,10 @@ module.exports = {
 					this.prevFrame();
 				}
 			}
-
 		},
 		edit: function () {
 			this.logStoryViewEvent();
 			window.location = this.editUrl;
-		},
-		isFramePlaying: function ( n ) {
-			return this.currentFrame.id === n - 1;
-		},
-		isFrameDonePlaying: function ( n ) {
-			return this.currentFrame.id > n - 1;
 		}
 	} ),
 	watch: {
@@ -225,15 +217,14 @@ module.exports = {
 			}
 		},
 		currentFrame: function () {
-			if ( this.currentFrame.id < this.story.length - 1 ) {
-				this.playNextFrame();
-				this.setIsStoryEnd( false );
-			} else if ( this.isLastFrame ) {
+			if ( this.isLastFrame ) {
 				this.endStory();
+			} else {
+				this.playNextFrame();
 			}
 
 			// log events used
-			if ( this.frameViewedCount <= this.currentFrame.id ) {
+			if ( this.isFrameViewed( this.frameViewedCount ) ) {
 				this.frameViewedCount++;
 			}
 		}
