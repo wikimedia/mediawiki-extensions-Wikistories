@@ -4,10 +4,11 @@
 			"NGC 54"
 		]
 	},
-	"wikistories-extensiondesc": "Wikipovești le permite editorilor să creeze cunoștințe scurte, vizuale și de încredere din proiectele Wikimedia",
+	"wikistories-extensiondesc": "Wikipovești le permite editorilor să creeze cunoaștere scurtă, vizuală și de încredere din proiectele Wikimedia",
 	"right-edit-story": "Editează povești",
 	"action-edit-story": "edita povești",
 	"wikistories-beta-feature-message": "Wikipovești",
+	"wikistories-beta-feature-description": "O unealtă ce vă permite să selectați imagini & evidenția fapte dintr-un articol pentru a crea cunoaștere scurtă, vizuală și de încredere din Wikipedia pentru consumare rapidă. Activați-o pentru a face următoarele:<br>- Descoperă povești atașate de un articol.<br>- Apăsați pe pictograma [+] de sub titlul articolului pentru a crea o poveste nouă.",
 	"storybuilder": "Constructor de povești",
 	"wikistories-specialstorybuilder-title": "Constructor de povești",
 	"wikistories-specialstorybuilder-loading": "Se încarcă...",
@@ -32,7 +33,17 @@
 	"wikistories-article-loading": "Se încarcă articolul...",
 	"wikistories-article-usetext": "Adaugă la poveste",
 	"wikistories-article-info-banner": "Selectați text pe care să îl adăugați poveștii",
+	"wikistories-builder-publishform-invalidtitle-notfound": "Poveste negăsită.",
+	"wikistories-builder-publishform-saveerror": "A apărut o eroare la publicarea Wikipoveștii. Vă rugăm să încercați din nou să publicați.",
+	"wikistories-builder-publishform-saving": "Se publică Wikipovestea...",
+	"wikistories-nojs-form-label-related-article": "Articol legat",
+	"wikistories-nojs-form-label-frame": "Cadrul $1",
+	"wikistories-nojs-form-label-image": "Imagine",
+	"wikistories-nojs-form-label-text": "Text",
+	"wikistories-discover-cta-text": "Creează o Wikipoveste",
 	"wikistories-storyviewer-next-story-button": "Citiți următoare poveste",
 	"wikistories-storyviewer-edit": "Editare",
-	"wikistories-storyviewer-cover-page-heading": "Wikipoveste"
+	"wikistories-storyviewer-cover-page-heading": "Wikipoveste",
+	"wikistories-file-not-found": "Fișierul „$1” nu a fost găsit",
+	"wikistories-from-article-not-found": "Articolul „$1” nu a fost găsit"
 }
