@@ -18,7 +18,18 @@ getStories( articleTitle ).then( function ( stories ) {
 			loadingViewer.then( function () {
 				const initStoryViewer = require( 'ext.wikistories.viewer' );
 				initStoryViewer( stories, storyId, events.logStoryView );
+				document.body.classList.add( 'ext-wikistories-viewer-on' );
 			} );
+		} else {
+			document.body.classList.remove( 'ext-wikistories-viewer-on' );
+
+			// programmatically click the close icon when hash change (case like press back key)
+			// @todo this is not ideal as the click event changes the hash as well
+			// @todo listen to the hash change in viewer to either show or hide the viewer
+			const viewerContainer = document.querySelector( '.ext-wikistories-viewer-container' );
+			if ( viewerContainer && viewerContainer.style.display !== 'none' ) {
+				document.querySelector( '.ext-wikistories-viewer-container-content-close-icon' ).click();
+			}
 		}
 	};
 
