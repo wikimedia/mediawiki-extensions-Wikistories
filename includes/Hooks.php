@@ -9,8 +9,8 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
-use Monolog\Logger;
 use OutputPage;
+use Psr\Log\LoggerInterface;
 use Skin;
 use SpecialPage;
 use Title;
@@ -121,7 +121,7 @@ class Hooks {
 
 		DeferredUpdates::addCallableUpdate( static function () use ( $wikiPage, $revisionRecord ) {
 			$services = MediaWikiServices::getInstance();
-			/** @var Logger $logger */
+			/** @var LoggerInterface $logger */
 			$logger = $services->get( 'Wikistories.Logger' );
 
 			$context = [
