@@ -101,11 +101,15 @@ const getImageExtMetadata = function ( titles, lang ) {
 
 			const extmetadata = imageinfo.extmetadata;
 			const artist = extmetadata && extmetadata.Artist;
-			const license = extmetadata && extmetadata.LicenseShortName;
+			// const license = extmetadata && extmetadata.LicenseShortName;
+			const licString = extmetadata &&
+				extmetadata.LicenseShortName &&
+				extmetadata.LicenseShortName.value || '';
+			const licenses = [ 'CC', 'BY', 'SA', 'Fair', 'Public' ];
 
 			previousValue[ title ] = {
 				author: artist ? strip( artist.value ) : '',
-				license: license && license.value
+				license: licenses.filter( license => licString.indexOf( license ) !== -1 )
 			};
 
 			return previousValue;

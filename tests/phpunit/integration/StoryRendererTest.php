@@ -17,7 +17,7 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		$catPosterFile->method( 'getExtendedMetadata' )->willReturn(
 			[
 				'Artist' => [ 'value' => 'cat-poster-artist' ],
-				'LicenseShortName' => [ 'value' => 'cat-poster-license' ],
+				'LicenseShortName' => [ 'value' => 'Public domain' ],
 			]
 		);
 		$catPosterFile->method( 'getDescriptionUrl' )->willReturn( 'cat-poster-attribution-url' );
@@ -27,7 +27,7 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		$catNappingFile->method( 'getExtendedMetadata' )->willReturn(
 			[
 				'Artist' => [ 'value' => 'cat-napping-artist' ],
-				'LicenseShortName' => [ 'value' => 'cat-napping-license' ],
+				'LicenseShortName' => [ 'value' => 'CC SA' ],
 			]
 		);
 		$catNappingFile->method( 'getDescriptionUrl' )->willReturn( 'cat-napping-attribution-url' );
@@ -73,10 +73,7 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 			'cat-poster-artist',
 			$storyForViewer[ 'frames' ][ 0 ][ 'attribution' ][ 'author' ]
 		);
-		$this->assertEquals(
-			'cat-poster-license',
-			$storyForViewer[ 'frames' ][ 0 ][ 'attribution' ][ 'license' ]
-		);
+		$this->assertContains( 'Public', $storyForViewer[ 'frames' ][ 0 ][ 'attribution' ][ 'license' ] );
 		$this->assertEquals(
 			'cat-napping-url',
 			$storyForViewer[ 'frames' ][ 1 ][ 'url' ]
@@ -90,10 +87,8 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 			'cat-napping-artist',
 			$storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'author' ]
 		);
-		$this->assertEquals(
-			'cat-napping-license',
-			$storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'license' ]
-		);
+		$this->assertContains( 'CC', $storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'license' ] );
+		$this->assertContains( 'SA', $storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'license' ] );
 	}
 
 	/**
@@ -106,6 +101,18 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		$parts = $renderer->renderNoJS( $story, 12 );
 
 		$this->assertArrayHasKey( 'html', $parts );
+		$this->assertStringContainsString(
+			'ext-wikistories-viewer-nojs-frame-text',
+			$parts[ 'html' ]
+		);
+		$this->assertStringContainsString(
+			'ext-wikistories-viewer-nojs-frame-attribution-info',
+			$parts[ 'html' ]
+		);
+		$this->assertStringContainsString(
+			'ext-wikistories-viewer-nojs-frame-attribution-more-info',
+			$parts[ 'html' ]
+		);
 		$this->assertArrayHasKey( 'style', $parts );
 	}
 }

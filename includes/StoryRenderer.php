@@ -45,15 +45,15 @@ class StoryRenderer {
 		);
 		$html .= Html::rawElement(
 			'div',
-			[ 'class' => 'ext-wikistories-viewer-nojs-root' ],
-			implode( '', array_map( static function ( $frame ) {
+			[ 'class' => 'ext-wikistories-viewer-nojs' ],
+			implode( '', array_map( function ( $frame ) {
 				return Html::rawElement(
 					'div',
 					[
-						'class' => 'ext-wikistories-viewer-frame',
+						'class' => 'ext-wikistories-viewer-nojs-frame',
 						'style' => 'background-image:url(' . $frame[ 'url' ] . ');',
 					],
-					Html::element( 'p', [], $frame[ 'text' ] )
+					$this->getNoJsFrameHtmlString( $frame )
 				);
 			}, $storyView[ 'frames' ] ) )
 		);
@@ -152,12 +152,86 @@ class StoryRenderer {
 		$formatMetadata = new FormatMetadata();
 		$metadata = $formatMetadata->fetchExtendedMetadata( $file );
 		$author = strip_tags( $metadata[ 'Artist' ][ 'value' ] ?? '' );
-		$license = $metadata[ 'LicenseShortName' ][ 'value' ] ?? '';
+		$licenseString = $metadata[ 'LicenseShortName' ][ 'value' ] ?? '';
+		$licenseTypes = [ 'CC', 'BY', 'SA', 'Fair', 'Public' ];
+		$license = array_filter( $licenseTypes, static function ( $license ) use ( $licenseString ) {
+			return strpos( $licenseString, $license ) !== false;
+		} );
 
 		return [
 			'author' => $author,
 			'license' => $license,
 			'url' => $file->getDescriptionUrl(),
 		];
+	}
+
+	/**
+	 * @param array $frame
+	 * @return string html of the given frame data
+	 */
+	private function getNoJsFrameHtmlString( array $frame ): string {
+		$html = Html::element(
+			'div',
+			[ 'class' => 'ext-wikistories-viewer-nojs-frame-text' ],
+			$frame[ 'text' ]
+		);
+
+		$html .= Html::rawElement(
+			'div',
+			[ 'class' => 'ext-wikistories-viewer-nojs-frame-attribution' ],
+			$this->getAttributionHtmlString( $frame[ 'attribution' ] )
+		);
+		return $html;
+	}
+
+	/**
+	 * @param array $attribution
+	 * @return string html of the given attribution data
+	 */
+	private function getAttributionHtmlString( array $attribution ): string {
+		$attributionString = Html::rawElement(
+			'div',
+			[ 'class' => 'ext-wikistories-viewer-nojs-frame-attribution-info' ],
+			implode( '', [
+				'license' => $this->getLicensesHtmlString( $attribution[ 'license' ] ),
+				'author' => Html::rawElement(
+					'div',
+					[ 'class' => 'ext-wikistories-viewer-nojs-frame-attribution-info-author' ],
+					$attribution[ 'author' ]
+				)
+			] )
+		);
+
+		$attributionString .= Html::rawElement(
+			'div',
+			[ 'class' => 'ext-wikistories-viewer-nojs-frame-attribution-more-info' ],
+			Html::element(
+				'a',
+				[ 'href' => $attribution[ 'url' ],
+					'target' => '_blank',
+					'class' => 'ext-wikistories-viewer-nojs-frame-attribution-more-info-link'
+				],
+				''
+			)
+		);
+
+		return $attributionString;
+	}
+
+	/**
+	 * @param array $license
+	 * @return string html of the given license data
+	 */
+	private function getLicensesHtmlString( $license ): string {
+		return implode( '', array_map( static function ( $licenseType ) {
+			return Html::rawElement(
+				'div',
+				[
+					'class' => 'ext-wikistories-viewer-nojs-frame-attribution-info-license' .
+					' ext-wikistories-viewer-nojs-frame-attribution-info-' . strtolower( $licenseType )
+				],
+				''
+			);
+		}, $license ) );
 	}
 }
