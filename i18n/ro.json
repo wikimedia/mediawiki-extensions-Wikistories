@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"NGC 54"
+		]
+	},
+	"wikistories-extensiondesc": "Wikipovești le permite editorilor să creeze cunoaștere scurtă, vizuală și de încredere din proiectele Wikimedia",
+	"wikistories-search-inputplaceholder": "Căutare imagini",
+	"wikistories-search-cuetext": "Căutați imagini legate de articol.",
+	"wikistories-search-noresultstext": "Niciun rezultat",
+	"wikistories-story-goto-publish": "Înainte",
+	"wikistories-imageattribution-author-unknown": "Autor necunoscut",
+	"wikistories-article-usetext": "Adaugă la poveste"
+}
