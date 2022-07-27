@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fraxinus.cs",
 			"Kendo13"
 		]
 	},
-	"storybuilder": "Tvůrce příběhu"
+	"storybuilder": "Tvůrce příběhu",
+	"wikistories-nojs-form-label-text": "Text"
 }
