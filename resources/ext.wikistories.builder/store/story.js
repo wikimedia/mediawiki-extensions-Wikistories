@@ -5,6 +5,10 @@ const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
 const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
 const storyContent = mw.config.get( 'wgWikistoriesStoryContent' );
 const storyEditMode = mw.config.get( 'wgWikistoriesMode' );
+const lang = mw.config.get( 'wgContentLanguage' );
+
+const searchTools = require( '../api/searchImages.js' );
+const getImageExtMetadata = searchTools.getImageExtMetadata;
 
 let orderKey = 10;
 
@@ -71,6 +75,9 @@ module.exports = {
 		},
 		setImageAttribution: ( state, attribution ) => {
 			state.frames[ state.currentFrameIndex ].attribution = attribution;
+		},
+		setFrameImageAttribution: ( state, data ) => {
+			state.frames[ data.frameIndex ].attribution = data.attribution;
 		}
 	},
 	actions: {
@@ -81,7 +88,20 @@ module.exports = {
 			context.commit( 'removeFrame' );
 		},
 		addFrames: ( context, frames ) => {
+			let currentIndex = context.state.frames.length;
 			context.commit( 'addFrames', frames );
+
+			getImageExtMetadata( frames.map( f => f.title ), lang ).then( response => {
+				frames.forEach( frame => {
+					const attribution = response[ frame.title ];
+					attribution.url = frame.attribution.url;
+
+					context.commit( 'setFrameImageAttribution', {
+						attribution: attribution,
+						frameIndex: currentIndex++
+					} );
+				} );
+			} );
 		},
 		setText: ( context, text ) => {
 			context.commit( 'setText', text );
@@ -96,9 +116,22 @@ module.exports = {
 			context.commit( 'setImageFilename', filename );
 		},
 		setFrameImage: ( context, data ) => {
+			const url = data.attribution.url;
 			context.commit( 'setImageUrl', data.url );
 			context.commit( 'setImageFilename', data.filename );
 			context.commit( 'setImageAttribution', data.attribution );
+
+			getImageExtMetadata( data.title, lang ).then( response => {
+				const author = response[ data.title ].author;
+				const license = response[ data.title ].license;
+
+				context.commit( 'setImageAttribution', {
+					author: author,
+					license: license,
+					url: url
+				} );
+			} );
+
 		},
 		reorderFrames: ( context, data ) => {
 			context.commit( 'reorderFrames', data );
