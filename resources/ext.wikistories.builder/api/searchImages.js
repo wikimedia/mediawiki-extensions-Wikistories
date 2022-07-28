@@ -36,10 +36,8 @@ const getCommonsImages = ( lang, queryString ) => {
 		gsrinfo: 'totalhits',
 		prop: 'imageinfo',
 		gsrnamespace: 6,
-		iiprop: 'url|extmetadata|mediatype|size',
-		iiurlheight: 180,
-		iiextmetadatafilter: 'License|LicenseShortName|Artist',
-		iiextmetadatalanguage: lang
+		iiprop: 'url|mediatype|size',
+		iiurlheight: 180
 	};
 
 	requests.push( mwForeign );
@@ -61,7 +59,7 @@ const getCommonsImages = ( lang, queryString ) => {
  * @param {string} lang Language to use for metadata
  * @return {jQuery.Promise} resolves with image attribution data
  */
-const getImageInfo = function ( titles, lang ) {
+const getImageInfo = function ( titles ) {
 	const commonsUrl = 'https://commons.wikimedia.org/w/api.php';
 	const mwForeign = new mw.ForeignApi( commonsUrl, { anonymous: true } );
 	const params = {
@@ -69,14 +67,50 @@ const getImageInfo = function ( titles, lang ) {
 		format: 'json',
 		titles: titles,
 		prop: 'imageinfo',
-		iiprop: 'url|extmetadata|mediatype|size',
+		iiprop: 'url|mediatype|size'
+	};
+
+	requests.push( mwForeign );
+
+	return mwForeign.get( params );
+};
+
+const getImageExtMetadata = function ( titles, lang ) {
+	const commonsUrl = 'https://commons.wikimedia.org/w/api.php';
+	const mwForeign = new mw.ForeignApi( commonsUrl, { anonymous: true } );
+	const params = {
+		action: 'query',
+		format: 'json',
+		titles: titles,
+		prop: 'imageinfo',
+		iiprop: 'extmetadata',
 		iiextmetadatafilter: 'License|LicenseShortName|Artist',
 		iiextmetadatalanguage: lang
 	};
 
 	requests.push( mwForeign );
 
-	return mwForeign.get( params );
+	return mwForeign.get( params ).then( response => {
+		if ( !response.query || !response.query.pages ) {
+			return [];
+		}
+
+		return Object.keys( response.query.pages ).reduce( ( previousValue, pageId ) => {
+			const title = response.query.pages[ pageId ].title;
+			const imageinfo = response.query.pages[ pageId ].imageinfo[ 0 ];
+
+			const extmetadata = imageinfo.extmetadata;
+			const artist = extmetadata && extmetadata.Artist;
+			const license = extmetadata && extmetadata.LicenseShortName;
+
+			previousValue[ title ] = {
+				author: artist ? strip( artist.value ) : '',
+				license: license && license.value
+			};
+
+			return previousValue;
+		}, {} );
+	} );
 };
 
 /**
@@ -159,23 +193,23 @@ const searchAllImages = ( queryString ) => {
 				const responsiveUrls = imageinfo.responsiveUrls &&
 					Object.keys( imageinfo.responsiveUrls )
 						.map( ( p ) => imageinfo.responsiveUrls[ p ] )[ 0 ];
-				const extmetadata = imageinfo.extmetadata;
-				const artist = extmetadata && extmetadata.Artist;
-				const license = extmetadata && extmetadata.LicenseShortName;
 
 				return {
 					id: ( id++ ).toString(),
 					filename: page.title.split( ':' )[ 1 ],
+					title: page.title,
 					url: responsiveUrls || imageinfo.url,
 					width: imageinfo.thumbwidth,
 					attribution: {
-						author: artist ? strip( artist.value ) : '',
-						url: convertUrlToMobile( imageinfo.descriptionshorturl ),
-						license: license && license.value
+						url: convertUrlToMobile( imageinfo.descriptionshorturl )
 					}
 				};
 			} );
 	} );
 };
 
-module.exports = { searchImages: searchAllImages, abortSearch: abortAllRequests };
+module.exports = {
+	searchImages: searchAllImages,
+	abortSearch: abortAllRequests,
+	getImageExtMetadata: getImageExtMetadata
+};

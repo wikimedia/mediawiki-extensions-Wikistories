@@ -120,6 +120,7 @@ module.exports = {
 				);
 				return {
 					url: item.url,
+					title: item.title,
 					filename: item.filename,
 					attribution: item.attribution
 				};
