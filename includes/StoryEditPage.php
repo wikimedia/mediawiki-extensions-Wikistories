@@ -6,6 +6,7 @@ use EditPage;
 use Html;
 use MediaWiki\MediaWikiServices;
 use OOUI\FieldLayout;
+use OOUI\HiddenInputWidget;
 use OOUI\TextInputWidget;
 
 class StoryEditPage extends EditPage {
@@ -27,7 +28,13 @@ class StoryEditPage extends EditPage {
 		$currentFrames = $story->getFrames();
 		$emptyFrame = (object)[
 			'image' => (object)[ 'filename' => '' ],
-			'text' => (object)[ 'value' => '' ],
+			'text' => (object)[
+				'value' => '',
+				'fromArticle' => (object)[
+					'articleTitle' => '',
+					'originalText' => '',
+				],
+			],
 		];
 
 		$form = '<div class="ext-wikistories-editform">';
@@ -66,6 +73,20 @@ class StoryEditPage extends EditPage {
 					'align' => 'left'
 				]
 			);
+			$form .= new HiddenInputWidget(
+				[
+					'name' => "story_frame_{$i}_text_fromArticle_articleTitle",
+					'value' => $frame->text->fromArticle->articleTitle ?? '',
+				]
+
+			);
+			$form .= new HiddenInputWidget(
+				[
+					'name' => "story_frame_{$i}_text_fromArticle_originalText",
+					'value' => $frame->text->fromArticle->originalText ?? '',
+				]
+
+			);
 		}
 
 		$form .= '</div>';
@@ -87,6 +108,8 @@ class StoryEditPage extends EditPage {
 		while ( true ) {
 			$filename = $request->getText( "story_frame_{$i}_image_filename" );
 			$text = $request->getText( "story_frame_{$i}_text_value" );
+			$articleTitle = $request->getText( "story_frame_{$i}_text_fromArticle_articleTitle" );
+			$originalText = $request->getText( "story_frame_{$i}_text_fromArticle_originalText" );
 			if ( empty( $filename ) && empty( $text ) ) {
 				// stop reading as soon as all fields are empty
 				break;
@@ -96,7 +119,11 @@ class StoryEditPage extends EditPage {
 					'filename' => $filename,
 				],
 				'text' => [
-					'value' => $text
+					'value' => $text,
+					'fromArticle' => [
+						'articleTitle' => $articleTitle,
+						'originalText' => $originalText,
+					],
 				],
 			];
 			$i++;
