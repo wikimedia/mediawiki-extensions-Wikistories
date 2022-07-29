@@ -13,8 +13,6 @@
 	white-space: nowrap;
 	display: flex;
 	align-items: center;
-	border-top: 0.01em solid @colorGray12;
-	border-bottom: 0.01em solid @colorGray12;
 
 	&-stories {
 		display: flex;
@@ -70,6 +68,11 @@
 	&-item-cta {
 		flex: none;
 		width: fit-content;
+		padding-left: 0;
+
+		&-btn {
+			margin-left: 0;
+		}
 	}
 
 	&-item-cta-text {

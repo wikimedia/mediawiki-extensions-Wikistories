@@ -183,7 +183,7 @@ module.exports = {
 
 		&-input-title {
 			width: 100%;
-			border: 2px solid @colorGray10;
+			border: 2px solid @color-primary;
 			box-sizing: border-box;
 			border-radius: 2px;
 			height: 36px;
@@ -204,6 +204,8 @@ module.exports = {
 		&-info {
 			font-size: 14px;
 			margin-top: 45px;
+			width: 70%;
+			text-align: center;
 		}
 	}
 
@@ -226,6 +228,7 @@ module.exports = {
 		text-align: center;
 
 		&-text {
+			color: @colorGray2;
 			font-weight: bold;
 		}
 
@@ -244,7 +247,7 @@ module.exports = {
 				display: inline-block;
 				width: 12px;
 				height: 12px;
-				background-color: #c8ccd1;
+				background-color: @colorGray7;
 				border-radius: 100%;
 				-webkit-animation: bounce 1.4s infinite ease-in-out;
 				animation: bounce 1.4s infinite ease-in-out;
