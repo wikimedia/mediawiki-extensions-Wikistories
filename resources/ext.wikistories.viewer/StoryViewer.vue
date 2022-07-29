@@ -343,11 +343,8 @@ module.exports = {
 			z-index: @z-level-two;
 			text-align: left;
 
-			&-wikistory {
-				font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
-			}
-
 			&-title {
+				font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
 				overflow: hidden;
 				line-height: 44px;
 				font-size: 32px;
