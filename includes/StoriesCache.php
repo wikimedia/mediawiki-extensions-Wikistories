@@ -105,7 +105,7 @@ class StoriesCache {
 	private function fetchStories( string $titleDbKey ): array {
 		$limit = 10;
 		$result = [];
-		$rows = $this->loadBalancer->getConnectionRef( DB_REPLICA )->newSelectQueryBuilder()
+		$rows = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
 			->table( 'pagelinks' )
 			->join( 'page', null, 'pl_from=page_id' )
 			->fields( [ 'pl_from' ] )
