@@ -10,6 +10,9 @@ use OOUI\TextInputWidget;
 
 class StoryEditPage extends EditPage {
 
+	/** @var StoryContent */
+	private $wipStory = null;
+
 	protected function showContentForm() {
 		$maxFrames = $this->context->getConfig()->get( 'WikistoriesMaxFrames' );
 		$maxTextLength = $this->context->getConfig()->get( 'WikistoriesMaxTextLength' );
@@ -18,11 +21,15 @@ class StoryEditPage extends EditPage {
 		$storyConverter = MediaWikiServices::getInstance()
 			->get( 'Wikistories.StoryConverter' );
 
-		/** @var StoryContent $originalStory */
-		$originalStory = $this->getContentObject();
-		'@phan-var StoryContent $originalStory';
+		if ( $this->wipStory === null ) {
+			/** @var StoryContent $originalStory */
+			$originalStory = $this->getContentObject();
+			'@phan-var StoryContent $originalStory';
 
-		$story = $storyConverter->toLatest( $originalStory );
+			$story = $storyConverter->toLatest( $originalStory );
+		} else {
+			$story = $this->wipStory;
+		}
 
 		$currentFrames = $story->getFrames();
 		$emptyFrame = (object)[
@@ -102,7 +109,11 @@ class StoryEditPage extends EditPage {
 			$i++;
 		}
 
-		return json_encode( $story, JSON_PRETTY_PRINT );
+		$stringContent = json_encode( $story, JSON_PRETTY_PRINT );
+
+		$this->wipStory = new StoryContent( $stringContent );
+
+		return $stringContent;
 	}
 
 }
