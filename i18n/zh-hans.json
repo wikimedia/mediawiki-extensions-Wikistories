@@ -2,6 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"GuoPC",
+			"Lakejason0",
+			"Lanyun1103",
 			"NACHOgao3",
 			"StarrySky",
 			"沈澄心"
@@ -12,12 +14,13 @@
 	"right-edit-story": "编辑故事",
 	"action-edit-story": "编辑故事",
 	"wikistories-specialstorybuilder-title": "故事生成器",
-	"wikistories-specialstorybuilder-loading": "正在载入...",
+	"wikistories-specialstorybuilder-loading": "加载中…",
 	"wikistories-specialstorybuilder-nojswarning": "此特殊页面需要JavaScript才能工作",
 	"wikistories-story-editdone": "完成",
 	"wikistories-article-cancelselection": "清除",
 	"wikistories-article-loading": "正在加载条目...",
 	"wikistories-confirmdialog-delete-title": "删除本页？",
 	"wikistories-confirmdialog-delete-accept": "删除",
-	"wikistories-confirmdialog-delete-cancel": "取消"
+	"wikistories-confirmdialog-delete-cancel": "取消",
+	"wikistories-builder-publishform-saveerror": "在发布 Wikistory 时发生错误。请尝试重新发布。"
 }
