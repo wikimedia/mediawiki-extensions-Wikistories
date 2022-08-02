@@ -56,7 +56,6 @@ const getCommonsImages = ( lang, queryString ) => {
 
 /**
  * @param {Array} titles includes image filenames as strings
- * @param {string} lang Language to use for metadata
  * @return {jQuery.Promise} resolves with image attribution data
  */
 const getImageInfo = function ( titles ) {
@@ -146,12 +145,16 @@ const getArticleImages = ( lang, queryString ) => {
 			safeAssignString( fileUrlMap, i.title, i.srcset[ 0 ].src );
 		} );
 
-		return getImageInfo( images.map( i => i.title ), lang ).then( data => {
+		return getImageInfo( images.map( i => i.title ) ).then( data => {
 			if ( !data.query || !data.query.pages ) {
 				return [];
 			}
 			return Object.keys( data.query.pages ).filter( pageId => {
-				const imageinfo = data.query.pages[ pageId ].imageinfo[ 0 ];
+				const page = data.query.pages[ pageId ];
+				if ( !page.imageinfo ) {
+					return false;
+				}
+				const imageinfo = page.imageinfo[ 0 ];
 				const type = imageinfo.mediatype;
 				// keep only images that are big enough
 				return ( type === 'BITMAP' || type === 'DRAWING' ) &&
