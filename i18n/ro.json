@@ -10,5 +10,13 @@
 	"wikistories-search-noresultstext": "Niciun rezultat",
 	"wikistories-story-goto-publish": "Înainte",
 	"wikistories-imageattribution-author-unknown": "Autor necunoscut",
-	"wikistories-article-usetext": "Adaugă la poveste"
+	"wikistories-article-usetext": "Adaugă la poveste",
+	"wikistories-alert-okbuttontext": "În regulă",
+	"wikistories-error-notenoughframes-title": "Insuficiente pagini",
+	"wikistories-error-frameswithouttext-title": "Text lipsă",
+	"wikistories-builder-publishform-placeholder": "Introduceți titlul poveștii...",
+	"wikistories-builder-publishform-publishbutton": "Publică",
+	"wikistories-builder-publishform-info": "Poveștile publicate vor fi disponibile pe pagina articolului.",
+	"wikistories-builder-publishform-invalidtitle-empty": "Introduceți titlul poveștii",
+	"wikistories-builder-publishform-invalidtitle-format": "Titlu de poveste invalid"
 }
