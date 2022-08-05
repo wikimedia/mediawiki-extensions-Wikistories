@@ -118,7 +118,7 @@ module.exports = {
 		};
 	},
 	computed: $.extend( mapGetters( [
-		'story', 'currentFrame', 'editUrl',
+		'story', 'currentFrame', 'editUrl', 'isCurrentImageLoaded',
 		'isStoryEnd', 'isLastStory', 'isFirstFrame', 'isLastFrame',
 		'isFramePlaying', 'isFrameDonePlaying', 'isFrameViewed', 'currentStoryTitle'
 	] ), {
@@ -126,7 +126,8 @@ module.exports = {
 			return {
 				backgroundImage: 'url(' + this.currentFrame.url + ')',
 				backgroundPosition: 'center',
-				backgroundSize: 'cover'
+				backgroundSize: 'cover',
+				backgroundColor: this.isCurrentImageLoaded ? '#fff' : '#000'
 			};
 		}
 	} ),
@@ -173,12 +174,6 @@ module.exports = {
 				this.timer.pause();
 			}
 		},
-		preloadStory: function () {
-			this.story.forEach( ( frame ) => {
-				const img = new Image();
-				img.src = frame.url;
-			} );
-		},
 		navigateFrame: function ( e ) {
 			if ( !isTouchDevice ) {
 				return;
@@ -209,7 +204,6 @@ module.exports = {
 	watch: {
 		story: function ( newStory ) {
 			if ( newStory.length ) {
-				this.preloadStory();
 				this.setIsStoryEnd( false );
 				this.resetFrame();
 				this.storyStart = Date.now();
@@ -312,7 +306,6 @@ module.exports = {
 		height: 100%;
 		margin: 0 auto;
 		position: relative;
-		background-color: @colorGray1;
 
 		@media screen and ( min-width: 720px ) {
 			max-width: 993.3px;

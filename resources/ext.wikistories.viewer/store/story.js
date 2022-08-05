@@ -3,7 +3,8 @@ module.exports = {
 		stories: [],
 		storyId: null,
 		frameId: 0,
-		isStoryEnd: false
+		isStoryEnd: false,
+		loadedImages: []
 	},
 	getters: {
 		currentStory: ( state ) => {
@@ -63,6 +64,9 @@ module.exports = {
 		},
 		editUrl: ( state, getters ) => {
 			return getters.currentStory.editUrl;
+		},
+		isCurrentImageLoaded: ( state, getters ) => {
+			return state.loadedImages.indexOf( getters.currentFrame.url ) !== -1;
 		}
 	},
 	mutations: {
@@ -77,6 +81,11 @@ module.exports = {
 		},
 		setIsStoryEnd: ( state, isStoryEnd ) => {
 			state.isStoryEnd = isStoryEnd;
+		},
+		setImageIsLoaded: ( state, imageUrl ) => {
+			if ( state.loadedImages.indexOf( imageUrl ) === -1 ) {
+				state.loadedImages.push( imageUrl );
+			}
 		}
 	},
 	actions: {
@@ -85,6 +94,15 @@ module.exports = {
 		},
 		setStoryId: ( context, storyId ) => {
 			context.commit( 'setStoryId', storyId );
+
+			// Preload story images
+			context.getters.story.forEach( ( frame ) => {
+				const img = new Image();
+				img.src = frame.url;
+				img.onload = () => {
+					context.commit( 'setImageIsLoaded', frame.url );
+				};
+			} );
 		},
 		setStoryFrameId: ( context, frameId ) => {
 			context.commit( 'setStoryFrameId', frameId );
