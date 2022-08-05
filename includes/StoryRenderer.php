@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Exception;
 use File;
 use FormatMetadata;
 use Html;
@@ -125,13 +124,12 @@ class StoryRenderer {
 	 * @param string $filename
 	 * @param int $size
 	 * @return string
-	 * @throws Exception
 	 */
 	private function getUrl( array $files, string $filename, int $size ): string {
 		/** @var File $file */
-		$file = $files[ strtr( $filename, ' ', '_' ) ];
+		$file = $files[ strtr( $filename, ' ', '_' ) ] ?? false;
 		if ( !$file ) {
-			throw new Exception( "Image not found: $filename" );
+			return '';
 		}
 		return $file->createThumb( $size );
 	}
@@ -140,13 +138,16 @@ class StoryRenderer {
 	 * @param array $files
 	 * @param string $filename
 	 * @return array Data structure with attribution information such author or license
-	 * @throws Exception
 	 */
 	private function getAttribution( array $files, string $filename ): array {
 		/** @var File $file */
-		$file = $files[ strtr( $filename, ' ', '_' ) ];
+		$file = $files[ strtr( $filename, ' ', '_' ) ] ?? false;
 		if ( !$file ) {
-			throw new Exception( "Image not found: $filename" );
+			return [
+				'author' => '',
+				'license' => '',
+				'url' => '',
+			];
 		}
 
 		$formatMetadata = new FormatMetadata();
