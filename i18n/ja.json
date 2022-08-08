@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"MathXplore",
-			"Mugenpman"
+			"Mugenpman",
+			"Sou0012"
 		]
 	},
 	"wikistories-specialstorybuilder-title": "ストーリーを作成",
@@ -35,7 +36,7 @@
 	"wikistories-builder-publishform-invalidtitle-empty": "ストーリーの題名を入力してください",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "同名のストーリーが既に存在します。重複しない題名を入力してください。",
 	"wikistories-builder-publishform-invalidtitle-notfound": "ストーリーが見つかりません。",
-	"wikistories-builder-publishform-saveerror": "ストーリーを公開中にエラーが発生しました。後ほどお試しください。",
+	"wikistories-builder-publishform-saveerror": "ウィキストーリーの公開時にエラーが発生しました。再度、公開をお試しください。",
 	"wikistories-nojs-form-label-related-article": "関連記事",
 	"wikistories-nojs-form-label-image": "画像",
 	"wikistories-nojs-form-label-text": "テキスト",
