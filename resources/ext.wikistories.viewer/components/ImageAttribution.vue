@@ -2,7 +2,7 @@
 	<div class="ext-wikistories-image-attribution">
 		<div class="ext-wikistories-image-attribution-info">
 			<div
-				v-for="license in presentLicenses"
+				v-for="license in imgAttribution.license"
 				:key="license"
 				:class="
 					`ext-wikistories-image-attribution-info-${license.toLowerCase()}
@@ -32,25 +32,12 @@ const mapGetters = require( 'vuex' ).mapGetters;
 // @vue/component
 module.exports = {
 	name: 'ImageAttribution',
-	data: function () {
-		return {
-			licenseTypes: [ 'CC', 'BY', 'SA', 'Fair', 'Public' ]
-		};
-	},
-	computed: $.extend( mapGetters( [ 'imgAttribution' ] ), {
-		presentLicenses: function () {
-			return this.licenseTypes.filter(
-				( licenseType ) => {
-					const imageLicense = this.imgAttribution.license;
-					return imageLicense && imageLicense.indexOf( licenseType ) !== -1;
-				}
-			);
-		}
-	} )
+	computed: mapGetters( [ 'imgAttribution' ] )
 };
 </script>
 
 <style lang="less">
+@import 'mediawiki.ui/variables.less';
 @z-level-two: 300;
 
 .ext-wikistories-image-attribution {
@@ -58,8 +45,8 @@ module.exports = {
 	bottom: 0;
 	width: 100%;
 	height: 44px;
-	color: #f8f9fa;
-	border: #f8f9fa;
+	color: @colorGray15;
+	border: @colorGray15;
 	display: flex;
 	justify-content: space-between;
 	z-index: @z-level-two;
@@ -101,7 +88,7 @@ module.exports = {
 			max-width: 220px;
 			margin-right: 4px;
 			font-size: 12px;
-			color: #fff;
+			color: @color-base--inverted;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;

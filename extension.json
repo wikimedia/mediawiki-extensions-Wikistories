@@ -93,10 +93,9 @@
 	},
 	"ResourceModules": {
 		"ext.wikistories.viewer-nojs": {
-			"localBasePath": "resources/ext.wikistories.viewer-nojs",
 			"targets": [ "desktop", "mobile" ],
 			"styles": [
-				"viewer-nojs.less"
+				"ext.wikistories.viewer-nojs/viewer-nojs.less"
 			]
 		},
 		"ext.wikistories.viewer": {
