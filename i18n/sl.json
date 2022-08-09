@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dbc334"
+			"Dbc334",
+			"Eleassar"
 		]
 	},
-	"wikistories-article-cancelselection": "Počisti"
+	"wikistories-article-cancelselection": "Počisti",
+	"wikistories-confirmdialog-delete-cancel": "Prekliči"
 }
