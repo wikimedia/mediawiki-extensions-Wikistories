@@ -26,12 +26,12 @@ module.exports = {
 	name: 'Frames',
 	emits: [ 'max-limit' ],
 	computed: mapGetters( [ 'thumbnails', 'maxFrames' ] ),
-	methods: $.extend( mapActions( [ 'selectFrame', 'reorderFrames' ] ), {
+	methods: $.extend( mapActions( [ 'selectFrame', 'reorderFrames', 'routePush' ] ), {
 		addFrames: function () {
 			if ( this.maxFrames ) {
 				this.$emit( 'max-limit' );
 			} else {
-				this.$router.push( '/search/many' );
+				this.routePush( 'searchMany' );
 			}
 		}
 	} ),

@@ -1,5 +1,3 @@
-const router = require( '../router.js' );
-
 const MIN_FRAMES = mw.config.get( 'wgWikistoriesMinFrames' );
 const MAX_FRAMES = mw.config.get( 'wgWikistoriesMaxFrames' );
 const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
@@ -43,14 +41,10 @@ module.exports = {
 			index = Math.min( index, state.frames.length - 1 );
 			state.currentFrameIndex = index;
 		},
-		removeFrame: ( state ) => {
+		removeFrame: function ( state ) {
 			state.frames.splice( state.currentFrameIndex, 1 );
-			if ( state.frames.length < 1 ) {
-				router.replace( '/search' );
-			} else {
-				if ( state.frames.length === state.currentFrameIndex ) {
-					state.currentFrameIndex--;
-				}
+			if ( state.frames.length > 0 && ( state.frames.length === state.currentFrameIndex ) ) {
+				state.currentFrameIndex--;
 			}
 		},
 		reorderFrames: ( state, order ) => {
@@ -158,8 +152,9 @@ module.exports = {
 				return newFrame;
 			} );
 		},
+		frameCount: ( state ) => state.frames.length,
 		currentFrame: ( state ) => {
-			const f = state.frames[ state.currentFrameIndex ];
+			const f = state.frames[ state.currentFrameIndex ] || {};
 			return {
 				text: f.text,
 				style: makeFrameStyle( f ),
