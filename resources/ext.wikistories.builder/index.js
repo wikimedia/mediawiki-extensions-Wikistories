@@ -7,7 +7,8 @@ const storyEditMode = mw.config.get( 'wgWikistoriesMode' );
 
 if ( storyEditMode === 'edit' ) {
 	// Edit an existing story
-	store.dispatch( 'selectFrame', 0 );
+	const params = new URLSearchParams( window.location.search );
+	store.dispatch( 'selectFrame', params.get( 'frameid' ) );
 	router.push( '/story' );
 } else {
 	// Create a new story

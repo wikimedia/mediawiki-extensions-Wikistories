@@ -63,7 +63,9 @@ module.exports = {
 			return state.stories[ state.stories.length - 1 ].pageId.toString() === state.storyId;
 		},
 		editUrl: ( state, getters ) => {
-			return getters.currentStory.editUrl;
+			// Correct frameId to 0 for the cover frame AND the first frame of content
+			const frameId = Math.max( state.frameId - 1, 0 );
+			return getters.currentStory.editUrl + '?frameid=' + frameId;
 		},
 		isCurrentImageLoaded: ( state, getters ) => {
 			return state.loadedImages.indexOf( getters.currentFrame.url ) !== -1;

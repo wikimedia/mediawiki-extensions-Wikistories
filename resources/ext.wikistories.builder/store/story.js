@@ -34,7 +34,15 @@ module.exports = {
 		title: storyContent.title
 	},
 	mutations: {
-		selectFrame: ( state, index ) => { state.currentFrameIndex = index; },
+		selectFrame: ( state, index ) => {
+			// Make sure it's an integer
+			index = parseInt( index ) || 0;
+			// Make sure it's >= 0
+			index = Math.max( index, 0 );
+			// Make sure it's <= max index
+			index = Math.min( index, state.frames.length - 1 );
+			state.currentFrameIndex = index;
+		},
 		removeFrame: ( state ) => {
 			state.frames.splice( state.currentFrameIndex, 1 );
 			if ( state.frames.length < 1 ) {
