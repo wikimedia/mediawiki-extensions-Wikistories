@@ -1,6 +1,6 @@
 <template>
 	<img
-		:src="observerSupported ? false : source"
+		:src="observerSupported ? null : source"
 		:data-src="source"
 		:alt="alt"
 		loading="lazy"
