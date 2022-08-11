@@ -7,6 +7,7 @@ use FormatMetadata;
 use Html;
 use MediaWiki\Linker\LinkTarget;
 use RepoGroup;
+use RequestContext;
 use SpecialPage;
 use Title;
 use TitleFormatter;
@@ -37,11 +38,23 @@ class StoryRenderer {
 	public function renderNoJS( StoryContent $story, int $pageId ): array {
 		$storyView = $this->getStoryForViewer( $story, 0, new TitleValue( NS_STORY, 'Unused' ) );
 		$articleTitle = Title::makeTitle( NS_MAIN, $story->getFromArticle(), '/story/' . $pageId );
+		$missingImages = array_filter( $storyView[ 'frames' ], static function ( $frame ) {
+			return empty( $frame['url'] );
+		} );
+
 		$html = Html::element(
 			'a',
 			[ 'href' => $articleTitle->getLinkURL() ],
 			$articleTitle->getText()
 		);
+
+		if ( count( $missingImages ) > 0 ) {
+			$context = RequestContext::getMain();
+			$html .= Html::warningBox(
+				$context->msg( 'wikistories-nojs-viewer-error' )->params( count( $missingImages ) )->text()
+			);
+		}
+
 		$html .= Html::rawElement(
 			'div',
 			[ 'class' => 'ext-wikistories-viewer-nojs' ],
@@ -50,7 +63,10 @@ class StoryRenderer {
 					'div',
 					[
 						'class' => 'ext-wikistories-viewer-nojs-frame',
-						'style' => 'background-image:url(' . $frame[ 'url' ] . ');',
+						'style' => empty( $frame[ 'url' ] ) ?
+							'background-color: #000'
+							:
+							'background-image:url(' . $frame[ 'url' ] . ');',
 					],
 					$this->getNoJsFrameHtmlString( $frame )
 				);
@@ -84,8 +100,10 @@ class StoryRenderer {
 			'editUrl' => SpecialPage::getTitleFor( 'StoryBuilder', $storyFullTitle )->getLinkURL(),
 			'thumbnail' => $thumb,
 			'frames' => array_map( function ( $frame ) use ( $files ) {
+				$url = $this->getUrl( $files, $frame->image->filename, 640 );
 				return [
-					'url' => $this->getUrl( $files, $frame->image->filename, 640 ),
+					'url' => $url,
+					'fileNotFound' => empty( $url ),
 					'text' => $frame->text->value,
 					'attribution' => $this->getAttribution( $files, $frame->image->filename ),
 				];
@@ -108,8 +126,10 @@ class StoryRenderer {
 			'title' => $pageTitle,
 			'fromArticle' => $story->getFromArticle(),
 			'frames' => array_map( function ( $frame ) use ( $files ) {
+				$url = $this->getUrl( $files, $frame->image->filename, 640 );
 				return [
-					'url' => $this->getUrl( $files, $frame->image->filename, 640 ),
+					'url' => $url,
+					'fileNotFound' => empty( $url ),
 					'filename' => $frame->image->filename,
 					'text' => $frame->text->value,
 					'textFromArticle' => $frame->text->fromArticle->originalText ?? '',
@@ -145,7 +165,7 @@ class StoryRenderer {
 		if ( !$file ) {
 			return [
 				'author' => '',
-				'license' => '',
+				'license' => [],
 				'url' => '',
 			];
 		}
@@ -177,11 +197,13 @@ class StoryRenderer {
 			$frame[ 'text' ]
 		);
 
-		$html .= Html::rawElement(
-			'div',
-			[ 'class' => 'ext-wikistories-viewer-nojs-frame-attribution' ],
-			$this->getAttributionHtmlString( $frame[ 'attribution' ] )
-		);
+		if ( $frame[ 'attribution' ][ 'license'] !== [] ) {
+			$html .= Html::rawElement(
+				'div',
+				[ 'class' => 'ext-wikistories-viewer-nojs-frame-attribution' ],
+				$this->getAttributionHtmlString( $frame[ 'attribution' ] )
+			);
+		}
 		return $html;
 	}
 

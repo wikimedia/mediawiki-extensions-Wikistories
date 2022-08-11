@@ -12,14 +12,15 @@ const getImageExtMetadata = searchTools.getImageExtMetadata;
 
 let orderKey = 10;
 
-const makeFrameStyle = f => {
+const makeFrameStyle = ( f, thumbnail = false ) => {
 	return f.url ?
 		{
 			backgroundImage: 'url(' + f.url + ')',
 			backgroundPosition: 'center',
 			backgroundSize: 'cover'
-		} :
-		{ background: 'linear-gradient(338.27deg, #0BD564 -70.53%, #3366CC 71.84%)' };
+		} : {
+			backgroundColor: thumbnail ? '#eaecf0' : '#fff'
+		};
 };
 
 module.exports = {
@@ -154,7 +155,7 @@ module.exports = {
 				if ( index === state.currentFrameIndex ) {
 					newFrame.selected = true;
 				}
-				newFrame.style = makeFrameStyle( f );
+				newFrame.style = makeFrameStyle( f, true );
 				return newFrame;
 			} );
 		},
@@ -163,7 +164,8 @@ module.exports = {
 			return {
 				text: f.text,
 				style: makeFrameStyle( f ),
-				imgAttribution: f.attribution
+				imgAttribution: f.attribution,
+				fileNotFound: f.fileNotFound
 			};
 		},
 		missingFrames: ( state ) => {
