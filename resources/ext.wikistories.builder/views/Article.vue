@@ -69,7 +69,7 @@ module.exports = {
 		};
 	},
 	computed: mapGetters( [ 'currentArticle', 'fromArticle' ] ),
-	methods: $.extend( mapActions( [ 'fetchArticle', 'setText', 'setTextFromArticle' ] ), {
+	methods: $.extend( mapActions( [ 'fetchArticle', 'setText', 'setTextFromArticle', 'routePush', 'routeBack' ] ), {
 		setToolbarDisplay: function ( status ) {
 			this.display = status;
 		},
@@ -102,13 +102,13 @@ module.exports = {
 			this.hideSelectionToolbar();
 			this.setTextFromArticle( this.selectedText );
 			this.setText( this.selectedText );
-			this.$router.push( { name: 'Story' } );
+			this.routePush( 'story' );
 		},
 		onDismiss: function () {
 			this.hideSelectionToolbar();
 		},
 		onBack: function () {
-			this.$router.back();
+			this.routeBack();
 		}
 	} ),
 	created: function () {

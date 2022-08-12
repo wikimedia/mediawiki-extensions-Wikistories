@@ -48,6 +48,7 @@
 
 <script>
 const mapGetters = require( 'vuex' ).mapGetters;
+const mapActions = require( 'vuex' ).mapActions;
 const Navigator = require( '../components/Navigator.vue' );
 const Toast = require( '../components/Toast.vue' );
 const saveStory = require( '../api/saveStory.js' );
@@ -93,7 +94,7 @@ module.exports = {
 			return this.error && !this.toast.show;
 		}
 	} ),
-	methods: {
+	methods: $.extend( mapActions( [ 'routeBack' ] ), {
 		navigateToArticle: function ( storyPageId ) {
 			const titleObj = mw.Title.newFromText( this.fromArticle + '#/story/' + storyPageId );
 			window.location = titleObj.getUrl();
@@ -129,7 +130,7 @@ module.exports = {
 			}.bind( this ) );
 		},
 		onBack: function () {
-			this.$router.back();
+			this.routeBack();
 		},
 		setErrorFeedback: function ( response ) {
 			this.savingInProgress = false;
@@ -153,7 +154,7 @@ module.exports = {
 			this.toast.show = false;
 			this.error = null;
 		}
-	},
+	} ),
 	mounted: function () {
 		if ( this.mode === 'edit' ) {
 			this.storyTitle = this.title.replace( /_/g, ' ' );

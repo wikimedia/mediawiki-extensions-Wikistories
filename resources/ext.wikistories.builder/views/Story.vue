@@ -15,7 +15,7 @@
 			<dots-menu-item
 				icon="replace"
 				:text="$i18n( 'wikistories-story-replaceimage' ).text()"
-				route-to="/search/one"
+				@click="replaceImage"
 			></dots-menu-item>
 			<dots-menu-item
 				icon="delete"
@@ -95,7 +95,7 @@ module.exports = {
 			}
 		};
 	},
-	computed: $.extend( mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'mode' ] ), {
+	computed: $.extend( mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'mode', 'frameCount' ] ), {
 		messages: function () {
 			return this.mode === 'edit' ?
 				{
@@ -109,7 +109,7 @@ module.exports = {
 				};
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'removeFrame', 'fetchImgAttribution' ] ), {
+	methods: $.extend( mapActions( [ 'removeFrame', 'fetchImgAttribution', 'routePush', 'routeReplace' ] ), {
 		showDeleteFrameConfirmationDialog: function () {
 			this.viewDeleteFrameConfirmDialog = true;
 		},
@@ -154,7 +154,13 @@ module.exports = {
 		},
 		deleteFrame: function () {
 			this.removeFrame();
+			if ( this.frameCount === 0 ) {
+				this.routeReplace( 'searchMany' );
+			}
 			this.viewDeleteFrameConfirmDialog = false;
+		},
+		replaceImage: function () {
+			this.routePush( 'searchOne' );
 		},
 		onDiscard: function () {
 			const titleObj = mw.Title.newFromText( this.fromArticle );
@@ -171,10 +177,10 @@ module.exports = {
 				return;
 			}
 
-			this.$router.push( { name: 'PublishForm' } );
+			this.routePush( 'publish' );
 		},
 		onSelectText: function () {
-			this.$router.push( { name: 'Article' } );
+			this.routePush( 'article' );
 		}
 	} )
 };

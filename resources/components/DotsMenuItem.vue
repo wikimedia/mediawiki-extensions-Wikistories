@@ -17,11 +17,6 @@ module.exports = {
 			type: String,
 			required: true
 		},
-		routeTo: {
-			type: String,
-			required: false,
-			default: null
-		},
 		icon: {
 			type: String,
 			required: false,
@@ -32,9 +27,6 @@ module.exports = {
 	methods: {
 		onMousedown: function () {
 			this.$emit( 'click' );
-			if ( this.routeTo ) {
-				this.$router.push( this.routeTo );
-			}
 		}
 	}
 };

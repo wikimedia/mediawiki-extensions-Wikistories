@@ -66,7 +66,7 @@ module.exports = {
 			}
 		};
 	},
-	computed: $.extend( mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle', 'maxFramesSelected' ] ), {
+	computed: $.extend( mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle', 'maxFramesSelected', 'routeStackLength' ] ), {
 		navigatorMessage: function () {
 			if ( this.selection.length === 0 ) {
 				return this.$i18n( 'wikistories-search-navigator-title' ).text();
@@ -78,7 +78,7 @@ module.exports = {
 			return this.selection.length > 0;
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'addFrames', 'setFrameImage' ] ), {
+	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'addFrames', 'setFrameImage', 'routePush', 'routeBack' ] ), {
 		onSubmit: function ( e ) { return e.preventDefault(); },
 		onInput: function ( e ) {
 			this.search( e.target.value );
@@ -88,17 +88,17 @@ module.exports = {
 			this.clear();
 		},
 		onClose: function () {
-			if ( this.$router.history.stack.length === 1 ) {
+			if ( this.routeStackLength === 1 ) {
 				const titleObj = mw.Title.newFromText( this.fromArticle );
 				window.location = titleObj.getUrl();
 			} else {
-				this.$router.back();
+				this.routeBack();
 			}
 		},
 		onItemSelect: function ( data ) {
 			if ( this.mode === 'one' ) {
 				this.setFrameImage( this.results.find( ( r ) => r.id === data[ 0 ] ) );
-				this.$router.push( '/story' );
+				this.routePush( 'story' );
 			} else {
 				this.select( data );
 			}
@@ -126,7 +126,7 @@ module.exports = {
 				};
 			}.bind( this ) );
 			this.addFrames( array );
-			this.$router.push( { name: 'Story' } );
+			this.routePush( 'story' );
 		}
 	} ),
 	created: function () {

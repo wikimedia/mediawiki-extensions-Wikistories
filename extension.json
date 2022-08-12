@@ -140,7 +140,6 @@
 			"targets": [ "desktop", "mobile" ],
 			"packageFiles": [
 				"index.js",
-				"router.js",
 				"contributionEvents.js",
 				"App.vue",
 				"api/getPageInfo.js",
@@ -156,11 +155,13 @@
 				"components/ImageListView.vue",
 				"components/Navigator.vue",
 				"components/PrimaryButton.vue",
+				"components/RouterView.vue",
 				"components/Toast.vue",
 				"plugins/config.js",
 				"mixins/observer.js",
 				"store/article.js",
 				"store/index.js",
+				"store/router.js",
 				"store/search.js",
 				"store/story.js",
 				"util/convertUrlToMobile.js",
@@ -173,8 +174,7 @@
 				"views/Search.vue",
 				"views/Story.vue",
 				{ "name": "DotsMenu.vue", "file": "../components/DotsMenu.vue" },
-				{ "name": "DotsMenuItem.vue", "file": "../components/DotsMenuItem.vue" },
-				{ "name": "vue-router.common.js", "file": "../lib/vue-router/vue-router.common.js" }
+				{ "name": "DotsMenuItem.vue", "file": "../components/DotsMenuItem.vue" }
 			],
 			"dependencies": [
 				"vue",
