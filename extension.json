@@ -2,6 +2,7 @@
 	"name": "Wikistories",
 	"namemsg": "wikistories-extensionname",
 	"descriptionmsg": "wikistories-extensiondesc",
+	"license-name": "MIT",
 	"requires": {
 		"MediaWiki": ">= 1.38.0"
 	},
