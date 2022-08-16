@@ -135,7 +135,7 @@ module.exports = {
 			const nextStoryId = stories[ currentStoriesIndex + 1 ].pageId.toString();
 
 			context.commit( 'setStoryId', nextStoryId );
-			window.location.hash = '#/story/' + nextStoryId;
+			window.location.replace( '#/story/' + nextStoryId );
 		}
 	}
 };
