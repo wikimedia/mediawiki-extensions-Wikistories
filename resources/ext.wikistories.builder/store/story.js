@@ -69,17 +69,15 @@ module.exports = {
 			const frame = state.frames[ state.currentFrameIndex ];
 			frame.textFromArticle = textFromArticle.slice( 0, MAX_TEXT_LENGTH );
 		},
-		setImageUrl: ( state, url ) => {
-			state.frames[ state.currentFrameIndex ].url = url;
-		},
-		setImageFilename: ( state, title ) => {
-			state.frames[ state.currentFrameIndex ].filename = title;
-		},
-		setImageAttribution: ( state, attribution ) => {
-			state.frames[ state.currentFrameIndex ].attribution = attribution;
+		setFrame: ( state, data ) => {
+			state.frames[ state.currentFrameIndex ] = data;
 		},
 		setFrameImageAttribution: ( state, data ) => {
-			state.frames[ data.frameIndex ].attribution = data.attribution;
+			state.frames
+				.filter( frame => frame.title === data.title )
+				.forEach( frame => {
+					frame.attribution = data.attribution;
+				} );
 		}
 	},
 	actions: {
@@ -90,7 +88,6 @@ module.exports = {
 			context.commit( 'removeFrame' );
 		},
 		addFrames: ( context, frames ) => {
-			let currentIndex = context.state.frames.length;
 			context.commit( 'addFrames', frames );
 
 			getImageExtMetadata( frames.map( f => f.title ), lang ).then( response => {
@@ -100,7 +97,7 @@ module.exports = {
 
 					context.commit( 'setFrameImageAttribution', {
 						attribution: attribution,
-						frameIndex: currentIndex++
+						title: frame.title
 					} );
 				} );
 			} );
@@ -111,26 +108,21 @@ module.exports = {
 		setTextFromArticle: ( context, textFromArticle ) => {
 			context.commit( 'setTextFromArticle', textFromArticle );
 		},
-		setImageUrl: ( context, url ) => {
-			context.commit( 'setImageUrl', url );
-		},
-		setImageFilename: ( context, filename ) => {
-			context.commit( 'setImageFilename', filename );
-		},
 		setFrameImage: ( context, data ) => {
 			const url = data.attribution.url;
-			context.commit( 'setImageUrl', data.url );
-			context.commit( 'setImageFilename', data.filename );
-			context.commit( 'setImageAttribution', data.attribution );
+			context.commit( 'setFrame', data );
 
 			getImageExtMetadata( data.title, lang ).then( response => {
 				const author = response[ data.title ].author;
 				const license = response[ data.title ].license;
 
-				context.commit( 'setImageAttribution', {
-					author: author,
-					license: license,
-					url: url
+				context.commit( 'setFrameImageAttribution', {
+					attribution: {
+						author: author,
+						license: license,
+						url: url
+					},
+					title: data.title
 				} );
 			} );
 
