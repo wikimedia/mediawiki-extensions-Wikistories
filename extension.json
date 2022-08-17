@@ -36,7 +36,8 @@
 		"GetBetaFeaturePreferences": "MediaWiki\\Extension\\Wikistories\\Hooks::onGetBetaFeaturePreferences",
 		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile",
 		"LoginFormValidErrorMessages": "MediaWiki\\Extension\\Wikistories\\Hooks::onLoginFormValidErrorMessages",
-		"PageSaveComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onPageSaveComplete"
+		"PageSaveComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onPageSaveComplete",
+		"GetPreferences": "MediaWiki\\Extension\\Wikistories\\Hooks::onGetPreferences"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
@@ -65,6 +66,9 @@
 			"description": "Defines how is the discovery module activated. 'beta' means it is a beta feature. 'public' means it is available by default to everyone, including anons",
 			"value": "beta"
 		}
+	},
+	"DefaultUserOptions": {
+		"wikistories-pref-showdiscovery": true
 	},
 	"namespaces": [
 		{
