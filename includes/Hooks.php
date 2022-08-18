@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\Wikistories;
 
 use DeferredUpdates;
 use ExtensionRegistry;
+use IContextSource;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
@@ -11,6 +12,7 @@ use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
 use OutputPage;
 use Psr\Log\LoggerInterface;
+use RequestContext;
 use Skin;
 use SpecialPage;
 use Title;
@@ -21,6 +23,10 @@ class Hooks {
 
 	private const WIKISTORIES_BETA_FEATURE = 'wikistories-storiesonarticles';
 
+	private const WIKISTORIES_MODE_BETA = 'beta';
+
+	private const WIKISTORIES_MODE_PUBLIC = 'public';
+
 	/**
 	 * Register a beta feature that lets users show stories on article pages
 	 *
@@ -28,6 +34,9 @@ class Hooks {
 	 * @param array &$betaPrefs
 	 */
 	public static function onGetBetaFeaturePreferences( User $user, array &$betaPrefs ) {
+		if ( !self::isBetaDiscoveryMode( RequestContext::getMain() ) ) {
+			return;
+		}
 		$extensionAssetsPath = MediaWikiServices::getInstance()
 			->getMainConfig()
 			->get( 'ExtensionAssetsPath' );
@@ -47,17 +56,74 @@ class Hooks {
 	 * @param User $user
 	 * @param Title $title
 	 * @param Skin $skin
+	 * @param IContextSource $context
 	 * @return bool
 	 */
-	private static function shouldShowStories( User $user, Title $title, Skin $skin ): bool {
-		return $user->isRegistered()
-			&& $skin->getSkinName() === 'minerva'
-			&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
-			// @phan-suppress-next-line PhanUndeclaredClassMethod
-			&& BetaFeatures::isFeatureEnabled( $user, self::WIKISTORIES_BETA_FEATURE )
-			&& !$title->isMainPage()
+	private static function shouldShowStories( User $user, Title $title, Skin $skin, IContextSource $context ): bool {
+		return self::shouldShowStoriesForUser( $user, $context )
+			&& self::shouldShowStoriesOnSkin( $skin )
+			&& self::shouldShowStoriesOnPage( $title );
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @return mixed
+	 */
+	private static function getDiscoveryMode( IContextSource $context ) {
+		return $context->getConfig()->get( 'WikistoriesDiscoveryMode' );
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	private static function isBetaDiscoveryMode( IContextSource $context ): bool {
+		return self::getDiscoveryMode( $context ) === self::WIKISTORIES_MODE_BETA;
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	private static function isPublicDiscoveryMode( IContextSource $context ): bool {
+		return self::getDiscoveryMode( $context ) === self::WIKISTORIES_MODE_PUBLIC;
+	}
+
+	/**
+	 * @param User $user
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	private static function shouldShowStoriesForUser( User $user, IContextSource $context ): bool {
+		if ( self::isBetaDiscoveryMode( $context ) ) {
+			return $user->isRegistered()
+				&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
+				// @phan-suppress-next-line PhanUndeclaredClassMethod
+				&& BetaFeatures::isFeatureEnabled( $user, self::WIKISTORIES_BETA_FEATURE );
+		} elseif ( self::isPublicDiscoveryMode( $context ) ) {
+			return true;
+		} else {
+			// unknown discovery mode
+			return false;
+		}
+	}
+
+	/**
+	 * @param Title $title
+	 * @return bool
+	 */
+	private static function shouldShowStoriesOnPage( Title $title ): bool {
+		return !$title->isMainPage()
 			&& $title->inNamespace( NS_MAIN )
 			&& $title->exists();
+	}
+
+	/**
+	 * @param Skin $skin
+	 * @return bool
+	 */
+	private static function shouldShowStoriesOnSkin( Skin $skin ) {
+		return $skin->getSkinName() === 'minerva';
 	}
 
 	/**
@@ -65,7 +131,7 @@ class Hooks {
 	 */
 	public static function onBeforePageDisplayMobile( OutputPage $out ) {
 		$title = $out->getTitle();
-		if ( self::shouldShowStories( $out->getUser(), $title, $out->getSkin() ) ) {
+		if ( self::shouldShowStories( $out->getUser(), $title, $out->getSkin(), $out->getContext() ) ) {
 			$out->addModules( [ 'ext.wikistories.discover' ] );
 			$out->addModuleStyles( 'ext.wikistories.discover.styles' );
 		}
