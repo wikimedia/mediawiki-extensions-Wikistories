@@ -72,10 +72,11 @@ const getDiscoverSection = function () {
 };
 
 const addStoriesToDiscoverSection = function ( $discover, stories ) {
-	if ( stories.length > 0 ) {
+	const validStories = stories.filter( s => s.frames.some( f => f.fileNotFound === false ) );
+	if ( validStories.length > 0 ) {
 		const $stories = $( '<div>' ).addClass( 'ext-wikistories-discover-stories' );
 		$discover.append( $stories );
-		stories.forEach( story => {
+		validStories.forEach( story => {
 			const link = '#/story/' + story.pageId;
 			$stories.append( generateItem( link, story.thumbnail, '', story.title ) );
 		} );

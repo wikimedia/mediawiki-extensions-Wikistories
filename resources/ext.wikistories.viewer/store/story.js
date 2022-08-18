@@ -21,7 +21,8 @@ module.exports = {
 					id: 0,
 					attribution: currentStory.frames[ 0 ].attribution,
 					url: currentStory.frames[ 0 ].url,
-					text: null
+					text: null,
+					fileNotFound: currentStory.frames[ 0 ].fileNotFound
 				} ];
 				return coverFrame.concat( currentStory.frames );
 			}

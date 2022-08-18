@@ -65,7 +65,9 @@
 					{{ currentStoryTitle }}
 				</div>
 			</div>
-			<image-attribution></image-attribution>
+			<div v-show="!currentFrame.fileNotFound">
+				<image-attribution></image-attribution>
+			</div>
 			<div
 				v-if="isStoryEnd && !isLastStory"
 				class="ext-wikistories-viewer-container-content-next-btn"

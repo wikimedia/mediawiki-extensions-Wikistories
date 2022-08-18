@@ -17,7 +17,7 @@
 			@click="$emit( 'select-text' )"
 			v-html="$i18n( 'wikistories-story-selecttext' ).text()"
 		></div>
-		<image-attribution v-show="!editingText"></image-attribution>
+		<image-attribution v-show="showImageAttribution"></image-attribution>
 	</div>
 </template>
 
@@ -40,7 +40,11 @@ module.exports = {
 			editingText: false
 		};
 	},
-	computed: mapGetters( [ 'currentFrame' ] ),
+	computed: $.extend( mapGetters( [ 'currentFrame' ] ), {
+		showImageAttribution: function () {
+			return !this.editingText && !this.currentFrame.fileNotFound;
+		}
+	} ),
 	methods: $.extend( mapActions( [ 'setText' ] ), {
 		beginTextEdit: function () {
 			this.editingText = true;
