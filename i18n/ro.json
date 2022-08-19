@@ -65,6 +65,7 @@
 	"wikistories-nojs-form-label-frame": "Cadrul $1",
 	"wikistories-nojs-form-label-image": "Imagine",
 	"wikistories-nojs-form-label-text": "Text",
+	"wikistories-nojs-viewer-error": "$1 {{PLURAL:$1|imagine utilizată|imagini utilizate}} în această poveste nu mai {{PLURAL:$1|este disponibilă|sunt disponibile}} la Commons.",
 	"wikistories-discover-cta-text": "Creează o Wikipoveste",
 	"wikistories-discover-cta-text-subheader": "Fiți {{GENDER:|primul|prima}} care să ilustreze fapte cheie despre acest subiect pentru cei care învață pe cale vizuală.",
 	"wikistories-storyviewer-next-story-button": "Citiți următoare poveste",
