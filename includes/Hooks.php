@@ -10,6 +10,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserOptionsLookup;
 use OutputPage;
 use Psr\Log\LoggerInterface;
 use RequestContext;
@@ -22,6 +23,8 @@ use WikiPage;
 class Hooks {
 
 	private const WIKISTORIES_BETA_FEATURE = 'wikistories-storiesonarticles';
+
+	private const WIKISTORIES_PREF_SHOW_DISCOVERY = 'wikistories-pref-showdiscovery';
 
 	private const WIKISTORIES_MODE_BETA = 'beta';
 
@@ -49,6 +52,22 @@ class Hooks {
 			],
 			'info-link' => 'https://www.mediawiki.org/wiki/Wikistories',
 			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Wikistories',
+		];
+	}
+
+	/**
+	 * @param User $user
+	 * @param array &$preferences
+	 */
+	public static function onGetPreferences( User $user, array &$preferences ) {
+		if ( !self::isPublicDiscoveryMode( RequestContext::getMain() ) ) {
+			return;
+		}
+		$preferences[ self::WIKISTORIES_PREF_SHOW_DISCOVERY ] = [
+			'section' => 'rendering/wikistories',
+			'label-message' => 'wikistories-pref-showdiscovery-message',
+			'help-message' => 'wikistories-pref-showdiscovery-help-message',
+			'type' => 'toggle',
 		];
 	}
 
@@ -101,7 +120,10 @@ class Hooks {
 				// @phan-suppress-next-line PhanUndeclaredClassMethod
 				&& BetaFeatures::isFeatureEnabled( $user, self::WIKISTORIES_BETA_FEATURE );
 		} elseif ( self::isPublicDiscoveryMode( $context ) ) {
-			return true;
+			/** @var UserOptionsLookup $userOptionsLookup */
+			$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+			return $user->isAnon()
+				|| (bool)$userOptionsLookup->getOption( $user, self::WIKISTORIES_PREF_SHOW_DISCOVERY, true );
 		} else {
 			// unknown discovery mode
 			return false;
