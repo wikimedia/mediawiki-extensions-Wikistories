@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Vlad5250"
 		]
 	},
 	"wikistories-extensionname": "Википриказни",
@@ -10,6 +11,7 @@
 	"action-edit-story": "уредување на приказни",
 	"wikistories-beta-feature-message": "Википриказни",
 	"wikistories-beta-feature-description": "Алатка која ви овозможува да избирате слики и истакнувате факти од статија за да создадете краток и доверлив нагледен преглед на сознанија за брзо читање. Вклучете го за да го правите следново:<br>- Откривајте приказни врзани за статии.<br>- Стиснете/Допрете на иконката [+] под насловот на статијата за да создадете нова приказна.",
+	"prefs-wikistories": "Википриказни",
 	"storybuilder": "Срочувач на приказни",
 	"wikistories-specialstorybuilder-title": "Срочувач на приказни",
 	"wikistories-specialstorybuilder-loading": "Вчитувам...",
@@ -66,6 +68,7 @@
 	"wikistories-nojs-form-label-frame": "Рамка $1",
 	"wikistories-nojs-form-label-image": "Слика",
 	"wikistories-nojs-form-label-text": "Текст",
+	"wikistories-nojs-viewer-error": "$1 {{PLURAL:$1|Сликата што се користи|Сликите што се користат}} во оваа приказна повеќе не {{PLURAL:$1|е достапна на Ризницата|се достапни на Ризницата}}.",
 	"wikistories-discover-cta-text": "Создај википриказна",
 	"wikistories-discover-cta-text-subheader": "Бидете првиот што ќе ги илустрира клучните факти за оваа тема за оние кои учат нагледно.",
 	"wikistories-storyviewer-next-story-button": "Следна приказна",

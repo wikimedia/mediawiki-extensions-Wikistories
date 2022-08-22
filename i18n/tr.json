@@ -3,11 +3,14 @@
 		"authors": [
 			"Can",
 			"Hedda",
+			"Joseph",
 			"SaldırganSincap"
 		]
 	},
 	"wikistories-extensiondesc": "Vikihikayeler; editörlerin Wikimedia projelerinden kısa, görsel ve güvenilir bilgiler oluşturmasına olanak tanır",
-	"wikistories-specialstorybuilder-title": "Hikaye oluştur",
+	"right-edit-story": "Hikayeleri düzenle",
+	"action-edit-story": "hikayeleri düzenlemeye",
+	"wikistories-specialstorybuilder-title": "Hikaye Oluşturucu",
 	"wikistories-specialstorybuilder-loading": "Yükleniyor...",
 	"wikistories-specialstorybuilder-nojswarning": "Bu özel sayfanın çalışması için JavaScript gereklidir",
 	"wikistories-search-inputplaceholder": "Görsel ara",
@@ -19,7 +22,7 @@
 	"wikistories-story-replaceimage": "Bu görseli değiştir",
 	"wikistories-story-deleteframe": "Bu sayfayı sil",
 	"wikistories-imageattribution-author-unknown": "Yazar bilinmiyor",
-	"wikistories-article-cancelselection": "İptal",
+	"wikistories-article-cancelselection": "Temizle",
 	"wikistories-article-loading": "Yükleniyor...",
 	"wikistories-article-usetext": "Hikayeye ekle",
 	"wikistories-article-info-banner": "Hikayenize eklemek için metni seçin",

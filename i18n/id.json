@@ -66,6 +66,7 @@
 	"wikistories-nojs-form-label-frame": "Bingkai $1",
 	"wikistories-nojs-form-label-image": "Gambar",
 	"wikistories-nojs-form-label-text": "Teks",
+	"wikistories-nojs-viewer-error": "$1 {{PLURAL:$1|gambar}} yang digunakan di Wikistories ini sudah tidak tersedia di Wikimedia Commons.",
 	"wikistories-discover-cta-text": "Buat Wikistories",
 	"wikistories-discover-cta-text-subheader": "Jadilah yang pertama untuk membuat informasi singkat secara visual untuk topik ini.",
 	"wikistories-storyviewer-next-story-button": "Lihat Wikistories selanjutnya",

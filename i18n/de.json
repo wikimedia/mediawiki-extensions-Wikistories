@@ -4,11 +4,15 @@
 			"Brettchenweber"
 		]
 	},
+	"wikistories-extensionname": "Wikigeschichten",
 	"wikistories-extensiondesc": "Mit Wikistories können Benutzer kurzes, visuelles und zuverlässiges Wissen aus Wikimedia-Projekten erstellen",
 	"right-edit-story": "Geschichten bearbeiten",
 	"action-edit-story": "Geschichten bearbeiten",
 	"wikistories-beta-feature-message": "Wikigeschichten",
 	"wikistories-beta-feature-description": "Ein Werkzeug, mit dem du Bilder auswählen und Fakten aus einem Artikel hervorheben kannst, um kurzes, visuelles und zuverlässiges Wissen aus Wikipedia für den schnellen Konsum zu erstellen. Aktiviere die Funktion, um Folgendes zu tun:<br>- Entdecke Geschichten, die mit einem Artikel verbunden sind.<br>- Klicke auf das [+]-Symbol unter dem Artikeltitel, um eine neue Geschichte zu erstellen.",
+	"prefs-wikistories": "Wikigeschichten",
+	"wikistories-pref-showdiscovery-message": "Geschichten auf Artikelseiten anzeigen",
+	"wikistories-pref-showdiscovery-help-message": "Wikigeschichten ist eine neue Funktion, mit der du kurze, geschichtenähnliche Inhalte aus Texten und Bildern von Wikipedia-Artikeln erstellen kannst.",
 	"storybuilder": "Geschichtenersteller",
 	"wikistories-specialstorybuilder-title": "Geschichtenersteller",
 	"wikistories-specialstorybuilder-loading": "Laden …",
