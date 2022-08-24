@@ -1,7 +1,10 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Brettchenweber"
+		]
 	},
+	"wikistories-extensionname": "Wikigeschichten",
 	"wikistories-extensiondesc": "Mit Wikistories können Benutzer kurzes, visuelles und zuverlässiges Wissen aus Wikimedia-Projekten erstellen",
 	"wikistories-hooks-createstory": "Erstellen einer Geschichte",
 	"wikistories-specialcreatestory-title": "Geschichte erstellen",
