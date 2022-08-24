@@ -5,11 +5,14 @@
 			"Winston Sung"
 		]
 	},
+	"prefs-wikistories": "Wikistories",
+	"wikistories-pref-showdiscovery-message": "在條目頁面顯示story",
 	"wikistories-specialstorybuilder-loading": "正在載入…",
 	"wikistories-search-inputplaceholder": "搜尋圖片",
 	"wikistories-search-noresultstext": "沒有結果",
 	"wikistories-search-navigator-title": "選取圖片",
 	"wikistories-story-editdone": "完成",
 	"wikistories-article-navigator-title": "醒目標示文字",
-	"wikistories-builder-publishform-publishbutton": "發布"
+	"wikistories-builder-publishform-publishbutton": "發布",
+	"wikistories-builder-publishform-saveerror": "發布Wikistory時發生錯誤。請嘗試重新發布。"
 }
