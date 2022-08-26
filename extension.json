@@ -65,8 +65,8 @@
 			"value": 1000
 		},
 		"WikistoriesDiscoveryMode": {
-			"description": "Defines how is the discovery module activated. 'beta' means it is a beta feature. 'public' means it is available by default to everyone, including anons",
-			"value": "beta"
+			"description": "Defines how is the discovery module activated. 'beta' means it is a beta feature. 'public' means it is available by default to everyone, including anons. Any other value means the discovery feature is disabled. ",
+			"value": "off"
 		}
 	},
 	"DefaultUserOptions": {
