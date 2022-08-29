@@ -5,10 +5,12 @@
 		]
 	},
 	"wikistories-search-noresultstext": "Ni mâiʹd ij käunnʼjam",
+	"wikistories-search-navigator-title": "Vaʹlljed kaartid",
 	"wikistories-story-deleteframe": "Jaukkâd tän seeid",
 	"wikistories-article-cancelselection": "Kuârad",
 	"wikistories-confirmdialog-delete-title": "Haaʹlääk-a tän seeid jaukkeed?",
 	"wikistories-confirmdialog-delete-accept": "Jaukkâd",
+	"wikistories-confirmdialog-delete-cancel": "Jõõsk",
 	"wikistories-confirmdialog-discardedits-title": "Haaʹlääk ton muttsid tirššled?",
 	"wikistories-confirmdialog-discardstory-accept": "Tirššâl",
 	"wikistories-builder-publishform-publishbutton": "Õlmstââʹtt",

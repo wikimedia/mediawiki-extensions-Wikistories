@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Seipinne"
+			"Seipinne",
+			"Yupik"
 		]
 	},
-	"wikistories-story-goto-publish": "Čuávuvâš"
+	"wikistories-story-goto-publish": "Čuávuvâš",
+	"wikistories-confirmdialog-delete-cancel": "Jooskâ"
 }
