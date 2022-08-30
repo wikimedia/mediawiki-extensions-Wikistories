@@ -124,6 +124,7 @@
 			"styles": [
 				"viewer.less"
 			],
+			"es6": true,
 			"dependencies": [ "vue", "vuex" ],
 			"messages": [
 				"wikistories-storyviewer-next-story-button",
@@ -241,7 +242,8 @@
 				"wikistories-builder-publishform-saveerror",
 				"wikistories-builder-publishform-saving",
 				"wikistories-builder-licensing-with-terms"
-			]
+			],
+			"es6": true
 		},
 		"ext.wikistories.discover": {
 			"localBasePath": "resources/ext.wikistories.discover",
