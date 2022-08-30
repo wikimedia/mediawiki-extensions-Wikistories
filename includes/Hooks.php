@@ -238,11 +238,23 @@ class Hooks {
 				return;
 			}
 
+			if ( !( $previousStory instanceof StoryContent ) ) {
+				$context[ 'previousStoryContentType' ] = get_class( $previousStory );
+				$logger->warning( 'Previous content is not StoryContent', $context );
+				return;
+			}
+
 			/** @var StoryContent $newStory */
 			$newStory = $revisionRecord->getContent( 'main' );
 			'@phan-var StoryContent $newStory';
 			if ( $newStory === null ) {
 				$logger->warning( 'Cannot get new story content', $context );
+				return;
+			}
+
+			if ( !( $newStory instanceof StoryContent ) ) {
+				$context[ 'newStoryContentType' ] = get_class( $newStory );
+				$logger->warning( 'New content is not StoryContent', $context );
 				return;
 			}
 
