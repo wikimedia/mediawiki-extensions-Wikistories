@@ -11,8 +11,11 @@ const generateItem = function ( link, thumbnail, thumbnailText, title, cta = fal
 		.text( title );
 
 	const $text = $( '<div>' )
-		.addClass( `${className}-text` )
-		.append( $title );
+		.addClass( `${className}-text` );
+
+	if ( !cta ) {
+		$text.append( $title );
+	}
 
 	if ( thumbnail ) {
 		const overlay = thumbnailText === '+' ?
@@ -37,12 +40,13 @@ const generateCTA = function ( thumbnail ) {
 const addCtaText = function () {
 	const $cta = $( '.ext-wikistories-discover-item-cta' );
 	const $text = $( '.ext-wikistories-discover-item-cta-text' );
-	const $title = $( '.ext-wikistories-discover-item-cta-text-title' );
+	const $title = $( '<p>' ).addClass( 'ext-wikistories-discover-item-cta-text-title' );
 	const $subtitle = $( '<p>' )
 		.addClass( 'ext-wikistories-discover-item-cta-text-subtitle' )
 		.text( mw.msg( 'wikistories-discover-cta-text-subheader' ) );
 
 	$title.text( mw.msg( 'wikistories-discover-cta-text' ) );
+	$text.append( $title );
 	$text.append( $subtitle );
 	$cta.addClass( 'ext-wikistories-discover-item-no-border' );
 

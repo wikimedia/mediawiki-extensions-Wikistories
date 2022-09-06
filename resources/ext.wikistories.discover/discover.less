@@ -52,15 +52,17 @@
 			color: @colorGray2;
 			font-size: 12px;
 			overflow: hidden;
-			min-width: 50px;
-			display: flex;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			white-space: initial;
 
 			&-title {
-				display: -webkit-box;
-				-webkit-box-orient: vertical;
-				-webkit-line-clamp: 2;
-				white-space: initial;
 				line-height: 16px;
+				width: max-content;
+				max-width: 80px;
+				min-width: 35px;
+				margin-right: 5px;
 			}
 		}
 	}
@@ -79,6 +81,8 @@
 		flex-direction: column;
 		max-width: unset;
 		min-width: unset;
+		display: unset;
+		white-space: unset;
 	}
 
 	&-item-cta-text-title {
