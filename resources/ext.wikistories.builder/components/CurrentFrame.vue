@@ -15,8 +15,9 @@
 			v-else
 			class="ext-wikistories-current-frame-textbox-select-cta"
 			@click="$emit( 'select-text' )"
-			v-html="$i18n( 'wikistories-story-selecttext' ).text()"
-		></div>
+		>
+			<span v-html="$i18n( 'wikistories-story-selecttext' ).text()"></span>
+		</div>
 		<image-attribution v-show="showImageAttribution"></image-attribution>
 	</div>
 </template>
@@ -108,7 +109,7 @@ module.exports = {
 		width: 85%;
 		height: 70px;
 		text-align: left;
-		padding: 10px 5px 10px 20px;
+		padding: 10px 15px;
 		font-size: 14px;
 
 		.ext-wikistories-wikipedia {
