@@ -5,8 +5,11 @@ namespace MediaWiki\Extension\Wikistories;
 use DeferredUpdates;
 use ExtensionRegistry;
 use IContextSource;
+use ManualLogEntry;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
@@ -263,6 +266,43 @@ class Hooks {
 				$cache = $services->get( 'Wikistories.Cache' );
 				$cache->invalidateForArticle( $previousStory->getFromArticle() );
 			}
+		} );
+	}
+
+	/**
+	 * Invalidate stories cache for the related article
+	 *
+	 * @param ProperPageIdentity $page
+	 * @param Authority $deleter
+	 * @param string $reason
+	 * @param int $pageID
+	 * @param RevisionRecord $deletedRev
+	 * @param ManualLogEntry $logEntry
+	 * @param int $archivedRevisionCount
+	 */
+	public static function onPageDeleteComplete(
+		ProperPageIdentity $page,
+		Authority $deleter,
+		string $reason,
+		int $pageID,
+		RevisionRecord $deletedRev,
+		ManualLogEntry $logEntry,
+		int $archivedRevisionCount
+	) {
+		if ( $page->getNamespace() !== NS_STORY ) {
+			return;
+		}
+
+		$story = $deletedRev->getContent( 'main' );
+		if ( !( $story instanceof StoryContent ) ) {
+			return;
+		}
+
+		DeferredUpdates::addCallableUpdate( static function () use ( $story ) {
+			$services = MediaWikiServices::getInstance();
+			/** @var StoriesCache $cache */
+			$cache = $services->get( 'Wikistories.Cache' );
+			$cache->invalidateForArticle( $story->getFromArticle() );
 		} );
 	}
 
