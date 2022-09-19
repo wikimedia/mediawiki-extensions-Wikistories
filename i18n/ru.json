@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Deltaspace",
 			"Gulka.nik",
 			"Kareyac",
 			"Okras",
@@ -14,6 +15,7 @@
 	"wikistories-search-inputplaceholder": "Искать изображения",
 	"wikistories-search-noresultstext": "Ничего не найдено",
 	"wikistories-story-goto-publish": "Далее",
+	"wikistories-story-selecttext": "Выбрать текст рассказа из <span class=\"ext-wikistories-wikipedia\">Википедии</span>",
 	"wikistories-story-editdone": "Готово",
 	"wikistories-story-replaceimage": "Заменить это изображение",
 	"wikistories-story-deleteframe": "Удалить эту страницу",
