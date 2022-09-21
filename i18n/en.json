@@ -77,5 +77,8 @@
 	"wikistories-storyviewer-cover-page-heading": "Wikistory",
 	"wikistories-file-not-found": "File \"$1\" not found",
 	"wikistories-from-article-not-found": "Article \"$1\" not found",
+	"wikistories-invalid-format": "Invalid story format",
+	"wikistories-not-enough-frames": "The story does not have enough frames",
+	"wikistories-too-many-frames": "The story has too many frames",
 	"wikistories-text-too-long": "The text on frame #$1 is too long. It has {{PLURAL:$2|$2 character|$2 characters}} but the maximum allowed is $3."
 }

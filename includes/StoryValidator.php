@@ -58,7 +58,7 @@ class StoryValidator {
 		$validator->check( $story->getData()->getValue(), (object)[ '$ref' => 'file://' . $schemaPath ] );
 		if ( !$validator->isValid() ) {
 			// todo: find a way to include error messages from the schema validator
-			return StatusValue::newFatal( 'invalid-format' );
+			return StatusValue::newFatal( 'wikistories-invalid-format' );
 		}
 
 		// fromArticle exists
@@ -70,10 +70,10 @@ class StoryValidator {
 		// Validation based on config
 		$frameCount = count( $story->getFrames() );
 		if ( $frameCount < $this->options->get( 'WikistoriesMinFrames' ) ) {
-			return StatusValue::newFatal( 'not-enough-frames' );
+			return StatusValue::newFatal( 'wikistories-not-enough-frames' );
 		}
 		if ( $frameCount > $this->options->get( 'WikistoriesMaxFrames' ) ) {
-			return StatusValue::newFatal( 'too-many-frames' );
+			return StatusValue::newFatal( 'wikistories-too-many-frames' );
 		}
 		$maxTextLength = $this->options->get( 'WikistoriesMaxTextLength' );
 		foreach ( $story->getFrames() as $index => $frame ) {
