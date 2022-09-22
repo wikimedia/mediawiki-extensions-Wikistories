@@ -24,7 +24,7 @@
 	"wikistories-search-navigator-title": "Selectați imagini",
 	"wikistories-search-navigator-title-selected-info": "$1 {{PLURAL:|selectată|selectate}}",
 	"wikistories-story-goto-publish": "Înainte",
-	"wikistories-story-selecttext": "Selectați textul poveștii <span class=\"ext-wikistories-wikipedia\">din Wikipedia</span>",
+	"wikistories-story-selecttext": "Selectați textul poveștii din <span class=\"ext-wikistories-wikipedia\">Wikipedia</span>",
 	"wikistories-story-editdone": "Realizat",
 	"wikistories-story-replaceimage": "Înlocuiți această imagine",
 	"wikistories-story-deleteframe": "Ștergeți această pagină",
@@ -76,5 +76,8 @@
 	"wikistories-storyviewer-cover-page-heading": "Wikipoveste",
 	"wikistories-file-not-found": "Fișierul „$1” nu a fost găsit",
 	"wikistories-from-article-not-found": "Articolul „$1” nu a fost găsit",
+	"wikistories-invalid-format": "Format de poveste invalid",
+	"wikistories-not-enough-frames": "Povestea nu are suficiente cadre",
+	"wikistories-too-many-frames": "Povestea are prea multe cadre",
 	"wikistories-text-too-long": "Textul de la cadrul #$1 este prea lung. Are {{PLURAL:$2|$2 caracter|$2 caractere}}, dar numărul maxim permis este de $3 {{PLURAL:$2|$2 caracter|$2 caractere}}."
 }

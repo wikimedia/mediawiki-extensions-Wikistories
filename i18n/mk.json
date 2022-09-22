@@ -78,5 +78,8 @@
 	"wikistories-storyviewer-cover-page-heading": "Википриказна",
 	"wikistories-file-not-found": "Податотеката „$1“ не е пронајдена",
 	"wikistories-from-article-not-found": "Статијата „$1“ не е пронајдена",
+	"wikistories-invalid-format": "Неважечки формат на приказна",
+	"wikistories-not-enough-frames": "Приказната нема доволно рамки",
+	"wikistories-too-many-frames": "Приказната има премногу рамки",
 	"wikistories-text-too-long": "Текстот на рамката #$1 е предолг. Има {{PLURAL:$2|$2 знак|$2 знаци}}, но дозволени се највеќе $3."
 }

@@ -79,5 +79,8 @@
 	"wikistories-storyviewer-cover-page-heading": "Wikirécit",
 	"wikistories-file-not-found": "Fichier « $1 » introuvable.",
 	"wikistories-from-article-not-found": "Article « $1 » introuvable.",
+	"wikistories-invalid-format": "Format de récit non valide",
+	"wikistories-not-enough-frames": "Le récit ne comprend pas assez de cadres",
+	"wikistories-too-many-frames": "Le récit comprend trop de cadres",
 	"wikistories-text-too-long": "Le texte du cadre nº $1 est trop long. Il comporte $2 caractère{{PLURAL:$2||s}} mais le maximum autorisé est $3."
 }
