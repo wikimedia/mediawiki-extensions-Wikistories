@@ -66,7 +66,7 @@
 	"wikistories-builder-publishform-saving": "פרסום ויקיסיפור...",
 	"wikistories-builder-licensing-with-terms": "המשך התהליך מהווה את הסכמתך ל[$1 תנאי השימוש], ואת הסכמתך הבלתי־חוזרת לשחרר את התרומות שלך לפי תנאי רישיונות [$2 CC BY-SA 3.0] ו־[$3 GFDL].",
 	"wikistories-nojs-form-label-related-article": "ערך קשור",
-	"wikistories-nojs-form-label-frame": "מסגרת $1",
+	"wikistories-nojs-form-label-frame": "שקופית $1",
 	"wikistories-nojs-form-label-image": "תמונה",
 	"wikistories-nojs-form-label-text": "טקסט",
 	"wikistories-nojs-viewer-error": "{{PLURAL:$1|תמונה אחת שמשמשת|$1 תמונות שמשמשות}} בסיפור הזה כבר {{PLURAL:$1|אינה זמינה|אינן זמינות}} בוויקישיתוף.",
@@ -77,5 +77,8 @@
 	"wikistories-storyviewer-cover-page-heading": "ויקיסיפור",
 	"wikistories-file-not-found": "הקובץ \"$1\" לא נמצא.",
 	"wikistories-from-article-not-found": "הערך \"$1\" לא נמצא",
-	"wikistories-text-too-long": "הטקסט בתמונה מס' $1 ארוך מדי. יש בו {{PLURAL:$2|תו אחד|$2 תווים}}, אבל המספר המרבי המותר הוא $3."
+	"wikistories-invalid-format": "תסדיר סיפור בלתי־תקין",
+	"wikistories-not-enough-frames": "בסיפור אין מספיק שקופיות",
+	"wikistories-too-many-frames": "בסיפור יש יותר מדי שקופיות",
+	"wikistories-text-too-long": "הטקסט בשקופית מס' $1 ארוך מדי. יש בו {{PLURAL:$2|תו אחד|$2 תווים}}, אבל המספר המרבי המותר הוא $3."
 }

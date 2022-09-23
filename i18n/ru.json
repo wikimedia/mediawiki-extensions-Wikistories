@@ -31,5 +31,8 @@
 	"wikistories-builder-publishform-publishbutton": "Опубликовать",
 	"wikistories-builder-publishform-saving": "ВикиИстория публикуется…",
 	"wikistories-discover-cta-text": "Создать ВикиИсторию",
+	"wikistories-invalid-format": "Неверный формат истории",
+	"wikistories-not-enough-frames": "В истории недостаточно количество кадров",
+	"wikistories-too-many-frames": "В истории слишном много кадров",
 	"wikistories-text-too-long": "Текст в #$1-й рамке очень длинный. В нём {{PLURAL:$2|$2 символ|$2 символа|$2 символов}}, когда максимально допустимо — $3 {{PLURAL:$3|символ|символа|символов}}."
 }
