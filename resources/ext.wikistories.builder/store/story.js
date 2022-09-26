@@ -110,6 +110,12 @@ module.exports = {
 			context.commit( 'setTextFromArticle', textFromArticle );
 		},
 		setFrameImage: ( context, data ) => {
+			// frame text content remain
+			const currentFrame = context.getters.currentFrame;
+			data.text = currentFrame.text;
+			data.textFromArticle = currentFrame.textFromArticle;
+
+			// frame image releated attribution
 			const url = data.attribution.url;
 			context.commit( 'setFrame', data );
 
