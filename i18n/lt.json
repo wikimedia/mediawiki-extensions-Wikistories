@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pavel1513"
+		]
+	},
+	"wikistories-invalid-format": "Netinkamas istorijos formatas",
+	"wikistories-not-enough-frames": "Istorijoje nepakankamas kadrų kiekis",
+	"wikistories-too-many-frames": "Istorijoje per daug kadrų"
+}

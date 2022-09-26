@@ -7,6 +7,7 @@
 	},
 	"wikistories-story-selecttext": "Izberite besedilo zgodbe iz <span class=\"ext-wikistories-wikipedia\">Wikipedije</span>",
 	"wikistories-article-cancelselection": "Počisti",
+	"wikistories-confirmdialog-delete-accept": "Izbriši",
 	"wikistories-confirmdialog-delete-cancel": "Prekliči",
 	"wikistories-invalid-format": "Neveljavna oblika zgodbe",
 	"wikistories-not-enough-frames": "Zgodba nima dovolj slik",
