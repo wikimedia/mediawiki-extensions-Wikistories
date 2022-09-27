@@ -68,6 +68,9 @@ module.exports = {
 			const frameId = Math.max( state.frameId - 1, 0 );
 			return getters.currentStory.editUrl + '?frameid=' + frameId;
 		},
+		talkUrl: ( state, getters ) => {
+			return getters.currentStory.talkUrl;
+		},
 		isCurrentImageLoaded: ( state, getters ) => {
 			return state.loadedImages.indexOf( getters.currentFrame.url ) !== -1;
 		}

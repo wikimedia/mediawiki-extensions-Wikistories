@@ -22,6 +22,11 @@
 				:text="$i18n( 'wikistories-story-deleteframe' ).text()"
 				@click="showDeleteFrameConfirmationDialog"
 			></dots-menu-item>
+			<dots-menu-item
+				icon="talk"
+				:text="$i18n( 'wikistories-story-feedback' ).text()"
+				@click="goToWikistoriesTalkPage"
+			></dots-menu-item>
 		</dots-menu>
 		<frames v-show="!isEditingText" @max-limit="showMaxFramesToast"></frames>
 		<toast
@@ -121,6 +126,9 @@ module.exports = {
 		},
 		hideDiscardStoryConfirmDialog: function () {
 			this.viewDiscardStoryConfirmDialog = false;
+		},
+		goToWikistoriesTalkPage: function () {
+			window.location = 'https://www.mediawiki.org/wiki/Talk:Wikistories';
 		},
 		showMaxFramesToast: function () {
 			const maxFrames = this.getConfig( 'wgWikistoriesMaxFrames' );
