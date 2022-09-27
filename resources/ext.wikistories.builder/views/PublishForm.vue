@@ -76,7 +76,7 @@ module.exports = {
 			savingInProgress: false
 		};
 	},
-	computed: $.extend( mapGetters( [ 'frames', 'valid', 'fromArticle', 'storyForSave', 'mode', 'title' ] ), {
+	computed: $.extend( mapGetters( [ 'frames', 'valid', 'fromArticle', 'storyForSave', 'mode', 'title', 'storyExists' ] ), {
 		licenseHtml: function () {
 			const html = this.$i18n(
 				'wikistories-builder-licensing-with-terms',
@@ -107,7 +107,7 @@ module.exports = {
 				if ( !validity.valid ) {
 					this.savingInProgress = false;
 					this.error = this.$i18n( validity.message ).text();
-					events.logPublishFailure( this.storyTitle, this.error );
+					events.logPublishFailure( this.storyTitle, this.storyExists, this.error );
 					return;
 				}
 				const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
@@ -115,7 +115,7 @@ module.exports = {
 					function ( response ) {
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
-							events.logPublishSuccess( this.storyTitle );
+							events.logPublishSuccess( this.storyTitle, this.storyExists );
 							this.navigateToArticle( response.pageid );
 						} else {
 							this.setErrorFeedback( response );
