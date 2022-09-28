@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"wikistories-search-inputplaceholder": "Pretraži slike",
+	"wikistories-search-noresultstext": "Nema rezultata",
+	"wikistories-story-goto-publish": "Sljedeće",
+	"wikistories-builder-publishform-publishbutton": "Objavi",
+	"wikistories-builder-publishform-info": "Objavljene priče bit će dostupne na stranici članka."
+}
