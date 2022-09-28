@@ -7,6 +7,7 @@
 <script>
 const events = require( './contributionEvents.js' );
 const RouterView = require( './components/RouterView.vue' );
+const mapGetters = require( 'vuex' ).mapGetters;
 
 // @vue/component
 module.exports = {
@@ -17,18 +18,18 @@ module.exports = {
 	data: function () {
 		return { height: 0 };
 	},
-	computed: {
+	computed: $.extend( mapGetters( [ 'storyExists' ] ), {
 		style: function () {
 			return { height: this.height + 'px' };
 		}
-	},
+	} ),
 	methods: {
 		updateHeight: function () {
 			this.height = window.innerHeight - $( 'header' ).height();
 		}
 	},
 	created: function () {
-		events.logStoryBuilderOpen();
+		events.logStoryBuilderOpen( this.storyExists );
 	},
 	beforeMount: function () {
 		this.updateHeight();

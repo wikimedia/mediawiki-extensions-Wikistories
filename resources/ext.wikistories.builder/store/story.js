@@ -140,6 +140,7 @@ module.exports = {
 	},
 	getters: {
 		mode: ( state ) => state.mode,
+		storyExists: ( state ) => state.mode === 'edit',
 		title: ( state ) => state.title,
 		thumbnails: ( state ) => {
 			return state.frames.map( ( f, index ) => {

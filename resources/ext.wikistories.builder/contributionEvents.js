@@ -13,7 +13,6 @@ const logContributionEvent = ( data ) => {
 		user_edit_count_bucket: mw.user.isAnon() ? undefined : mw.config.get( 'wgUserEditCountBucket' ).slice( 0, -6 ),
 		user_is_anonymous: mw.user.isAnon(),
 		context_page_title: mw.config.get( 'wgWikistoriesStoryContent' ).fromArticle,
-		story_already_exists: false,
 		activity_session_id: mw.eventLog.id.getSessionId()
 		/* eslint-enable camelcase */
 	}, data );
@@ -21,27 +20,31 @@ const logContributionEvent = ( data ) => {
 	mw.eventLog.submit( streamName, event );
 };
 
-const logStoryBuilderOpen = () => {
-	logContributionEvent( {
-		// eslint-disable-next-line camelcase
-		event_type: 'story_builder_open'
-	} );
-};
-
-const logPublishSuccess = ( storyTitle ) => {
+const logStoryBuilderOpen = ( storyExists ) => {
 	logContributionEvent( {
 		/* eslint-disable camelcase */
-		event_type: 'publish_success',
-		story_title: storyTitle
+		event_type: 'story_builder_open',
+		story_already_exists: storyExists
 		/* eslint-enable camelcase */
 	} );
 };
 
-const logPublishFailure = ( storyTitle, failureMessage ) => {
+const logPublishSuccess = ( storyTitle, storyExists ) => {
+	logContributionEvent( {
+		/* eslint-disable camelcase */
+		event_type: 'publish_success',
+		story_title: storyTitle,
+		story_already_exists: storyExists
+		/* eslint-enable camelcase */
+	} );
+};
+
+const logPublishFailure = ( storyTitle, storyExists, failureMessage ) => {
 	logContributionEvent( {
 		/* eslint-disable camelcase */
 		event_type: 'publish_failure',
 		story_title: storyTitle,
+		story_already_exists: storyExists,
 		publish_failure_message: failureMessage
 		/* eslint-enable camelcase */
 	} );
