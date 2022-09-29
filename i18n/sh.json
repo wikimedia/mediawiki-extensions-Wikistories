@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"wikistories-beta-feature-message": "Wikipriče",
+	"prefs-wikistories": "Wikipriče",
+	"wikistories-specialstorybuilder-loading": "Učitavanje...",
+	"wikistories-specialstorybuilder-mustbeloggedin": "Molimo prijavite se ili otvorite račun za pravljenje priča",
+	"wikistories-specialstorybuilder-invalidsubpage": "U URL-u naznačite članak o kojem želite napraviti priču ili naslov priče za uređivati. Morate uključiti i imenski prostor za priče.",
+	"wikistories-search-inputplaceholder": "Pretraži slike",
+	"wikistories-search-noresultstext": "Nema rezultata",
+	"wikistories-story-goto-publish": "Sljedeće",
+	"wikistories-story-deleteframe": "Izbriši ovu stranicu",
+	"wikistories-confirmdialog-delete-title": "Izbriši ovu stranicu?",
+	"wikistories-confirmdialog-delete-message": "Bit će trajno uklonjena iz vaše priče.",
+	"wikistories-confirmdialog-delete-accept": "Izbriši",
+	"wikistories-confirmdialog-delete-cancel": "Otkaži",
+	"wikistories-builder-publishform-publishbutton": "Objavi",
+	"wikistories-builder-publishform-info": "Objavljene priče bit će dostupne na stranici članka.",
+	"wikistories-nojs-form-label-image": "Slika",
+	"wikistories-nojs-form-label-text": "Tekst",
+	"wikistories-storyviewer-edit": "Uredi",
+	"wikistories-file-not-found": "Datoteka \"$1\" nije pronađena"
+}
