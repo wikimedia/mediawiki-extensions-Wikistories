@@ -8,16 +8,6 @@
 			@backward="onBack"
 			@forward="onSaveClick"
 		></navigator>
-		<div v-if="savingInProgress" class="ext-wikistories-publishform-saving">
-			<div class="ext-wikistories-publishform-saving-spinner">
-				<div class="ext-wikistories-publishform-saving-spinner-animation">
-					<div class="ext-wikistories-publishform-saving-spinner-animation-bounce"></div>
-				</div>
-			</div>
-			<div class="ext-wikistories-publishform-saving-text">
-				{{ $i18n( 'wikistories-builder-publishform-saving' ).text() }}
-			</div>
-		</div>
 		<toast
 			v-if="toast.show"
 			:message="toast.message"
@@ -33,6 +23,7 @@
 				:disabled="titleInputDisabled"
 				class="ext-wikistories-publishform-content-input-title"
 				:placeholder="$i18n( 'wikistories-builder-publishform-placeholder' ).text()"
+				@input="onInput"
 			>
 			<div v-if="knownError" class="ext-wikistories-publishform-content-error">
 				{{ error }}
@@ -42,6 +33,16 @@
 			</div>
 		</div>
 		<div class="ext-wikistories-publishform-license" v-html="licenseHtml">
+		</div>
+		<div v-if="savingInProgress" class="ext-wikistories-publishform-saving">
+			<div class="ext-wikistories-publishform-saving-spinner">
+				<div class="ext-wikistories-publishform-saving-spinner-animation">
+					<div class="ext-wikistories-publishform-saving-spinner-animation-bounce"></div>
+				</div>
+			</div>
+			<div class="ext-wikistories-publishform-saving-text">
+				{{ $i18n( 'wikistories-builder-publishform-saving' ).text() }}
+			</div>
 		</div>
 	</div>
 </template>
@@ -132,6 +133,9 @@ module.exports = {
 		onBack: function () {
 			this.routeBack();
 		},
+		onInput: function () {
+			this.error = '';
+		},
 		setErrorFeedback: function ( response ) {
 			this.savingInProgress = false;
 			if ( response && response.error && response.error.info ) {
@@ -177,6 +181,7 @@ module.exports = {
 
 	&-content {
 		display: flex;
+		position: relative;
 		flex-direction: column;
 		align-items: center;
 		padding: 20px;
@@ -203,8 +208,9 @@ module.exports = {
 		}
 
 		&-info {
+			position: absolute;
 			font-size: 14px;
-			margin-top: 45px;
+			top: 145px;
 			width: 70%;
 			text-align: center;
 		}

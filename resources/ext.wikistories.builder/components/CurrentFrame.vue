@@ -88,6 +88,7 @@ module.exports = {
 		box-sizing: border-box;
 		text-align: left;
 		font-size: 18px;
+		color: @colorGray2;
 		line-height: 27px;
 
 		&::-webkit-scrollbar {
@@ -111,6 +112,7 @@ module.exports = {
 		text-align: left;
 		padding: 10px 15px;
 		font-size: 14px;
+		color: @colorGray7;
 
 		.ext-wikistories-wikipedia {
 			color: @color-primary;
