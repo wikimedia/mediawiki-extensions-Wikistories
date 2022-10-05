@@ -4,5 +4,20 @@
 			"Გიო ოქრო"
 		]
 	},
-	"wikistories-extensionname": "ვიკიისტორიები"
+	"wikistories-extensionname": "ვიკიამბები",
+	"wikistories-extensiondesc": "ვიკიამბები რედაქტორებს საშუალებას აძლევს შექმნან მოკლე, თვალსაჩინო და სანდო ცოდნა ვიკიმედიის პროექტებიდან",
+	"wikistories-search-inputplaceholder": "სურათების ძიება",
+	"wikistories-search-cuetext": "სტატიასთან დაკავშირებული სურათების ძიება.",
+	"wikistories-search-noresultstext": "შედეგები არ არის",
+	"wikistories-story-goto-publish": "შემდეგი",
+	"wikistories-imageattribution-author-unknown": "ავტორი უცნობია",
+	"wikistories-article-usetext": "ამბავში დამატება",
+	"wikistories-alert-okbuttontext": "კარგი",
+	"wikistories-error-notenoughframes-title": "არ არის საკმარისი გვერდები",
+	"wikistories-error-frameswithouttext-title": "ტექსტი აკლია",
+	"wikistories-builder-publishform-placeholder": "შეიყვანეთ ამბის სათაური…",
+	"wikistories-builder-publishform-publishbutton": "გამოქვეყნება",
+	"wikistories-builder-publishform-info": "გამოქვეყნებული ამბები ხელმისაწვდომი იქნება სტატიის გვერდზე.",
+	"wikistories-builder-publishform-invalidtitle-empty": "შეიყვანეთ ამბის სათაური",
+	"wikistories-builder-publishform-invalidtitle-format": "ამბის სათაური არასწორია"
 }
