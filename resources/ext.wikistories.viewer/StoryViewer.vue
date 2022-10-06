@@ -31,6 +31,11 @@
 					icon="edit"
 					@click="edit"
 				></dots-menu-item>
+				<dots-menu-item
+					:text="$i18n( 'wikistories-storyviewer-talk' ).text()"
+					icon="talk"
+					@click="talk"
+				></dots-menu-item>
 			</dots-menu>
 			<div class="ext-wikistories-viewer-container-content-progress">
 				<div
@@ -120,7 +125,7 @@ module.exports = {
 		};
 	},
 	computed: $.extend( mapGetters( [
-		'story', 'currentFrame', 'editUrl', 'isCurrentImageLoaded',
+		'story', 'currentFrame', 'editUrl', 'talkUrl', 'isCurrentImageLoaded',
 		'isStoryEnd', 'isLastStory', 'isFirstFrame', 'isLastFrame',
 		'isFramePlaying', 'isFrameDonePlaying', 'isFrameViewed', 'currentStoryTitle'
 	] ), {
@@ -201,6 +206,10 @@ module.exports = {
 		edit: function () {
 			this.logStoryViewEvent();
 			window.location = this.editUrl;
+		},
+		talk: function () {
+			this.logStoryViewEvent();
+			window.location = this.talkUrl;
 		}
 	} ),
 	watch: {

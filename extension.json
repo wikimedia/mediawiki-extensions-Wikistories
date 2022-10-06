@@ -130,6 +130,7 @@
 			"messages": [
 				"wikistories-storyviewer-next-story-button",
 				"wikistories-storyviewer-edit",
+				"wikistories-storyviewer-talk",
 				"wikistories-storyviewer-cover-page-heading",
 				"wikistories-imageattribution-author-unknown"
 			]
@@ -207,6 +208,7 @@
 				"wikistories-story-editdone",
 				"wikistories-story-replaceimage",
 				"wikistories-story-deleteframe",
+				"wikistories-story-feedback",
 				"wikistories-story-navigator-title",
 				"wikistories-story-navigator-title-edit",
 				"wikistories-imageattribution-author-unknown",

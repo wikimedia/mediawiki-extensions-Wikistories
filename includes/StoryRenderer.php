@@ -98,6 +98,7 @@ class StoryRenderer {
 			'pageId' => $pageId,
 			'title' => $title->getText(),
 			'editUrl' => SpecialPage::getTitleFor( 'StoryBuilder', $storyFullTitle )->getLinkURL(),
+			'talkUrl' => Title::newFromLinkTarget( $title )->getTalkPageIfDefined()->getLinkURL(),
 			'thumbnail' => $thumb,
 			'frames' => array_map( function ( $frame ) use ( $files ) {
 				$url = $this->getUrl( $files, $frame->image->filename, 640 );
