@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Duke of Wikipädia",
+			"Eduardoaddad",
 			"YuriNikolai"
 		]
 	},
@@ -13,6 +14,7 @@
 	"wikistories-search-navigator-title-selected-info": "$1 selecionada(s)",
 	"wikistories-story-goto-publish": "Próximo",
 	"wikistories-story-editdone": "Concluído",
+	"wikistories-story-feedback": "Compartilhe seu feedback",
 	"wikistories-imageattribution-author-unknown": "Autor desconhecido",
 	"wikistories-article-cancelselection": "Cancelar",
 	"wikistories-article-loading": "Carregando...",
@@ -30,5 +32,6 @@
 	"wikistories-builder-publishform-invalidtitle-format": "Título de história inválido",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Já existe uma história com este título. Por favor, insira um novo.",
 	"wikistories-builder-publishform-saveerror": "Ocorreu um erro ao publicar a Wikistory. Por favor, tente publicar novamente.",
-	"wikistories-storyviewer-next-story-button": "Ler próxima história"
+	"wikistories-storyviewer-next-story-button": "Ler próxima história",
+	"wikistories-storyviewer-talk": "Compartilhe seu feedback"
 }

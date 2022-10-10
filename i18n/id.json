@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BAPerdana-WMF",
+			"Rex",
 			"WillsonEP09"
 		]
 	},
@@ -22,7 +23,7 @@
 	"wikistories-search-navigator-title": "Pilih gambar",
 	"wikistories-search-navigator-title-selected-info": "$1 dipilih",
 	"wikistories-story-goto-publish": "Selanjutnya",
-	"wikistories-story-selecttext": "Pilih teks dari <span class=\"ext-wikistories-wikipedia\">artikel Wikipedia</span> yang akan digunakan untuk Wikistories Anda",
+	"wikistories-story-selecttext": "Pilih teks stori dari <span class=\"ext-wikistories-wikipedia\">Wikipedia</span>",
 	"wikistories-story-editdone": "Selesai",
 	"wikistories-story-replaceimage": "Ganti gambar ini",
 	"wikistories-story-deleteframe": "Hapus bagian ini",
