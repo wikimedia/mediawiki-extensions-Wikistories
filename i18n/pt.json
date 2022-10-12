@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"wikistories-extensiondesc": "Wikihistórias permite que os editores criem conhecimento sucinto, visual e confiável de projetos da Wikimedia",
+	"wikistories-search-inputplaceholder": "Procurar imagens",
+	"wikistories-search-cuetext": "Procurar imagens relativas ao artigo.",
+	"wikistories-search-noresultstext": "Não há resultados",
+	"wikistories-story-goto-publish": "Seguinte",
+	"wikistories-imageattribution-author-unknown": "Autor desconhecido",
+	"wikistories-article-usetext": "Adicionar à história",
+	"wikistories-alert-okbuttontext": "OK",
+	"wikistories-error-notenoughframes-title": "Não tem páginas suficientes",
+	"wikistories-error-frameswithouttext-title": "Ausência de texto",
+	"wikistories-builder-publishform-placeholder": "Introduza o título da história...",
+	"wikistories-builder-publishform-publishbutton": "Publicar",
+	"wikistories-builder-publishform-info": "As histórias publicadas estarão disponíveis na página do artigo.",
+	"wikistories-builder-publishform-invalidtitle-empty": "Introduza o título da história",
+	"wikistories-builder-publishform-invalidtitle-format": "Título da história inválido"
+}
