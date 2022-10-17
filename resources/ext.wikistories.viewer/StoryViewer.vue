@@ -53,11 +53,7 @@
 					></div>
 				</div>
 			</div>
-			<div
-				v-if="currentFrame.text"
-				class="ext-wikistories-viewer-container-content-story-text">
-				{{ currentFrame.text }}
-			</div>
+			<textbox :is-paused="timer.isPaused" @scroll-pause="pauseOnScroll"></textbox>
 			<div
 				v-if="isFirstFrame"
 				class="ext-wikistories-viewer-container-content-story-cover">
@@ -98,6 +94,7 @@
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
 const ImageAttribution = require( './components/ImageAttribution.vue' );
+const Textbox = require( './components/Textbox.vue' );
 const DotsMenu = require( './DotsMenu.vue' );
 const DotsMenuItem = require( './DotsMenuItem.vue' );
 const Timer = require( './util/timer.js' );
@@ -109,7 +106,8 @@ module.exports = {
 	components: {
 		'image-attribution': ImageAttribution,
 		'dots-menu': DotsMenu,
-		'dots-menu-item': DotsMenuItem
+		'dots-menu-item': DotsMenuItem,
+		textbox: Textbox
 	},
 	props: {
 		stories: { type: Array, default: () => [] },
@@ -180,6 +178,9 @@ module.exports = {
 			} else {
 				this.timer.pause();
 			}
+		},
+		pauseOnScroll: function () {
+			this.timer.pause();
 		},
 		navigateFrame: function ( e ) {
 			if ( !isTouchDevice ) {
@@ -320,22 +321,6 @@ module.exports = {
 
 		@media screen and ( min-width: 720px ) {
 			max-width: 993.3px;
-		}
-
-		&-story-text {
-			position: absolute;
-			bottom: 90px;
-			left: 20px;
-			right: 20px;
-			border-radius: 2px;
-			background: linear-gradient( 0deg, #fff, #fff, #fff );
-			box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
-			margin: 0;
-			padding: 10px;
-			font-size: 18px;
-			line-height: 27px;
-			max-height: 40%;
-			overflow: scroll;
 		}
 
 		&-story-cover {

@@ -30,7 +30,8 @@ module.exports = {
 		 */
 		frames: storyContent.frames,
 		mode: storyEditMode,
-		title: storyContent.title
+		title: storyContent.title,
+		editingText: false
 	},
 	mutations: {
 		selectFrame: ( state, index ) => {
@@ -79,6 +80,9 @@ module.exports = {
 				.forEach( frame => {
 					frame.attribution = data.attribution;
 				} );
+		},
+		setEditingText: ( state, value ) => {
+			state.editingText = value;
 		}
 	},
 	actions: {
@@ -136,6 +140,9 @@ module.exports = {
 		},
 		reorderFrames: ( context, data ) => {
 			context.commit( 'reorderFrames', data );
+		},
+		setEditingText: ( context, value ) => {
+			context.commit( 'setEditingText', value );
 		}
 	},
 	getters: {
@@ -193,6 +200,7 @@ module.exports = {
 					return frame;
 				} )
 			};
-		}
+		},
+		editingText: ( state ) => state.editingText
 	}
 };

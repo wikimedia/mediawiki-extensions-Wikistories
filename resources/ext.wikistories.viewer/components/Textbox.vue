@@ -1,0 +1,124 @@
+<template>
+	<div v-if="currentFrame.text">
+		<div
+			ref="frameTextbox"
+			class="ext-wikistories-viewer-container-content-story-text"
+			@scroll="onScroll">
+			{{ currentFrame.text }}
+		</div>
+		<div
+			:class="`ext-wikistories-viewer-container-content-text-fade ${scrollCueClassName}`">
+		</div>
+	</div>
+</template>
+
+<script>
+const mapGetters = require( 'vuex' ).mapGetters;
+
+// @vue/component
+module.exports = {
+	name: 'Textbox',
+	props: {
+		isPaused: {
+			type: Boolean,
+			default: false
+		}
+	},
+	emits: [ 'scroll-pause' ],
+	data: function () {
+		return {
+			isRefElementScrollable: false,
+			scrollCueClassName: ''
+		};
+	},
+	computed: mapGetters( [ 'currentFrame' ] ),
+	methods: {
+		onScroll: function ( e ) {
+			const scrollTop = e.target.scrollTop;
+			const scrollHeight = e.target.scrollHeight;
+			const clientHeight = e.target.clientHeight;
+
+			if ( !this.isPaused && scrollTop > 0 ) {
+				this.$emit( 'scroll-pause' );
+			}
+
+			if ( this.isRefElementScrollable && scrollTop === 0 ) {
+				this.scrollCueClassName = 'ext-wikistories-viewer-container-content-text-fade-bottom';
+			} else if ( this.isRefElementScrollable && scrollTop + clientHeight >= scrollHeight ) {
+				this.scrollCueClassName = 'ext-wikistories-viewer-container-content-text-fade-top';
+			} else {
+				this.scrollCueClassName = '';
+			}
+		},
+		updateRefElement: function () {
+			const textBoxRef = this.$refs.frameTextbox;
+			if ( textBoxRef ) {
+				this.isRefElementScrollable = textBoxRef.scrollHeight > textBoxRef.clientHeight;
+			}
+		},
+		resetRefElementScrollTop: function () {
+			const textBoxRef = this.$refs.frameTextbox;
+			if ( textBoxRef ) {
+				textBoxRef.scrollTo( 0, 0 );
+			}
+		}
+	},
+	watch: {
+		isRefElementScrollable: function () {
+			// Initialize text fade cue
+			if ( this.isRefElementScrollable ) {
+				this.scrollCueClassName = 'ext-wikistories-viewer-container-content-text-fade-bottom';
+			} else {
+				this.scrollCueClassName = '';
+			}
+		},
+		currentFrame: function () {
+			this.resetRefElementScrollTop();
+		}
+	},
+	mounted: function () {
+		this.updateRefElement();
+	},
+	updated: function () {
+		this.updateRefElement();
+	}
+};
+</script>
+
+<style lang="less">
+	.ext-wikistories-viewer-container-content-story-text {
+		position: absolute;
+		bottom: 90px;
+		left: 16px;
+		right: 16px;
+		border-radius: 2px;
+		background: linear-gradient( 0deg, #fff, #fff, #fff );
+		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
+		margin: 0;
+		padding: 8px 20px 8px 8px;
+		max-height: 350px;
+		font-size: 18px;
+		line-height: 27px;
+		overflow: scroll;
+	}
+
+	.ext-wikistories-viewer-container-content-text-fade {
+		position: absolute;
+		bottom: 90px;
+		left: 16px;
+		right: 16px;
+		height: 35px;
+		z-index: 93;
+		margin: auto;
+		border-radius: 2px;
+
+		&-top {
+			bottom: 423px;
+			background: linear-gradient( to top, rgba( 255, 255, 255, 0 ) 0%, #fff 50% );
+		}
+
+		&-bottom {
+			background: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ) 0%, #fff 50% );
+		}
+	}
+</style>

@@ -115,6 +115,7 @@
 				"index.js",
 				"StoryViewer.vue",
 				"components/ImageAttribution.vue",
+				"components/Textbox.vue",
 				"store/index.js",
 				"store/story.js",
 				"util/isTouchDevice.js",

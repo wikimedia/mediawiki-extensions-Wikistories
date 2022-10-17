@@ -8,10 +8,9 @@
 		></navigator>
 		<current-frame
 			@select-text="onSelectText"
-			@edit-text="handleTextEditFocus"
 		></current-frame>
 		<div class="ext-wikistories-storybuilder-story-topbar"></div>
-		<dots-menu v-show="!isEditingText" class="ext-wikistories-storybuilder-story-menu">
+		<dots-menu v-show="!editingText" class="ext-wikistories-storybuilder-story-menu">
 			<dots-menu-item
 				icon="replace"
 				:text="$i18n( 'wikistories-story-replaceimage' ).text()"
@@ -28,7 +27,7 @@
 				@click="goToWikistoriesTalkPage"
 			></dots-menu-item>
 		</dots-menu>
-		<frames v-show="!isEditingText" @max-limit="showMaxFramesToast"></frames>
+		<frames v-show="!editingText" @max-limit="showMaxFramesToast"></frames>
 		<toast
 			v-if="toast.show"
 			:message="toast.message"
@@ -88,7 +87,6 @@ module.exports = {
 		return {
 			viewDeleteFrameConfirmDialog: false,
 			viewDiscardStoryConfirmDialog: false,
-			isEditingText: false,
 			alert: {
 				show: false,
 				title: '',
@@ -100,7 +98,7 @@ module.exports = {
 			}
 		};
 	},
-	computed: $.extend( mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'mode', 'frameCount' ] ), {
+	computed: $.extend( mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'mode', 'frameCount', 'editingText' ] ), {
 		messages: function () {
 			return this.mode === 'edit' ?
 				{
@@ -156,9 +154,6 @@ module.exports = {
 			this.alert.title = '';
 			this.alert.message = '';
 			this.alert.show = false;
-		},
-		handleTextEditFocus: function ( editing ) {
-			this.isEditingText = editing;
 		},
 		deleteFrame: function () {
 			this.removeFrame();

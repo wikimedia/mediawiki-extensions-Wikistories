@@ -7,7 +7,6 @@
 		</div>
 		<editable-textarea
 			v-if="currentFrame.text || editingText"
-			class="ext-wikistories-current-frame-textbox-content"
 			:on-focus="beginTextEdit"
 			:on-blur="endTextEdit"
 		></editable-textarea>
@@ -36,23 +35,18 @@ module.exports = {
 		'editable-textarea': AutoHeightTextarea
 	},
 	emits: [ 'select-text', 'edit-text' ],
-	data: function () {
-		return {
-			editingText: false
-		};
-	},
-	computed: $.extend( mapGetters( [ 'currentFrame' ] ), {
+	computed: $.extend( mapGetters( [ 'currentFrame', 'editingText' ] ), {
 		showImageAttribution: function () {
 			return !this.editingText && !this.currentFrame.fileNotFound;
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'setText' ] ), {
+	methods: $.extend( mapActions( [ 'setText', 'setEditingText' ] ), {
 		beginTextEdit: function () {
-			this.editingText = true;
+			this.setEditingText( true );
 			this.$emit( 'edit-text', true );
 		},
 		endTextEdit: function () {
-			this.editingText = false;
+			this.setEditingText( false );
 			this.setText( this.currentFrame.text.trim() );
 			this.$emit( 'edit-text', false );
 		}
@@ -68,34 +62,6 @@ module.exports = {
 	position: relative;
 	text-align: center;
 
-	&-textbox-content {
-		position: absolute;
-		bottom: 60px;
-		left: 0;
-		right: 0;
-		padding: 10px 13px 10px 13px;
-		margin: auto;
-		max-height: 40%;
-		min-height: 10%;
-		border-radius: 2px;
-		background: linear-gradient( 0deg, #fff, #fff, #fff );
-		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
-		outline: 0;
-		border: 0;
-		width: 90%;
-		resize: none;
-		z-index: 92;
-		box-sizing: border-box;
-		text-align: left;
-		font-size: 18px;
-		color: @colorGray2;
-		line-height: 27px;
-
-		&::-webkit-scrollbar {
-			display: none;
-		}
-	}
-
 	&-textbox-select-cta {
 		position: absolute;
 		bottom: 60px;
@@ -108,7 +74,7 @@ module.exports = {
 		display: flex;
 		align-items: center;
 		width: 85%;
-		height: 70px;
+		height: 72px;
 		text-align: left;
 		padding: 10px 15px;
 		font-size: 14px;
