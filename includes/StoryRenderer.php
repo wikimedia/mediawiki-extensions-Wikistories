@@ -173,7 +173,8 @@ class StoryRenderer {
 
 		$formatMetadata = new FormatMetadata();
 		$metadata = $formatMetadata->fetchExtendedMetadata( $file );
-		$author = strip_tags( $metadata[ 'Artist' ][ 'value' ] ?? '' );
+		$rawAuthor = $metadata[ 'Artist' ][ 'value' ] ?? '';
+		$author = is_array( $rawAuthor ) ? reset( $rawAuthor ) : $rawAuthor;
 		$licenseString = $metadata[ 'LicenseShortName' ][ 'value' ] ?? '';
 		$licenseTypes = [ 'CC', 'BY', 'SA', 'Fair', 'Public' ];
 		$license = array_filter( $licenseTypes, static function ( $license ) use ( $licenseString ) {
@@ -181,7 +182,7 @@ class StoryRenderer {
 		} );
 
 		return [
-			'author' => $author,
+			'author' => strip_tags( $author ),
 			'license' => $license,
 			'url' => $file->getDescriptionUrl(),
 		];
@@ -220,7 +221,10 @@ class StoryRenderer {
 				'license' => $this->getLicensesHtmlString( $attribution[ 'license' ] ),
 				'author' => Html::rawElement(
 					'div',
-					[ 'class' => 'ext-wikistories-viewer-nojs-frame-attribution-info-author' ],
+					[
+						'class' => 'ext-wikistories-viewer-nojs-frame-attribution-info-author',
+						'title' => $attribution[ 'author' ],
+					],
 					$attribution[ 'author' ]
 				)
 			] )
