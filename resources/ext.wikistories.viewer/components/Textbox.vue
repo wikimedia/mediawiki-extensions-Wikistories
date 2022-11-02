@@ -3,6 +3,7 @@
 		<div
 			ref="frameTextbox"
 			class="ext-wikistories-viewer-container-content-story-text"
+			:style="textStyle"
 			@scroll="onScroll">
 			{{ currentFrame.text }}
 		</div>
@@ -22,6 +23,10 @@ module.exports = {
 		isPaused: {
 			type: Boolean,
 			default: false
+		},
+		textsize: {
+			type: String,
+			required: true
 		}
 	},
 	emits: [ 'scroll-pause' ],
@@ -31,7 +36,13 @@ module.exports = {
 			scrollCueClassName: ''
 		};
 	},
-	computed: mapGetters( [ 'currentFrame' ] ),
+	computed: $.extend( mapGetters( [ 'currentFrame', 'textsizes' ] ), {
+		textStyle: function () {
+			return {
+				fontSize: this.textsizes[ this.textsize ] + '%'
+			};
+		}
+	} ),
 	methods: {
 		onScroll: function ( e ) {
 			const scrollTop = e.target.scrollTop;
@@ -97,8 +108,6 @@ module.exports = {
 		margin: 0;
 		padding: 8px 20px 8px 8px;
 		max-height: 350px;
-		font-size: 18px;
-		line-height: 27px;
 		overflow: scroll;
 	}
 

@@ -62,7 +62,11 @@ module.exports = {
 	}
 
 	&-talk {
-		background-image: url( ./images/talk.svg ); // TODO: find icon
+		background-image: url( ./images/talk.svg );
+	}
+
+	&-textsize {
+		background-image: url( ./images/textsize.svg );
 	}
 
 	@media screen and ( min-width: 720px ) {

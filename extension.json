@@ -120,6 +120,7 @@
 				"store/story.js",
 				"util/isTouchDevice.js",
 				"util/timer.js",
+				{ "name": "ConfirmDialog.vue", "file": "../components/ConfirmDialog.vue" },
 				{ "name": "DotsMenu.vue", "file": "../components/DotsMenu.vue" },
 				{ "name": "DotsMenuItem.vue", "file": "../components/DotsMenuItem.vue" }
 			],
@@ -130,10 +131,17 @@
 			"dependencies": [ "vue", "vuex" ],
 			"messages": [
 				"wikistories-storyviewer-next-story-button",
+				"wikistories-storyviewer-textsize",
 				"wikistories-storyviewer-edit",
 				"wikistories-storyviewer-talk",
 				"wikistories-storyviewer-cover-page-heading",
-				"wikistories-imageattribution-author-unknown"
+				"wikistories-imageattribution-author-unknown",
+				"wikistories-storyviewer-textsize-title",
+				"wikistories-storyviewer-textsize-label-small",
+				"wikistories-storyviewer-textsize-label-regular",
+				"wikistories-storyviewer-textsize-label-large",
+				"wikistories-confirmdialog-cancel",
+				"wikistories-confirmdialog-ok"
 			]
 		},
 		"ext.wikistories.builder.styles": {

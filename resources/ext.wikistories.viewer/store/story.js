@@ -1,10 +1,18 @@
+const PREF_TEXTSIZE = 'wikistories-pref-viewertextsize';
+
 module.exports = {
 	state: {
 		stories: [],
 		storyId: null,
 		frameId: 0,
 		isStoryEnd: false,
-		loadedImages: []
+		loadedImages: [],
+		textsize: mw.user.options.get( PREF_TEXTSIZE ) || 'regular',
+		textsizes: {
+			small: 90,
+			regular: 100,
+			large: 120
+		}
 	},
 	getters: {
 		currentStory: ( state ) => {
@@ -73,7 +81,9 @@ module.exports = {
 		},
 		isCurrentImageLoaded: ( state, getters ) => {
 			return state.loadedImages.indexOf( getters.currentFrame.url ) !== -1;
-		}
+		},
+		textsizes: ( state ) => state.textsizes,
+		textsize: ( state ) => state.textsize
 	},
 	mutations: {
 		setStories: ( state, stories ) => {
@@ -92,6 +102,9 @@ module.exports = {
 			if ( state.loadedImages.indexOf( imageUrl ) === -1 ) {
 				state.loadedImages.push( imageUrl );
 			}
+		},
+		setTextsize: ( state, newTextsize ) => {
+			state.textsize = newTextsize;
 		}
 	},
 	actions: {
@@ -140,6 +153,13 @@ module.exports = {
 
 			context.commit( 'setStoryId', nextStoryId );
 			window.location.replace( '#/story/' + nextStoryId );
+		},
+		setTextsize: ( context, newTextsize ) => {
+			if ( Object.prototype.hasOwnProperty.call( context.getters.textsizes, newTextsize ) ) {
+				context.commit( 'setTextsize', newTextsize );
+				mw.user.options.set( PREF_TEXTSIZE, newTextsize );
+				new mw.Api().saveOption( PREF_TEXTSIZE, newTextsize );
+			}
 		}
 	}
 };

@@ -14,6 +14,9 @@ const Timer = function () {
 			this.play();
 		},
 		pause: function () {
+			if ( this.isPaused ) {
+				return;
+			}
 			window.clearTimeout( timerId );
 			timerId = null;
 			this.isPaused = true;

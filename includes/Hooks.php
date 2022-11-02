@@ -33,6 +33,8 @@ class Hooks {
 
 	private const WIKISTORIES_MODE_PUBLIC = 'public';
 
+	private const WIKISTORIES_PREF_VIEWER_TEXTSIZE = 'wikistories-pref-viewertextsize';
+
 	/**
 	 * Register a beta feature that lets users show stories on article pages
 	 *
@@ -63,14 +65,16 @@ class Hooks {
 	 * @param array &$preferences
 	 */
 	public static function onGetPreferences( User $user, array &$preferences ) {
-		if ( !self::isPublicDiscoveryMode( RequestContext::getMain() ) ) {
-			return;
+		if ( self::isPublicDiscoveryMode( RequestContext::getMain() ) ) {
+			$preferences[ self::WIKISTORIES_PREF_SHOW_DISCOVERY ] = [
+				'section' => 'rendering/wikistories',
+				'label-message' => 'wikistories-pref-showdiscovery-message',
+				'help-message' => 'wikistories-pref-showdiscovery-help-message',
+				'type' => 'toggle',
+			];
 		}
-		$preferences[ self::WIKISTORIES_PREF_SHOW_DISCOVERY ] = [
-			'section' => 'rendering/wikistories',
-			'label-message' => 'wikistories-pref-showdiscovery-message',
-			'help-message' => 'wikistories-pref-showdiscovery-help-message',
-			'type' => 'toggle',
+		$preferences[ self::WIKISTORIES_PREF_VIEWER_TEXTSIZE ] = [
+			'type' => 'api',
 		];
 	}
 
