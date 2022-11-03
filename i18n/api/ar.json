@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meno25"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "Namespace ( $1 ) غير مدعوم من قبل نقطة نهاية API هذه. لا يمكن ربط القصص إلا بالمقالات الموجودة في مساحة الاسم الرئيسية."
+}

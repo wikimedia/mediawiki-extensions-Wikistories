@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"GeoO",
-			"Kareyac"
+			"Kareyac",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
 	"prefs-wikistories": "Վիքիպատմություններ",
 	"wikistories-story-deleteframe": "Ջնջել այս էջը",
 	"wikistories-article-cancelselection": "Մաքրել",
+	"wikistories-builder-publishform-publishbutton": "Հրապարակել",
 	"wikistories-nojs-form-label-image": "Պատկեր",
 	"wikistories-nojs-form-label-text": "Տեքստ",
 	"wikistories-storyviewer-edit": "Խմբագրել"
