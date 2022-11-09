@@ -21,6 +21,7 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 			]
 		);
 		$catPosterFile->method( 'getDescriptionUrl' )->willReturn( 'cat-poster-attribution-url' );
+		$catPosterFile->method( 'getSha1' )->willReturn( 'sha1' );
 
 		$catNappingFile = $this->createMock( ForeignAPIFile::class );
 		$catNappingFile->method( 'createThumb' )->willReturn( 'cat-napping-url' );
@@ -31,6 +32,7 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 			]
 		);
 		$catNappingFile->method( 'getDescriptionUrl' )->willReturn( 'cat-napping-attribution-url' );
+		$catNappingFile->method( 'getSha1' )->willReturn( 'sha1' );
 
 		$repoGroup = $this->createMock( RepoGroup::class );
 		$repoGroup->method( 'findFiles' )->willReturn(
