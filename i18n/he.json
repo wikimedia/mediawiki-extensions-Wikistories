@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Ex-Diktator",
+			"MaryMunyoki"
 		]
 	},
 	"wikistories-extensiondesc": "הרחבת סיפורי ויקי (Wikistories) מאפשרת לעורכים ליצור ידע קצר, חזותי, ואמין ממיזמי ויקימדיה",
@@ -29,7 +31,7 @@
 	"wikistories-builder-publishform-header": "פרסום ויקיסיפור",
 	"wikistories-builder-publishform-placeholder": "נא להזין כותרת סיפור...",
 	"wikistories-builder-publishform-publishbutton": "פרסום",
-	"wikistories-builder-publishform-info": "סיפור שפורסמו יהיו זמינים בדף הערך.",
+	"wikistories-builder-publishform-info": "סיפורים שפורסמו יהיו זמינים בדף הערך.",
 	"wikistories-builder-publishform-invalidtitle-empty": "נא להזין כותרת סיפור",
 	"wikistories-builder-publishform-invalidtitle-format": "כותרת סיפור בלתי־תקינה",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "סיפור אחר עם אותה כותרת כבר קיים. נא לכתוב כותרת סיפור ייחודית.",
