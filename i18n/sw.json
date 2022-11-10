@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"MaryMunyoki"
+		]
+	},
+	"wikistories-search-navigator-title-selected-info": "{{PLURAL:$1|$1 imechaguliwa|$1 zimechaguliwa|0=Hakuna iliyochaguliwa}}",
+	"wikistories-story-goto-publish": "Endelea"
+}
