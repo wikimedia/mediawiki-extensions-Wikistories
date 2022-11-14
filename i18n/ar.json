@@ -18,6 +18,7 @@
 	"wikistories-alert-okbuttontext": "حسنًا",
 	"wikistories-confirmdialog-delete-message": "سيتم حذفه من قصتك بشكل دائم.",
 	"wikistories-confirmdialog-discardedits-title": "تجاهل التعديلات؟",
+	"wikistories-storyviewer-textsize-title": "حجم الخط",
 	"wikistories-error-notenoughframes-message": "كل قصص الويكي تحتاج على الأقل {{PLURAL:$1|1=one|2=two|3=three|4=four|5=five|10=ten|$1}} {{PLURAL:$1|page|pages}}. اضف من فضلك {{PLURAL:$2|1=one|2=two|3=three|4=four|5=five|10=ten|$2}} {{PLURAL:$2|more page|more pages}}.",
 	"wikistories-error-frameswithouttext-title": "نص مفقود",
 	"wikistories-builder-publishform-publishbutton": "انشر",

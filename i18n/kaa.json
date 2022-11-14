@@ -5,5 +5,12 @@
 		]
 	},
 	"wikistories-story-feedback": "Óz pikirińizdi bólisiń",
+	"wikistories-confirmdialog-cancel": "Biykarlaw",
+	"wikistories-confirmdialog-ok": "OK",
+	"wikistories-storyviewer-textsize-title": "Tekst ólshemi",
+	"wikistories-storyviewer-textsize-label-small": "Kishkene",
+	"wikistories-storyviewer-textsize-label-regular": "Ádettegi",
+	"wikistories-storyviewer-textsize-label-large": "Úlken",
+	"wikistories-storyviewer-textsize": "Tekst ólshemin ózgertiw",
 	"wikistories-storyviewer-talk": "Óz pikirińizdi bólisiń"
 }

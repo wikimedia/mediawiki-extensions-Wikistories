@@ -4,6 +4,11 @@
 			"Saraiki"
 		]
 	},
+	"wikistories-confirmdialog-cancel": "منسوخ",
+	"wikistories-confirmdialog-ok": "ٹھیک ہے",
+	"wikistories-storyviewer-textsize-title": "عبارت سائز",
+	"wikistories-storyviewer-textsize-label-regular": "باقاعدہ",
 	"wikistories-nojs-form-label-image": "تصویر",
-	"wikistories-nojs-form-label-text": "عبارت"
+	"wikistories-nojs-form-label-text": "عبارت",
+	"wikistories-storyviewer-textsize": "عبارت سائز وٹاؤ"
 }

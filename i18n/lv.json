@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Baisulis"
+		]
+	},
+	"wikistories-confirmdialog-cancel": "Atcelt",
+	"wikistories-confirmdialog-ok": "Labi",
+	"wikistories-storyviewer-textsize-title": "Teksta lielums",
+	"wikistories-storyviewer-textsize-label-large": "Liels",
+	"wikistories-storyviewer-textsize": "Mainiet teksta lielumu"
+}
