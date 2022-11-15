@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Къарачайлы"
+		]
+	},
+	"wikistories-confirmdialog-cancel": "Ызына ал",
+	"wikistories-confirmdialog-ok": "ОК",
+	"wikistories-storyviewer-textsize-title": "Текстни ёлчеми",
+	"wikistories-storyviewer-textsize-label-small": "Гитче",
+	"wikistories-storyviewer-textsize-label-regular": "Тюз",
+	"wikistories-storyviewer-textsize-label-large": "Уллу",
+	"wikistories-storyviewer-textsize": "Текстни ёлчемин тюрлендир"
+}

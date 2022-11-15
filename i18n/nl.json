@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AHendriksen-collecties",
 			"Dnlweijers",
 			"Mainframe98",
 			"McDutchie",
@@ -14,6 +15,7 @@
 	"wikistories-article-cancelselection": "Wissen",
 	"wikistories-article-loading": "Artikel wordt geladen…",
 	"wikistories-confirmdialog-delete-cancel": "Annuleren",
+	"wikistories-storyviewer-textsize-title": "Tekstgrootte",
 	"wikistories-nojs-form-label-related-article": "Gerelateerd artikel",
 	"wikistories-nojs-form-label-frame": "Kader $1",
 	"wikistories-nojs-form-label-image": "Afbeelding",
