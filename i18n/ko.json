@@ -27,11 +27,16 @@
 	"wikistories-article-usetext": "스토리에 추가",
 	"wikistories-article-info-banner": "스토리에 참가할 텍스트 선택",
 	"wikistories-alert-okbuttontext": "확인",
+	"wikistories-confirmdialog-cancel": "취소",
+	"wikistories-confirmdialog-ok": "확인",
 	"wikistories-confirmdialog-delete-title": "이 스토리 페이지를 삭제하시겠습니까?",
 	"wikistories-confirmdialog-delete-message": "당신의 스토리에서 영구적으로 삭제될 것입니다",
 	"wikistories-confirmdialog-delete-accept": "삭제",
 	"wikistories-confirmdialog-delete-cancel": "취소",
 	"wikistories-confirmdialog-discardstory-accept": "버리기",
+	"wikistories-storyviewer-textsize-title": "텍스트 크기",
+	"wikistories-storyviewer-textsize-label-small": "작게",
+	"wikistories-storyviewer-textsize-label-large": "크게",
 	"wikistories-error-notenoughframes-title": "문서가 충분하지 않습니다",
 	"wikistories-error-frameswithouttext-title": "텍스트 없음",
 	"wikistories-builder-publishform-navigator-title": "위키스토리 게시",
@@ -48,5 +53,6 @@
 	"wikistories-nojs-form-label-text": "텍스트",
 	"wikistories-discover-cta-text": "위키스토리 만들기",
 	"wikistories-storyviewer-next-story-button": "다음 이야기 읽기",
+	"wikistories-storyviewer-textsize": "텍스트 크기 변경",
 	"wikistories-from-article-not-found": "\"$1\" 문서가 없습니다"
 }

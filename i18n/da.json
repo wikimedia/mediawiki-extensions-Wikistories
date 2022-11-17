@@ -1,8 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Saederup92"
+			"Saederup92",
+			"SiGNOUT"
 		]
 	},
-	"wikistories-article-loading": "Indlæser artikel..."
+	"wikistories-article-loading": "Indlæser artikel...",
+	"wikistories-confirmdialog-ok": "OK",
+	"wikistories-storyviewer-textsize-title": "Tekststørrelse",
+	"wikistories-storyviewer-textsize-label-small": "Lille",
+	"wikistories-storyviewer-textsize-label-regular": "Almindelig",
+	"wikistories-storyviewer-textsize-label-large": "Stor",
+	"wikistories-storyviewer-textsize": "Skift tekststørrelse"
 }
