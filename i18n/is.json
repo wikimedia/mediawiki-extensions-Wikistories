@@ -1,6 +1,13 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Sveinn í Felli"
+		]
 	},
-	"wikistories-specialstorybuilder-mustbeloggedin": "Vinsamlegast skráðu þig inn eða búðu til aðgang til að gera sögur."
+	"wikistories-specialstorybuilder-mustbeloggedin": "Vinsamlegast skráðu þig inn eða búðu til aðgang til að gera sögur.",
+	"wikistories-confirmdialog-cancel": "Hætta við",
+	"wikistories-confirmdialog-ok": "Í lagi",
+	"wikistories-storyviewer-textsize-title": "Stærð texta",
+	"wikistories-storyviewer-textsize-label-large": "Stórt",
+	"wikistories-storyviewer-textsize": "Breyta stærð texta"
 }

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"wikistories-confirmdialog-cancel": "Откажи",
+	"wikistories-confirmdialog-ok": "У реду",
+	"wikistories-storyviewer-textsize-title": "Величина текста",
+	"wikistories-storyviewer-textsize-label-small": "Мала",
+	"wikistories-storyviewer-textsize-label-regular": "Нормална",
+	"wikistories-storyviewer-textsize-label-large": "Велика",
+	"wikistories-storyviewer-textsize": "Промени величину текста"
+}
