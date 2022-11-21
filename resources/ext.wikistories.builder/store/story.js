@@ -85,6 +85,9 @@ module.exports = {
 			const frame = state.frames[ state.currentFrameIndex ];
 			frame.lastEditedText = text.slice( 0, MAX_TEXT_LENGTH );
 		},
+		setImageFocalRect: ( state, rect ) => {
+			state.frames[ state.currentFrameIndex ].focalRect = rect;
+		},
 		setFrame: ( state, data ) => {
 			state.frames[ state.currentFrameIndex ] = data;
 		},
@@ -140,6 +143,9 @@ module.exports = {
 		},
 		setLastEditedText: ( context, text ) => {
 			context.commit( 'setLastEditedText', text );
+		},
+		setImageFocalRect: ( context, rect ) => {
+			context.commit( 'setImageFocalRect', rect );
 		},
 		setFrameImage: ( context, data ) => {
 			// frame text content remain
@@ -252,12 +258,14 @@ module.exports = {
 			const f = state.frames[ state.currentFrameIndex ] || {};
 			return {
 				text: f.text,
-				style: makeFrameStyle( f ),
+				imageSrc: f.url,
+				imgFocalRect: f.focalRect,
 				imgAttribution: f.attribution,
 				fileNotFound: f.fileNotFound,
 				textFromArticle: f.textFromArticle,
 				lastEditedText: f.lastEditedText,
-				warning: f.warning
+				warning: f.warning,
+				filename: f.filename
 			};
 		},
 		missingFrames: ( state ) => {
@@ -276,7 +284,8 @@ module.exports = {
 				frames: state.frames.map( ( f ) => {
 					const frame = {
 						image: {
-							filename: f.filename
+							filename: f.filename,
+							focalRect: f.focalRect
 						},
 						text: {
 							value: f.text

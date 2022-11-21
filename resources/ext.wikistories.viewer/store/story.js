@@ -30,7 +30,9 @@ module.exports = {
 					attribution: currentStory.frames[ 0 ].attribution,
 					url: currentStory.frames[ 0 ].url,
 					text: null,
-					fileNotFound: currentStory.frames[ 0 ].fileNotFound
+					fileNotFound: currentStory.frames[ 0 ].fileNotFound,
+					focalRect: currentStory.frames[ 0 ].focalRect,
+					filename: currentStory.frames[ 0 ].filename
 				} ];
 				return coverFrame.concat( currentStory.frames );
 			}

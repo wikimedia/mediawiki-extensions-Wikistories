@@ -192,6 +192,10 @@
 				{
 					"name": "DotsMenuItem.vue",
 					"file": "../components/DotsMenuItem.vue"
+				},
+				{
+					"name": "StoryImage.vue",
+					"file": "../components/StoryImage.vue"
 				}
 			],
 			"styles": [
@@ -278,6 +282,10 @@
 				{
 					"name": "DotsMenuItem.vue",
 					"file": "../components/DotsMenuItem.vue"
+				},
+				{
+					"name": "StoryImage.vue",
+					"file": "../components/StoryImage.vue"
 				}
 			],
 			"dependencies": [

@@ -250,6 +250,7 @@ module.exports = {
 		left: 0;
 		height: 140px;
 		background: linear-gradient( 180deg, rgba( 0, 0, 0, 0.35 ) 0%, rgba( 0, 0, 0, 0 ) 100% );
+		pointer-events: none;
 	}
 
 	&-menu {

@@ -31,6 +31,37 @@
 								"description": "Name of the image file. Example: Cat_poster_1.jpg",
 								"type": "string",
 								"maxLength": 255
+							},
+							"focalRect": {
+								"description": "Coordinates of the image focal rectangle that should be visible in any screen",
+								"type": "object",
+								"properties": {
+									"width": {
+										"description": "Width of the focal rect, in percentage of the image width",
+										"type": "number",
+										"minimum": 0,
+										"maximum": 1
+									},
+									"height": {
+										"description": "Height of the focal rect, in percentage of the image height",
+										"type": "number",
+										"minimum": 0,
+										"maximum": 1
+									},
+									"x": {
+										"description": "X-coordinate for the top-left corner of the focal rect, in percentage of the image width",
+										"type": "number",
+										"minimum": 0,
+										"maximum": 1
+									},
+									"y": {
+										"description": "Y-coordinate for the top-left corner of the focal rect, in percentage of the image height",
+										"type": "number",
+										"minimum": 0,
+										"maximum": 1
+									}
+								},
+								"required": [ "width", "height", "x", "y" ]
 							}
 						}
 					},

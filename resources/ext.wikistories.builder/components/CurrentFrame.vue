@@ -1,5 +1,12 @@
 <template>
-	<div class="ext-wikistories-current-frame" :style="currentFrame.style">
+	<div class="ext-wikistories-current-frame">
+		<story-image
+			:src="currentFrame.imageSrc"
+			:rect="currentFrame.imgFocalRect"
+			:alt="currentFrame.filename"
+			:thumbnail="false"
+			:allow-gestures="true"
+			@update-focal-rect="onUpdateFocalRect"></story-image>
 		<div v-show="editingText" class="ext-wikistories-current-frame-overlay"></div>
 		<editable-textarea
 			v-if="currentFrame.text || editingText"
@@ -32,6 +39,7 @@
 const mapActions = require( 'vuex' ).mapActions;
 const mapGetters = require( 'vuex' ).mapGetters;
 const ImageAttribution = require( './ImageAttribution.vue' );
+const StoryImage = require( '../StoryImage.vue' );
 const AutoHeightTextarea = require( './AutoHeightTextarea.vue' );
 
 // @vue/component
@@ -39,6 +47,7 @@ module.exports = {
 	name: 'CurrentFrame',
 	components: {
 		'image-attribution': ImageAttribution,
+		'story-image': StoryImage,
 		'editable-textarea': AutoHeightTextarea
 	},
 	emits: [ 'select-text' ],
@@ -51,7 +60,7 @@ module.exports = {
 				( this.currentFrame.warning.isAlwaysShown || this.editingText );
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'setText', 'setEditingText', 'setLastEditedText' ] ), {
+	methods: $.extend( mapActions( [ 'setText', 'setEditingText', 'setLastEditedText', 'setImageFocalRect' ] ), {
 		beginTextEdit: function () {
 			this.setEditingText( true );
 			this.setLastEditedText( this.currentFrame.text );
@@ -59,6 +68,9 @@ module.exports = {
 		endTextEdit: function () {
 			// setEditingText is set by navigator discard button
 			this.setText( this.currentFrame.text.trim() );
+		},
+		onUpdateFocalRect: function ( rect ) {
+			this.setImageFocalRect( rect );
 		}
 	} )
 };
@@ -70,7 +82,6 @@ module.exports = {
 .ext-wikistories-current-frame {
 	flex-grow: 1;
 	position: relative;
-	text-align: center;
 
 	&-textbox-select-cta {
 		position: absolute;

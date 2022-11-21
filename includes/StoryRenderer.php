@@ -156,6 +156,7 @@ class StoryRenderer {
 				return [
 					'url' => $url,
 					'filename' => $frame->image->filename,
+					'focalRect' => $frame->image->focalRect ?? null,
 					'fileNotFound' => empty( $url ),
 					'text' => $frame->text->value,
 					'textFromArticle' => $frame->text->fromArticle->originalText ?? '',

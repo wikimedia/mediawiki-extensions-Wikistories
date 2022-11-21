@@ -10,6 +10,14 @@
 			class="ext-wikistories-viewer-container-content"
 			:style="style"
 			@click="navigateFrame">
+			<story-image
+				v-if="!isStoryEnd || !nextStories.length"
+				:src="currentFrame.url"
+				:rect="currentFrame.focalRect"
+				:alt="currentFrame.filename"
+				:thumbnail="false"
+				:allow-gestures="false"
+			></story-image>
 			<!-- OVERLAY (FIRST FRAME) -->
 			<div
 				v-if="isFirstFrame"
@@ -178,6 +186,7 @@ const mapActions = require( 'vuex' ).mapActions;
 const ImageAttribution = require( './components/ImageAttribution.vue' );
 const Textbox = require( './components/Textbox.vue' );
 const ConfirmDialog = require( './ConfirmDialog.vue' );
+const StoryImage = require( './StoryImage.vue' );
 const DotsMenu = require( './DotsMenu.vue' );
 const DotsMenuItem = require( './DotsMenuItem.vue' );
 const Timer = require( './util/timer.js' );
@@ -189,6 +198,7 @@ module.exports = {
 	components: {
 		'image-attribution': ImageAttribution,
 		'confirm-dialog': ConfirmDialog,
+		'story-image': StoryImage,
 		'dots-menu': DotsMenu,
 		'dots-menu-item': DotsMenuItem,
 		textbox: Textbox
@@ -220,13 +230,6 @@ module.exports = {
 			if ( this.isStoryEnd && this.nextStories.length ) {
 				return {
 					backgroundColor: '#3366cc'
-				};
-			} else {
-				return {
-					backgroundImage: 'url(' + this.currentFrame.url + ')',
-					backgroundPosition: 'center',
-					backgroundSize: 'cover',
-					backgroundColor: this.isCurrentImageLoaded ? '#fff' : '#000'
 				};
 			}
 		},
@@ -304,7 +307,9 @@ module.exports = {
 			if (
 				pressTargetClassName === 'ext-wikistories-viewer-container-content' ||
 				pressTargetClassName === 'ext-wikistories-viewer-container-cover-overlay' ||
-				pressTargetClassName.indexOf( 'ext-wikistories-viewer-container-content-story-' ) !== -1 // cover, text
+				pressTargetClassName.indexOf( 'ext-wikistories-viewer-container-content-story-' ) !== -1 || // cover, text
+				pressTargetClassName === 'ext-wikistories-image' ||
+				pressTargetClassName === 'ext-wikistories-image-container'
 			) {
 				const screenWidth = window.innerWidth;
 				const pressAxisX = e.clientX;
@@ -543,11 +548,14 @@ module.exports = {
 			}
 
 			&-progress {
-				position: relative;
+				position: absolute;
 				display: flex;
 				flex-direction: row;
-				padding: 8px 16px;
+				padding: 8px 5%;
 				z-index: @z-level-two;
+				top: 3px;
+				width: 100%;
+				box-sizing: border-box;
 
 				&-container {
 					height: 2px;
