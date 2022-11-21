@@ -19,6 +19,8 @@
 	"wikistories-story-deleteframe": "Izbriši ovu stranicu",
 	"wikistories-imageattribution-author-unknown": "Nepoznat autor",
 	"wikistories-article-cancelselection": "Očisti",
+	"wikistories-confirmdialog-cancel": "Otkaži",
+	"wikistories-confirmdialog-ok": "U redu",
 	"wikistories-confirmdialog-delete-title": "Izbriši ovu stranicu?",
 	"wikistories-confirmdialog-delete-message": "Bit će trajno uklonjena iz vaše priče.",
 	"wikistories-confirmdialog-delete-accept": "Izbriši",
