@@ -56,7 +56,12 @@ module.exports = {
 			return state.isStoryEnd;
 		},
 		currentFrame: ( state, getters ) => {
-			if ( getters.story.length ) {
+			if ( getters.isStoryEnd && getters.nextStories.length ) {
+				return {
+					text: null,
+					fileNotFound: true
+				};
+			} else if ( getters.story.length ) {
 				return getters.story[ state.frameId ];
 			} else {
 				return {};
@@ -67,9 +72,6 @@ module.exports = {
 		},
 		currentStoryTitle: ( state, getters ) => {
 			return getters.currentStory.title;
-		},
-		isLastStory: ( state ) => {
-			return state.stories[ state.stories.length - 1 ].pageId.toString() === state.storyId;
 		},
 		editUrl: ( state, getters ) => {
 			// Correct frameId to 0 for the cover frame AND the first frame of content
@@ -83,7 +85,20 @@ module.exports = {
 			return state.loadedImages.indexOf( getters.currentFrame.url ) !== -1;
 		},
 		textsizes: ( state ) => state.textsizes,
-		textsize: ( state ) => state.textsize
+		textsize: ( state ) => state.textsize,
+		nextStories: ( state ) => {
+			const stories = state.stories;
+			const storyId = state.storyId;
+			const currentStoriesIndex = stories.findIndex(
+				story => story.pageId.toString() === storyId
+			);
+
+			// get 3 random stories
+			const clonedStories = JSON.parse( JSON.stringify( stories ) );
+			clonedStories.splice( currentStoriesIndex, 1 );
+			const shuffledStories = clonedStories.sort( () => ( Math.random() > 0.5 ) ? 1 : -1 );
+			return shuffledStories.slice( 0, 3 );
+		}
 	},
 	mutations: {
 		setStories: ( state, stories ) => {
@@ -143,14 +158,7 @@ module.exports = {
 		resetFrame: ( context ) => {
 			context.commit( 'setStoryFrameId', 0 );
 		},
-		nextStory: ( context ) => {
-			const stories = context.state.stories;
-			const storyId = context.state.storyId;
-			const currentStoriesIndex = stories.findIndex(
-				story => story.pageId.toString() === storyId
-			);
-			const nextStoryId = stories[ currentStoriesIndex + 1 ].pageId.toString();
-
+		nextStory: ( context, nextStoryId ) => {
 			context.commit( 'setStoryId', nextStoryId );
 			window.location.replace( '#/story/' + nextStoryId );
 		},

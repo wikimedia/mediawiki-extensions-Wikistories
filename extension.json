@@ -130,7 +130,8 @@
 			"es6": true,
 			"dependencies": [ "vue", "vuex" ],
 			"messages": [
-				"wikistories-storyviewer-next-story-button",
+				"wikistories-storyviewer-next-story-header",
+				"wikistories-storyviewer-next-story-viewtext",
 				"wikistories-storyviewer-textsize",
 				"wikistories-storyviewer-edit",
 				"wikistories-storyviewer-talk",

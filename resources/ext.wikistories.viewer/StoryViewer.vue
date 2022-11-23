@@ -89,12 +89,30 @@
 			<div v-show="!currentFrame.fileNotFound">
 				<image-attribution></image-attribution>
 			</div>
-			<!-- NEXT STORY BUTTON (LAST FRAME) -->
-			<div
-				v-if="isStoryEnd && !isLastStory"
-				class="ext-wikistories-viewer-container-content-next-btn"
-				@click="playNextStory">
-				{{ $i18n( "wikistories-storyviewer-next-story-button" ).text() }}
+			<!-- NEXT STORY (LAST FRAME) -->
+			<div v-if="isStoryEnd && nextStories.length" class="ext-wikistories-viewer-container-content-read-more">
+				<div class="ext-wikistories-viewer-container-content-read-more-header">
+					{{ $i18n( 'wikistories-storyviewer-next-story-header' ).text() }}
+				</div>
+				<div
+					v-for="story in nextStories"
+					:key="story.pageId"
+					class="ext-wikistories-viewer-container-content-read-more-item"
+					@click="playNextStory( story.pageId )"
+				>
+					<div class="ext-wikistories-viewer-container-content-read-more-item-info">
+						<div
+							:style="{ background: 'url(' + story.thumbnail + ')' }"
+							class="ext-wikistories-viewer-container-content-read-more-item-info-thumbnail"
+						></div>
+						<span class="ext-wikistories-viewer-container-content-read-more-item-info-title">
+							{{ story.title }}
+						</span>
+					</div>
+					<div class="ext-wikistories-viewer-container-content-read-more-item-view">
+						{{ $i18n( 'wikistories-storyviewer-next-story-viewtext' ).text() }}
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- PREVIOUS FRAME BUTTON -->
@@ -175,16 +193,23 @@ module.exports = {
 	},
 	computed: $.extend( mapGetters( [
 		'story', 'currentFrame', 'editUrl', 'talkUrl', 'isCurrentImageLoaded',
-		'isStoryEnd', 'isLastStory', 'isFirstFrame', 'isLastFrame', 'textsize', 'textsizes',
-		'isFramePlaying', 'isFrameDonePlaying', 'isFrameViewed', 'currentStoryTitle'
+		'isStoryEnd', 'isFirstFrame', 'isLastFrame', 'textsize', 'textsizes',
+		'isFramePlaying', 'isFrameDonePlaying', 'isFrameViewed', 'currentStoryTitle',
+		'nextStories'
 	] ), {
 		style: function () {
-			return {
-				backgroundImage: 'url(' + this.currentFrame.url + ')',
-				backgroundPosition: 'center',
-				backgroundSize: 'cover',
-				backgroundColor: this.isCurrentImageLoaded ? '#fff' : '#000'
-			};
+			if ( this.isStoryEnd && this.nextStories.length ) {
+				return {
+					backgroundColor: '#3366cc'
+				};
+			} else {
+				return {
+					backgroundImage: 'url(' + this.currentFrame.url + ')',
+					backgroundPosition: 'center',
+					backgroundSize: 'cover',
+					backgroundColor: this.isCurrentImageLoaded ? '#fff' : '#000'
+				};
+			}
 		}
 	} ),
 	methods: $.extend( mapActions( [
@@ -196,9 +221,9 @@ module.exports = {
 				this.nextFrame();
 			}.bind( this ), this.frameDuration );
 		},
-		playNextStory: function () {
+		playNextStory: function ( pageId ) {
 			this.logStoryViewEvent();
-			this.nextStory();
+			this.nextStory( pageId );
 		},
 		logStoryViewEvent: function () {
 			const storyOpenTime = Date.now() - this.storyStart;
@@ -410,16 +435,14 @@ module.exports = {
 				}
 			}
 
-			&-next-btn {
+			&-read-more {
 				position: absolute;
-				bottom: 50px;
+				top: 10%;
 				left: 0;
 				right: 0;
 				margin: auto;
-				background-color: @color-primary;
-				width: fit-content;
-				border-radius: 2px;
-				padding: 6px 12px;
+				width: 80%;
+				text-align: center;
 				// stylelint-disable-next-line font-family-no-missing-generic-family-keyword
 				font-family: 'Helvetica Neue';
 				font-style: normal;
@@ -428,6 +451,59 @@ module.exports = {
 				line-height: 22px;
 				color: #fff;
 				cursor: pointer;
+
+				&-header {
+					font-size: 20px;
+					line-height: 28px;
+					letter-spacing: 0;
+					margin-bottom: 16px;
+				}
+
+				&-item {
+					background-color: #fff;
+					margin: 10px 0;
+					color: #000;
+
+					&-info {
+						display: flex;
+						flex: auto;
+						width: auto;
+						align-items: center;
+						padding: 12px;
+
+						&-thumbnail {
+							display: grid;
+							place-items: center;
+							min-height: 52px;
+							min-width: 52px;
+							border-radius: 50%;
+						}
+
+						&-title {
+							font-style: normal;
+							font-size: 14px;
+							line-height: 21px;
+							padding-left: 12px;
+							text-align: left;
+							color: @colorGray2;
+							overflow: hidden;
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+							-webkit-line-clamp: 2;
+							white-space: initial;
+						}
+					}
+
+					&-view {
+						position: relative;
+						color: @color-primary;
+						padding: 6px;
+						font-size: 16px;
+						line-height: 22px;
+						letter-spacing: 0;
+						border-top: 1px solid @colorGray14;
+					}
+				}
 			}
 
 			&-progress {
