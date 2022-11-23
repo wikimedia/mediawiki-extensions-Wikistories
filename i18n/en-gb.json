@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Abijeet Patro"
+			"Abijeet Patro",
+			"Remagoxer"
 		]
 	},
-	"wikistories-confirmdialog-ok": "ठीक है"
+	"wikistories-confirmdialog-ok": "OK"
 }
