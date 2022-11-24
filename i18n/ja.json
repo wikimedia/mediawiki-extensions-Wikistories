@@ -48,7 +48,8 @@
 	"wikistories-nojs-form-label-image": "画像",
 	"wikistories-nojs-form-label-text": "テキスト",
 	"wikistories-discover-cta-text": "ストーリーを作成",
-	"wikistories-storyviewer-next-story-button": "次のストーリーを読む",
+	"wikistories-storyviewer-next-story-header": "さらに読む",
+	"wikistories-storyviewer-next-story-viewtext": "表示",
 	"wikistories-storyviewer-textsize": "文字サイズの変更",
 	"wikistories-storyviewer-edit": "編集",
 	"wikistories-storyviewer-talk": "フィードバックを共有する"

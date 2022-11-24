@@ -36,6 +36,5 @@
 	"wikistories-builder-publishform-invalidtitle-empty": "కథ శీర్షిక ఇవ్వండి",
 	"wikistories-builder-publishform-invalidtitle-format": "చెల్లని కథ శీర్షిక",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "ఇదే శీర్షికతో మరో కథ ఉంది. ఎన్నడూ వాడని శీర్షికను పెట్టండి.",
-	"wikistories-builder-publishform-saveerror": "కథనాన్ని ప్రచురించేటపుడు లోపం జరిగింది. కాస్సేపాగి మళ్ళీ ప్రయత్నించండి.",
-	"wikistories-storyviewer-next-story-button": "తరువాతి కథనం చదవండి"
+	"wikistories-builder-publishform-saveerror": "కథనాన్ని ప్రచురించేటపుడు లోపం జరిగింది. కాస్సేపాగి మళ్ళీ ప్రయత్నించండి."
 }
