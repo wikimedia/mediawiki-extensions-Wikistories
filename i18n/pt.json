@@ -78,6 +78,8 @@
 	"wikistories-nojs-viewer-error": "$1 {{PLURAL:$1|imagem usada nesta história já não está disponível|imagens usadas nesta história já não estão disponíveis}} na wiki Commons.",
 	"wikistories-discover-cta-text": "Criar uma wikihistória",
 	"wikistories-discover-cta-text-subheader": "Seja o primeiro a ilustrar factos importantes sobre este tópico para adeptos do ensino visual.",
+	"wikistories-storyviewer-next-story-header": "Ler mais",
+	"wikistories-storyviewer-next-story-viewtext": "Ver",
 	"wikistories-storyviewer-textsize": "Alterar tamanho do texto",
 	"wikistories-storyviewer-edit": "Editar",
 	"wikistories-storyviewer-talk": "Partilhe a sua opinião",
