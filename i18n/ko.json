@@ -52,6 +52,8 @@
 	"wikistories-nojs-form-label-image": "이미지",
 	"wikistories-nojs-form-label-text": "텍스트",
 	"wikistories-discover-cta-text": "위키스토리 만들기",
+	"wikistories-storyviewer-next-story-header": "더 읽어보기",
+	"wikistories-storyviewer-next-story-viewtext": "보기",
 	"wikistories-storyviewer-textsize": "텍스트 크기 변경",
 	"wikistories-from-article-not-found": "\"$1\" 문서가 없습니다"
 }
