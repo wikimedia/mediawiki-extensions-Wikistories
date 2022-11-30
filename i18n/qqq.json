@@ -4,10 +4,13 @@
 			"Amire80",
 			"Eduardo Medina",
 			"Huei Tan",
-			"Robby"
+			"Robby",
+			"Ajeje Brazorf",
+			"Umherirrender",
+			"Verdy p"
 		]
 	},
-	"wikistories-extensionname": "Text for the name of the project",
+	"wikistories-extensionname": "{{desc|name=Wikistories|url=https://www.mediawiki.org/wiki/Extension:Wikistories}}",
 	"wikistories-extensiondesc": "Text for the general project description",
 	"wikistories-hooks-createstory": "Text for creating a story button used in the Wikipedia article view header",
 	"wikistories-specialcreatestory-title": "Title of the special page to create a story.",
