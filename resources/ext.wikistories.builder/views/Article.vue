@@ -172,7 +172,6 @@ module.exports = {
 		align-items: center;
 		background-color: @colorGray2;
 		color: #fff;
-		margin-bottom: 13px;
 
 		&-banner {
 			flex: auto;
