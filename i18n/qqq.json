@@ -6,10 +6,11 @@
 			"Eduardo Medina",
 			"Huei Tan",
 			"Robby",
-			"Verdy p"
+			"Verdy p",
+			"Umherirrender"
 		]
 	},
-	"wikistories-extensionname": "Text for the name of the project",
+	"wikistories-extensionname": "{{desc|name=Wikistories|url=https://www.mediawiki.org/wiki/Extension:Wikistories}}",
 	"wikistories-extensiondesc": "Text for the general project description",
 	"right-edit-story": "{{doc-right|edit-story}}",
 	"action-edit-story": "{{doc-action|edit-story}}",
