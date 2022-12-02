@@ -25,7 +25,7 @@ module.exports = {
 	} ),
 	methods: {
 		updateHeight: function () {
-			this.height = window.innerHeight - $( 'header' ).height();
+			this.height = window.innerHeight - ( $( 'header' ).height() || 0 );
 		}
 	},
 	created: function () {
