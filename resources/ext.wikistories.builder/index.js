@@ -4,6 +4,8 @@ const store = require( './store/index.js' );
 const config = require( './plugins/config.js' );
 const storyEditMode = mw.config.get( 'wgWikistoriesMode' );
 
+store.dispatch( 'init' );
+
 if ( storyEditMode === 'edit' ) {
 	// Edit an existing story
 	const params = new URLSearchParams( window.location.search );

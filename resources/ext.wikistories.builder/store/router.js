@@ -1,7 +1,8 @@
-const Story = require( '../views/Story.vue' );
-const Search = require( '../views/Search.vue' );
-const PublishForm = require( '../views/PublishForm.vue' );
-const Article = require( '../views/Article.vue' );
+const shallowRef = require( 'vue' ).shallowRef;
+const Story = shallowRef( require( '../views/Story.vue' ) );
+const Search = shallowRef( require( '../views/Search.vue' ) );
+const PublishForm = shallowRef( require( '../views/PublishForm.vue' ) );
+const Article = shallowRef( require( '../views/Article.vue' ) );
 
 module.exports = {
 	state: {
@@ -24,32 +25,40 @@ module.exports = {
 				component: Article
 			}
 		},
-		routeStack: []
+		currentRouteName: ''
 	},
 	mutations: {
-		setCurrentRoute: ( state, data ) => {
-			if ( data.replace ) {
-				const index = Math.max( state.routeStack.length - 1, 0 );
-				state.routeStack[ index ] = data.routeName;
-			} else {
-				state.routeStack.push( data.routeName );
+		setCurrentRoute: ( state, routeName ) => {
+			if ( Object.prototype.hasOwnProperty.call( state.routes, routeName ) ) {
+				state.currentRouteName = routeName;
 			}
-		},
-		routeBack: ( state ) => state.routeStack.pop()
+		}
 	},
 	actions: {
 		routePush: ( context, routeName ) => {
-			context.commit( 'setCurrentRoute', { routeName: routeName } );
+			const url = new URL( window.location );
+			url.hash = routeName;
+			window.history.pushState( { wikistoryBuilderRoute: true }, '', url );
+			context.commit( 'setCurrentRoute', routeName );
 		},
 		routeReplace: ( context, routeName ) => {
-			context.commit( 'setCurrentRoute', { routeName: routeName, replace: true } );
+			const url = new URL( window.location );
+			url.hash = routeName;
+			window.history.replaceState( { wikistoryBuilderRoute: true }, '', url );
+			context.commit( 'setCurrentRoute', routeName );
 		},
-		routeBack: ( context ) => {
-			context.commit( 'routeBack' );
+		routeBack: () => {
+			window.history.back();
+		},
+		init: ( context ) => {
+			window.addEventListener( 'hashchange', () => {
+				const routeName = window.location.hash.slice( 1 );
+				context.commit( 'setCurrentRoute', routeName );
+			} );
 		}
 	},
 	getters: {
-		currentRoute: ( state ) => state.routes[ state.routeStack[ state.routeStack.length - 1 ] ],
-		routeStackLength: ( state ) => state.routeStack.length
+		currentRoute: ( state ) => state.routes[ state.currentRouteName ],
+		isBuilderRouteAvailable: () => window.history.state.wikistoryBuilderRoute
 	}
 };

@@ -185,7 +185,22 @@ module.exports = {
 		onSelectText: function () {
 			this.routePush( 'article' );
 		}
-	} )
+	} ),
+	mounted: function () {
+		window.onpopstate = () => {
+			this.routePush( 'story' );
+
+			if ( this.viewDiscardStoryConfirmDialog ) {
+				this.hideDiscardStoryConfirmDialog();
+			} else if ( this.viewDeleteFrameConfirmDialog ) {
+				this.hideDeleteFrameConfirmDialog();
+			} else if ( this.alert.show ) {
+				this.hideAlert();
+			} else {
+				this.showDiscardStoryConfirmationDialog();
+			}
+		};
+	}
 };
 </script>
 
