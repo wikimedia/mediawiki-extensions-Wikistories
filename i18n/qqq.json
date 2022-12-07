@@ -10,8 +10,8 @@
 			"Verdy p"
 		]
 	},
-	"wikistories-extensionname": "{{desc|name=Wikistories|url=https://www.mediawiki.org/wiki/Extension:Wikistories}}",
-	"wikistories-extensiondesc": "Text for the general project description",
+	"wikistories-extensionname": "{{name}}",
+	"wikistories-extensiondesc": "{{desc|name=Wikistories|url=https://www.mediawiki.org/wiki/Extension:Wikistories}}",
 	"wikistories-hooks-createstory": "Text for creating a story button used in the Wikipedia article view header",
 	"wikistories-specialcreatestory-title": "Title of the special page to create a story.",
 	"wikistories-specialcreatestory-loading": "Temporary message indicating that the story builder is currently loading on Special:CreateStory",
