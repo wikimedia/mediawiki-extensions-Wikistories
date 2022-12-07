@@ -33,7 +33,9 @@
 	"wikistories-builder-publishform-navigator-title": "Wikistory verëffentlechen",
 	"wikistories-builder-publishform-publishbutton": "Verëffentlechen",
 	"wikistories-builder-publishform-invalidtitle-notfound": "Geschicht net fonnt.",
+	"wikistories-storyviewer-next-story-header": "Liest méi",
+	"wikistories-storyviewer-next-story-viewtext": "Weisen",
 	"wikistories-storyviewer-textsize": "Textgréiss änneren",
-	"wikistories-storyviewer-edit": "Änneren",
+	"wikistories-storyviewer-edit": "Dës Geschicht änneren",
 	"wikistories-file-not-found": "Fichier \"$1\" net fonnt"
 }
