@@ -10,8 +10,8 @@
 			"Umherirrender"
 		]
 	},
-	"wikistories-extensionname": "{{desc|name=Wikistories|url=https://www.mediawiki.org/wiki/Extension:Wikistories}}",
-	"wikistories-extensiondesc": "Text for the general project description",
+	"wikistories-extensionname": "{{name}}",
+	"wikistories-extensiondesc": "{{desc|name=Wikistories|url=https://www.mediawiki.org/wiki/Extension:Wikistories}}",
 	"right-edit-story": "{{doc-right|edit-story}}",
 	"action-edit-story": "{{doc-action|edit-story}}",
 	"wikistories-beta-feature-message": "Title of the beta feature to show stories on article pages.",
