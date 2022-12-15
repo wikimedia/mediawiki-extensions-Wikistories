@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"DinoWP",
-			"Winston Sung"
+			"Winston Sung",
+			"捍粵者"
 		]
 	},
 	"prefs-wikistories": "Wikistories",
@@ -13,6 +14,7 @@
 	"wikistories-search-navigator-title": "選取圖片",
 	"wikistories-story-editdone": "完成",
 	"wikistories-article-navigator-title": "醒目標示文字",
-	"wikistories-builder-publishform-publishbutton": "發布",
-	"wikistories-builder-publishform-saveerror": "發布Wikistory時發生錯誤。請嘗試重新發布。"
+	"wikistories-builder-publishform-publishbutton": "發佈",
+	"wikistories-builder-publishform-saveerror": "發布Wikistory時發生錯誤。請嘗試重新發布。",
+	"wikistories-storyviewer-edit": "編輯此故事"
 }
