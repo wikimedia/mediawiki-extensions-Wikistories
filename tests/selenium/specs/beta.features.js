@@ -6,6 +6,7 @@ const assert = require( 'assert' );
 const BetaFeaturesPage = require( '../pageobjects/beta.features.page' );
 const LoginPage = require( 'wdio-mediawiki/LoginPage' );
 const Util = require( 'wdio-mediawiki/Util' );
+const WikistoriesPage = require( '../pageobjects/wikistories.page' );
 
 describe( 'Wikistories', function () {
 	context( 'Beta feature', function () {
@@ -37,6 +38,12 @@ describe( 'Wikistories', function () {
 
 			await ArticlePage.open( name );
 			assert( await ArticlePage.createStory.isEnabled(), 'Create A Story button is not present.' );
+		} );
+
+		it( 'can be created', async function () {
+			name = Util.getTestString( 'Story' );
+			await WikistoriesPage.createStory( name );
+			assert.match( await browser.getUrl(), /story/ );
 		} );
 
 	} );
