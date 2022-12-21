@@ -38,5 +38,6 @@
 	"wikistories-builder-publishform-invalidtitle-format": "Título de história inválido",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Já existe uma história com este título. Por favor, insira um novo.",
 	"wikistories-builder-publishform-saveerror": "Ocorreu um erro ao publicar a Wikistory. Por favor, tente publicar novamente.",
+	"wikistories-storyviewer-edit": "Editar esta história",
 	"wikistories-storyviewer-talk": "Compartilhe seu feedback"
 }

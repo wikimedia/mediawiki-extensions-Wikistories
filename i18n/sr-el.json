@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"wikistories-confirmdialog-cancel": "Otkaži",
+	"wikistories-confirmdialog-ok": "U redu",
+	"wikistories-storyviewer-textsize-title": "Veličina teksta",
+	"wikistories-storyviewer-textsize-label-small": "Mala",
+	"wikistories-storyviewer-textsize-label-regular": "Normalna",
+	"wikistories-storyviewer-textsize-label-large": "Velika",
+	"wikistories-storyviewer-next-story-header": "Pročitaj još",
+	"wikistories-storyviewer-next-story-viewtext": "Prikaži",
+	"wikistories-storyviewer-textsize": "Promeni veličinu teksta"
+}
