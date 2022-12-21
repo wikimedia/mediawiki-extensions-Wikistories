@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"DinoWP",
-			"Winston Sung"
+			"Winston Sung",
+			"捍粵者"
 		]
 	},
 	"wikistories-specialcreatestory-loading": "正在載入…",
 	"wikistories-search-inputplaceholder": "搜尋圖片",
 	"wikistories-search-noresultstext": "沒有結果",
-	"wikistories-builder-publishform-publishbutton": "發布"
+	"wikistories-builder-publishform-publishbutton": "發佈"
 }

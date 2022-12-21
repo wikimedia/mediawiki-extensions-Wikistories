@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"wikistories-extensiondesc": "Wikihistorias permitte que le redactores crea cognoscimentos succincte, visual e digne de fide a partir de projectos Wikimedia",
+	"wikistories-search-inputplaceholder": "Cercar imagines",
+	"wikistories-search-cuetext": "Cercar imagines associate a un articulo.",
+	"wikistories-search-noresultstext": "Nulle resultato",
+	"wikistories-story-goto-publish": "Sequente",
+	"wikistories-imageattribution-author-unknown": "Autor incognite",
+	"wikistories-article-usetext": "Adder al historia",
+	"wikistories-alert-okbuttontext": "OK",
+	"wikistories-error-notenoughframes-title": "Non satis paginas",
+	"wikistories-error-frameswithouttext-title": "Texto mancante",
+	"wikistories-builder-publishform-placeholder": "Insere le titulo del historia…",
+	"wikistories-builder-publishform-publishbutton": "Publicar",
+	"wikistories-builder-publishform-info": "Le historias publicate essera disponibile sur le pagina del articulo.",
+	"wikistories-builder-publishform-invalidtitle-empty": "Insere le titulo del historia",
+	"wikistories-builder-publishform-invalidtitle-format": "Titulo de historia non valide"
+}
