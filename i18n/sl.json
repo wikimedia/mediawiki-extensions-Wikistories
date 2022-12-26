@@ -6,6 +6,7 @@
 		]
 	},
 	"wikistories-story-selecttext": "Izberite besedilo zgodbe iz <span class=\"ext-wikistories-wikipedia\">Wikipedije</span>",
+	"wikistories-story-deleteframe": "Izbriši to stran",
 	"wikistories-story-feedback": "Delite povratno informacijo",
 	"wikistories-article-cancelselection": "Počisti",
 	"wikistories-confirmdialog-cancel": "Prekliči",
@@ -16,6 +17,7 @@
 	"wikistories-storyviewer-textsize-label-small": "Majhno",
 	"wikistories-storyviewer-textsize-label-regular": "Običajno",
 	"wikistories-storyviewer-textsize-label-large": "Veliko",
+	"wikistories-nojs-form-label-image": "Slika",
 	"wikistories-storyviewer-next-story-header": "Preberi več",
 	"wikistories-storyviewer-next-story-viewtext": "Prikaži",
 	"wikistories-storyviewer-textsize": "Spremeni velikost besedila",
