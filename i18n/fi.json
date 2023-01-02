@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"MITO",
-			"Nike"
+			"Nike",
+			"Yupik"
 		]
 	},
 	"wikistories-extensiondesc": "Wikistories antaa muokkaajien luoda lyhyttä, visuaalista ja luotettavaa tietoa Wikimedian projekteista",
@@ -10,6 +11,7 @@
 	"action-edit-story": "muokkaa tarinoita",
 	"wikistories-specialstorybuilder-loading": "Ladataan...",
 	"wikistories-story-goto-publish": "Seuraava",
+	"wikistories-story-feedback": "Anna palautetta",
 	"wikistories-imageattribution-author-unknown": "Tuntematon tekijä",
 	"wikistories-article-cancelselection": "Tyhjennä",
 	"wikistories-article-loading": "Ladataan artikkelia...",
@@ -17,5 +19,6 @@
 	"wikistories-builder-publishform-invalidtitle-notfound": "Tarinaa ei löytynyt.",
 	"wikistories-discover-cta-text": "Luo Wikistory",
 	"wikistories-storyviewer-edit": "Muokkaa",
+	"wikistories-storyviewer-talk": "Anna palautetta",
 	"wikistories-from-article-not-found": "Artikkelia \"$1\" ei löytynyt"
 }

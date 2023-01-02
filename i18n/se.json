@@ -4,5 +4,7 @@
 			"Yupik"
 		]
 	},
-	"wikistories-confirmdialog-delete-accept": "Sihko"
+	"wikistories-search-inputplaceholder": "Oza govaid",
+	"wikistories-confirmdialog-delete-accept": "Sihko",
+	"wikistories-storyviewer-next-story-header": "Loga lasi"
 }

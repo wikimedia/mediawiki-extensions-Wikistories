@@ -4,9 +4,11 @@
 			"Yupik"
 		]
 	},
+	"wikistories-search-inputplaceholder": "Ooʒʒ kaartid",
 	"wikistories-search-noresultstext": "Ni mâiʹd ij käunnʼjam",
 	"wikistories-search-navigator-title": "Vaʹlljed kaartid",
 	"wikistories-story-deleteframe": "Jaukkâd tän seeid",
+	"wikistories-story-feedback": "Uuʹd maacctõõzz",
 	"wikistories-article-cancelselection": "Kuârad",
 	"wikistories-confirmdialog-delete-title": "Haaʹlääk-a tän seeid jaukkeed?",
 	"wikistories-confirmdialog-delete-accept": "Jaukkâd",
@@ -16,6 +18,8 @@
 	"wikistories-builder-publishform-publishbutton": "Õlmstââʹtt",
 	"wikistories-nojs-form-label-image": "Kartt leʼbe snimldõk",
 	"wikistories-nojs-form-label-text": "Teʹkstt",
+	"wikistories-storyviewer-next-story-header": "Looǥǥ lââʹzz",
+	"wikistories-storyviewer-talk": "Uuʹd maacctõõzz",
 	"wikistories-file-not-found": "Teâttõs \"$1\" ij käunnʼjam",
 	"wikistories-from-article-not-found": "Artikkel \"$1\" ij käunnʼjam"
 }
