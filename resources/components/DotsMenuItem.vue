@@ -40,7 +40,7 @@ module.exports = {
 	overflow: hidden;
 	max-width: 50vw;
 	margin: 0;
-	font-size: 20px;
+	font-size: 16px;
 	padding: 6px 12px 6px 38px;
 	background-repeat: no-repeat;
 	background-position: 10px center;

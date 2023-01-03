@@ -15,8 +15,11 @@
 				v-if="isFirstFrame"
 				class="ext-wikistories-viewer-container-cover-overlay"
 			></div>
-			<!-- SHADED TOPBAR -->
-			<div class="ext-wikistories-viewer-container-topbar"></div>
+			<!-- SHADED TOPBAR-->
+			<div
+				v-if="!( isStoryEnd && nextStories.length )"
+				class="ext-wikistories-viewer-container-topbar"
+			></div>
 			<!-- CLOSE BUTTON -->
 			<div
 				class="ext-wikistories-viewer-container-content-close-icon"
