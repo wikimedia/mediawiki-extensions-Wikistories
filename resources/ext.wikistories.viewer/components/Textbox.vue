@@ -99,7 +99,7 @@ module.exports = {
 <style lang="less">
 	.ext-wikistories-viewer-container-content-story-text {
 		position: absolute;
-		bottom: 90px;
+		bottom: 60px;
 		left: 16px;
 		right: 16px;
 		border-radius: 2px;
@@ -107,22 +107,22 @@ module.exports = {
 		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
 		margin: 0;
 		padding: 8px 20px 8px 8px;
-		max-height: 350px;
+		max-height: 25vh;
 		overflow: scroll;
 	}
 
 	.ext-wikistories-viewer-container-content-text-fade {
 		position: absolute;
-		bottom: 90px;
+		bottom: 60px;
 		left: 16px;
 		right: 16px;
-		height: 35px;
+		height: 40px;
 		z-index: 93;
 		margin: auto;
 		border-radius: 2px;
 
 		&-top {
-			bottom: 423px;
+			bottom: calc( ~'25vh + 36px' );
 			background: linear-gradient( to top, rgba( 255, 255, 255, 0 ) 0%, #fff 50% );
 		}
 
