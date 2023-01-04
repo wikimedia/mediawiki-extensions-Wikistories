@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Seipinne"
+			"Seipinne",
+			"Yupik"
 		]
 	},
+	"wikistories-search-inputplaceholder": "Uusâ kuuvijd",
 	"wikistories-story-goto-publish": "Čuávuvâš",
 	"wikistories-navigator-next": "Čuávuvâš"
 }

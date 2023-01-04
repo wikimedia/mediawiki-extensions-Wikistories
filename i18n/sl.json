@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"Dbc334"
 		]
 	},
+	"wikistories-search-inputplaceholder": "Išči slike",
 	"wikistories-article-cancelselection": "Prekliči"
 }
