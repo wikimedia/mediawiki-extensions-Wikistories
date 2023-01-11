@@ -5,6 +5,21 @@
 			"Dbc334"
 		]
 	},
+	"wikistories-extensionname": "Vikizgodbe",
+	"wikistories-extensiondesc": "Vikizgodovine urejevalcem omogočajo ustvarjanje kratkega, vizualnega in zanesljivega znanja iz projektov Wikimedie",
 	"wikistories-search-inputplaceholder": "Išči slike",
-	"wikistories-article-cancelselection": "Prekliči"
+	"wikistories-search-cuetext": "Iskanje islik, povezanih s člankom.",
+	"wikistories-search-noresultstext": "Ni zadetkov",
+	"wikistories-story-goto-publish": "Naprej",
+	"wikistories-imageattribution-author-unknown": "Neznan avtor",
+	"wikistories-article-cancelselection": "Prekliči",
+	"wikistories-article-usetext": "Dodaj v zgodbo",
+	"wikistories-alert-okbuttontext": "V redu",
+	"wikistories-error-notenoughframes-title": "Ni dovolj strani",
+	"wikistories-error-frameswithouttext-title": "Manjkajoče besedilo",
+	"wikistories-builder-publishform-placeholder": "Vnesite naslov zgodbe ...",
+	"wikistories-builder-publishform-publishbutton": "Objavi",
+	"wikistories-builder-publishform-info": "Objavljene zgodbe bodo na voljo na strani članka.",
+	"wikistories-builder-publishform-invalidtitle-empty": "Vnesite naslov zgodbe",
+	"wikistories-builder-publishform-invalidtitle-format": "Neveljaven naslov zgodbe"
 }

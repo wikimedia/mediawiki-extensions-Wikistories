@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "Ta končna točka API-ja ne podpira tega imenskega prostora ($1). Zgodbe so lahko povezane samo s članki v glavnem imenskem prostoru."
+}
