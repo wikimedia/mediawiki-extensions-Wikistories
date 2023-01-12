@@ -29,7 +29,6 @@
 		"stylelint-config-recommended-vue": "^1.4.0",
 		"stylelint-config-wikimedia": "0.13.0",
 		"vuex": "4.0.2",
-		"wdio-mediawiki": "2.1.0",
-		"webdriverio": "7.20.1"
+		"wdio-mediawiki": "2.1.0"
 	}
 }
