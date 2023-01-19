@@ -110,6 +110,7 @@ module.exports = {
 			bottom: 60px;
 			left: 16px;
 			right: 16px;
+			width: calc( ~'100% - 32px' );
 			padding: 8px 20px 8px 8px;
 			margin: auto;
 			max-height: 350px;
