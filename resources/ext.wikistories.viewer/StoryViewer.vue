@@ -93,7 +93,10 @@
 				<image-attribution></image-attribution>
 			</div>
 			<!-- NEXT STORY (LAST FRAME) -->
-			<div v-if="isStoryEnd && nextStories.length" class="ext-wikistories-viewer-container-content-read-more">
+			<div
+				v-if="isStoryEnd && nextStories.length"
+				class="ext-wikistories-viewer-container-content-read-more"
+			>
 				<div class="ext-wikistories-viewer-container-content-read-more-header">
 					{{ $i18n( 'wikistories-storyviewer-next-story-header' ).text() }}
 				</div>
@@ -133,11 +136,13 @@
 		<!-- CHANGE TEXT SIZE DIALOG -->
 		<confirm-dialog
 			v-if="viewChangeTextSizeConfirmDialog"
+			class="ext-wikistories-viewer-textsize"
 			:title="$i18n( 'wikistories-storyviewer-textsize-title' ).text()"
 			:accept="$i18n( 'wikistories-confirmdialog-ok' ).text()"
+			align="left"
 			@cancel="hideTextSizeDialog"
 			@confirm="confirmTextsize">
-			<ul class="ext-wikistories-viewer-textsize">
+			<ul>
 				<li v-for="( size, name ) in textsizes" :key="name">
 					<input
 						:id="name"
@@ -596,8 +601,22 @@ module.exports = {
 	}
 
 	&-textsize {
-		font-size: 1.2em;
-		line-height: 1.5;
+		.ext-wikistories-confirm-content-custom {
+			li {
+				margin-bottom: 16px;
+
+				input {
+					height: 24px;
+					width: 24px;
+					vertical-align: middle;
+					margin-right: 4px;
+				}
+
+				label {
+					vertical-align: middle;
+				}
+			}
+		}
 	}
 }
 </style>

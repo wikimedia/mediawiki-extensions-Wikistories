@@ -51,7 +51,6 @@
 	"wikistories-confirmdialog-delete-title": "Title for the confirm dialog to delete a story page in Story view",
 	"wikistories-confirmdialog-delete-message": "Text message for the confirm dialog to delete a story page in Story view",
 	"wikistories-confirmdialog-delete-accept": "Text for the button to confirm deleting a story page in Story view.\n\n{{Identical|Delete}}",
-	"wikistories-confirmdialog-delete-cancel": "Text for the button to cancel deleting a story page in Story view\n{{Identical|Cancel}}",
 	"wikistories-confirmdialog-discardstory-title": "Title for the confirm dialog to discard a whole Wikistory in Story view",
 	"wikistories-confirmdialog-discardstory-message": "Text message for the confirm dialog to discard a whole Wikistory in Story view",
 	"wikistories-confirmdialog-discardedits-title": "Title for the confirm dialog to discard edits made to a story",
