@@ -153,6 +153,7 @@ module.exports = {
 		table,
 		sup,
 		.pcs-collapse-table-container,
+		.thumb,
 		.hatnote,
 		[ role='navigation' ] {
 			display: none;
