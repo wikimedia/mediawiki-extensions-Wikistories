@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\Wikistories;
 use Content;
 use Exception;
 use SlotDiffRenderer;
+use TextContent;
 use TextSlotDiffRenderer;
 
 class StorySlotDiffRenderer extends SlotDiffRenderer {
@@ -34,11 +35,25 @@ class StorySlotDiffRenderer extends SlotDiffRenderer {
 	 * @throws Exception When the story structure is unexpected
 	 */
 	public function getDiff( Content $oldContent = null, Content $newContent = null ) {
-		'@phan-var StoryContent $oldContent';
-		'@phan-var StoryContent $newContent';
 		return TextSlotDiffRenderer::diff(
-			$this->storyConverter->toLatest( $oldContent )->getTextForDiff(),
-			$this->storyConverter->toLatest( $newContent )->getTextForDiff()
+			$this->getText( $oldContent ),
+			$this->getText( $newContent )
 		);
+	}
+
+	/**
+	 * @param Content $content
+	 * @return string
+	 * @throws Exception When $content is not of a supported model
+	 */
+	private function getText( Content $content ): string {
+		if ( $content instanceof StoryContent ) {
+			'@phan-var StoryContent $content';
+			return $this->storyConverter->toLatest( $content )->getTextForDiff();
+		} elseif ( $content instanceof TextContent ) {
+			'@phan-var StoryContent $content';
+			return $content->getText();
+		}
+		throw new Exception( 'Cannot diff story with content with model: ' . $content->getModel() );
 	}
 }
