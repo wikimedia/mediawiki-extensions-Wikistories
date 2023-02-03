@@ -71,6 +71,7 @@
 	"wikistories-builder-publishform-invalidtitle-notfound": "Story not found.",
 	"wikistories-builder-publishform-saveerror": "An error occured when publishing the Wikistory. Please try publishing it again.",
 	"wikistories-builder-publishform-saving": "Publishing Wikistory...",
+	"wikistories-builder-publishform-watch": "Watch this story",
 	"wikistories-builder-licensing-with-terms": "By continuing, you agree to the [$1 Terms of Use], and you irrevocably agree to release your contribution under the [$2 CC BY-SA 3.0] and [$3 GFDL] licenses.",
 	"wikistories-nojs-form-label-related-article": "Related Article",
 	"wikistories-nojs-form-label-frame": "Frame $1",

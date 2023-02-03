@@ -4,6 +4,9 @@ const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
 const storyContent = mw.config.get( 'wgWikistoriesStoryContent' );
 const storyEditMode = mw.config.get( 'wgWikistoriesMode' );
 const lang = mw.config.get( 'wgContentLanguage' );
+const watchDefault = mw.config.get( 'wgWikistoriesWatchDefault' );
+const watchlistExpiryEnabled = mw.config.get( 'wgWikistoriesWatchlistExpiryEnabled' );
+const watchlistExpiryOptions = mw.config.get( 'wgWikistoriesWatchlistExpiryOptions' );
 
 const searchTools = require( '../api/searchImages.js' );
 const getImageExtMetadata = searchTools.getImageExtMetadata;
@@ -31,7 +34,10 @@ module.exports = {
 		frames: storyContent.frames,
 		mode: storyEditMode,
 		title: storyContent.title,
-		editingText: false
+		editingText: false,
+		watchlistExpiryEnabled: watchlistExpiryEnabled,
+		watchlistExpiryOptions: watchlistExpiryOptions,
+		watchDefault: watchDefault
 	},
 	mutations: {
 		selectFrame: ( state, index ) => {
@@ -148,6 +154,9 @@ module.exports = {
 	getters: {
 		mode: ( state ) => state.mode,
 		storyExists: ( state ) => state.mode === 'edit',
+		watchlistExpiryEnabled: ( state ) => state.watchlistExpiryEnabled,
+		watchlistExpiryOptions: ( state ) => state.watchlistExpiryOptions,
+		watchDefault: ( state ) => state.watchDefault,
 		title: ( state ) => state.title,
 		thumbnails: ( state ) => {
 			return state.frames.map( ( f, index ) => {

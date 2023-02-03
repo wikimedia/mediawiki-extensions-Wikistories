@@ -25,6 +25,30 @@
 				:placeholder="$i18n( 'wikistories-builder-publishform-placeholder' ).text()"
 				@input="onInput"
 			>
+			<div class="ext-wikistories-publishform-content-watchlist">
+				<input
+					id="watchlist"
+					v-model="watchlist"
+					type="checkbox"
+				>
+				<label
+					for="watchlist">
+					{{ $i18n( 'wikistories-builder-publishform-watch' ).text() }}
+				</label>
+				<select
+					v-if="watchlistExpiryEnabled"
+					v-model="watchlistExpiry"
+					:disabled="!watchlist"
+				>
+					<option
+						v-for="( value, key ) in watchlistExpiryOptions.options"
+						:key="key"
+						:value="value"
+					>
+						{{ key }}
+					</option>
+				</select>
+			</div>
 			<div v-if="knownError" class="ext-wikistories-publishform-content-error">
 				{{ error }}
 			</div>
@@ -67,6 +91,8 @@ module.exports = {
 	data: function () {
 		return {
 			storyTitle: '',
+			watchlist: true,
+			watchlistExpiry: null,
 			error: null,
 			toast: {
 				show: false,
@@ -77,7 +103,10 @@ module.exports = {
 			savingInProgress: false
 		};
 	},
-	computed: $.extend( mapGetters( [ 'frames', 'valid', 'fromArticle', 'storyForSave', 'mode', 'title', 'storyExists' ] ), {
+	computed: $.extend( mapGetters( [
+		'frames', 'valid', 'fromArticle', 'storyForSave', 'mode', 'title', 'storyExists',
+		'watchlistExpiryEnabled', 'watchlistExpiryOptions', 'watchDefault'
+	] ), {
 		licenseHtml: function () {
 			const html = this.$i18n(
 				'wikistories-builder-licensing-with-terms',
@@ -112,7 +141,8 @@ module.exports = {
 					return;
 				}
 				const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
-				saveStory( title.getPrefixedDb(), this.storyForSave, this.mode ).then(
+				const watchlistExpiry = this.watchlistExpiryEnabled ? this.watchlistExpiry : null;
+				saveStory( title.getPrefixedDb(), this.storyForSave, this.mode, this.watchlist, watchlistExpiry ).then(
 					function ( response ) {
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
@@ -166,6 +196,8 @@ module.exports = {
 		} else {
 			this.$refs.storyTitleInput.focus();
 		}
+		this.watchlistExpiry = this.watchlistExpiryOptions.default;
+		this.watchlist = !!this.watchDefault;
 	}
 };
 </script>
@@ -198,6 +230,11 @@ module.exports = {
 			&:focus {
 				outline-color: @color-primary;
 			}
+		}
+
+		&-watchlist {
+			width: 100%;
+			margin: 12px 0;
 		}
 
 		&-error {

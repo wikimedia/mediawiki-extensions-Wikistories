@@ -30,7 +30,11 @@
 			"services": [
 				"WikiPageFactory",
 				"Wikistories.StoryRenderer",
-				"PageStore"
+				"PageStore",
+				"UserOptionsLookup",
+				"WatchlistManager",
+				"WatchedItemStore",
+				"MainConfig"
 			]
 		}
 	},
@@ -252,6 +256,7 @@
 				"wikistories-builder-publishform-invalidtitle-notfound",
 				"wikistories-builder-publishform-saveerror",
 				"wikistories-builder-publishform-saving",
+				"wikistories-builder-publishform-watch",
 				"wikistories-builder-licensing-with-terms"
 			],
 			"es6": true

@@ -6,6 +6,8 @@ module.exports = function ( path, options ) {
 			return options.basedir + '/../../components/DotsMenu.vue';
 		case '../DotsMenuItem.vue':
 			return options.basedir + '/../../components/DotsMenuItem.vue';
+		case '../data.json':
+			return 'data.json'; // this is needed for mocking the module in tests
 		default:
 			return options.defaultResolver( path, options );
 	}
