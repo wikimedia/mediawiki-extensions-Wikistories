@@ -154,9 +154,12 @@ module.exports = {
 		sup,
 		.pcs-collapse-table-container,
 		.thumb,
-		.hatnote,
-		[ role='navigation' ] {
+		.hatnote {
 			display: none;
+		}
+
+		[ role='navigation' ] {
+			display: block !important; /* stylelint-disable-line declaration-no-important */
 		}
 	}
 
