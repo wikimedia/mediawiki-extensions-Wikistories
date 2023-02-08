@@ -1,13 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mainframe98"
+			"Mainframe98",
+			"AHendriksen-collecties",
+			"Dnlweijers",
+			"McDutchie",
+			"Rots61",
+			"Siebrand"
 		]
 	},
+	"wikistories-search-inputplaceholder": "Afbeeldingen zoeken",
+	"wikistories-search-noresultstext": "Geen resultaten",
 	"wikistories-story-goto-publish": "Volgende",
 	"wikistories-story-edittext": "Bewerken",
 	"wikistories-imageattribution-author-unknown": "Auteur onbekend",
 	"wikistories-article-cancelselection": "Annuleren",
 	"wikistories-article-loading": "Laden...",
-	"wikistories-navigator-next": "Volgende"
+	"wikistories-navigator-next": "Volgende",
+	"wikistories-alert-okbuttontext": "OK",
+	"wikistories-builder-publishform-publishbutton": "Publiceren"
 }
