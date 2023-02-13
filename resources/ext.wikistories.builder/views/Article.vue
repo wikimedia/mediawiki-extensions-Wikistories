@@ -159,7 +159,7 @@ module.exports = {
 		}
 
 		[ role='navigation' ] {
-			display: block !important; /* stylelint-disable-line declaration-no-important */
+			display: none !important; /* stylelint-disable-line declaration-no-important */
 		}
 	}
 
