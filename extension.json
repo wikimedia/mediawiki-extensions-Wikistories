@@ -104,14 +104,12 @@
 	},
 	"ResourceModules": {
 		"ext.wikistories.viewer-nojs": {
-			"targets": [ "desktop", "mobile" ],
 			"styles": [
 				"ext.wikistories.viewer-nojs/viewer-nojs.less"
 			]
 		},
 		"ext.wikistories.viewer": {
 			"localBasePath": "resources/ext.wikistories.viewer",
-			"targets": [ "desktop", "mobile" ],
 			"packageFiles": [
 				"index.js",
 				"StoryViewer.vue",
@@ -148,7 +146,6 @@
 		},
 		"ext.wikistories.builder.styles": {
 			"localBasePath": "resources/ext.wikistories.builder",
-			"targets": [ "desktop", "mobile" ],
 			"styles": [
 				"builder.less"
 			],
@@ -160,7 +157,6 @@
 		},
 		"ext.wikistories.builder": {
 			"localBasePath": "resources/ext.wikistories.builder",
-			"targets": [ "desktop", "mobile" ],
 			"packageFiles": [
 				"index.js",
 				"contributionEvents.js",
