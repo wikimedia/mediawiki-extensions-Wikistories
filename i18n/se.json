@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kimberli Mäkäräinen (WMNO)",
 			"Yupik"
 		]
 	},
 	"wikistories-search-inputplaceholder": "Oza govaid",
 	"wikistories-search-navigator-title": "Vállje govaid",
 	"wikistories-story-goto-publish": "Čuovvovaš",
+	"wikistories-article-cancelselection": "Gurre",
 	"wikistories-confirmdialog-delete-accept": "Sihko",
+	"wikistories-confirmdialog-delete-cancel": "Šluhtte",
 	"wikistories-storyviewer-next-story-header": "Loga lasi"
 }
