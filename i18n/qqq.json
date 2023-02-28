@@ -7,7 +7,8 @@
 			"Huei Tan",
 			"Robby",
 			"Verdy p",
-			"Umherirrender"
+			"Umherirrender",
+			"Yupik"
 		]
 	},
 	"wikistories-extensionname": "{{name}}",
@@ -39,7 +40,7 @@
 	"wikistories-story-navigator-title-edit": "Title for Navigator component in the Story view when editing an existing story",
 	"wikistories-imageattribution-author-unknown": "Text used in the ImageAttribution component when the image author is unknown",
 	"wikistories-article-navigator-title": "Title for Navigator component when used in Article view",
-	"wikistories-article-cancelselection": "Text for cancel button used in the Article view\n{{identical|Cancel}}",
+	"wikistories-article-cancelselection": "Text for cancel button used in the Article view\n{{identical|Clear}}",
 	"wikistories-article-loading": "Text used for a header in the Article view as the article loads",
 	"wikistories-article-usetext": "Text used for a button in the Article view.",
 	"wikistories-article-info-banner": "Text used for the info section in the Article view as the feature introduction",
