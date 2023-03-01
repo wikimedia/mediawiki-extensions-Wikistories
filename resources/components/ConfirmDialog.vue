@@ -1,13 +1,13 @@
 <template>
 	<div class="ext-wikistories-confirm">
-		<div class="ext-wikistories-confirm-content">
+		<div class="ext-wikistories-confirm-content" :style="style">
 			<div class="ext-wikistories-confirm-content-title">
 				{{ title }}
 			</div>
 			<div v-if="message" class="ext-wikistories-confirm-content-message">
 				{{ message }}
 			</div>
-			<div v-else>
+			<div v-else class="ext-wikistories-confirm-content-custom">
 				<slot></slot>
 			</div>
 			<div class="ext-wikistories-confirm-content-buttons">
@@ -35,9 +35,17 @@ module.exports = {
 	props: {
 		title: { type: String, required: true },
 		message: { type: String, required: false, default: null },
-		accept: { type: String, required: true }
+		accept: { type: String, required: true },
+		align: { type: String, required: false, default: 'center' }
 	},
-	emits: [ 'confirm', 'cancel' ]
+	emits: [ 'confirm', 'cancel' ],
+	computed: {
+		style: function () {
+			return {
+				textAlign: [ 'left', 'center' ].indexOf( this.align ) !== -1 ? this.align : 'center'
+			};
+		}
+	}
 };
 </script>
 
@@ -57,48 +65,43 @@ module.exports = {
 		background-color: #fff;
 		z-index: 104;
 		border-radius: 2px;
-		min-width: 50%;
-		max-width: 85%;
+		width: 75%;
 		margin: auto;
-		font-size: 16px;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: stretch;
 		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
 
 		&-title {
-			margin: 12px 0 2px 0;
+			margin: 16px 16px 0 16px;
 			font-size: 24px;
-			line-height: 34px;
-			color: @colorGray1;
+			color: @colorGray2;
 		}
 
-		&-message {
-			text-align: center;
-			padding-left: 16px;
-			padding-right: 16px;
-			font-size: 18px;
-			line-height: 25px;
+		&-message,
+		&-custom {
+			margin: 16px 16px 0 16px;
+			font-size: 16px;
 			color: @colorGray2;
 		}
 
 		&-buttons {
+			font-size: 16px;
 			margin-top: 24px;
 			width: 100%;
 			text-align: center;
-			line-height: 22px;
 			font-weight: bold;
 			cursor: pointer;
 
 			&-confirm {
 				background: @color-primary;
-				color: #fff;
+				color: @color-base--inverted;
 				padding: 6px 12px;
 			}
 
 			&-cancel {
 				border-top: solid 1px;
-				border-color: #a2a9b1;
+				border-color: @colorGray10;
 				padding: 6px 12px;
 			}
 		}
