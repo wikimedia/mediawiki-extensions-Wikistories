@@ -117,5 +117,9 @@
 	"wikistories-no-image-category": "Tracking Categories for story no image found",
 	"wikistories-no-image-category-desc": "Description of the Tracking Categories for story no image found",
 	"wikistories-no-related-article": "Tracking Categories for story has no related article",
-	"wikistories-no-related-article-desc": "Description of the Tracking Categories for story has no related article"
+	"wikistories-no-related-article-desc": "Description of the Tracking Categories for story has no related article",
+	"wikistories-outdated-text-category": "Tracking Categories for story with outdated text",
+	"wikistories-outdated-text-category-desc": "Description of the Tracking Categories for story with outdated text",
+	"echo-category-title-wikistories-action": "Label for the Wikistories notification category on Special:Preferences",
+	"wikistories-notification-articlechanged-header": "Main message for the notification indicating that a story needs to be reviewed following an article edit.\nParameters:\n* $1 - Title of the article that was edited\n* $2 - Title of the story that needs to be reviewed"
 }

@@ -36,7 +36,8 @@ return [
 		return new StoryRenderer(
 			$services->getRepoGroup(),
 			$services->getRedirectLookup(),
-			$services->getPageStore()
+			$services->getPageStore(),
+			$services->get( 'Wikistories.Analyzer' )
 		);
 	},
 
@@ -48,6 +49,15 @@ return [
 		return new PageLinksSearch(
 			$services->getDBLoadBalancer()
 		);
-	}
+	},
+
+	'Wikistories.Analyzer' => static function ( MediaWikiServices $services ) {
+		return new StoryContentAnalyzer(
+			$services->getWikiPageFactory(),
+			$services->getParserOutputAccess(),
+			$services->getPageStore(),
+			$services->getRedirectLookup()
+		);
+	},
 
 ];

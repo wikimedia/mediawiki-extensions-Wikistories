@@ -68,7 +68,8 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		$renderer = new StoryRenderer(
 			$repoGroup,
 			MediaWikiServices::getInstance()->getRedirectLookup(),
-			$this->createPageStoreMock()
+			$this->createPageStoreMock(),
+			$this->createAnalyzerMock()
 		);
 		$storyData = $renderer->getStoryData(
 			$story,
@@ -119,7 +120,8 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		$renderer = new StoryRenderer(
 			$repoGroup,
 			MediaWikiServices::getInstance()->getRedirectLookup(),
-			$this->createPageStoreMock()
+			$this->createPageStoreMock(),
+			$this->createAnalyzerMock()
 		);
 		$parts = $renderer->renderNoJS( $storyData );
 
@@ -137,5 +139,11 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 			$parts[ 'html' ]
 		);
 		$this->assertArrayHasKey( 'style', $parts );
+	}
+
+	private function createAnalyzerMock() {
+		$analyzerMock = $this->createMock( StoryContentAnalyzer::class );
+		$analyzerMock->method( 'hasOutdatedText' )->willReturn( false );
+		return $analyzerMock;
 	}
 }

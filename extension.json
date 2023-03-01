@@ -20,6 +20,7 @@
 				"Wikistories.StoryConverter",
 				"Wikistories.StoryValidator",
 				"Wikistories.StoryRenderer",
+				"Wikistories.Analyzer",
 				"TrackingCategories"
 			]
 		}
@@ -47,6 +48,18 @@
 			"grouping": "any"
 		}
 	},
+	"JobClasses": {
+		"ArticleChangedJob": {
+			"class": "MediaWiki\\Extension\\Wikistories\\jobs\\ArticleChangedJob",
+			"services": [
+				"RevisionLookup",
+				"Wikistories.Analyzer",
+				"WikiPageFactory",
+				"Wikistories.PageLinksSearch",
+				"MainConfig"
+			]
+		}
+	},
 	"HookHandlers": {
 		"RecentChangesPropagationHooks": {
 			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\RecentChangesPropagationHooks",
@@ -57,6 +70,9 @@
 				"DBLoadBalancer",
 				"UserFactory"
 			]
+		},
+		"EchoNotificationsHandlers": {
+			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\EchoNotificationsHandlers"
 		}
 	},
 	"Hooks": {
@@ -73,7 +89,10 @@
 		"ChangesListSpecialPageStructuredFilters": "RecentChangesPropagationHooks",
 		"PageDeleteComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onPageDeleteComplete",
 		"PageUndeleteComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onPageUndeleteComplete",
-		"GetPreferences": "MediaWiki\\Extension\\Wikistories\\Hooks::onGetPreferences"
+		"GetPreferences": "MediaWiki\\Extension\\Wikistories\\Hooks::onGetPreferences",
+		"BeforeCreateEchoEvent": "EchoNotificationsHandlers",
+		"EchoGetBundleRules": "EchoNotificationsHandlers",
+		"ParserCacheSaveComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onParserCacheSaveComplete"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
@@ -108,6 +127,10 @@
 		"WikistoriesDiscoveryMode": {
 			"description": "Defines how is the discovery module activated. 'beta' means it is a beta feature. 'public' means it is available by default to everyone, including anons. Any other value means the discovery feature is disabled. ",
 			"value": "off"
+		},
+		"WikistoriesNotifyAboutStoryMaintenance": {
+			"description": "Send notifications to story watchers when stories need to be updated.",
+			"value": false
 		}
 	},
 	"DefaultUserOptions": {
@@ -373,7 +396,8 @@
 	],
 	"TrackingCategories": [
 		"wikistories-no-image-category",
-		"wikistories-no-related-article"
+		"wikistories-no-related-article",
+		"wikistories-outdated-text-category"
 	],
 	"manifest_version": 2
 }

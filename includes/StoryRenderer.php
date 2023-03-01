@@ -18,6 +18,8 @@ class StoryRenderer {
 
 	private const TC_NO_ARTICLE = 'wikistories-no-related-article';
 
+	private const TC_OUTDATED_TEXT = 'wikistories-outdated-text-category';
+
 	/** @var RepoGroup */
 	private $repoGroup;
 
@@ -27,19 +29,25 @@ class StoryRenderer {
 	/** @var PageLookup */
 	private $pageLookup;
 
+	/** @var StoryContentAnalyzer */
+	private $analyzer;
+
 	/**
 	 * @param RepoGroup $repoGroup
 	 * @param RedirectLookup $redirectLookup
 	 * @param PageLookup $pageLookup
+	 * @param StoryContentAnalyzer $analyzer
 	 */
 	public function __construct(
 		RepoGroup $repoGroup,
 		RedirectLookup $redirectLookup,
-		PageLookup $pageLookup
+		PageLookup $pageLookup,
+		StoryContentAnalyzer $analyzer
 	) {
 		$this->repoGroup = $repoGroup;
 		$this->redirectLookup = $redirectLookup;
 		$this->pageLookup = $pageLookup;
+		$this->analyzer = $analyzer;
 	}
 
 	/**
@@ -131,11 +139,18 @@ class StoryRenderer {
 			'editUrl' => SpecialPage::getTitleFor( 'StoryBuilder', $storyTitle->getPrefixedDBkey() )->getLinkURL(),
 			'talkUrl' => $storyTitle->getTalkPageIfDefined()->getLinkURL(),
 			'thumbnail' => $thumb,
-			'trackingCategories' => $trackingCategories,
-			'frames' => array_map( function ( $frame ) use ( $files, $trackingCategories ) {
+			'frames' => array_map( function ( $frame ) use ( $files, $article, &$trackingCategories ) {
 				$url = $this->getUrl( $files, $frame->image->filename, 640 );
 				if ( empty( $url ) ) {
 					$trackingCategories[] = self::TC_NO_IMAGE;
+				}
+				$outdatedText = $article ? $this->analyzer->isOutdatedText(
+					$article,
+					$frame->text->value,
+					$frame->text->fromArticle->originalText ?? ''
+				) : false;
+				if ( $outdatedText ) {
+					$trackingCategories[] = self::TC_OUTDATED_TEXT;
 				}
 				return [
 					'url' => $url,
@@ -143,6 +158,7 @@ class StoryRenderer {
 					'fileNotFound' => empty( $url ),
 					'text' => $frame->text->value,
 					'textFromArticle' => $frame->text->fromArticle->originalText ?? '',
+					'outdatedText' => $outdatedText,
 					'attribution' => $this->getAttribution( $files, $frame->image->filename ),
 				];
 			}, $frames )

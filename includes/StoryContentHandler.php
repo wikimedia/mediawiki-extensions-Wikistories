@@ -25,6 +25,9 @@ class StoryContentHandler extends JsonContentHandler {
 	/** @var StoryRenderer */
 	private $storyRenderer;
 
+	/** @var StoryContentAnalyzer */
+	private $analyzer;
+
 	/** @var TrackingCategories */
 	private $trackingCategories;
 
@@ -33,6 +36,7 @@ class StoryContentHandler extends JsonContentHandler {
 	 * @param StoryConverter $storyConverter
 	 * @param StoryValidator $storyValidator
 	 * @param StoryRenderer $storyRenderer
+	 * @param StoryContentAnalyzer $analyzer
 	 * @param TrackingCategories $trackingCategories
 	 */
 	public function __construct(
@@ -40,12 +44,14 @@ class StoryContentHandler extends JsonContentHandler {
 		StoryConverter $storyConverter,
 		StoryValidator $storyValidator,
 		StoryRenderer $storyRenderer,
+		StoryContentAnalyzer $analyzer,
 		TrackingCategories $trackingCategories
 	) {
 		parent::__construct( $modelId );
 		$this->storyConverter = $storyConverter;
 		$this->storyValidator = $storyValidator;
 		$this->storyRenderer = $storyRenderer;
+		$this->analyzer = $analyzer;
 		$this->trackingCategories = $trackingCategories;
 	}
 

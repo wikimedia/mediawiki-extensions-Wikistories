@@ -110,5 +110,9 @@
 	"wikistories-no-image-category": "Story with no image file",
 	"wikistories-no-image-category-desc": "One of the story frames has no image",
 	"wikistories-no-related-article": "Story with no related article",
-	"wikistories-no-related-article-desc": "The linked article of the Story is deleted"
+	"wikistories-no-related-article-desc": "The linked article of the Story is deleted",
+	"wikistories-outdated-text-category": "Story has outdated text with regards to its source article",
+	"wikistories-outdated-text-category-desc": "Some of the text used in this story is not present anymore in the source article",
+	"echo-category-title-wikistories-action": "Wikistories",
+	"wikistories-notification-articlechanged-header": "<strong>$1</strong> was edited and <strong>$2</strong> needs to be reviewed"
 }

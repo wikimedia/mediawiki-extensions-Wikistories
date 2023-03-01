@@ -7,6 +7,7 @@ use ExtensionRegistry;
 use IContextSource;
 use ManualLogEntry;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
+use MediaWiki\Extension\Wikistories\jobs\ArticleChangedJob;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
@@ -15,6 +16,9 @@ use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use OutputPage;
+use ParserCache;
+use ParserOptions;
+use ParserOutput;
 use RequestContext;
 use Skin;
 use SpecialPage;
@@ -320,4 +324,41 @@ class Hooks {
 			return;
 		}
 	}
+
+	/**
+	 * @param ParserCache $parserCache
+	 * @param ParserOutput $parserOutput
+	 * @param Title $title
+	 * @param ParserOptions $parserOptions
+	 * @param int $revId
+	 */
+	public static function onParserCacheSaveComplete(
+		ParserCache $parserCache,
+		ParserOutput $parserOutput,
+		Title $title,
+		ParserOptions $parserOptions,
+		int $revId
+	) {
+		if ( $title->getNamespace() !== NS_MAIN ) {
+			return;
+		}
+
+		if ( $parserOptions->getRenderReason() !== 'edit-page' ) {
+			// Don't want to trigger story outdated verification for any other reason
+			return;
+		}
+
+		DeferredUpdates::addCallableUpdate( static function () use ( $title ) {
+			/** @var PageLinksSearch $pageLinkSearch */
+			$pageLinkSearch = MediaWikiServices::getInstance()->get( 'Wikistories.PageLinksSearch' );
+			$links = $pageLinkSearch->getPageLinks( $title->getDBkey(), 1 );
+			if ( count( $links ) === 0 ) {
+				return;
+			}
+
+			$job = ArticleChangedJob::newSpec( $title->getId() );
+			MediaWikiServices::getInstance()->getJobQueueGroup()->push( $job );
+		} );
+	}
+
 }
