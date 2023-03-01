@@ -61,6 +61,7 @@
 	"wikistories-error-notenoughframes-message": "All Wikistories need at least {{PLURAL:$1|1=one|2=two|3=three|4=four|5=five|10=ten|$1}} {{PLURAL:$1|page|pages}}. Please add {{PLURAL:$2|1=one|2=two|3=three|4=four|5=five|10=ten|$2}} {{PLURAL:$2|more page|more pages}}.",
 	"wikistories-error-frameswithouttext-title": "Missing Text",
 	"wikistories-error-frameswithouttext-message": "All Wikistory pages need text. Please add text to {{PLURAL:$1|$1 story page|$1 story pages}}.",
+	"wikistories-builder-article-not-available": "Article text unavailable. Please try again later",
 	"wikistories-builder-publishform-navigator-title": "Publish Wikistory",
 	"wikistories-builder-publishform-placeholder": "Enter story title...",
 	"wikistories-builder-publishform-publishbutton": "Publish",
