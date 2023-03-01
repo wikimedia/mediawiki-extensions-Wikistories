@@ -49,7 +49,13 @@ module.exports = {
 			}
 			const lang = mw.config.get( 'wgContentLanguage' );
 			const url = 'https://' + lang + '.wikipedia.org/api/rest_v1/page/mobile-html/' + encodeURIComponent( title );
-			fetch( url ).then( ( resp ) => resp.text() ).then( ( html ) => {
+			return fetch( url ).then( ( resp ) => {
+				if ( resp.ok ) {
+					return resp.text();
+				} else {
+					throw new Error();
+				}
+			} ).then( ( html ) => {
 				const doc = new DOMParser().parseFromString( html, 'text/html' );
 				Object.keys( transforms ).forEach( ( key ) => {
 					transforms[ key ]( doc );

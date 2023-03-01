@@ -67,6 +67,7 @@
 	"wikistories-error-notenoughframes-message": "Error message when trying to publish a story that doesn't have enough frames.\n\nParameters:\n* $1 - minimum number of pages for a story\n* $2 - number of pages missing",
 	"wikistories-error-frameswithouttext-title": "Title of the error dialog when trying to publish a story that is missing text in some pages.",
 	"wikistories-error-frameswithouttext-message": "Error message when trying to publish a story that is missing text in some pages.\n\nParameters:\n* $1 - number of pages without text",
+	"wikistories-builder-article-not-available": "Text of the article page when article is not available from Wikipedia",
 	"wikistories-builder-publishform-navigator-title": "Title for Navigator component when used in PublishForm view",
 	"wikistories-builder-publishform-placeholder": "Placeholder of the story title text input on the publish form.",
 	"wikistories-builder-publishform-publishbutton": "Text of the publish button on the publish form.",

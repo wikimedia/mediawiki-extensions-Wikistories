@@ -10,6 +10,9 @@
 			v-if="currentArticle.html"
 			class="ext-wikistories-article-view-content"
 			v-html="currentArticle.html"></div>
+		<div v-else-if="error" class="ext-wikistories-article-view-error">
+			{{ error }}
+		</div>
 		<div v-else class="ext-wikistories-article-view-loading">
 			<h1>{{ $i18n( 'wikistories-article-loading' ).text() }}</h1>
 		</div>
@@ -65,7 +68,8 @@ module.exports = {
 		return {
 			selectedText: null,
 			display: 'info',
-			expanded: false
+			expanded: false,
+			error: false
 		};
 	},
 	computed: mapGetters( [ 'currentArticle', 'fromArticle' ] ),
@@ -112,7 +116,12 @@ module.exports = {
 		}
 	} ),
 	created: function () {
-		this.fetchArticle( this.article || this.fromArticle );
+		this.fetchArticle( this.article || this.fromArticle ).catch( () => {
+			// remove the functionality of selection when detect error from article
+			this.setToolbarDisplay( 'none' );
+			this.error = mw.msg( 'wikistories-builder-article-not-available' );
+			document.removeEventListener( 'selectionchange', this.onSelectionChange );
+		} );
 	},
 	mounted: function () {
 		document.addEventListener( 'selectionchange', this.onSelectionChange );
@@ -161,6 +170,14 @@ module.exports = {
 		[ role='navigation' ] {
 			display: none !important; /* stylelint-disable-line declaration-no-important */
 		}
+	}
+
+	&-error {
+		position: relative;
+		flex-grow: 1;
+		padding: 16px;
+		margin-top: 10px;
+		font-size: 18px;
 	}
 
 	&-loading {
