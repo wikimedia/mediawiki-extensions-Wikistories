@@ -31,7 +31,6 @@
 	"wikistories-confirmdialog-delete-title": "Bu sayfa silinsin mi?",
 	"wikistories-confirmdialog-delete-message": "Hikayenizden kalıcı olarak kaldırılacak",
 	"wikistories-confirmdialog-delete-accept": "Sil",
-	"wikistories-confirmdialog-delete-cancel": "İptal",
 	"wikistories-error-notenoughframes-title": "Yeterli sayfa yok",
 	"wikistories-error-notenoughframes-message": "Vikihikaye'nin en az{{PLURAL:$1|$1 sayfaya}} ihtiyacı var. Yayımlamak için {{PLURAL:$2|bir sayfa daha|$2 sayfa daha}} ekleyin.",
 	"wikistories-error-frameswithouttext-title": "Eksik Metin",

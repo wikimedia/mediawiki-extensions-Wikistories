@@ -22,7 +22,6 @@
 	"wikistories-article-loading": "正在加载条目...",
 	"wikistories-confirmdialog-delete-title": "删除本页？",
 	"wikistories-confirmdialog-delete-accept": "删除",
-	"wikistories-confirmdialog-delete-cancel": "取消",
 	"wikistories-builder-publishform-saveerror": "在发布 Wikistory 时发生错误。请尝试重新发布。",
 	"wikistories-storyviewer-edit": "编辑这个故事"
 }

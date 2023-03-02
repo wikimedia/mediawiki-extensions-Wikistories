@@ -32,7 +32,6 @@
 	"wikistories-confirmdialog-delete-title": "이 스토리 페이지를 삭제하시겠습니까?",
 	"wikistories-confirmdialog-delete-message": "당신의 스토리에서 영구적으로 삭제될 것입니다",
 	"wikistories-confirmdialog-delete-accept": "삭제",
-	"wikistories-confirmdialog-delete-cancel": "취소",
 	"wikistories-confirmdialog-discardstory-accept": "버리기",
 	"wikistories-storyviewer-textsize-title": "텍스트 크기",
 	"wikistories-storyviewer-textsize-label-small": "작게",

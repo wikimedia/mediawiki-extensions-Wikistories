@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"wikistories-extensiondesc": "Wikistories erlaabt et Auteure fir kuerzt, visuellt an zouverlässegt Wëssen aus Wikimedia-Projeten zesummenzestellen.",
@@ -22,7 +23,6 @@
 	"wikistories-confirmdialog-ok": "OK",
 	"wikistories-confirmdialog-delete-title": "Dës Säit läschen?",
 	"wikistories-confirmdialog-delete-accept": "Läschen",
-	"wikistories-confirmdialog-delete-cancel": "Ofbriechen",
 	"wikistories-confirmdialog-discardedits-title": "Ännerungen ignoréieren?",
 	"wikistories-storyviewer-textsize-title": "Gréisst vum Text",
 	"wikistories-storyviewer-textsize-label-small": "Kleng",
@@ -30,6 +30,7 @@
 	"wikistories-storyviewer-textsize-label-large": "Grouss",
 	"wikistories-error-notenoughframes-title": "Net genuch Säiten",
 	"wikistories-error-frameswithouttext-title": "Text feelt",
+	"wikistories-builder-article-not-available": "Artikeltext net disponibel. Probéiert wgl. méi spéit nach eng Kéier",
 	"wikistories-builder-publishform-navigator-title": "Wikistory verëffentlechen",
 	"wikistories-builder-publishform-publishbutton": "Verëffentlechen",
 	"wikistories-builder-publishform-invalidtitle-notfound": "Geschicht net fonnt.",
