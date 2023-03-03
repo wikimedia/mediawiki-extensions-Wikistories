@@ -71,6 +71,7 @@
 	"wikistories-builder-publishform-invalidtitle-notfound": "Geschichte nicht gefunden.",
 	"wikistories-builder-publishform-saveerror": "Bei der Veröffentlichung der Wiki-Geschichte ist ein Fehler aufgetreten. Bitte versuche erneut zu veröffentlichen.",
 	"wikistories-builder-publishform-saving": "Wikistory veröffentlichen …",
+	"wikistories-builder-publishform-watch": "Diese Geschichte ansehen",
 	"wikistories-builder-licensing-with-terms": "Indem du fortfährst, stimmst du den [$1 Nutzungsbedingungen] zu und erklärst dich unwiderruflich bereit, deinen Beitrag unter den Lizenzen [$2 CC BY-SA 3.0] und [$3 GFDL] zu veröffentlichen.",
 	"wikistories-nojs-form-label-related-article": "Verwandter Artikel",
 	"wikistories-nojs-form-label-frame": "Rahmen $1",

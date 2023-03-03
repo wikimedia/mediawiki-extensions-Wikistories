@@ -3,7 +3,8 @@
 		"authors": [
 			"MathXplore",
 			"Mugenpman",
-			"Sou0012"
+			"Sou0012",
+			"もなー(偽物)"
 		]
 	},
 	"prefs-wikistories": "ウィキストーリー",
@@ -37,6 +38,7 @@
 	"wikistories-storyviewer-textsize-label-small": "小",
 	"wikistories-storyviewer-textsize-label-large": "大",
 	"wikistories-error-notenoughframes-title": "ページ数が不十分です",
+	"wikistories-builder-article-not-available": "記事のテキストは使用できません。時間をおいて再度お試しください",
 	"wikistories-builder-publishform-placeholder": "ストーリーの題名を入力してください",
 	"wikistories-builder-publishform-publishbutton": "公開",
 	"wikistories-builder-publishform-invalidtitle-empty": "ストーリーの題名を入力してください",
