@@ -45,6 +45,7 @@
 	"wikistories-builder-publishform-invalidtitle-duplicate": "同名のストーリーが既に存在します。重複しない題名を入力してください。",
 	"wikistories-builder-publishform-invalidtitle-notfound": "ストーリーが見つかりません。",
 	"wikistories-builder-publishform-saveerror": "ウィキストーリーの公開時にエラーが発生しました。再度、公開をお試しください。",
+	"wikistories-builder-publishform-watch": "このストーリーをウォッチします",
 	"wikistories-nojs-form-label-related-article": "関連記事",
 	"wikistories-nojs-form-label-image": "画像",
 	"wikistories-nojs-form-label-text": "テキスト",
