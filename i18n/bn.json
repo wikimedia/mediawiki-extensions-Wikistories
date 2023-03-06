@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aishik Rehman",
 			"Meghmollar2017",
 			"Yahya",
 			"আজিজ",
@@ -26,6 +27,7 @@
 	"wikistories-confirmdialog-discardstory-accept": "বাতিল করুন",
 	"wikistories-builder-publishform-publishbutton": "প্রকাশ করুন",
 	"wikistories-builder-publishform-saveerror": "উইকিগল্প প্রকাশ করার সময় ত্রুটি ঘটেছে। পুনরায় প্রকাশের চেষ্টা করুন।",
+	"wikistories-builder-publishform-watch": "এই গল্পটি দেখুন",
 	"wikistories-nojs-form-label-related-article": "প্রাসঙ্গিক নিবন্ধ",
 	"wikistories-nojs-form-label-image": "চিত্র",
 	"wikistories-nojs-form-label-text": "পাঠ্য",

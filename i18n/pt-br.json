@@ -3,6 +3,7 @@
 		"authors": [
 			"Duke of Wikipädia",
 			"Eduardoaddad",
+			"Re demz",
 			"YuriNikolai"
 		]
 	},
@@ -31,12 +32,14 @@
 	"wikistories-storyviewer-textsize-label-large": "Grande",
 	"wikistories-error-notenoughframes-title": "Não há páginas o suficiente",
 	"wikistories-error-frameswithouttext-title": "Texto Faltando",
+	"wikistories-builder-article-not-available": "Texto do artigo indisponível. Por favor tente novamente mais tarde",
 	"wikistories-builder-publishform-placeholder": "Insira título da história...",
 	"wikistories-builder-publishform-publishbutton": "Publicar",
 	"wikistories-builder-publishform-invalidtitle-empty": "Insira título da história",
 	"wikistories-builder-publishform-invalidtitle-format": "Título de história inválido",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Já existe uma história com este título. Por favor, insira um novo.",
 	"wikistories-builder-publishform-saveerror": "Ocorreu um erro ao publicar a Wikistory. Por favor, tente publicar novamente.",
+	"wikistories-builder-publishform-watch": "Veja essa história",
 	"wikistories-storyviewer-edit": "Editar esta história",
 	"wikistories-storyviewer-talk": "Compartilhe seu feedback"
 }

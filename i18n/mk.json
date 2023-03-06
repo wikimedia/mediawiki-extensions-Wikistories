@@ -72,6 +72,7 @@
 	"wikistories-builder-publishform-invalidtitle-notfound": "Приказната не е пронајдена.",
 	"wikistories-builder-publishform-saveerror": "Се јави грешка при објавувањето на википриказната. Обидете да ја објавите повторно.",
 	"wikistories-builder-publishform-saving": "Ја објавувам википриказната...",
+	"wikistories-builder-publishform-watch": "Набљудувај ја приказнава",
 	"wikistories-builder-licensing-with-terms": "Продолжувајќи, се согласувате со [$1 Условите на употреба], и дека неотповикливо се согласувате дека го објавувате вашиот придонес под лиценците [$2 CC BY-SA 3.0] и [$3 ГЛСД].",
 	"wikistories-nojs-form-label-related-article": "Поврзана статија",
 	"wikistories-nojs-form-label-frame": "Рамка $1",
