@@ -69,6 +69,7 @@ const Navigator = require( '../components/Navigator.vue' );
 const DotsMenu = require( '../DotsMenu.vue' );
 const DotsMenuItem = require( '../DotsMenuItem.vue' );
 const Toast = require( '../components/Toast.vue' );
+const beforeUnloadListener = require( '../util/beforeUnloadListener.js' );
 
 // @vue/component
 module.exports = {
@@ -167,6 +168,7 @@ module.exports = {
 		},
 		onDiscard: function () {
 			const titleObj = mw.Title.newFromText( this.fromArticle );
+			window.removeEventListener( 'beforeunload', beforeUnloadListener );
 			window.location = titleObj.getUrl();
 		},
 		onNext: function () {

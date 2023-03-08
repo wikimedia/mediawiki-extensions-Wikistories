@@ -6,6 +6,7 @@
 
 <script>
 const events = require( './contributionEvents.js' );
+const beforeUnloadListener = require( './util/beforeUnloadListener.js' );
 const RouterView = require( './components/RouterView.vue' );
 const mapGetters = require( 'vuex' ).mapGetters;
 
@@ -34,9 +35,11 @@ module.exports = {
 	beforeMount: function () {
 		this.updateHeight();
 		window.addEventListener( 'resize', this.updateHeight );
+		window.addEventListener( 'beforeunload', beforeUnloadListener );
 	},
 	unmounted: function () {
 		window.removeEventListener( 'resize', this.updateHeight );
+		window.removeEventListener( 'beforeunload', beforeUnloadListener );
 	}
 };
 </script>
