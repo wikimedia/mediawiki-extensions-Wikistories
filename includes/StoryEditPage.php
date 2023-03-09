@@ -3,10 +3,11 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use EditPage;
-use Html;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use OOUI\FieldLayout;
 use OOUI\HiddenInputWidget;
+use OOUI\MultilineTextInputWidget;
 use OOUI\TextInputWidget;
 
 class StoryEditPage extends EditPage {
@@ -49,14 +50,14 @@ class StoryEditPage extends EditPage {
 			new TextInputWidget( [ 'name' => "story_from_article", 'value' => $story->getFromArticle() ] ),
 			[
 				'label' => $this->context->msg( 'wikistories-nojs-form-label-related-article' )->text(),
-				'align' => 'left'
- ]
+				'align' => 'left',
+			]
 		);
 		for ( $i = 0; $i < $maxFrames; $i++ ) {
 			$frame = $currentFrames[ $i ] ?? $emptyFrame;
 			$form .= Html::element( 'h3', [],
 				$this->context->msg( 'wikistories-nojs-form-label-frame' )->params( $i + 1 )->text()
- );
+			);
 			$form .= new FieldLayout(
 				new TextInputWidget(
 					[ 'name' => "story_frame_{$i}_image_filename", 'value' => $frame->image->filename ]
@@ -96,6 +97,26 @@ class StoryEditPage extends EditPage {
 			);
 		}
 
+		// Categories
+		$form .= Html::element( 'h3', [],
+			$this->context->msg( 'wikistories-nojs-form-categories-title' )->text()
+		);
+		$categories = $story->getCategories();
+		$form .= new FieldLayout(
+			new MultilineTextInputWidget(
+				[
+					'name' => "story_categories",
+					'value' => implode( "\n", $categories ),
+					'rows' => 5,
+				]
+
+			),
+			[
+				'label' => $this->context->msg( 'wikistories-nojs-form-categories-label' )->text(),
+				'align' => 'left',
+			]
+		);
+
 		$form .= '</div>';
 		$out->enableOOUI();
 		$out->addHTML( $form );
@@ -108,6 +129,11 @@ class StoryEditPage extends EditPage {
 	protected function importContentFormData( &$request ) {
 		$story = [
 			'fromArticle' => $request->getText( 'story_from_article' ),
+			'categories' => array_values(
+				array_unique(
+					explode( "\n", trim( $request->getText( 'story_categories' ) ) )
+				)
+			),
 			'frames' => []
 		];
 

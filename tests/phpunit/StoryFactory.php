@@ -20,7 +20,8 @@ class StoryFactory {
 					'image' => [ 'filename' => 'Cat_napping.jpg' ],
 					'text' => [ 'value' => 'Sleeping now...' ],
 				],
-			]
+			],
+			'categories' => [ 'Domesticated animals', 'Cats' ]
 		] ) );
 	}
 

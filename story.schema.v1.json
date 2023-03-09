@@ -64,6 +64,14 @@
 					}
 				}
 			}
+		},
+		"categories": {
+			"type": "array",
+			"items": {
+				"description": "Title of page in the Category namespace",
+				"type": "string",
+				"maxLength": 255
+			}
 		}
 	}
 }
