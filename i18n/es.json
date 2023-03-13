@@ -3,6 +3,7 @@
 		"authors": [
 			"Danniel07",
 			"DiegoAmbrocio",
+			"Fitoschido",
 			"Josuert"
 		]
 	},
@@ -15,6 +16,7 @@
 	"wikistories-confirmdialog-delete-title": "¿Eliminar esta página?",
 	"wikistories-confirmdialog-delete-accept": "Eliminar",
 	"wikistories-error-notenoughframes-title": "No hay suficientes páginas",
+	"wikistories-builder-article-not-available": "El texto del artículo no está disponible. Inténtalo de nuevo más tarde",
 	"wikistories-builder-publishform-navigator-title": "Publicar wikistory",
 	"wikistories-builder-publishform-placeholder": "Introduce el título de la historia...",
 	"wikistories-builder-publishform-publishbutton": "Publicar",
