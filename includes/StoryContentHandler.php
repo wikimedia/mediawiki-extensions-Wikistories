@@ -98,9 +98,13 @@ class StoryContentHandler extends JsonContentHandler {
 			$parserOutput->addImage( $file );
 		}
 
+		$storyPage = $cpoParams->getPage();
+		foreach ( $story->getCategories() as $category ) {
+			$parserOutput->addCategory( $category, $storyPage->getDBkey() );
+		}
+
 		if ( $cpoParams->getGenerateHtml() ) {
 			// no-js
-			$storyPage = $cpoParams->getPage();
 			if ( $storyPage instanceof Title ) {
 				$id = $storyPage->getArticleID();
 			} else {

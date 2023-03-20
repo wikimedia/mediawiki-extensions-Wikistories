@@ -33,6 +33,14 @@ class StoryContent extends JsonContent {
 	}
 
 	/**
+	 * @return string[]
+	 */
+	public function getCategories(): array {
+		$story = $this->getData()->getValue();
+		return $story->categories ?? [];
+	}
+
+	/**
 	 * Return a single image or a gallery in wikitext
 	 *
 	 * @return bool|string
@@ -67,12 +75,21 @@ class StoryContent extends JsonContent {
 	}
 
 	/**
-	 * @return string A simple version of the story frames as text for diff
+	 * @return string A simple version of the story frames and categories as text for diff
 	 */
 	public function getTextForDiff() {
-		return implode( "\n\n", array_map( static function ( $frame ) {
+		// story frames
+		$text = implode( "\n\n", array_map( static function ( $frame ) {
 			return $frame->image->filename . "\n" . $frame->text->value;
 		}, $this->getFrames() ) );
+
+		// categories
+		$categories = $this->getCategories();
+		if ( !empty( $categories ) ) {
+			$text .= "\n\n" . implode( "\n", $categories );
+		}
+
+		return $text;
 	}
 
 	/**

@@ -48,7 +48,9 @@ class StoryContentTest extends MediaWikiUnitTestCase {
 			"Cat_poster_1.jpg\n" .
 			"This is a cat\n\n" .
 			"Cat_napping.jpg\n" .
-			"Sleeping now...",
+			"Sleeping now...\n\n" .
+			"Domesticated animals\n" .
+			"Cats",
 			$story->getTextForDiff()
 		);
 	}
