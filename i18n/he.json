@@ -78,6 +78,8 @@
 	"wikistories-nojs-form-label-frame": "שקופית $1",
 	"wikistories-nojs-form-label-image": "תמונה",
 	"wikistories-nojs-form-label-text": "טקסט",
+	"wikistories-nojs-form-categories-title": "קטגוריות",
+	"wikistories-nojs-form-categories-label": "שמות קטגוריות, ללא מרחב השמות, אחד בכל שורה",
 	"wikistories-nojs-viewer-error": "{{PLURAL:$1|תמונה אחת שמשמשת|$1 תמונות שמשמשות}} בסיפור הזה כבר {{PLURAL:$1|אינה זמינה|אינן זמינות}} בוויקישיתוף.",
 	"wikistories-discover-cta-text": "יצירת סיפור ויקי",
 	"wikistories-discover-cta-text-subheader": "{{GENDER:|היה הראשון|היי הראשונה}} להמחיש עובדות מפתח על הנושא הזה ללומדים חזותיים.",

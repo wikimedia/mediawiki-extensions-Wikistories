@@ -78,6 +78,8 @@
 	"wikistories-nojs-form-label-frame": "Okvir $1",
 	"wikistories-nojs-form-label-image": "Slika",
 	"wikistories-nojs-form-label-text": "Besedilo",
+	"wikistories-nojs-form-categories-title": "Kategorije",
+	"wikistories-nojs-form-categories-label": "Imena kategorij, brez imenskega prostora, eno na vrstico",
 	"wikistories-nojs-viewer-error": "$1 {{PLURAL:$1|slika, uporabljena|sliki, uporabljeni|slike, uporabljene|slik, uporabljenih}} v tej zgodbi, {{PLURAL:$1|ni|nista|niso|ni}} več na voljo v Zbirki.",
 	"wikistories-discover-cta-text": "Ustvari vikizgodbo",
 	"wikistories-discover-cta-text-subheader": "Bodite prvi, ki bo ponazoril ključna dejstva o tej temi za vizualne učence.",

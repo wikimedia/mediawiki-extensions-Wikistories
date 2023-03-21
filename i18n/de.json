@@ -77,6 +77,8 @@
 	"wikistories-nojs-form-label-frame": "Rahmen $1",
 	"wikistories-nojs-form-label-image": "Bild",
 	"wikistories-nojs-form-label-text": "Text",
+	"wikistories-nojs-form-categories-title": "Kategorien",
+	"wikistories-nojs-form-categories-label": "Kategoriennamen, ohne Namensraum, eine pro Zeile",
 	"wikistories-nojs-viewer-error": "$1 in dieser Geschichte {{PLURAL:$1|verwendetes Bild|verwendete Bilder}} {{PLURAL:$1|ist|sind}} nicht mehr auf Commons verfügbar.",
 	"wikistories-discover-cta-text": "Geschichte erstellen",
 	"wikistories-discover-cta-text-subheader": "Sei der Erste, der die wichtigsten Fakten zu diesem Thema für visuell Lernende illustriert.",

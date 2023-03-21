@@ -80,6 +80,8 @@
 	"wikistories-nojs-form-label-frame": "Cadre $1",
 	"wikistories-nojs-form-label-image": "Image",
 	"wikistories-nojs-form-label-text": "Texte",
+	"wikistories-nojs-form-categories-title": "Catégories",
+	"wikistories-nojs-form-categories-label": "Noms des catégories, sans l’espace de noms, un par ligne",
 	"wikistories-nojs-viewer-error": "$1 {{PLURAL:$1|image utilisée|images utilisées}} dans cette histoire {{PLURAL:$1|n’est|ne sont}} plus disponible sur Commons.",
 	"wikistories-discover-cta-text": "Créer un Wikirécit",
 	"wikistories-discover-cta-text-subheader": "Soyez le premier à illustrer les faits clés sur ce sujet pour les apprenants visuels.",
