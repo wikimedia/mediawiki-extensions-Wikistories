@@ -186,6 +186,7 @@
 				"store/router.js",
 				"store/search.js",
 				"store/story.js",
+				"util/beforeUnloadListener.js",
 				"util/convertUrlToMobile.js",
 				"util/safeAssignString.js",
 				"util/sortableFrames.js",

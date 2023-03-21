@@ -79,6 +79,7 @@ const Toast = require( '../components/Toast.vue' );
 const saveStory = require( '../api/saveStory.js' );
 const validateTitle = require( '../util/validateTitle.js' );
 const events = require( '../contributionEvents.js' );
+const beforeUnloadListener = require( '../util/beforeUnloadListener.js' );
 const NS_STORY = mw.config.get( 'wgNamespaceIds' ).story;
 
 // @vue/component
@@ -147,6 +148,7 @@ module.exports = {
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
 							events.logPublishSuccess( this.storyTitle, this.storyExists );
+							window.removeEventListener( 'beforeunload', beforeUnloadListener );
 							this.navigateToArticle( response.pageid );
 						} else {
 							this.setErrorFeedback( response );
