@@ -35,6 +35,8 @@
 	"wikistories-builder-publishform-saveerror": "C'è stato un errore nel pubblicare la wikistoria. Riprova a pubblicarla.",
 	"wikistories-nojs-form-label-image": "Immagine",
 	"wikistories-nojs-form-label-text": "Testo",
+	"wikistories-nojs-form-categories-title": "Categorie",
+	"wikistories-nojs-form-categories-label": "Nomi di categorie, senza il namespace, uno per riga",
 	"wikistories-storyviewer-next-story-header": "Per saperne di più",
 	"wikistories-storyviewer-next-story-viewtext": "Visualizza",
 	"wikistories-storyviewer-textsize": "Modifica la dimensione del testo",

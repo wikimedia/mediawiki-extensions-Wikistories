@@ -76,6 +76,8 @@
 	"wikistories-nojs-form-label-frame": "Quadro $1",
 	"wikistories-nojs-form-label-image": "Imagine",
 	"wikistories-nojs-form-label-text": "Texto",
+	"wikistories-nojs-form-categories-title": "Categorias",
+	"wikistories-nojs-form-categories-label": "Nomines de categorias, sin le spatio de nomines, un per linea",
 	"wikistories-nojs-viewer-error": "$1 imagine{{PLURAL:$1||s}} usate in iste historia non es plus disponibile sur Commons.",
 	"wikistories-discover-cta-text": "Crear un Wikihistoria",
 	"wikistories-discover-cta-text-subheader": "Sia le prime a illustrar le factos clave sur iste topico pro apprendentes visual.",
