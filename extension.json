@@ -69,6 +69,10 @@
 			"description": "Maximum number of characters a story frame can have.",
 			"value": 1000
 		},
+		"WikistoriesUnmodifiedTextThreshold": {
+			"description": "Percentage threshold of unmodified text allowed before showing final edit warning",
+			"value": 0.7
+		},
 		"WikistoriesDiscoveryMode": {
 			"description": "Defines how is the discovery module activated. 'beta' means it is a beta feature. 'public' means it is available by default to everyone, including anons. Any other value means the discovery feature is disabled. ",
 			"value": "off"
@@ -192,6 +196,7 @@
 				"util/sortableFrames.js",
 				"util/strip.js",
 				"util/validateTitle.js",
+				"util/calculateUnmodifiedContent.js",
 				"views/Article.vue",
 				"views/PublishForm.vue",
 				"views/Search.vue",
@@ -217,12 +222,16 @@
 				"wikistories-search-navigator-title-selected-info",
 				"wikistories-story-goto-publish",
 				"wikistories-story-selecttext",
-				"wikistories-story-editdone",
+				"wikistories-story-edittext-done",
+				"wikistories-story-edittext-initial",
+				"wikistories-story-edittext-medium",
+				"wikistories-story-edittext-last",
 				"wikistories-story-replaceimage",
 				"wikistories-story-deleteframe",
 				"wikistories-story-feedback",
 				"wikistories-story-navigator-title",
 				"wikistories-story-navigator-title-edit",
+				"wikistories-story-navigator-title-edittext",
 				"wikistories-imageattribution-author-unknown",
 				"wikistories-article-navigator-title",
 				"wikistories-article-cancelselection",

@@ -3,8 +3,9 @@
 		<navigator
 			:title="messages.navTitle"
 			:forward-button-visible="true"
-			@backward="showDiscardStoryConfirmationDialog"
-			@forward="onNext"
+			:forward-button-text="messages.forwardButtonText"
+			@backward="onBackward"
+			@forward="onForward"
 		></navigator>
 		<current-frame
 			@select-text="onSelectText"
@@ -101,6 +102,17 @@ module.exports = {
 	},
 	computed: $.extend( mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'mode', 'frameCount', 'editingText' ] ), {
 		messages: function () {
+			// EDIT TEXT MODE
+			if ( this.editingText ) {
+				return {
+					navTitle: this.$i18n( 'wikistories-story-navigator-title-edittext' ).text(),
+					forwardButtonText: this.$i18n( 'wikistories-story-edittext-done' ).text(),
+					discardTitle: this.$i18n( 'wikistories-confirmdialog-discardedits-title' ).text(),
+					discardMessage: this.$i18n( 'wikistories-confirmdialog-discardedits-message' ).text()
+				};
+			}
+
+			// EDIT AND CREATE STORY MODE
 			return this.mode === 'edit' ?
 				{
 					navTitle: this.$i18n( 'wikistories-story-navigator-title-edit' ).text(),
@@ -113,7 +125,7 @@ module.exports = {
 				};
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'removeFrame', 'fetchImgAttribution', 'routePush', 'routeReplace' ] ), {
+	methods: $.extend( mapActions( [ 'removeFrame', 'fetchImgAttribution', 'routePush', 'routeReplace', 'setText', 'setEditingText' ] ), {
 		showDeleteFrameConfirmationDialog: function () {
 			this.viewDeleteFrameConfirmDialog = true;
 		},
@@ -125,6 +137,31 @@ module.exports = {
 		},
 		hideDiscardStoryConfirmDialog: function () {
 			this.viewDiscardStoryConfirmDialog = false;
+		},
+		onBackward: function () {
+			if ( !this.editingText ) {
+				this.showDiscardStoryConfirmationDialog();
+			} else {
+				this.setEditingText( false );
+				this.setText( this.currentFrame.lastEditedText );
+			}
+		},
+		onForward: function () {
+			if ( !this.editingText ) {
+				if ( this.missingFrames ) {
+					const minFrames = this.getConfig( 'wgWikistoriesMinFrames' );
+					this.showNotEnoughFrameAlert( minFrames, this.missingFrames );
+					return;
+				}
+				if ( this.framesWithoutText > 0 ) {
+					this.showFramesWithoutTextAlert( this.framesWithoutText );
+					return;
+				}
+
+				this.routePush( 'publish' );
+			} else {
+				this.setEditingText( false );
+			}
 		},
 		goToWikistoriesTalkPage: function () {
 			window.location = 'https://www.mediawiki.org/wiki/Talk:Wikistories';
@@ -170,19 +207,6 @@ module.exports = {
 			const titleObj = mw.Title.newFromText( this.fromArticle );
 			window.removeEventListener( 'beforeunload', beforeUnloadListener );
 			window.location = titleObj.getUrl();
-		},
-		onNext: function () {
-			if ( this.missingFrames ) {
-				const minFrames = this.getConfig( 'wgWikistoriesMinFrames' );
-				this.showNotEnoughFrameAlert( minFrames, this.missingFrames );
-				return;
-			}
-			if ( this.framesWithoutText > 0 ) {
-				this.showFramesWithoutTextAlert( this.framesWithoutText );
-				return;
-			}
-
-			this.routePush( 'publish' );
 		},
 		onSelectText: function () {
 			this.routePush( 'article' );
