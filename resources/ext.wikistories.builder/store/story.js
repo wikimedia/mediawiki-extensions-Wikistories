@@ -77,6 +77,10 @@ module.exports = {
 			const frame = state.frames[ state.currentFrameIndex ];
 			frame.textFromArticle = textFromArticle.slice( 0, MAX_TEXT_LENGTH );
 		},
+		setLastEditedText: ( state, text ) => {
+			const frame = state.frames[ state.currentFrameIndex ];
+			frame.lastEditedText = text.slice( 0, MAX_TEXT_LENGTH );
+		},
 		setFrame: ( state, data ) => {
 			state.frames[ state.currentFrameIndex ] = data;
 		},
@@ -118,6 +122,9 @@ module.exports = {
 		},
 		setTextFromArticle: ( context, textFromArticle ) => {
 			context.commit( 'setTextFromArticle', textFromArticle );
+		},
+		setLastEditedText: ( context, text ) => {
+			context.commit( 'setLastEditedText', text );
 		},
 		setFrameImage: ( context, data ) => {
 			// frame text content remain
@@ -175,7 +182,9 @@ module.exports = {
 				text: f.text,
 				style: makeFrameStyle( f ),
 				imgAttribution: f.attribution,
-				fileNotFound: f.fileNotFound
+				fileNotFound: f.fileNotFound,
+				textFromArticle: f.textFromArticle,
+				lastEditedText: f.lastEditedText
 			};
 		},
 		missingFrames: ( state ) => {

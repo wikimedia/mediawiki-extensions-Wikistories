@@ -159,6 +159,7 @@ class SpecialStoryBuilder extends SpecialPage {
 			'wgWikistoriesMinFrames' => $this->getConfig()->get( 'WikistoriesMinFrames' ),
 			'wgWikistoriesMaxFrames' => $this->getConfig()->get( 'WikistoriesMaxFrames' ),
 			'wgWikistoriesMaxTextLength' => $this->getConfig()->get( 'WikistoriesMaxTextLength' ),
+			'wgWikistoriesUnmodifiedTextThreshold' => $this->getConfig()->get( 'WikistoriesUnmodifiedTextThreshold' ),
 			'wgWikistoriesWatchDefault' => $watchDefault,
 			'wgWikistoriesWatchlistExpiryEnabled' => $watchExpiryEnabled,
 			'wgWikistoriesWatchlistExpiryOptions' => $watchExpiryOptions,

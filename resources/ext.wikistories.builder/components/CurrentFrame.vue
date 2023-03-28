@@ -1,10 +1,6 @@
 <template>
 	<div class="ext-wikistories-current-frame" :style="currentFrame.style">
-		<div v-show="editingText" class="ext-wikistories-current-frame-overlay">
-			<div class="ext-wikistories-current-frame-overlay-done">
-				{{ $i18n( 'wikistories-story-editdone' ).text() }}
-			</div>
-		</div>
+		<div v-show="editingText" class="ext-wikistories-current-frame-overlay"></div>
 		<editable-textarea
 			v-if="currentFrame.text || editingText"
 			:on-focus="beginTextEdit"
@@ -34,21 +30,20 @@ module.exports = {
 		'image-attribution': ImageAttribution,
 		'editable-textarea': AutoHeightTextarea
 	},
-	emits: [ 'select-text', 'edit-text' ],
+	emits: [ 'select-text' ],
 	computed: $.extend( mapGetters( [ 'currentFrame', 'editingText' ] ), {
 		showImageAttribution: function () {
 			return !this.editingText && !this.currentFrame.fileNotFound;
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'setText', 'setEditingText' ] ), {
+	methods: $.extend( mapActions( [ 'setText', 'setEditingText', 'setLastEditedText' ] ), {
 		beginTextEdit: function () {
 			this.setEditingText( true );
-			this.$emit( 'edit-text', true );
+			this.setLastEditedText( this.currentFrame.text );
 		},
 		endTextEdit: function () {
-			this.setEditingText( false );
+			// setEditingText is set by navigator discard button
 			this.setText( this.currentFrame.text.trim() );
-			this.$emit( 'edit-text', false );
 		}
 	} )
 };
@@ -93,17 +88,6 @@ module.exports = {
 		width: 100%;
 		background: rgba( 0, 0, 0, 0.5 );
 		z-index: 90;
-
-		&-done {
-			position: absolute;
-			color: #fff;
-			z-index: 91;
-			top: 0;
-			right: 0;
-			padding: 16px;
-			font-size: 16px;
-			cursor: pointer;
-		}
 	}
 }
 </style>

@@ -1,15 +1,19 @@
 <template>
-	<div>
+	<div class="ext-wikistories-current-frame-text">
 		<textarea
 			ref="textarea"
 			v-model="storyText"
-			class="ext-wikistories-current-frame-textarea-content"
+			class="ext-wikistories-current-frame-text-textarea-content"
 			:maxlength="maxLength"
 			@focus="onFocus"
 			@blur="onBlur"
-			@scroll="onScroll"
 		></textarea>
-		<div :class="`ext-wikistories-current-frame-textarea-fade ${scrollCueClassName}`"></div>
+		<div
+			v-if="editingText"
+			class="ext-wikistories-current-frame-text-edit-guide"
+			:class="editGuideIcon ? 'ext-wikistories-current-frame-text-edit-guide-icon-' + editGuideIcon : ''">
+			{{ editGuideMessage }}
+		</div>
 	</div>
 </template>
 
@@ -17,6 +21,8 @@
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
 const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
+const TEXT_EDIT_THRESHOLD = mw.config.get( 'wgWikistoriesUnmodifiedTextThreshold' );
+const calculateUnmodifiedContent = require( '../util/calculateUnmodifiedContent.js' );
 
 // @vue/component
 module.exports = {
@@ -33,8 +39,8 @@ module.exports = {
 	},
 	data: function () {
 		return {
-			isRefElementScrollable: false,
-			scrollCueClassName: ''
+			editGuideMessage: this.$i18n( 'wikistories-story-edittext-initial' ).text(),
+			editGuideIcon: 'edit_reference'
 		};
 	},
 	computed: $.extend( mapGetters( [ 'currentFrame', 'editingText' ] ), {
@@ -56,73 +62,63 @@ module.exports = {
 			// 'height: auto' resets the textarea height before setting the height to scrollHeight
 			textarea.style.height = 'auto';
 			textarea.style.height = textarea.scrollHeight + 'px';
-		},
-		onScroll: function ( e ) {
-			const scrollTop = e.target.scrollTop;
-			const scrollHeight = e.target.scrollHeight;
-			const clientHeight = e.target.clientHeight;
-
-			if ( this.editingText ) {
-				this.scrollCueClassName = '';
-				return;
-			}
-
-			if ( this.isRefElementScrollable && scrollTop === 0 ) {
-				this.scrollCueClassName = 'ext-wikistories-current-frame-textarea-fade-bottom';
-			} else if ( this.isRefElementScrollable && scrollTop + clientHeight >= scrollHeight ) {
-				this.scrollCueClassName = 'ext-wikistories-current-frame-textarea-fade-top';
-			} else {
-				this.scrollCueClassName = '';
-			}
-		},
-		updateRefElement: function () {
-			const textareaRef = this.$refs.textarea;
-			if ( textareaRef ) {
-				this.isRefElementScrollable = textareaRef.scrollHeight > textareaRef.clientHeight;
-			}
 		}
 	} ),
 	watch: {
-		isRefElementScrollable: function () {
-			// Initialize text fade cue
-			if ( this.isRefElementScrollable ) {
-				this.scrollCueClassName = 'ext-wikistories-current-frame-textarea-fade-bottom';
+		storyText: function () {
+			if ( !this.storyText ) {
+				return;
+			}
+
+			const unmodified = calculateUnmodifiedContent( this.currentFrame.textFromArticle, this.storyText );
+
+			if ( unmodified === 1 ) {
+				this.editGuideMessage = this.$i18n( 'wikistories-story-edittext-initial' ).text();
+				this.editGuideIcon = 'edit_reference';
+			} else if ( unmodified < TEXT_EDIT_THRESHOLD ) {
+				this.editGuideMessage = this.$i18n( 'wikistories-story-edittext-last' ).text();
+				this.editGuideIcon = 'alert';
 			} else {
-				this.scrollCueClassName = '';
+				this.editGuideMessage = this.$i18n( 'wikistories-story-edittext-medium' ).text();
+				this.editGuideIcon = 'alert';
 			}
 		}
 	},
 	mounted: function () {
 		this.setHeight();
-		this.updateRefElement();
 	},
 	updated: function () {
 		this.setHeight();
-		this.updateRefElement();
 	}
 };
 </script>
 
 <style lang="less">
-	.ext-wikistories-current-frame-textarea {
+@import 'mediawiki.ui/variables.less';
+
+.ext-wikistories-current-frame-text {
+	position: absolute;
+	bottom: 60px;
+	left: 16px;
+	right: 16px;
+	width: calc( ~'100% - 32px' );
+	height: auto;
+	border-radius: 2px;
+	background: linear-gradient( 0deg, #fff, #fff, #fff );
+	box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
+	z-index: 92;
+	box-sizing: border-box;
+
+	&-textarea {
 		&-content {
-			position: absolute;
-			bottom: 60px;
-			left: 16px;
-			right: 16px;
 			width: calc( ~'100% - 32px' );
-			padding: 8px 20px 8px 8px;
+			padding: 8px 20px 0 8px;
 			margin: auto;
 			max-height: 350px;
 			min-height: 10%;
-			border-radius: 2px;
-			background: linear-gradient( 0deg, #fff, #fff, #fff );
-			box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
 			outline: 0;
 			border: 0;
 			resize: none;
-			z-index: 92;
-			box-sizing: border-box;
 			text-align: left;
 			font-size: 18px;
 			line-height: 27px;
@@ -132,29 +128,28 @@ module.exports = {
 				display: none;
 			}
 		}
+	}
 
-		&-fade {
-			position: absolute;
-			display: none;
-			bottom: 90px;
-			left: 16px;
-			right: 16px;
-			height: 35px;
-			z-index: 93;
-			margin: auto;
-			border-radius: 2px;
+	&-edit-guide {
+		color: @colorGray5;
+		font-size: 14px;
+		margin: 0 8px;
+		padding: 6px 0;
+		padding-left: 24px;
+		text-align: left;
+		border-top: 1px solid @colorGray12;
+		background-repeat: no-repeat;
+		background-position: 0 center;
 
-			&-top {
-				display: block;
-				bottom: 375px;
-				background: linear-gradient( to top, rgba( 255, 255, 255, 0 ) 0%, #fff 50% );
+		&-icon {
+			&-alert {
+				background-image: url( ../images/alert.svg );
 			}
 
-			&-bottom {
-				display: block;
-				bottom: 60px;
-				background: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ) 0%, #fff 50% );
+			&-edit_reference {
+				background-image: url( ../images/edit_reference.svg );
 			}
 		}
 	}
+}
 </style>
