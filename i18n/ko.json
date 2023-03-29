@@ -19,7 +19,7 @@
 	"wikistories-search-navigator-title": "이미지 선택",
 	"wikistories-story-goto-publish": "다음",
 	"wikistories-story-selecttext": "<span class=\"ext-wikistories-wikipedia\">위키백과</span>에서 스토리 문구를 선택하세요",
-	"wikistories-story-editdone": "완료",
+	"wikistories-story-edittext-done": "완료",
 	"wikistories-story-replaceimage": "이미지 교체",
 	"wikistories-story-deleteframe": "문서 삭제하기",
 	"wikistories-article-cancelselection": "취소",

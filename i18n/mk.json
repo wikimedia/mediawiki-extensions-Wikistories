@@ -27,7 +27,7 @@
 	"wikistories-search-navigator-title-selected-info": "Избрани $1",
 	"wikistories-story-goto-publish": "Следно",
 	"wikistories-story-selecttext": "Изберете текст за приказната од <span class=\"ext-wikistories-wikipedia\">Википедија</span>",
-	"wikistories-story-editdone": "Готово",
+	"wikistories-story-edittext-done": "Готово",
 	"wikistories-story-replaceimage": "Замени ја сликава",
 	"wikistories-story-deleteframe": "Избриши ја страницава",
 	"wikistories-story-feedback": "Дајте ваше мислење",

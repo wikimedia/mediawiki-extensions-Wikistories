@@ -18,7 +18,7 @@
 	"wikistories-search-noresultstext": "Sonuç yok",
 	"wikistories-story-goto-publish": "Sonraki",
 	"wikistories-story-selecttext": "<span class=\"ext-wikistories-wikipedia\">Vikipedi</span>'den hikaye metni seçin",
-	"wikistories-story-editdone": "Yapıldı",
+	"wikistories-story-edittext-done": "Yapıldı",
 	"wikistories-story-replaceimage": "Bu görseli değiştir",
 	"wikistories-story-deleteframe": "Bu sayfayı sil",
 	"wikistories-imageattribution-author-unknown": "Yazar bilinmiyor",

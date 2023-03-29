@@ -27,7 +27,7 @@
 	"wikistories-search-navigator-title-selected-info": "{{PLURAL:$1|נבחרה תמונה אחת|נבחרו $1 תמונות}}",
 	"wikistories-story-goto-publish": "הבא",
 	"wikistories-story-selecttext": "{{GENDER:|בחר|בחרי}} את טקסט הסיפור מתוך <span class=\"ext-wikistories-wikipedia\">ויקיפדיה</span>",
-	"wikistories-story-editdone": "בוצע",
+	"wikistories-story-edittext-done": "בוצע",
 	"wikistories-story-replaceimage": "החלפת התמונה הזאת",
 	"wikistories-story-deleteframe": "מחיקת התמונה הזאת",
 	"wikistories-story-feedback": "{{GENDER:|שתף|שתפי}} את המשוב שלך",

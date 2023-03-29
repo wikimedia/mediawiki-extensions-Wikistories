@@ -26,7 +26,7 @@
 	"wikistories-search-navigator-title-selected-info": "არჩეულია $1",
 	"wikistories-story-goto-publish": "შემდეგი",
 	"wikistories-story-selecttext": "აირჩიეთ ამბის ტექსტი <span class=\"ext-wikistories-wikipedia\">ვიკიპედიიდან</span>",
-	"wikistories-story-editdone": "გაკეთდა",
+	"wikistories-story-edittext-done": "გაკეთდა",
 	"wikistories-story-replaceimage": "ამ სურათის შეცვლა",
 	"wikistories-story-deleteframe": "ამ სურათის წაშლა",
 	"wikistories-story-navigator-title": "ვიკიამბის შექმნა",
