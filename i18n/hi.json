@@ -18,6 +18,7 @@
 	"wikistories-confirmdialog-delete-title": "इस पृष्ठ को हटाएं?",
 	"wikistories-confirmdialog-delete-message": "इसे आपकी स्टोरी से हमेशा के लिए हटा दिया जाएगा",
 	"wikistories-confirmdialog-delete-accept": "हटाएँ",
+	"wikistories-storyviewer-textsize-label-small": "छोटा",
 	"wikistories-storyviewer-textsize-label-large": "बड़ा",
 	"wikistories-error-frameswithouttext-title": "अनुपस्थित टेक्स्ट",
 	"wikistories-builder-publishform-placeholder": "कहानी का शीर्षक दर्ज करें...",
@@ -25,6 +26,8 @@
 	"wikistories-builder-publishform-info": "प्रकाशित कहानियां लेख पृष्ठ पर उपलब्ध होंगी।",
 	"wikistories-builder-publishform-invalidtitle-empty": "कहानी का शीर्षक दर्ज करें",
 	"wikistories-builder-publishform-saveerror": "कहानी प्रकाशित करते समय एक त्रुटि हुई। बाद में पुन: प्रयास करें।",
+	"wikistories-nojs-form-label-image": "चित्र",
 	"wikistories-nojs-form-categories-title": "श्रेणियाँ",
+	"wikistories-storyviewer-next-story-header": "और पढ़ें",
 	"wikistories-storyviewer-next-story-viewtext": "देखें"
 }
