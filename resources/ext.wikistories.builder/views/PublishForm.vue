@@ -287,8 +287,8 @@ module.exports = {
 			}
 
 			&-animation &-animation-bounce,
-			&-animation:before,
-			&-animation:after {
+			&-animation::before,
+			&-animation::after {
 				content: '';
 				display: inline-block;
 				width: 12px;
@@ -303,12 +303,12 @@ module.exports = {
 				animation-delay: -0.16s;
 			}
 
-			&-animation:before {
+			&-animation::before {
 				-webkit-animation-delay: -0.33s;
 				animation-delay: -0.33s;
 			}
 
-			&-animation:after {
+			&-animation::after {
 				-webkit-animation-delay: -0.01s;
 				animation-delay: -0.01s;
 			}
