@@ -46,15 +46,15 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-image-attribution {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	height: 44px;
-	color: @colorGray15;
-	border: @colorGray15;
+	color: #f8f9fa;
+	border: #f8f9fa;
 	display: flex;
 	justify-content: space-between;
 	background: linear-gradient( 180deg, rgba( 0, 0, 0, 0 ) -108.75%, rgba( 0, 0, 0, 0.6 ) 100% );
@@ -95,7 +95,7 @@ module.exports = {
 			max-width: 220px;
 			margin-right: 4px;
 			font-size: 12px;
-			color: @color-base--inverted;
+			color: @color-inverted;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;

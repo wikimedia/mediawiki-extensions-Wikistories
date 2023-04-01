@@ -76,11 +76,11 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-imagelistview {
 	height: 100%;
-	background-color: #fff;
+	background-color: @background-color-base;
 	overflow: scroll;
 	display: -ms-flexbox;
 	display: flex;
@@ -121,7 +121,7 @@ module.exports = {
 			display: -ms-flexbox;
 			display: flex;
 			align-items: center;
-			background-color: @colorGray14;
+			background-color: #eaecf0;
 			box-sizing: border-box;
 			height: 180px;
 			margin: 8px;
@@ -141,27 +141,27 @@ module.exports = {
 			object-position: center center;
 			pointer-events: none;
 			width: 100%;
-			border-radius: 2px;
+			border-radius: @border-radius-base;
 		}
 
 		.checkbox {
 			background-image: url( ./../images/check.svg );
 			width: 24px;
 			height: 24px;
-			background-color: #fff;
+			background-color: @background-color-base;
 			background-repeat: no-repeat;
 			background-position: center center;
 			position: absolute;
 			left: 10px;
 			top: 10px;
-			border: 1px solid @colorGray7;
+			border: @border-width-base @border-style-base @border-color-base;
 			box-sizing: border-box;
-			border-radius: 2px;
+			border-radius: @border-radius-base;
 		}
 
 		.checkbox.selected {
-			background-color: @color-primary;
-			border-color: @color-primary;
+			background-color: @background-color-progressive;
+			border-color: @border-color-progressive;
 		}
 	}
 }

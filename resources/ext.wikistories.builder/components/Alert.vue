@@ -32,7 +32,7 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-alert {
 	position: absolute;
@@ -44,22 +44,22 @@ module.exports = {
 	display: flex;
 
 	&-content {
-		background-color: #fff;
+		background-color: @background-color-base;
 		z-index: 104;
-		border-radius: 2px;
+		border-radius: @border-radius-base;
 		max-width: 85%;
 		margin: auto;
 		font-size: 16px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
+		box-shadow: @box-shadow-drop-medium;
 
 		&-title {
 			margin: 12px 0 2px 0;
 			font-size: 24px;
 			line-height: 34px;
-			color: @colorGray1;
+			color: @color-emphasized;
 		}
 
 		&-message {
@@ -69,7 +69,7 @@ module.exports = {
 			padding-right: 16px;
 			font-size: 18px;
 			line-height: 25px;
-			color: @colorGray2;
+			color: @color-base;
 		}
 
 		&-buttons {
@@ -80,8 +80,8 @@ module.exports = {
 			cursor: pointer;
 
 			&-dismiss {
-				background: @color-primary;
-				color: #fff;
+				background: @background-color-progressive;
+				color: @color-inverted;
 				padding: 6px 12px;
 			}
 		}

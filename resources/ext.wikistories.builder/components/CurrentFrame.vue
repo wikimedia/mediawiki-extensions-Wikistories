@@ -50,7 +50,7 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-current-frame {
 	flex-grow: 1;
@@ -63,9 +63,9 @@ module.exports = {
 		left: 0;
 		right: 0;
 		margin: auto;
-		border-radius: 2px;
+		border-radius: @border-radius-base;
 		background: linear-gradient( 0deg, #fff, #fff, #fff );
-		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
+		box-shadow: @box-shadow-drop-medium;
 		display: flex;
 		align-items: center;
 		width: 85%;
@@ -73,10 +73,10 @@ module.exports = {
 		text-align: left;
 		padding: 10px 15px;
 		font-size: 14px;
-		color: @colorGray7;
+		color: #72777d;
 
 		.ext-wikistories-wikipedia {
-			color: @color-primary;
+			color: @color-progressive;
 			margin-left: 4px;
 			font-weight: 500;
 		}

@@ -94,7 +94,7 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-current-frame-text {
 	position: absolute;
@@ -103,9 +103,9 @@ module.exports = {
 	right: 16px;
 	width: calc( ~'100% - 32px' );
 	height: auto;
-	border-radius: 2px;
+	border-radius: @border-radius-base;
 	background: linear-gradient( 0deg, #fff, #fff, #fff );
-	box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
+	box-shadow: @box-shadow-drop-medium;
 	z-index: 92;
 	box-sizing: border-box;
 
@@ -131,13 +131,13 @@ module.exports = {
 	}
 
 	&-edit-guide {
-		color: @colorGray5;
+		color: @color-subtle;
 		font-size: 14px;
 		margin: 0 8px;
 		padding: 6px 0;
 		padding-left: 24px;
 		text-align: left;
-		border-top: 1px solid @colorGray12;
+		border-top: @border-width-base @border-style-base @border-color-subtle;
 		background-repeat: no-repeat;
 		background-position: 0 center;
 

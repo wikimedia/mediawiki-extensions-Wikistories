@@ -37,7 +37,8 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
+
 @z-level-two: 300;
 
 .ext-wikistories-image-attribution {
@@ -45,8 +46,8 @@ module.exports = {
 	bottom: 0;
 	width: 100%;
 	height: 44px;
-	color: @colorGray15;
-	border: @colorGray15;
+	color: #f8f9fa;
+	border: #f8f9fa;
 	display: flex;
 	justify-content: space-between;
 	z-index: @z-level-two;
@@ -88,7 +89,7 @@ module.exports = {
 			max-width: 220px;
 			margin-right: 4px;
 			font-size: 12px;
-			color: @color-base--inverted;
+			color: @color-inverted;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
