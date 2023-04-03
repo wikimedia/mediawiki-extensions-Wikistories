@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hakimi97",
 			"Tofeiku"
 		]
 	},
@@ -8,9 +9,13 @@
 	"action-edit-story": "sunting cerita",
 	"wikistories-search-navigator-title": "Pilih imej",
 	"wikistories-search-navigator-title-selected-info": "$1 dipilih",
+	"wikistories-story-edittext-initial": "Terima kasih kerana mengekalkan ketepatan cerita",
+	"wikistories-story-edittext-medium": "Apabila anda menyunting, sila mengekalkan makna teks yang asal",
+	"wikistories-story-edittext-last": "Sila mengelak dari membuang teks dengan terlalu banyak",
 	"wikistories-story-replaceimage": "Ganti imej ini",
 	"wikistories-story-deleteframe": "Hapus laman ini",
 	"wikistories-story-navigator-title": "Cipta Wikicerita",
+	"wikistories-story-navigator-title-edittext": "Menyunting teks",
 	"wikistories-article-navigator-title": "Sorotkan teks",
 	"wikistories-confirmdialog-discardstory-title": "Buang Wikicerita ini?",
 	"wikistories-confirmdialog-discardstory-accept": "Buang",

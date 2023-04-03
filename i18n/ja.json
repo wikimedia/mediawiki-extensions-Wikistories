@@ -8,6 +8,8 @@
 		]
 	},
 	"prefs-wikistories": "ウィキストーリー",
+	"rcshowhidewikistories-show": "表示",
+	"rcshowhidewikistories-hide": "非表示",
 	"wikistories-specialstorybuilder-title": "ストーリーを作成",
 	"wikistories-specialstorybuilder-loading": "読み込み中...",
 	"wikistories-specialstorybuilder-nojswarning": "この特別ページの動作にはJavaScriptが必要です",

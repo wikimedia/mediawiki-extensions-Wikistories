@@ -7,6 +7,9 @@
 		]
 	},
 	"prefs-wikistories": "Վիքիպատմություններ",
+	"wikistories-rcfilters-hidewikistories-label": "Վիքիպատմություններ",
+	"rcshowhidewikistories-show": "Ցուցադրել",
+	"rcshowhidewikistories-hide": "Թաքցնել",
 	"wikistories-story-deleteframe": "Ջնջել այս էջը",
 	"wikistories-article-cancelselection": "Մաքրել",
 	"wikistories-confirmdialog-cancel": "Չեղարկել",
@@ -17,6 +20,7 @@
 	"wikistories-builder-publishform-publishbutton": "Հրապարակել",
 	"wikistories-nojs-form-label-image": "Պատկեր",
 	"wikistories-nojs-form-label-text": "Տեքստ",
+	"wikistories-nojs-form-categories-title": "Կատեգորիաներ",
 	"wikistories-storyviewer-next-story-header": "Կարդալ ավելին",
 	"wikistories-storyviewer-next-story-viewtext": "Դիտել",
 	"wikistories-storyviewer-textsize": "Փոխել տառաչափը",
