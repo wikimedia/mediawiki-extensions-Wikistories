@@ -21,7 +21,7 @@
 	"wikistories-recentchangesflags-legend": "Ceci est une modification d’un Wikirécit lié à un article.",
 	"wikistories-rcfilters-hidewikistories-label": "Wikirécits",
 	"wikistories-rcfilters-hidewikistories-description": "Modifications de Wikirécits inclus sur des pages d’articles",
-	"rcshowhidewikistories": "$1 modifications de Wikirécits sur les articles",
+	"rcshowhidewikistories": "$1 modification{{PLURAL:$1||s}} de Wikirécits sur les articles",
 	"rcshowhidewikistories-show": "Afficher",
 	"rcshowhidewikistories-hide": "Masquer",
 	"storybuilder": "Constructeur de récit",

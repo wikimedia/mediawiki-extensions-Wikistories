@@ -6,6 +6,9 @@
 		]
 	},
 	"prefs-wikistories": "Wikistorie",
+	"wikistories-rcfilters-hidewikistories-label": "Wikistorie",
+	"rcshowhidewikistories-show": "Mostra",
+	"rcshowhidewikistories-hide": "Nascondi",
 	"wikistories-specialstorybuilder-title": "Generatore di storia",
 	"wikistories-search-inputplaceholder": "Ricerca immagini",
 	"wikistories-search-noresultstext": "Nessun risultato",
