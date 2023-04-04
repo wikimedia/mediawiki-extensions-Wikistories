@@ -18,7 +18,7 @@
 	"wikistories-recentchangesflags-legend": "This is an edit to a Wikistory linked to an article",
 	"wikistories-rcfilters-hidewikistories-label": "Wikistories",
 	"wikistories-rcfilters-hidewikistories-description": "Edits to wikistories included on article pages",
-	"rcshowhidewikistories": "{{PLURAL:$1|$1 edit|$1 edits}} to wikistories on articles",
+	"rcshowhidewikistories": "$1 edits to wikistories on articles",
 	"rcshowhidewikistories-show": "Show",
 	"rcshowhidewikistories-hide": "Hide",
 	"storybuilder": "Story Builder",
