@@ -17,7 +17,7 @@
 	"wikistories-recentchangesflags-legend": "Dies ist eine Bearbeitung einer Wikigeschichte, die mit einem Artikel verlinkt ist",
 	"wikistories-rcfilters-hidewikistories-label": "Wikigeschichten",
 	"wikistories-rcfilters-hidewikistories-description": "Bearbeitungen von Wikigeschichten, die auf den Artikelseiten enthalten sind",
-	"rcshowhidewikistories": "{{PLURAL:$1|$1 Bearbeitung|$1 Bearbeitungen}} von Wikigeschichten zu Artikeln",
+	"rcshowhidewikistories": "$1 Bearbeitungen von Wikigeschichten zu Artikeln",
 	"rcshowhidewikistories-show": "Anzeigen",
 	"rcshowhidewikistories-hide": "Verstecken",
 	"storybuilder": "Geschichtenersteller",

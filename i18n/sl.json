@@ -18,7 +18,7 @@
 	"wikistories-recentchangesflags-legend": "To je urejanje Wikizgodbe, povezane s člankom",
 	"wikistories-rcfilters-hidewikistories-label": "Wikizgodbe",
 	"wikistories-rcfilters-hidewikistories-description": "Urejanja wikizgodb, vključenih na straneh člankov",
-	"rcshowhidewikistories": "{{PLURAL:$1|$1 urejanje|$1 urejanji|$1 urejanja|$1 urejanj}} wikizgodb pri člankih",
+	"rcshowhidewikistories": "$1 urejanj wikizgodb pri člankih",
 	"rcshowhidewikistories-show": "Pokaži",
 	"rcshowhidewikistories-hide": "Skrij",
 	"storybuilder": "Gradilnik zgodb",
