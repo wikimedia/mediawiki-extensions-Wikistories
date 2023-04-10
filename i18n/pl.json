@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rail"
+			"Rail",
+			"WaldiSt"
 		]
 	},
-	"wikistories-specialstorybuilder-loading": "Ładowanie…"
+	"rcshowhidewikistories-show": "Pokaż",
+	"rcshowhidewikistories-hide": "Ukryj",
+	"wikistories-specialstorybuilder-loading": "Ładowanie…",
+	"wikistories-nojs-form-categories-title": "Kategorie"
 }

@@ -11,8 +11,10 @@
 	"wikistories-search-navigator-title": "انتخاب تصاویر",
 	"wikistories-search-navigator-title-selected-info": "$1 انتخاب‌شده",
 	"wikistories-story-edittext-done": "انجام شد",
+	"wikistories-story-edittext-last": "لطفاً‌از حذف متن بیش از حد بپرهیزید",
 	"wikistories-story-replaceimage": "جایگزینی این تصویر",
 	"wikistories-story-deleteframe": "حذف این صفحه",
+	"wikistories-story-navigator-title-edittext": "ویرایش متن",
 	"wikistories-confirmdialog-ok": "تأیید",
 	"wikistories-confirmdialog-delete-title": "این صفحه حذف شود؟",
 	"wikistories-confirmdialog-delete-accept": "حذف",
@@ -22,5 +24,6 @@
 	"wikistories-nojs-form-label-frame": "قاب $1",
 	"wikistories-nojs-form-label-image": "تصویر",
 	"wikistories-nojs-form-label-text": "متن",
+	"wikistories-nojs-form-categories-title": "رده‌ها",
 	"wikistories-from-article-not-found": "مقالهٔ «$1» یافت نشد"
 }
