@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\Wikistories;
 use Content;
 use IContextSource;
 use JsonContentHandler;
+use MediaWiki\Category\TrackingCategories;
 use MediaWiki\Content\Renderer\ContentParseParams;
 use MediaWiki\Content\Transform\PreloadTransformParams;
 use MediaWiki\Content\Transform\PreSaveTransformParams;
@@ -27,25 +28,31 @@ class StoryContentHandler extends JsonContentHandler {
 	/** @var StoryRenderer */
 	private $storyRenderer;
 
+	/** @var TrackingCategories */
+	private $trackingCategories;
+
 	/**
 	 * @param string $modelId
 	 * @param StoryConverter $storyConverter
 	 * @param StoryValidator $storyValidator
 	 * @param StoriesCache $storiesCache
 	 * @param StoryRenderer $storyRenderer
+	 * @param TrackingCategories $trackingCategories
 	 */
 	public function __construct(
 		$modelId,
 		StoryConverter $storyConverter,
 		StoryValidator $storyValidator,
 		StoriesCache $storiesCache,
-		StoryRenderer $storyRenderer
+		StoryRenderer $storyRenderer,
+		TrackingCategories $trackingCategories
 	) {
 		parent::__construct( $modelId );
 		$this->storyConverter = $storyConverter;
 		$this->storyValidator = $storyValidator;
 		$this->storiesCache = $storiesCache;
 		$this->storyRenderer = $storyRenderer;
+		$this->trackingCategories = $trackingCategories;
 	}
 
 	/**
@@ -101,6 +108,17 @@ class StoryContentHandler extends JsonContentHandler {
 		$storyPage = $cpoParams->getPage();
 		foreach ( $story->getCategories() as $category ) {
 			$parserOutput->addCategory( $category, $storyPage->getDBkey() );
+		}
+
+		// handle Tracking Categories
+		$missingImages = array_filter( $story->getFrames(), static function ( $frame ) {
+			return empty( $frame->image->filename );
+		} );
+
+		if ( count( $missingImages ) > 0 ) {
+			$this->trackingCategories->addTrackingCategory(
+				$parserOutput, "wikistories-no-image-category", $storyPage
+			);
 		}
 
 		if ( $cpoParams->getGenerateHtml() ) {
