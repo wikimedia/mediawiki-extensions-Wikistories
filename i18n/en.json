@@ -105,5 +105,7 @@
 	"wikistories-invalid-format": "Invalid story format",
 	"wikistories-not-enough-frames": "The story does not have enough frames",
 	"wikistories-too-many-frames": "The story has too many frames",
-	"wikistories-text-too-long": "The text on frame #$1 is too long. It has {{PLURAL:$2|$2 character|$2 characters}} but the maximum allowed is $3."
+	"wikistories-text-too-long": "The text on frame #$1 is too long. It has {{PLURAL:$2|$2 character|$2 characters}} but the maximum allowed is $3.",
+	"wikistories-no-image-category": "Story with no image file",
+	"wikistories-no-image-category-desc": "One of the story frame has no image"
 }
