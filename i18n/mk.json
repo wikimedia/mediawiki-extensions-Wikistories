@@ -105,5 +105,7 @@
 	"wikistories-invalid-format": "Неважечки формат на приказна",
 	"wikistories-not-enough-frames": "Приказната нема доволно рамки",
 	"wikistories-too-many-frames": "Приказната има премногу рамки",
-	"wikistories-text-too-long": "Текстот на рамката #$1 е предолг. Има {{PLURAL:$2|$2 знак|$2 знаци}}, но дозволени се највеќе $3."
+	"wikistories-text-too-long": "Текстот на рамката #$1 е предолг. Има {{PLURAL:$2|$2 знак|$2 знаци}}, но дозволени се највеќе $3.",
+	"wikistories-no-image-category": "Приказна без слика",
+	"wikistories-no-image-category-desc": "Една од приказните нема слика"
 }

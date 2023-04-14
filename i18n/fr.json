@@ -108,5 +108,7 @@
 	"wikistories-invalid-format": "Format de récit non valide",
 	"wikistories-not-enough-frames": "Le récit ne comprend pas assez de cadres",
 	"wikistories-too-many-frames": "Le récit comprend trop de cadres",
-	"wikistories-text-too-long": "Le texte du cadre nº $1 est trop long. Il comporte $2 caractère{{PLURAL:$2||s}} mais le maximum autorisé est $3."
+	"wikistories-text-too-long": "Le texte du cadre nº $1 est trop long. Il comporte $2 caractère{{PLURAL:$2||s}} mais le maximum autorisé est $3.",
+	"wikistories-no-image-category": "Histoire sans fichier image",
+	"wikistories-no-image-category-desc": "Une des pages de l’histoire n’a pas d’image"
 }

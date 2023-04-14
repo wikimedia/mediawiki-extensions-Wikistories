@@ -105,5 +105,7 @@
 	"wikistories-invalid-format": "Neveljavna oblika zgodbe",
 	"wikistories-not-enough-frames": "Zgodba nima dovolj slik",
 	"wikistories-too-many-frames": "Zgodba ima preveč slik",
-	"wikistories-text-too-long": "Besedilo v okvirju št. $1 je predolgo. Ima {{PLURAL:$2|$2 znak|$2 znaka|$2 znake|$2 znakov}}, dovoljenih pa je največ $3."
+	"wikistories-text-too-long": "Besedilo v okvirju št. $1 je predolgo. Ima {{PLURAL:$2|$2 znak|$2 znaka|$2 znake|$2 znakov}}, dovoljenih pa je največ $3.",
+	"wikistories-no-image-category": "Zgodba brez slikovne datoteke",
+	"wikistories-no-image-category-desc": "Eden od okvirjev zgodbe nima slike"
 }

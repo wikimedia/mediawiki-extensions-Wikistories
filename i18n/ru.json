@@ -10,6 +10,8 @@
 		]
 	},
 	"wikistories-extensiondesc": "ВикиИстории позволяют редакторам извлекать краткую, наглядную и достоверную информацию из проектов Викимедиа.",
+	"rcshowhidewikistories-show": "Показать",
+	"rcshowhidewikistories-hide": "Скрыть",
 	"wikistories-specialstorybuilder-loading": "Загружается…",
 	"wikistories-specialstorybuilder-nojswarning": "Для работы этой служебной страницы требуется JavaScript",
 	"wikistories-search-inputplaceholder": "Искать изображения",
