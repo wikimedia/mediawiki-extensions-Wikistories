@@ -1,4 +1,4 @@
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .client-js {
 	h1.firstHeading {
@@ -31,7 +31,7 @@
 		align-items: center;
 		padding: 0 4px;
 		cursor: pointer;
-		border-right: 1px solid @colorGray12;
+		border-right: @border-subtle;
 
 		&-btn {
 			min-width: 52px;
@@ -49,7 +49,7 @@
 		}
 
 		&-text {
-			color: @colorGray2;
+			color: @color-base;
 			font-size: 12px;
 			overflow: hidden;
 			display: -webkit-box;
@@ -88,13 +88,13 @@
 	&-item-cta-text-title {
 		font-weight: bold;
 		font-size: 14px;
-		color: @colorGray2;
+		color: @color-base;
 	}
 
 	&-item-cta-text-subtitle {
 		display: block;
 		white-space: normal;
-		color: @colorGray5;
+		color: @color-subtle;
 	}
 
 	&-item:last-child,

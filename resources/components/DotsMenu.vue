@@ -33,7 +33,7 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-dotsmenu {
 	&-button {
@@ -47,13 +47,13 @@ module.exports = {
 	}
 
 	&-content {
-		background-color: #fff;
+		background-color: @background-color-base;
 		position: absolute;
 		right: 0;
 		top: 0;
-		border: solid @colorGray10 1px;
+		border: @border-width-base @border-style-base @border-color-base;
 		box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
-		border-radius: 0 0 2px 2px;
+		border-radius: 0 0 @border-radius-base @border-radius-base;
 	}
 }
 </style>

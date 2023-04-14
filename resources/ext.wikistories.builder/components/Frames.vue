@@ -55,14 +55,14 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories {
 	&-frames {
 		width: 100%;
 		display: flex;
 		flex-direction: row;
-		border-top: solid #000 1px;
+		border-top: @border-width-base @border-style-base #000;
 
 		&-thumbnails {
 			padding: 12px 0;
@@ -77,15 +77,15 @@ module.exports = {
 				margin-left: 16px;
 				cursor: pointer;
 				flex-shrink: 0;
-				background-color: @colorGray14;
-				border-radius: 2px;
+				background-color: #eaecf0;
+				border-radius: @border-radius-base;
 
 				&:last-of-type {
 					margin-right: 16px;
 				}
 
 				&-selected {
-					outline: #36c auto 4px;
+					outline: @border-color-progressive auto 4px;
 					outline-offset: 4px;
 				}
 
@@ -111,7 +111,7 @@ module.exports = {
 			margin: 12px 16px;
 			cursor: pointer;
 			border: 1px dashed #000;
-			border-radius: 2px;
+			border-radius: @border-radius-base;
 			font-size: 24px;
 			line-height: 32px;
 			text-align: center;

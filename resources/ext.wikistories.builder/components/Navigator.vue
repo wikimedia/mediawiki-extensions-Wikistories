@@ -42,7 +42,7 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-navigator {
 	height: 48px;
@@ -69,7 +69,7 @@ module.exports = {
 
 	.next {
 		background-image: url( ./../images/next.svg );
-		background-color: @color-primary;
+		background-color: @background-color-progressive;
 		box-shadow: none;
 	}
 
@@ -88,20 +88,20 @@ module.exports = {
 			margin: 15px 0;
 			font-size: 16px;
 			line-height: 22px;
-			color: #000;
+			color: @color-emphasized;
 		}
 	}
 
 	&-withtext {
 		max-width: 20%;
 		height: 48px;
-		background-color: @color-primary;
+		background-color: @background-color-progressive;
 		cursor: pointer;
 		display: flex;
 		align-items: center;
 		padding: 0 10px 0 10px;
 		text-align: center;
-		color: #fff;
+		color: @color-inverted;
 		justify-content: center;
 		font-weight: bold;
 

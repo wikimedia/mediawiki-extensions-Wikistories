@@ -97,14 +97,16 @@ module.exports = {
 </script>
 
 <style lang="less">
+	@import 'mediawiki.skin.variables.less';
+
 	.ext-wikistories-viewer-container-content-story-text {
 		position: absolute;
 		bottom: 60px;
 		left: 16px;
 		right: 16px;
-		border-radius: 2px;
+		border-radius: @border-radius-base;
 		background: linear-gradient( 0deg, #fff, #fff, #fff );
-		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
+		box-shadow: @box-shadow-drop-medium;
 		margin: 0;
 		padding: 8px 20px 8px 8px;
 		max-height: 25vh;
@@ -119,7 +121,7 @@ module.exports = {
 		height: 40px;
 		z-index: 93;
 		margin: auto;
-		border-radius: 2px;
+		border-radius: @border-radius-base;
 
 		&-top {
 			bottom: calc( ~'25vh + 36px' );

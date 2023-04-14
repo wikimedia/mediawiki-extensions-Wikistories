@@ -341,7 +341,7 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 @z-level-one: 100;
 @z-level-two: 300;
@@ -468,7 +468,7 @@ module.exports = {
 				}
 
 				&-item {
-					background-color: #fff;
+					background-color: @background-color-base;
 					margin: 10px 0;
 					color: #000;
 
@@ -493,7 +493,7 @@ module.exports = {
 							line-height: 21px;
 							padding-left: 12px;
 							text-align: left;
-							color: @colorGray2;
+							color: @color-base;
 							overflow: hidden;
 							display: -webkit-box;
 							-webkit-box-orient: vertical;
@@ -504,12 +504,12 @@ module.exports = {
 
 					&-view {
 						position: relative;
-						color: @color-primary;
+						color: @color-progressive;
 						padding: 6px;
 						font-size: 16px;
 						line-height: 22px;
 						letter-spacing: 0;
-						border-top: 1px solid @colorGray14;
+						border-top: @border-width-base @border-style-base #eaecf0;
 					}
 				}
 			}
@@ -526,12 +526,12 @@ module.exports = {
 					flex-grow: 1;
 					margin: 0 2px;
 					display: flex;
-					background-color: @colorGray10;
+					background-color: #a2a9b1;
 
 					&-loading {
 						height: 100%;
 						width: 100%;
-						background-color: #fff;
+						background-color: @background-color-base;
 						animation-name: ext-wikistories-viewer-progress-loading;
 						animation-iteration-count: 1;
 						/* TODO - ideally the animation duration is
@@ -543,7 +543,7 @@ module.exports = {
 					&-loaded {
 						height: 100%;
 						width: 100%;
-						background-color: #fff;
+						background-color: @background-color-base;
 					}
 
 					@keyframes ext-wikistories-viewer-progress-loading {

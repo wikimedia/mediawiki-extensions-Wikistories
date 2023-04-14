@@ -50,7 +50,7 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-confirm {
 	position: absolute;
@@ -62,27 +62,27 @@ module.exports = {
 	display: flex;
 
 	&-content {
-		background-color: #fff;
+		background-color: @background-color-base;
 		z-index: 104;
-		border-radius: 2px;
+		border-radius: @border-radius-base;
 		width: 75%;
 		margin: auto;
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
-		box-shadow: 0 2px 2px rgba( 0, 0, 0, 0.25 );
+		box-shadow: @box-shadow-drop-medium;
 
 		&-title {
 			margin: 16px 16px 0 16px;
 			font-size: 24px;
-			color: @colorGray2;
+			color: @color-base;
 		}
 
 		&-message,
 		&-custom {
 			margin: 16px 16px 0 16px;
 			font-size: 16px;
-			color: @colorGray2;
+			color: @color-base;
 		}
 
 		&-buttons {
@@ -94,14 +94,14 @@ module.exports = {
 			cursor: pointer;
 
 			&-confirm {
-				background: @color-primary;
-				color: @color-base--inverted;
+				background: @background-color-progressive;
+				color: @color-inverted;
 				padding: 6px 12px;
 			}
 
 			&-cancel {
-				border-top: solid 1px;
-				border-color: @colorGray10;
+				border-top: @border-width-base @border-style-base;
+				border-color: @border-color-base;
 				padding: 6px 12px;
 			}
 		}

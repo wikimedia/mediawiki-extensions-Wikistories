@@ -16,6 +16,8 @@ module.exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 .ext-wikistories-popup {
 	position: absolute;
 	width: 100%;
@@ -37,7 +39,7 @@ module.exports = {
 		height: 90%;
 		width: 100%;
 		top: 10%;
-		background-color: #fff;
+		background-color: @background-color-base;
 		z-index: 104;
 		border-radius: 14px 14px 0 0;
 	}

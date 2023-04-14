@@ -137,9 +137,11 @@ module.exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 .ext-wikistories-storybuilder-search {
 	height: 100%;
-	background-color: #fff;
+	background-color: @background-color-base;
 	display: flex;
 	flex-direction: column;
 
@@ -151,9 +153,9 @@ module.exports = {
 
 		&-query {
 			height: 36px;
-			border: 2px solid #36c;
+			border: @border-width-thick @border-style-base @border-color-progressive;
 			box-sizing: border-box;
-			border-radius: 2px;
+			border-radius: @border-radius-base;
 			padding-left: 35px;
 			width: 100%;
 		}
@@ -180,7 +182,7 @@ module.exports = {
 	}
 
 	&-empty {
-		color: #54595d;
+		color: @color-subtle;
 		align-self: center;
 		margin-top: 6px;
 	}
@@ -189,9 +191,9 @@ module.exports = {
 		position: absolute;
 		height: 3px;
 		width: 130px;
-		border-radius: 3px;
+		border-radius: @border-radius-pill;
 		margin-top: 4px;
-		background: #36c;
+		background: @background-color-progressive;
 		animation-name: ext-wikistories-search-loader;
 		animation-duration: 2s;
 		animation-iteration-count: infinite;

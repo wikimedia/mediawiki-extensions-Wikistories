@@ -16,11 +16,11 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-primarybutton {
-	background: @color-primary;
-	border-radius: 2px;
+	background: @background-color-progressive;
+	border-radius: @border-radius-base;
 	padding: 6px 12px;
 	// stylelint-disable-next-line font-family-no-missing-generic-family-keyword
 	font-family: 'Helvetica Neue';

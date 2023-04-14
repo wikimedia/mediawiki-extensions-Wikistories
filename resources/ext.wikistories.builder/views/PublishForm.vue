@@ -205,7 +205,7 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-publishform {
 	position: relative;
@@ -223,14 +223,14 @@ module.exports = {
 
 		&-input-title {
 			width: 100%;
-			border: 2px solid @color-primary;
+			border: @border-width-thick @border-style-base @border-color-progressive;
 			box-sizing: border-box;
-			border-radius: 2px;
+			border-radius: @border-radius-base;
 			height: 36px;
 			padding: 10px;
 
 			&:focus {
-				outline-color: @color-primary;
+				outline-color: @border-color-progressive;
 			}
 		}
 
@@ -257,7 +257,7 @@ module.exports = {
 
 	&-license {
 		font-size: 12px;
-		background-color: @colorGray15;
+		background-color: #f8f9fa;
 		padding: 20px;
 	}
 
@@ -266,7 +266,7 @@ module.exports = {
 		position: absolute;
 		left: 0;
 		right: 0;
-		background-color: #fff;
+		background-color: @background-color-base;
 		opacity: 0.9;
 		display: flex;
 		flex-direction: column;
@@ -274,7 +274,7 @@ module.exports = {
 		text-align: center;
 
 		&-text {
-			color: @colorGray2;
+			color: @color-base;
 			font-weight: bold;
 		}
 
@@ -293,7 +293,7 @@ module.exports = {
 				display: inline-block;
 				width: 12px;
 				height: 12px;
-				background-color: @colorGray7;
+				background-color: #72777d;
 				border-radius: 100%;
 				-webkit-animation: bounce 1.4s infinite ease-in-out;
 				animation: bounce 1.4s infinite ease-in-out;

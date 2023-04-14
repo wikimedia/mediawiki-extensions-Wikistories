@@ -34,10 +34,10 @@ module.exports = {
 </script>
 
 <style lang="less">
-@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-toast {
-	background-color: @background-color-warning;
+	background-color: @background-color-warning-subtle;
 	position: absolute;
 	margin: 0 15px;
 	padding: 20px;
@@ -45,8 +45,8 @@ module.exports = {
 	left: 0;
 	right: 0;
 	z-index: 100;
-	border: 1px solid @border-color-warning;
-	border-radius: 2px;
+	border: @border-width-base @border-style-base @border-color-warning;
+	border-radius: @border-radius-base;
 	display: flex;
 
 	&-icon {
@@ -66,8 +66,8 @@ module.exports = {
 }
 
 .ext-wikistories-toast.ext-wikistories-toast-error {
-	background-color: @background-color-error;
-	border: 1px solid @border-color-error;
+	background-color: @background-color-error-subtle;
+	border: @border-width-base @border-style-base @border-color-error;
 	top: 60px;
 
 	.ext-wikistories-toast-icon {
@@ -76,7 +76,7 @@ module.exports = {
 	}
 
 	.ext-wikistories-toast-message {
-		color: @colorGray1;
+		color: @color-emphasized;
 	}
 }
 </style>
