@@ -464,7 +464,7 @@ class RecentChangesPropagationHooks implements
 		$user = $this->userFactory->newFromUserIdentity( $rc->getPerformerIdentity() );
 		$lang = $changeslist->getLanguage();
 		$context = $changeslist->getContext();
-		$comment = $rev->getComment( RevisionRecord::FOR_PUBLIC, $user );
+		$comment = $rev !== null ? $rev->getComment( RevisionRecord::FOR_PUBLIC, $user ) : null;
 
 		$flag = $changeslist->recentChangesFlags(
 			[
@@ -493,7 +493,7 @@ class RecentChangesPropagationHooks implements
 			$this->wordSep .
 			$this->makeTimestampLink( $story, $rc, $lang ) .
 			$this->sep .
-			$this->makeUserLinks( $context, $rev->getVisibility(), $user ) .
+			$this->makeUserLinks( $context, $rev !== null ? $rev->getVisibility() : 0, $user ) .
 			$this->wordSep .
 			$this->makeComment( $context, $comment )
 		);
