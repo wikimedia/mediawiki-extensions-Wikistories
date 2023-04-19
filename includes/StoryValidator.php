@@ -61,10 +61,10 @@ class StoryValidator {
 			return StatusValue::newFatal( 'wikistories-invalid-format' );
 		}
 
-		// fromArticle exists
-		$page = $this->pageLookup->getExistingPageByText( $story->getFromArticle() );
+		// Article exists
+		$page = $this->pageLookup->getPageById( $story->getArticleId() );
 		if ( !$page ) {
-			return StatusValue::newFatal( 'wikistories-from-article-not-found', $story->getFromArticle() );
+			return StatusValue::newFatal( 'wikistories-from-article-not-found', $story->getArticleId() );
 		}
 
 		// Validation based on config

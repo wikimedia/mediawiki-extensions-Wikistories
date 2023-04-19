@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use FormatJson;
-use MediaWikiUnitTestCase;
+use MediaWikiIntegrationTestCase;
 
-class StoryConverterTest extends MediaWikiUnitTestCase {
+class StoryConverterTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers MediaWiki\Extension\Wikistories\StoryConverter::withSchemaVersion
@@ -39,6 +39,7 @@ class StoryConverterTest extends MediaWikiUnitTestCase {
 	public function testToLatest() {
 		$contentBefore = [
 			'fromArticle' => 'Cat',
+			'articleId' => 114,
 			'frames' => [
 				[
 					// phpcs:ignore Generic.Files.LineLength.TooLong
@@ -58,6 +59,7 @@ class StoryConverterTest extends MediaWikiUnitTestCase {
 		];
 		$contentAfter = [
 			'fromArticle' => 'Cat',
+			'articleId' => 114,
 			'frames' => [
 				[
 					'image' => [ 'filename' => 'Cat_poster_1.jpg' ],

@@ -14,6 +14,7 @@ class StoryConverter {
 	private function fromV0( StoryContent $story ): StoryContent {
 		return new StoryContent( FormatJson::encode( [
 			'fromArticle' => $story->getFromArticle(),
+			'articleId' => $story->getArticleId(),
 			'frames' => array_map( static function ( $f ) {
 				$parts = explode( '/', parse_url( $f->img, PHP_URL_PATH ) );
 				$filename = preg_replace( '/^\d+px\-/', '', urldecode( end( $parts ) ) );

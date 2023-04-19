@@ -47,11 +47,23 @@ class StoryEditPage extends EditPage {
 
 		$form = '<div class="ext-wikistories-editform">';
 		$form .= new FieldLayout(
-			new TextInputWidget( [ 'name' => "story_from_article", 'value' => $story->getFromArticle() ] ),
+			new TextInputWidget(
+				[
+					'name' => "story_from_article",
+					'value' => $story->getFromArticle(), 'disabled' => true
+				]
+			),
 			[
 				'label' => $this->context->msg( 'wikistories-nojs-form-label-related-article' )->text(),
 				'align' => 'left',
 			]
+		);
+		$form .= new HiddenInputWidget(
+			[
+				'name' => "story_article_id",
+				'value' => $story->getArticleId(),
+			]
+
 		);
 		for ( $i = 0; $i < $maxFrames; $i++ ) {
 			$frame = $currentFrames[ $i ] ?? $emptyFrame;
@@ -128,7 +140,7 @@ class StoryEditPage extends EditPage {
 	 */
 	protected function importContentFormData( &$request ) {
 		$story = [
-			'fromArticle' => $request->getText( 'story_from_article' ),
+			'articleId' => intval( $request->getText( 'story_article_id' ) ),
 			'categories' => array_values(
 				array_unique(
 					explode( "\n", trim( $request->getText( 'story_categories' ) ) )

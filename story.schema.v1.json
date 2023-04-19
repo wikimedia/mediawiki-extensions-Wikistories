@@ -3,17 +3,16 @@
 	"description": "Wikistories Story schema",
 	"type": "object",
 	"additionalProperties": false,
-	"required": [ "schemaVersion", "fromArticle", "frames" ],
+	"required": [ "schemaVersion", "articleId", "frames" ],
 	"properties": {
 		"schemaVersion": {
 			"description": "Version of the schema this story should conform to.",
 			"type": "integer",
 			"minimum": 1
 		},
-		"fromArticle": {
-			"description": "Title of the Wikipedia article from which the story builder was launched",
-			"type": "string",
-			"maxLength": 255
+		"articleId": {
+			"description": "ID of the Wikipedia article page from which the story builder was launched",
+			"type": "integer"
 		},
 		"frames": {
 			"description": "List of frames of the story. Min/max number of frames are configurable and validated in code.",

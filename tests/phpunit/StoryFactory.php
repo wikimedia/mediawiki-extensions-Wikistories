@@ -10,7 +10,7 @@ class StoryFactory {
 	public static function makeValidStory() {
 		return new StoryContent( FormatJson::encode( [
 			'schemaVersion' => StoryContent::SCHEMA_VERSION,
-			'fromArticle' => 'Cat',
+			'articleId' => 114,
 			'frames' => [
 				[
 					'image' => [ 'filename' => 'Cat_poster_1.jpg' ],

@@ -8,10 +8,10 @@ use HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
-use MediaWikiUnitTestCase;
+use MediaWikiIntegrationTestCase;
 use RepoGroup;
 
-class StoryValidatorTest extends MediaWikiUnitTestCase {
+class StoryValidatorTest extends MediaWikiIntegrationTestCase {
 
 	private function createRepoGroupMock() {
 		$catPosterFile = $this->createMock( File::class );
@@ -33,9 +33,9 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 
 	private function createPageStoreMock() {
 		$pageStore = $this->createMock( PageLookup::class );
-		$pageStore->method( 'getExistingPageByText' )->willReturnMap( [
-			[ 'Cat', 0, 0, $this->createMock( ExistingPageRecord::class ) ],
-			[ 'Dog', 0, 0, null ],
+		$pageStore->method( 'getPageById' )->willReturnMap( [
+			[ 114, 0, $this->createMock( ExistingPageRecord::class ) ],
+			[ 999, 0, null ],
 		] );
 		return $pageStore;
 	}
@@ -70,7 +70,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 			'invalid json' => [ false, 'this is not even json' ],
 			'Not enough frames' => [ false, [
 				'schemaVersion' => 1,
-				'fromArticle' => 'Cat',
+				'articleId' => 114,
 				'frames' => [
 					[
 						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
@@ -80,7 +80,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 			] ],
 			'Too many frames' => [ false, [
 				'schemaVersion' => 1,
-				'fromArticle' => 'Cat',
+				'articleId' => 114,
 				'frames' => array_fill( 0, 4, [
 					'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
 					'text' => [ 'value' => 'This is a cat' ]
@@ -88,7 +88,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 			] ],
 			'Missing image' => [ false, [
 				'schemaVersion' => 1,
-				'fromArticle' => 'Cat',
+				'articleId' => 114,
 				'frames' => [
 					[
 						'image' => [],
@@ -101,7 +101,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 			] ],
 			'Missing text' => [ false, [
 				'schemaVersion' => 1,
-				'fromArticle' => 'Cat',
+				'articleId' => 114,
 				'frames' => [
 					[
 						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
@@ -112,7 +112,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 					],
 				]
 			] ],
-			'Missing fromArticle' => [ false, [
+			'Missing articleId' => [ false, [
 				'schemaVersion' => 1,
 				'frames' => [
 					[
@@ -125,9 +125,9 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 					],
 				]
 			] ],
-			'from article not found' => [ false, [
+			'article id not found' => [ false, [
 				'schemaVersion' => 1,
-				'fromArticle' => 'Dog',
+				'articleId' => 999,
 				'frames' => [
 					[
 						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
@@ -141,7 +141,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 			] ],
 			'Minimum story content' => [ true, [
 				'schemaVersion' => 1,
-				'fromArticle' => 'Cat',
+				'articleId' => 114,
 				'frames' => [
 					[
 						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
@@ -155,7 +155,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 			] ],
 			'Text too long' => [ false, [
 				'schemaVersion' => 1,
-				'fromArticle' => 'Cat',
+				'articleId' => 114,
 				'frames' => [
 					[
 						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
@@ -169,7 +169,7 @@ class StoryValidatorTest extends MediaWikiUnitTestCase {
 			] ],
 			'File does not exist' => [ false, [
 				'schemaVersion' => 1,
-				'fromArticle' => 'Cat',
+				'articleId' => 114,
 				'frames' => [
 					[
 						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],

@@ -27,6 +27,7 @@ const makeFrameStyle = ( f, thumbnail = false ) => {
 module.exports = {
 	state: {
 		fromArticle: storyContent.fromArticle,
+		articleId: storyContent.articleId,
 		currentFrameIndex: null,
 		/*
 			frames: [ { url, filename, text, textFromArticle } ]
@@ -199,7 +200,7 @@ module.exports = {
 		fromArticle: ( state ) => state.fromArticle,
 		storyForSave: ( state ) => {
 			return {
-				fromArticle: state.fromArticle,
+				articleId: state.articleId,
 				frames: state.frames.map( ( f ) => {
 					const frame = {
 						image: {

@@ -4,10 +4,8 @@ namespace MediaWiki\Extension\Wikistories;
 
 use MediaWiki\Content\Transform\ContentTransformer;
 use MediaWiki\Page\PageLookup;
-use MediaWiki\Page\WikiPageFactory;
 use ParserOptions;
 use WANObjectCache;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 class StoriesCache {
 
@@ -28,11 +26,8 @@ class StoriesCache {
 	/** @var WANObjectCache */
 	private $wanObjectCache;
 
-	/** @var ILoadBalancer */
-	private $loadBalancer;
-
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
+	/** @var PageLinksSearch */
+	private $pageLinksSearch;
 
 	/** @var PageLookup */
 	private $pageLookup;
@@ -45,23 +40,20 @@ class StoriesCache {
 
 	/**
 	 * @param WANObjectCache $wanObjectCache
-	 * @param ILoadBalancer $loadBalancer
-	 * @param WikiPageFactory $wikiPageFactory
+	 * @param PageLinksSearch $pageLinksSearch
 	 * @param PageLookup $pageLookup
 	 * @param StoryRenderer $storyRenderer
 	 * @param ContentTransformer $contentTransformer
 	 */
 	public function __construct(
 		WANObjectCache $wanObjectCache,
-		ILoadBalancer $loadBalancer,
-		WikiPageFactory $wikiPageFactory,
+		PageLinksSearch $pageLinksSearch,
 		PageLookup $pageLookup,
 		StoryRenderer $storyRenderer,
 		ContentTransformer $contentTransformer
 	) {
 		$this->wanObjectCache = $wanObjectCache;
-		$this->loadBalancer = $loadBalancer;
-		$this->wikiPageFactory = $wikiPageFactory;
+		$this->pageLinksSearch = $pageLinksSearch;
 		$this->pageLookup = $pageLookup;
 		$this->storyRenderer = $storyRenderer;
 		$this->contentTransformer = $contentTransformer;
@@ -105,21 +97,8 @@ class StoriesCache {
 	private function fetchStories( string $titleDbKey ): array {
 		$limit = 10;
 		$result = [];
-		$rows = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
-			->table( 'pagelinks' )
-			->join( 'page', null, 'pl_from=page_id' )
-			->fields( [ 'pl_from' ] )
-			->conds( [
-				'pl_from_namespace' => NS_STORY,
-				'pl_namespace' => NS_MAIN,
-				'pl_title' => $titleDbKey,
-			] )
-			->orderBy( 'page_touched', 'DESC' )
-			->limit( $limit )
-			->caller( __METHOD__ )
-			->fetchResultSet();
-		foreach ( $rows as $row ) {
-			$page = $this->wikiPageFactory->newFromID( $row->pl_from );
+		$pages = $this->pageLinksSearch->getPageLinks( $titleDbKey, $limit );
+		foreach ( $pages as $page ) {
 			/** @var StoryContent $story */
 			$story = $this->contentTransformer->preloadTransform(
 				$page->getContent(),

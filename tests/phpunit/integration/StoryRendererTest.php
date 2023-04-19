@@ -51,7 +51,11 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 	public function testGetStoryForViewer() {
 		$story = StoryFactory::makeValidStory();
 		$repoGroup = $this->createRepoGroupMock();
-		$renderer = new StoryRenderer( $repoGroup, MediaWikiServices::getInstance()->getTitleFormatter() );
+		$renderer = new StoryRenderer(
+			$repoGroup,
+			MediaWikiServices::getInstance()->getTitleFormatter(),
+			MediaWikiServices::getInstance()->getRedirectLookup()
+		);
 		$storyForViewer = $renderer->getStoryForViewer(
 			$story,
 			12,
@@ -99,7 +103,11 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 	public function testRenderNoJS() {
 		$story = StoryFactory::makeValidStory();
 		$repoGroup = $this->createRepoGroupMock();
-		$renderer = new StoryRenderer( $repoGroup, MediaWikiServices::getInstance()->getTitleFormatter() );
+		$renderer = new StoryRenderer(
+			$repoGroup,
+			MediaWikiServices::getInstance()->getTitleFormatter(),
+			MediaWikiServices::getInstance()->getRedirectLookup()
+		);
 		$parts = $renderer->renderNoJS( $story, 12 );
 
 		$this->assertArrayHasKey( 'html', $parts );

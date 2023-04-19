@@ -6,6 +6,7 @@ use File;
 use FormatMetadata;
 use Html;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Page\RedirectLookup;
 use RepoGroup;
 use RequestContext;
 use SpecialPage;
@@ -21,13 +22,22 @@ class StoryRenderer {
 	/** @var TitleFormatter */
 	private $titleFormatter;
 
+	/** @var RedirectLookup */
+	private $redirectLookup;
+
 	/**
 	 * @param RepoGroup $repoGroup
 	 * @param TitleFormatter $titleFormatter
+	 * @param RedirectLookup $redirectLookup
 	 */
-	public function __construct( RepoGroup $repoGroup, TitleFormatter $titleFormatter ) {
+	public function __construct(
+		RepoGroup $repoGroup,
+		TitleFormatter $titleFormatter,
+		RedirectLookup $redirectLookup
+	) {
 		$this->repoGroup = $repoGroup;
 		$this->titleFormatter = $titleFormatter;
+		$this->redirectLookup = $redirectLookup;
 	}
 
 	/**
@@ -123,9 +133,14 @@ class StoryRenderer {
 			return $frame->image->filename;
 		}, $frames );
 		$files = $this->repoGroup->findFiles( $filesUsed );
+		$article = Title::newFromDBkey( $story->getFromArticle() );
+		if ( $article->isRedirect() ) {
+			$article = $this->redirectLookup->getRedirectTarget( $article );
+		}
 		return [
 			'title' => $pageTitle,
-			'fromArticle' => $story->getFromArticle(),
+			'fromArticle' => $article->getDBkey(),
+			'articleId' => $story->getArticleId(),
 			'frames' => array_map( function ( $frame ) use ( $files ) {
 				$url = $this->getUrl( $files, $frame->image->filename, 640 );
 				return [

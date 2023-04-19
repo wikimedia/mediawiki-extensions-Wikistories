@@ -147,6 +147,7 @@ class SpecialStoryBuilder extends SpecialPage {
 		} else {
 			$mode = self::MODE_NEW;
 			$storyContent = [
+				'articleId' => $page->getId(),
 				'fromArticle' => $page->getDBkey(),
 				'frames' => [],
 			];

@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\Wikistories;
 
 use Html;
 use JsonContent;
+use Title;
 
 class StoryContent extends JsonContent {
 
@@ -29,7 +30,29 @@ class StoryContent extends JsonContent {
 	 */
 	public function getFromArticle(): string {
 		$story = $this->getData()->getValue();
+
+		if ( isset( $story->articleId ) ) {
+			$title = Title::newFromId( $story->articleId );
+			if ( $title ) {
+				return $title->getDBkey();
+			}
+		}
+
 		return $story->fromArticle ?? '';
+	}
+
+	/**
+	 * @return int The page id of the article this story was created from
+	 */
+	public function getArticleId(): int {
+		$story = $this->getData()->getValue();
+
+		if ( !isset( $story->articleId ) && isset( $story->fromArticle ) ) {
+			$articleTitle = Title::newFromText( $story->fromArticle );
+			return $articleTitle->getArticleID( Title::READ_LATEST );
+		}
+
+		return $story->articleId ?? -1;
 	}
 
 	/**
