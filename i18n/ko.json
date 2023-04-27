@@ -57,5 +57,6 @@
 	"wikistories-storyviewer-next-story-viewtext": "보기",
 	"wikistories-storyviewer-textsize": "텍스트 크기 변경",
 	"wikistories-storyviewer-edit": "이 스토리 편집",
-	"wikistories-from-article-not-found": "\"$1\" 문서가 없습니다"
+	"wikistories-from-article-not-found": "\"$1\" 문서가 없습니다",
+	"wikistories-no-image-category": "이미지 파일이 없는 스토리"
 }
