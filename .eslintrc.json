@@ -2,32 +2,48 @@
 	"root": true,
 	"extends": [
 		"wikimedia/client-common",
-		"wikimedia/vue3-es6"
+		"wikimedia/vue3-es6",
+		"wikimedia/jquery",
+		"wikimedia/mediawiki"
 	],
 	"env": {
 		"es6": true
 	},
-	"globals": {
-		"$": true,
-		"module": true,
-		"require": true,
-		"mw": true
-	},
 	"rules": {
-		"vue/html-self-closing": [ "error", {
-			"html": {
-				"void": "never",
-				"normal": "never",
-				"component": "never"
-			},
-			"svg": "never",
-			"math": "never"
-		} ],
-		"vue/multi-word-component-names": [ "off" ],
-		"vue/no-unregistered-components": [ "error", {
-			"ignorePatterns": [ "router-link", "router-view" ]
-		} ],
-		"vue/no-v-html": [ "off" ],
-		"vue/no-undef-properties": [ "off" ]
+		"no-jquery/no-global-selector": "warn",
+		"no-jquery/no-sizzle": "warn",
+		"compat/compat": "warn",
+		"mediawiki/class-doc": "warn",
+		"mediawiki/no-vue-dynamic-i18n": "warn",
+		"vue/html-self-closing": [
+			"error",
+			{
+				"html": {
+					"void": "never",
+					"normal": "never",
+					"component": "never"
+				},
+				"svg": "never",
+				"math": "never"
+			}
+		],
+		"vue/multi-word-component-names": [
+			"off"
+		],
+		"vue/no-unregistered-components": [
+			"error",
+			{
+				"ignorePatterns": [
+					"router-link",
+					"router-view"
+				]
+			}
+		],
+		"vue/no-v-html": [
+			"off"
+		],
+		"vue/no-undef-properties": [
+			"off"
+		]
 	}
 }
