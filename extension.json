@@ -302,7 +302,6 @@
 		},
 		"ext.wikistories.discover": {
 			"localBasePath": "resources/ext.wikistories.discover",
-			"targets": [ "mobile" ],
 			"dependencies": [ "mediawiki.api", "mediawiki.Title", "mediawiki.util", "ext.eventLogging" ],
 			"packageFiles": [
 				"index.js",
@@ -322,7 +321,6 @@
 		},
 		"ext.wikistories.discover.styles": {
 			"localBasePath": "resources/ext.wikistories.discover",
-			"targets": [ "mobile" ],
 			"styles": [
 				"discover-initial.less"
 			]
