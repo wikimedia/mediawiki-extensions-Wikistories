@@ -22,7 +22,7 @@
 		"@wdio/local-runner": "7.20.1",
 		"@wdio/mocha-framework": "7.20.0",
 		"@wdio/spec-reporter": "7.20.0",
-		"eslint-config-wikimedia": "0.24.0",
+		"eslint-config-wikimedia": "0.25.0",
 		"eslint-plugin-jest": "26.1.5",
 		"jest": "27.5.1",
 		"jquery": "3.6.1",

@@ -44,6 +44,7 @@
 		],
 		"vue/no-undef-properties": [
 			"off"
-		]
+		],
+		"mediawiki/msg-doc": "warn"
 	}
 }
