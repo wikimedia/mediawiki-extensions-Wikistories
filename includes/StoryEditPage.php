@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use EditPage;
+use MediaWiki\EditPage\EditPage;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use OOUI\FieldLayout;

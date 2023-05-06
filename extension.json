@@ -83,7 +83,10 @@
 		"WikistoriesNamespaces": "Wikistories.i18n.namespaces.php"
 	},
 	"MessagesDirs": {
-		"Wikistories": [ "i18n", "i18n/api" ]
+		"Wikistories": [
+			"i18n",
+			"i18n/api"
+		]
 	},
 	"config": {
 		"WikistoriesMinFrames": {
@@ -156,15 +159,27 @@
 				"store/story.js",
 				"util/isTouchDevice.js",
 				"util/timer.js",
-				{ "name": "ConfirmDialog.vue", "file": "../components/ConfirmDialog.vue" },
-				{ "name": "DotsMenu.vue", "file": "../components/DotsMenu.vue" },
-				{ "name": "DotsMenuItem.vue", "file": "../components/DotsMenuItem.vue" }
+				{
+					"name": "ConfirmDialog.vue",
+					"file": "../components/ConfirmDialog.vue"
+				},
+				{
+					"name": "DotsMenu.vue",
+					"file": "../components/DotsMenu.vue"
+				},
+				{
+					"name": "DotsMenuItem.vue",
+					"file": "../components/DotsMenuItem.vue"
+				}
 			],
 			"styles": [
 				"viewer.less"
 			],
 			"es6": true,
-			"dependencies": [ "vue", "vuex" ],
+			"dependencies": [
+				"vue",
+				"vuex"
+			],
 			"messages": [
 				"wikistories-storyviewer-next-story-header",
 				"wikistories-storyviewer-next-story-viewtext",
@@ -230,9 +245,18 @@
 				"views/PublishForm.vue",
 				"views/Search.vue",
 				"views/Story.vue",
-				{ "name": "ConfirmDialog.vue", "file": "../components/ConfirmDialog.vue" },
-				{ "name": "DotsMenu.vue", "file": "../components/DotsMenu.vue" },
-				{ "name": "DotsMenuItem.vue", "file": "../components/DotsMenuItem.vue" }
+				{
+					"name": "ConfirmDialog.vue",
+					"file": "../components/ConfirmDialog.vue"
+				},
+				{
+					"name": "DotsMenu.vue",
+					"file": "../components/DotsMenu.vue"
+				},
+				{
+					"name": "DotsMenuItem.vue",
+					"file": "../components/DotsMenuItem.vue"
+				}
 			],
 			"dependencies": [
 				"vue",
@@ -302,15 +326,25 @@
 		},
 		"ext.wikistories.discover": {
 			"localBasePath": "resources/ext.wikistories.discover",
-			"targets": [ "mobile" ],
-			"dependencies": [ "mediawiki.api", "mediawiki.Title", "mediawiki.util", "ext.eventLogging" ],
+			"targets": [
+				"mobile"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.Title",
+				"mediawiki.util",
+				"ext.eventLogging"
+			],
 			"packageFiles": [
 				"index.js",
 				"consumptionEvents.js",
 				"Discover.js",
 				"api/getStories.js",
 				"util/convertUrlToThumbnail.js",
-				{ "name": "data.json", "callback": "MediaWiki\\Extension\\Wikistories\\Hooks::getDiscoverBundleData" }
+				{
+					"name": "data.json",
+					"callback": "MediaWiki\\Extension\\Wikistories\\Hooks::getDiscoverBundleData"
+				}
 			],
 			"styles": [
 				"discover.less"
@@ -322,7 +356,9 @@
 		},
 		"ext.wikistories.discover.styles": {
 			"localBasePath": "resources/ext.wikistories.discover",
-			"targets": [ "mobile" ],
+			"targets": [
+				"mobile"
+			],
 			"styles": [
 				"discover-initial.less"
 			]
