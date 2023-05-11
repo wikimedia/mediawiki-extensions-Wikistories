@@ -2,26 +2,18 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use MediaWiki\Page\WikiPageFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class PageLinksSearch {
+
 	/** @var ILoadBalancer */
 	private $loadBalancer;
 
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-
 	/**
 	 * @param ILoadBalancer $loadBalancer
-	 * @param WikiPageFactory $wikiPageFactory
 	 */
-	public function __construct(
-		ILoadBalancer $loadBalancer,
-		WikiPageFactory $wikiPageFactory
-	) {
+	public function __construct( ILoadBalancer $loadBalancer ) {
 		$this->loadBalancer = $loadBalancer;
-		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
 	/**
@@ -30,11 +22,10 @@ class PageLinksSearch {
 	 * @param string $target Title string
 	 * @param int $limit
 	 * @param bool $followRedirects
-	 * @return array Wikipages linked to target
+	 * @return array Page ids of the related stories
 	 */
 	public function getPageLinks( string $target, int $limit, bool $followRedirects = true ): array {
-		$result = [];
-		$rows = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+		$ids = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
 			->table( 'pagelinks' )
 			->join( 'page', null, 'pl_from=page_id' )
 			->fields( [ 'pl_from' ] )
@@ -46,19 +37,14 @@ class PageLinksSearch {
 			->orderBy( 'page_touched', 'DESC' )
 			->limit( $limit )
 			->caller( __METHOD__ )
-			->fetchResultSet();
-
-		foreach ( $rows as $row ) {
-			$page = $this->wikiPageFactory->newFromID( $row->pl_from );
-			$result[] = $page;
-		}
+			->fetchFieldValues();
 
 		if ( $followRedirects ) {
 			$redirect = $this->getPageRedirectLinks( $target, $limit );
-			$result = array_merge( $result, $redirect );
+			$ids = array_merge( $ids, $redirect );
 		}
 
-		return $result;
+		return $ids;
 	}
 
 	/**
@@ -66,10 +52,9 @@ class PageLinksSearch {
 	 *
 	 * @param string $target Title string
 	 * @param int $limit
-	 * @return array page IDs linked to target
+	 * @return array Page ids of the related stories
 	 */
 	private function getPageRedirectLinks( string $target, int $limit ): array {
-		$redirectResult = [];
 		$redirectTarget = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
 			->table( 'pagelinks' )
 			->join( 'page', null, 'pl_from=page_id' )
@@ -83,7 +68,7 @@ class PageLinksSearch {
 
 		// TODO: add recursion support for multiple redirects beyond 1 level deep (T336602)
 		if ( $redirectTarget ) {
-			$redirectRows = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+			return $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
 				->table( 'pagelinks' )
 				->join( 'page', null, 'pl_from=page_id' )
 				->fields( [ 'pl_from' ] )
@@ -95,14 +80,9 @@ class PageLinksSearch {
 				->orderBy( 'page_touched', 'DESC' )
 				->limit( $limit )
 				->caller( __METHOD__ )
-				->fetchResultSet();
-
-			foreach ( $redirectRows as $row ) {
-				$page = $this->wikiPageFactory->newFromID( $row->pl_from );
-				$redirectResult[] = $page;
-			}
+				->fetchFieldValues();
 		}
 
-		return $redirectResult;
+		return [];
 	}
 }

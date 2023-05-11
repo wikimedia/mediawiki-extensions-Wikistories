@@ -102,9 +102,9 @@
 				</div>
 				<div
 					v-for="story in nextStories"
-					:key="story.pageId"
+					:key="story.storyId"
 					class="ext-wikistories-viewer-container-content-read-more-item"
-					@click="playNextStory( story.pageId )"
+					@click="playNextStory( story.storyId )"
 				>
 					<div class="ext-wikistories-viewer-container-content-read-more-item-info">
 						<div
@@ -112,7 +112,7 @@
 							class="ext-wikistories-viewer-container-content-read-more-item-info-thumbnail"
 						></div>
 						<span class="ext-wikistories-viewer-container-content-read-more-item-info-title">
-							{{ story.title }}
+							{{ story.storyTitle }}
 						</span>
 					</div>
 					<div class="ext-wikistories-viewer-container-content-read-more-item-view">
@@ -229,9 +229,9 @@ module.exports = {
 				this.nextFrame();
 			}.bind( this ), this.frameDuration );
 		},
-		playNextStory: function ( pageId ) {
+		playNextStory: function ( storyId ) {
 			this.logStoryViewEvent();
-			this.nextStory( pageId );
+			this.nextStory( storyId );
 		},
 		logStoryViewEvent: function () {
 			const storyOpenTime = Date.now() - this.storyStart;

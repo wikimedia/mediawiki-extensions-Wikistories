@@ -25,6 +25,36 @@ class StoryFactory {
 		] ) );
 	}
 
+	public static function makeValidStoryData() {
+		return [
+			'articleTitle' => 'Cat',
+			'articleId' => 12,
+			'frames' => [
+				[
+					'url' => '.../Cat_poster_1.jpg',
+					'fileNotFound' => false,
+					'text' => 'This is a cat',
+					'attribution' => [
+						'license' => [ 'CC' ],
+						'author' => 'Cat',
+						'url' => 'https://...',
+					],
+				],
+				[
+					'url' => '.../Cat_napping.jpg',
+					'fileNotFound' => false,
+					'text' => 'Sleeping now...',
+					'attribution' => [
+						'license' => [ 'CC' ],
+						'author' => 'Cat',
+						'url' => 'https://...',
+					],
+				],
+			],
+			'trackingCategories' => [ 'Domesticated animals', 'Cats' ]
+		];
+	}
+
 	public static function makeV0Story() {
 		return new StoryContent( FormatJson::encode( [
 			'fromArticle' => 'Cat',

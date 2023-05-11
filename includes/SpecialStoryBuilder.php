@@ -26,9 +26,6 @@ class SpecialStoryBuilder extends SpecialPage {
 	/** @var WikiPageFactory */
 	private $wikiPageFactory;
 
-	/** @var StoryRenderer */
-	private $storyRenderer;
-
 	/** @var PageLookup */
 	private $pageLookup;
 
@@ -44,32 +41,35 @@ class SpecialStoryBuilder extends SpecialPage {
 	/** @var WatchedItemStore */
 	private $watchedItemStore;
 
+	/** @var StoriesCache */
+	private $storiesCache;
+
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
-	 * @param StoryRenderer $storyRenderer
 	 * @param PageLookup $pageLookup
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param WatchlistManager $watchlistManager
 	 * @param WatchedItemStore $watchedItemStore
 	 * @param Config $config
+	 * @param StoriesCache $storiesCache
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
-		StoryRenderer $storyRenderer,
 		PageLookup $pageLookup,
 		UserOptionsLookup $userOptionsLookup,
 		WatchlistManager $watchlistManager,
 		WatchedItemStore $watchedItemStore,
-		Config $config
+		Config $config,
+		StoriesCache $storiesCache
 	) {
 		parent::__construct( 'StoryBuilder' );
 		$this->wikiPageFactory = $wikiPageFactory;
-		$this->storyRenderer = $storyRenderer;
 		$this->pageLookup = $pageLookup;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->watchlistManager = $watchlistManager;
 		$this->config = $config;
 		$this->watchedItemStore = $watchedItemStore;
+		$this->storiesCache = $storiesCache;
 	}
 
 	/**
@@ -133,10 +133,7 @@ class SpecialStoryBuilder extends SpecialPage {
 		$watchExpiryEnabled = $this->config->get( MainConfigNames::WatchlistExpiry );
 		if ( $page->getNamespace() === NS_STORY ) {
 			$wikiPage = $this->wikiPageFactory->newFromTitle( $page );
-			/** @var StoryContent $story */
-			$story = $wikiPage->getContent();
-			'@phan-var StoryContent $story';
-			$storyContent = $this->storyRenderer->getStoryForBuilder( $story, $page->getDBkey() );
+			$storyContent = $this->storiesCache->getStory( $page->getId() );
 			$mode = self::MODE_EDIT;
 			$watchDefault = $this->userOptionsLookup->getOption( $this->getUser(), 'watchdefault' ) ||
 				$this->watchlistManager->isWatched( $this->getUser(), $page );
@@ -148,7 +145,7 @@ class SpecialStoryBuilder extends SpecialPage {
 			$mode = self::MODE_NEW;
 			$storyContent = [
 				'articleId' => $page->getId(),
-				'fromArticle' => $page->getDBkey(),
+				'articleTitle' => $page->getDBkey(),
 				'frames' => [],
 			];
 			$watchDefault = $this->userOptionsLookup->getOption( $this->getUser(), 'watchcreations' );

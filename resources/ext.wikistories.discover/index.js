@@ -14,7 +14,7 @@ getStories( articleTitle ).then( function ( stories ) {
 		const urlHashMatch = location.hash.match( /#\/story\/(\d+)/ );
 		const storyId = urlHashMatch && urlHashMatch[ 1 ];
 
-		if ( storyId && stories.find( story => story.pageId.toString() === storyId ) ) {
+		if ( storyId && stories.find( story => story.storyId.toString() === storyId ) ) {
 			loadingViewer.then( function () {
 				const initStoryViewer = require( 'ext.wikistories.viewer' );
 				initStoryViewer( stories, storyId, events.logStoryView );

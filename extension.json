@@ -19,7 +19,6 @@
 			"services": [
 				"Wikistories.StoryConverter",
 				"Wikistories.StoryValidator",
-				"Wikistories.Cache",
 				"Wikistories.StoryRenderer",
 				"TrackingCategories"
 			]
@@ -30,12 +29,12 @@
 			"class": "MediaWiki\\Extension\\Wikistories\\SpecialStoryBuilder",
 			"services": [
 				"WikiPageFactory",
-				"Wikistories.StoryRenderer",
 				"PageStore",
 				"UserOptionsLookup",
 				"WatchlistManager",
 				"WatchedItemStore",
-				"MainConfig"
+				"MainConfig",
+				"Wikistories.Cache"
 			]
 		}
 	},

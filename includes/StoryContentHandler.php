@@ -10,8 +10,8 @@ use MediaWiki\Content\Renderer\ContentParseParams;
 use MediaWiki\Content\Transform\PreloadTransformParams;
 use MediaWiki\Content\Transform\PreSaveTransformParams;
 use MediaWiki\Content\ValidationParams;
+use MediaWiki\Title\Title;
 use ParserOutput;
-use Title;
 use TitleValue;
 
 class StoryContentHandler extends JsonContentHandler {
@@ -21,9 +21,6 @@ class StoryContentHandler extends JsonContentHandler {
 
 	/** @var StoryValidator */
 	private $storyValidator;
-
-	/** @var StoriesCache */
-	private $storiesCache;
 
 	/** @var StoryRenderer */
 	private $storyRenderer;
@@ -35,7 +32,6 @@ class StoryContentHandler extends JsonContentHandler {
 	 * @param string $modelId
 	 * @param StoryConverter $storyConverter
 	 * @param StoryValidator $storyValidator
-	 * @param StoriesCache $storiesCache
 	 * @param StoryRenderer $storyRenderer
 	 * @param TrackingCategories $trackingCategories
 	 */
@@ -43,14 +39,12 @@ class StoryContentHandler extends JsonContentHandler {
 		$modelId,
 		StoryConverter $storyConverter,
 		StoryValidator $storyValidator,
-		StoriesCache $storiesCache,
 		StoryRenderer $storyRenderer,
 		TrackingCategories $trackingCategories
 	) {
 		parent::__construct( $modelId );
 		$this->storyConverter = $storyConverter;
 		$this->storyValidator = $storyValidator;
-		$this->storiesCache = $storiesCache;
 		$this->storyRenderer = $storyRenderer;
 		$this->trackingCategories = $trackingCategories;
 	}
@@ -87,49 +81,31 @@ class StoryContentHandler extends JsonContentHandler {
 		'@phan-var StoryContent $content';
 		/** @var StoryContent $story */
 		$story = $this->storyConverter->toLatest( $content );
-
-		// register links from story frames to source articles
-		$relatedArticle = $story->getFromArticle();
-		$usedFiles = [];
-		foreach ( $story->getFrames() as $frame ) {
-			if ( isset( $frame->text->fromArticle->articleTitle ) ) {
-				$usedFiles[] = strtr( $frame->image->filename, ' ', '_' );
-			}
-		}
-
-		$parserOutput->addLink( new TitleValue( NS_MAIN, $relatedArticle ) );
-		// todo: only invalidate the cache if the links have changed
-		$this->storiesCache->invalidateForArticle( $relatedArticle );
-
-		foreach ( array_unique( $usedFiles ) as $file ) {
-			$parserOutput->addImage( $file );
-		}
-
 		$storyPage = $cpoParams->getPage();
+		$storyTitle = Title::newFromPageReference( $storyPage );
+		$storyData = $this->storyRenderer->getStoryData( $story, $storyTitle );
+
+		// Links
+		$parserOutput->addLink( new TitleValue( NS_MAIN, $storyData[ 'articleTitle' ] ) );
+		foreach ( $storyData[ 'frames' ] as $frame ) {
+			$parserOutput->addImage( strtr( $frame[ 'filename' ], ' ', '_' ) );
+		}
+
+		// Categories
 		foreach ( $story->getCategories() as $category ) {
 			$parserOutput->addCategory( $category, $storyPage->getDBkey() );
 		}
 
-		// handle Tracking Categories
-		$missingImages = array_filter( $story->getFrames(), static function ( $frame ) {
-			return empty( $frame->image->filename );
-		} );
-
-		if ( count( $missingImages ) > 0 ) {
+		// Tracking categories
+		foreach ( $storyData[ 'trackingCategories' ] as $trackingCategory ) {
 			$this->trackingCategories->addTrackingCategory(
-				$parserOutput, "wikistories-no-image-category", $storyPage
+				$parserOutput, $trackingCategory, $storyPage
 			);
 		}
 
+		// HTML version
 		if ( $cpoParams->getGenerateHtml() ) {
-			// no-js
-			if ( $storyPage instanceof Title ) {
-				$id = $storyPage->getArticleID();
-			} else {
-				$storyTitle = Title::makeTitle( $storyPage->getNamespace(), $storyPage->getDBkey() );
-				$id = $storyTitle->getArticleID( Title::READ_LATEST );
-			}
-			$parts = $this->storyRenderer->renderNoJS( $story, $id );
+			$parts = $this->storyRenderer->renderNoJS( $storyData );
 			$parserOutput->addModuleStyles( [ $parts['style'] ] );
 			$parserOutput->setText( $parts['html'] );
 		}

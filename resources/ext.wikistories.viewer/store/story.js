@@ -17,13 +17,13 @@ module.exports = {
 	getters: {
 		currentStory: ( state ) => {
 			return state.stories.find( story => {
-				return story.pageId.toString() === state.storyId;
+				return story.storyId.toString() === state.storyId;
 			} ) || {};
 		},
 		story: ( state ) => {
 			const stories = state.stories;
 			const storyId = state.storyId;
-			const currentStory = stories.find( story => story.pageId.toString() === storyId );
+			const currentStory = stories.find( story => story.storyId.toString() === storyId );
 			if ( currentStory ) {
 				const coverFrame = [ {
 					id: 0,
@@ -71,7 +71,7 @@ module.exports = {
 			return getters.currentFrame.attribution || {};
 		},
 		currentStoryTitle: ( state, getters ) => {
-			return getters.currentStory.title;
+			return getters.currentStory.storyTitle;
 		},
 		editUrl: ( state, getters ) => {
 			// Correct frameId to 0 for the cover frame AND the first frame of content
@@ -90,7 +90,7 @@ module.exports = {
 			const stories = state.stories;
 			const storyId = state.storyId;
 			const currentStoriesIndex = stories.findIndex(
-				story => story.pageId.toString() === storyId
+				story => story.storyId.toString() === storyId
 			);
 
 			// get 3 random stories

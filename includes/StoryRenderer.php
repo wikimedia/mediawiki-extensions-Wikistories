@@ -5,51 +5,53 @@ namespace MediaWiki\Extension\Wikistories;
 use File;
 use FormatMetadata;
 use Html;
-use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Page\PageLookup;
 use MediaWiki\Page\RedirectLookup;
+use MediaWiki\Title\Title;
 use RepoGroup;
 use RequestContext;
 use SpecialPage;
-use Title;
-use TitleFormatter;
-use TitleValue;
 
 class StoryRenderer {
+
+	private const TC_NO_IMAGE = 'wikistories-no-image-category';
 
 	/** @var RepoGroup */
 	private $repoGroup;
 
-	/** @var TitleFormatter */
-	private $titleFormatter;
-
 	/** @var RedirectLookup */
 	private $redirectLookup;
 
+	/** @var PageLookup */
+	private $pageLookup;
+
 	/**
 	 * @param RepoGroup $repoGroup
-	 * @param TitleFormatter $titleFormatter
 	 * @param RedirectLookup $redirectLookup
+	 * @param PageLookup $pageLookup
 	 */
 	public function __construct(
 		RepoGroup $repoGroup,
-		TitleFormatter $titleFormatter,
-		RedirectLookup $redirectLookup
+		RedirectLookup $redirectLookup,
+		PageLookup $pageLookup
 	) {
 		$this->repoGroup = $repoGroup;
-		$this->titleFormatter = $titleFormatter;
 		$this->redirectLookup = $redirectLookup;
+		$this->pageLookup = $pageLookup;
 	}
 
 	/**
-	 * @param StoryContent $story
-	 * @param int $pageId
+	 * @param array $storyData
 	 * @return array [ 'html', 'style' ]
 	 */
-	public function renderNoJS( StoryContent $story, int $pageId ): array {
-		$storyView = $this->getStoryForViewer( $story, 0, new TitleValue( NS_STORY, 'Unused' ) );
-		$articleTitle = Title::makeTitle( NS_MAIN, $story->getFromArticle(), '/story/' . $pageId );
-		$missingImages = array_filter( $storyView[ 'frames' ], static function ( $frame ) {
-			return empty( $frame['url'] );
+	public function renderNoJS( array $storyData ): array {
+		$articleTitle = Title::makeTitle(
+			NS_MAIN,
+			$storyData[ 'articleTitle' ],
+			'/story/' . $storyData[ 'articleId' ]
+		);
+		$missingImages = array_filter( $storyData[ 'frames' ], static function ( $frame ) {
+			return $frame[ 'fileNotFound' ];
 		} );
 
 		$html = Html::element(
@@ -80,7 +82,7 @@ class StoryRenderer {
 					],
 					$this->getNoJsFrameHtmlString( $frame )
 				);
-			}, $storyView[ 'frames' ] ) )
+			}, $storyData[ 'frames' ] ) )
 		);
 
 		return [
@@ -91,11 +93,13 @@ class StoryRenderer {
 
 	/**
 	 * @param StoryContent $story
-	 * @param int $pageId Page Id of this story
-	 * @param LinkTarget $title Title of this story
-	 * @return array Data structure expected by the discovery module and the story viewer
+	 * @param Title $storyTitle
+	 * @return array
 	 */
-	public function getStoryForViewer( StoryContent $story, int $pageId, LinkTarget $title ): array {
+	public function getStoryData(
+		StoryContent $story,
+		Title $storyTitle
+	): array {
 		$frames = $story->getFrames();
 		$filesUsed = array_map( static function ( $frame ) {
 			return $frame->image->filename;
@@ -103,56 +107,34 @@ class StoryRenderer {
 		$files = $this->repoGroup->findFiles( $filesUsed );
 		$firstFrame = reset( $frames );
 		$thumb = $firstFrame ? $this->getUrl( $files, $firstFrame->image->filename, 52 ) : '';
-		$storyFullTitle = $this->titleFormatter->getPrefixedDBkey( $title );
-		return [
-			'pageId' => $pageId,
-			'title' => $title->getText(),
-			'editUrl' => SpecialPage::getTitleFor( 'StoryBuilder', $storyFullTitle )->getLinkURL(),
-			'talkUrl' => Title::newFromLinkTarget( $title )->getTalkPageIfDefined()->getLinkURL(),
+		$article = $story->getArticleTitle( $this->pageLookup, $this->redirectLookup );
+		$trackingCategories = [];
+		$data = [
+			'articleId' => $article ? $article->getId() : 0,
+			'articleTitle' => $article ? $article->getDBkey() : '',
+			'storyId' => $storyTitle->getId(),
+			'storyTitle' => $storyTitle->getText(),
+			'editUrl' => SpecialPage::getTitleFor( 'StoryBuilder', $storyTitle->getPrefixedDBkey() )->getLinkURL(),
+			'talkUrl' => $storyTitle->getTalkPageIfDefined()->getLinkURL(),
 			'thumbnail' => $thumb,
-			'frames' => array_map( function ( $frame ) use ( $files ) {
+			'trackingCategories' => $trackingCategories,
+			'frames' => array_map( function ( $frame ) use ( $files, $trackingCategories ) {
 				$url = $this->getUrl( $files, $frame->image->filename, 640 );
+				if ( empty( $url ) ) {
+					$trackingCategories[] = self::TC_NO_IMAGE;
+				}
 				return [
 					'url' => $url,
-					'fileNotFound' => empty( $url ),
-					'text' => $frame->text->value,
-					'attribution' => $this->getAttribution( $files, $frame->image->filename ),
-				];
-			}, $frames )
-		];
-	}
-
-	/**
-	 * @param StoryContent $story
-	 * @param string $pageTitle
-	 * @return array
-	 */
-	public function getStoryForBuilder( StoryContent $story, string $pageTitle ): array {
-		$frames = $story->getFrames();
-		$filesUsed = array_map( static function ( $frame ) {
-			return $frame->image->filename;
-		}, $frames );
-		$files = $this->repoGroup->findFiles( $filesUsed );
-		$article = Title::newFromDBkey( $story->getFromArticle() );
-		if ( $article->isRedirect() ) {
-			$article = $this->redirectLookup->getRedirectTarget( $article );
-		}
-		return [
-			'title' => $pageTitle,
-			'fromArticle' => $article->getDBkey(),
-			'articleId' => $story->getArticleId(),
-			'frames' => array_map( function ( $frame ) use ( $files ) {
-				$url = $this->getUrl( $files, $frame->image->filename, 640 );
-				return [
-					'url' => $url,
-					'fileNotFound' => empty( $url ),
 					'filename' => $frame->image->filename,
+					'fileNotFound' => empty( $url ),
 					'text' => $frame->text->value,
 					'textFromArticle' => $frame->text->fromArticle->originalText ?? '',
 					'attribution' => $this->getAttribution( $files, $frame->image->filename ),
 				];
 			}, $frames )
 		];
+		$data[ 'trackingCategories' ] = array_unique( $trackingCategories );
+		return $data;
 	}
 
 	/**

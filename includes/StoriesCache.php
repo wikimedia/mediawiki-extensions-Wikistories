@@ -2,9 +2,7 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use MediaWiki\Content\Transform\ContentTransformer;
-use MediaWiki\Page\PageLookup;
-use ParserOptions;
+use MediaWiki\Page\WikiPageFactory;
 use WANObjectCache;
 
 class StoriesCache {
@@ -15,7 +13,7 @@ class StoriesCache {
 	 * be invalidated and re-created with the most recent
 	 * structure.
 	 */
-	private const CACHE_VERSION = 12;
+	private const CACHE_VERSION = 13;
 
 	/**
 	 * This defines how long stories will stay in the cache if they not edited.
@@ -29,34 +27,28 @@ class StoriesCache {
 	/** @var PageLinksSearch */
 	private $pageLinksSearch;
 
-	/** @var PageLookup */
-	private $pageLookup;
+	/** @var WikiPageFactory */
+	private $wikiPageFactory;
 
 	/** @var StoryRenderer */
 	private $storyRenderer;
 
-	/** @var ContentTransformer */
-	private $contentTransformer;
-
 	/**
 	 * @param WANObjectCache $wanObjectCache
 	 * @param PageLinksSearch $pageLinksSearch
-	 * @param PageLookup $pageLookup
+	 * @param WikiPageFactory $wikiPageFactory
 	 * @param StoryRenderer $storyRenderer
-	 * @param ContentTransformer $contentTransformer
 	 */
 	public function __construct(
 		WANObjectCache $wanObjectCache,
 		PageLinksSearch $pageLinksSearch,
-		PageLookup $pageLookup,
-		StoryRenderer $storyRenderer,
-		ContentTransformer $contentTransformer
+		WikiPageFactory $wikiPageFactory,
+		StoryRenderer $storyRenderer
 	) {
 		$this->wanObjectCache = $wanObjectCache;
 		$this->pageLinksSearch = $pageLinksSearch;
-		$this->pageLookup = $pageLookup;
+		$this->wikiPageFactory = $wikiPageFactory;
 		$this->storyRenderer = $storyRenderer;
-		$this->contentTransformer = $contentTransformer;
 	}
 
 	/**
@@ -67,11 +59,46 @@ class StoriesCache {
 	 * @return array Stories linked to the given title
 	 */
 	public function getRelatedStories( string $titleDbKey, int $pageId ): array {
-		return $this->wanObjectCache->getWithSetCallback(
+		$ids = $this->wanObjectCache->getWithSetCallback(
 			$this->makeRelatedStoriesKey( $pageId ),
 			self::CACHE_TTL,
 			function () use ( $titleDbKey ) {
-				return $this->fetchStories( $titleDbKey );
+				return $this->pageLinksSearch->getPageLinks( $titleDbKey, 10 );
+			}
+		);
+		return array_values( $this->getStories( $ids ) );
+	}
+
+	/**
+	 * @param int $id
+	 * @return mixed
+	 */
+	public function getStory( int $id ) {
+		return $this->wanObjectCache->getWithSetCallback(
+			$this->makeStoryKey( $id ),
+			self::CACHE_TTL,
+			function () use ( $id ) {
+				return $this->loadAndRenderStory( $id );
+			}
+		);
+	}
+
+	/**
+	 * @param array $ids
+	 * @return mixed[]
+	 */
+	private function getStories( array $ids ) {
+		$keys = $this->wanObjectCache->makeMultiKeys(
+			$ids,
+			function ( $id ) {
+				return $this->makeStoryKey( $id );
+			}
+		);
+		return $this->wanObjectCache->getMultiWithSetCallback(
+			$keys,
+			self::CACHE_TTL,
+			function ( $id ) {
+				return $this->loadAndRenderStory( $id );
 			}
 		);
 	}
@@ -79,47 +106,44 @@ class StoriesCache {
 	/**
 	 * Clear the cached stories for the given article.
 	 *
-	 * @param string $title
+	 * @param int $articleId
 	 */
-	public function invalidateForArticle( string $title ) {
-		$page = $this->pageLookup->getExistingPageByText( $title );
-		if ( $page ) {
-			$this->wanObjectCache->delete( $this->makeRelatedStoriesKey( $page->getId() ) );
-		}
+	public function invalidateForArticle( int $articleId ) {
+		$this->wanObjectCache->delete( $this->makeRelatedStoriesKey( $articleId ) );
 	}
 
 	/**
-	 * Fetch the related stories from the database
-	 *
-	 * @param string $titleDbKey
-	 * @return array Stories linked to the given title
+	 * @param int $storyId
 	 */
-	private function fetchStories( string $titleDbKey ): array {
-		$limit = 10;
-		$result = [];
-		$pages = $this->pageLinksSearch->getPageLinks( $titleDbKey, $limit );
-		foreach ( $pages as $page ) {
-			/** @var StoryContent $story */
-			$story = $this->contentTransformer->preloadTransform(
-				$page->getContent(),
-				$page,
-				ParserOptions::newFromAnon()
-			);
-			'@phan-var StoryContent $story';
-			$result[] = $this->storyRenderer->getStoryForViewer(
-				$story,
-				$page->getId(),
-				$page->getTitle()
-			);
-		}
-		return $result;
+	public function invalidateStory( int $storyId ) {
+		$this->wanObjectCache->delete( $this->makeStoryKey( $storyId ) );
 	}
 
 	/**
-	 * @param int $pageId
+	 * @param int $storyId
+	 * @return array
+	 */
+	private function loadAndRenderStory( int $storyId ) {
+		$page = $this->wikiPageFactory->newFromID( $storyId );
+		/** @var StoryContent $storyContent */
+		$storyContent = $page->getContent();
+		'@phan-var StoryContent $storyContent';
+		return $this->storyRenderer->getStoryData( $storyContent, $page->getTitle() );
+	}
+
+	/**
+	 * @param int $articleId
 	 * @return string Cache key for the related stories for an article
 	 */
-	private function makeRelatedStoriesKey( int $pageId ): string {
-		return $this->wanObjectCache->makeKey( 'wikistories', self::CACHE_VERSION, 'related', $pageId );
+	private function makeRelatedStoriesKey( int $articleId ): string {
+		return $this->wanObjectCache->makeKey( 'wikistories', self::CACHE_VERSION, 'related', $articleId );
+	}
+
+	/**
+	 * @param int $storyId
+	 * @return string
+	 */
+	private function makeStoryKey( int $storyId ): string {
+		return $this->wanObjectCache->makeKey( 'wikistories', self::CACHE_VERSION, 'story', $storyId );
 	}
 }

@@ -81,8 +81,8 @@ const addStoriesToDiscoverSection = function ( $discover, stories ) {
 		const $stories = $( '<div>' ).addClass( 'ext-wikistories-discover-stories' );
 		$discover.append( $stories );
 		validStories.forEach( story => {
-			const link = '#/story/' + story.pageId;
-			$stories.append( generateItem( link, story.thumbnail, '', story.title ) );
+			const link = '#/story/' + story.storyId;
+			$stories.append( generateItem( link, story.thumbnail, '', story.storyTitle ) );
 		} );
 	} else {
 		addCtaText();

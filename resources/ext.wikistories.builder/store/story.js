@@ -26,7 +26,7 @@ const makeFrameStyle = ( f, thumbnail = false ) => {
 
 module.exports = {
 	state: {
-		fromArticle: storyContent.fromArticle,
+		fromArticle: storyContent.articleTitle,
 		articleId: storyContent.articleId,
 		currentFrameIndex: null,
 		/*
@@ -34,7 +34,7 @@ module.exports = {
 		 */
 		frames: storyContent.frames,
 		mode: storyEditMode,
-		title: storyContent.title,
+		storyTitle: storyContent.storyTitle,
 		editingText: false,
 		watchlistExpiryEnabled: watchlistExpiryEnabled,
 		watchlistExpiryOptions: watchlistExpiryOptions,
@@ -165,7 +165,7 @@ module.exports = {
 		watchlistExpiryEnabled: ( state ) => state.watchlistExpiryEnabled,
 		watchlistExpiryOptions: ( state ) => state.watchlistExpiryOptions,
 		watchDefault: ( state ) => state.watchDefault,
-		title: ( state ) => state.title,
+		title: ( state ) => state.storyTitle,
 		thumbnails: ( state ) => {
 			return state.frames.map( ( f, index ) => {
 				const newFrame = $.extend( {}, f );

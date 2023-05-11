@@ -12,9 +12,8 @@ return [
 		return new StoriesCache(
 			$services->getMainWANObjectCache(),
 			$services->get( 'Wikistories.PageLinksSearch' ),
-			$services->getPageStore(),
-			$services->get( 'Wikistories.StoryRenderer' ),
-			$services->getContentTransformer()
+			$services->getWikiPageFactory(),
+			$services->get( 'Wikistories.StoryRenderer' )
 		);
 	},
 
@@ -36,8 +35,8 @@ return [
 	'Wikistories.StoryRenderer' => static function ( MediaWikiServices $services ) {
 		return new StoryRenderer(
 			$services->getRepoGroup(),
-			$services->getTitleFormatter(),
-			$services->getRedirectLookup()
+			$services->getRedirectLookup(),
+			$services->getPageStore()
 		);
 	},
 
@@ -47,8 +46,7 @@ return [
 
 	'Wikistories.PageLinksSearch' => static function ( MediaWikiServices $services ) {
 		return new PageLinksSearch(
-			$services->getDBLoadBalancer(),
-			$services->getWikiPageFactory()
+			$services->getDBLoadBalancer()
 		);
 	}
 

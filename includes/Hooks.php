@@ -15,7 +15,6 @@ use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use OutputPage;
-use Psr\Log\LoggerInterface;
 use RequestContext;
 use Skin;
 use SpecialPage;
@@ -210,66 +209,22 @@ class Hooks {
 			return;
 		}
 
-		if ( $editResult->isNew() ) {
+		if ( $wikiPage->getContentModel() !== 'story' ) {
 			return;
 		}
 
 		DeferredUpdates::addCallableUpdate( static function () use ( $wikiPage, $revisionRecord ) {
 			$services = MediaWikiServices::getInstance();
-			/** @var LoggerInterface $logger */
-			$logger = $services->get( 'Wikistories.Logger' );
-
-			$context = [
-				'method' => 'onPageSaveComplete::HandleFromArticleUpdate',
-				'Title' => $wikiPage->getDBkey(),
-				'revId' => $revisionRecord->getId(),
-			];
-
-			$previousRevId = $revisionRecord->getParentId();
-			if ( !$previousRevId ) {
-				$logger->warning( 'Cannot get previous revision id', $context );
-				return;
+			/** @var StoriesCache $cache */
+			$cache = $services->get( 'Wikistories.Cache' );
+			/** @var StoryContent $story */
+			$story = $revisionRecord->getContent( 'main' );
+			'@phan-var StoryContent $story';
+			$articleTitle = $story->getArticleTitle( $services->getPageStore(), $services->getRedirectLookup() );
+			if ( $articleTitle ) {
+				$cache->invalidateForArticle( $articleTitle->getId() );
 			}
-
-			$previousRevision = $services->getRevisionStore()->getRevisionById( $previousRevId );
-			if ( $previousRevision === null ) {
-				$logger->warning( 'Cannot get previous revision object', $context );
-				return;
-			}
-
-			/** @var StoryContent $previousStory */
-			$previousStory = $previousRevision->getContent( 'main' );
-			'@phan-var StoryContent $previousStory';
-			if ( $previousStory === null ) {
-				$logger->warning( 'Cannot get previous story content', $context );
-				return;
-			}
-
-			if ( !( $previousStory instanceof StoryContent ) ) {
-				$context[ 'previousStoryContentType' ] = get_class( $previousStory );
-				$logger->warning( 'Previous content is not StoryContent', $context );
-				return;
-			}
-
-			/** @var StoryContent $newStory */
-			$newStory = $revisionRecord->getContent( 'main' );
-			'@phan-var StoryContent $newStory';
-			if ( $newStory === null ) {
-				$logger->warning( 'Cannot get new story content', $context );
-				return;
-			}
-
-			if ( !( $newStory instanceof StoryContent ) ) {
-				$context[ 'newStoryContentType' ] = get_class( $newStory );
-				$logger->warning( 'New content is not StoryContent', $context );
-				return;
-			}
-
-			if ( $newStory->getFromArticle() !== $previousStory->getFromArticle() ) {
-				/** @var StoriesCache $cache */
-				$cache = $services->get( 'Wikistories.Cache' );
-				$cache->invalidateForArticle( $previousStory->getFromArticle() );
-			}
+			$cache->invalidateStory( $wikiPage->getId() );
 		} );
 	}
 
@@ -302,11 +257,11 @@ class Hooks {
 			return;
 		}
 
-		DeferredUpdates::addCallableUpdate( static function () use ( $story ) {
+		DeferredUpdates::addCallableUpdate( static function () use ( $pageID ) {
 			$services = MediaWikiServices::getInstance();
 			/** @var StoriesCache $cache */
 			$cache = $services->get( 'Wikistories.Cache' );
-			$cache->invalidateForArticle( $story->getFromArticle() );
+			$cache->invalidateForArticle( $pageID );
 		} );
 	}
 

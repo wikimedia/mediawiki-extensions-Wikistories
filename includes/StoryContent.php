@@ -4,7 +4,10 @@ namespace MediaWiki\Extension\Wikistories;
 
 use Html;
 use JsonContent;
-use Title;
+use MediaWiki\Page\PageIdentityValue;
+use MediaWiki\Page\PageLookup;
+use MediaWiki\Page\RedirectLookup;
+use MediaWiki\Title\Title;
 
 class StoryContent extends JsonContent {
 
@@ -53,6 +56,37 @@ class StoryContent extends JsonContent {
 		}
 
 		return $story->articleId ?? -1;
+	}
+
+	/**
+	 * @param PageLookup $pageLookup
+	 * @param RedirectLookup $redirectLookup
+	 * @return Title|null
+	 */
+	public function getArticleTitle( PageLookup $pageLookup, RedirectLookup $redirectLookup ): ?Title {
+		$story = $this->getData()->getValue();
+
+		if ( isset( $story->articleId ) && $story->articleId > 0 ) {
+			$pageRecord = $pageLookup->getPageById( $story->articleId );
+		} elseif ( isset( $story->fromArticle ) && $story->fromArticle !== '' ) {
+			$pageRecord = $pageLookup->getExistingPageByText( $story->fromArticle );
+		} else {
+			return null;
+		}
+		if ( $pageRecord === null ) {
+			return null;
+		}
+		if ( $pageRecord->isRedirect() ) {
+			$identity = PageIdentityValue::localIdentity(
+				$pageRecord->getId(), $pageRecord->getNamespace(), $pageRecord->getDBkey()
+			);
+			$linkTarget = $redirectLookup->getRedirectTarget( $identity );
+			if ( $linkTarget !== null ) {
+				return Title::newFromLinkTarget( $linkTarget );
+			}
+		} else {
+			return Title::newFromPageIdentity( $pageRecord );
+		}
 	}
 
 	/**

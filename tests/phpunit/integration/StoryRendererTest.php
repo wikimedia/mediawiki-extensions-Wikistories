@@ -5,9 +5,11 @@ namespace MediaWiki\Extension\Wikistories;
 use ForeignAPIFile;
 use MediaWiki\Extension\Wikistories\Tests\StoryFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\ExistingPageRecord;
+use MediaWiki\Page\PageLookup;
 use MediaWikiIntegrationTestCase;
 use RepoGroup;
-use TitleValue;
+use Title;
 
 class StoryRendererTest extends MediaWikiIntegrationTestCase {
 
@@ -45,70 +47,81 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		return $repoGroup;
 	}
 
+	private function createPageStoreMock() {
+		$pageRecordMock = $this->createMock( ExistingPageRecord::class );
+		$pageRecordMock->method( 'getDbKey' )->willReturn( 'Main_page' );
+
+		$pageStore = $this->createMock( PageLookup::class );
+		$pageStore->method( 'getPageById' )->willReturnMap( [
+			[ 114, 0, $pageRecordMock ],
+			[ 999, 0, null ],
+		] );
+		return $pageStore;
+	}
+
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryRenderer::getStoryForViewer
+	 * @covers MediaWiki\Extension\Wikistories\StoryRenderer::getStoryData
 	 */
-	public function testGetStoryForViewer() {
+	public function testGetStoryData() {
 		$story = StoryFactory::makeValidStory();
 		$repoGroup = $this->createRepoGroupMock();
 		$renderer = new StoryRenderer(
 			$repoGroup,
-			MediaWikiServices::getInstance()->getTitleFormatter(),
-			MediaWikiServices::getInstance()->getRedirectLookup()
+			MediaWikiServices::getInstance()->getRedirectLookup(),
+			$this->createPageStoreMock()
 		);
-		$storyForViewer = $renderer->getStoryForViewer(
+		$storyData = $renderer->getStoryData(
 			$story,
-			12,
-			new TitleValue( NS_STORY, 'Story about Cats' )
+			Title::makeTitle( NS_STORY, 'Story about Cats' )
 		);
 
-		$this->assertEquals( 'Story about Cats', $storyForViewer[ 'title' ] );
-		$this->assertEquals( 12, $storyForViewer[ 'pageId' ] );
-		$this->assertStringEndsWith( 'Special:StoryBuilder/Story:Story_about_Cats', $storyForViewer[ 'editUrl' ] );
-		$this->assertCount( 2, $storyForViewer[ 'frames' ] );
+		$this->assertEquals( 'Story about Cats', $storyData[ 'storyTitle' ] );
+		$this->assertArrayHasKey( 'storyId', $storyData );
+		$this->assertStringEndsWith( 'Special:StoryBuilder/Story:Story_about_Cats', $storyData[ 'editUrl' ] );
+		$this->assertCount( 2, $storyData[ 'frames' ] );
 		$this->assertEquals(
 			'cat-poster-url',
-			$storyForViewer[ 'frames' ][ 0 ][ 'url' ]
+			$storyData[ 'frames' ][ 0 ][ 'url' ]
 		);
-		$this->assertEquals( 'This is a cat', $storyForViewer[ 'frames' ][ 0 ][ 'text' ] );
+		$this->assertEquals( 'This is a cat', $storyData[ 'frames' ][ 0 ][ 'text' ] );
 		$this->assertEquals(
 			'cat-poster-attribution-url',
-			$storyForViewer[ 'frames' ][ 0 ][ 'attribution' ][ 'url' ]
+			$storyData[ 'frames' ][ 0 ][ 'attribution' ][ 'url' ]
 		);
 		$this->assertEquals(
 			'cat-poster-artist',
-			$storyForViewer[ 'frames' ][ 0 ][ 'attribution' ][ 'author' ]
+			$storyData[ 'frames' ][ 0 ][ 'attribution' ][ 'author' ]
 		);
-		$this->assertContains( 'Public', $storyForViewer[ 'frames' ][ 0 ][ 'attribution' ][ 'license' ] );
+		$this->assertContains( 'Public', $storyData[ 'frames' ][ 0 ][ 'attribution' ][ 'license' ] );
 		$this->assertEquals(
 			'cat-napping-url',
-			$storyForViewer[ 'frames' ][ 1 ][ 'url' ]
+			$storyData[ 'frames' ][ 1 ][ 'url' ]
 		);
-		$this->assertEquals( 'Sleeping now...', $storyForViewer[ 'frames' ][ 1 ][ 'text' ] );
+		$this->assertEquals( 'Sleeping now...', $storyData[ 'frames' ][ 1 ][ 'text' ] );
 		$this->assertEquals(
 			'cat-napping-attribution-url',
-			$storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'url' ]
+			$storyData[ 'frames' ][ 1 ][ 'attribution' ][ 'url' ]
 		);
 		$this->assertEquals(
 			'cat-napping-artist',
-			$storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'author' ]
+			$storyData[ 'frames' ][ 1 ][ 'attribution' ][ 'author' ]
 		);
-		$this->assertContains( 'CC', $storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'license' ] );
-		$this->assertContains( 'SA', $storyForViewer[ 'frames' ][ 1 ][ 'attribution' ][ 'license' ] );
+		$this->assertContains( 'CC', $storyData[ 'frames' ][ 1 ][ 'attribution' ][ 'license' ] );
+		$this->assertContains( 'SA', $storyData[ 'frames' ][ 1 ][ 'attribution' ][ 'license' ] );
 	}
 
 	/**
 	 * @covers MediaWiki\Extension\Wikistories\StoryRenderer::renderNoJS
 	 */
 	public function testRenderNoJS() {
-		$story = StoryFactory::makeValidStory();
+		$storyData = StoryFactory::makeValidStoryData();
 		$repoGroup = $this->createRepoGroupMock();
 		$renderer = new StoryRenderer(
 			$repoGroup,
-			MediaWikiServices::getInstance()->getTitleFormatter(),
-			MediaWikiServices::getInstance()->getRedirectLookup()
+			MediaWikiServices::getInstance()->getRedirectLookup(),
+			$this->createPageStoreMock()
 		);
-		$parts = $renderer->renderNoJS( $story, 12 );
+		$parts = $renderer->renderNoJS( $storyData );
 
 		$this->assertArrayHasKey( 'html', $parts );
 		$this->assertStringContainsString(
