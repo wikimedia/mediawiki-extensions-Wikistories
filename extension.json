@@ -126,7 +126,7 @@
 			"id": 1705,
 			"constant": "NS_STORY_TALK",
 			"name": "Story_Talk",
-			"content": true,
+			"content": false,
 			"defaultcontentmodel": "wikitext"
 		}
 	],
