@@ -39,6 +39,8 @@
 					v-if="watchlistExpiryEnabled"
 					v-model="watchlistExpiry"
 					:disabled="!watchlist"
+					class="ext-wikistories-publishform-content-watchlist-select"
+					:class="!watchlist ? 'ext-wikistories-publishform-content-watchlist-select-disabled' : ''"
 				>
 					<option
 						v-for="( value, key ) in watchlistExpiryOptions.options"
@@ -235,8 +237,39 @@ module.exports = {
 		}
 
 		&-watchlist {
+			position: relative;
 			width: 100%;
 			margin: 12px 0;
+
+			input {
+				width: 23px;
+				height: 23px;
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			label {
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			&-select {
+				display: inline-block;
+				vertical-align: middle;
+				box-sizing: border-box;
+				height: 2.3em;
+				border: @border-base;
+				border-radius: 2px;
+				padding-left: 12px;
+				padding-right: 1em;
+				margin-left: 10px;
+
+				&-disabled {
+					color: @color-disabled;
+					border-color: @border-color-disabled;
+					background-color: @background-color-disabled-subtle;
+				}
+			}
 		}
 
 		&-error {
