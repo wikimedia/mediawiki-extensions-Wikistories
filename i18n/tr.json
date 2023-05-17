@@ -3,7 +3,8 @@
 		"authors": [
 			"Hedda",
 			"Can",
-			"SaldırganSincap"
+			"SaldırganSincap",
+			"Joseph"
 		]
 	},
 	"wikistories-extensiondesc": "Vikihikayeler; editörlerin Wikimedia projelerinden kısa, görsel ve güvenilir bilgiler oluşturmasına olanak tanır",
@@ -29,11 +30,11 @@
 	"wikistories-error-frameswithouttext-title": "Eksik Metin",
 	"wikistories-error-frameswithouttext-message": "{{PLURAL:$1|Bir hikaye sayfasında|$1 hikaye sayfasında}} metin eksik. Yayımlamak için metin ekleyin.",
 	"wikistories-builder-publishform-header": "Vikihikaye'yi yayımla",
-	"wikistories-builder-publishform-placeholder": "Hikaye başlığı girin...",
+	"wikistories-builder-publishform-placeholder": "Öykü başlığı girin...",
 	"wikistories-builder-publishform-publishbutton": "Yayımla",
-	"wikistories-builder-publishform-info": "Yayımlanmış hikayeler, madde sayfasında yer alacaktır.",
-	"wikistories-builder-publishform-invalidtitle-empty": "Hikaye başlığı girin",
-	"wikistories-builder-publishform-invalidtitle-format": "Geçersiz hikaye başlığı",
+	"wikistories-builder-publishform-info": "Yayımlanmış öyküler, madde sayfasında yer alacaktır.",
+	"wikistories-builder-publishform-invalidtitle-empty": "Öykü başlığı girin",
+	"wikistories-builder-publishform-invalidtitle-format": "Geçersiz öykü başlığı",
 	"wikistories-builder-publishform-invalidtitle-duplicate": "Aynı başlığa sahip başka bir hikaye zaten var. Lütfen, farklı bir hikaye başlığı yazın.",
 	"wikistories-builder-publishform-saveerror": "Hikaye yayımlanırken bir hata meydana geldi. Lütfen daha sonra tekrar deneyin.",
 	"wikistories-discover-cta-text": "Vikihikaye oluştur"
