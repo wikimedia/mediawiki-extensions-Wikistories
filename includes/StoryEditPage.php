@@ -142,9 +142,9 @@ class StoryEditPage extends EditPage {
 		$story = [
 			'articleId' => intval( $request->getText( 'story_article_id' ) ),
 			'categories' => array_values(
-				array_unique(
+				array_unique( array_filter( array_map( 'trim',
 					explode( "\n", trim( $request->getText( 'story_categories' ) ) )
-				)
+				) ) )
 			),
 			'frames' => []
 		];
