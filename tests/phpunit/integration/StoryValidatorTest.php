@@ -65,7 +65,7 @@ class StoryValidatorTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expectedValid, $validator->isValid( $story )->isGood() );
 	}
 
-	public function provideIsValidStories() {
+	public static function provideIsValidStories() {
 		return [
 			'invalid json' => [ false, 'this is not even json' ],
 			'Not enough frames' => [ false, [
