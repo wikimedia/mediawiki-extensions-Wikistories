@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Telaneo"
+			"Telaneo",
+			"Yupik"
 		]
 	},
+	"rcshowhidewikistories-hide": "Skjul",
 	"wikistories-story-feedback": "Send tilbakemelding",
 	"wikistories-storyviewer-talk": "Send tilbakemelding"
 }

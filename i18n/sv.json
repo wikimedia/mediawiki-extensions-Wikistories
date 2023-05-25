@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sabelöga"
+			"Sabelöga",
+			"Yupik"
 		]
 	},
 	"wikistories-extensiondesc": "Wikistories låter redigerare skapa kort, visuell och pålitlig kunskap från Wikimedias projekt",
 	"wikistories-beta-feature-message": "Wikiberättelser",
+	"rcshowhidewikistories-hide": "Dölj",
 	"wikistories-search-inputplaceholder": "Sök bilder",
 	"wikistories-search-cuetext": "Sök efter bilder till artikeln.",
 	"wikistories-search-noresultstext": "Inga resultat",
