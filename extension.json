@@ -72,6 +72,7 @@
 		"OldChangesListRecentChangesLine": "RecentChangesPropagationHooks",
 		"ChangesListSpecialPageStructuredFilters": "RecentChangesPropagationHooks",
 		"PageDeleteComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onPageDeleteComplete",
+		"PageUndeleteComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onPageUndeleteComplete",
 		"GetPreferences": "MediaWiki\\Extension\\Wikistories\\Hooks::onGetPreferences"
 	},
 	"ServiceWiringFiles": [
@@ -371,7 +372,8 @@
 		}
 	],
 	"TrackingCategories": [
-		"wikistories-no-image-category"
+		"wikistories-no-image-category",
+		"wikistories-no-related-article"
 	],
 	"manifest_version": 2
 }

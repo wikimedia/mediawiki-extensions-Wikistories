@@ -99,6 +99,7 @@
 	"wikistories-nojs-form-categories-title": "Title of the form section for categories",
 	"wikistories-nojs-form-categories-label": "Label of the text area to edit story categories",
 	"wikistories-nojs-viewer-error": "Text for missing images error message.\nParameters:\n* $1 - Number of images missing",
+	"wikistories-nojs-viewer-no-article": "Text for no article linked to story",
 	"wikistories-discover-cta-text": "Text for a button in the Discover section to start the builder step",
 	"wikistories-discover-cta-text-subheader": "Subheader text for a button in the Discover section to start the builder step",
 	"wikistories-storyviewer-next-story-header": "Text for the header on next story page",
@@ -114,5 +115,7 @@
 	"wikistories-too-many-frames": "Error message when the story has too many frames",
 	"wikistories-text-too-long": "Error message when the text on a frame is too long.\nParameters:\n* $1 - index of the frame (starting at 1)\n* $2 - Length of the text\n* $3 - Maximum length allowed",
 	"wikistories-no-image-category": "Tracking Categories for story no image found",
-	"wikistories-no-image-category-desc": "Description of the Tracking Categories for story no image found"
+	"wikistories-no-image-category-desc": "Description of the Tracking Categories for story no image found",
+	"wikistories-no-related-article": "Tracking Categories for story has no related article",
+	"wikistories-no-related-article-desc": "Description of the Tracking Categories for story has no related article"
 }

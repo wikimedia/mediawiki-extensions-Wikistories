@@ -147,6 +147,21 @@ class Hooks {
 	}
 
 	/**
+	 * @param ProperPageIdentity $page
+	 */
+	private static function purgeStories( ProperPageIdentity $page ) {
+		$services = MediaWikiServices::getInstance();
+		/** @var PageLinksSearch $pageLinksSearch */
+		$pageLinksSearch = $services->get( 'Wikistories.PageLinksSearch' );
+		$wikiPageFactory = $services->getWikiPageFactory();
+		$storiesId = $pageLinksSearch->getPageLinks( $page->getDBkey(), 99 );
+		foreach ( $storiesId as $storyId ) {
+			$page = $wikiPageFactory->newFromID( $storyId );
+			$page->doPurge();
+		}
+	}
+
+	/**
 	 * @param Skin $skin
 	 * @return bool
 	 */
@@ -229,6 +244,7 @@ class Hooks {
 	}
 
 	/**
+	 * Do purge stories when article is deleted
 	 * Invalidate stories cache for the related article
 	 *
 	 * @param ProperPageIdentity $page
@@ -248,6 +264,15 @@ class Hooks {
 		ManualLogEntry $logEntry,
 		int $archivedRevisionCount
 	) {
+		// NS_MAIN deletion
+		if ( $page->getNamespace() === NS_MAIN ) {
+			DeferredUpdates::addCallableUpdate( static function () use ( $page ) {
+				self::purgeStories( $page );
+			} );
+			return;
+		}
+
+		// NS_STORY deletion
 		if ( $page->getNamespace() !== NS_STORY ) {
 			return;
 		}
@@ -265,4 +290,34 @@ class Hooks {
 		} );
 	}
 
+	/**
+	 * Do purge stories when article is undeleted
+	 *
+	 * @param ProperPageIdentity $page
+	 * @param Authority $restorer
+	 * @param string $reason
+	 * @param RevisionRecord $restoredRev
+	 * @param ManualLogEntry $logEntry
+	 * @param int $restoredRevisionCount
+	 * @param bool $created
+	 * @param array $restoredPageIds
+	 */
+	public static function onPageUndeleteComplete(
+		ProperPageIdentity $page,
+		Authority $restorer,
+		string $reason,
+		RevisionRecord $restoredRev,
+		ManualLogEntry $logEntry,
+		int $restoredRevisionCount,
+		bool $created,
+		array $restoredPageIds
+	) {
+		// NS_MAIN deletion
+		if ( $page->getNamespace() === NS_MAIN ) {
+			DeferredUpdates::addCallableUpdate( static function () use ( $page ) {
+				self::purgeStories( $page );
+			} );
+			return;
+		}
+	}
 }

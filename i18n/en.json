@@ -92,6 +92,7 @@
 	"wikistories-nojs-form-categories-title": "Categories",
 	"wikistories-nojs-form-categories-label": "Categories names, without the namespace, one per line",
 	"wikistories-nojs-viewer-error": "$1 {{PLURAL:$1|image|images}} used in this story {{PLURAL:$1|is|are}} no longer available on Commons.",
+	"wikistories-nojs-viewer-no-article": "Important! The article linked to this story is no longer available. You may need to delete the story to maintain accuracy.",
 	"wikistories-discover-cta-text": "Create a Wikistory",
 	"wikistories-discover-cta-text-subheader": "Be the first one to illustrate key facts about this topic for visual learners.",
 	"wikistories-storyviewer-next-story-header": "Read more",
@@ -107,5 +108,7 @@
 	"wikistories-too-many-frames": "The story has too many frames",
 	"wikistories-text-too-long": "The text on frame #$1 is too long. It has {{PLURAL:$2|$2 character|$2 characters}} but the maximum allowed is $3.",
 	"wikistories-no-image-category": "Story with no image file",
-	"wikistories-no-image-category-desc": "One of the story frames has no image"
+	"wikistories-no-image-category-desc": "One of the story frames has no image",
+	"wikistories-no-related-article": "Story with no related article",
+	"wikistories-no-related-article-desc": "The linked article of the Story is deleted"
 }

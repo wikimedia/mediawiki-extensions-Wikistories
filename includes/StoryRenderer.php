@@ -16,6 +16,8 @@ class StoryRenderer {
 
 	private const TC_NO_IMAGE = 'wikistories-no-image-category';
 
+	private const TC_NO_ARTICLE = 'wikistories-no-related-article';
+
 	/** @var RepoGroup */
 	private $repoGroup;
 
@@ -59,6 +61,13 @@ class StoryRenderer {
 			[ 'href' => $articleTitle->getLinkURL() ],
 			$articleTitle->getText()
 		);
+
+		if ( in_array( self::TC_NO_ARTICLE, $storyData[ 'trackingCategories' ] ) ) {
+			$context = RequestContext::getMain();
+			$html .= Html::errorBox(
+				$context->msg( 'wikistories-nojs-viewer-no-article' )->text()
+			);
+		}
 
 		if ( count( $missingImages ) > 0 ) {
 			$context = RequestContext::getMain();
@@ -109,6 +118,11 @@ class StoryRenderer {
 		$thumb = $firstFrame ? $this->getUrl( $files, $firstFrame->image->filename, 52 ) : '';
 		$article = $story->getArticleTitle( $this->pageLookup, $this->redirectLookup );
 		$trackingCategories = [];
+
+		if ( empty( $article ) ) {
+			$trackingCategories[] = self::TC_NO_ARTICLE;
+		}
+
 		$data = [
 			'articleId' => $article ? $article->getId() : 0,
 			'articleTitle' => $article ? $article->getDBkey() : '',
