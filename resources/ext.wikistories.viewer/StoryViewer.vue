@@ -22,8 +22,16 @@
 			></div>
 			<!-- CLOSE BUTTON -->
 			<div
+				v-if="allowClose"
 				class="ext-wikistories-viewer-container-content-close-icon"
 				@click="discardStory"
+			></div>
+			<!-- SHARE BUTTON -->
+			<div
+				v-show="canShare"
+				class="ext-wikistories-viewer-container-content-share-icon"
+				:style="shareStyle"
+				@click="shareStory"
 			></div>
 			<!-- PAUSE BUTTON -->
 			<div
@@ -42,6 +50,7 @@
 					@click="showTextSizeModal"
 				></dots-menu-item>
 				<dots-menu-item
+					v-if="allowEdit"
 					:text="$i18n( 'wikistories-storyviewer-edit' ).text()"
 					icon="edit"
 					@click="edit"
@@ -186,8 +195,10 @@ module.exports = {
 	},
 	props: {
 		stories: { type: Array, default: () => [] },
-		storyId: { type: String, default: '' },
-		logStoryViewFn: { type: Function, default: () => {} }
+		storyId: { type: Number, default: 0 },
+		logStoryViewFn: { type: Function, default: () => {} },
+		allowClose: { type: Boolean, required: true },
+		allowEdit: { type: Boolean, required: true }
 	},
 	data: function () {
 		return {
@@ -200,7 +211,7 @@ module.exports = {
 		};
 	},
 	computed: $.extend( mapGetters( [
-		'story', 'currentFrame', 'editUrl', 'talkUrl', 'isCurrentImageLoaded',
+		'story', 'currentFrame', 'editUrl', 'talkUrl', 'shareUrl', 'isCurrentImageLoaded',
 		'isStoryEnd', 'isFirstFrame', 'isLastFrame', 'textsize', 'textsizes',
 		'isFramePlaying', 'isFrameDonePlaying', 'isFrameViewed', 'currentStoryTitle',
 		'nextStories'
@@ -218,6 +229,14 @@ module.exports = {
 					backgroundColor: this.isCurrentImageLoaded ? '#fff' : '#000'
 				};
 			}
+		},
+		shareStyle: function () {
+			return {
+				right: this.isStoryEnd ? '50px' : '108px'
+			};
+		},
+		canShare: function () {
+			return !!navigator.share;
 		}
 	} ),
 	methods: $.extend( mapActions( [
@@ -251,10 +270,19 @@ module.exports = {
 			}.bind( this ), this.frameDuration );
 		},
 		discardStory: function () {
+			if ( !this.allowClose ) {
+				return;
+			}
 			this.logStoryViewEvent();
 			this.setStoryId( null );
 			this.timer.clear();
 			window.location.hash = '';
+		},
+		shareStory: function () {
+			navigator.share( {
+				title: this.currentStoryTitle,
+				url: this.shareUrl
+			} );
 		},
 		toggleStory: function () {
 			if ( this.timer.isPaused ) {
@@ -567,6 +595,18 @@ module.exports = {
 				background-position: center;
 				background-repeat: no-repeat;
 				left: 0;
+				top: 18px;
+				z-index: @z-level-two;
+			}
+
+			&-share-icon {
+				position: absolute;
+				cursor: pointer;
+				width: 48px;
+				height: 48px;
+				background-image: url( ./images/share.svg );
+				background-position: center;
+				background-repeat: no-repeat;
 				top: 18px;
 				z-index: @z-level-two;
 			}

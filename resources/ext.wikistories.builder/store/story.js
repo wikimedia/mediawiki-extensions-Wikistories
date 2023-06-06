@@ -30,6 +30,7 @@ module.exports = {
 	state: {
 		fromArticle: storyContent.articleTitle,
 		articleId: storyContent.articleId,
+		storyPageId: null,
 		currentFrameIndex: null,
 		/*
 			frames: [ { url, filename, text, textFromArticle } ]
@@ -102,6 +103,9 @@ module.exports = {
 				// key: message, icon, isAlwaysShown, replace
 				frame.warning = payload[ index ];
 			} );
+		},
+		setStoryPageId: ( state, value ) => {
+			state.storyPageId = value;
 		}
 	},
 	actions: {
@@ -221,6 +225,9 @@ module.exports = {
 			}
 
 			context.commit( 'setWarningFrames', warningMessage );
+		},
+		setStoryPageId: ( context, value ) => {
+			context.commit( 'setStoryPageId', value );
 		}
 	},
 	getters: {
@@ -285,6 +292,10 @@ module.exports = {
 				} )
 			};
 		},
-		editingText: ( state ) => state.editingText
+		editingText: ( state ) => state.editingText,
+		storyUrl: ( state ) => {
+			const titleObj = mw.Title.newFromText( state.fromArticle + '#/story/' + state.storyPageId );
+			return titleObj ? titleObj.getUrl() : '';
+		}
 	}
 };

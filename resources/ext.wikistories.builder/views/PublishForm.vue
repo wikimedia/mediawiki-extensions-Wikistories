@@ -60,14 +60,34 @@
 		</div>
 		<div class="ext-wikistories-publishform-license" v-html="licenseHtml">
 		</div>
-		<div v-if="savingInProgress" class="ext-wikistories-publishform-saving">
-			<div class="ext-wikistories-publishform-saving-spinner">
+		<div v-if="overlay" class="ext-wikistories-publishform-saving">
+			<div v-if="savingInProgress" class="ext-wikistories-publishform-saving-spinner">
 				<div class="ext-wikistories-publishform-saving-spinner-animation">
 					<div class="ext-wikistories-publishform-saving-spinner-animation-bounce"></div>
 				</div>
 			</div>
-			<div class="ext-wikistories-publishform-saving-text">
+			<div v-if="savingInProgress" class="ext-wikistories-publishform-saving-text">
 				{{ $i18n( 'wikistories-builder-publishform-saving' ).text() }}
+			</div>
+			<div v-if="savingDone" class="ext-wikistories-publishform-saving-done">
+				<div class="ext-wikistories-publishform-saving-done-image">
+					&check;
+				</div>
+				<p class="ext-wikistories-publishform-saving-done-congrats">
+					{{ $i18n( 'wikistories-builder-publishform-saving-done' ).text() }}
+				</p>
+				<p>
+					<a class="ext-wikistories-publishform-saving-done-read" :href="storyUrl">
+						{{ $i18n( 'wikistories-builder-publishform-gotostory' ).text() }}
+					</a>
+				</p>
+				<p v-if="canShare">
+					<a
+						class="ext-wikistories-publishform-saving-done-share"
+						@click="shareStory">
+						{{ $i18n( 'wikistories-builder-publishform-sharestory' ).text() }}
+					</a>
+				</p>
 			</div>
 		</div>
 	</div>
@@ -103,12 +123,14 @@ module.exports = {
 				mode: 'error'
 			},
 			titleInputDisabled: false,
-			savingInProgress: false
+			overlay: false,
+			savingInProgress: false,
+			savingDone: false
 		};
 	},
 	computed: $.extend( mapGetters( [
 		'frames', 'valid', 'fromArticle', 'storyForSave', 'mode', 'title', 'storyExists',
-		'watchlistExpiryEnabled', 'watchlistExpiryOptions', 'watchDefault'
+		'watchlistExpiryEnabled', 'watchlistExpiryOptions', 'watchDefault', 'storyUrl'
 	] ), {
 		licenseHtml: function () {
 			const html = this.$i18n(
@@ -125,19 +147,20 @@ module.exports = {
 		},
 		knownError: function () {
 			return this.error && !this.toast.show;
+		},
+		canShare: function () {
+			return !!navigator.share;
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'routeBack' ] ), {
-		navigateToArticle: function ( storyPageId ) {
-			const titleObj = mw.Title.newFromText( this.fromArticle + '#/story/' + storyPageId );
-			window.location = titleObj.getUrl();
-		},
+	methods: $.extend( mapActions( [ 'routeBack', 'setStoryPageId' ] ), {
 		onSaveClick: function () {
 			this.error = null;
+			this.overlay = true;
 			this.savingInProgress = true;
 			const mustExist = this.mode === 'edit';
 			validateTitle( this.storyTitle, mustExist ).then( function ( validity ) {
 				if ( !validity.valid ) {
+					this.overlay = false;
 					this.savingInProgress = false;
 					this.error = this.$i18n( validity.message ).text();
 					events.logPublishFailure( this.storyTitle, this.storyExists, this.error );
@@ -151,7 +174,9 @@ module.exports = {
 						if ( response.result === 'Success' ) {
 							events.logPublishSuccess( this.storyTitle, this.storyExists );
 							window.removeEventListener( 'beforeunload', beforeUnloadListener );
-							this.navigateToArticle( response.pageid );
+							this.setStoryPageId( response.pageid );
+							this.savingInProgress = false;
+							this.savingDone = true;
 						} else {
 							this.setErrorFeedback( response );
 						}
@@ -171,6 +196,7 @@ module.exports = {
 			this.error = '';
 		},
 		setErrorFeedback: function ( response ) {
+			this.overlay = false;
 			this.savingInProgress = false;
 			if ( response && response.error && response.error.info ) {
 				this.error = response.error.info;
@@ -191,6 +217,14 @@ module.exports = {
 			this.toast.message = '';
 			this.toast.show = false;
 			this.error = null;
+		},
+		shareStory: function () {
+			const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
+			const shareUrl = new mw.Uri( title.getUrl( { action: 'storyview' } ) );
+			navigator.share( {
+				title: title.getMainText(),
+				url: shareUrl.toString()
+			} );
 		}
 	} ),
 	mounted: function () {
@@ -375,6 +409,41 @@ module.exports = {
 					-ms-transform: scale( 1 );
 					transform: scale( 1 );
 				}
+			}
+		}
+
+		&-done {
+			font-size: 16px;
+			font-weight: bold;
+
+			&-image {
+				background-image: url( ./../images/congrats.svg );
+				height: 50px;
+				width: 50px;
+				margin: auto;
+				background-repeat: no-repeat;
+				background-size: contain;
+				line-height: 50px;
+				font-size: 30px;
+				color: @color-inverted;
+			}
+
+			&-congrats {
+				margin: 10px;
+			}
+
+			&-read {
+				padding: 10px;
+				background-color: @background-color-progressive;
+				// stylelint-disable-next-line declaration-no-important
+				color: @color-inverted !important;
+			}
+
+			&-share {
+				background-image: url( ./../images/share-black.svg );
+				background-repeat: no-repeat;
+				background-position: left;
+				padding-left: 30px;
 			}
 		}
 	}

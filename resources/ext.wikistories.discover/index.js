@@ -12,12 +12,15 @@ const $discover = getDiscoverSection().insertAfter( '.page-heading' );
 getStories( articleTitle ).then( function ( stories ) {
 	const renderStoryViewer = function () {
 		const urlHashMatch = location.hash.match( /#\/story\/(\d+)/ );
-		const storyId = urlHashMatch && urlHashMatch[ 1 ];
+		let storyId = urlHashMatch && urlHashMatch[ 1 ];
+		if ( storyId !== null ) {
+			storyId = parseInt( storyId );
+		}
 
-		if ( storyId && stories.find( story => story.storyId.toString() === storyId ) ) {
+		if ( storyId && stories.find( story => story.storyId === storyId ) ) {
 			loadingViewer.then( function () {
 				const initStoryViewer = require( 'ext.wikistories.viewer' );
-				initStoryViewer( stories, storyId, events.logStoryView );
+				initStoryViewer( stories, storyId, events.logStoryView, true, true );
 				document.body.classList.add( 'ext-wikistories-viewer-on' );
 			} );
 		} else {

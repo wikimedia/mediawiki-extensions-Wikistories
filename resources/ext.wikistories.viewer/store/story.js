@@ -17,13 +17,13 @@ module.exports = {
 	getters: {
 		currentStory: ( state ) => {
 			return state.stories.find( story => {
-				return story.storyId.toString() === state.storyId;
+				return story.storyId === state.storyId;
 			} ) || {};
 		},
 		story: ( state ) => {
 			const stories = state.stories;
 			const storyId = state.storyId;
-			const currentStory = stories.find( story => story.storyId.toString() === storyId );
+			const currentStory = stories.find( story => story.storyId === storyId );
 			if ( currentStory ) {
 				const coverFrame = [ {
 					id: 0,
@@ -80,6 +80,9 @@ module.exports = {
 		},
 		talkUrl: ( state, getters ) => {
 			return getters.currentStory.talkUrl;
+		},
+		shareUrl: ( state, getters ) => {
+			return getters.currentStory.shareUrl;
 		},
 		isCurrentImageLoaded: ( state, getters ) => {
 			return state.loadedImages.indexOf( getters.currentFrame.url ) !== -1;
