@@ -92,6 +92,7 @@
 	"wikistories-nojs-form-categories-title": "קטגוריות",
 	"wikistories-nojs-form-categories-label": "שמות קטגוריות, ללא מרחב השמות, אחד בכל שורה",
 	"wikistories-nojs-viewer-error": "{{PLURAL:$1|תמונה אחת שמשמשת|$1 תמונות שמשמשות}} בסיפור הזה כבר {{PLURAL:$1|אינה זמינה|אינן זמינות}} בוויקישיתוף.",
+	"wikistories-nojs-viewer-no-article": "חשוב! הערך המקושר לסיפור הזה אינו זמין יותר. ייתכן {{GENDER:|שתצטרך|שתצטרכי}} למחוק את הסיפור כדי לשמור על דיוק.",
 	"wikistories-discover-cta-text": "יצירת סיפור ויקי",
 	"wikistories-discover-cta-text-subheader": "{{GENDER:|היה הראשון|היי הראשונה}} להמחיש עובדות מפתח על הנושא הזה ללומדים חזותיים.",
 	"wikistories-storyviewer-next-story-header": "מידע נוסף",
@@ -107,5 +108,7 @@
 	"wikistories-too-many-frames": "בסיפור יש יותר מדי שקופיות",
 	"wikistories-text-too-long": "הטקסט בשקופית מס' $1 ארוך מדי. יש בו {{PLURAL:$2|תו אחד|$2 תווים}}, אבל המספר המרבי המותר הוא $3.",
 	"wikistories-no-image-category": "סיפור ללא קובץ תמונה",
-	"wikistories-no-image-category-desc": "באחת ממסגרות הסיפור אין תמונה"
+	"wikistories-no-image-category-desc": "באחת ממסגרות הסיפור אין תמונה",
+	"wikistories-no-related-article": "סיפור ללא ערך משויך",
+	"wikistories-no-related-article-desc": "הערך המקושר של הסיפור מחוק"
 }

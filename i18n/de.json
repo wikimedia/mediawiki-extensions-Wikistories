@@ -91,6 +91,7 @@
 	"wikistories-nojs-form-categories-title": "Kategorien",
 	"wikistories-nojs-form-categories-label": "Kategoriennamen, ohne Namensraum, eine pro Zeile",
 	"wikistories-nojs-viewer-error": "$1 in dieser Geschichte {{PLURAL:$1|verwendetes Bild ist|verwendete Bilder sind}} nicht mehr auf Commons verfügbar.",
+	"wikistories-nojs-viewer-no-article": "Wichtig! Der mit dieser Geschichte verlinkte Artikel ist nicht mehr verfügbar. Möglicherweise musst du die Story löschen, um die Genauigkeit zu gewährleisten.",
 	"wikistories-discover-cta-text": "Geschichte erstellen",
 	"wikistories-discover-cta-text-subheader": "Sei der Erste, der die wichtigsten Fakten zu diesem Thema für visuell Lernende illustriert.",
 	"wikistories-storyviewer-next-story-header": "Mehr lesen",
@@ -106,5 +107,7 @@
 	"wikistories-too-many-frames": "Die Geschichte hat zu viele Bilder",
 	"wikistories-text-too-long": "Der Text im Rahmen #$1 ist zu lang. Er hat {{PLURAL:$2|$2 Zeichen}}, aber es sind maximal $3 erlaubt.",
 	"wikistories-no-image-category": "Geschichte ohne Bild",
-	"wikistories-no-image-category-desc": "Eine der Geschichten hat kein Bild"
+	"wikistories-no-image-category-desc": "Eine der Geschichten hat kein Bild",
+	"wikistories-no-related-article": "Geschichte ohne verwandten Artikel",
+	"wikistories-no-related-article-desc": "Der verlinkte Artikel der Story wird gelöscht"
 }
