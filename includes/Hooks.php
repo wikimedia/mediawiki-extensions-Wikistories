@@ -91,7 +91,8 @@ class Hooks {
 	private static function shouldShowStories( User $user, Title $title, Skin $skin, IContextSource $context ): bool {
 		return self::shouldShowStoriesForUser( $user, $context )
 			&& self::shouldShowStoriesOnSkin( $skin )
-			&& self::shouldShowStoriesOnPage( $title );
+			&& self::shouldShowStoriesOnPage( $title )
+			&& self::shouldShowStoriesForAction( $context->getActionName() );
 	}
 
 	/**
@@ -171,6 +172,14 @@ class Hooks {
 	 */
 	private static function shouldShowStoriesOnSkin( Skin $skin ) {
 		return $skin->getSkinName() === 'minerva';
+	}
+
+	/**
+	 * @param string $action
+	 * @return bool
+	 */
+	private static function shouldShowStoriesForAction( string $action ) {
+		return $action === 'view';
 	}
 
 	/**
