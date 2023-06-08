@@ -8,12 +8,6 @@
 			@focus="onFocus"
 			@blur="onBlur"
 		></textarea>
-		<div
-			v-if="editingText"
-			class="ext-wikistories-current-frame-text-edit-guide"
-			:class="editGuideIcon ? 'ext-wikistories-current-frame-text-edit-guide-icon-' + editGuideIcon : ''">
-			{{ editGuideMessage }}
-		</div>
 	</div>
 </template>
 
@@ -21,8 +15,6 @@
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
 const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
-const TEXT_EDIT_THRESHOLD = mw.config.get( 'wgWikistoriesUnmodifiedTextThreshold' );
-const calculateUnmodifiedContent = require( '../util/calculateUnmodifiedContent.js' );
 
 // @vue/component
 module.exports = {
@@ -36,12 +28,6 @@ module.exports = {
 			type: Function,
 			default: () => {}
 		}
-	},
-	data: function () {
-		return {
-			editGuideMessage: this.$i18n( 'wikistories-story-edittext-initial' ).text(),
-			editGuideIcon: 'edit_reference'
-		};
 	},
 	computed: $.extend( mapGetters( [ 'currentFrame', 'editingText' ] ), {
 		storyText: {
@@ -64,26 +50,6 @@ module.exports = {
 			textarea.style.height = textarea.scrollHeight + 'px';
 		}
 	} ),
-	watch: {
-		storyText: function () {
-			if ( !this.storyText ) {
-				return;
-			}
-
-			const unmodified = calculateUnmodifiedContent( this.currentFrame.textFromArticle, this.storyText );
-
-			if ( unmodified === 1 ) {
-				this.editGuideMessage = this.$i18n( 'wikistories-story-edittext-initial' ).text();
-				this.editGuideIcon = 'edit_reference';
-			} else if ( unmodified < TEXT_EDIT_THRESHOLD ) {
-				this.editGuideMessage = this.$i18n( 'wikistories-story-edittext-last' ).text();
-				this.editGuideIcon = 'alert';
-			} else {
-				this.editGuideMessage = this.$i18n( 'wikistories-story-edittext-medium' ).text();
-				this.editGuideIcon = 'alert';
-			}
-		}
-	},
 	mounted: function () {
 		this.setHeight();
 	},
@@ -126,28 +92,6 @@ module.exports = {
 
 			&::-webkit-scrollbar {
 				display: none;
-			}
-		}
-	}
-
-	&-edit-guide {
-		color: @color-subtle;
-		font-size: 14px;
-		margin: 0 8px;
-		padding: 6px 0;
-		padding-left: 24px;
-		text-align: left;
-		border-top: @border-width-base @border-style-base @border-color-subtle;
-		background-repeat: no-repeat;
-		background-position: 0 center;
-
-		&-icon {
-			&-alert {
-				background-image: url( ../images/alert.svg );
-			}
-
-			&-edit_reference {
-				background-image: url( ../images/edit_reference.svg );
 			}
 		}
 	}

@@ -7,8 +7,10 @@ const lang = mw.config.get( 'wgContentLanguage' );
 const watchDefault = mw.config.get( 'wgWikistoriesWatchDefault' );
 const watchlistExpiryEnabled = mw.config.get( 'wgWikistoriesWatchlistExpiryEnabled' );
 const watchlistExpiryOptions = mw.config.get( 'wgWikistoriesWatchlistExpiryOptions' );
+const TEXT_EDIT_THRESHOLD = mw.config.get( 'wgWikistoriesUnmodifiedTextThreshold' );
 
 const searchTools = require( '../api/searchImages.js' );
+const calculateUnmodifiedContent = require( '../util/calculateUnmodifiedContent.js' );
 const getImageExtMetadata = searchTools.getImageExtMetadata;
 
 let orderKey = 10;
@@ -94,6 +96,12 @@ module.exports = {
 		},
 		setEditingText: ( state, value ) => {
 			state.editingText = value;
+		},
+		setWarningFrames: ( state, payload ) => {
+			state.frames.forEach( ( frame, index ) => {
+				// key: message, icon, isAlwaysShown, replace
+				frame.warning = payload[ index ];
+			} );
 		}
 	},
 	actions: {
@@ -120,9 +128,11 @@ module.exports = {
 		},
 		setText: ( context, text ) => {
 			context.commit( 'setText', text );
+			context.dispatch( 'checkWarningStatus' );
 		},
 		setTextFromArticle: ( context, textFromArticle ) => {
 			context.commit( 'setTextFromArticle', textFromArticle );
+			context.dispatch( 'checkWarningStatus' );
 		},
 		setLastEditedText: ( context, text ) => {
 			context.commit( 'setLastEditedText', text );
@@ -157,6 +167,60 @@ module.exports = {
 		},
 		setEditingText: ( context, value ) => {
 			context.commit( 'setEditingText', value );
+		},
+		checkWarningStatus: ( context ) => {
+			const frames = context.getters.frames;
+
+			const duplicates = {};
+			const warningMessage = {};
+			const duplicate = {
+				message: mw.msg( 'wikistories-story-edittext-duplicate' ),
+				icon: 'warning',
+				isAlwaysShown: true,
+				replace: true
+			};
+
+			for ( let i = 0; i < frames.length; i++ ) {
+				const frame = frames[ i ];
+
+				// skip when no text
+				if ( !frame.text ) {
+					continue;
+				}
+
+				// check if frames has duplicate story text
+				const currentValue = frame.text;
+				if ( duplicates[ currentValue ] !== undefined ) {
+					warningMessage[ i ] = duplicate;
+					if ( duplicates[ currentValue ] !== null ) {
+						warningMessage[ duplicates[ currentValue ] ] = duplicate;
+						duplicates[ currentValue ] = null;
+					}
+				} else {
+					duplicates[ currentValue ] = i;
+				}
+
+				// skip when duplication found
+				if ( warningMessage[ i ] ) {
+					continue;
+				}
+
+				// check edit guide messages
+				const unmodified = calculateUnmodifiedContent( frame.textFromArticle, frame.text );
+				warningMessage[ i ] = {};
+				if ( unmodified === 1 ) {
+					warningMessage[ i ].message = mw.msg( 'wikistories-story-edittext-initial' );
+					warningMessage[ i ].icon = 'edit_reference';
+				} else if ( unmodified < TEXT_EDIT_THRESHOLD ) {
+					warningMessage[ i ].message = mw.msg( 'wikistories-story-edittext-last' );
+					warningMessage[ i ].icon = 'alert';
+				} else {
+					warningMessage[ i ].message = mw.msg( 'wikistories-story-edittext-medium' );
+					warningMessage[ i ].icon = 'alert';
+				}
+			}
+
+			context.commit( 'setWarningFrames', warningMessage );
 		}
 	},
 	getters: {
@@ -185,7 +249,8 @@ module.exports = {
 				imgAttribution: f.attribution,
 				fileNotFound: f.fileNotFound,
 				textFromArticle: f.textFromArticle,
-				lastEditedText: f.lastEditedText
+				lastEditedText: f.lastEditedText,
+				warning: f.warning
 			};
 		},
 		missingFrames: ( state ) => {
