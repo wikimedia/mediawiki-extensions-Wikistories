@@ -125,7 +125,7 @@ module.exports = {
 				};
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'removeFrame', 'fetchImgAttribution', 'routePush', 'routeReplace', 'setText', 'setEditingText' ] ), {
+	methods: $.extend( mapActions( [ 'removeFrame', 'fetchImgAttribution', 'routePush', 'routeReplace', 'setText', 'setEditingText', 'checkWarningStatus' ] ), {
 		showDeleteFrameConfirmationDialog: function () {
 			this.viewDeleteFrameConfirmDialog = true;
 		},
@@ -210,6 +210,7 @@ module.exports = {
 		},
 		onSelectText: function () {
 			this.routePush( 'article' );
+			this.setEditingText( false );
 		}
 	} ),
 	mounted: function () {
@@ -226,6 +227,9 @@ module.exports = {
 				this.showDiscardStoryConfirmationDialog();
 			}
 		};
+
+		// show duplicate story text frames
+		this.checkWarningStatus();
 	}
 };
 </script>

@@ -8,7 +8,9 @@
 				:class="{ 'ext-wikistories-frames-thumbnails-frame-selected': frame.selected }"
 				:style="frame.style"
 				@click="selectFrame( index )"
-			></div>
+			>
+				<div v-if="frame.warning && frame.warning.isAlwaysShown" class="ext-wikistories-frames-thumbnails-frame-warning"></div>
+			</div>
 		</div>
 		<div class="ext-wikistories-frames-btn-add" @click="addFrames">
 			+
@@ -102,6 +104,20 @@ module.exports = {
 					cursor: move !important; /* stylelint-disable-line declaration-no-important */
 				}
 				// end style for the sortable used
+
+				&-warning {
+					position: absolute;
+					right: -5px;
+					bottom: -5px;
+					width: 13px;
+					height: 13px;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: 0 center;
+					background-image: url( ../images/warning.svg );
+					background-color: @background-color-base;
+					border-radius: 100%;
+				}
 			}
 		}
 
