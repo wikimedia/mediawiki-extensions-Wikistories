@@ -106,7 +106,6 @@ class ArticleChangedJob extends Job {
 	 * @param Title $storyTitle
 	 * @param string $articleTitle
 	 * @param int $revId
-	 * @throws \MWException
 	 */
 	private function notify( UserIdentity $agent, Title $storyTitle, string $articleTitle, int $revId ) {
 		\EchoEvent::create( [
