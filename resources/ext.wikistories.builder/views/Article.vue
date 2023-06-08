@@ -9,6 +9,7 @@
 		<div
 			v-if="currentArticle.html"
 			class="ext-wikistories-article-view-content"
+			@click="onClick"
 			v-html="currentArticle.html"></div>
 		<div v-else-if="error" class="ext-wikistories-article-view-error">
 			{{ error }}
@@ -16,26 +17,21 @@
 		<div v-else class="ext-wikistories-article-view-loading">
 			<h1>{{ $i18n( 'wikistories-article-loading' ).text() }}</h1>
 		</div>
-		<div v-if="display === 'info'" class="ext-wikistories-article-view-info">
-			<div v-if="!expanded" class="ext-wikistories-article-view-info-banner">
+		<div v-if="showInfoBar" class="ext-wikistories-article-view-info">
+			<div class="ext-wikistories-article-view-info-banner">
 				<div
 					class="ext-wikistories-article-view-info-banner-icon"
-					@click="toggleExpandInfo"
 				></div>
-				<span>{{ $i18n( 'wikistories-article-info-banner' ).text() }}</span>
-			</div>
-			<div v-if="expanded" class="ext-wikistories-article-view-info-expanded-banner">
+				<span class="ext-wikistories-article-view-info-banner-text">
+					{{ $i18n( 'wikistories-article-info-banner-sentence' ).text() }}
+				</span>
 				<div
-					class="ext-wikistories-article-view-info-expanded-banner-close-icon"
-					@click="toggleExpandInfo">
-				</div>
-				<div v-html="$i18n( 'wikistories-article-info-expanded-banner' ).text()"></div>
+					class="ext-wikistories-article-view-info-banner-close-icon"
+					@click="dismissInfo"
+				></div>
 			</div>
 		</div>
-		<div v-if="display === 'tools'" class="ext-wikistories-article-view-toolbar">
-			<div class="ext-wikistories-article-view-toolbar-discard-button" @click="onDismiss">
-				{{ $i18n( 'wikistories-article-cancelselection' ).text() }}
-			</div>
+		<div v-if="showToolBar" class="ext-wikistories-article-view-toolbar">
 			<div
 				class="ext-wikistories-article-view-toolbar-confirm-button"
 				@touchstart="onUseText"
@@ -51,9 +47,8 @@ const mapActions = require( 'vuex' ).mapActions;
 const mapGetters = require( 'vuex' ).mapGetters;
 const Navigator = require( '../components/Navigator.vue' );
 
-const isNodeWithinArticleView = ( node ) => {
-	return document.querySelector( '.ext-wikistories-article-view-content' ).contains( node );
-};
+const SENTENCE_CLASS = 'ext-wikistories-article-view-content-sentence';
+const SENTENCE_SELECTED_CLASS = 'ext-wikistories-article-view-content-sentence-selected';
 
 // @vue/component
 module.exports = {
@@ -66,50 +61,57 @@ module.exports = {
 	},
 	data: function () {
 		return {
-			selectedText: null,
-			display: 'info',
-			expanded: false,
-			error: false
+			error: false,
+			infoDismissed: false,
+			selectedSentences: []
 		};
 	},
-	computed: mapGetters( [ 'currentArticle', 'fromArticle' ] ),
+	computed: $.extend( mapGetters( [ 'currentArticle', 'fromArticle' ] ), {
+		showInfoBar: function () {
+			return !this.selectedSentences.length && !this.infoDismissed;
+		},
+		showToolBar: function () {
+			return !!this.selectedSentences.length;
+		},
+		selectedText: function () {
+			return this.selectedSentences.map( function ( s ) {
+				return s.textContent;
+			} ).join( ' ' );
+		}
+	} ),
 	methods: $.extend( mapActions( [ 'fetchArticle', 'setText', 'setTextFromArticle', 'routeBack' ] ), {
-		setToolbarDisplay: function ( status ) {
-			this.display = status;
-		},
-		showSelectionToolbar: function () {
-			this.setToolbarDisplay( 'tools' );
-		},
-		hideSelectionToolbar: function () {
-			this.setToolbarDisplay( 'info' );
-		},
-		toggleExpandInfo: function () {
-			this.expanded = !this.expanded;
-		},
-		onSelectionChange: function () {
-			const s = document.getSelection();
-			if ( s.isCollapsed ) {
-				this.hideSelectionToolbar();
-			} else if ( s.type === 'Range' &&
-				isNodeWithinArticleView( s.anchorNode ) &&
-				isNodeWithinArticleView( s.focusNode )
-			) {
-				this.selectedText = s.toString().trim();
-				if ( this.selectedText ) {
-					this.showSelectionToolbar();
-				}
+		onClick: function ( e ) {
+			// Find the sentence that was clicked
+			const sentence = e.target.closest( '.' + SENTENCE_CLASS );
+			if ( !sentence ) {
+				return;
 			}
+
+			// Add or remove from the list of selected sentences
+			const index = this.selectedSentences.indexOf( sentence );
+			if ( index === -1 ) {
+				sentence.classList.add( SENTENCE_SELECTED_CLASS );
+				this.selectedSentences.push( sentence );
+			} else {
+				sentence.classList.remove( SENTENCE_SELECTED_CLASS );
+				this.selectedSentences.splice( index, 1 );
+				delete sentence.dataset.selectedOrder;
+			}
+
+			// Renumber the selected sentences
+			this.selectedSentences.forEach( function ( s, i ) {
+				s.dataset.selectedOrder = String( i + 1 );
+			} );
+		},
+		dismissInfo: function () {
+			this.infoDismissed = true;
 		},
 		onUseText: function ( e ) {
 			e.preventDefault();
 			e.stopPropagation();
-			this.hideSelectionToolbar();
 			this.setTextFromArticle( this.selectedText );
 			this.setText( this.selectedText );
 			this.routeBack();
-		},
-		onDismiss: function () {
-			this.hideSelectionToolbar();
 		},
 		onBack: function () {
 			this.routeBack();
@@ -118,16 +120,8 @@ module.exports = {
 	created: function () {
 		this.fetchArticle( this.article || this.fromArticle ).catch( () => {
 			// remove the functionality of selection when detect error from article
-			this.setToolbarDisplay( 'none' );
 			this.error = mw.msg( 'wikistories-builder-article-not-available' );
-			document.removeEventListener( 'selectionchange', this.onSelectionChange );
 		} );
-	},
-	mounted: function () {
-		document.addEventListener( 'selectionchange', this.onSelectionChange );
-	},
-	beforeUnmount: function () {
-		document.removeEventListener( 'selectionchange', this.onSelectionChange );
 	}
 };
 </script>
@@ -158,17 +152,30 @@ module.exports = {
 			display: block !important; /* stylelint-disable-line declaration-no-important */
 		}
 
-		figure,
-		table,
-		sup,
-		.pcs-collapse-table-container,
-		.thumb,
-		.hatnote {
-			display: none;
-		}
+		&-sentence {
+			cursor: pointer;
 
-		[ role='navigation' ] {
-			display: none !important; /* stylelint-disable-line declaration-no-important */
+			&-selected {
+				// Could not find a design token for the highlight yellow
+				background-color: #fc3;
+				position: relative;
+
+				&::before {
+					content: attr( data-selected-order );
+					color: @color-inverted;
+					background-color: @color-subtle;
+					width: 16px;
+					height: 16px;
+					line-height: 16px;
+					font-size: 12px;
+					display: inline-block;
+					text-align: center;
+					border-radius: 100%;
+					position: absolute;
+					top: -8px;
+					left: -8px;
+				}
+			}
 		}
 	}
 
@@ -192,40 +199,37 @@ module.exports = {
 		flex-direction: row;
 		align-content: stretch;
 		align-items: center;
-		background-color: @color-base;
-		color: #fff;
+		background-color: @background-color-notice-subtle;
+		border: @border-base;
 
 		&-banner {
 			flex: auto;
 			margin: 0;
 			padding: 16px;
+			position: relative;
 
 			&-icon {
 				position: absolute;
-				cursor: pointer;
 				width: 20px;
 				height: 20px;
-				background-image: url( ./../images/attribution-icon-info.svg );
+				background-image: url( ./../images/info.svg );
 				background-repeat: no-repeat;
-				right: 10px;
+				left: 10px;
 			}
-		}
 
-		&-expanded-banner {
-			position: relative;
-			flex: auto;
-			margin: 0;
-			padding: 30px 16px;
+			&-text {
+				margin-left: 25px;
+			}
 
 			&-close-icon {
 				position: absolute;
 				cursor: pointer;
 				width: 18px;
 				height: 18px;
-				background-image: url( ./../images/close-white.svg );
+				background-image: url( ./../images/close.svg );
 				background-repeat: no-repeat;
 				right: 10px;
-				top: 10px;
+				top: 18px;
 			}
 		}
 	}
@@ -249,16 +253,6 @@ module.exports = {
 			text-align: center;
 			background-color: @background-color-progressive;
 			border: @border-width-base @border-style-base @border-color-progressive;
-		}
-
-		& > &-discard-button {
-			flex: auto;
-			margin: 0;
-			padding: 10px;
-			color: @color-base;
-			text-align: center;
-			background-color: #f8f9fa;
-			border: @border-width-base @border-style-base @border-color-subtle;
 		}
 	}
 }

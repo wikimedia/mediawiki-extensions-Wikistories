@@ -10,6 +10,12 @@ use MediaWiki\Title\Title;
 
 class StoryContentAnalyzer {
 
+	/**
+	 * This sentence separator works for many but not all languages.
+	 * todo: re-visit when deploying to a new wiki
+	 */
+	private const SENTENCE_SEPARATOR = '.';
+
 	/** @var WikiPageFactory */
 	private $wikiPageFactory;
 
@@ -74,15 +80,30 @@ class StoryContentAnalyzer {
 	 * @return bool
 	 */
 	public function isOutdatedText( Title $articleTitle, string $currentText, string $originalText ): bool {
-		$text = $this->getArticleText( $articleTitle );
-		if ( $text === false ) {
+		$articleText = $this->getArticleText( $articleTitle );
+		if ( $articleText === false ) {
 			// cannot do the analysis, err on the side of not spamming
 			return false;
 		}
+		return !$this->inText( $currentText, $articleText )
+			&& !$this->inText( $originalText, $articleText );
+	}
 
-		$containsCurrentText = str_contains( $text, $currentText );
-		$containsOriginalText = str_contains( $text, $originalText );
-		return !$containsCurrentText && !$containsOriginalText;
+	/**
+	 * @param string $part Block of text containing one or more sentences
+	 * originally selected from the article text. May have been manually edited
+	 * by story editor.
+	 * @param string $text Article text
+	 * @return bool True if all the sentences in $part are present in the article text
+	 */
+	private function inText( string $part, string $text ): bool {
+		$sentences = explode( self::SENTENCE_SEPARATOR, $part );
+		foreach ( $sentences as $sentence ) {
+			if ( !str_contains( $text, trim( $sentence ) ) ) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**

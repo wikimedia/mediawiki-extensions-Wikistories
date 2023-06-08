@@ -1,20 +1,29 @@
+const splitSentences = require( '../util/splitSentences.js' );
+
 const transforms = {
 	'put styles in body': ( doc ) => {
 		for ( const style of doc.head.querySelectorAll( 'link[rel="stylesheet"]' ) ) {
 			doc.body.prepend( style );
 		}
 	},
-	'remove scripts': ( doc ) => {
-		for ( const n of doc.querySelectorAll( 'script' ) ) {
+	'remove stuff': ( doc ) => {
+		const selector = [
+			'script',
+			'figure',
+			'table',
+			'sup',
+			'.pcs-collapse-table-container',
+			'.thumb',
+			'.hatnote',
+			"[ role='navigation' ]"
+		].join( ',' );
+		for ( const n of doc.querySelectorAll( selector ) ) {
 			n.remove();
 		}
 	},
 	'turn links into plain text': ( doc ) => {
-		let span;
 		for ( const a of doc.querySelectorAll( 'a' ) ) {
-			span = doc.createElement( 'span' );
-			span.innerHTML = a.innerHTML;
-			a.replaceWith( span );
+			a.replaceWith( a.innerHTML );
 		}
 	},
 	'remove sections after fold and the fold itself': ( doc ) => {
@@ -24,6 +33,13 @@ const transforms = {
 		}
 		if ( foldHr ) {
 			foldHr.remove();
+		}
+	},
+	'Split and wrap sentences': ( doc ) => {
+		for ( const p of doc.querySelectorAll( 'p' ) ) {
+			if ( p.textContent.trim() !== '' ) {
+				p.innerHTML = splitSentences( p, 'ext-wikistories-article-view-content-sentence' );
+			}
 		}
 	}
 };
