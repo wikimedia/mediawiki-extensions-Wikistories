@@ -14,11 +14,11 @@
 	"prefs-wikistories": "סיפורי ויקי",
 	"wikistories-pref-showdiscovery-message": "הצגת סיפורים בדפי ערכים",
 	"wikistories-pref-showdiscovery-help-message": "\"סיפורי ויקי\" היא תכונה חדשה שמאפשרת לך ליצור תוכן קצר דומה לסיפור (\"סטורי\") שמשתמש בטקסט ותמונות מתוך ערכי ויקיפדיה.",
-	"wikistories-recentchangesflags-title": "עריכת ויקיסיפור",
-	"wikistories-recentchangesflags-legend": "זוהי עריכה לוויקיסיפור שמקושר לערך",
+	"wikistories-recentchangesflags-title": "עריכת סיפור ויקי",
+	"wikistories-recentchangesflags-legend": "זוהי עריכה לסיפור ויקי שמקושר לערך",
 	"wikistories-rcfilters-hidewikistories-label": "סיפורי ויקי",
-	"wikistories-rcfilters-hidewikistories-description": "עריכות לוויקיסיפורים שמוכללים בדפי ערכים",
-	"rcshowhidewikistories": "$1 של עריכות לוויקיסיפורים בערכים",
+	"wikistories-rcfilters-hidewikistories-description": "עריכות לסיפורי ויקי שמוכללים בדפי ערכים",
+	"rcshowhidewikistories": "$1 של עריכות לסיפורי ויקי בערכים",
 	"rcshowhidewikistories-show": "הצגה",
 	"rcshowhidewikistories-hide": "הסתרה",
 	"storybuilder": "בונה הסיפורים",
@@ -110,5 +110,9 @@
 	"wikistories-no-image-category": "סיפור ללא קובץ תמונה",
 	"wikistories-no-image-category-desc": "באחת ממסגרות הסיפור אין תמונה",
 	"wikistories-no-related-article": "סיפור ללא ערך משויך",
-	"wikistories-no-related-article-desc": "הערך המקושר של הסיפור מחוק"
+	"wikistories-no-related-article-desc": "הערך המקושר של הסיפור מחוק",
+	"wikistories-outdated-text-category": "לסיפור יש טקסט מיושן ביחס לערך המקור שלו",
+	"wikistories-outdated-text-category-desc": "חלק מהטקסט המשמש בסיפור זה אינו קיים עוד בערך המקור",
+	"echo-category-title-wikistories-action": "סיפורי ויקי",
+	"wikistories-notification-articlechanged-header": "הדף <strong>$1</strong> נערך ויש לבדוק את הסיפור <strong>$2</strong>"
 }

@@ -92,6 +92,7 @@
 	"wikistories-nojs-form-categories-title": "Kategorije",
 	"wikistories-nojs-form-categories-label": "Imena kategorij, brez imenskega prostora, eno na vrstico",
 	"wikistories-nojs-viewer-error": "$1 {{PLURAL:$1|slika, uporabljena|sliki, uporabljeni|slike, uporabljene|slik, uporabljenih}} v tej zgodbi, {{PLURAL:$1|ni|nista|niso|ni}} več na voljo v Zbirki.",
+	"wikistories-nojs-viewer-no-article": "Pomembno! Članek, povezan s to zgodbo, ni več na voljo. Morda boste morali zgodbo izbrisati, da boste ohranili točnost.",
 	"wikistories-discover-cta-text": "Ustvari vikizgodbo",
 	"wikistories-discover-cta-text-subheader": "Bodite prvi, ki bo ponazoril ključna dejstva o tej temi za vizualne učence.",
 	"wikistories-storyviewer-next-story-header": "Preberi več",
@@ -107,5 +108,11 @@
 	"wikistories-too-many-frames": "Zgodba ima preveč slik",
 	"wikistories-text-too-long": "Besedilo v okvirju št. $1 je predolgo. Ima {{PLURAL:$2|$2 znak|$2 znaka|$2 znake|$2 znakov}}, dovoljenih pa je največ $3.",
 	"wikistories-no-image-category": "Zgodba brez slikovne datoteke",
-	"wikistories-no-image-category-desc": "Eden od okvirjev zgodbe nima slike"
+	"wikistories-no-image-category-desc": "Eden od okvirjev zgodbe nima slike",
+	"wikistories-no-related-article": "Zgodba brez povezanega članka",
+	"wikistories-no-related-article-desc": "Povezani članek zgodbe je izbrisan",
+	"wikistories-outdated-text-category": "Zgodba ima zastarelo besedilo glede na izvorni članek",
+	"wikistories-outdated-text-category-desc": "Nekaj besedila, uporabljenega v tej zgodbi, ni več prisotnega v izvornem članku",
+	"echo-category-title-wikistories-action": "Vikizgodbe",
+	"wikistories-notification-articlechanged-header": "Člabek <strong>$1</strong> je bil urejen, <strong>$2</strong> pa je treba pregledati"
 }

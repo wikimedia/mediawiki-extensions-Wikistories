@@ -109,5 +109,9 @@
 	"wikistories-no-image-category": "Geschichte ohne Bild",
 	"wikistories-no-image-category-desc": "Eine der Geschichten hat kein Bild",
 	"wikistories-no-related-article": "Geschichte ohne verwandten Artikel",
-	"wikistories-no-related-article-desc": "Der verlinkte Artikel der Story wird gelöscht"
+	"wikistories-no-related-article-desc": "Der verlinkte Artikel der Story wird gelöscht",
+	"wikistories-outdated-text-category": "Der Text der Geschichte ist in Bezug auf den Quellartikel veraltet",
+	"wikistories-outdated-text-category-desc": "Ein Teil des in dieser Geschichte verwendeten Textes ist im Quellartikel nicht mehr vorhanden",
+	"echo-category-title-wikistories-action": "Wikigeschichten",
+	"wikistories-notification-articlechanged-header": "<strong>$1</strong> wurde bearbeitet und <strong>$2</strong> muss überprüft werden"
 }

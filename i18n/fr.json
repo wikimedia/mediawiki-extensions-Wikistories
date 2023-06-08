@@ -113,5 +113,9 @@
 	"wikistories-no-image-category": "Récit sans fichier image",
 	"wikistories-no-image-category-desc": "Une des pages du récit n’a aucune image",
 	"wikistories-no-related-article": "Récit sans article associé",
-	"wikistories-no-related-article-desc": "L’article lié au récit est supprimé"
+	"wikistories-no-related-article-desc": "L’article lié au récit est supprimé",
+	"wikistories-outdated-text-category": "Le récit a un texte obsolète au regard de son article source",
+	"wikistories-outdated-text-category-desc": "Une partie du texte utilisé dans ce récit ne figure plus dans l’article source",
+	"echo-category-title-wikistories-action": "Wikirécits",
+	"wikistories-notification-articlechanged-header": "<strong>$1</strong> a été modifié et <strong>$2</strong> doit être relu"
 }
