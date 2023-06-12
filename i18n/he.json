@@ -34,6 +34,7 @@
 	"wikistories-search-navigator-title-selected-info": "{{PLURAL:$1|נבחרה תמונה אחת|נבחרו $1 תמונות}}",
 	"wikistories-story-goto-publish": "הבא",
 	"wikistories-story-selecttext": "{{GENDER:|בחר|בחרי}} את טקסט הסיפור מתוך <span class=\"ext-wikistories-wikipedia\">ויקיפדיה</span>",
+	"wikistories-story-edittext-duplicate": "זוהה טקסט כפול, <span class=\"ext-wikistories-warning-replace\">להחליף</span>?",
 	"wikistories-story-edittext-done": "בוצע",
 	"wikistories-story-edittext-initial": "תודה על שמירת הדיור של הסיפורים",
 	"wikistories-story-edittext-medium": "תוך כדי עריכה, נא לשמור על המשמעות המקורית של הטקסט",

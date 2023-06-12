@@ -34,6 +34,7 @@
 	"wikistories-search-navigator-title-selected-info": "Избрани $1",
 	"wikistories-story-goto-publish": "Следно",
 	"wikistories-story-selecttext": "Изберете текст за приказната од <span class=\"ext-wikistories-wikipedia\">Википедија</span>",
+	"wikistories-story-edittext-duplicate": "Откриен дуплиран текст, <span class=\"ext-wikistories-warning-replace\">да го заменам</span>?",
 	"wikistories-story-edittext-done": "Готово",
 	"wikistories-story-edittext-initial": "Ви благодариме што се залагате за точноста на приказните",
 	"wikistories-story-edittext-medium": "Додека уредувате, запазете ја изворната смисла на текстот",

@@ -33,6 +33,7 @@
 	"wikistories-search-navigator-title-selected-info": "$1 ausgewählt",
 	"wikistories-story-goto-publish": "Nächster",
 	"wikistories-story-selecttext": "Wähle den Text der Geschichte aus <span class=\"ext-wikistories-wikipedia\">Wikipedia</span>",
+	"wikistories-story-edittext-duplicate": "Doppelter Text erkannt, <span class=\"ext-wikistories-warning-replace\">ersetzen</span>?",
 	"wikistories-story-edittext-done": "Fertig",
 	"wikistories-story-edittext-initial": "Vielen Dank, dass du die Geschichten genau hältst",
 	"wikistories-story-edittext-medium": "Bitte behalte beim Bearbeiten die ursprüngliche Bedeutung des Textes bei",

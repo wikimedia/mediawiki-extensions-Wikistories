@@ -34,6 +34,7 @@
 	"wikistories-search-navigator-title-selected-info": "$1 izbrana(ih)",
 	"wikistories-story-goto-publish": "Naprej",
 	"wikistories-story-selecttext": "Izberite besedilo zgodbe iz <span class=\"ext-wikistories-wikipedia\">Wikipedije</span>",
+	"wikistories-story-edittext-duplicate": "Zaznano je bilo podvojeno besedilo; <span class=\"ext-wikistories-warning-replace\">ga želite zamenjati</span>?",
 	"wikistories-story-edittext-done": "Končano",
 	"wikistories-story-edittext-initial": "Hvala za ohranjanje točnosti zgodb",
 	"wikistories-story-edittext-medium": "Pri urejanju ohranite prvotni pomen besedila",

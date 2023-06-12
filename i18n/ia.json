@@ -32,6 +32,7 @@
 	"wikistories-search-navigator-title-selected-info": "$1 seligite",
 	"wikistories-story-goto-publish": "Sequente",
 	"wikistories-story-selecttext": "Selige texto de historia de <span class=\"ext-wikistories-wikipedia\">Wikipedia</span>",
+	"wikistories-story-edittext-duplicate": "Texto duple detegite, <span class=\"ext-wikistories-warning-replace\">reimplciar</span>?",
 	"wikistories-story-edittext-done": "Facite",
 	"wikistories-story-edittext-initial": "Gratias pro mantener le historias accurate",
 	"wikistories-story-edittext-medium": "Durante que tu modifica, per favor mantene le senso original del texto",
@@ -108,5 +109,9 @@
 	"wikistories-no-image-category": "Historia sin file de imagine",
 	"wikistories-no-image-category-desc": "Un del quadros del historia non ha imagine",
 	"wikistories-no-related-article": "Historia sin articulo associate",
-	"wikistories-no-related-article-desc": "Le articulo ligate del historia es delite"
+	"wikistories-no-related-article-desc": "Le articulo ligate del historia es delite",
+	"wikistories-outdated-text-category": "Le historia ha texto obsolete in comparation con su articulo de fonte",
+	"wikistories-outdated-text-category-desc": "Alcun del texto usate in iste historia non es plus presente in le articulo de fonte",
+	"echo-category-title-wikistories-action": "Wikihistorias",
+	"wikistories-notification-articlechanged-header": "<strong>$1</strong> ha essite modificate e <strong>$2</strong> debe esser revidite"
 }

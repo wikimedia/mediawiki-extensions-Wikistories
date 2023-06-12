@@ -37,6 +37,7 @@
 	"wikistories-search-navigator-title-selected-info": "$1 sélectionné(s)",
 	"wikistories-story-goto-publish": "Suivant",
 	"wikistories-story-selecttext": "Sélectionner le texte d’un récit depuis <span class=\"ext-wikistories-wikipedia\">Wikipédia</span>",
+	"wikistories-story-edittext-duplicate": "Texte en doublon détecté, <span class=\"ext-wikistories-warning-replace\">le remplacer</span> ?",
 	"wikistories-story-edittext-done": "Terminé",
 	"wikistories-story-edittext-initial": "Merci de garder les récits exacts",
 	"wikistories-story-edittext-medium": "Lorsque vous modifiez, veuillez conserver le sens original du texte",
