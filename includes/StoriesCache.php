@@ -13,7 +13,7 @@ class StoriesCache {
 	 * be invalidated and re-created with the most recent
 	 * structure.
 	 */
-	private const CACHE_VERSION = 13;
+	private const CACHE_VERSION = 14;
 
 	/**
 	 * This defines how long stories will stay in the cache if they not edited.
@@ -94,13 +94,14 @@ class StoriesCache {
 				return $this->makeStoryKey( $id );
 			}
 		);
-		return $this->wanObjectCache->getMultiWithSetCallback(
+		$stories = $this->wanObjectCache->getMultiWithSetCallback(
 			$keys,
 			self::CACHE_TTL,
 			function ( $id ) {
 				return $this->loadAndRenderStory( $id );
 			}
 		);
+		return array_filter( $stories );
 	}
 
 	/**
@@ -121,14 +122,14 @@ class StoriesCache {
 
 	/**
 	 * @param int $storyId
-	 * @return array
+	 * @return array|null
 	 */
 	private function loadAndRenderStory( int $storyId ) {
 		$page = $this->wikiPageFactory->newFromID( $storyId );
-		/** @var StoryContent $storyContent */
 		$storyContent = $page->getContent();
-		'@phan-var StoryContent $storyContent';
-		return $this->storyRenderer->getStoryData( $storyContent, $page->getTitle() );
+		return $storyContent instanceof StoryContent ?
+			$this->storyRenderer->getStoryData( $storyContent, $page->getTitle() ) :
+			null;
 	}
 
 	/**

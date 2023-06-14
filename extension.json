@@ -343,6 +343,9 @@
 				"wikistories-builder-publishform-saveerror",
 				"wikistories-builder-publishform-saving",
 				"wikistories-builder-publishform-watch",
+				"wikistories-builder-publishform-saving-done",
+				"wikistories-builder-publishform-gotostory",
+				"wikistories-builder-publishform-sharestory",
 				"wikistories-builder-licensing-with-terms"
 			],
 			"es6": true
@@ -378,6 +381,15 @@
 			"localBasePath": "resources/ext.wikistories.discover",
 			"styles": [
 				"discover-initial.less"
+			]
+		},
+		"ext.wikistories.viewaction": {
+			"localBasePath": "resources/ext.wikistories.viewaction",
+			"packageFiles": [
+				"index.js"
+			],
+			"dependencies": [
+				"ext.wikistories.viewer"
 			]
 		}
 	},

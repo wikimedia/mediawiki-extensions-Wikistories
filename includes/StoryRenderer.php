@@ -138,6 +138,7 @@ class StoryRenderer {
 			'storyTitle' => $storyTitle->getText(),
 			'editUrl' => SpecialPage::getTitleFor( 'StoryBuilder', $storyTitle->getPrefixedDBkey() )->getLinkURL(),
 			'talkUrl' => $storyTitle->getTalkPageIfDefined()->getLinkURL(),
+			'shareUrl' => $storyTitle->getFullURL( [ 'action' => 'storyview' ] ),
 			'thumbnail' => $thumb,
 			'frames' => array_map( function ( $frame ) use ( $files, $article, &$trackingCategories ) {
 				$url = $this->getUrl( $files, $frame->image->filename, 640 );

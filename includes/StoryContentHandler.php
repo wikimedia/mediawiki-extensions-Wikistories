@@ -63,6 +63,13 @@ class StoryContentHandler extends JsonContentHandler {
 		return [
 			'edit' => StoryEditAction::class,
 			'submit' => StorySubmitAction::class,
+			'storyview' => [
+				'class' => StoryViewAction::class,
+				'services' => [
+					'Wikistories.Cache',
+					'UrlUtils',
+				]
+			],
 		];
 	}
 
