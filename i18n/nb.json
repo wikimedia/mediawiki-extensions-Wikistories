@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby",
+			"Telaneo",
+			"Yupik"
+		]
+	},
+	"wikistories-extensiondesc": "Wikihistorier lar bidragsytere opprette kort, visuell og pålitelig kunnskap fra Wikimedia-prosjektene",
+	"wikistories-search-inputplaceholder": "Søk i bilder",
+	"wikistories-search-cuetext": "Søk etter bilder relatert til artikkelen.",
+	"wikistories-search-noresultstext": "Ingen resultater",
+	"wikistories-story-goto-publish": "Neste",
+	"wikistories-imageattribution-author-unknown": "Ukjent forfatter",
+	"wikistories-article-usetext": "Legg til i historie",
+	"wikistories-alert-okbuttontext": "OK",
+	"wikistories-error-notenoughframes-title": "Ikke nok sider",
+	"wikistories-error-frameswithouttext-title": "Manglende tekst",
+	"wikistories-builder-publishform-placeholder": "Skriv inn historietittel …",
+	"wikistories-builder-publishform-publishbutton": "Publiser",
+	"wikistories-builder-publishform-info": "Publiserte historier blir tilgjengelige på artikkelsiden.",
+	"wikistories-builder-publishform-invalidtitle-empty": "Skriv inn historietittel",
+	"wikistories-builder-publishform-invalidtitle-format": "Ugyldig historietittel"
+}
