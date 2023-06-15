@@ -1,0 +1,15 @@
+Undeploy the Wikistories Extension
+===
+
+Follow the step to prevent error on Story namespace page
+
+1. Remove `wfLoadExtension( 'Wikistories' );`
+2. Add the following code to LocalSettings.php
+
+```
+$wgExtraNamespaces = [
+	1704 => "Story",
+	1705 => "Story_Talk"
+];
+$wgContentHandlers[ 'story' ] = JsonContentHandler::class;
+```
