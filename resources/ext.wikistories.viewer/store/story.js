@@ -93,7 +93,7 @@ module.exports = {
 			const stories = state.stories;
 			const storyId = state.storyId;
 			const currentStoriesIndex = stories.findIndex(
-				story => story.storyId.toString() === storyId
+				story => story.storyId === storyId
 			);
 
 			// get 3 random stories
