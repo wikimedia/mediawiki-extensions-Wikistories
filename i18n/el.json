@@ -2,18 +2,25 @@
 	"@metadata": {
 		"authors": [
 			"AProdromou",
-			"Norhorn"
+			"MDShanks",
+			"Norhorn",
+			"Spyridon Eftychios Kokotos"
 		]
 	},
 	"wikistories-search-inputplaceholder": "Αναζήτηση εικόνων",
+	"wikistories-story-edittext-duplicate": "Ανιχνεύτηκε διπλό κείμενο, <span class=\"ext-wikistories-warning-replace\">να αντικατασταθεί</span>;",
 	"wikistories-alert-okbuttontext": "Εντάξει",
 	"wikistories-confirmdialog-delete-title": "Διαγραφή αυτής της σελίδας;",
 	"wikistories-confirmdialog-delete-accept": "Διαγραφή",
 	"wikistories-builder-publishform-publishbutton": "Δημοσίευση",
+	"wikistories-builder-publishform-saving-done": "Συγχαρητήρια! Το Wikiistory έχει δημοσιευτεί",
+	"wikistories-builder-publishform-gotostory": "Διαβάστε την ιστορία",
+	"wikistories-builder-publishform-sharestory": "Μοιραστείτε την ιστορία",
 	"wikistories-nojs-viewer-no-article": "Σημαντικό! Το άρθρο που συνδέεται με αυτήν την ιστορία δεν είναι πλέον διαθέσιμο. Ίσως, χρειαστεί να διαγράψετε την ιστορία για να παραμείνετε ακριβής.",
 	"wikistories-no-related-article": "Ιστορία χωρίς σχετικό άρθρο",
 	"wikistories-no-related-article-desc": "Το συνδεδεμένο με την ιστορία άρθρο έχει διαγραφεί",
 	"wikistories-outdated-text-category": "Το Story έχει παλιό κείμενο σε σχέση με το άρθρο πηγής του",
 	"wikistories-outdated-text-category-desc": "Κάποιο από το κείμενο που χρησιμοποιήθηκε σε αυτήν την ιστορία δεν υπάρχει πλέον στο άρθρο πηγής",
-	"echo-category-title-wikistories-action": "Βικιστορίες"
+	"echo-category-title-wikistories-action": "Βικιστορίες",
+	"wikistories-notification-articlechanged-header": "Το <strong>$1</strong> έχει επεξεργαστεί και το <strong>$2</strong> χρειάζεται να ελεγχθεί."
 }

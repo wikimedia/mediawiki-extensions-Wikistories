@@ -18,5 +18,7 @@
 	"wikistories-article-navigator-title": "醒目標示文字",
 	"wikistories-builder-publishform-publishbutton": "發佈",
 	"wikistories-builder-publishform-saveerror": "發布Wikistory時發生錯誤。請嘗試重新發布。",
+	"wikistories-builder-publishform-gotostory": "閱讀故事",
+	"wikistories-builder-publishform-sharestory": "分享故事",
 	"wikistories-storyviewer-edit": "編輯此故事"
 }

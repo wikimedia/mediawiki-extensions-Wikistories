@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Asma",
 			"Can",
 			"Hedda",
 			"Joseph",
@@ -35,6 +36,7 @@
 	"wikistories-search-navigator-title-selected-info": "$1 tane seçildi",
 	"wikistories-story-goto-publish": "Sonraki",
 	"wikistories-story-selecttext": "<span class=\"ext-wikistories-wikipedia\">Vikipedi</span>'den öykü metni seçin",
+	"wikistories-story-edittext-duplicate": "Yinelenen metin algılandı, <span class=\"ext-wikistories-warning-replace\">değiştirilsin mi</span>?",
 	"wikistories-story-edittext-done": "Yapıldı",
 	"wikistories-story-edittext-initial": "Öyküleri doğru tuttuğunuz için teşekkürler",
 	"wikistories-story-edittext-medium": "Düzenlerken, lütfen metnin özgün anlamını koruyun",
@@ -85,6 +87,9 @@
 	"wikistories-builder-publishform-saveerror": "Vikiöykü yayımlanırken bir hata meydana geldi. Lütfen tekrar yayımlamayı deneyin.",
 	"wikistories-builder-publishform-saving": "Vikiöykü Yayımlanıyor...",
 	"wikistories-builder-publishform-watch": "Bu öyküyü izle",
+	"wikistories-builder-publishform-saving-done": "Tebrikler! Vikiöykü yayımlandı",
+	"wikistories-builder-publishform-gotostory": "Hikayeyi oku",
+	"wikistories-builder-publishform-sharestory": "Hikayeyi paylaş",
 	"wikistories-builder-licensing-with-terms": "Devam ederek, [$1 Kullanım Koşulları]'nı kabul etmiş ve katkınızı [$2 CC BY-SA 3.0] ve [$3 GFDL] lisansları kapsamında yayımlamayı geri alınamaz şekilde kabul etmiş olursunuz.",
 	"wikistories-nojs-form-label-related-article": "İlgili Makale",
 	"wikistories-nojs-form-label-frame": "Çerçeve $1",
@@ -93,6 +98,7 @@
 	"wikistories-nojs-form-categories-title": "Kategoriler",
 	"wikistories-nojs-form-categories-label": "Kategori adları, ad alanı olmadan, her satıra bir tane",
 	"wikistories-nojs-viewer-error": "Bu öyküde kullanılan $1 {{PLURAL:$1|görüntü}} artık Commons’ta yok.",
+	"wikistories-nojs-viewer-no-article": "Önemli! Bu öyküye bağlı madde artık yok. Doğruluğu sağlamak için öyküyü silmeniz gerekebilir.",
 	"wikistories-discover-cta-text": "Bir vikiöykü oluştur",
 	"wikistories-discover-cta-text-subheader": "Görsel öğrenenler için bu konuyla ilgili anahtar ögeleri gösteren ilk kişi olun.",
 	"wikistories-storyviewer-next-story-header": "Devamını oku",
@@ -108,5 +114,11 @@
 	"wikistories-too-many-frames": "Öyküde çok fazla çerçeve var",
 	"wikistories-text-too-long": "#$1 çerçevesindeki metin çok uzun. {{PLURAL:$2|$2 karakter}} var, ancak en fazla izin verilen $3.",
 	"wikistories-no-image-category": "Görüntü dosyası olmayan öykü",
-	"wikistories-no-image-category-desc": "Öykü çerçevelerinden birinde görüntü yok"
+	"wikistories-no-image-category-desc": "Öykü çerçevelerinden birinde görüntü yok",
+	"wikistories-no-related-article": "İlgili maddesi olmayan öykü",
+	"wikistories-no-related-article-desc": "Öykünün bağlantılı maddesi silinmiş",
+	"wikistories-outdated-text-category": "Öykünün, kaynak maddesiyle ilgili olarak güncelliğini yitirmiş metni var",
+	"wikistories-outdated-text-category-desc": "Bu öyküde kullanılan metnin bir kısmı kaynak maddede artık yok",
+	"echo-category-title-wikistories-action": "Vikiöyküler",
+	"wikistories-notification-articlechanged-header": "<strong>$1</strong> düzenledi ve <strong>$2</strong> gözden geçirilmeli"
 }
