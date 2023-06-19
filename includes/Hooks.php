@@ -370,4 +370,18 @@ class Hooks {
 		} );
 	}
 
+	/**
+	 * @param WikiPage $wikiPage
+	 * @return void
+	 */
+	public static function onArticlePurge( WikiPage $wikiPage ) {
+		if ( $wikiPage->getNamespace() !== NS_STORY ) {
+			return;
+		}
+
+		$services = MediaWikiServices::getInstance();
+		/** @var StoriesCache $cache */
+		$cache = $services->get( 'Wikistories.Cache' );
+		$cache->invalidateStory( $wikiPage->getId() );
+	}
 }

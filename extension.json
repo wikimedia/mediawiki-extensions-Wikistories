@@ -91,7 +91,8 @@
 		"GetPreferences": "MediaWiki\\Extension\\Wikistories\\Hooks::onGetPreferences",
 		"BeforeCreateEchoEvent": "EchoNotificationsHandlers",
 		"EchoGetBundleRules": "EchoNotificationsHandlers",
-		"ParserCacheSaveComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onParserCacheSaveComplete"
+		"ParserCacheSaveComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onParserCacheSaveComplete",
+		"ArticlePurge": "MediaWiki\\Extension\\Wikistories\\Hooks::onArticlePurge"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
