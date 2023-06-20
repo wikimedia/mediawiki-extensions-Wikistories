@@ -123,15 +123,7 @@ module.exports = {
 			}
 		},
 		onDblClick: function () {
-			const nextScale = this.getNextScale();
-			const scaleDelta = nextScale - this.scale;
-			this.scale = nextScale;
-			this.localRect = {
-				x: this.localRect.x + scaleDelta,
-				y: this.localRect.y + scaleDelta,
-				width: this.localRect.width + scaleDelta,
-				height: this.localRect.height + scaleDelta
-			};
+			this.scale = this.getNextScale();
 			this.position = this.getImagePosition();
 			this.$emit( 'update-focal-rect', this.makeRect() );
 		},
@@ -185,10 +177,16 @@ module.exports = {
 		getImagePosition: function () {
 			const scaledRect = this.getScaledRect();
 
+			const minX = -( this.imageSize.width * this.scale - this.containerSize.width );
+			const minY = -( this.imageSize.height * this.scale - this.containerSize.height );
+
 			const x = ( this.containerSize.width / 2 ) - ( scaledRect.x + ( scaledRect.width / 2 ) );
 			const y = ( this.containerSize.height / 2 ) - ( scaledRect.y + ( scaledRect.height / 2 ) );
 
-			return { x: x, y: y };
+			return {
+				x: this.minMax( x, minX, 0 ),
+				y: this.minMax( y, minY, 0 )
+			};
 		},
 		minMax: function ( value, min, max ) {
 			return Math.min( max, Math.max( min, value ) );
