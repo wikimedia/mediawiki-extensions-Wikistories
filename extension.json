@@ -92,7 +92,8 @@
 		"BeforeCreateEchoEvent": "EchoNotificationsHandlers",
 		"EchoGetBundleRules": "EchoNotificationsHandlers",
 		"ParserCacheSaveComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onParserCacheSaveComplete",
-		"ArticlePurge": "MediaWiki\\Extension\\Wikistories\\Hooks::onArticlePurge"
+		"ArticlePurge": "MediaWiki\\Extension\\Wikistories\\Hooks::onArticlePurge",
+		"ActionModifyFormFields": "MediaWiki\\Extension\\Wikistories\\Hooks::onActionModifyFormFields"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
