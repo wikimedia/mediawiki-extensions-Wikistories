@@ -35,6 +35,7 @@
 	"wikistories-story-goto-publish": "Next",
 	"wikistories-story-selecttext": "Select story text from<span class=\"ext-wikistories-wikipedia\">Wikipedia</span>",
 	"wikistories-story-edittext-duplicate": "Duplicate text detected, <span class=\"ext-wikistories-warning-replace\">replace</span>?",
+	"wikistories-story-edittext-outdated": "Outdated story text, <span class=\"ext-wikistories-warning-replace\">replace</span>?",
 	"wikistories-story-edittext-done": "Done",
 	"wikistories-story-edittext-initial": "Thanks for keeping stories accurate",
 	"wikistories-story-edittext-medium": "As you edit, please maintain original meaning of text",

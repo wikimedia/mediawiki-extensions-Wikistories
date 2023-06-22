@@ -42,6 +42,7 @@
 	"wikistories-story-goto-publish": "Text for a button in the Story view to continue to publish step\n{{identical|Next}}",
 	"wikistories-story-selecttext": "Text used for an text selection button in the CurrentFrame view",
 	"wikistories-story-edittext-duplicate": "Text message for editing guiding feedback when duplicate story text is found",
+	"wikistories-story-edittext-outdated": "Text message for editing guiding feedback when the text appears to be outdated with regards to the article text",
 	"wikistories-story-edittext-done": "Text used for a done selection button in the Navigator when editing story text",
 	"wikistories-story-edittext-initial": "Initial text message for editing guiding feedback",
 	"wikistories-story-edittext-medium": "Text message for editing guiding feedback when user starts editing",

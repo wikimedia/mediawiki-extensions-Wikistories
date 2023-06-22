@@ -75,11 +75,17 @@ module.exports = {
 			state.currentFrameIndex = newSelectedFrameIndex;
 		},
 		setText: ( state, text ) => {
-			state.frames[ state.currentFrameIndex ].text = text.slice( 0, MAX_TEXT_LENGTH );
+			const frame = state.frames[ state.currentFrameIndex ];
+			const truncatedText = text.slice( 0, MAX_TEXT_LENGTH );
+			if ( frame.text !== truncatedText ) {
+				frame.text = truncatedText;
+				frame.outdatedText = false;
+			}
 		},
 		setTextFromArticle: ( state, textFromArticle ) => {
 			const frame = state.frames[ state.currentFrameIndex ];
 			frame.textFromArticle = textFromArticle.slice( 0, MAX_TEXT_LENGTH );
+			frame.outdatedText = false;
 		},
 		setLastEditedText: ( state, text ) => {
 			const frame = state.frames[ state.currentFrameIndex ];
@@ -195,6 +201,17 @@ module.exports = {
 
 				// skip when no text
 				if ( !frame.text ) {
+					continue;
+				}
+
+				// check if frame text is outdated (based on older version of article)
+				if ( frame.outdatedText ) {
+					warningMessage[ i ] = {
+						message: mw.msg( 'wikistories-story-edittext-outdated' ),
+						icon: 'warning',
+						isAlwaysShown: true,
+						replace: true
+					};
 					continue;
 				}
 
