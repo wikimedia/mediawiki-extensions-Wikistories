@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AHendriksen-collecties",
+			"DiGro",
 			"Dnlweijers",
 			"Mainframe98",
 			"McDutchie",
@@ -21,8 +22,8 @@
 	"wikistories-story-deleteframe": "Deze pagina verwijderen",
 	"wikistories-story-feedback": "Deel uw feedback",
 	"wikistories-imageattribution-author-unknown": "Auteur onbekend",
-	"wikistories-article-cancelselection": "Wissen",
 	"wikistories-article-loading": "Artikel wordt geladen…",
+	"wikistories-article-info-banner-sentence": "Tik om een zin te selecteren/deselecteren",
 	"wikistories-alert-okbuttontext": "OK",
 	"wikistories-confirmdialog-cancel": "Annuleren",
 	"wikistories-confirmdialog-ok": "OK",

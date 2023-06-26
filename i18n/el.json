@@ -9,6 +9,7 @@
 	},
 	"wikistories-search-inputplaceholder": "Αναζήτηση εικόνων",
 	"wikistories-story-edittext-duplicate": "Ανιχνεύτηκε διπλό κείμενο, <span class=\"ext-wikistories-warning-replace\">να αντικατασταθεί</span>;",
+	"wikistories-article-info-banner-sentence": "Πατήστε για να επιλέξετε/αποεπιλέξετε μια πρόταση",
 	"wikistories-alert-okbuttontext": "Εντάξει",
 	"wikistories-confirmdialog-delete-title": "Διαγραφή αυτής της σελίδας;",
 	"wikistories-confirmdialog-delete-accept": "Διαγραφή",
