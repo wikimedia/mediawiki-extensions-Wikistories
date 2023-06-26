@@ -284,13 +284,17 @@ module.exports = {
 				frames: state.frames.map( ( f ) => {
 					const frame = {
 						image: {
-							filename: f.filename,
-							focalRect: f.focalRect
+							filename: f.filename
 						},
 						text: {
 							value: f.text
 						}
 					};
+
+					if ( f.focalRect ) {
+						frame.image.focalRect = f.focalRect;
+					}
+
 					if ( f.textFromArticle ) {
 						frame.text.fromArticle = {
 							articleTitle: state.fromArticle,
