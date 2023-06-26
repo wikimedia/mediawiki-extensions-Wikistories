@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
+use Article;
 use DeferredUpdates;
 use ExtensionRegistry;
 use IContextSource;
@@ -167,6 +168,30 @@ class Hooks {
 	}
 
 	/**
+	 * @param ProperPageIdentity $page
+	 * @param Authority $deleter
+	 */
+	private static function deleteStories( ProperPageIdentity $page, Authority $deleter ) {
+		$request = RequestContext::getMain()->getRequest();
+		$services = MediaWikiServices::getInstance();
+		/** @var PageLinksSearch $pageLinksSearch */
+		$pageLinksSearch = $services->get( 'Wikistories.PageLinksSearch' );
+		$wikiPageFactory = $services->getWikiPageFactory();
+		$deletePageFactory = $services->getDeletePageFactory();
+		$storiesId = $pageLinksSearch->getPageLinks( $page->getDBkey(), 99 );
+		foreach ( $storiesId as $storyId ) {
+			$page = $wikiPageFactory->newFromID( $storyId );
+			$deletePage = $deletePageFactory->newDeletePage(
+				$page,
+				$deleter
+			);
+			$deletePage
+				->setSuppress( $request->getBool( 'wpSuppress' ) )
+				->deleteIfAllowed( $request->getText( 'wpReason' ) );
+		}
+	}
+
+	/**
 	 * @param Skin $skin
 	 * @return bool
 	 */
@@ -279,8 +304,13 @@ class Hooks {
 	) {
 		// NS_MAIN deletion
 		if ( $page->getNamespace() === NS_MAIN ) {
-			DeferredUpdates::addCallableUpdate( static function () use ( $page ) {
-				self::purgeStories( $page );
+			$deleteStories = RequestContext::getMain()->getRequest()->getBool( 'wpDeleteStory' );
+			DeferredUpdates::addCallableUpdate( static function () use ( $page, $deleter, $deleteStories ) {
+				if ( $deleteStories ) {
+					self::deleteStories( $page, $deleter );
+				} else {
+					self::purgeStories( $page );
+				}
 			} );
 			return;
 		}
@@ -383,5 +413,42 @@ class Hooks {
 		/** @var StoriesCache $cache */
 		$cache = $services->get( 'Wikistories.Cache' );
 		$cache->invalidateStory( $wikiPage->getId() );
+	}
+
+	/**
+	 * @param string $name
+	 * @param array &$fields
+	 * @param Article $article
+	 */
+	public static function onActionModifyFormFields(
+		$name,
+		&$fields,
+		$article
+	) {
+		// skip when not delete action and not an article
+		if ( $name !== 'delete' || $article->getPage()->getNamespace() !== NS_MAIN ) {
+			return;
+		}
+
+		// skip when no stories found in this article
+		$pageLinkSearch = MediaWikiServices::getInstance()->get( 'Wikistories.PageLinksSearch' );
+		$title = $article->getPage()->getTitle()->getDBkey();
+		$links = $pageLinkSearch->getPageLinks( $title, 1 );
+		if ( count( $links ) === 0 ) {
+			return;
+		}
+
+		// Add DeleteStory Field before ConfirmB
+		// @todo Add Unit Test to prevent UI break when DeleteAction.php change
+		$confirmBField = $fields[ 'ConfirmB' ];
+		unset( $fields[ 'ConfirmB' ] );
+		$fields[ 'DeleteStory' ] = [
+			'type' => 'check',
+			'id' => 'wpDeleteStory',
+			'default' => false,
+			'tabIndex' => $confirmBField[ 'tabindex' ] + 1,
+			'label-message' => 'deletepage-deletestory'
+		];
+		$fields[ 'ConfirmB' ] = $confirmBField;
 	}
 }

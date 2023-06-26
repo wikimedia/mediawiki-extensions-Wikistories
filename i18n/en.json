@@ -8,6 +8,7 @@
 	"wikistories-extensiondesc": "Wikistories lets editors create short, visual and reliable knowledge from Wikimedia projects",
 	"right-edit-story": "Edit stories",
 	"action-edit-story": "edit stories",
+	"deletepage-deletestory": "Delete associated stories?",
 	"wikistories-beta-feature-message": "Wikistories",
 	"wikistories-beta-feature-description": "A tool that lets you select images & highlight facts from an article to create short, visual, and reliable knowledge from Wikipedia for quick consumption. Enable it to do the following:<br>- Discover stories attached to an article.<br>- Click/Tap on the [+] icon below the article title to create a new story.",
 	"prefs-wikistories": "Wikistories",

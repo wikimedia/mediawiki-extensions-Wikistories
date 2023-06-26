@@ -15,6 +15,7 @@
 	"wikistories-extensiondesc": "{{desc|name=Wikistories|url=https://www.mediawiki.org/wiki/Extension:Wikistories}}",
 	"right-edit-story": "{{doc-right|edit-story}}",
 	"action-edit-story": "{{doc-action|edit-story}}",
+	"deletepage-deletestory": "Text of checkbox above confirm button in delete page to delete all linked stories.",
 	"wikistories-beta-feature-message": "Title of the beta feature to show stories on article pages.",
 	"wikistories-beta-feature-description": "Description of the beta feature to show stories on article pages.",
 	"prefs-wikistories": "Section title for the Wikistories preferences on the 'appearance' preferences tab.",
