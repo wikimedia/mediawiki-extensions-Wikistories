@@ -82,6 +82,8 @@
 	"wikistories-builder-article-not-available": "Text of the article page when article is not available from Wikipedia",
 	"wikistories-builder-publishform-navigator-title": "Title for Navigator component when used in PublishForm view",
 	"wikistories-builder-publishform-placeholder": "Placeholder of the story title text input on the publish form.",
+	"wikistories-builder-publishform-summary-input-label": "Label of the story summary text input on the publish form.",
+	"wikistories-builder-publishform-summary-input-placeholder": "Placeholder of the story summary text input on the publish form.",
 	"wikistories-builder-publishform-publishbutton": "Text of the publish button on the publish form.",
 	"wikistories-builder-publishform-info": "Information section about where will the published story be available.",
 	"wikistories-builder-publishform-invalidtitle-empty": "Error message when no story title is provided on the publish form.",

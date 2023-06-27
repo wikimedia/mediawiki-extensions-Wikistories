@@ -1,12 +1,13 @@
 /**
  * @param {string} title
+ * @param {string} summary
  * @param {Object} content Content of the story (frames with images and text)
  * @param {string} mode 'edit' or 'new'
  * @param {boolean} watchlist Whether the story should be on the current user's watchlist
  * @param {string} watchlistExpiry Watch expiration
  * @return {jQuery.Promise} resolves with the result of the save operation
  */
-const saveStory = function ( title, content, mode, watchlist, watchlistExpiry ) {
+const saveStory = function ( title, summary, content, mode, watchlist, watchlistExpiry ) {
 	const api = new mw.Api();
 	const contentString = JSON.stringify( content );
 	const watchlistValue = watchlist ? 'watch' : 'unwatch';
@@ -14,6 +15,7 @@ const saveStory = function ( title, content, mode, watchlist, watchlistExpiry ) 
 		return api.edit( title, function () {
 			return {
 				text: contentString,
+				summary: summary,
 				watchlist: watchlistValue,
 				watchlistexpiry: watchlistExpiry
 			};
@@ -24,6 +26,7 @@ const saveStory = function ( title, content, mode, watchlist, watchlistExpiry ) 
 			{
 				contentformat: 'application/json',
 				contentmodel: 'story',
+				summary: summary,
 				watchlist: watchlistValue,
 				watchlistexpiry: watchlistExpiry
 			},
