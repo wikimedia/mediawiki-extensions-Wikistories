@@ -25,6 +25,9 @@
 				:placeholder="$i18n( 'wikistories-builder-publishform-placeholder' ).text()"
 				@input="onInput"
 			>
+			<div v-if="knownError" class="ext-wikistories-publishform-content-error">
+				{{ error }}
+			</div>
 			<div class="ext-wikistories-publishform-content-watchlist">
 				<input
 					id="watchlist"
@@ -51,14 +54,24 @@
 					</option>
 				</select>
 			</div>
-			<div v-if="knownError" class="ext-wikistories-publishform-content-error">
-				{{ error }}
+			<div class="ext-wikistories-publishform-license" v-html="licenseHtml"></div>
+			<div class="ext-wikistories-publishform-content-summary">
+				<span
+					class="ext-wikistories-publishform-content-summary-collapse"
+					:class="showSummaryInput ? 'ext-wikistories-publishform-content-summary-collapse-expand' : ''"
+				></span>
+				<span class="ext-wikistories-publishform-content-summary-label" @click="onExpand">
+					{{ $i18n( 'wikistories-builder-publishform-summary-input-label' ).text() }}
+				</span>
+				<textarea
+					v-show="showSummaryInput"
+					ref="storySummaryInput"
+					v-model="storySummary"
+					maxlength="255"
+					class="ext-wikistories-publishform-content-summary-input"
+					:placeholder="$i18n( 'wikistories-builder-publishform-summary-input-placeholder' ).text()"
+				></textarea>
 			</div>
-			<div class="ext-wikistories-publishform-content-info">
-				{{ $i18n( 'wikistories-builder-publishform-info' ).text() }}
-			</div>
-		</div>
-		<div class="ext-wikistories-publishform-license" v-html="licenseHtml">
 		</div>
 		<div v-if="overlay" class="ext-wikistories-publishform-saving">
 			<div v-if="savingInProgress" class="ext-wikistories-publishform-saving-spinner">
@@ -114,6 +127,8 @@ module.exports = {
 	data: function () {
 		return {
 			storyTitle: '',
+			storySummary: '',
+			showSummaryInput: true,
 			watchlist: true,
 			watchlistExpiry: null,
 			error: null,
@@ -168,7 +183,7 @@ module.exports = {
 				}
 				const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
 				const watchlistExpiry = this.watchlistExpiryEnabled ? this.watchlistExpiry : null;
-				saveStory( title.getPrefixedDb(), this.storyForSave, this.mode, this.watchlist, watchlistExpiry ).then(
+				saveStory( title.getPrefixedDb(), this.storySummary, this.storyForSave, this.mode, this.watchlist, watchlistExpiry ).then(
 					function ( response ) {
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
@@ -194,6 +209,15 @@ module.exports = {
 		},
 		onInput: function () {
 			this.error = '';
+		},
+		onExpand: function () {
+			this.showSummaryInput = !this.showSummaryInput;
+			if ( this.showSummaryInput ) {
+				setTimeout( () => {
+					this.$refs.storySummaryInput.focus();
+					this.$refs.storySummaryInput.scrollIntoView( { block: 'end', inline: 'center' } );
+				}, 0 );
+			}
 		},
 		setErrorFeedback: function ( response ) {
 			this.overlay = false;
@@ -231,8 +255,12 @@ module.exports = {
 		if ( this.mode === 'edit' ) {
 			this.storyTitle = this.title.replace( /_/g, ' ' );
 			this.titleInputDisabled = true;
+
+			// showSummaryInput is true by default
+			this.$refs.storySummaryInput.focus();
 		} else {
 			this.$refs.storyTitleInput.focus();
+			this.showSummaryInput = false;
 		}
 		this.watchlistExpiry = this.watchlistExpiryOptions.default;
 		this.watchlist = !!this.watchDefault;
@@ -306,10 +334,50 @@ module.exports = {
 			}
 		}
 
+		&-summary {
+			width: 100%;
+
+			&-collapse {
+				position: absolute;
+				width: 18px;
+				height: 18px;
+				background: url( ./../images/collapse.svg );
+				background-size: 18px;
+				background-repeat: no-repeat;
+				background-position: 4px;
+				-webkit-transform: rotate( 90deg );
+				transform: rotate( 90deg );
+
+				&-expand {
+					-webkit-transform: rotate( -90deg );
+					transform: rotate( -90deg );
+					background-position: -4px;
+				}
+			}
+
+			&-label {
+				position: relative;
+				font-weight: 500;
+				padding-left: 25px;
+			}
+
+			&-input {
+				width: 100%;
+				border: @border-width-thick @border-style-base @border-color-progressive;
+				box-sizing: border-box;
+				border-radius: @border-radius-base;
+				padding: 10px;
+
+				&:focus {
+					outline-color: @border-color-progressive;
+				}
+			}
+		}
+
 		&-error {
 			font-size: 14px;
 			color: @color-error;
-			min-height: 60px;
+			margin-top: 12px;
 			width: 100%;
 		}
 
@@ -323,9 +391,9 @@ module.exports = {
 	}
 
 	&-license {
+		width: 100%;
 		font-size: 12px;
-		background-color: #f8f9fa;
-		padding: 20px;
+		padding: 10px 0;
 	}
 
 	&-saving {

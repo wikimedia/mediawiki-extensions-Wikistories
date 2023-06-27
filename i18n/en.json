@@ -76,6 +76,8 @@
 	"wikistories-builder-article-not-available": "Article text unavailable. Please try again later",
 	"wikistories-builder-publishform-navigator-title": "Publish Wikistory",
 	"wikistories-builder-publishform-placeholder": "Enter story title...",
+	"wikistories-builder-publishform-summary-input-label": "Write edit summary",
+	"wikistories-builder-publishform-summary-input-placeholder": "Describe edits (e.g., 'Changed an image', 'Corrected facts')",
 	"wikistories-builder-publishform-publishbutton": "Publish",
 	"wikistories-builder-publishform-info": "Published stories will be available on the article page.",
 	"wikistories-builder-publishform-invalidtitle-empty": "Enter story title",
