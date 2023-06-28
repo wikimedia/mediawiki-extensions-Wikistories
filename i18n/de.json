@@ -75,6 +75,8 @@
 	"wikistories-builder-article-not-available": "Artikeltext nicht verfügbar. Bitte versuche es später erneut",
 	"wikistories-builder-publishform-navigator-title": "Wikistory veröffentlichen",
 	"wikistories-builder-publishform-placeholder": "Titel der Geschichte eingeben …",
+	"wikistories-builder-publishform-summary-input-label": "Bearbeitungszusammenfassung schreiben",
+	"wikistories-builder-publishform-summary-input-placeholder": "Beschreibe die Änderungen (z. B. „Bild geändert“, „Fakten korrigiert“).",
 	"wikistories-builder-publishform-publishbutton": "Veröffentlichen",
 	"wikistories-builder-publishform-info": "Veröffentlichte Geschichten werden auf der Artikelseite verfügbar sein.",
 	"wikistories-builder-publishform-invalidtitle-empty": "Titel der Geschichte eingeben",

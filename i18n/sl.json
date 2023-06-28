@@ -76,6 +76,8 @@
 	"wikistories-builder-article-not-available": "Besedilo članka ni na voljo. Prosimo, poskusite pozneje.",
 	"wikistories-builder-publishform-navigator-title": "Objavi vikizgodbo",
 	"wikistories-builder-publishform-placeholder": "Vnesite naslov zgodbe ...",
+	"wikistories-builder-publishform-summary-input-label": "Napišite povzetek urejanja",
+	"wikistories-builder-publishform-summary-input-placeholder": "Opišite urejanja (npr. »zamenjava slike«, »popravljena dejstva«)",
 	"wikistories-builder-publishform-publishbutton": "Objavi",
 	"wikistories-builder-publishform-info": "Objavljene zgodbe bodo na voljo na strani članka.",
 	"wikistories-builder-publishform-invalidtitle-empty": "Vnesite naslov zgodbe",
