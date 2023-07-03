@@ -74,6 +74,8 @@
 	"wikistories-builder-article-not-available": "Le texto del articulo non es disponibile. Per favor tenta lo de novo plus tarde",
 	"wikistories-builder-publishform-navigator-title": "Publicar wikihistoria",
 	"wikistories-builder-publishform-placeholder": "Insere le titulo del historia…",
+	"wikistories-builder-publishform-summary-input-label": "Scribe le summario del modification",
+	"wikistories-builder-publishform-summary-input-placeholder": "Describe le modificationes (p.ex. 'Imagine cambiate', 'Factos corrigite')",
 	"wikistories-builder-publishform-publishbutton": "Publicar",
 	"wikistories-builder-publishform-info": "Le historias publicate essera disponibile sur le pagina del articulo.",
 	"wikistories-builder-publishform-invalidtitle-empty": "Insere le titulo del historia",

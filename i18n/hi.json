@@ -27,6 +27,7 @@
 	"wikistories-builder-publishform-info": "प्रकाशित कहानियां लेख पृष्ठ पर उपलब्ध होंगी।",
 	"wikistories-builder-publishform-invalidtitle-empty": "कहानी का शीर्षक दर्ज करें",
 	"wikistories-builder-publishform-saveerror": "कहानी प्रकाशित करते समय एक त्रुटि हुई। बाद में पुन: प्रयास करें।",
+	"wikistories-builder-publishform-gotostory": "कहानी पढ़ें",
 	"wikistories-nojs-form-label-image": "चित्र",
 	"wikistories-nojs-form-categories-title": "श्रेणियाँ",
 	"wikistories-storyviewer-next-story-header": "और पढ़ें",

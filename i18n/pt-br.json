@@ -3,10 +3,12 @@
 		"authors": [
 			"Duke of Wikipädia",
 			"Eduardoaddad",
+			"Glaucia Japui Gonçalves",
 			"Re demz",
 			"YuriNikolai"
 		]
 	},
+	"deletepage-deletestory": "Excluir\n  histórias associadas",
 	"rcshowhidewikistories-show": "Exibir",
 	"rcshowhidewikistories-hide": "Ocultar",
 	"wikistories-specialstorybuilder-title": "Criar história",
@@ -16,6 +18,7 @@
 	"wikistories-search-navigator-title": "Selecionar imagens",
 	"wikistories-search-navigator-title-selected-info": "$1 selecionada(s)",
 	"wikistories-story-goto-publish": "Próximo",
+	"wikistories-story-edittext-outdated": "desatualizado\n  texto da história, <span class=\"ext-wikistories-warning-replace\">substituir</span>?",
 	"wikistories-story-edittext-done": "Concluído",
 	"wikistories-story-feedback": "Compartilhe seu feedback",
 	"wikistories-imageattribution-author-unknown": "Autor desconhecido",
@@ -35,6 +38,8 @@
 	"wikistories-error-frameswithouttext-title": "Texto Faltando",
 	"wikistories-builder-article-not-available": "Texto do artigo indisponível. Por favor tente novamente mais tarde",
 	"wikistories-builder-publishform-placeholder": "Insira título da história...",
+	"wikistories-builder-publishform-summary-input-label": "Escrever\n  editar resumo",
+	"wikistories-builder-publishform-summary-input-placeholder": "Descrever\n  edições (por exemplo, 'Alterou uma imagem', 'Fatos corrigidos')",
 	"wikistories-builder-publishform-publishbutton": "Publicar",
 	"wikistories-builder-publishform-invalidtitle-empty": "Insira título da história",
 	"wikistories-builder-publishform-invalidtitle-format": "Título de história inválido",
