@@ -1,11 +1,11 @@
 <template>
-	<div v-if="currentFrame.text">
+	<div v-if="content">
 		<div
 			ref="frameTextbox"
 			class="ext-wikistories-viewer-container-content-story-text"
 			:style="textStyle"
 			@scroll="onScroll">
-			{{ currentFrame.text }}
+			{{ content }}
 		</div>
 		<div
 			:class="`ext-wikistories-viewer-container-content-text-fade ${scrollCueClassName}`">
@@ -14,8 +14,6 @@
 </template>
 
 <script>
-const mapGetters = require( 'vuex' ).mapGetters;
-
 // @vue/component
 module.exports = {
 	name: 'Textbox',
@@ -27,6 +25,14 @@ module.exports = {
 		textsize: {
 			type: String,
 			required: true
+		},
+		textsizes: {
+			type: Object,
+			required: true
+		},
+		content: {
+			type: String,
+			required: true
 		}
 	},
 	emits: [ 'scroll-pause' ],
@@ -36,13 +42,13 @@ module.exports = {
 			scrollCueClassName: ''
 		};
 	},
-	computed: $.extend( mapGetters( [ 'currentFrame', 'textsizes' ] ), {
+	computed: {
 		textStyle: function () {
 			return {
 				fontSize: this.textsizes[ this.textsize ] + '%'
 			};
 		}
-	} ),
+	},
 	methods: {
 		onScroll: function ( e ) {
 			const scrollTop = e.target.scrollTop;
@@ -83,7 +89,7 @@ module.exports = {
 				this.scrollCueClassName = '';
 			}
 		},
-		currentFrame: function () {
+		content: function () {
 			this.resetRefElementScrollTop();
 		}
 	},

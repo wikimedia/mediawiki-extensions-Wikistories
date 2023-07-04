@@ -89,7 +89,9 @@
 			<!-- STORY TEXT -->
 			<textbox
 				:is-paused="timer.isPaused"
+				:textsizes="textsizes"
 				:textsize="textsize"
+				:content="currentFrame.text"
 				@scroll-pause="pauseOnScroll"
 			></textbox>
 			<!-- STORY TITLE (FIRST PAGE)-->
@@ -107,7 +109,7 @@
 			</div>
 			<!-- FILE ATTRIBUTION -->
 			<div v-show="!currentFrame.fileNotFound">
-				<image-attribution></image-attribution>
+				<image-attribution :data="imgAttribution"></image-attribution>
 			</div>
 			<!-- NEXT STORY (LAST FRAME) -->
 			<div
@@ -224,7 +226,7 @@ module.exports = {
 		'story', 'currentFrame', 'editUrl', 'talkUrl', 'shareUrl', 'isCurrentImageLoaded',
 		'isStoryEnd', 'isFirstFrame', 'isLastFrame', 'textsize', 'textsizes',
 		'isFramePlaying', 'isFrameDonePlaying', 'isFrameViewed', 'currentStoryTitle',
-		'nextStories'
+		'nextStories', 'imgAttribution'
 	] ), {
 		style: function () {
 			if ( this.isStoryEnd && this.nextStories.length ) {
