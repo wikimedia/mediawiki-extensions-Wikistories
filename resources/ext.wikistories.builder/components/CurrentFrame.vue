@@ -109,7 +109,7 @@ module.exports = {
 	}
 
 	&-text-extra-padding {
-		padding-bottom: 32px;
+		padding-bottom: 38px;
 	}
 
 	&-edit-guide {
