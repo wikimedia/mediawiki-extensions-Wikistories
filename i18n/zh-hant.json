@@ -3,11 +3,24 @@
 		"authors": [
 			"DinoWP",
 			"Winston Sung",
-			"捍粵者"
+			"捍粵者",
+			"Kly"
 		]
 	},
+	"wikistories-extensiondesc": "Wikistories 可讓編輯者從維基媒體計劃建立簡短、視覺化的可靠知識。",
 	"wikistories-specialcreatestory-loading": "正在載入…",
 	"wikistories-search-inputplaceholder": "搜尋圖片",
+	"wikistories-search-cuetext": "搜尋與條目相關的圖片。",
 	"wikistories-search-noresultstext": "沒有結果",
-	"wikistories-builder-publishform-publishbutton": "發佈"
+	"wikistories-story-goto-publish": "下一步",
+	"wikistories-imageattribution-author-unknown": "作者未知",
+	"wikistories-article-usetext": "新增到故事",
+	"wikistories-alert-okbuttontext": "了解",
+	"wikistories-error-notenoughframes-title": "沒有足夠頁面",
+	"wikistories-error-frameswithouttext-title": "缺少文字",
+	"wikistories-builder-publishform-placeholder": "輸入故事標題…",
+	"wikistories-builder-publishform-publishbutton": "發佈",
+	"wikistories-builder-publishform-info": "已發布的故事將在條目頁面上可用。",
+	"wikistories-builder-publishform-invalidtitle-empty": "輸入故事標題",
+	"wikistories-builder-publishform-invalidtitle-format": "無效的故事標題"
 }
