@@ -56,7 +56,7 @@ class RecentChangesPropagationHooks implements
 	private $sep;
 
 	/** @var string */
-	private $wordSep;
+	private $wordSep = null;
 
 	/** @var UserFactory */
 	private $userFactory;
@@ -81,7 +81,6 @@ class RecentChangesPropagationHooks implements
 		$this->loadBalancer = $loadBalancer;
 		$this->userFactory = $userFactory;
 
-		$this->wordSep = wfMessage( 'word-separator' )->plain();
 		$this->sep = ' ' . Html::element( 'span', [ 'class' => 'mw-changeslist-separator' ], '' ) . ' ';
 	}
 
@@ -161,6 +160,17 @@ class RecentChangesPropagationHooks implements
 			DeferredUpdates::POSTSEND,
 			$this->loadBalancer->getConnection( DB_PRIMARY )
 		);
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @return string Word separator
+	 */
+	private function getWordSep( IContextSource $context ): string {
+		if ( $this->wordSep === null ) {
+			$this->wordSep = $context->msg( 'word-separator' )->plain();
+		}
+		return $this->wordSep;
 	}
 
 	/**
@@ -357,7 +367,7 @@ class RecentChangesPropagationHooks implements
 			);
 		}
 		return $userLink .
-			$this->wordSep .
+			$this->getWordSep( $context ) .
 			Html::rawElement(
 				'span',
 				[ 'class' => 'mw-usertoollinks mw-changeslist-links' ],
@@ -412,7 +422,7 @@ class RecentChangesPropagationHooks implements
 		unset( $data['separatorAftercharacterDiff'] );
 
 		// Make DIFF and HIST links for story instead of article
-		$data[ 'historyLink' ] = $this->wordSep .
+		$data[ 'historyLink' ] = $this->getWordSep( $context ) .
 			$this->makeDiffHistLinks( $context, $story, $rc );
 	}
 
@@ -438,9 +448,9 @@ class RecentChangesPropagationHooks implements
 		$data[ 'timestampLink' ] = $this->makeTimestampLink( $story, $rc, $lang );
 
 		// Replace "(cur last)" links with "story (diff hist)" links
-		$data[ 'currentAndLastLinks' ] = $this->wordSep .
+		$data[ 'currentAndLastLinks' ] = $this->getWordSep( $context ) .
 			$this->makeStoryLink( $context, $story ) .
-			$this->wordSep .
+			$this->getWordSep( $context ) .
 			$this->makeDiffHistLinks( $context, $story, $rc );
 
 		// Remove character diff section
@@ -486,15 +496,15 @@ class RecentChangesPropagationHooks implements
 			$this->makeDiffHistLinks( $context, $story, $rc ) .
 			$this->sep .
 			$flag .
-			$this->wordSep .
+			$this->getWordSep( $context ) .
 			$this->makeArticleLink( $article ) .
-			$this->wordSep .
+			$this->getWordSep( $context ) .
 			$this->makeStoryLink( $context, $story, true ) .
-			$this->wordSep .
+			$this->getWordSep( $context ) .
 			$this->makeTimestampLink( $story, $rc, $lang ) .
 			$this->sep .
 			$this->makeUserLinks( $context, $rev !== null ? $rev->getVisibility() : 0, $user ) .
-			$this->wordSep .
+			$this->getWordSep( $context ) .
 			$this->makeComment( $context, $comment )
 		);
 	}
