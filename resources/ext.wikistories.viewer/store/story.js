@@ -12,7 +12,8 @@ module.exports = {
 			small: 90,
 			regular: 100,
 			large: 120
-		}
+		},
+		purgedStories: {}
 	},
 	getters: {
 		currentStory: ( state ) => {
@@ -103,7 +104,8 @@ module.exports = {
 			clonedStories.splice( currentStoriesIndex, 1 );
 			const shuffledStories = clonedStories.sort( () => ( Math.random() > 0.5 ) ? 1 : -1 );
 			return shuffledStories.slice( 0, 3 );
-		}
+		},
+		purgedStories: ( state ) => state.purgedStories
 	},
 	mutations: {
 		setStories: ( state, stories ) => {
@@ -125,6 +127,9 @@ module.exports = {
 		},
 		setTextsize: ( state, newTextsize ) => {
 			state.textsize = newTextsize;
+		},
+		setPurgedStory: ( state, storyId ) => {
+			state.purgedStories[ storyId ] = true;
 		}
 	},
 	actions: {
@@ -176,6 +181,30 @@ module.exports = {
 				mw.user.options.set( PREF_TEXTSIZE, newTextsize );
 				new mw.Api().saveOption( PREF_TEXTSIZE, newTextsize );
 			}
+		},
+		purgeStory: ( context, storyId ) => {
+			// don't purge when it's already purged before
+			if ( context.getters.purgedStories[ storyId ] ) {
+				return;
+			}
+
+			// don't purge when the story has no image tracking categories
+			if ( context.getters.currentStory.trackingCategories
+				.indexOf( 'wikistories-no-image-category' ) !== -1
+			) {
+				return;
+			}
+
+			const api = new mw.Api();
+			const storyNamespaceId = mw.config.get( 'wgNamespaceIds' ).story;
+			const namespace = mw.config.get( 'wgFormattedNamespaces' )[ storyNamespaceId ];
+			api.post( {
+				action: 'purge',
+				titles: `${namespace}:${context.getters.currentStoryTitle}`,
+				format: 'json'
+			} );
+
+			context.commit( 'setPurgedStory', storyId );
 		}
 	}
 };

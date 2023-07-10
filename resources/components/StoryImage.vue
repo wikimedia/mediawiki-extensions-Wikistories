@@ -15,6 +15,7 @@
 			@touchcancel="onTouchEnd"
 			@click="onClick"
 			@load="onImgLoad"
+			@error="error"
 		>
 	</div>
 </template>
@@ -28,7 +29,8 @@ module.exports = {
 		alt: { type: String, required: true },
 		rect: { type: Object, required: false, default: null },
 		thumbnail: { type: Boolean, required: true },
-		allowGestures: { type: Boolean, required: true }
+		allowGestures: { type: Boolean, required: true },
+		error: { type: Function, required: false }
 	},
 	emits: [ 'update-focal-rect' ],
 	data: function () {

@@ -17,6 +17,7 @@
 				:alt="currentFrame.filename"
 				:thumbnail="false"
 				:allow-gestures="false"
+				:error="onImgError"
 			></story-image>
 			<!-- OVERLAY (FIRST FRAME) -->
 			<div
@@ -244,7 +245,8 @@ module.exports = {
 	} ),
 	methods: $.extend( mapActions( [
 		'setStories', 'setStoryId', 'nextStory', 'setTextsize',
-		'prevFrame', 'nextFrame', 'resetFrame', 'setIsStoryEnd'
+		'prevFrame', 'nextFrame', 'resetFrame', 'setIsStoryEnd',
+		'purgeStory'
 	] ), {
 		playNextFrame: function () {
 			this.timer.setup( function () {
@@ -340,6 +342,11 @@ module.exports = {
 		talk: function () {
 			this.logStoryViewEvent();
 			window.location = this.talkUrl;
+		},
+		onImgError: function () {
+			// purge when there is an error while loading the image
+			// the story page will contain no image categories if the image is missing
+			this.purgeStory( this.storyId );
 		}
 	} ),
 	watch: {
