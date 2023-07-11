@@ -2,7 +2,7 @@
 	<div class="ext-wikistories-image-attribution">
 		<div class="ext-wikistories-image-attribution-info">
 			<div
-				v-for="license in imgAttribution.license"
+				v-for="license in data.license"
 				:key="license"
 				:class="
 					`ext-wikistories-image-attribution-info-${license.toLowerCase()}
@@ -12,14 +12,14 @@
 			<bdi
 				class="ext-wikistories-image-attribution-info-author">
 				{{
-					imgAttribution.author ||
+					data.author ||
 						$i18n( 'wikistories-imageattribution-author-unknown' ).text()
 				}}
 			</bdi>
 		</div>
 		<div class="ext-wikistories-image-attribution-more-info">
 			<a
-				:href="imgAttribution.url"
+				:href="data.url"
 				class="ext-wikistories-image-attribution-more-info-link"
 				target="_blank"></a>
 		</div>
@@ -27,12 +27,12 @@
 </template>
 
 <script>
-const mapGetters = require( 'vuex' ).mapGetters;
-
 // @vue/component
 module.exports = {
 	name: 'ImageAttribution',
-	computed: mapGetters( [ 'imgAttribution' ] )
+	props: {
+		data: { type: Object, required: true }
+	}
 };
 </script>
 
