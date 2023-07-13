@@ -183,9 +183,11 @@ module.exports = {
 		},
 		setEditingText: ( context, value ) => {
 			context.commit( 'setEditingText', value );
+			context.dispatch( 'checkWarningStatus' );
 		},
 		checkWarningStatus: ( context ) => {
 			const frames = context.getters.frames;
+			const editingText = context.getters.editingText;
 
 			const duplicates = {};
 			const warningMessage = {};
@@ -215,21 +217,23 @@ module.exports = {
 					continue;
 				}
 
-				// check if frames has duplicate story text
-				const currentValue = frame.text;
-				if ( duplicates[ currentValue ] !== undefined ) {
-					warningMessage[ i ] = duplicate;
-					if ( duplicates[ currentValue ] !== null ) {
-						warningMessage[ duplicates[ currentValue ] ] = duplicate;
-						duplicates[ currentValue ] = null;
+				// check if frames has duplicate story text when it is not editing text
+				if ( !editingText ) {
+					const currentValue = frame.text;
+					if ( duplicates[ currentValue ] !== undefined ) {
+						warningMessage[ i ] = duplicate;
+						if ( duplicates[ currentValue ] !== null ) {
+							warningMessage[ duplicates[ currentValue ] ] = duplicate;
+							duplicates[ currentValue ] = null;
+						}
+					} else {
+						duplicates[ currentValue ] = i;
 					}
-				} else {
-					duplicates[ currentValue ] = i;
-				}
 
-				// skip when duplication found
-				if ( warningMessage[ i ] ) {
-					continue;
+					// skip when duplication found
+					if ( warningMessage[ i ] ) {
+						continue;
+					}
 				}
 
 				// check edit guide messages
