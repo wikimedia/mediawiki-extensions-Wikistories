@@ -93,7 +93,7 @@
 				:textsizes="textsizes"
 				:textsize="textsize"
 				:content="currentFrame.text"
-				@scroll-pause="pauseOnScroll"
+				@scroll-pause="pauseOnAction"
 			></textbox>
 			<!-- STORY TITLE (FIRST PAGE)-->
 			<div
@@ -286,6 +286,7 @@ module.exports = {
 			window.location.hash = '';
 		},
 		shareStory: function () {
+			this.pauseOnAction();
 			navigator.share( {
 				title: this.currentStoryTitle,
 				url: this.shareUrl
@@ -298,7 +299,7 @@ module.exports = {
 				this.timer.pause();
 			}
 		},
-		pauseOnScroll: function () {
+		pauseOnAction: function () {
 			this.timer.pause();
 		},
 		navigateFrame: function ( e ) {
