@@ -15,17 +15,6 @@ const getImageExtMetadata = searchTools.getImageExtMetadata;
 
 let orderKey = 10;
 
-const makeFrameStyle = ( f, thumbnail = false ) => {
-	return f.url ?
-		{
-			backgroundImage: 'url(' + f.url + ')',
-			backgroundPosition: 'center',
-			backgroundSize: 'cover'
-		} : {
-			backgroundColor: thumbnail ? '#eaecf0' : '#fff'
-		};
-};
-
 module.exports = {
 	state: {
 		fromArticle: storyContent.articleTitle,
@@ -270,7 +259,6 @@ module.exports = {
 				if ( index === state.currentFrameIndex ) {
 					newFrame.selected = true;
 				}
-				newFrame.style = makeFrameStyle( f, true );
 				return newFrame;
 			} );
 		},
