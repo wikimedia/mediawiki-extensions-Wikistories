@@ -6,10 +6,17 @@
 				:key="frame.key || index"
 				class="ext-wikistories-frames-thumbnails-frame"
 				:class="{ 'ext-wikistories-frames-thumbnails-frame-selected': frame.selected }"
-				:style="frame.style"
-				@click="selectFrame( index )"
+				@click="onClick( $event, index )"
 			>
 				<div v-if="frame.warning && frame.warning.isAlwaysShown" class="ext-wikistories-frames-thumbnails-frame-warning"></div>
+				<story-image
+					:src="frame.url"
+					:rect="frame.focalRect"
+					:alt="frame.filename"
+					:thumbnail="true"
+					:allow-gestures="false"
+					class="ext-wikistories-frames-image-container"
+				></story-image>
 			</div>
 		</div>
 		<div class="ext-wikistories-frames-btn-add" @click="addFrames">
@@ -22,10 +29,14 @@
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
 const sortable = require( '../util/sortableFrames.js' );
+const StoryImage = require( '../StoryImage.vue' );
 
 // @vue/component
 module.exports = {
 	name: 'Frames',
+	components: {
+		'story-image': StoryImage
+	},
 	emits: [ 'max-limit' ],
 	computed: mapGetters( [ 'thumbnails', 'maxFrames' ] ),
 	methods: $.extend( mapActions( [ 'selectFrame', 'reorderFrames', 'routePush' ] ), {
@@ -35,6 +46,18 @@ module.exports = {
 			} else {
 				this.routePush( 'searchMany' );
 			}
+		},
+		preventContextMenuOnElement: function ( event ) {
+			event.target.oncontextmenu = function ( e ) {
+				e.preventDefault();
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+				return false;
+			};
+		},
+		onClick: function ( e, index ) {
+			this.preventContextMenuOnElement( e );
+			this.selectFrame( index );
 		}
 	} ),
 	mounted: function () {
@@ -79,7 +102,6 @@ module.exports = {
 				margin-left: 16px;
 				cursor: pointer;
 				flex-shrink: 0;
-				background-color: #eaecf0;
 				border-radius: @border-radius-base;
 
 				&:last-of-type {
@@ -96,6 +118,8 @@ module.exports = {
 				left: 0;
 				transition: all 0.3s;
 				z-index: 100;
+				-webkit-touch-callout: none !important; /* stylelint-disable-line declaration-no-important */
+				-webkit-user-select: none !important; /* stylelint-disable-line declaration-no-important */
 
 				&-scale {
 					transform: scale( 1.3 );
@@ -138,6 +162,13 @@ module.exports = {
 				text-decoration: none;
 			}
 		}
+
+		// style for the sortable used
+		&-image-container {
+			pointer-events: none;
+			background-color: #eaecf0 !important; /* stylelint-disable-line declaration-no-important */
+		}
+		// end style for the sortable used
 	}
 }
 </style>
