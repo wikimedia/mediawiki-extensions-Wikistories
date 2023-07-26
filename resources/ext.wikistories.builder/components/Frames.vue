@@ -141,6 +141,7 @@ module.exports = {
 					background-image: url( ../images/warning.svg );
 					background-color: @background-color-base;
 					border-radius: 100%;
+					z-index: 101;
 				}
 			}
 		}
