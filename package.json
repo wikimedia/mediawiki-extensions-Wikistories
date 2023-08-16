@@ -3,6 +3,7 @@
 	"private": true,
 	"scripts": {
 		"test": "npm run lint:js && npm run lint:css && jest",
+		"test:watch": "jest --watch",
 		"lint:js": "eslint .",
 		"lint:js:fix": "eslint . --fix",
 		"lint:css": "stylelint **/*.{vue,less}",
