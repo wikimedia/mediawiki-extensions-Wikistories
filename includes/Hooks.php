@@ -14,6 +14,7 @@ use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use OutputPage;
@@ -23,7 +24,6 @@ use ParserOutput;
 use RequestContext;
 use Skin;
 use SpecialPage;
-use Title;
 use User;
 use WikiPage;
 

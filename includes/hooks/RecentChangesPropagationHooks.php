@@ -23,11 +23,11 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\SpecialPage\Hook\ChangesListSpecialPageStructuredFiltersHook;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
 use RecentChange;
 use RequestContext;
 use SpecialPage;
-use Title;
 use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 

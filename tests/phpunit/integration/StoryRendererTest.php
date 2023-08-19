@@ -7,9 +7,9 @@ use MediaWiki\Extension\Wikistories\Tests\StoryFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use RepoGroup;
-use Title;
 
 class StoryRendererTest extends MediaWikiIntegrationTestCase {
 
