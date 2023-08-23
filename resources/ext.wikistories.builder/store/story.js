@@ -199,7 +199,7 @@ module.exports = {
 				if ( frame.outdatedText ) {
 					warningMessage[ i ] = {
 						message: mw.msg( 'wikistories-story-edittext-outdated' ),
-						icon: 'warning',
+						icon: 'alert',
 						isAlwaysShown: true,
 						replace: true
 					};
