@@ -1,5 +1,5 @@
 <template>
-	<div class="ext-wikistories-current-frame-text">
+	<div v-if="textSelected" class="ext-wikistories-current-frame-text">
 		<textarea
 			ref="textarea"
 			v-model="storyText"
@@ -8,6 +8,23 @@
 			@focus="onFocus"
 			@blur="onBlur"
 		></textarea>
+		<div
+			v-if="showWarningMessage"
+			class="ext-wikistories-current-frame-text-edit-guide"
+			:class="'ext-wikistories-current-frame-text-edit-guide-icon-' + currentFrame.warning.icon">
+			<span
+				v-if="currentFrame.warning.replace"
+				@click="onSelect"
+				v-html="currentFrame.warning.message"></span>
+			<span v-else>{{ currentFrame.warning.message }}</span>
+		</div>
+	</div>
+	<div
+		v-else
+		class="ext-wikistories-current-frame-textbox-select-cta"
+		@click="onSelect"
+	>
+		<span v-html="$i18n( 'wikistories-story-selecttext' ).text()"></span>
 	</div>
 </template>
 
@@ -18,13 +35,17 @@ const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
 
 // @vue/component
 module.exports = {
-	name: 'AutoHeightTextarea',
+	name: 'StoryTextbox',
 	props: {
 		onFocus: {
 			type: Function,
 			default: () => {}
 		},
 		onBlur: {
+			type: Function,
+			default: () => {}
+		},
+		onSelect: {
 			type: Function,
 			default: () => {}
 		}
@@ -40,6 +61,13 @@ module.exports = {
 		},
 		maxLength: function () {
 			return MAX_TEXT_LENGTH;
+		},
+		showWarningMessage: function () {
+			return this.currentFrame.warning &&
+				( this.currentFrame.warning.isAlwaysShown || this.editingText );
+		},
+		textSelected: function () {
+			return this.currentFrame.text || this.editingText;
 		}
 	} ),
 	methods: $.extend( mapActions( [ 'setText' ] ), {
@@ -51,10 +79,14 @@ module.exports = {
 		}
 	} ),
 	mounted: function () {
-		this.setHeight();
+		if ( this.textSelected ) {
+			this.setHeight();
+		}
 	},
 	updated: function () {
-		this.setHeight();
+		if ( this.textSelected ) {
+			this.setHeight();
+		}
 	}
 };
 </script>
@@ -93,6 +125,39 @@ module.exports = {
 			&::-webkit-scrollbar {
 				display: none;
 			}
+		}
+	}
+
+	&-edit-guide {
+		z-index: 100;
+		color: @color-subtle;
+		font-size: 14px;
+		margin: 0 8px;
+		padding: 6px 0;
+		padding-left: 24px;
+		text-align: left;
+		border-top: @border-width-base @border-style-base @border-color-subtle;
+		background-repeat: no-repeat;
+		background-position: 0 center;
+
+		&-icon {
+			&-alert {
+				background-image: url( ../images/alert.svg );
+			}
+
+			&-edit_reference {
+				background-image: url( ../images/edit_reference.svg );
+			}
+
+			&-warning {
+				background-image: url( ../images/warning.svg );
+			}
+		}
+
+		.ext-wikistories-warning-replace {
+			cursor: pointer;
+			font-weight: 500;
+			color: @color-progressive;
 		}
 	}
 }
