@@ -660,6 +660,12 @@ module.exports = {
 
 	&-textsize {
 		.ext-wikistories-confirm-content-custom {
+			ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
 			li {
 				margin-bottom: 16px;
 
