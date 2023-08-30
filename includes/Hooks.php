@@ -445,7 +445,7 @@ class Hooks {
 		$fields[ 'DeleteStory' ] = [
 			'type' => 'check',
 			'id' => 'wpDeleteStory',
-			'default' => false,
+			'default' => true,
 			'tabIndex' => $confirmBField[ 'tabindex' ] + 1,
 			'label-message' => 'deletepage-deletestory'
 		];
