@@ -4,6 +4,7 @@
 			"Asma",
 			"Can",
 			"Hedda",
+			"JackUKElliott",
 			"Joseph",
 			"SaldırganSincap"
 		]
@@ -11,7 +12,7 @@
 	"wikistories-extensiondesc": "Vikihikayeler; editörlerin Wikimedia projelerinden kısa, görsel ve güvenilir bilgiler oluşturmasına olanak tanır",
 	"right-edit-story": "Öyküleri düzenle",
 	"action-edit-story": "öyküleri düzenlemeye",
-	"deletepage-deletestory": "İlişkili öyküler silinsin mi?",
+	"deletepage-deletestory": "Bu makaleye bağlı Vikihikayeleri kaldırın",
 	"wikistories-beta-feature-message": "Vikiöyküler",
 	"wikistories-beta-feature-description": "Vikipediden hızlı tüketim için kısa, görsel, ve güvenilir bilgi oluşturmak için bir maddeden ögeler vurgulayıp ve görüntüler seçmenize izin veren bir araç. Şunları yapmak için etkinleştirin:<br>- Bir maddeye bağlı öyküleri keşfedin.<br>- Madde başlığının altındaki [+] düğmesine tıklayarak/basarak yeni bir öykü oluşturun.",
 	"prefs-wikistories": "Vikiöyküler",
