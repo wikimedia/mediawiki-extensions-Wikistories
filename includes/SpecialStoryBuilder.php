@@ -157,6 +157,8 @@ class SpecialStoryBuilder extends SpecialPage {
 			'wgWikistoriesMinFrames' => $this->getConfig()->get( 'WikistoriesMinFrames' ),
 			'wgWikistoriesMaxFrames' => $this->getConfig()->get( 'WikistoriesMaxFrames' ),
 			'wgWikistoriesMaxTextLength' => $this->getConfig()->get( 'WikistoriesMaxTextLength' ),
+			'wgWikistoriesCommonsDomain' => $this->getConfig()->get( 'WikistoriesCommonsDomain' ),
+			'wgWikistoriesRestDomain' => $this->getConfig()->get( 'WikistoriesRestDomain' ),
 			'wgWikistoriesUnmodifiedTextThreshold' => $this->getConfig()->get( 'WikistoriesUnmodifiedTextThreshold' ),
 			'wgWikistoriesWatchDefault' => $watchDefault,
 			'wgWikistoriesWatchlistExpiryEnabled' => $watchExpiryEnabled,

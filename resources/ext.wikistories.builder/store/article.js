@@ -64,7 +64,12 @@ module.exports = {
 				return;
 			}
 			const lang = mw.config.get( 'wgContentLanguage' );
-			const url = 'https://' + lang + '.wikipedia.org/api/rest_v1/page/mobile-html/' + encodeURIComponent( title );
+			const REST_DOMAIN = mw.config.get( 'wgWikistoriesRestDomain' );
+			const endpointPath = '/api/rest_v1/page/mobile-html/' + encodeURIComponent( title );
+			const url = REST_DOMAIN === null ?
+				endpointPath :
+				'https://' + lang + '.' + REST_DOMAIN + endpointPath;
+
 			return fetch( url ).then( ( resp ) => {
 				if ( resp.ok ) {
 					return resp.text();
