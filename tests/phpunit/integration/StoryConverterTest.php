@@ -5,6 +5,9 @@ namespace MediaWiki\Extension\Wikistories;
 use FormatJson;
 use MediaWikiIntegrationTestCase;
 
+/**
+ * @group Database
+ */
 class StoryConverterTest extends MediaWikiIntegrationTestCase {
 
 	/**

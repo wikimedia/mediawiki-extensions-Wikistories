@@ -11,6 +11,9 @@ use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use RepoGroup;
 
+/**
+ * @group Database
+ */
 class StoryRendererTest extends MediaWikiIntegrationTestCase {
 
 	private function createRepoGroupMock() {
