@@ -22,8 +22,7 @@ module.exports = {
 	background: @background-color-progressive;
 	border-radius: @border-radius-base;
 	padding: 6px 12px;
-	// stylelint-disable-next-line font-family-no-missing-generic-family-keyword
-	font-family: 'Helvetica Neue';
+	font-family: 'Helvetica Neue', serif;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 16px;

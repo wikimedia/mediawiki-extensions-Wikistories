@@ -397,6 +397,7 @@ module.exports = {
 		right: 0;
 		height: 100%;
 		width: 100%;
+		font-family: 'Helvetica Neue', serif;
 
 		&-overlay {
 			background-color: #000;
@@ -494,8 +495,6 @@ module.exports = {
 				margin: auto;
 				width: 80%;
 				text-align: center;
-				// stylelint-disable-next-line font-family-no-missing-generic-family-keyword
-				font-family: 'Helvetica Neue';
 				font-style: normal;
 				font-weight: bold;
 				font-size: 16px;
