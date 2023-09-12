@@ -132,6 +132,14 @@
 		"WikistoriesNotifyAboutStoryMaintenance": {
 			"description": "Send notifications to story watchers when stories need to be updated.",
 			"value": false
+		},
+		"WikistoriesCommonsDomain": {
+			"description": "Sets the Commons API domain. Defaults to production value, use 'commons.wikimedia.beta.wmflabs.org' for beta cluster",
+			"value": "commons.wikimedia.org"
+		},
+		"WikistoriesRestDomain": {
+			"description": "Sets the REST API domain. Defaults to null, in which case the domain of the current site will be used. Otherwise use 'wikipedia.org' for full article text when running locally",
+			"value": null
 		}
 	},
 	"DefaultUserOptions": {

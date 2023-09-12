@@ -1,6 +1,8 @@
 const strip = require( '../util/strip.js' );
 const convertUrlToMobile = require( '../util/convertUrlToMobile.js' );
 const safeAssignString = require( '../util/safeAssignString.js' );
+const COMMONS_DOMAIN = mw.config.get( 'wgWikistoriesCommonsDomain' );
+const commonsUrl = 'https://' + COMMONS_DOMAIN + '/w/api.php';
 
 /**
  * Keeps track of all on-going requests
@@ -23,7 +25,6 @@ const abortAllRequests = () => {
  * or an empty array if no images are found
  */
 const getCommonsImages = ( lang, queryString ) => {
-	const commonsUrl = 'https://commons.wikimedia.org/w/api.php';
 	const mwForeign = new mw.ForeignApi( commonsUrl, { anonymous: true } );
 	const params = {
 		action: 'query',
@@ -59,7 +60,6 @@ const getCommonsImages = ( lang, queryString ) => {
  * @return {jQuery.Promise} resolves with image attribution data
  */
 const getImageInfo = function ( titles ) {
-	const commonsUrl = 'https://commons.wikimedia.org/w/api.php';
 	const mwForeign = new mw.ForeignApi( commonsUrl, { anonymous: true } );
 	const params = {
 		action: 'query',
@@ -75,7 +75,6 @@ const getImageInfo = function ( titles ) {
 };
 
 const getImageExtMetadata = function ( titles, lang ) {
-	const commonsUrl = 'https://commons.wikimedia.org/w/api.php';
 	const mwForeign = new mw.ForeignApi( commonsUrl, { anonymous: true } );
 	const params = {
 		action: 'query',
@@ -123,7 +122,10 @@ const getImageExtMetadata = function ( titles, lang ) {
  * Wikipedia article (if any), or an empty array if no images are found
  */
 const getArticleImages = ( lang, queryString ) => {
-	const baseUrl = 'https://' + lang + '.wikipedia.org';
+	const REST_DOMAIN = mw.config.get( 'wgWikistoriesRestDomain' );
+	const baseUrl = REST_DOMAIN === null ?
+		'' :
+		'https://' + lang + '.' + REST_DOMAIN;
 	const actionApi = new mw.ForeignApi( baseUrl + '/w/api.php' );
 	const mwForeignRest = new mw.ForeignRest( baseUrl, actionApi, { anonymous: true } );
 	const mwTitle = mw.Title.newFromUserInput( queryString, 0 );
