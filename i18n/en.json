@@ -119,6 +119,7 @@
 	"wikistories-no-related-article-desc": "The linked article of the Story is deleted",
 	"wikistories-outdated-text-category": "Story has outdated text with regards to its source article",
 	"wikistories-outdated-text-category-desc": "Some of the text used in this story is not present anymore in the source article",
+	"ext-wikistories-storyviewaction-notfound-message": "The Wikistory you're trying to access does not exist",
 	"echo-category-title-wikistories-action": "Wikistories",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> was edited and <strong>$2</strong> needs to be reviewed"
 }
