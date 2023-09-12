@@ -127,14 +127,14 @@ class Hooks {
 	 */
 	private static function shouldShowStoriesForUser( User $user, IContextSource $context ): bool {
 		if ( self::isBetaDiscoveryMode( $context ) ) {
-			return $user->isRegistered()
+			return $user->isNamed()
 				&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
 				// @phan-suppress-next-line PhanUndeclaredClassMethod
 				&& BetaFeatures::isFeatureEnabled( $user, self::WIKISTORIES_BETA_FEATURE );
 		} elseif ( self::isPublicDiscoveryMode( $context ) ) {
 			/** @var UserOptionsLookup $userOptionsLookup */
 			$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-			return $user->isAnon()
+			return ( $user->isAnon() || $user->isTemp() )
 				|| (bool)$userOptionsLookup->getOption( $user, self::WIKISTORIES_PREF_SHOW_DISCOVERY, true );
 		} else {
 			// unknown discovery mode
