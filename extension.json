@@ -410,6 +410,11 @@
 			"dependencies": [
 				"ext.wikistories.viewer"
 			]
+		},
+		"ext.wikistories.viewaction.styles": {
+			"styles": [
+				"ext.wikistories.viewaction/style.less"
+			]
 		}
 	},
 	"RestRoutes": [

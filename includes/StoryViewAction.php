@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\Wikistories;
 use Article;
 use FormlessAction;
 use IContextSource;
+use MediaWiki\Html\Html;
 use MediaWiki\Utils\UrlUtils;
 
 class StoryViewAction extends FormlessAction {
@@ -47,12 +48,33 @@ class StoryViewAction extends FormlessAction {
 		$out->setArticleBodyOnly( true );
 		$out->setPageTitle( $this->getTitle()->getText() );
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1' );
-		$storyData = $this->storiesCache->getStory( $this->getArticle()->getPage()->getId() );
-		$this->addLinkPreviewTags( $storyData );
-		$out->addJsConfigVars( [ 'wgStory' => $storyData ] );
-		$out->addModules( [ 'ext.wikistories.viewaction' ] );
+		$bodyHtml = '';
+
+		$storyExists = $this->getWikiPage()->getId() > 0;
+		if ( $storyExists ) {
+			$storyData = $this->storiesCache->getStory( $this->getArticle()->getPage()->getId() );
+			$this->addLinkPreviewTags( $storyData );
+			$out->addJsConfigVars( [ 'wgStory' => $storyData ] );
+			$out->addModules( [ 'ext.wikistories.viewaction' ] );
+		} else {
+			$out->addModuleStyles( [ 'ext.wikistories.viewaction.styles' ] );
+			$bodyHtml = Html::rawElement(
+				'div',
+				[ 'class' => 'ext-wikistories-storyviewaction-notfound' ],
+				Html::element(
+					'div',
+					[ 'class' => 'ext-wikistories-storyviewaction-notfound-icon' ]
+				) .
+				Html::element(
+					'div',
+					[ 'class' => 'ext-wikistories-storyviewaction-notfound-message' ],
+					$this->msg( 'ext-wikistories-storyviewaction-notfound-message' )->text()
+				)
+			);
+		}
 
 		return $out->headElement( $out->getSkin() ) .
+			$bodyHtml .
 			$out->getBottomScripts() .
 			'</body></html>';
 	}
