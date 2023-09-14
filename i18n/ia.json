@@ -117,6 +117,7 @@
 	"wikistories-no-related-article-desc": "Le articulo ligate del historia es delite",
 	"wikistories-outdated-text-category": "Le historia ha texto obsolete in comparation con su articulo de fonte",
 	"wikistories-outdated-text-category-desc": "Alcun del texto usate in iste historia non es plus presente in le articulo de fonte",
+	"ext-wikistories-storyviewaction-notfound-message": "Le Wikihistoria al qual tu tenta acceder non existe",
 	"echo-category-title-wikistories-action": "Wikihistorias",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> ha essite modificate e <strong>$2</strong> debe esser revidite"
 }

@@ -122,6 +122,7 @@
 	"wikistories-no-related-article-desc": "L’article lié au récit est supprimé",
 	"wikistories-outdated-text-category": "Le récit a un texte obsolète au regard de son article source",
 	"wikistories-outdated-text-category-desc": "Une partie du texte utilisé dans ce récit ne figure plus dans l’article source",
+	"ext-wikistories-storyviewaction-notfound-message": "Le wikistory auquel vous essayez d’accéder n’existe pas",
 	"echo-category-title-wikistories-action": "Wikirécits",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> a été modifié et <strong>$2</strong> doit être relu"
 }

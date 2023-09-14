@@ -9,7 +9,7 @@
 	"wikistories-extensiondesc": "Википриказни им овозможува на корисниците да создаваат кратки, нагледни и проверени информации од Викимедиините проекти",
 	"right-edit-story": "Уредување на приказни",
 	"action-edit-story": "уредување на приказни",
-	"deletepage-deletestory": "Да ги избришам поврзаните приказни?",
+	"deletepage-deletestory": "Избриши ги википриказните поврзани со статијава",
 	"wikistories-beta-feature-message": "Википриказни",
 	"wikistories-beta-feature-description": "Алатка која ви овозможува да избирате слики и истакнувате факти од статија за да создадете краток и доверлив нагледен преглед на сознанија за брзо читање. Вклучете го за да го правите следново:<br>- Откривајте приказни врзани за статии.<br>- Стиснете/Допрете на иконката [+] под насловот на статијата за да создадете нова приказна.",
 	"prefs-wikistories": "Википриказни",
@@ -119,6 +119,7 @@
 	"wikistories-no-related-article-desc": "Поврзаната статика на приказната е избришана",
 	"wikistories-outdated-text-category": "Приказната има застарена изворна статија во текстот",
 	"wikistories-outdated-text-category-desc": "Дел од текстот на оваа приказна веќе не постои во изворната статија",
+	"ext-wikistories-storyviewaction-notfound-message": "Википриказната до која сакате да дојдете не постои",
 	"echo-category-title-wikistories-action": "Википриказни",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> е изменета и <strong>$2</strong> треба да се преработи"
 }
