@@ -119,6 +119,7 @@
 	"wikistories-no-related-article-desc": "Povezani članek zgodbe je izbrisan",
 	"wikistories-outdated-text-category": "Zgodba ima zastarelo besedilo glede na izvorni članek",
 	"wikistories-outdated-text-category-desc": "Nekaj besedila, uporabljenega v tej zgodbi, ni več prisotnega v izvornem članku",
+	"ext-wikistories-storyviewaction-notfound-message": "Vikizgodba, do katere poskušate dostopati, ne obstaja",
 	"echo-category-title-wikistories-action": "Vikizgodbe",
 	"wikistories-notification-articlechanged-header": "Člabek <strong>$1</strong> je bil urejen, <strong>$2</strong> pa je treba pregledati"
 }

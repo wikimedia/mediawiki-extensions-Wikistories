@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alesaru",
 			"NGC 54"
 		]
 	},
@@ -117,6 +118,7 @@
 	"wikistories-no-related-article-desc": "Articolul legat al poveștii este șters",
 	"wikistories-outdated-text-category": "Povestea are text învechit cu privire la articolul său sursă",
 	"wikistories-outdated-text-category-desc": "Câtva text folosit în această poveste nu mai este prezent în articolul sursă",
+	"ext-wikistories-storyviewaction-notfound-message": "Wikistory pe care încercați să o accesați nu există",
 	"echo-category-title-wikistories-action": "Wikipovești",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> a fost modificat, iar <strong>$2</strong> trebuie revizuit"
 }

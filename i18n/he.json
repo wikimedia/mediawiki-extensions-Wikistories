@@ -120,6 +120,7 @@
 	"wikistories-no-related-article-desc": "הערך המקושר של הסיפור מחוק",
 	"wikistories-outdated-text-category": "לסיפור יש טקסט מיושן ביחס לערך המקור שלו",
 	"wikistories-outdated-text-category-desc": "חלק מהטקסט המשמש בסיפור זה אינו קיים עוד בערך המקור",
+	"ext-wikistories-storyviewaction-notfound-message": "הוויקיסיפור שניסית לגשת אליו אינו קיים",
 	"echo-category-title-wikistories-action": "סיפורי ויקי",
 	"wikistories-notification-articlechanged-header": "הדף <strong>$1</strong> נערך ויש לבדוק את הסיפור <strong>$2</strong>"
 }

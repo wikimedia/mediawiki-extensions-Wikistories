@@ -122,6 +122,7 @@
 	"wikistories-no-related-article-desc": "Öykünün bağlantılı maddesi silinmiş",
 	"wikistories-outdated-text-category": "Öykünün, kaynak maddesiyle ilgili olarak güncelliğini yitirmiş metni var",
 	"wikistories-outdated-text-category-desc": "Bu öyküde kullanılan metnin bir kısmı kaynak maddede artık yok",
+	"ext-wikistories-storyviewaction-notfound-message": "Erişmeye çalıştığınız Vikihikaye mevcut değil",
 	"echo-category-title-wikistories-action": "Vikiöyküler",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> düzenledi ve <strong>$2</strong> gözden geçirilmeli"
 }
