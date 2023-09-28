@@ -4,6 +4,8 @@
 	"scripts": {
 		"test": "npm run lint:js && npm run lint:css && jest",
 		"test:watch": "jest --watch",
+		"test:jest": "jest",
+		"coverage": "npm run test:jest",
 		"lint:js": "eslint .",
 		"lint:js:fix": "eslint . --fix",
 		"lint:css": "stylelint **/*.{vue,less}",
