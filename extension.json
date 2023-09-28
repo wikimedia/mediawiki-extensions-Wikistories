@@ -60,6 +60,9 @@
 		}
 	},
 	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\Wikistories\\Hooks"
+		},
 		"RecentChangesPropagationHooks": {
 			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\RecentChangesPropagationHooks",
 			"services": [
@@ -77,23 +80,23 @@
 	"Hooks": {
 		"GetBetaFeaturePreferences": "MediaWiki\\Extension\\Wikistories\\Hooks::onGetBetaFeaturePreferences",
 		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile",
-		"LoginFormValidErrorMessages": "MediaWiki\\Extension\\Wikistories\\Hooks::onLoginFormValidErrorMessages",
+		"LoginFormValidErrorMessages": "main",
 		"PageSaveComplete": [
-			"MediaWiki\\Extension\\Wikistories\\Hooks::onPageSaveComplete",
+			"main",
 			"RecentChangesPropagationHooks"
 		],
 		"EnhancedChangesListModifyBlockLineData": "RecentChangesPropagationHooks",
 		"EnhancedChangesListModifyLineData": "RecentChangesPropagationHooks",
 		"OldChangesListRecentChangesLine": "RecentChangesPropagationHooks",
 		"ChangesListSpecialPageStructuredFilters": "RecentChangesPropagationHooks",
-		"PageDeleteComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onPageDeleteComplete",
-		"PageUndeleteComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onPageUndeleteComplete",
-		"GetPreferences": "MediaWiki\\Extension\\Wikistories\\Hooks::onGetPreferences",
+		"PageDeleteComplete": "main",
+		"PageUndeleteComplete": "main",
+		"GetPreferences": "main",
 		"BeforeCreateEchoEvent": "EchoNotificationsHandlers",
 		"EchoGetBundleRules": "EchoNotificationsHandlers",
-		"ParserCacheSaveComplete": "MediaWiki\\Extension\\Wikistories\\Hooks::onParserCacheSaveComplete",
-		"ArticlePurge": "MediaWiki\\Extension\\Wikistories\\Hooks::onArticlePurge",
-		"ActionModifyFormFields": "MediaWiki\\Extension\\Wikistories\\Hooks::onActionModifyFormFields"
+		"ParserCacheSaveComplete": "main",
+		"ArticlePurge": "main",
+		"ActionModifyFormFields": "main"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"

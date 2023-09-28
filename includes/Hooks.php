@@ -9,11 +9,19 @@ use IContextSource;
 use ManualLogEntry;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Extension\Wikistories\jobs\ArticleChangedJob;
+use MediaWiki\Hook\ActionModifyFormFieldsHook;
+use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
+use MediaWiki\Hook\ParserCacheSaveCompleteHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\Hook\ArticlePurgeHook;
+use MediaWiki\Page\Hook\PageDeleteCompleteHook;
+use MediaWiki\Page\Hook\PageUndeleteCompleteHook;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
@@ -27,7 +35,16 @@ use SpecialPage;
 use User;
 use WikiPage;
 
-class Hooks {
+class Hooks implements
+	LoginFormValidErrorMessagesHook,
+	PageSaveCompleteHook,
+	PageDeleteCompleteHook,
+	PageUndeleteCompleteHook,
+	GetPreferencesHook,
+	ParserCacheSaveCompleteHook,
+	ArticlePurgeHook,
+	ActionModifyFormFieldsHook
+{
 
 	private const WIKISTORIES_BETA_FEATURE = 'wikistories-storiesonarticles';
 
@@ -68,7 +85,7 @@ class Hooks {
 	 * @param User $user
 	 * @param array &$preferences
 	 */
-	public static function onGetPreferences( User $user, array &$preferences ) {
+	public function onGetPreferences( $user, &$preferences ) {
 		if ( self::isPublicDiscoveryMode( RequestContext::getMain() ) ) {
 			$preferences[ self::WIKISTORIES_PREF_SHOW_DISCOVERY ] = [
 				'section' => 'rendering/wikistories',
@@ -231,7 +248,7 @@ class Hooks {
 	 *
 	 * @param string[] &$messages List of messages valid on login screen
 	 */
-	public static function onLoginFormValidErrorMessages( &$messages ) {
+	public function onLoginFormValidErrorMessages( array &$messages ) {
 		$messages[] = 'wikistories-specialstorybuilder-mustbeloggedin';
 	}
 
@@ -250,13 +267,13 @@ class Hooks {
 	 * @param RevisionRecord $revisionRecord
 	 * @param EditResult $editResult
 	 */
-	public static function onPageSaveComplete(
-		WikiPage $wikiPage,
-		UserIdentity $user,
-		string $summary,
-		int $flags,
-		RevisionRecord $revisionRecord,
-		EditResult $editResult
+	public function onPageSaveComplete(
+		$wikiPage,
+		$user,
+		$summary,
+		$flags,
+		$revisionRecord,
+		$editResult
 	) {
 		if ( $wikiPage->getNamespace() !== NS_STORY ) {
 			return;
@@ -293,7 +310,7 @@ class Hooks {
 	 * @param ManualLogEntry $logEntry
 	 * @param int $archivedRevisionCount
 	 */
-	public static function onPageDeleteComplete(
+	public function onPageDeleteComplete(
 		ProperPageIdentity $page,
 		Authority $deleter,
 		string $reason,
@@ -345,7 +362,7 @@ class Hooks {
 	 * @param bool $created
 	 * @param array $restoredPageIds
 	 */
-	public static function onPageUndeleteComplete(
+	public function onPageUndeleteComplete(
 		ProperPageIdentity $page,
 		Authority $restorer,
 		string $reason,
@@ -354,7 +371,7 @@ class Hooks {
 		int $restoredRevisionCount,
 		bool $created,
 		array $restoredPageIds
-	) {
+	): void {
 		// NS_MAIN deletion
 		if ( $page->getNamespace() === NS_MAIN ) {
 			DeferredUpdates::addCallableUpdate( static function () use ( $page ) {
@@ -371,12 +388,12 @@ class Hooks {
 	 * @param ParserOptions $parserOptions
 	 * @param int $revId
 	 */
-	public static function onParserCacheSaveComplete(
-		ParserCache $parserCache,
-		ParserOutput $parserOutput,
-		Title $title,
-		ParserOptions $parserOptions,
-		int $revId
+	public function onParserCacheSaveComplete(
+		$parserCache,
+		$parserOutput,
+		$title,
+		$parserOptions,
+		$revId
 	) {
 		if ( $title->getNamespace() !== NS_MAIN ) {
 			return;
@@ -404,7 +421,7 @@ class Hooks {
 	 * @param WikiPage $wikiPage
 	 * @return void
 	 */
-	public static function onArticlePurge( WikiPage $wikiPage ) {
+	public function onArticlePurge( $wikiPage ) {
 		if ( $wikiPage->getNamespace() !== NS_STORY ) {
 			return;
 		}
@@ -420,7 +437,7 @@ class Hooks {
 	 * @param array &$fields
 	 * @param Article $article
 	 */
-	public static function onActionModifyFormFields(
+	public function onActionModifyFormFields(
 		$name,
 		&$fields,
 		$article
