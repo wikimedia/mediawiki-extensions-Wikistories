@@ -7,6 +7,11 @@
 	},
 	"right-edit-story": "Sunting cerita",
 	"action-edit-story": "sunting cerita",
+	"wikistories-beta-feature-message": "Wikicerita",
+	"prefs-wikistories": "Wikicerita",
+	"wikistories-recentchangesflags-title": "Suntingan Wikicerita",
+	"wikistories-rcfilters-hidewikistories-label": "Wikicerita",
+	"wikistories-rcfilters-hidewikistories-description": "Suntingan Wikicerita termasuk pada laman rencana",
 	"wikistories-search-navigator-title": "Pilih imej",
 	"wikistories-search-navigator-title-selected-info": "$1 dipilih",
 	"wikistories-story-edittext-initial": "Terima kasih kerana mengekalkan ketepatan cerita",
@@ -19,5 +24,6 @@
 	"wikistories-article-navigator-title": "Sorotkan teks",
 	"wikistories-confirmdialog-discardstory-title": "Buang Wikicerita ini?",
 	"wikistories-confirmdialog-discardstory-accept": "Buang",
-	"wikistories-builder-publishform-navigator-title": "Terbit WikiCerita"
+	"wikistories-builder-publishform-navigator-title": "Terbit WikiCerita",
+	"echo-category-title-wikistories-action": "Wikicerita"
 }
