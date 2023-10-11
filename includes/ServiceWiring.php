@@ -37,7 +37,8 @@ return [
 			$services->getRepoGroup(),
 			$services->getRedirectLookup(),
 			$services->getPageStore(),
-			$services->get( 'Wikistories.Analyzer' )
+			$services->get( 'Wikistories.Analyzer' ),
+			$services->get( 'Wikistories.TrackingCategories' )
 		);
 	},
 
@@ -59,5 +60,9 @@ return [
 			$services->getRedirectLookup()
 		);
 	},
+
+	'Wikistories.TrackingCategories' => static function () {
+		return new StoryTrackingCategories();
+	}
 
 ];

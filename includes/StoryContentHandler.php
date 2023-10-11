@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\Wikistories;
 
 use Content;
 use IContextSource;
+use JobQueueGroup;
 use JsonContentHandler;
 use MediaWiki\Category\TrackingCategories;
 use MediaWiki\Content\Renderer\ContentParseParams;
@@ -12,6 +13,7 @@ use MediaWiki\Content\Transform\PreSaveTransformParams;
 use MediaWiki\Content\ValidationParams;
 use MediaWiki\Title\Title;
 use ParserOutput;
+use RefreshLinksJob;
 use TitleValue;
 
 class StoryContentHandler extends JsonContentHandler {
@@ -25,28 +27,40 @@ class StoryContentHandler extends JsonContentHandler {
 	/** @var StoryRenderer */
 	private $storyRenderer;
 
+	/** @var StoryTrackingCategories */
+	private $storyTrackingCategories;
+
 	/** @var TrackingCategories */
 	private $trackingCategories;
+
+	/** @var JobQueueGroup */
+	private $jobQueueGroup;
 
 	/**
 	 * @param string $modelId
 	 * @param StoryConverter $storyConverter
 	 * @param StoryValidator $storyValidator
 	 * @param StoryRenderer $storyRenderer
+	 * @param StoryTrackingCategories $storyTrackingCategories
 	 * @param TrackingCategories $trackingCategories
+	 * @param JobQueueGroup $jobQueueGroup
 	 */
 	public function __construct(
 		$modelId,
 		StoryConverter $storyConverter,
 		StoryValidator $storyValidator,
 		StoryRenderer $storyRenderer,
-		TrackingCategories $trackingCategories
+		StoryTrackingCategories $storyTrackingCategories,
+		TrackingCategories $trackingCategories,
+		JobQueueGroup $jobQueueGroup
 	) {
 		parent::__construct( $modelId );
 		$this->storyConverter = $storyConverter;
 		$this->storyValidator = $storyValidator;
 		$this->storyRenderer = $storyRenderer;
+		$this->storyTrackingCategories = $storyTrackingCategories;
 		$this->trackingCategories = $trackingCategories;
+		$this->jobQueueGroup = $jobQueueGroup;
 	}
 
 	/**
@@ -107,6 +121,13 @@ class StoryContentHandler extends JsonContentHandler {
 		foreach ( $storyData[ 'trackingCategories' ] as $trackingCategory ) {
 			$this->trackingCategories->addTrackingCategory(
 				$parserOutput, $trackingCategory, $storyPage
+			);
+		}
+
+		// refresh links job when there are changes of tracking categories
+		if ( $this->storyTrackingCategories->hasDiff( $storyData[ 'trackingCategories' ], $storyTitle ) ) {
+			$this->jobQueueGroup->push(
+				RefreshLinksJob::newPrioritized( $storyTitle, [] )
 			);
 		}
 

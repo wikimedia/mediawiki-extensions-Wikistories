@@ -20,7 +20,9 @@
 				"Wikistories.StoryConverter",
 				"Wikistories.StoryValidator",
 				"Wikistories.StoryRenderer",
-				"TrackingCategories"
+				"Wikistories.TrackingCategories",
+				"TrackingCategories",
+				"JobQueueGroup"
 			]
 		}
 	},

@@ -14,12 +14,6 @@ use SpecialPage;
 
 class StoryRenderer {
 
-	private const TC_NO_IMAGE = 'wikistories-no-image-category';
-
-	private const TC_NO_ARTICLE = 'wikistories-no-related-article';
-
-	private const TC_OUTDATED_TEXT = 'wikistories-outdated-text-category';
-
 	/** @var RepoGroup */
 	private $repoGroup;
 
@@ -32,22 +26,28 @@ class StoryRenderer {
 	/** @var StoryContentAnalyzer */
 	private $analyzer;
 
+	/** @var StoryTrackingCategories */
+	private $storyTrackingCategories;
+
 	/**
 	 * @param RepoGroup $repoGroup
 	 * @param RedirectLookup $redirectLookup
 	 * @param PageLookup $pageLookup
 	 * @param StoryContentAnalyzer $analyzer
+	 * @param StoryTrackingCategories $storyTrackingCategories
 	 */
 	public function __construct(
 		RepoGroup $repoGroup,
 		RedirectLookup $redirectLookup,
 		PageLookup $pageLookup,
-		StoryContentAnalyzer $analyzer
+		StoryContentAnalyzer $analyzer,
+		StoryTrackingCategories $storyTrackingCategories
 	) {
 		$this->repoGroup = $repoGroup;
 		$this->redirectLookup = $redirectLookup;
 		$this->pageLookup = $pageLookup;
 		$this->analyzer = $analyzer;
+		$this->storyTrackingCategories = $storyTrackingCategories;
 	}
 
 	/**
@@ -70,7 +70,7 @@ class StoryRenderer {
 			$articleTitle->getText()
 		);
 
-		if ( in_array( self::TC_NO_ARTICLE, $storyData[ 'trackingCategories' ] ) ) {
+		if ( in_array( $this->storyTrackingCategories::TC_NO_ARTICLE, $storyData[ 'trackingCategories' ] ) ) {
 			$context = RequestContext::getMain();
 			$html .= Html::errorBox(
 				$context->msg( 'wikistories-nojs-viewer-no-article' )->text()
@@ -128,7 +128,7 @@ class StoryRenderer {
 		$trackingCategories = [];
 
 		if ( !$article ) {
-			$trackingCategories[] = self::TC_NO_ARTICLE;
+			$trackingCategories[] = $this->storyTrackingCategories::TC_NO_ARTICLE;
 		}
 
 		$data = [
@@ -143,7 +143,7 @@ class StoryRenderer {
 			'frames' => array_map( function ( $frame ) use ( $files, $article, &$trackingCategories ) {
 				$url = $this->getUrl( $files, $frame->image->filename, 640 );
 				if ( $url === '' ) {
-					$trackingCategories[] = self::TC_NO_IMAGE;
+					$trackingCategories[] = $this->storyTrackingCategories::TC_NO_IMAGE;
 				}
 				$outdatedText = $article && $this->analyzer->isOutdatedText(
 					$article,
@@ -151,7 +151,7 @@ class StoryRenderer {
 					$frame->text->fromArticle->originalText ?? ''
 				);
 				if ( $outdatedText ) {
-					$trackingCategories[] = self::TC_OUTDATED_TEXT;
+					$trackingCategories[] = $this->storyTrackingCategories::TC_OUTDATED_TEXT;
 				}
 				return [
 					'url' => $url,

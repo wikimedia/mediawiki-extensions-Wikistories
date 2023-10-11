@@ -72,7 +72,8 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 			$repoGroup,
 			MediaWikiServices::getInstance()->getRedirectLookup(),
 			$this->createPageStoreMock(),
-			$this->createAnalyzerMock()
+			$this->createAnalyzerMock(),
+			$this->createMock( StoryTrackingCategories::class )
 		);
 		$storyData = $renderer->getStoryData(
 			$story,
@@ -124,7 +125,8 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 			$repoGroup,
 			MediaWikiServices::getInstance()->getRedirectLookup(),
 			$this->createPageStoreMock(),
-			$this->createAnalyzerMock()
+			$this->createAnalyzerMock(),
+			$this->createMock( StoryTrackingCategories::class )
 		);
 		$parts = $renderer->renderNoJS( $storyData );
 
