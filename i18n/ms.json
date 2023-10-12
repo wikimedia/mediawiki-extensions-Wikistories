@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tofeiku"
+			"Tofeiku",
+			"Hakimi97"
 		]
 	},
 	"right-edit-story": "Sunting cerita",
 	"action-edit-story": "sunting cerita",
+	"wikistories-beta-feature-message": "Wikicerita",
+	"prefs-wikistories": "Wikicerita",
 	"wikistories-search-navigator-title": "Pilih imej",
 	"wikistories-search-navigator-title-selected-info": "$1 dipilih",
 	"wikistories-story-replaceimage": "Ganti imej ini",
