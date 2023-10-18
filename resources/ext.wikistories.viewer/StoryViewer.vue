@@ -195,6 +195,8 @@ const DotsMenu = require( './DotsMenu.vue' );
 const DotsMenuItem = require( './DotsMenuItem.vue' );
 const Timer = require( './util/timer.js' );
 const isTouchDevice = require( './util/isTouchDevice.js' );
+const consumptionEvents = require( './consumptionEvents.js' );
+const contributionEvents = require( '../contributionEvents.js' );
 
 // @vue/component
 module.exports = {
@@ -212,7 +214,6 @@ module.exports = {
 	props: {
 		stories: { type: Array, default: () => [] },
 		storyId: { type: Number, default: 0 },
-		logStoryViewFn: { type: Function, default: () => {} },
 		allowClose: { type: Boolean, required: true },
 		allowEdit: { type: Boolean, required: true }
 	},
@@ -263,16 +264,18 @@ module.exports = {
 			this.nextStory( storyId );
 		},
 		logStoryViewEvent: function () {
-			const storyOpenTime = Date.now() - this.storyStart;
-			this.logStoryViewFn(
-				this.currentStoryTitle,
-				this.story.length,
-				this.frameViewedCount,
-				storyOpenTime,
-				this.stories.length
-			);
-			this.storyStart = Date.now();
-			this.frameViewedCount = 0;
+			if ( this.storyStart !== 0 ) {
+				const storyOpenTime = Date.now() - this.storyStart;
+				consumptionEvents.logStoryView(
+					this.currentStoryTitle,
+					this.story.length,
+					this.frameViewedCount,
+					storyOpenTime,
+					this.stories.length
+				);
+				this.frameViewedCount = 0;
+				this.storyStart = 0;
+			}
 		},
 		endStory: function () {
 			this.timer.setup( function () {
@@ -293,7 +296,9 @@ module.exports = {
 			navigator.share( {
 				title: this.currentStoryTitle,
 				url: this.shareUrl
-			} );
+			} ).then( function () {
+				contributionEvents.logShareAction( this.currentStoryTitle );
+			}.bind( this ) );
 		},
 		toggleStory: function () {
 			if ( this.timer.isPaused ) {
@@ -342,11 +347,9 @@ module.exports = {
 			this.setTextsize( this.tempTextsize );
 		},
 		edit: function () {
-			this.logStoryViewEvent();
 			window.location = this.editUrl;
 		},
 		talk: function () {
-			this.logStoryViewEvent();
 			window.location = this.talkUrl;
 		},
 		onImgError: function () {
@@ -385,6 +388,9 @@ module.exports = {
 		this.setStoryId( this.storyId );
 		this.storyStart = Date.now();
 		this.tempTextsize = this.textsize;
+	},
+	mounted: function () {
+		window.onbeforeunload = this.logStoryViewEvent;
 	}
 };
 </script>

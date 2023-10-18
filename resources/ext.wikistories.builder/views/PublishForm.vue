@@ -113,7 +113,7 @@ const Navigator = require( '../components/Navigator.vue' );
 const Toast = require( '../components/Toast.vue' );
 const saveStory = require( '../api/saveStory.js' );
 const validateTitle = require( '../util/validateTitle.js' );
-const events = require( '../contributionEvents.js' );
+const contributionEvents = require( '../contributionEvents.js' );
 const beforeUnloadListener = require( '../util/beforeUnloadListener.js' );
 const NS_STORY = mw.config.get( 'wgNamespaceIds' ).story;
 
@@ -180,7 +180,7 @@ module.exports = {
 					this.overlay = false;
 					this.savingInProgress = false;
 					this.error = this.$i18n( validity.message ).text();
-					events.logPublishFailure( this.storyTitle, this.storyExists, this.error );
+					contributionEvents.logPublishFailure( this.storyTitle, this.storyExists, this.error );
 					return;
 				}
 				const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
@@ -189,7 +189,7 @@ module.exports = {
 					function ( response ) {
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
-							events.logPublishSuccess( this.storyTitle, this.storyExists );
+							contributionEvents.logPublishSuccess( this.storyTitle, this.storyExists );
 							window.removeEventListener( 'beforeunload', beforeUnloadListener );
 							this.setStoryPageId( response.pageid );
 							this.savingInProgress = false;
@@ -230,7 +230,7 @@ module.exports = {
 				this.error = response;
 				this.showUnknownErrorToast();
 			}
-			events.logPublishFailure(
+			contributionEvents.logPublishFailure(
 				this.storyTitle,
 				this.error
 			);
@@ -250,6 +250,8 @@ module.exports = {
 			navigator.share( {
 				title: title.getMainText(),
 				url: shareUrl.toString()
+			} ).then( function () {
+				contributionEvents.logShareAction( title.getPrefixedDb() );
 			} );
 		}
 	} ),
