@@ -92,7 +92,7 @@ class StoryRenderer {
 					'div',
 					[
 						'class' => 'ext-wikistories-viewer-nojs-frame',
-						'style' => empty( $frame[ 'url' ] ) ?
+						'style' => $frame[ 'url' ] === '' ?
 							'background-color: #000'
 							:
 							'background-image:url(' . $frame[ 'url' ] . ');',
@@ -142,7 +142,7 @@ class StoryRenderer {
 			'thumbnail' => $thumb,
 			'frames' => array_map( function ( $frame ) use ( $files, $article, &$trackingCategories ) {
 				$url = $this->getUrl( $files, $frame->image->filename, 640 );
-				if ( empty( $url ) ) {
+				if ( $url === '' ) {
 					$trackingCategories[] = self::TC_NO_IMAGE;
 				}
 				$outdatedText = $article && $this->analyzer->isOutdatedText(
@@ -157,7 +157,7 @@ class StoryRenderer {
 					'url' => $url,
 					'filename' => $frame->image->filename,
 					'focalRect' => $frame->image->focalRect ?? null,
-					'fileNotFound' => empty( $url ),
+					'fileNotFound' => $url === '',
 					'text' => $frame->text->value,
 					'textFromArticle' => $frame->text->fromArticle->originalText ?? '',
 					'outdatedText' => $outdatedText,

@@ -155,7 +155,7 @@ class StoryEditPage extends EditPage {
 			$text = $request->getText( "story_frame_{$i}_text_value" );
 			$articleTitle = $request->getText( "story_frame_{$i}_text_fromArticle_articleTitle" );
 			$originalText = $request->getText( "story_frame_{$i}_text_fromArticle_originalText" );
-			if ( empty( $filename ) && empty( $text ) ) {
+			if ( $filename === '' && $text === '' ) {
 				// stop reading as soon as all fields are empty
 				break;
 			}
