@@ -127,7 +127,7 @@ class StoryRenderer {
 		$article = $story->getArticleTitle( $this->pageLookup, $this->redirectLookup );
 		$trackingCategories = [];
 
-		if ( empty( $article ) ) {
+		if ( !$article ) {
 			$trackingCategories[] = self::TC_NO_ARTICLE;
 		}
 

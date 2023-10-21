@@ -142,7 +142,7 @@ class StoryContent extends JsonContent {
 
 		// categories
 		$categories = $this->getCategories();
-		if ( !empty( $categories ) ) {
+		if ( $categories ) {
 			$text .= "\n\n" . implode( "\n", $categories );
 		}
 
