@@ -4,10 +4,8 @@ namespace MediaWiki\Extension\Wikistories;
 
 use Article;
 use DeferredUpdates;
-use ExtensionRegistry;
-use IContextSource;
 use ManualLogEntry;
-use MediaWiki\Extension\BetaFeatures\BetaFeatures;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\Wikistories\jobs\ArticleChangedJob;
 use MediaWiki\Hook\ActionModifyFormFieldsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
@@ -24,13 +22,10 @@ use MediaWiki\Storage\EditResult;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsLookup;
-use OutputPage;
 use ParserCache;
 use ParserOptions;
 use ParserOutput;
 use RequestContext;
-use Skin;
 use SpecialPage;
 use User;
 use WikiPage;
@@ -46,9 +41,7 @@ class Hooks implements
 	ActionModifyFormFieldsHook
 {
 
-	private const WIKISTORIES_BETA_FEATURE = 'wikistories-storiesonarticles';
-
-	private const WIKISTORIES_PREF_SHOW_DISCOVERY = 'wikistories-pref-showdiscovery';
+	public const WIKISTORIES_PREF_SHOW_DISCOVERY = 'wikistories-pref-showdiscovery';
 
 	private const WIKISTORIES_MODE_BETA = 'beta';
 
@@ -56,29 +49,14 @@ class Hooks implements
 
 	private const WIKISTORIES_PREF_VIEWER_TEXTSIZE = 'wikistories-pref-viewertextsize';
 
+	/** @var Config */
+	private $mainConfig;
+
 	/**
-	 * Register a beta feature that lets users show stories on article pages
-	 *
-	 * @param User $user
-	 * @param array &$betaPrefs
+	 * @param Config $mainConfig
 	 */
-	public static function onGetBetaFeaturePreferences( User $user, array &$betaPrefs ) {
-		if ( !self::isBetaDiscoveryMode( RequestContext::getMain() ) ) {
-			return;
-		}
-		$extensionAssetsPath = MediaWikiServices::getInstance()
-			->getMainConfig()
-			->get( 'ExtensionAssetsPath' );
-		$betaPrefs[ self::WIKISTORIES_BETA_FEATURE ] = [
-			'label-message' => 'wikistories-beta-feature-message',
-			'desc-message' => 'wikistories-beta-feature-description',
-			'screenshot' => [
-				'ltr' => "$extensionAssetsPath/Wikistories/resources/images/wikistories-betafeature-ltr.svg",
-				'rtl' => "$extensionAssetsPath/Wikistories/resources/images/wikistories-betafeature-rtl.svg",
-			],
-			'info-link' => 'https://www.mediawiki.org/wiki/Wikistories',
-			'discussion-link' => 'https://www.mediawiki.org/wiki/Talk:Wikistories',
-		];
+	public function __construct( Config $mainConfig ) {
+		$this->mainConfig = $mainConfig;
 	}
 
 	/**
@@ -86,7 +64,7 @@ class Hooks implements
 	 * @param array &$preferences
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
-		if ( self::isPublicDiscoveryMode( RequestContext::getMain() ) ) {
+		if ( self::isPublicDiscoveryMode( $this->mainConfig ) ) {
 			$preferences[ self::WIKISTORIES_PREF_SHOW_DISCOVERY ] = [
 				'section' => 'rendering/wikistories',
 				'label-message' => 'wikistories-pref-showdiscovery-message',
@@ -100,73 +78,27 @@ class Hooks implements
 	}
 
 	/**
-	 * @param User $user
-	 * @param Title $title
-	 * @param Skin $skin
-	 * @param IContextSource $context
-	 * @return bool
-	 */
-	private static function shouldShowStories( User $user, Title $title, Skin $skin, IContextSource $context ): bool {
-		return self::shouldShowStoriesForUser( $user, $context )
-			&& self::shouldShowStoriesOnSkin( $skin )
-			&& self::shouldShowStoriesOnPage( $title )
-			&& self::shouldShowStoriesForAction( $context->getActionName() );
-	}
-
-	/**
-	 * @param IContextSource $context
+	 * @param Config $config
 	 * @return mixed
 	 */
-	private static function getDiscoveryMode( IContextSource $context ) {
-		return $context->getConfig()->get( 'WikistoriesDiscoveryMode' );
+	private static function getDiscoveryMode( Config $config ) {
+		return $config->get( 'WikistoriesDiscoveryMode' );
 	}
 
 	/**
-	 * @param IContextSource $context
+	 * @param Config $config
 	 * @return bool
 	 */
-	private static function isBetaDiscoveryMode( IContextSource $context ): bool {
-		return self::getDiscoveryMode( $context ) === self::WIKISTORIES_MODE_BETA;
+	public static function isBetaDiscoveryMode( Config $config ): bool {
+		return self::getDiscoveryMode( $config ) === self::WIKISTORIES_MODE_BETA;
 	}
 
 	/**
-	 * @param IContextSource $context
+	 * @param Config $config
 	 * @return bool
 	 */
-	private static function isPublicDiscoveryMode( IContextSource $context ): bool {
-		return self::getDiscoveryMode( $context ) === self::WIKISTORIES_MODE_PUBLIC;
-	}
-
-	/**
-	 * @param User $user
-	 * @param IContextSource $context
-	 * @return bool
-	 */
-	private static function shouldShowStoriesForUser( User $user, IContextSource $context ): bool {
-		if ( self::isBetaDiscoveryMode( $context ) ) {
-			return $user->isNamed()
-				&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
-				// @phan-suppress-next-line PhanUndeclaredClassMethod
-				&& BetaFeatures::isFeatureEnabled( $user, self::WIKISTORIES_BETA_FEATURE );
-		} elseif ( self::isPublicDiscoveryMode( $context ) ) {
-			/** @var UserOptionsLookup $userOptionsLookup */
-			$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-			return ( $user->isAnon() || $user->isTemp() )
-				|| (bool)$userOptionsLookup->getOption( $user, self::WIKISTORIES_PREF_SHOW_DISCOVERY, true );
-		} else {
-			// unknown discovery mode
-			return false;
-		}
-	}
-
-	/**
-	 * @param Title $title
-	 * @return bool
-	 */
-	private static function shouldShowStoriesOnPage( Title $title ): bool {
-		return !$title->isMainPage()
-			&& $title->inNamespace( NS_MAIN )
-			&& $title->exists();
+	public static function isPublicDiscoveryMode( Config $config ): bool {
+		return self::getDiscoveryMode( $config ) === self::WIKISTORIES_MODE_PUBLIC;
 	}
 
 	/**
@@ -205,33 +137,6 @@ class Hooks implements
 			$deletePage
 				->setSuppress( $request->getBool( 'wpSuppress' ) )
 				->deleteIfAllowed( $request->getText( 'wpReason' ) );
-		}
-	}
-
-	/**
-	 * @param Skin $skin
-	 * @return bool
-	 */
-	private static function shouldShowStoriesOnSkin( Skin $skin ) {
-		return $skin->getSkinName() === 'minerva';
-	}
-
-	/**
-	 * @param string $action
-	 * @return bool
-	 */
-	private static function shouldShowStoriesForAction( string $action ) {
-		return $action === 'view';
-	}
-
-	/**
-	 * @param OutputPage $out
-	 */
-	public static function onBeforePageDisplayMobile( OutputPage $out ) {
-		$title = $out->getTitle();
-		if ( self::shouldShowStories( $out->getUser(), $title, $out->getSkin(), $out->getContext() ) ) {
-			$out->addModules( [ 'ext.wikistories.discover' ] );
-			$out->addModuleStyles( 'ext.wikistories.discover.styles' );
 		}
 	}
 

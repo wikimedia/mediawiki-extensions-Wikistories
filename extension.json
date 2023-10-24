@@ -61,7 +61,10 @@
 	},
 	"HookHandlers": {
 		"main": {
-			"class": "MediaWiki\\Extension\\Wikistories\\Hooks"
+			"class": "MediaWiki\\Extension\\Wikistories\\Hooks",
+			"services": [
+				"MainConfig"
+			]
 		},
 		"RecentChangesPropagationHooks": {
 			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\RecentChangesPropagationHooks",
@@ -75,11 +78,20 @@
 		},
 		"EchoNotificationsHandlers": {
 			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\EchoNotificationsHandlers"
+		},
+		"MobileFrontendHandlers": {
+			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\MobileFrontendHandlers"
+		},
+		"BetaFeaturesHandlers": {
+			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\BetaFeaturesHandlers",
+			"services": [
+				"MainConfig"
+			]
 		}
 	},
 	"Hooks": {
-		"GetBetaFeaturePreferences": "MediaWiki\\Extension\\Wikistories\\Hooks::onGetBetaFeaturePreferences",
-		"BeforePageDisplayMobile": "MediaWiki\\Extension\\Wikistories\\Hooks::onBeforePageDisplayMobile",
+		"GetBetaFeaturePreferences": "BetaFeaturesHandlers",
+		"BeforePageDisplayMobile": "MobileFrontendHandlers",
 		"LoginFormValidErrorMessages": "main",
 		"PageSaveComplete": [
 			"main",
