@@ -6,7 +6,7 @@ use Article;
 use DeferredUpdates;
 use ManualLogEntry;
 use MediaWiki\Config\Config;
-use MediaWiki\Extension\Wikistories\jobs\ArticleChangedJob;
+use MediaWiki\Extension\Wikistories\Jobs\ArticleChangedJob;
 use MediaWiki\Hook\ActionModifyFormFieldsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\ParserCacheSaveCompleteHook;

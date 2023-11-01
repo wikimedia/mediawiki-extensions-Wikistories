@@ -49,7 +49,7 @@
 	},
 	"JobClasses": {
 		"ArticleChangedJob": {
-			"class": "MediaWiki\\Extension\\Wikistories\\jobs\\ArticleChangedJob",
+			"class": "MediaWiki\\Extension\\Wikistories\\Jobs\\ArticleChangedJob",
 			"services": [
 				"RevisionLookup",
 				"Wikistories.Analyzer",
@@ -67,7 +67,7 @@
 			]
 		},
 		"RecentChangesPropagationHooks": {
-			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\RecentChangesPropagationHooks",
+			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\RecentChangesPropagationHooks",
 			"services": [
 				"RevisionStore",
 				"MainConfig",
@@ -77,13 +77,13 @@
 			]
 		},
 		"EchoNotificationsHandlers": {
-			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\EchoNotificationsHandlers"
+			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\EchoNotificationsHandlers"
 		},
 		"MobileFrontendHandlers": {
-			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\MobileFrontendHandlers"
+			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\MobileFrontendHandlers"
 		},
 		"BetaFeaturesHandlers": {
-			"class": "MediaWiki\\Extension\\Wikistories\\hooks\\BetaFeaturesHandlers",
+			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\BetaFeaturesHandlers",
 			"services": [
 				"MainConfig"
 			]

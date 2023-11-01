@@ -1,11 +1,11 @@
 <?php
 
-namespace MediaWiki\Extension\Wikistories\hooks;
+namespace MediaWiki\Extension\Wikistories\Hooks;
 
 use EchoAttributeManager;
 use EchoEvent;
 use EchoUserLocator;
-use MediaWiki\Extension\Wikistories\notifications\ArticleChangedPresentationModel;
+use MediaWiki\Extension\Wikistories\Notifications\ArticleChangedPresentationModel;
 
 class EchoNotificationsHandlers {
 

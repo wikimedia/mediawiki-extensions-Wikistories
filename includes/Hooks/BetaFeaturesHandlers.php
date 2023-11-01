@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\Wikistories\hooks;
+namespace MediaWiki\Extension\Wikistories\Hooks;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\BetaFeatures\Hooks\GetBetaFeaturePreferencesHook;

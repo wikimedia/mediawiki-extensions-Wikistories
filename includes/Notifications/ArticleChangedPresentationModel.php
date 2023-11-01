@@ -1,9 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\Wikistories\notifications;
+namespace MediaWiki\Extension\Wikistories\Notifications;
 
 use EchoEventPresentationModel;
-use MediaWiki\Extension\Wikistories\hooks\EchoNotificationsHandlers;
+use MediaWiki\Extension\Wikistories\Hooks\EchoNotificationsHandlers;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use SpecialPage;
