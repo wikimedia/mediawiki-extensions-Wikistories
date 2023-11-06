@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\Wikistories\hooks;
+namespace MediaWiki\Extension\Wikistories\Hooks;
 
 use ExtensionRegistry;
 use IContextSource;
