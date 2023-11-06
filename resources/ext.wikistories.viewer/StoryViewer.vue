@@ -198,6 +198,8 @@ const isTouchDevice = require( './util/isTouchDevice.js' );
 // @vue/component
 module.exports = {
 	name: 'StoryViewer',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		'image-attribution': ImageAttribution,
 		'confirm-dialog': ConfirmDialog,
@@ -353,13 +355,16 @@ module.exports = {
 		}
 	} ),
 	watch: {
-		story: function ( newStory ) {
-			if ( newStory.length ) {
-				this.setIsStoryEnd( false );
-				this.resetFrame();
-				this.storyStart = Date.now();
-				this.frameViewedCount = 0;
-			}
+		story: {
+			handler: function ( newStory ) {
+				if ( newStory.length ) {
+					this.setIsStoryEnd( false );
+					this.resetFrame();
+					this.storyStart = Date.now();
+					this.frameViewedCount = 0;
+				}
+			},
+			deep: true
 		},
 		currentFrame: function () {
 			if ( this.isLastFrame ) {

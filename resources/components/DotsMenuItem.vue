@@ -12,6 +12,8 @@
 // @vue/component
 module.exports = {
 	name: 'MenuItem',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	props: {
 		text: {
 			type: String,

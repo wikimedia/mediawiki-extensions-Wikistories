@@ -34,6 +34,8 @@ const StoryImage = require( '../StoryImage.vue' );
 // @vue/component
 module.exports = {
 	name: 'Frames',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		'story-image': StoryImage
 	},
