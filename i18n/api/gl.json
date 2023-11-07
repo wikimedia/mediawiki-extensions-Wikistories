@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "O espazo de nomes ($1) non é compatible con este extremo da API. As historias só se poden asociar a artigos do espazo de nomes principal."
+}
