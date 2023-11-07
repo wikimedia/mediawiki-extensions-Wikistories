@@ -36,7 +36,7 @@ const transforms = {
 		}
 	},
 	'Split and wrap sentences': ( doc ) => {
-		for ( const p of doc.querySelectorAll( 'p' ) ) {
+		for ( const p of doc.querySelectorAll( 'p, li' ) ) {
 			if ( p.textContent.trim() !== '' ) {
 				p.innerHTML = splitSentences( p, 'ext-wikistories-article-view-content-sentence' );
 			}
