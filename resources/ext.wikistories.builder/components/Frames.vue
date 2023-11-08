@@ -97,6 +97,7 @@ module.exports = {
 			flex-direction: row;
 
 			&-frame {
+				position: relative;
 				width: 28px;
 				height: 36px;
 				margin-left: 16px;
@@ -108,13 +109,18 @@ module.exports = {
 					margin-right: 16px;
 				}
 
-				&-selected {
-					outline: @border-color-progressive auto 4px;
-					outline-offset: 4px;
+				&-selected::before {
+					content: '';
+					position: absolute;
+					top: -5px;
+					right: -5px;
+					bottom: -5px;
+					left: -5px;
+					border: 2px solid @border-color-progressive;
+					border-radius: 7px;
 				}
 
 				// style for the sortable used
-				position: relative;
 				left: 0;
 				transition: all 0.3s;
 				z-index: 100;
