@@ -9,7 +9,7 @@
 	"wikistories-extensiondesc": "Wikihistorier lar bidragsytere opprette kort, visuell og pålitelig kunnskap fra Wikimedia-prosjektene",
 	"right-edit-story": "Redigere historier",
 	"action-edit-story": "redigere historier",
-	"deletepage-deletestory": "Slette tilknyttede historier?",
+	"deletepage-deletestory": "Fjern Wikistories som er koblet til denne artikkelen",
 	"wikistories-beta-feature-message": "Wikihistorier",
 	"wikistories-beta-feature-description": "Et verktøy som lar deg velge bilder og framheve fakta fra en artikkel for å skape kort, visuell og pålitelig kunnskap fra Wikipedia som kan fortæres raskt. Aktiver den ved å gjøre følgende:<br>– Oppdag historier som er koblet til en artikkel.<br>– Trykk på [+]-ikonet under artikkeltittelen for å opprette en ny historie.",
 	"prefs-wikistories": "Wikihistorier",
@@ -119,6 +119,7 @@
 	"wikistories-no-related-article-desc": "Artikkelen som er lenket til historien er slettet",
 	"wikistories-outdated-text-category": "Historien har utdatert tekst med hensyn til kildeartikkelen",
 	"wikistories-outdated-text-category-desc": "Noe av teksten som brukes i denne historien er ikke lenger tilgjengelig i kildeartikkelen",
+	"ext-wikistories-storyviewaction-notfound-message": "Wikistoryen du prøver å få tilgang til eksisterer ikke",
 	"echo-category-title-wikistories-action": "Wikihistorier",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> ble redigert og <strong>$2</strong> trenger gjennomgang"
 }
