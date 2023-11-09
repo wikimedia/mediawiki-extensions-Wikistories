@@ -14,6 +14,8 @@ const observer = require( '../mixins/observer.js' );
 // @vue/component
 module.exports = {
 	name: 'ListImage',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	mixins: [ observer ],
 	props: {
 		source: {

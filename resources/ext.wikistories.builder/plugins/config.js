@@ -16,7 +16,7 @@ module.exports = {
 		 * @param {string} name Name of the config variable (usually starts with wg)
 		 * @return {Mixed} Config value
 		 */
-		app.prototype.getConfig = function ( name ) {
+		app.config.globalProperties.getConfig = function ( name ) {
 			return mw.config.get( name );
 		};
 	}

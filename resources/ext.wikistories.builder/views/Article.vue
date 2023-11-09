@@ -53,6 +53,8 @@ const SENTENCE_SELECTED_CLASS = 'ext-wikistories-article-view-content-sentence-s
 // @vue/component
 module.exports = {
 	name: 'Article', // eslint-disable-line vue/no-reserved-component-names
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		navigator: Navigator
 	},

@@ -30,6 +30,8 @@ const ListImage = require( './ListImage.vue' );
 // @vue/component
 module.exports = {
 	name: 'ImageListView',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	components: {
 		'list-image': ListImage
 	},

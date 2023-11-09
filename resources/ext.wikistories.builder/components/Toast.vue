@@ -11,6 +11,8 @@
 // @vue/component
 module.exports = {
 	name: 'Toast',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	props: {
 		message: { type: String, required: true },
 		mode: { type: String, required: false, default: 'warning' }

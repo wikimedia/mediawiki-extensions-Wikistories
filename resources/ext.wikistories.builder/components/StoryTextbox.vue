@@ -36,6 +36,8 @@ const MAX_TEXT_LENGTH = mw.config.get( 'wgWikistoriesMaxTextLength' );
 // @vue/component
 module.exports = {
 	name: 'StoryTextbox',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	props: {
 		onFocus: {
 			type: Function,

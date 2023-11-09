@@ -26,6 +26,8 @@
 // @vue/component
 module.exports = {
 	name: 'Navigator',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	props: {
 		title: { type: String, default: '' },
 		backwardButtonStyle: { type: String, default: 'close' },

@@ -17,6 +17,8 @@
 // @vue/component
 module.exports = {
 	name: 'Textbox',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	props: {
 		isPaused: {
 			type: Boolean,
@@ -32,7 +34,7 @@ module.exports = {
 		},
 		content: {
 			type: String,
-			required: true
+			default: null
 		}
 	},
 	emits: [ 'scroll-pause' ],

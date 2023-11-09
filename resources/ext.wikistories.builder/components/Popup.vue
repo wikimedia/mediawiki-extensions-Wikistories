@@ -11,6 +11,8 @@
 // @vue/component
 module.exports = {
 	name: 'Popup',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	emits: [ 'overlay-click' ]
 };
 </script>

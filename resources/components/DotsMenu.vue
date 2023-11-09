@@ -16,6 +16,8 @@
 // @vue/component
 module.exports = {
 	name: 'DotsMenu',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	data: function () {
 		return {
 			expanded: false

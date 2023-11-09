@@ -24,6 +24,8 @@
 // @vue/component
 module.exports = {
 	name: 'StoryImage',
+	compatConfig: { MODE: 3 },
+	compilerOptions: { whitespace: 'condense' },
 	props: {
 		src: { type: String, required: true },
 		alt: { type: String, required: true },
