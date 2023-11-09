@@ -1,5 +1,5 @@
 <template>
-	<div v-show="story.length" class="ext-wikistories-viewer-container">
+	<div v-if="story.length" class="ext-wikistories-viewer-container">
 		<!-- OVERLAY  -->
 		<div
 			class="ext-wikistories-viewer-container-overlay"
@@ -89,6 +89,7 @@
 			</div>
 			<!-- STORY TEXT -->
 			<textbox
+				v-if="currentFrame.text"
 				:is-paused="timer.isPaused"
 				:textsizes="textsizes"
 				:textsize="textsize"
