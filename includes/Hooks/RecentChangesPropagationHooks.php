@@ -525,7 +525,7 @@ class RecentChangesPropagationHooks implements
 			'queryCallable' => static function (
 				$specialClassName, $ctx, $dbr, &$tables, &$fields, &$conds, &$query_options, &$join_conds
 			) {
-				$conds[] = 'rc_source != ' . $dbr->addQuotes( self::SRC_WIKISTORIES );
+				$conds[] = $dbr->expr( 'rc_source', '!=', self::SRC_WIKISTORIES );
 			},
 			'cssClassSuffix' => 'src-mw-wikistories',
 			'isRowApplicableCallable' => function ( $ctx, $rc ) {
