@@ -15,7 +15,8 @@ const transforms = {
 			'.pcs-collapse-table-container',
 			'.thumb',
 			'.hatnote',
-			"[ role='navigation' ]"
+			"[ role='navigation' ]",
+			'#pcs-edit-section-add-title-description'
 		].join( ',' );
 		for ( const n of doc.querySelectorAll( selector ) ) {
 			n.remove();
@@ -23,7 +24,7 @@ const transforms = {
 	},
 	'turn links into plain text': ( doc ) => {
 		for ( const a of doc.querySelectorAll( 'a' ) ) {
-			a.replaceWith( a.innerHTML );
+			a.outerHTML = a.innerHTML;
 		}
 	},
 	'remove phonetic notations': ( doc ) => {
