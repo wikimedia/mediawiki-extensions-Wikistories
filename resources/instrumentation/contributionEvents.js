@@ -4,7 +4,7 @@ const logContributionEvent = ( data ) => {
 	const streamName = 'mediawiki.wikistories_contribution_event';
 	const event = $.extend( {
 		/* eslint-disable camelcase */
-		$schema: '/analytics/mediawiki/wikistories_contribution_event/1.1.0',
+		$schema: '/analytics/mediawiki/wikistories_contribution_event/1.2.0',
 		meta: {
 			stream: streamName,
 			domain: location.host,
@@ -14,7 +14,7 @@ const logContributionEvent = ( data ) => {
 		user_name: mw.user.isAnon() ? undefined : mw.config.get( 'wgUserName' ),
 		user_edit_count_bucket: mw.user.isAnon() ? undefined : mw.config.get( 'wgUserEditCountBucket' ).slice( 0, -6 ),
 		user_is_anonymous: mw.user.isAnon(),
-		context_page_title: mw.config.get( 'wgWikistoriesStoryContent' ).fromArticle,
+		context_page_title: mw.config.get( 'wgWikistoriesStoryContent' ).articleTitle,
 		activity_session_id: mw.eventLog.id.getSessionId(),
 		contribution_attempt_id: contributionAttemptId
 		/* eslint-enable camelcase */
@@ -53,8 +53,18 @@ const logPublishFailure = ( storyTitle, storyExists, failureMessage ) => {
 	} );
 };
 
+const logShareAction = ( storyTitle ) => {
+	logContributionEvent( {
+		/* eslint-disable camelcase */
+		event_type: 'story_share',
+		story_title: storyTitle
+		/* eslint-enable camelcase */
+	} );
+};
+
 module.exports = {
 	logStoryBuilderOpen: logStoryBuilderOpen,
 	logPublishSuccess: logPublishSuccess,
-	logPublishFailure: logPublishFailure
+	logPublishFailure: logPublishFailure,
+	logShareAction: logShareAction
 };

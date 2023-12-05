@@ -209,6 +209,14 @@
 				"util/isTouchDevice.js",
 				"util/timer.js",
 				{
+					"name": "consumptionEvents.js",
+					"file": "../instrumentation/consumptionEvents.js"
+				},
+				{
+					"name": "contributionEvents.js",
+					"file": "../instrumentation/contributionEvents.js"
+				},
+				{
 					"name": "ConfirmDialog.vue",
 					"file": "../components/ConfirmDialog.vue"
 				},
@@ -231,7 +239,9 @@
 			"es6": true,
 			"dependencies": [
 				"vue",
-				"vuex"
+				"vuex",
+				"mediawiki.Uri",
+				"ext.eventLogging"
 			],
 			"messages": [
 				"wikistories-storyviewer-next-story-header",
@@ -264,7 +274,6 @@
 			"localBasePath": "resources/ext.wikistories.builder",
 			"packageFiles": [
 				"index.js",
-				"contributionEvents.js",
 				"App.vue",
 				"api/getPageInfo.js",
 				"api/saveStory.js",
@@ -299,6 +308,10 @@
 				"views/PublishForm.vue",
 				"views/Search.vue",
 				"views/Story.vue",
+				{
+					"name": "contributionEvents.js",
+					"file": "../instrumentation/contributionEvents.js"
+				},
 				{
 					"name": "ConfirmDialog.vue",
 					"file": "../components/ConfirmDialog.vue"
@@ -396,7 +409,10 @@
 			],
 			"packageFiles": [
 				"index.js",
-				"consumptionEvents.js",
+				{
+					"name": "consumptionEvents.js",
+					"file": "../instrumentation/consumptionEvents.js"
+				},
 				"Discover.js",
 				"api/getStories.js",
 				"util/convertUrlToThumbnail.js",
@@ -422,7 +438,11 @@
 		"ext.wikistories.viewaction": {
 			"localBasePath": "resources/ext.wikistories.viewaction",
 			"packageFiles": [
-				"index.js"
+				"index.js",
+				{
+					"name": "consumptionEvents.js",
+					"file": "../instrumentation/consumptionEvents.js"
+				}
 			],
 			"dependencies": [
 				"ext.wikistories.viewer"

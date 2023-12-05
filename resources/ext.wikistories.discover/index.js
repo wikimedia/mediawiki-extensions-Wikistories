@@ -1,7 +1,7 @@
 const getDiscoverSection = require( './Discover.js' ).getDiscoverSection;
 const addStoriesToDiscoverSection = require( './Discover.js' ).addStoriesToDiscoverSection;
 const getStories = require( './api/getStories.js' );
-const events = require( './consumptionEvents.js' );
+const consumptionEvents = require( './consumptionEvents.js' );
 
 const loadingViewer = mw.loader.using( 'ext.wikistories.viewer' );
 const articleTitle = mw.config.get( 'wgPageName' );
@@ -20,7 +20,7 @@ getStories( articleTitle ).then( function ( stories ) {
 		if ( storyId && stories.find( story => story.storyId === storyId ) ) {
 			loadingViewer.then( function () {
 				const initStoryViewer = require( 'ext.wikistories.viewer' );
-				initStoryViewer( stories, storyId, events.logStoryView, true, true );
+				initStoryViewer( stories, storyId, true, true );
 				document.body.classList.add( 'ext-wikistories-viewer-on' );
 			} );
 		} else {
@@ -39,7 +39,7 @@ getStories( articleTitle ).then( function ( stories ) {
 	addStoriesToDiscoverSection( $discover, stories );
 
 	if ( stories.length ) {
-		events.logStoriesImpression( stories.length );
+		consumptionEvents.logStoriesImpression( stories.length );
 	}
 
 	// Load Story Viewer App if necessary
