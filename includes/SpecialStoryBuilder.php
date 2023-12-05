@@ -12,7 +12,8 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
 use MediaWiki\Page\WikiPageFactory;
-use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\Watchlist\WatchlistManager;
 use SpecialPage;
 use WatchAction;
@@ -44,6 +45,9 @@ class SpecialStoryBuilder extends SpecialPage {
 	/** @var StoriesCache */
 	private $storiesCache;
 
+	/** @var PermissionManager */
+	private $permissionManager;
+
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param PageLookup $pageLookup
@@ -52,6 +56,7 @@ class SpecialStoryBuilder extends SpecialPage {
 	 * @param WatchedItemStore $watchedItemStore
 	 * @param Config $config
 	 * @param StoriesCache $storiesCache
+	 * @param PermissionManager $permissionManager
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
@@ -60,7 +65,8 @@ class SpecialStoryBuilder extends SpecialPage {
 		WatchlistManager $watchlistManager,
 		WatchedItemStore $watchedItemStore,
 		Config $config,
-		StoriesCache $storiesCache
+		StoriesCache $storiesCache,
+		PermissionManager $permissionManager
 	) {
 		parent::__construct( 'StoryBuilder' );
 		$this->wikiPageFactory = $wikiPageFactory;
@@ -70,6 +76,7 @@ class SpecialStoryBuilder extends SpecialPage {
 		$this->config = $config;
 		$this->watchedItemStore = $watchedItemStore;
 		$this->storiesCache = $storiesCache;
+		$this->permissionManager = $permissionManager;
 	}
 
 	/**
@@ -127,6 +134,14 @@ class SpecialStoryBuilder extends SpecialPage {
 
 	/**
 	 * @param ExistingPageRecord $page
+	 * @return bool
+	 */
+	private function getUserBlockStatus( $page ): bool {
+		return $this->permissionManager->isBlockedFrom( $this->getUser(), $page );
+	}
+
+	/**
+	 * @param ExistingPageRecord $page
 	 * @return array Configuration needed by the story builder
 	 */
 	private function getConfigForStoryBuilder( ExistingPageRecord $page ): array {
@@ -135,6 +150,8 @@ class SpecialStoryBuilder extends SpecialPage {
 			$wikiPage = $this->wikiPageFactory->newFromTitle( $page );
 			$storyContent = $this->storiesCache->getStory( $page->getId() );
 			$mode = self::MODE_EDIT;
+			$articlePage = $this->pageLookup->getExistingPageByText( $storyContent[ 'articleTitle' ] );
+			$userBlock = $articlePage ? $this->getUserBlockStatus( $articlePage ) : false;
 			$watchDefault = $this->userOptionsLookup->getOption( $this->getUser(), 'watchdefault' ) ||
 				$this->watchlistManager->isWatched( $this->getUser(), $page );
 			$watchExpiryOptions = WatchAction::getExpiryOptions(
@@ -148,6 +165,7 @@ class SpecialStoryBuilder extends SpecialPage {
 				'articleTitle' => $page->getDBkey(),
 				'frames' => [],
 			];
+			$userBlock = $this->getUserBlockStatus( $page );
 			$watchDefault = $this->userOptionsLookup->getOption( $this->getUser(), 'watchcreations' );
 			$watchExpiryOptions = WatchAction::getExpiryOptions( $this->getContext(), false );
 		}
@@ -163,6 +181,7 @@ class SpecialStoryBuilder extends SpecialPage {
 			'wgWikistoriesWatchDefault' => $watchDefault,
 			'wgWikistoriesWatchlistExpiryEnabled' => $watchExpiryEnabled,
 			'wgWikistoriesWatchlistExpiryOptions' => $watchExpiryOptions,
+			'wgWikistoriesUserBlockStatus' => $userBlock,
 		];
 	}
 

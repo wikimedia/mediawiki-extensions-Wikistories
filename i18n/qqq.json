@@ -76,6 +76,7 @@
 	"wikistories-storyviewer-textsize-label-large": "Label of the radio button to set the text size to 'large' in the text size dialog in the Story Viewer\n{{identical|Large}}",
 	"wikistories-toast-maxframes-addingmore": "Text message for the toast warning when trying to add more frames beyond the max limit from Story view.\n\nParameters:\n* $1 - maximum number of frames allowed",
 	"wikistories-toast-maxframes-selecting": "Text message for the toast warning when trying to select more images beyond the max limit from the Search view.\n\nParameters:\n* $1 - maximum number of frames allowed",
+	"wikistories-notice-user-block": "Text message for the notice when user is blocked from current article",
 	"wikistories-error-notenoughframes-title": "Title of the error dialog when trying to publish a story that doesn't have enough frames.",
 	"wikistories-error-notenoughframes-message": "Error message when trying to publish a story that doesn't have enough frames.\n\nParameters:\n* $1 - minimum number of pages for a story\n* $2 - number of pages missing",
 	"wikistories-error-frameswithouttext-title": "Title of the error dialog when trying to publish a story that is missing text in some pages.",

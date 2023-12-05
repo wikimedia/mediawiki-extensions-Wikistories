@@ -34,6 +34,12 @@
 			:message="toast.message"
 			@hide-toast="hideToast">
 		</toast>
+		<notice
+			v-if="isUserBlockedFromCurrentArticle"
+			class="ext-wikistories-storybuilder-story-notice"
+			:message="notice.message"
+			:mode="notice.mode">
+		</notice>
 		<alert
 			v-if="alert.show"
 			:title="alert.title"
@@ -70,6 +76,7 @@ const Navigator = require( '../components/Navigator.vue' );
 const DotsMenu = require( '../DotsMenu.vue' );
 const DotsMenuItem = require( '../DotsMenuItem.vue' );
 const Toast = require( '../components/Toast.vue' );
+const Notice = require( '../components/Notice.vue' );
 const beforeUnloadListener = require( '../util/beforeUnloadListener.js' );
 
 // @vue/component
@@ -85,7 +92,8 @@ module.exports = {
 		navigator: Navigator,
 		'dots-menu': DotsMenu,
 		'dots-menu-item': DotsMenuItem,
-		toast: Toast
+		toast: Toast,
+		notice: Notice
 	},
 	data: function () {
 		return {
@@ -99,10 +107,14 @@ module.exports = {
 			toast: {
 				show: false,
 				message: ''
+			},
+			notice: {
+				message: this.$i18n( 'wikistories-notice-user-block' ).text(),
+				mode: 'error'
 			}
 		};
 	},
-	computed: $.extend( mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'mode', 'frameCount', 'editingText' ] ), {
+	computed: $.extend( mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'mode', 'frameCount', 'editingText', 'isUserBlockedFromCurrentArticle' ] ), {
 		messages: function () {
 			// EDIT TEXT MODE
 			if ( this.editingText ) {
@@ -157,6 +169,10 @@ module.exports = {
 				}
 				if ( this.framesWithoutText > 0 ) {
 					this.showFramesWithoutTextAlert( this.framesWithoutText );
+					return;
+				}
+
+				if ( this.isUserBlockedFromCurrentArticle ) {
 					return;
 				}
 
@@ -259,6 +275,15 @@ module.exports = {
 		position: absolute;
 		top: 48px;
 		right: 0;
+	}
+
+	&-notice {
+		position: absolute;
+		margin: 0 15px;
+		top: 103px;
+		left: 0;
+		right: 0;
+		z-index: 100;
 	}
 }
 </style>

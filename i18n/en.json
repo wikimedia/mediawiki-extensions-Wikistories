@@ -69,6 +69,7 @@
 	"wikistories-storyviewer-textsize-label-large": "Large",
 	"wikistories-toast-maxframes-addingmore": "Each story can have a maximum of {{PLURAL:$1|$1 page|$1 pages}}. To add a new page, please delete an existing one.",
 	"wikistories-toast-maxframes-selecting": "A maximum of {{PLURAL:$1|$1 image is |$1 images are}} allowed per story.",
+	"wikistories-notice-user-block": "Your account is currently restricted from editing or creating a Wikistory.",
 	"wikistories-error-notenoughframes-title": "Not enough pages",
 	"wikistories-error-notenoughframes-message": "All Wikistories need at least {{PLURAL:$1|1=one|2=two|3=three|4=four|5=five|10=ten|$1}} {{PLURAL:$1|page|pages}}. Please add {{PLURAL:$2|1=one|2=two|3=three|4=four|5=five|10=ten|$2}} {{PLURAL:$2|more page|more pages}}.",
 	"wikistories-error-frameswithouttext-title": "Missing Text",
