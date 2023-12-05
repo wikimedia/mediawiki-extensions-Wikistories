@@ -2,87 +2,94 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
+use MediaWiki\Linker\LinksMigration;
+use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleValue;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class PageLinksSearch {
 
 	/** @var ILoadBalancer */
 	private $loadBalancer;
 
+	/** @var LinksMigration */
+	private $linksMigration;
+
 	/**
 	 * @param ILoadBalancer $loadBalancer
+	 * @param LinksMigration $linksMigration
 	 */
-	public function __construct( ILoadBalancer $loadBalancer ) {
+	public function __construct( ILoadBalancer $loadBalancer, LinksMigration $linksMigration ) {
 		$this->loadBalancer = $loadBalancer;
+		$this->linksMigration = $linksMigration;
 	}
 
 	/**
-	 * Get page links associated with target title
+	 * Get story page ids linked with target article,
+	 * including those stories linked with pre-moved
+	 * versions of the target article, as instructed.
 	 *
-	 * @param string $target Title string
+	 * Note that the links in the database are recorded as going
+	 * from the story to the article.
+	 *
+	 * @param string $articleTitle
 	 * @param int $limit
 	 * @param bool $followRedirects
 	 * @return array Page ids of the related stories
 	 */
-	public function getPageLinks( string $target, int $limit, bool $followRedirects = true ): array {
-		$ids = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
-			->table( 'pagelinks' )
-			->join( 'page', null, 'pl_from=page_id' )
-			->fields( [ 'pl_from' ] )
-			->conds( [
-				'pl_from_namespace' => NS_STORY,
-				'pl_namespace' => NS_MAIN,
-				'pl_title' => $target,
-			] )
-			->orderBy( 'page_touched', 'DESC' )
-			->limit( $limit )
-			->caller( __METHOD__ )
-			->fetchFieldValues();
+	public function getPageLinks( string $articleTitle, int $limit, bool $followRedirects = true ): array {
+		$tv = new TitleValue( NS_MAIN, $articleTitle );
+		$ids = $this->getStoriesLinkingToArticle( $tv, $limit );
 
+		// It is possible that $articleTitle is a redirect target and stories may
+		// have been created and linked with the previous article name
+		// before the article was moved.
 		if ( $followRedirects ) {
-			$redirect = $this->getPageRedirectLinks( $target, $limit );
-			$ids = array_merge( $ids, $redirect );
+			$title = Title::newFromText( $articleTitle );
+			$redirectSources = $title->getRedirectsHere( NS_MAIN );
+			foreach ( $redirectSources as $redirectSource ) {
+				$storyIds = $this->getStoriesLinkingToArticle( $redirectSource, $limit );
+				$ids = array_merge( $ids, $storyIds );
+			}
 		}
 
 		return $ids;
 	}
 
 	/**
-	 * Get page links associated with redirect target
-	 *
-	 * @param string $target Title string
+	 * @param LinkTarget $articleTitle
 	 * @param int $limit
-	 * @return array Page ids of the related stories
+	 * @return array Story page IDs
 	 */
-	private function getPageRedirectLinks( string $target, int $limit ): array {
-		$redirectTarget = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
-			->table( 'pagelinks' )
-			->join( 'page', null, 'pl_from=page_id' )
-			->fields( [ 'page_title' ] )
-			->conds( [
-				'pl_title' => $target,
-				'page_is_redirect' => 1,
-			] )
-			->caller( __METHOD__ )
-			->fetchFieldValues();
+	private function getStoriesLinkingToArticle( LinkTarget $articleTitle, int $limit ): array {
+		$conds = $this->linksMigration->getLinksConditions( 'pagelinks', $articleTitle );
+		$conds[ 'pl_from_namespace' ] = NS_STORY;
 
-		// TODO: add recursion support for multiple redirects beyond 1 level deep (T336602)
-		if ( $redirectTarget ) {
-			return $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
-				->table( 'pagelinks' )
-				->join( 'page', null, 'pl_from=page_id' )
-				->fields( [ 'pl_from' ] )
-				->conds( [
-					'pl_from_namespace' => NS_STORY,
-					'pl_namespace' => NS_MAIN,
-					'pl_title' => $redirectTarget,
-				] )
-				->orderBy( 'page_touched', 'DESC' )
-				->limit( $limit )
-				->caller( __METHOD__ )
-				->fetchFieldValues();
+		$query = $this->getPagelinksPageQuery()
+			->select( 'pl_from' )
+			->where( $conds )
+			->orderBy( 'page_touched', 'DESC' )
+			->limit( $limit )
+			->caller( __METHOD__ );
+
+		$ids = [];
+		$rows = $query->fetchResultSet();
+		foreach ( $rows as $row ) {
+			$ids[] = $row->pl_from;
 		}
+		return $ids;
+	}
 
-		return [];
+	/**
+	 * Build a query for "pagelinks JOIN page ON pl_from=page_id"
+	 *
+	 * @return SelectQueryBuilder
+	 */
+	private function getPagelinksPageQuery(): SelectQueryBuilder {
+		return $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+			->queryInfo( $this->linksMigration->getQueryInfo( 'pagelinks' ) )
+			->join( 'page', null, 'pl_from=page_id' );
 	}
 }
