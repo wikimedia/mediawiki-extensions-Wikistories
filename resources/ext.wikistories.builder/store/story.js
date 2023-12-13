@@ -7,6 +7,7 @@ const lang = mw.config.get( 'wgContentLanguage' );
 const watchDefault = mw.config.get( 'wgWikistoriesWatchDefault' );
 const watchlistExpiryEnabled = mw.config.get( 'wgWikistoriesWatchlistExpiryEnabled' );
 const watchlistExpiryOptions = mw.config.get( 'wgWikistoriesWatchlistExpiryOptions' );
+const userBlockStatus = mw.config.get( 'wgWikistoriesUserBlockStatus' );
 const TEXT_EDIT_THRESHOLD = mw.config.get( 'wgWikistoriesUnmodifiedTextThreshold' );
 
 const searchTools = require( '../api/searchImages.js' );
@@ -30,7 +31,8 @@ module.exports = {
 		editingText: false,
 		watchlistExpiryEnabled: watchlistExpiryEnabled,
 		watchlistExpiryOptions: watchlistExpiryOptions,
-		watchDefault: watchDefault
+		watchDefault: watchDefault,
+		userBlockStatus: userBlockStatus
 	},
 	mutations: {
 		selectFrame: ( state, index ) => {
@@ -318,6 +320,7 @@ module.exports = {
 		storyUrl: ( state ) => {
 			const titleObj = mw.Title.newFromText( state.fromArticle + '#/story/' + state.storyPageId );
 			return titleObj ? titleObj.getUrl() : '';
-		}
+		},
+		isUserBlockedFromCurrentArticle: ( state ) => state.userBlockStatus
 	}
 };

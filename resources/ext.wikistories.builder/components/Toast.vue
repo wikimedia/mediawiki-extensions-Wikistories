@@ -1,18 +1,20 @@
 <template>
-	<div class="ext-wikistories-toast" :class="{ 'ext-wikistories-toast-error': mode === 'error' }">
-		<div class="ext-wikistories-toast-icon"></div>
-		<div class="ext-wikistories-toast-message">
-			{{ message }}
-		</div>
+	<div class="ext-wikistories-toast">
+		<notice :message="message" :mode="mode"></notice>
 	</div>
 </template>
 
 <script>
+const Notice = require( './Notice.vue' );
+
 // @vue/component
 module.exports = {
 	name: 'Toast',
 	compatConfig: { MODE: 3 },
 	compilerOptions: { whitespace: 'condense' },
+	components: {
+		notice: Notice
+	},
 	props: {
 		message: { type: String, required: true },
 		mode: { type: String, required: false, default: 'warning' }
@@ -39,46 +41,11 @@ module.exports = {
 @import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-toast {
-	background-color: @background-color-warning-subtle;
 	position: absolute;
 	margin: 0 15px;
-	padding: 20px;
 	top: 103px;
 	left: 0;
 	right: 0;
-	z-index: 100;
-	border: @border-width-base @border-style-base @border-color-warning;
-	border-radius: @border-radius-base;
-	display: flex;
-
-	&-icon {
-		background-image: url( ./../images/union.svg );
-		background-repeat: no-repeat;
-		height: 18px;
-		width: 26px;
-		margin-right: 10px;
-		margin-top: 4px;
-	}
-
-	&-message {
-		font-size: 16px;
-		width: 90%;
-		line-height: 22px;
-	}
-}
-
-.ext-wikistories-toast.ext-wikistories-toast-error {
-	background-color: @background-color-error-subtle;
-	border: @border-width-base @border-style-base @border-color-error;
-	top: 60px;
-
-	.ext-wikistories-toast-icon {
-		background-image: url( ./../images/error.svg );
-		height: 20px;
-	}
-
-	.ext-wikistories-toast-message {
-		color: @color-emphasized;
-	}
+	z-index: 105;
 }
 </style>

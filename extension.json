@@ -36,7 +36,8 @@
 				"WatchlistManager",
 				"WatchedItemStore",
 				"MainConfig",
-				"Wikistories.Cache"
+				"Wikistories.Cache",
+				"PermissionManager"
 			]
 		}
 	},
@@ -289,6 +290,7 @@
 				"components/RouterView.vue",
 				"components/StoryTextbox.vue",
 				"components/Toast.vue",
+				"components/Notice.vue",
 				"plugins/config.js",
 				"mixins/observer.js",
 				"store/article.js",
@@ -375,6 +377,7 @@
 				"wikistories-confirmdialog-discardstory-accept",
 				"wikistories-toast-maxframes-addingmore",
 				"wikistories-toast-maxframes-selecting",
+				"wikistories-notice-user-block",
 				"wikistories-error-notenoughframes-title",
 				"wikistories-error-notenoughframes-message",
 				"wikistories-error-frameswithouttext-title",
