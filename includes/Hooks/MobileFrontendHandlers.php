@@ -26,11 +26,12 @@ class MobileFrontendHandlers implements BeforePageDisplayMobileHook {
 	}
 
 	/**
-	 * @param string $action
+	 * @param IContextSource $context
 	 * @return bool
 	 */
-	private static function shouldShowStoriesForAction( string $action ) {
-		return $action === 'view';
+	private static function shouldShowStoriesForAction( IContextSource $context ) {
+		return $context->getActionName() === 'view' &&
+			$context->getRequest()->getText( 'diff' ) === '';
 	}
 
 	/**
@@ -75,7 +76,7 @@ class MobileFrontendHandlers implements BeforePageDisplayMobileHook {
 		return self::shouldShowStoriesForUser( $user, $context->getConfig() )
 			&& self::shouldShowStoriesOnSkin( $skin )
 			&& self::shouldShowStoriesOnPage( $title )
-			&& self::shouldShowStoriesForAction( $context->getActionName() );
+			&& self::shouldShowStoriesForAction( $context );
 	}
 
 	/**
