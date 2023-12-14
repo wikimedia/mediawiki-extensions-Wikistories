@@ -67,6 +67,7 @@
 	"wikistories-storyviewer-textsize-label-large": "Grande",
 	"wikistories-toast-maxframes-addingmore": "Cata historia pote haber un maximo de $1 pagina{{PLURAL:$1||s}}. Pro adder un nove pagina, per favor dele un existente.",
 	"wikistories-toast-maxframes-selecting": "Es permittite un maximo de $1 imagine{{PLURAL:$1||s}} per historia.",
+	"wikistories-notice-user-block": "Tu conto es actualmente blocate pro le modification o creation de Wikihistorias.",
 	"wikistories-error-notenoughframes-title": "Non satis paginas",
 	"wikistories-error-notenoughframes-message": "Tote le wikihistorias necessita al minus {{PLURAL:$1|1=un|2=duo|3=tres|4=quatro|5=cinque|10=dece|$1}} pagina{{PLURAL:$1||s}}. Per favor adde {{PLURAL:$2|1=un|2=duo|3=tres|4=quatro|5=cinque|10=dece|$2}} altere pagina{{PLURAL:$2||s}}.",
 	"wikistories-error-frameswithouttext-title": "Texto mancante",

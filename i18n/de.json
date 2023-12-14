@@ -68,6 +68,7 @@
 	"wikistories-storyviewer-textsize-label-large": "Groß",
 	"wikistories-toast-maxframes-addingmore": "Jede Geschichte kann maximal {{PLURAL:$1|$1 Seite|$1 Seiten}} haben. Um eine neue Seite hinzuzufügen, lösche bitte eine bestehende Seite.",
 	"wikistories-toast-maxframes-selecting": "Es {{PLURAL:$1|ist maximal $1 Bild|sind maximal $1 Bilder}} pro Geschichte erlaubt.",
+	"wikistories-notice-user-block": "Dein Konto ist derzeit für die Bearbeitung oder Erstellung einer Wikistory gesperrt.",
 	"wikistories-error-notenoughframes-title": "Nicht genug Seiten",
 	"wikistories-error-notenoughframes-message": "Wikistory benötigt mindestens {{PLURAL:$1|1=eine|2=zwei|3=drei|4=vier|5=fünf|10=zehn|$1}} {{PLURAL:$1|$1 Seite|$1 Seiten}}. Füge {{PLURAL:$2|1=eine|2=zwei|3=drei|4=vier|5=fünf|10=zehn|$1}} {{PLURAL:$2|weitere Seite|$2 weitere Seiten}} zur Veröffentlichung hinzu.",
 	"wikistories-error-frameswithouttext-title": "Fehlender Text",
