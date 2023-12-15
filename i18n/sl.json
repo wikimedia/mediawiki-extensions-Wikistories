@@ -69,6 +69,7 @@
 	"wikistories-storyviewer-textsize-label-large": "Veliko",
 	"wikistories-toast-maxframes-addingmore": "Posamezna zgodba ima lahko največ {{PLURAL:$1|$1 stran|$1 strani}}. Če želite dodati novo stran, izbrišite obstoječo.",
 	"wikistories-toast-maxframes-selecting": "{{PLURAL:$1|Dovoljena je največ $1 stran|Dovoljeni sta največ $1 strani|Dovoljene so največ $1 strani|Dovoljenih je največ $1 strani}} na zgodbo.",
+	"wikistories-notice-user-block": "Za vaš račun je trenutno urejanje ali ustvarjanje Wikizgodovine onemogočeno.",
 	"wikistories-error-notenoughframes-title": "Ni dovolj strani",
 	"wikistories-error-notenoughframes-message": "Vse vikizgodbe potrebujejo vsaj {{PLURAL:$1|1=eno|2=dve|3=tri|4=štiri|5=pet|10=deset|$1}} {{PLURAL:$1|stran|strani}}. Dodajte še\n{{PLURAL:$2|1=eno|2=dve|3=tri|4=štiri|5=pet|10=deset|$2}} {{PLURAL:$2|stran|strani}}.",
 	"wikistories-error-frameswithouttext-title": "Manjkajoče besedilo",

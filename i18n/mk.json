@@ -69,6 +69,7 @@
 	"wikistories-storyviewer-textsize-label-large": "Голем",
 	"wikistories-toast-maxframes-addingmore": "Секоја приказна може да има највеќе {{PLURAL:$1|$1 страница|$1 страници}}. За да додадете нова, прво избришете постоечка.",
 	"wikistories-toast-maxframes-selecting": "{{PLURAL:$1|Дозволена е највеќе $1 слика|Дозволени се највеќе $1 слики}} по приказна.",
+	"wikistories-notice-user-block": "На вашата сметка моментално ѝ е забрането да уредува или создава википриказни.",
 	"wikistories-error-notenoughframes-title": "Нема доволно страници",
 	"wikistories-error-notenoughframes-message": "Сите википриказни треба да имаат барем {{PLURAL:$1|1=една|2=две|3=три|4=четири|5=пет|10=десет|$1}} {{PLURAL:$1|страница|страници}}. Додајте уште {{PLURAL:$2|1=една|2=две|3=три|4=четири|5=пет|10=десет|$2}} {{PLURAL:$2|страница|страници}}.",
 	"wikistories-error-frameswithouttext-title": "Потребен текст",
