@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Saederup92",
-			"SiGNOUT"
+			"SiGNOUT",
+			"Zakawer2"
 		]
 	},
 	"wikistories-article-loading": "Indlæser artikel...",
@@ -11,5 +12,6 @@
 	"wikistories-storyviewer-textsize-label-small": "Lille",
 	"wikistories-storyviewer-textsize-label-regular": "Almindelig",
 	"wikistories-storyviewer-textsize-label-large": "Stor",
+	"wikistories-notice-user-block": "Din konto er i øjeblikket begrænset fra at redigere eller oprette en Wikistory.",
 	"wikistories-storyviewer-textsize": "Skift tekststørrelse"
 }
