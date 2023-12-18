@@ -148,6 +148,18 @@ class Hooks implements
 	}
 
 	/**
+	 * @return array Data used by the 'builder' module to get title translation
+	 */
+	public static function getArticleSectionTitle(): array {
+		return [
+			'See_also' => [
+				'en' => 'See_also',
+				'id' => 'Lihat_pula'
+			]
+		];
+	}
+
+	/**
 	 * Register a message to make sure Special:StoryBuilder can redirect
 	 * to the login page when the user is logged out.
 	 *
