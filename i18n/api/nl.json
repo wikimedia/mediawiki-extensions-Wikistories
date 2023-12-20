@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "De naamruimte ‘$1’ wordt niet ondersteund door dit API-eindpunt. Wiki-vertellingen kunnen alleen aan artikelen in de hoofdnaamruimte worden gekoppeld."
+}
