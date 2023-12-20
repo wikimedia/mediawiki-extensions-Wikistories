@@ -69,6 +69,7 @@
 	"wikistories-storyviewer-textsize-label-large": "Stor",
 	"wikistories-toast-maxframes-addingmore": "Hver historie kan ha maksimalt $1 {{PLURAL:$1|side|sider}}. Slett en side for å legge til en ny en.",
 	"wikistories-toast-maxframes-selecting": "Maksimalt $1 {{PLURAL:$1|bilde|bilder}} er tillatt per historie.",
+	"wikistories-notice-user-block": "Kontoen din er for tiden begrenset fra å redigere eller opprette wikihistorier.",
 	"wikistories-error-notenoughframes-title": "Ikke nok sider",
 	"wikistories-error-notenoughframes-message": "Alle wikihistorier trenger minst $1 {{PLURAL:$1|side|sider}}. Legg til $2 {{PLURAL:$2|side|sider}} til.",
 	"wikistories-error-frameswithouttext-title": "Manglende tekst",
