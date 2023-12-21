@@ -329,6 +329,10 @@
 				{
 					"name": "StoryImage.vue",
 					"file": "../components/StoryImage.vue"
+				},
+				{
+					"name": "sectionTitle.json",
+					"callback": "MediaWiki\\Extension\\Wikistories\\Hooks::getArticleSectionTitle"
 				}
 			],
 			"dependencies": [

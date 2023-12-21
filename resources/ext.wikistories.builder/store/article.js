@@ -41,6 +41,17 @@ const transforms = {
 			foldHr.remove();
 		}
 	},
+	'remove section "See also"': ( doc ) => {
+		const lang = mw.config.get( 'wgContentLanguage' );
+		const translation = require( '../sectionTitle.json' ).See_also[ lang ];
+
+		if ( translation ) {
+			const seeAlsoH2 = doc.querySelector( `#${translation}` );
+			if ( seeAlsoH2 ) {
+				seeAlsoH2.closest( 'section' ).remove();
+			}
+		}
+	},
 	'Split and wrap sentences': ( doc ) => {
 		for ( const p of doc.querySelectorAll( 'p, li' ) ) {
 			if ( p.textContent.trim() !== '' ) {
