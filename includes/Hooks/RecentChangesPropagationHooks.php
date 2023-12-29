@@ -3,12 +3,12 @@
 namespace MediaWiki\Extension\Wikistories\Hooks;
 
 use ChangesListBooleanFilter;
-use Config;
-use DeferredUpdates;
 use HtmlArmor;
 use IContextSource;
 use Language;
 use MediaWiki\CommentStore\CommentStoreComment;
+use MediaWiki\Config\Config;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Wikistories\StoryContent;
 use MediaWiki\Hook\EnhancedChangesListModifyBlockLineDataHook;
 use MediaWiki\Hook\EnhancedChangesListModifyLineDataHook;
@@ -22,13 +22,13 @@ use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\SpecialPage\Hook\ChangesListSpecialPageStructuredFiltersHook;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use RecentChange;
 use RequestContext;
-use SpecialPage;
-use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class RecentChangesPropagationHooks implements

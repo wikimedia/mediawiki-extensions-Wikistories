@@ -5,8 +5,8 @@ namespace MediaWiki\Extension\Wikistories\Notifications;
 use EchoEventPresentationModel;
 use MediaWiki\Extension\Wikistories\Hooks\EchoNotificationsHandlers;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
-use SpecialPage;
 
 class ArticleChangedPresentationModel extends EchoEventPresentationModel {
 

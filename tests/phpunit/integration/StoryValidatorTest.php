@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\Wikistories;
 
 use File;
 use FormatJson;
-use HashConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;

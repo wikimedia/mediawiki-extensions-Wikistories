@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\Wikistories;
 use MediaWiki\EditPage\EditPage;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Request\WebRequest;
 use OOUI\FieldLayout;
 use OOUI\HiddenInputWidget;
 use OOUI\MultilineTextInputWidget;
@@ -135,7 +136,7 @@ class StoryEditPage extends EditPage {
 	}
 
 	/**
-	 * @param \WebRequest &$request
+	 * @param WebRequest &$request
 	 * @return false|string|null
 	 */
 	protected function importContentFormData( &$request ) {

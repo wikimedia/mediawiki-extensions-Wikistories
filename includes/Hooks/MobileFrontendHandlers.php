@@ -8,11 +8,11 @@ use MediaWiki\Config\Config;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Extension\Wikistories\Hooks;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 use MobileFrontend\Hooks\BeforePageDisplayMobileHook;
-use OutputPage;
 use Skin;
 
 class MobileFrontendHandlers implements BeforePageDisplayMobileHook {

@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Html;
 use JsonContent;
+use MediaWiki\Html\Html;
 use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Page\PageLookup;
 use MediaWiki\Page\RedirectLookup;

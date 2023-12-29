@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\Wikistories\Jobs;
 
-use Config;
 use ExtensionRegistry;
 use IJobSpecification;
 use Job;
 use JobSpecification;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\Wikistories\Hooks\EchoNotificationsHandlers;
 use MediaWiki\Extension\Wikistories\PageLinksSearch;
 use MediaWiki\Extension\Wikistories\StoryContent;

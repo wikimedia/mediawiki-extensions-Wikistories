@@ -11,10 +11,10 @@ use MediaWiki\Content\Renderer\ContentParseParams;
 use MediaWiki\Content\Transform\PreloadTransformParams;
 use MediaWiki\Content\Transform\PreSaveTransformParams;
 use MediaWiki\Content\ValidationParams;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
-use ParserOutput;
+use MediaWiki\Title\TitleValue;
 use RefreshLinksJob;
-use TitleValue;
 
 class StoryContentHandler extends JsonContentHandler {
 

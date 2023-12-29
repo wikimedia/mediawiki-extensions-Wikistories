@@ -5,17 +5,17 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Config;
 use ErrorPageError;
-use Html;
+use MediaWiki\Config\Config;
+use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\Watchlist\WatchlistManager;
-use SpecialPage;
 use WatchAction;
 use WatchedItemStore;
 

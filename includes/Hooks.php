@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use Article;
-use DeferredUpdates;
 use ManualLogEntry;
 use MediaWiki\Config\Config;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Wikistories\Jobs\ArticleChangedJob;
 use MediaWiki\Hook\ActionModifyFormFieldsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
@@ -15,19 +15,19 @@ use MediaWiki\Page\Hook\ArticlePurgeHook;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
 use MediaWiki\Page\Hook\PageUndeleteCompleteHook;
 use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use ParserCache;
 use ParserOptions;
-use ParserOutput;
 use RequestContext;
-use SpecialPage;
-use User;
 use WikiPage;
 
 class Hooks implements
