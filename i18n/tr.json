@@ -72,6 +72,7 @@
 	"wikistories-storyviewer-textsize-label-large": "Büyük",
 	"wikistories-toast-maxframes-addingmore": "Her öyküde en fazla $1 {{PLURAL:$1|sayfa}} olabilir. Yeni bir sayfa eklemek için, lütfen var olan bir tanesini silin.",
 	"wikistories-toast-maxframes-selecting": "Öykü başına en fazla $1 {{PLURAL:$1|görüntüye}} izin verilir.",
+	"wikistories-notice-user-block": "Hesabınızın şu anda bir Vikiöykü düzenlemesi ya da oluşturması kısıtlanmıştır.",
 	"wikistories-error-notenoughframes-title": "Yeterli sayfa yok",
 	"wikistories-error-notenoughframes-message": "Her Vikiöyküye en az {{PLURAL:$1|1=bir|2=iki|3=üç|4=dört|5=beş|10=on|$1}} sayfa gereklidir. Lütfen {{PLURAL:$2|1=bir|2=iki|3=üç|4=dört|5=beş|10=on|$2}} sayfa daha ekleyin.",
 	"wikistories-error-frameswithouttext-title": "Eksik Metin",
