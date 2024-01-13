@@ -237,7 +237,6 @@
 			"styles": [
 				"viewer.less"
 			],
-			"es6": true,
 			"dependencies": [
 				"vue",
 				"vuex",
@@ -403,8 +402,7 @@
 				"wikistories-builder-publishform-gotostory",
 				"wikistories-builder-publishform-sharestory",
 				"wikistories-builder-licensing-with-terms"
-			],
-			"es6": true
+			]
 		},
 		"ext.wikistories.discover": {
 			"localBasePath": "resources/ext.wikistories.discover",
