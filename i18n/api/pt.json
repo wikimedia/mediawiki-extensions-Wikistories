@@ -4,5 +4,5 @@
 			"Hamilton Abreu"
 		]
 	},
-	"wikistories-rest-unsupported-namespace": "O espaço nominal ($1) não é suportado por este ponto final da API. As histórias só podem ser associadas a artigos do espaço nominal principal."
+	"wikistories-rest-unsupported-namespace": "O espaço nominal ($1) não é suportado por este ponto de terminação da API. As histórias só podem ser associadas a artigos do espaço nominal principal."
 }
