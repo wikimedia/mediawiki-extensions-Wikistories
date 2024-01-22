@@ -4,6 +4,7 @@
 			"Afalau"
 		]
 	},
+	"wikistories-extensionname": "Wicistraeon",
 	"right-edit-story": "Golygu straeon",
 	"action-edit-story": "golygu straeon",
 	"wikistories-beta-feature-message": "Wicistraeon",
@@ -37,8 +38,14 @@
 	"wikistories-error-notenoughframes-title": "Dim digon o dudalennau",
 	"wikistories-error-frameswithouttext-title": "Testun ar goll",
 	"wikistories-builder-publishform-navigator-title": "Cyhoeddi Wicistori",
+	"wikistories-builder-publishform-placeholder": "Rhowch deitl i'r stori...",
 	"wikistories-builder-publishform-publishbutton": "Cyhoeddi",
+	"wikistories-builder-publishform-invalidtitle-empty": "Rhowch deitl i'r stori",
+	"wikistories-builder-publishform-invalidtitle-format": "Teitl stori annilys",
+	"wikistories-builder-publishform-invalidtitle-notfound": "Heb ganfod stori.",
+	"wikistories-builder-publishform-saveerror": "Digwyddodd gwall wrth gyhoeddi'r Wicistori. Ceisiwch eto.",
 	"wikistories-builder-publishform-saving": "Wrthi'n cyhoeddi Wicistori...",
+	"wikistories-nojs-form-label-related-article": "Erthygl Gysylltiedig",
 	"wikistories-nojs-form-label-frame": "Ffrâm $1",
 	"wikistories-nojs-form-label-image": "Delwedd",
 	"wikistories-nojs-form-label-text": "Testun",
