@@ -8,8 +8,6 @@
 // @vue/component
 module.exports = {
 	name: 'PrimaryButton',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	props: {
 		text: { type: String, required: true }
 	},

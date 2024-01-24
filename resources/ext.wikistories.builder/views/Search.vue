@@ -50,8 +50,6 @@ const Toast = require( '../components/Toast.vue' );
 // @vue/component
 module.exports = {
 	name: 'Search',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	components: {
 		'image-list': ImageListView,
 		navigator: Navigator,

@@ -17,8 +17,6 @@
 // @vue/component
 module.exports = {
 	name: 'Textbox',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	props: {
 		isPaused: {
 			type: Boolean,

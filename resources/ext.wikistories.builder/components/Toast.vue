@@ -10,8 +10,6 @@ const Notice = require( './Notice.vue' );
 // @vue/component
 module.exports = {
 	name: 'Toast',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	components: {
 		notice: Notice
 	},

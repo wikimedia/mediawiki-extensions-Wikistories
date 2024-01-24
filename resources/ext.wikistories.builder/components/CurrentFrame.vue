@@ -27,8 +27,6 @@ const StoryTextbox = require( './StoryTextbox.vue' );
 // @vue/component
 module.exports = {
 	name: 'CurrentFrame',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	components: {
 		'image-attribution': ImageAttribution,
 		'story-image': StoryImage,
