@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
+use IDBAccessObject;
 use JsonContent;
 use MediaWiki\Html\Html;
 use MediaWiki\Page\PageIdentityValue;
@@ -52,7 +53,7 @@ class StoryContent extends JsonContent {
 
 		if ( !isset( $story->articleId ) && isset( $story->fromArticle ) ) {
 			$articleTitle = Title::newFromText( $story->fromArticle );
-			return $articleTitle->getArticleID( Title::READ_LATEST );
+			return $articleTitle->getArticleID( IDBAccessObject::READ_LATEST );
 		}
 
 		return $story->articleId ?? -1;
