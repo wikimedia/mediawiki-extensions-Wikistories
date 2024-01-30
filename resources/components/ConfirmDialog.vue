@@ -32,8 +32,6 @@
 // @vue/component
 module.exports = {
 	name: 'ConfirmDialog',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	props: {
 		title: { type: String, required: true },
 		message: { type: String, required: false, default: null },

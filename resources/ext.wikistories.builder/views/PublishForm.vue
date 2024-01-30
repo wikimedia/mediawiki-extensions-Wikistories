@@ -120,8 +120,6 @@ const NS_STORY = mw.config.get( 'wgNamespaceIds' ).story;
 // @vue/component
 module.exports = {
 	name: 'PublishForm',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	components: {
 		navigator: Navigator,
 		toast: Toast

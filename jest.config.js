@@ -14,11 +14,6 @@ module.exports = {
 		'vue'
 	],
 
-	// Use the compatibility build of Vue 3
-	moduleNameMapper: {
-		'^vue$': '@vue/compat'
-	},
-
 	transform: {
 		'.*\\.(vue)$': '<rootDir>/node_modules/@vue/vue3-jest'
 	},

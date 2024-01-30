@@ -29,8 +29,6 @@ const mapGetters = require( 'vuex' ).mapGetters;
 // @vue/component
 module.exports = {
 	name: 'ImageAttribution',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	computed: $.extend( mapGetters( [ 'currentFrame' ] ), {
 		presentAuthor: function () {
 			const author = this.currentFrame.imgAttribution.author;

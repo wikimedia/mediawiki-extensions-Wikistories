@@ -30,8 +30,6 @@
 // @vue/component
 module.exports = {
 	name: 'ImageAttribution',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	props: {
 		data: { type: Object, required: true }
 	}

@@ -13,8 +13,6 @@ const mapGetters = require( 'vuex' ).mapGetters;
 // @vue/component
 module.exports = {
 	name: 'App',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	components: {
 		'router-view': RouterView
 	},

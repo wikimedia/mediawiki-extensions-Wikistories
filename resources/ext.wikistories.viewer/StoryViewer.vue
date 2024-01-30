@@ -201,8 +201,6 @@ const contributionEvents = require( '../contributionEvents.js' );
 // @vue/component
 module.exports = {
 	name: 'StoryViewer',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	components: {
 		'image-attribution': ImageAttribution,
 		'confirm-dialog': ConfirmDialog,

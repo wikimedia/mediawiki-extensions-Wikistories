@@ -27,7 +27,6 @@
 		"@storybook/manager-webpack4": "^6.5.13",
 		"@storybook/testing-library": "^0.0.13",
 		"@storybook/vue3": "^6.5.13",
-		"@vue/compat": "3.2.37",
 		"@vue/compiler-sfc": "3.2.37",
 		"@vue/test-utils": "2.0.0-rc.21",
 		"@vue/vue3-jest": "27.0.0",
@@ -44,9 +43,9 @@
 		"postcss-html": "^1.4.1",
 		"stylelint-config-recommended-vue": "^1.4.0",
 		"stylelint-config-wikimedia": "0.15.0",
-		"vuex": "4.0.2",
 		"vue": "^3.2.41",
 		"vue-loader": "^16.8.3",
+		"vuex": "4.0.2",
 		"wdio-mediawiki": "2.1.0"
 	}
 }

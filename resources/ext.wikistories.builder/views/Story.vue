@@ -82,8 +82,6 @@ const beforeUnloadListener = require( '../util/beforeUnloadListener.js' );
 // @vue/component
 module.exports = {
 	name: 'Story',
-	compatConfig: { MODE: 3 },
-	compilerOptions: { whitespace: 'condense' },
 	components: {
 		'current-frame': CurrentFrame,
 		frames: Frames,
