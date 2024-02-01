@@ -5,10 +5,11 @@ namespace MediaWiki\Extension\Wikistories;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use Psr\Log\LoggerInterface;
 
 return [
 
-	'Wikistories.Cache' => static function ( MediaWikiServices $services ) {
+	'Wikistories.Cache' => static function ( MediaWikiServices $services ): StoriesCache {
 		return new StoriesCache(
 			$services->getMainWANObjectCache(),
 			$services->get( 'Wikistories.PageLinksSearch' ),
@@ -17,11 +18,11 @@ return [
 		);
 	},
 
-	'Wikistories.StoryConverter' => static function () {
+	'Wikistories.StoryConverter' => static function (): StoryConverter {
 		return new StoryConverter();
 	},
 
-	'Wikistories.StoryValidator' => static function ( MediaWikiServices $services ) {
+	'Wikistories.StoryValidator' => static function ( MediaWikiServices $services ): StoryValidator {
 		return new StoryValidator(
 			new ServiceOptions(
 				StoryValidator::CONSTRUCTOR_OPTIONS,
@@ -32,7 +33,7 @@ return [
 		);
 	},
 
-	'Wikistories.StoryRenderer' => static function ( MediaWikiServices $services ) {
+	'Wikistories.StoryRenderer' => static function ( MediaWikiServices $services ): StoryRenderer {
 		return new StoryRenderer(
 			$services->getRepoGroup(),
 			$services->getRedirectLookup(),
@@ -42,18 +43,18 @@ return [
 		);
 	},
 
-	'Wikistories.Logger' => static function () {
+	'Wikistories.Logger' => static function (): LoggerInterface {
 		return LoggerFactory::getInstance( 'Wikistories' );
 	},
 
-	'Wikistories.PageLinksSearch' => static function ( MediaWikiServices $services ) {
+	'Wikistories.PageLinksSearch' => static function ( MediaWikiServices $services ): PageLinksSearch {
 		return new PageLinksSearch(
 			$services->getDBLoadBalancer(),
 			$services->getLinksMigration()
 		);
 	},
 
-	'Wikistories.Analyzer' => static function ( MediaWikiServices $services ) {
+	'Wikistories.Analyzer' => static function ( MediaWikiServices $services ): StoryContentAnalyzer {
 		return new StoryContentAnalyzer(
 			$services->getWikiPageFactory(),
 			$services->getParserOutputAccess(),
@@ -62,7 +63,7 @@ return [
 		);
 	},
 
-	'Wikistories.TrackingCategories' => static function () {
+	'Wikistories.TrackingCategories' => static function (): StoryTrackingCategories {
 		return new StoryTrackingCategories();
 	}
 
