@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Exception;
 use FormatJson;
+use LogicException;
 
 class StoryConverter {
 
@@ -33,7 +33,6 @@ class StoryConverter {
 	/**
 	 * @param StoryContent $story Story to convert to latest version
 	 * @return StoryContent converted story or same instance if already at latest version
-	 * @throws Exception When the story doesn't have a known version
 	 */
 	public function toLatest( StoryContent $story ): StoryContent {
 		if ( $story->getSchemaVersion() === 0 ) {
@@ -42,7 +41,7 @@ class StoryConverter {
 		if ( $story->isLatestVersion() ) {
 			return $story;
 		}
-		throw new Exception( 'Unknown schema version: ' . $story->getSchemaVersion() );
+		throw new LogicException( 'Unknown schema version: ' . $story->getSchemaVersion() );
 	}
 
 	/**
