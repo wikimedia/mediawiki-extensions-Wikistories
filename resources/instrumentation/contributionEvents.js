@@ -4,11 +4,10 @@ const logContributionEvent = ( data ) => {
 	const streamName = 'mediawiki.wikistories_contribution_event';
 	const event = $.extend( {
 		/* eslint-disable camelcase */
-		$schema: '/analytics/mediawiki/wikistories_contribution_event/1.2.0',
+		$schema: '/analytics/mediawiki/wikistories_contribution_event/1.3.0',
 		meta: {
 			stream: streamName,
-			domain: location.host,
-			dt: new Date().toISOString()
+			domain: location.host
 		},
 		access_method: mw.config.get( 'skin' ) === 'minerva' ? 'mobile web' : 'desktop',
 		user_name: mw.user.isAnon() ? undefined : mw.config.get( 'wgUserName' ),

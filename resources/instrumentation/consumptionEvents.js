@@ -1,11 +1,10 @@
 const logConsumptionEvent = ( data ) => {
 	const streamName = 'mediawiki.wikistories_consumption_event';
 	const event = $.extend( {
-		$schema: '/analytics/mediawiki/wikistories_consumption_event/1.1.0',
+		$schema: '/analytics/mediawiki/wikistories_consumption_event/1.2.0',
 		meta: {
 			stream: streamName,
-			domain: location.host,
-			dt: new Date().toISOString()
+			domain: location.host
 		},
 		/* eslint-disable camelcase */
 		activity_session_id: mw.eventLog.id.getSessionId(),
