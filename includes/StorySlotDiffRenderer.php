@@ -3,21 +3,22 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use Content;
-use Exception;
+use LogicException;
 use SlotDiffRenderer;
 use TextContent;
 use TextSlotDiffRenderer;
 
 class StorySlotDiffRenderer extends SlotDiffRenderer {
 
-	/** @var StoryConverter */
-	private $storyConverter;
+	private StoryConverter $storyConverter;
+	private TextSlotDiffRenderer $textSlotDiffRenderer;
 
-	/**
-	 * @param StoryConverter $storyConverter
-	 */
-	public function __construct( StoryConverter $storyConverter ) {
+	public function __construct(
+		StoryConverter $storyConverter,
+		TextSlotDiffRenderer $textSlotDiffRenderer
+	) {
 		$this->storyConverter = $storyConverter;
+		$this->textSlotDiffRenderer = $textSlotDiffRenderer;
 	}
 
 	/**
@@ -32,28 +33,22 @@ class StorySlotDiffRenderer extends SlotDiffRenderer {
 	 * @param Content|null $oldContent
 	 * @param Content|null $newContent
 	 * @return string HTML, one or more <tr> tags.
-	 * @throws Exception When the story structure is unexpected
 	 */
 	public function getDiff( Content $oldContent = null, Content $newContent = null ) {
-		return TextSlotDiffRenderer::diff(
+		$this->normalizeContents( $oldContent, $newContent, [ StoryContent::class, TextContent::class ] );
+
+		return $this->textSlotDiffRenderer->getTextDiff(
 			$this->getText( $oldContent ),
 			$this->getText( $newContent )
 		);
 	}
 
-	/**
-	 * @param Content $content
-	 * @return string
-	 * @throws Exception When $content is not of a supported model
-	 */
 	private function getText( Content $content ): string {
 		if ( $content instanceof StoryContent ) {
-			'@phan-var StoryContent $content';
 			return $this->storyConverter->toLatest( $content )->getTextForDiff();
 		} elseif ( $content instanceof TextContent ) {
-			'@phan-var StoryContent $content';
 			return $content->getText();
 		}
-		throw new Exception( 'Cannot diff story with content with model: ' . $content->getModel() );
+		throw new LogicException( 'Cannot diff story with content with model: ' . $content->getModel() );
 	}
 }

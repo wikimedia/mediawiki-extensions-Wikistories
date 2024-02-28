@@ -152,7 +152,10 @@ class StoryContentHandler extends JsonContentHandler {
 	 * @return StorySlotDiffRenderer
 	 */
 	public function getSlotDiffRendererWithOptions( IContextSource $context, $options = [] ) {
-		return new StorySlotDiffRenderer( $this->storyConverter );
+		return new StorySlotDiffRenderer(
+			$this->storyConverter,
+			$this->createTextSlotDiffRenderer( $options )
+		);
 	}
 
 	/**
