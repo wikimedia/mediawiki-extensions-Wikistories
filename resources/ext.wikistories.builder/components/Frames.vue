@@ -87,7 +87,7 @@ module.exports = {
 		width: 100%;
 		display: flex;
 		flex-direction: row;
-		border-top: @border-width-base @border-style-base #000;
+		border-top: @border-base;
 
 		&-thumbnails {
 			padding: 12px 0;
@@ -157,7 +157,7 @@ module.exports = {
 			height: 36px;
 			margin: 12px 16px;
 			cursor: pointer;
-			border: 1px dashed #000;
+			border: @border-width-base dashed @border-color-base;
 			border-radius: @border-radius-base;
 			font-size: 24px;
 			line-height: 32px;

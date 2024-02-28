@@ -561,7 +561,7 @@ module.exports = {
 						font-size: 16px;
 						line-height: 22px;
 						letter-spacing: 0;
-						border-top: @border-width-base @border-style-base #eaecf0;
+						border-top: @border-width-base @border-style-base @border-color-base;
 					}
 				}
 			}

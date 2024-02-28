@@ -20,13 +20,13 @@
 		<div v-if="showInfoBar" class="ext-wikistories-article-view-info">
 			<div class="ext-wikistories-article-view-info-banner">
 				<div
-					class="ext-wikistories-article-view-info-banner-icon"
+					class="ext-wikistories-article-view-info-banner-icon skin-invert"
 				></div>
 				<span class="ext-wikistories-article-view-info-banner-text">
 					{{ $i18n( 'wikistories-article-info-banner-sentence' ).text() }}
 				</span>
 				<div
-					class="ext-wikistories-article-view-info-banner-close-icon"
+					class="ext-wikistories-article-view-info-banner-close-icon skin-invert"
 					@click="dismissInfo"
 				></div>
 			</div>
@@ -156,13 +156,15 @@ module.exports = {
 			cursor: pointer;
 
 			&-selected {
-				// Could not find a design token for the highlight yellow
+				/* FIXME: Hardcoded light version of @color-base until T358826 has been resolved */
+				color-scheme: light;
+				color: #333;
 				background-color: #fc3;
 				position: relative;
 
 				&::before {
 					content: attr( data-selected-order );
-					color: @color-inverted;
+					color: @background-color-base;
 					background-color: @color-subtle;
 					width: 16px;
 					height: 16px;

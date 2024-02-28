@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="ext-wikistories-dotsmenuitem"
+		class="ext-wikistories-dotsmenuitem skin-invert"
 		:class="icon ? 'ext-wikistories-dotsmenuitem-' + icon : ''"
 		@mousedown="onMousedown"
 	>
@@ -33,6 +33,8 @@ module.exports = {
 </script>
 
 <style lang="less">
+@import 'mediawiki.skin.variables.less';
+
 .ext-wikistories-dotsmenuitem {
 	cursor: pointer;
 	white-space: nowrap;
@@ -44,6 +46,8 @@ module.exports = {
 	padding: 6px 12px 6px 38px;
 	background-repeat: no-repeat;
 	background-position: 10px center;
+	color: @color-base;
+	background-color: @background-color-base;
 
 	&:last-of-type {
 		border: 0;

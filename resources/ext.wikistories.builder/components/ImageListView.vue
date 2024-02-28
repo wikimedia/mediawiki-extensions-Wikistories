@@ -14,7 +14,7 @@
 						:alt="item.filename"
 					></list-image>
 					<div
-						class="checkbox"
+						class="checkbox skin-invert"
 						:class="{ selected: selected.indexOf( item.id ) !== -1 }">
 					</div>
 				</div>
@@ -121,7 +121,7 @@ module.exports = {
 			display: -ms-flexbox;
 			display: flex;
 			align-items: center;
-			background-color: #eaecf0;
+			background-color: @background-color-base;
 			box-sizing: border-box;
 			height: 180px;
 			margin: 8px;

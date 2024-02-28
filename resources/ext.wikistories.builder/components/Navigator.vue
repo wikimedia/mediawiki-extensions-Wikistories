@@ -2,7 +2,7 @@
 	<div
 		class="ext-wikistories-navigator">
 		<div
-			:class="`ext-wikistories-navigator-button ${backwardButtonStyle}`"
+			:class="`skin-invert ext-wikistories-navigator-button ${backwardButtonStyle}`"
 			@click="$emit( 'backward' )">
 		</div>
 		<div
@@ -48,14 +48,14 @@ module.exports = {
 	height: 48px;
 	display: flex;
 	align-items: center;
-	box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.1 ), inset 0 -1px 0 #c8ccd1;
+	box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.1 ), inset 0 -1px 0 @border-color-base;
 
 	&-button {
 		background-repeat: no-repeat;
 		background-position: center;
 		height: 48px;
 		width: 48px;
-		box-shadow: inset -1px 0 0 #c8ccd1;
+		box-shadow: inset -1px 0 0 @border-color-base;
 		cursor: pointer;
 	}
 

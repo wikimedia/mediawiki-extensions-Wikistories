@@ -68,7 +68,7 @@ module.exports = {
 		right: 0;
 		margin: auto;
 		border-radius: @border-radius-base;
-		background: linear-gradient( 0deg, #fff, #fff, #fff );
+		background-color: @background-color-base;
 		box-shadow: @box-shadow-drop-medium;
 		display: flex;
 		align-items: center;
@@ -77,12 +77,13 @@ module.exports = {
 		text-align: left;
 		padding: 10px 15px;
 		font-size: 14px;
-		color: #72777d;
+		color: @color-subtle;
 
 		.ext-wikistories-wikipedia {
 			color: @color-progressive;
 			margin-left: 4px;
 			font-weight: 500;
+			cursor: pointer;
 		}
 	}
 

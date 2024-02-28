@@ -102,7 +102,7 @@ module.exports = {
 	width: calc( ~'100% - 32px' );
 	height: auto;
 	border-radius: @border-radius-base;
-	background: linear-gradient( 0deg, #fff, #fff, #fff );
+	background-color: @background-color-base;
 	box-shadow: @box-shadow-drop-medium;
 	z-index: 92;
 	box-sizing: border-box;
@@ -121,6 +121,8 @@ module.exports = {
 			font-size: 18px;
 			line-height: 27px;
 			-webkit-appearance: none;
+			color: @color-base;
+			background-color: @background-color-base;
 
 			&::-webkit-scrollbar {
 				display: none;

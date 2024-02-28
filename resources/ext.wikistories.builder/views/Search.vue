@@ -13,10 +13,10 @@
 				:value="query"
 				:placeholder="$i18n( 'wikistories-search-inputplaceholder' ).text()"
 				@input="onInput">
-			<div class="ext-wikistories-storybuilder-search-form-icon"></div>
+			<div class="ext-wikistories-storybuilder-search-form-icon skin-invert"></div>
 			<div
 				v-if="query"
-				class="ext-wikistories-storybuilder-search-form-clear"
+				class="ext-wikistories-storybuilder-search-form-clear skin-invert"
 				@click="onClear"></div>
 			<div v-if="loading" class="ext-wikistories-storybuilder-search-loading-bar"></div>
 		</form>
@@ -150,6 +150,11 @@ module.exports = {
 		text-align: left;
 		padding: 10px 0;
 		margin: 0 16px;
+
+		input {
+			color: @color-base;
+			background-color: @background-color-base;
+		}
 
 		&-query {
 			height: 36px;

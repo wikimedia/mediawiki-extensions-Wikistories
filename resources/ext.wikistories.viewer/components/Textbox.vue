@@ -111,7 +111,7 @@ module.exports = {
 		left: 16px;
 		right: 16px;
 		border-radius: @border-radius-base;
-		background: linear-gradient( 0deg, #fff, #fff, #fff );
+		background: @background-color-base;
 		box-shadow: @box-shadow-drop-medium;
 		margin: 0;
 		padding: 8px 20px 8px 8px;

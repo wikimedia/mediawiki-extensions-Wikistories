@@ -57,7 +57,7 @@
 			<div class="ext-wikistories-publishform-license" v-html="licenseHtml"></div>
 			<div class="ext-wikistories-publishform-content-summary">
 				<span
-					class="ext-wikistories-publishform-content-summary-collapse"
+					class="ext-wikistories-publishform-content-summary-collapse skin-invert"
 					:class="showSummaryInput ? 'ext-wikistories-publishform-content-summary-collapse-expand' : ''"
 				></span>
 				<span class="ext-wikistories-publishform-content-summary-label" @click="onExpand">
