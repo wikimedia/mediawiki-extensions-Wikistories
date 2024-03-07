@@ -157,7 +157,7 @@ module.exports = {
 			height: 36px;
 			margin: 12px 16px;
 			cursor: pointer;
-			border: @border-width-base dashed @border-color-base;
+			border: @border-width-base dashed @border-color-subtle;
 			border-radius: @border-radius-base;
 			font-size: 24px;
 			line-height: 32px;

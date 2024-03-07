@@ -581,12 +581,14 @@ module.exports = {
 					flex-grow: 1;
 					margin: 0 2px;
 					display: flex;
-					background-color: #a2a9b1;
+					background-color: #72777d;
 
 					&-loading {
+						/* Hardcoded color for both light and night modes */
+						color-scheme: light;
+						background-color: #eaecf0;
 						height: 100%;
 						width: 100%;
-						background-color: @background-color-base;
 						animation-name: ext-wikistories-viewer-progress-loading;
 						animation-iteration-count: 1;
 						/* TODO - ideally the animation duration is
@@ -596,9 +598,11 @@ module.exports = {
 					}
 
 					&-loaded {
+						/* Hardcoded color for both light and night modes */
+						color-scheme: light;
+						background-color: #eaecf0;
 						height: 100%;
 						width: 100%;
-						background-color: @background-color-base;
 					}
 
 					@keyframes ext-wikistories-viewer-progress-loading {

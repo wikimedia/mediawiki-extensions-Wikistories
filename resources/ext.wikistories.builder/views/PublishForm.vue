@@ -96,7 +96,7 @@
 				</p>
 				<p v-if="canShare">
 					<a
-						class="ext-wikistories-publishform-saving-done-share"
+						class="ext-wikistories-publishform-saving-done-share skin-invert"
 						@click="shareStory">
 						{{ $i18n( 'wikistories-builder-publishform-sharestory' ).text() }}
 					</a>
