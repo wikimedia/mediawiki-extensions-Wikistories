@@ -2,9 +2,6 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use MediaWiki\Page\PageStore;
-use MediaWiki\Page\ParserOutputAccess;
-use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\Title;
 
@@ -14,7 +11,7 @@ class StoryContentAnalyzer {
 	 * This sentence separator works for many but not all languages.
 	 * todo: re-visit when deploying to a new wiki
 	 */
-	private const SENTENCE_SEPARATOR = '.';
+	private const SENTENCE_SEPARATOR_REGEX = '/[.:;]/';
 
 	/** @var WikiPageFactory */
 	private $wikiPageFactory;
@@ -24,31 +21,13 @@ class StoryContentAnalyzer {
 	 */
 	private $cache = [];
 
-	/** @var ParserOutputAccess */
-	private $parserOutputAccess;
-
-	/** @var PageStore */
-	private $pageStore;
-
-	/** @var RedirectLookup */
-	private $redirectLookup;
-
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
-	 * @param ParserOutputAccess $parserOutputAccess
-	 * @param PageStore $pageStore
-	 * @param RedirectLookup $redirectLookup
 	 */
 	public function __construct(
-		WikiPageFactory $wikiPageFactory,
-		ParserOutputAccess $parserOutputAccess,
-		PageStore $pageStore,
-		RedirectLookup $redirectLookup
+		WikiPageFactory $wikiPageFactory
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
-		$this->parserOutputAccess = $parserOutputAccess;
-		$this->pageStore = $pageStore;
-		$this->redirectLookup = $redirectLookup;
 	}
 
 	/**
@@ -56,14 +35,19 @@ class StoryContentAnalyzer {
 	 * @return bool
 	 */
 	public function hasOutdatedText( StoryContent $story ): bool {
-		$articleTitle = $story->getArticleTitle( $this->pageStore, $this->redirectLookup );
+		$articleTitle = $story->getArticleTitle();
 		if ( $articleTitle === null ) {
+			return false;
+		}
+
+		$articleText = $this->getArticleText( $articleTitle );
+		if ( $articleText === false ) {
 			return false;
 		}
 
 		foreach ( $story->getFrames() as $frame ) {
 			if ( $this->isOutdatedText(
-				$articleTitle,
+				$articleText,
 				$frame->text->value,
 				$frame->text->fromArticle->originalText
 			) ) {
@@ -74,17 +58,12 @@ class StoryContentAnalyzer {
 	}
 
 	/**
-	 * @param Title $articleTitle
+	 * @param string $articleText
 	 * @param string $currentText
 	 * @param string $originalText
 	 * @return bool
 	 */
-	public function isOutdatedText( Title $articleTitle, string $currentText, string $originalText ): bool {
-		$articleText = $this->getArticleText( $articleTitle );
-		if ( $articleText === false ) {
-			// cannot do the analysis, err on the side of not spamming
-			return false;
-		}
+	public function isOutdatedText( string $articleText, string $currentText, string $originalText ): bool {
 		return !$this->inText( $currentText, $articleText )
 			&& !$this->inText( $originalText, $articleText );
 	}
@@ -97,7 +76,7 @@ class StoryContentAnalyzer {
 	 * @return bool True if all the sentences in $part are present in the article text
 	 */
 	private function inText( string $part, string $text ): bool {
-		$sentences = explode( self::SENTENCE_SEPARATOR, $part );
+		$sentences = preg_split( self::SENTENCE_SEPARATOR_REGEX, $part );
 		foreach ( $sentences as $sentence ) {
 			if ( !str_contains( $text, trim( $sentence ) ) ) {
 				return false;
@@ -107,10 +86,11 @@ class StoryContentAnalyzer {
 	}
 
 	/**
+	 * Remove unnecessary elements from the html text
 	 * @param string $html
 	 * @return string
 	 */
-	private function toText( string $html ): string {
+	public function transformText( string $html ): string {
 		// Remove HTML tags and convert entities
 		$text = html_entity_decode( strip_tags( $html ) );
 
@@ -126,7 +106,7 @@ class StoryContentAnalyzer {
 	 * @param Title $articleTitle
 	 * @return string|false
 	 */
-	private function getArticleText( Title $articleTitle ) {
+	public function getArticleText( Title $articleTitle ) {
 		$dbKey = $articleTitle->getDBkey();
 		if ( isset( $this->cache[ $dbKey ] ) ) {
 			return $this->cache[ $dbKey ];
@@ -134,18 +114,14 @@ class StoryContentAnalyzer {
 
 		$page = $this->wikiPageFactory->newFromTitle( $articleTitle );
 		$parserOptions = $page->makeParserOptions( 'canonical' );
-		$status = $this->parserOutputAccess->getParserOutput( $page, $parserOptions );
+		$parserOutput = $page->getParserOutput( $parserOptions );
 
-		if ( !$status->isOK() ) {
-			return false;
-		}
-		$parserOutput = $status->getValue();
-		if ( $parserOutput === null ) {
+		if ( !$parserOutput ) {
 			return false;
 		}
 
 		$html = $parserOutput->getText();
-		$text = $this->toText( $html );
+		$text = $this->transformText( $html );
 		$this->cache[ $dbKey ] = $text;
 
 		return $text;

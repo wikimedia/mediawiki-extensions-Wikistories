@@ -11,7 +11,7 @@ const transforms = {
 			'script',
 			'figure',
 			'table',
-			'sup',
+			'sup.mw-ref',
 			'.pcs-collapse-table-container',
 			'.thumb',
 			'.hatnote',

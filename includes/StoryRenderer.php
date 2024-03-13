@@ -124,7 +124,7 @@ class StoryRenderer {
 		$files = $this->repoGroup->findFiles( $filesUsed );
 		$firstFrame = reset( $frames );
 		$thumb = $firstFrame ? $this->getUrl( $files, $firstFrame->image->filename, 52 ) : '';
-		$article = $story->getArticleTitle( $this->pageLookup, $this->redirectLookup );
+		$article = $story->getArticleTitle();
 		$trackingCategories = [];
 
 		if ( !$article ) {
@@ -146,7 +146,7 @@ class StoryRenderer {
 					$trackingCategories[] = $this->storyTrackingCategories::TC_NO_IMAGE;
 				}
 				$outdatedText = $article && $this->analyzer->isOutdatedText(
-					$article,
+					$this->analyzer->getArticleText( $article ),
 					$frame->text->value,
 					$frame->text->fromArticle->originalText ?? ''
 				);
