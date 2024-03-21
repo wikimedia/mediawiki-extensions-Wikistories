@@ -56,10 +56,7 @@ return [
 
 	'Wikistories.Analyzer' => static function ( MediaWikiServices $services ): StoryContentAnalyzer {
 		return new StoryContentAnalyzer(
-			$services->getWikiPageFactory(),
-			$services->getParserOutputAccess(),
-			$services->getPageStore(),
-			$services->getRedirectLookup()
+			$services->getWikiPageFactory()
 		);
 	},
 

@@ -207,7 +207,7 @@ class Hooks implements
 			/** @var StoryContent $story */
 			$story = $revisionRecord->getContent( 'main' );
 			'@phan-var StoryContent $story';
-			$articleTitle = $story->getArticleTitle( $services->getPageStore(), $services->getRedirectLookup() );
+			$articleTitle = $story->getArticleTitle();
 			if ( $articleTitle ) {
 				$cache->invalidateForArticle( $articleTitle->getId() );
 			}
