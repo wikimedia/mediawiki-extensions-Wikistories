@@ -45,6 +45,10 @@ module.exports = {
 @import 'mediawiki.skin.variables.less';
 
 .ext-wikistories-navigator {
+	position: sticky;
+	top: 0;
+	z-index: 99;
+	background-color: @background-color-base;
 	height: 48px;
 	display: flex;
 	align-items: center;
