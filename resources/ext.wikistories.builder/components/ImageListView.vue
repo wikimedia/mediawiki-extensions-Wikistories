@@ -148,7 +148,8 @@ module.exports = {
 			background-image: url( ./../images/check.svg );
 			width: 24px;
 			height: 24px;
-			background-color: @background-color-base;
+			/* Hardcoding color to prevent double inversion since the parent has 'skin-invert' class */
+			background-color: #fff;
 			background-repeat: no-repeat;
 			background-position: center center;
 			position: absolute;

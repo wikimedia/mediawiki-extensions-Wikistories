@@ -185,6 +185,7 @@ module.exports = {
 			const duplicate = {
 				message: mw.msg( 'wikistories-story-edittext-duplicate' ),
 				icon: 'warning',
+				invertIconInDarkMode: true,
 				isAlwaysShown: true,
 				replace: true
 			};

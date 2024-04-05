@@ -8,15 +8,17 @@
 			@focus="onFocus"
 			@blur="onBlur"
 		></textarea>
-		<div
-			v-if="showWarningMessage"
-			class="ext-wikistories-current-frame-text-edit-guide"
-			:class="'ext-wikistories-current-frame-text-edit-guide-icon-' + currentFrame.warning.icon">
-			<span
-				v-if="currentFrame.warning.replace"
-				@click="onSelect"
-				v-html="currentFrame.warning.message"></span>
-			<span v-else>{{ currentFrame.warning.message }}</span>
+		<div v-if="showWarningMessage" class="ext-wikistories-current-frame-text-edit-guide">
+			<span class="ext-wikistories-current-frame-text-edit-guide-icon"
+				:class="'ext-wikistories-current-frame-text-edit-guide-icon-' + currentFrame.warning.icon + ( currentFrame.warning.invertIconInDarkMode ? ' skin-invert' : '' )"
+			></span>
+			<span class="ext-wikistories-current-frame-text-edit-guide-text">
+				<span
+					v-if="currentFrame.warning.replace"
+					@click="onSelect"
+					v-html="currentFrame.warning.message"></span>
+				<span v-else>{{ currentFrame.warning.message }}</span>
+			</span>
 		</div>
 	</div>
 	<div
@@ -136,13 +138,18 @@ module.exports = {
 		font-size: 14px;
 		margin: 0 8px;
 		padding: 6px 0;
-		padding-left: 24px;
 		text-align: left;
 		border-top: @border-width-base @border-style-base @border-color-subtle;
-		background-repeat: no-repeat;
-		background-position: 0 center;
+		height: 24px;
 
 		&-icon {
+			display: inline-block;
+			vertical-align: middle;
+			width: 24px;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 center;
+
 			&-alert {
 				background-image: url( ../images/alert.svg );
 			}
@@ -154,6 +161,10 @@ module.exports = {
 			&-warning {
 				background-image: url( ../images/warning.svg );
 			}
+		}
+
+		&-text {
+			display: inline-block;
 		}
 
 		.ext-wikistories-warning-replace {
