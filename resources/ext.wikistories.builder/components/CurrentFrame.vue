@@ -42,10 +42,16 @@ module.exports = {
 		beginTextEdit: function () {
 			this.setEditingText( true );
 			this.setLastEditedText( this.currentFrame.text );
+
+			// disable scrolling background when editing the text
+			document.body.style.overflow = 'hidden';
 		},
 		endTextEdit: function () {
 			// setEditingText is set by navigator discard button
 			this.setText( this.currentFrame.text.trim() );
+
+			// enable scrolling background
+			document.body.style.removeProperty( 'overflow' );
 		},
 		onUpdateFocalRect: function ( rect ) {
 			this.setImageFocalRect( rect );

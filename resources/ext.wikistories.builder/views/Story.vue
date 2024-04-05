@@ -254,7 +254,6 @@ module.exports = {
 .ext-wikistories-storybuilder-story {
 	font-size: 24px;
 	height: 100%;
-	overflow: hidden;
 	position: relative;
 	display: flex;
 	flex-direction: column;
