@@ -1,10 +1,13 @@
 <template>
 	<div
-		class="ext-wikistories-dotsmenuitem skin-invert"
-		:class="icon ? 'ext-wikistories-dotsmenuitem-' + icon : ''"
+		class="ext-wikistories-dotsmenuitem"
 		@mousedown="onMousedown"
 	>
-		{{ text }}
+		<span
+			class="ext-wikistories-dotsmenuitem-icon skin-invert"
+			:class="icon ? 'ext-wikistories-dotsmenuitem-icon-' + icon : ''"
+		></span>
+		<span class="ext-wikistories-dotsmenuitem-text">{{ text }}</span>
 	</div>
 </template>
 
@@ -43,9 +46,8 @@ module.exports = {
 	max-width: 50vw;
 	margin: 0;
 	font-size: 16px;
-	padding: 6px 12px 6px 38px;
-	background-repeat: no-repeat;
-	background-position: 10px center;
+	padding: 6px 12px;
+	height: 24px;
 	color: @color-base;
 	background-color: @background-color-base;
 
@@ -53,24 +55,38 @@ module.exports = {
 		border: 0;
 	}
 
-	&-replace {
-		background-image: url( ./images/replace.svg );
+	&-icon {
+		background-repeat: no-repeat;
+		background-position: center;
+		vertical-align: middle;
+		display: inline-block;
+		height: 100%;
+		width: 24px;
+
+		&-replace {
+			background-image: url( ./images/replace.svg );
+		}
+
+		&-delete {
+			background-image: url( ./images/delete.svg );
+		}
+
+		&-edit {
+			background-image: url( ./images/edit.svg );
+		}
+
+		&-talk {
+			background-image: url( ./images/talk.svg );
+		}
+
+		&-textsize {
+			background-image: url( ./images/textsize.svg );
+		}
 	}
 
-	&-delete {
-		background-image: url( ./images/delete.svg );
-	}
-
-	&-edit {
-		background-image: url( ./images/edit.svg );
-	}
-
-	&-talk {
-		background-image: url( ./images/talk.svg );
-	}
-
-	&-textsize {
-		background-image: url( ./images/textsize.svg );
+	&-text {
+		height: 100%;
+		display: inline-block;
 	}
 
 	@media screen and ( min-width: 720px ) {
