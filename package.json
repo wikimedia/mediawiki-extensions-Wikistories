@@ -36,7 +36,7 @@
 		"@wdio/mocha-framework": "7.20.0",
 		"@wdio/spec-reporter": "7.20.0",
 		"babel-loader": "^8.3.0",
-		"eslint-config-wikimedia": "0.25.0",
+		"eslint-config-wikimedia": "0.27.0",
 		"eslint-plugin-jest": "26.1.5",
 		"jest": "27.5.1",
 		"jquery": "3.7.1",

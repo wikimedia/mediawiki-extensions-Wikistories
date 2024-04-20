@@ -20,10 +20,18 @@ module.exports = {
 		query: ''
 	},
 	mutations: {
-		setSelection: ( state, selection ) => { state.selection = selection; },
-		setLoading: ( state, loading ) => { state.loading = loading; },
-		setQuery: ( state, query ) => { state.query = query; },
-		setResults: ( state, results ) => { state.results = results; }
+		setSelection: ( state, selection ) => {
+			state.selection = selection;
+		},
+		setLoading: ( state, loading ) => {
+			state.loading = loading;
+		},
+		setQuery: ( state, query ) => {
+			state.query = query;
+		},
+		setResults: ( state, results ) => {
+			state.results = results;
+		}
 	},
 	actions: {
 		search: ( context, query ) => {

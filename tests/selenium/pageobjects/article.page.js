@@ -6,7 +6,10 @@ class ArticlePage extends Page {
 	open( name ) {
 		super.openTitle( name, { mobileaction: 'toggle_view_mobile' } );
 	}
-	get createStory() { return $( '.ext-wikistories-discover-item-cta-text-title' ); }
+
+	get createStory() {
+		return $( '.ext-wikistories-discover-item-cta-text-title' );
+	}
 }
 
 module.exports = new ArticlePage();

@@ -9,7 +9,8 @@
 			@blur="onBlur"
 		></textarea>
 		<div v-if="showWarningMessage" class="ext-wikistories-current-frame-text-edit-guide">
-			<span class="ext-wikistories-current-frame-text-edit-guide-icon"
+			<span
+				class="ext-wikistories-current-frame-text-edit-guide-icon"
 				:class="'ext-wikistories-current-frame-text-edit-guide-icon-' + currentFrame.warning.icon + ( currentFrame.warning.invertIconInDarkMode ? ' skin-invert' : '' )"
 			></span>
 			<span class="ext-wikistories-current-frame-text-edit-guide-text">

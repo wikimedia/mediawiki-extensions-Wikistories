@@ -61,7 +61,7 @@ module.exports = {
 				return blank;
 			}
 			return {
-				transform: `translate3d(${this.position.x}px, ${this.position.y}px, 0px) scale(${this.scale})`,
+				transform: `translate3d(${ this.position.x }px, ${ this.position.y }px, 0px) scale(${ this.scale })`,
 				transformOrigin: 'left top'
 			};
 		}

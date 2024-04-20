@@ -79,7 +79,9 @@ module.exports = {
 		}
 	} ),
 	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'addFrames', 'setFrameImage', 'routeReplace', 'routeBack' ] ), {
-		onSubmit: function ( e ) { return e.preventDefault(); },
+		onSubmit: function ( e ) {
+			return e.preventDefault();
+		},
 		onInput: function ( e ) {
 			this.search( e.target.value );
 		},
@@ -116,7 +118,9 @@ module.exports = {
 		editStory: function () {
 			const array = this.selection.map( function ( id ) {
 				const item = this.results.find(
-					function ( result ) { return result.id === id; }
+					function ( result ) {
+						return result.id === id;
+					}
 				);
 				return {
 					url: item.url,
