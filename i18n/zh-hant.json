@@ -10,7 +10,7 @@
 	"wikistories-extensiondesc": "Wikistories 可讓編輯者從維基媒體計劃建立簡短、視覺化的可靠知識。",
 	"right-edit-story": "編輯故事",
 	"action-edit-story": "編輯故事",
-	"deletepage-deletestory": "刪除關聯故事？",
+	"deletepage-deletestory": "移除連結到此條目的 Wikistories",
 	"wikistories-beta-feature-message": "Wikistories",
 	"wikistories-beta-feature-description": "一個能讓您從條目中選擇圖片、強調實情，並從維基百科建立簡短、視覺化的可靠知識以供快速使用的工具。請依照以下方式啟用：<br>- 發覺可附加在條目的故事。<br>- 點擊/輕觸條目標題下方的 [+] 圖示來建立新故事。",
 	"prefs-wikistories": "Wikistories",
@@ -70,6 +70,7 @@
 	"wikistories-storyviewer-textsize-label-large": "大",
 	"wikistories-toast-maxframes-addingmore": "每個故事最多可以有 {{PLURAL:$1|$1}} 個頁面。要添加新的故事，請刪除現有內容。",
 	"wikistories-toast-maxframes-selecting": "每則故事最多允許 {{PLURAL:$1|$1}} 張圖片。",
+	"wikistories-notice-user-block": "您的帳號目前無法編輯或建立 Wikistory。",
 	"wikistories-error-notenoughframes-title": "沒有足夠頁面",
 	"wikistories-error-notenoughframes-message": "所有 Wikistories 需要至少 {{PLURAL:$1|1=1|2=2|3=3|4=4|5=5|10=10|$1}} 個{{PLURAL:$1|頁面}}。還需添加 {{PLURAL:$2|1=1|2=2|3=3|4=4|5=5|10=10|$2}} 個{{PLURAL:$2|頁面}}。",
 	"wikistories-error-frameswithouttext-title": "缺少文字",
@@ -120,6 +121,7 @@
 	"wikistories-no-related-article-desc": "故事的連結條目已被刪除",
 	"wikistories-outdated-text-category": "故事的來源條目文字已過時",
 	"wikistories-outdated-text-category-desc": "使用在此故事中的一些文字已經沒有出現在來源條目裡",
+	"ext-wikistories-storyviewaction-notfound-message": "您嘗試存取的 Wikistory 不存在",
 	"echo-category-title-wikistories-action": "Wikistories",
 	"wikistories-notification-articlechanged-header": "已編輯<strong>$1</strong>，且<strong>$2</strong>需要檢閱"
 }
