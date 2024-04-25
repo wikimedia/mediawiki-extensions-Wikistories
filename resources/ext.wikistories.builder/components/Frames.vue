@@ -8,7 +8,10 @@
 				:class="{ 'ext-wikistories-frames-thumbnails-frame-selected': frame.selected }"
 				@click="onClick( $event, index )"
 			>
-				<div v-if="frame.warning && frame.warning.isAlwaysShown" class="ext-wikistories-frames-thumbnails-frame-warning"></div>
+				<div
+					v-if="frame.warning && frame.warning.isAlwaysShown"
+					class="ext-wikistories-frames-thumbnails-frame-warning skin-invert"
+				></div>
 				<story-image
 					:src="frame.url"
 					:rect="frame.focalRect"
