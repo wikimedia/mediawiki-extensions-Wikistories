@@ -6,7 +6,9 @@
 			"Lanyun1103",
 			"NACHOgao3",
 			"StarrySky",
-			"沈澄心"
+			"沈澄心",
+			"John Smith Ri",
+			"Lantianjialiang"
 		]
 	},
 	"wikistories-extensionname": "维基故事",
@@ -16,6 +18,12 @@
 	"wikistories-specialstorybuilder-title": "故事生成器",
 	"wikistories-specialstorybuilder-loading": "加载中…",
 	"wikistories-specialstorybuilder-nojswarning": "此特殊页面需要JavaScript才能工作",
+	"wikistories-search-inputplaceholder": "搜索图片",
+	"wikistories-search-cuetext": "搜索与条目相关的图片。",
+	"wikistories-search-noresultstext": "没有结果",
+	"wikistories-search-navigator-title": "选择图片",
+	"wikistories-search-navigator-title-selected-info": "$1张已选",
+	"wikistories-story-goto-publish": "下一步",
 	"wikistories-story-editdone": "完成",
 	"wikistories-article-cancelselection": "清除",
 	"wikistories-article-loading": "正在加载条目...",
