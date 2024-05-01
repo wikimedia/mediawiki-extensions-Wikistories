@@ -131,11 +131,11 @@ module.exports = {
 
 		&-top {
 			bottom: calc( ~'25vh + 36px' );
-			background: linear-gradient( to top, rgba( 255, 255, 255, 0 ) 0%, #fff 50% );
+			background: linear-gradient( to top, transparent 0%, @background-color-base 100% );
 		}
 
 		&-bottom {
-			background: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ) 0%, #fff 50% );
+			background: linear-gradient( to bottom, transparent 0%, @background-color-base 100% );
 		}
 	}
 </style>

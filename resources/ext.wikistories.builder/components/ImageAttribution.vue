@@ -92,10 +92,12 @@ module.exports = {
 		}
 
 		&-author {
+			/* Hardcoded color for both light and night modes */
+			color-scheme: light;
+			color: #fff;
 			max-width: 220px;
 			margin-right: 4px;
 			font-size: 12px;
-			color: @color-inverted;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
