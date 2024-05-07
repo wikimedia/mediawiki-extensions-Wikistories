@@ -54,7 +54,7 @@ class StoryViewAction extends FormlessAction {
 		if ( $storyExists ) {
 			$storyData = $this->storiesCache->getStory( $this->getArticle()->getPage()->getId() );
 			$this->addLinkPreviewTags( $storyData );
-			$out->addJsConfigVars( [ 'wgStory' => $storyData ] );
+			$out->addJsConfigVars( [ 'wgWikistoriesStoryContent' => $storyData ] );
 			$out->addModules( [ 'ext.wikistories.viewaction' ] );
 		} else {
 			$out->addModuleStyles( [ 'ext.wikistories.viewaction.styles' ] );
