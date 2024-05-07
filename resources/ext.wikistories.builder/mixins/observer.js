@@ -40,6 +40,9 @@ module.exports = {
 			return (
 				'IntersectionObserver' in window &&
 				'IntersectionObserverEntry' in window &&
+				// This code won't be executed if IntersectionObserverEntry is
+				// not available because of the line above
+				// eslint-disable-next-line compat/compat
 				'intersectionRatio' in window.IntersectionObserverEntry.prototype
 			);
 		},
@@ -91,6 +94,8 @@ module.exports = {
 		if ( !this.observerSupported ) {
 			return;
 		}
+		// This code is not reached if IntersectionObserver is not available
+		// eslint-disable-next-line compat/compat
 		this.observer = new IntersectionObserver(
 			this.intersectionCallback.bind( this ), // what to do when intersection occurs
 			this.observerOptions || {} // additional options can be provided as props

@@ -3,14 +3,23 @@ const convertUrlToThumbnail = require( './util/convertUrlToThumbnail.js' );
 const generateItem = function ( link, thumbnail, thumbnailText, title, cta = false ) {
 	const className = cta ? 'ext-wikistories-discover-item-cta' : 'ext-wikistories-discover-item';
 	const $thumbnail = $( '<span>' )
+		// The following classes are used here:
+		// * ext-wikistories-discover-item-cta-btn
+		// * ext-wikistories-discover-item-btn
 		.addClass( `${className}-btn` )
 		.text( thumbnailText );
 
 	const $title = $( '<p>' )
+		// The following classes are used here:
+		// * ext-wikistories-discover-item-cta-text-title
+		// * ext-wikistories-discover-item-text-title
 		.addClass( `${className}-text-title` )
 		.text( title );
 
 	const $text = $( '<div>' )
+		// The following classes are used here:
+		// * ext-wikistories-discover-item-cta-text
+		// * ext-wikistories-discover-item-text
 		.addClass( `${className}-text` );
 
 	if ( !cta ) {
@@ -37,9 +46,9 @@ const generateCTA = function ( thumbnail ) {
 	return generateItem( url, thumbnail, '+', '', true );
 };
 
-const addCtaText = function () {
-	const $cta = $( '.ext-wikistories-discover-item-cta' );
-	const $text = $( '.ext-wikistories-discover-item-cta-text' );
+const addCtaText = function ( $discover ) {
+	const $cta = $discover.find( '.ext-wikistories-discover-item-cta' );
+	const $text = $discover.find( '.ext-wikistories-discover-item-cta-text' );
 	const $title = $( '<p>' ).addClass( 'ext-wikistories-discover-item-cta-text-title' );
 	const $subtitle = $( '<p>' )
 		.addClass( 'ext-wikistories-discover-item-cta-text-subtitle' )
@@ -54,7 +63,9 @@ const addCtaText = function () {
 };
 
 const getArticleThumbnail = function () {
-	const ogImageMetaTag = $( 'meta[property="og:image"]' )[ 0 ];
+	// false positive eslint warning because of the ':' character
+	// eslint-disable-next-line no-jquery/no-sizzle
+	const ogImageMetaTag = $( document.head ).find( 'meta[property="og:image"]' )[ 0 ];
 	if ( ogImageMetaTag ) {
 		const content = ogImageMetaTag.content;
 		const imageUrl = mw.util.parseImageUrl( content );
@@ -85,7 +96,7 @@ const addStoriesToDiscoverSection = function ( $discover, stories ) {
 			$stories.append( generateItem( link, story.thumbnail, '', story.storyTitle ) );
 		} );
 	} else {
-		addCtaText();
+		addCtaText( $discover );
 	}
 };
 

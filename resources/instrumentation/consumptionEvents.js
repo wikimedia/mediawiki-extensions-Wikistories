@@ -26,7 +26,10 @@ const logStoriesImpression = ( storiesCount ) => {
 	} );
 };
 
-const logViewEvent = ( eventType, storyTitle, frameCount, framesViewed, storyOpenTime, storiesCount ) => {
+const logViewEvent = (
+	eventType, storyTitle, frameCount, framesViewed,
+	storyOpenTime, storiesCount
+) => {
 	logConsumptionEvent( {
 		/* eslint-disable camelcase */
 		event_type: eventType,

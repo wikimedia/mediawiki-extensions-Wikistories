@@ -137,7 +137,7 @@ module.exports = {
 				};
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'removeFrame', 'fetchImgAttribution', 'routePush', 'routeReplace', 'setText', 'setEditingText', 'checkWarningStatus' ] ), {
+	methods: $.extend( mapActions( [ 'removeFrame', 'routePush', 'routeReplace', 'setText', 'setEditingText', 'checkWarningStatus' ] ), {
 		showDeleteFrameConfirmationDialog: function () {
 			this.viewDeleteFrameConfirmDialog = true;
 		},

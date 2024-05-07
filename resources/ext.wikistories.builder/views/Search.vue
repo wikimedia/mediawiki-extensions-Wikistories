@@ -66,7 +66,7 @@ module.exports = {
 			}
 		};
 	},
-	computed: $.extend( mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle', 'maxFramesSelected', 'isBuilderRouteAvailable' ] ), {
+	computed: $.extend( mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle', 'isBuilderRouteAvailable' ] ), {
 		navigatorMessage: function () {
 			if ( this.selection.length === 0 ) {
 				return this.$i18n( 'wikistories-search-navigator-title' ).text();
