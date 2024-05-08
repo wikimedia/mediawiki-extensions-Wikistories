@@ -15,6 +15,7 @@
 	"wikistories-extensiondesc": "维基故事让编辑从维基媒体项目中创建简短、直观和可靠的知识",
 	"right-edit-story": "编辑故事",
 	"action-edit-story": "编辑故事",
+	"deletepage-deletestory": "删除链接到此条目的Wikistories",
 	"rcshowhidewikistories-show": "显示",
 	"rcshowhidewikistories-hide": "隐藏",
 	"wikistories-specialstorybuilder-title": "故事生成器",
