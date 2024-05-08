@@ -127,8 +127,10 @@ module.exports = {
 				left: 0;
 				transition: all 0.3s;
 				z-index: 100;
-				-webkit-touch-callout: none !important; /* stylelint-disable-line declaration-no-important */
-				-webkit-user-select: none !important; /* stylelint-disable-line declaration-no-important */
+				/* stylelint-disable-next-line declaration-no-important */
+				-webkit-touch-callout: none !important;
+				/* stylelint-disable-next-line declaration-no-important */
+				-webkit-user-select: none !important;
 
 				&-scale {
 					transform: scale( 1.3 );
@@ -176,7 +178,8 @@ module.exports = {
 		// style for the sortable used
 		&-image-container {
 			pointer-events: none;
-			background-color: #eaecf0 !important; /* stylelint-disable-line declaration-no-important */
+			/* stylelint-disable-next-line declaration-no-important */
+			background-color: #eaecf0 !important;
 		}
 		// end style for the sortable used
 	}

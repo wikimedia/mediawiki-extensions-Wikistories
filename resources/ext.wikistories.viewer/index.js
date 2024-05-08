@@ -10,6 +10,8 @@ const store = require( './store/index.js' );
  */
 const initStoryViewer = function ( stories, storyId, allowEdit, allowClose ) {
 	const storyViewerContainerClassName = 'ext-wikistories-viewer';
+	// The class is documented above
+	// eslint-disable-next-line mediawiki/class-doc
 	const $storyViewerContainer = $( '<div>' ).addClass( storyViewerContainerClassName );
 
 	// update Story Viewer state when it existed
@@ -19,7 +21,7 @@ const initStoryViewer = function ( stories, storyId, allowEdit, allowClose ) {
 	}
 
 	// Add Story Viewer to the body
-	$( 'body' ).append( $storyViewerContainer );
+	$( document.body ).append( $storyViewerContainer );
 
 	// Setup Story View App
 	const props = {

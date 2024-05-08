@@ -30,7 +30,7 @@ module.exports = {
 		rect: { type: Object, required: false, default: null },
 		thumbnail: { type: Boolean, required: true },
 		allowGestures: { type: Boolean, required: true },
-		error: { type: Function, required: false }
+		error: { type: Function, required: false, default: () => {} }
 	},
 	emits: [ 'update-focal-rect' ],
 	data: function () {
@@ -75,7 +75,10 @@ module.exports = {
 			this.mouseDown = true;
 
 			// mouse down cursor x,y
-			this.tempProp.cursorPosBefore = { x: e.touches[ 0 ].clientX, y: e.touches[ 0 ].clientY };
+			this.tempProp.cursorPosBefore = {
+				x: e.touches[ 0 ].clientX,
+				y: e.touches[ 0 ].clientY
+			};
 
 			// Get current image position
 			this.tempProp.imagePosBefore = { x: this.position.x, y: this.position.y };
@@ -88,8 +91,10 @@ module.exports = {
 
 			const horizontalMax = this.imageSize.width * this.scale - this.containerSize.width;
 			const verticalMax = this.imageSize.height * this.scale - this.containerSize.height;
-			const updatedX = this.tempProp.imagePosBefore.x + ( e.touches[ 0 ].clientX - this.tempProp.cursorPosBefore.x );
-			const updatedY = this.tempProp.imagePosBefore.y + ( e.touches[ 0 ].clientY - this.tempProp.cursorPosBefore.y );
+			const updatedX = this.tempProp.imagePosBefore.x +
+				( e.touches[ 0 ].clientX - this.tempProp.cursorPosBefore.x );
+			const updatedY = this.tempProp.imagePosBefore.y +
+				( e.touches[ 0 ].clientY - this.tempProp.cursorPosBefore.y );
 			const withinHorizontalBound = updatedX <= 0 && Math.abs( updatedX ) < ( horizontalMax );
 			const withinVerticalBound = updatedY <= 0 && Math.abs( updatedY ) < ( verticalMax );
 
@@ -182,8 +187,10 @@ module.exports = {
 			const minX = -( this.imageSize.width * this.scale - this.containerSize.width );
 			const minY = -( this.imageSize.height * this.scale - this.containerSize.height );
 
-			const x = ( this.containerSize.width / 2 ) - ( scaledRect.x + ( scaledRect.width / 2 ) );
-			const y = ( this.containerSize.height / 2 ) - ( scaledRect.y + ( scaledRect.height / 2 ) );
+			const x = ( this.containerSize.width / 2 ) -
+				( scaledRect.x + ( scaledRect.width / 2 ) );
+			const y = ( this.containerSize.height / 2 ) -
+				( scaledRect.y + ( scaledRect.height / 2 ) );
 
 			return {
 				x: this.minMax( x, minX, 0 ),
@@ -195,10 +202,22 @@ module.exports = {
 		},
 		makeRect: function () {
 			return {
-				x: this.toPercentage( Math.abs( this.position.x ) / this.scale, this.imageSize.width ),
-				y: this.toPercentage( Math.abs( this.position.y ) / this.scale, this.imageSize.height ),
-				width: this.toPercentage( this.containerSize.width / this.scale, this.imageSize.width ),
-				height: this.toPercentage( this.containerSize.height / this.scale, this.imageSize.height )
+				x: this.toPercentage(
+					Math.abs( this.position.x ) / this.scale,
+					this.imageSize.width
+				),
+				y: this.toPercentage(
+					Math.abs( this.position.y ) / this.scale,
+					this.imageSize.height
+				),
+				width: this.toPercentage(
+					this.containerSize.width / this.scale,
+					this.imageSize.width
+				),
+				height: this.toPercentage(
+					this.containerSize.height / this.scale,
+					this.imageSize.height
+				)
 			};
 		},
 		initialStateRect: function () {

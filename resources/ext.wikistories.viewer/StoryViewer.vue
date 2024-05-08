@@ -128,10 +128,12 @@
 					@click="playNextStory( story.storyId )"
 				>
 					<div class="ext-wikistories-viewer-container-content-read-more-item-info">
+						<!-- eslint-disable max-len -->
 						<div
 							:style="{ background: 'url(' + story.thumbnail + ')' }"
 							class="ext-wikistories-viewer-container-content-read-more-item-info-thumbnail"
 						></div>
+						<!-- eslint-enable -->
 						<span class="ext-wikistories-viewer-container-content-read-more-item-info-title">
 							{{ story.storyTitle }}
 						</span>
@@ -171,11 +173,8 @@
 						type="radio"
 						:name="name"
 						:value="name">
-					<!-- wikistories-storyviewer-textsize-label-small -->
-					<!-- wikistories-storyviewer-textsize-label-regular -->
-					<!-- wikistories-storyviewer-textsize-label-large -->
 					<label :for="name">
-						{{ $i18n( "wikistories-storyviewer-textsize-label-" + name ).text() }}
+						{{ getTextSizeLabel( name ) }}
 					</label>
 				</li>
 			</ul>
@@ -226,7 +225,7 @@ module.exports = {
 		};
 	},
 	computed: $.extend( mapGetters( [
-		'story', 'currentFrame', 'editUrl', 'talkUrl', 'shareUrl', 'isCurrentImageLoaded',
+		'story', 'currentFrame', 'editUrl', 'talkUrl', 'shareUrl',
 		'isStoryEnd', 'isFirstFrame', 'isLastFrame', 'textsize', 'textsizes',
 		'isFramePlaying', 'isFrameDonePlaying', 'isFrameViewed', 'currentStoryTitle',
 		'nextStories', 'imgAttribution'
@@ -252,6 +251,13 @@ module.exports = {
 		'prevFrame', 'nextFrame', 'resetFrame', 'setIsStoryEnd',
 		'purgeStory'
 	] ), {
+		getTextSizeLabel: function ( name ) {
+			// The following classes are used here:
+			// * wikistories-storyviewer-textsize-label-small
+			// * wikistories-storyviewer-textsize-label-regular
+			// * wikistories-storyviewer-textsize-label-large
+			return this.$i18n( 'wikistories-storyviewer-textsize-label-' + name ).text();
+		},
 		playNextFrame: function () {
 			this.timer.setup( function () {
 				this.nextFrame();
@@ -431,7 +437,9 @@ module.exports = {
 			right: 0;
 			left: 0;
 			height: 140px;
-			background: linear-gradient( 180deg, rgba( 0, 0, 0, 0.35 ) 0%, rgba( 0, 0, 0, 0 ) 100% );
+			--from: rgba( 0, 0, 0, 0.35 );
+			--to: rgba( 0, 0, 0, 0 );
+			background: linear-gradient( 180deg, var( --from ) 0%, var( --to ) 100% );
 		}
 
 		&-menu {

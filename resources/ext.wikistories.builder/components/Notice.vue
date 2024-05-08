@@ -1,5 +1,8 @@
 <template>
-	<div class="ext-wikistories-notice" :class="{ 'ext-wikistories-notice-error': mode === 'error' }">
+	<div
+		class="ext-wikistories-notice"
+		:class="{ 'ext-wikistories-notice-error': mode === 'error' }"
+	>
 		<div class="ext-wikistories-notice-icon"></div>
 		<div class="ext-wikistories-notice-message">
 			{{ message }}

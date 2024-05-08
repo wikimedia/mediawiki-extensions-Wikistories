@@ -126,6 +126,8 @@ const sortable = ( () => {
 				} else {
 					// when mouse touch outside of the sort container
 					status = 'idle';
+					// Dynamic class name based on configuration, cannot be documented statically
+					// eslint-disable-next-line mediawiki/class-doc
 					target.classList.remove( defaultOptions.draggableItemClass + '-scale' );
 					target.style.left = origin + originOffset + 'px';
 					reorderFrames();
@@ -136,6 +138,8 @@ const sortable = ( () => {
 
 	const onMouseUp = () => {
 		if ( status === 'mousemove' ) {
+			// Dynamic class name based on configuration, cannot be documented statically
+			// eslint-disable-next-line mediawiki/class-doc
 			target.classList.remove( defaultOptions.draggableItemClass + '-scale' );
 			target.style.left = origin + originOffset + 'px';
 			reorderFrames();
@@ -165,6 +169,8 @@ const sortable = ( () => {
 					target.classList.contains( defaultOptions.draggableItemClass )
 				) {
 					status = 'mousedown';
+					// Dynamic class name based on configuration, cannot be documented statically
+					// eslint-disable-next-line mediawiki/class-doc
 					target.classList.add( defaultOptions.draggableItemClass + '-scale' );
 
 					if ( navigator.vibrate ) {

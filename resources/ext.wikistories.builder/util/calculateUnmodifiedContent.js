@@ -20,7 +20,7 @@ const tokenise = function ( string ) {
  *
  * @param {string} originalString
  * @param {string} targetString
- * @return
+ * @return {number} Percentage of unmodified content
  */
 const calculateUnmodifiedContent = function ( originalString, targetString ) {
 	if ( !originalString || !targetString ) {
@@ -47,8 +47,9 @@ const calculateUnmodifiedContent = function ( originalString, targetString ) {
 		return smallSet.indexOf( token ) >= 0;
 	} );
 
-	// If originalString has 10 tokens and we see that 2 tokens are different or not present in targetString,
-	// we are saying that targetString is 80% (ie. 10-2/10) of unmodified version fo originalString.
+	// If originalString has 10 tokens and we see that 2 tokens
+	// are different or not present in targetString, we are saying
+	// that targetString is 80% (ie. 10-2/10) of unmodified version of originalString.
 	return unmodifiedTokens.length / bigSet.length;
 };
 

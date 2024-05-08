@@ -43,7 +43,9 @@
 					v-model="watchlistExpiry"
 					:disabled="!watchlist"
 					class="ext-wikistories-publishform-content-watchlist-select"
-					:class="!watchlist ? 'ext-wikistories-publishform-content-watchlist-select-disabled' : ''"
+					:class="!watchlist ?
+						'ext-wikistories-publishform-content-watchlist-select-disabled' :
+						''"
 				>
 					<option
 						v-for="( value, key ) in watchlistExpiryOptions.options"
@@ -58,7 +60,9 @@
 			<div class="ext-wikistories-publishform-content-summary">
 				<span
 					class="ext-wikistories-publishform-content-summary-collapse skin-invert"
-					:class="showSummaryInput ? 'ext-wikistories-publishform-content-summary-collapse-expand' : ''"
+					:class="showSummaryInput ?
+						'ext-wikistories-publishform-content-summary-collapse-expand' :
+						''"
 				></span>
 				<span class="ext-wikistories-publishform-content-summary-label" @click="onExpand">
 					{{ $i18n( 'wikistories-builder-publishform-summary-input-label' ).text() }}
@@ -69,7 +73,7 @@
 					v-model="storySummary"
 					maxlength="255"
 					class="ext-wikistories-publishform-content-summary-input"
-					:placeholder="$i18n( 'wikistories-builder-publishform-summary-input-placeholder' ).text()"
+					:placeholder="summaryPlaceholder"
 				></textarea>
 			</div>
 		</div>
@@ -140,12 +144,15 @@ module.exports = {
 			titleInputDisabled: false,
 			overlay: false,
 			savingInProgress: false,
-			savingDone: false
+			savingDone: false,
+			summaryPlaceholder: this.$i18n(
+				'wikistories-builder-publishform-summary-input-placeholder'
+			).text()
 		};
 	},
 	computed: $.extend( mapGetters( [
-		'frames', 'valid', 'fromArticle', 'storyForSave', 'mode', 'title', 'storyExists',
-		'watchlistExpiryEnabled', 'watchlistExpiryOptions', 'watchDefault', 'storyUrl'
+		'storyForSave', 'mode', 'title', 'storyExists', 'storyUrl',
+		'watchlistExpiryEnabled', 'watchlistExpiryOptions', 'watchDefault'
 	] ), {
 		licenseHtml: function () {
 			const html = this.$i18n(
@@ -177,17 +184,27 @@ module.exports = {
 				if ( !validity.valid ) {
 					this.overlay = false;
 					this.savingInProgress = false;
+					// The messages are documented in store/story.js checkWarningStatus()
+					// eslint-disable-next-line mediawiki/msg-doc
 					this.error = this.$i18n( validity.message ).text();
-					contributionEvents.logPublishFailure( this.storyTitle, this.storyExists, this.error );
+					contributionEvents.logPublishFailure(
+						this.storyTitle,
+						this.storyExists,
+						this.error
+					);
 					return;
 				}
 				const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
 				const watchlistExpiry = this.watchlistExpiryEnabled ? this.watchlistExpiry : null;
-				saveStory( title.getPrefixedDb(), this.storySummary, this.storyForSave, this.mode, this.watchlist, watchlistExpiry ).then(
+				saveStory( title.getPrefixedDb(), this.storySummary, this.storyForSave,
+					this.mode, this.watchlist, watchlistExpiry
+				).then(
 					function ( response ) {
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
-							contributionEvents.logPublishSuccess( this.storyTitle, this.storyExists );
+							contributionEvents.logPublishSuccess(
+								this.storyTitle, this.storyExists
+							);
 							window.removeEventListener( 'beforeunload', beforeUnloadListener );
 							this.setStoryPageId( response.pageid );
 							this.savingInProgress = false;
@@ -215,7 +232,9 @@ module.exports = {
 			if ( this.showSummaryInput ) {
 				setTimeout( () => {
 					this.$refs.storySummaryInput.focus();
-					this.$refs.storySummaryInput.scrollIntoView( { block: 'end', inline: 'center' } );
+					this.$refs.storySummaryInput.scrollIntoView(
+						{ block: 'end', inline: 'center' }
+					);
 				}, 0 );
 			}
 		},

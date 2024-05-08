@@ -90,9 +90,11 @@ module.exports = {
 			// Add or remove from the list of selected sentences
 			const index = this.selectedSentences.indexOf( sentence );
 			if ( index === -1 ) {
+				// eslint-disable-next-line mediawiki/class-doc
 				sentence.classList.add( SENTENCE_SELECTED_CLASS );
 				this.selectedSentences.push( sentence );
 			} else {
+				// eslint-disable-next-line mediawiki/class-doc
 				sentence.classList.remove( SENTENCE_SELECTED_CLASS );
 				this.selectedSentences.splice( index, 1 );
 				delete sentence.dataset.selectedOrder;
