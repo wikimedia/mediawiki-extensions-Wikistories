@@ -86,7 +86,7 @@ class SpecialStoryBuilder extends SpecialPage {
 		$this->requireLogin( 'wikistories-specialstorybuilder-mustbeloggedin' );
 		parent::execute( $subPage );
 		$out = $this->getOutput();
-		$out->setPageTitle( $this->msg( 'wikistories-specialstorybuilder-title' )->text() );
+		$out->setPageTitleMsg( $this->msg( 'wikistories-specialstorybuilder-title' ) );
 		$out->addJsConfigVars( $this->getConfigForStoryBuilder( $this->getSubPage( $subPage ) ) );
 		$out->addModuleStyles( [ 'ext.wikistories.builder.styles' ] );
 		$out->addModules( [ 'ext.wikistories.builder' ] );
