@@ -1,20 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"wikistories-extensiondesc": "Wikistories erlaabt et Auteure fir kuerzt, visuellt an zouverlässegt Wëssen aus Wikimedia-Projeten zesummenzestellen.",
 	"wikistories-specialstorybuilder-loading": "Lueden...",
 	"wikistories-search-inputplaceholder": "Biller sichen",
 	"wikistories-search-noresultstext": "Keng Resultater",
-	"wikistories-story-goto-publish": "Weider",
+	"wikistories-search-navigator-title-selected-info": "$1 ausgewielt",
+	"wikistories-story-goto-publish": "Nächst",
 	"wikistories-story-editdone": "Fäerdeg",
 	"wikistories-story-replaceimage": "Dëst Bild ersetzen",
 	"wikistories-story-deleteframe": "Dës Säit läschen",
 	"wikistories-imageattribution-author-unknown": "Auteur onbekannt",
 	"wikistories-article-cancelselection": "Eidel maachen",
-	"wikistories-article-loading": "Lueden...",
+	"wikistories-article-loading": "Artikel lueden...",
 	"wikistories-article-usetext": "Bei d'Geschicht derbäisetzen",
 	"wikistories-article-info-banner": "Text eraussiche fir bei Är Geschicht derbäizesetzen",
 	"wikistories-alert-okbuttontext": "OK",
@@ -27,7 +29,10 @@
 	"wikistories-builder-publishform-navigator-title": "Wikistory verëffentlechen",
 	"wikistories-builder-publishform-publishbutton": "Verëffentlechen",
 	"wikistories-builder-publishform-invalidtitle-notfound": "Geschicht net fonnt.",
+	"wikistories-nojs-form-label-image": "Bild",
+	"wikistories-nojs-form-label-text": "Text",
 	"wikistories-storyviewer-next-story-button": "Nächst Geschicht liesen",
 	"wikistories-storyviewer-edit": "Änneren",
-	"wikistories-file-not-found": "Fichier \"$1\" net fonnt"
+	"wikistories-file-not-found": "Fichier \"$1\" net fonnt",
+	"wikistories-from-article-not-found": "Artikel „$1“ net fonnt"
 }
