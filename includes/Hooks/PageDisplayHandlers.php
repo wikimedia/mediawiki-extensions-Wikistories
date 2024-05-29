@@ -7,22 +7,24 @@ use IContextSource;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Extension\Wikistories\Hooks;
+use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
-use MobileFrontend\Hooks\BeforePageDisplayMobileHook;
 use Skin;
 
-class MobileFrontendHandlers implements BeforePageDisplayMobileHook {
+class PageDisplayHandlers implements BeforePageDisplayHook {
 
 	/**
 	 * @param Skin $skin
 	 * @return bool
 	 */
 	private static function shouldShowStoriesOnSkin( Skin $skin ) {
-		return $skin->getSkinName() === 'minerva';
+		$isMobileView = ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) &&
+			MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' )->shouldDisplayMobileView();
+		return $skin->getSkinName() === 'minerva' && $isMobileView;
 	}
 
 	/**
@@ -80,10 +82,10 @@ class MobileFrontendHandlers implements BeforePageDisplayMobileHook {
 	}
 
 	/**
-	 * @param OutputPage &$out
-	 * @param Skin &$skin
+	 * @param OutputPage $out
+	 * @param Skin $skin
 	 */
-	public function onBeforePageDisplayMobile( OutputPage &$out, Skin &$skin ) {
+	public function onBeforePageDisplay( $out, $skin ): void {
 		$title = $out->getTitle();
 		if ( self::shouldShowStories( $out->getUser(), $title, $out->getSkin(), $out->getContext() ) ) {
 			$out->addModules( [ 'ext.wikistories.discover' ] );

@@ -82,8 +82,8 @@
 		"EchoNotificationsHandlers": {
 			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\EchoNotificationsHandlers"
 		},
-		"MobileFrontendHandlers": {
-			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\MobileFrontendHandlers"
+		"PageDisplayHandlers": {
+			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\PageDisplayHandlers"
 		},
 		"BetaFeaturesHandlers": {
 			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\BetaFeaturesHandlers",
@@ -94,7 +94,7 @@
 	},
 	"Hooks": {
 		"GetBetaFeaturePreferences": "BetaFeaturesHandlers",
-		"BeforePageDisplayMobile": "MobileFrontendHandlers",
+		"BeforePageDisplay": "PageDisplayHandlers",
 		"LoginFormValidErrorMessages": "main",
 		"PageSaveComplete": [
 			"main",
