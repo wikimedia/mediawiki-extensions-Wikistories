@@ -137,15 +137,15 @@ module.exports = {
 			background-image: url( ./../images/check.svg );
 			width: 24px;
 			height: 24px;
-			/* Hardcoding color to prevent double inversion
+			/* Fix light background color to prevent double inversion
 			since the parent has 'skin-invert' class */
-			background-color: #fff;
+			background-color: @background-color-base-fixed;
 			background-repeat: no-repeat;
 			background-position: center center;
 			position: absolute;
 			left: 10px;
 			top: 10px;
-			border: @border-width-base @border-style-base @border-color-base;
+			border: @border-base;
 			box-sizing: border-box;
 			border-radius: @border-radius-base;
 		}
