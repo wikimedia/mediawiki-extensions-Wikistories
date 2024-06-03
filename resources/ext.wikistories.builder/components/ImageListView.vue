@@ -82,27 +82,20 @@ module.exports = {
 	height: 100%;
 	background-color: @background-color-base;
 	overflow: scroll;
-	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-wrap: nowrap;
 	flex-wrap: nowrap;
 	margin: 0 8px 16px 8px;
 	flex-grow: 1;
 
 	&__list-wrapper {
-		-ms-flex-pack: justify;
 		justify-content: space-between;
-		-ms-flex: 1 1 auto;
 		flex: 1 1 auto;
-		-ms-flex-order: 1;
 		order: 1;
 		width: 100%;
 	}
 
 	&__list {
-		display: -ms-flexbox;
 		display: flex;
-		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
 		align-content: flex-start;
 		justify-content: flex-start;
@@ -110,15 +103,11 @@ module.exports = {
 
 		&-image {
 			position: relative;
-			-ms-flex-pack: justify;
 			width: auto;
 			min-width: 300px;
-			-ms-flex: 1 1 auto;
 			flex: 1 1 auto;
-			-ms-flex-order: 1;
 			order: 1;
 			justify-content: center;
-			display: -ms-flexbox;
 			display: flex;
 			align-items: center;
 			background-color: @background-color-base;
