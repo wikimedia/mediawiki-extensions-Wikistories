@@ -8,7 +8,8 @@
 			"Lanyun1103",
 			"NACHOgao3",
 			"StarrySky",
-			"沈澄心"
+			"沈澄心",
+			"LittlePaw365"
 		]
 	},
 	"wikistories-extensionname": "维基故事",
@@ -27,7 +28,7 @@
 	"wikistories-story-editdone": "完成",
 	"wikistories-article-cancelselection": "清除",
 	"wikistories-article-loading": "正在加载条目...",
-	"wikistories-confirmdialog-delete-title": "删除本页？",
+	"wikistories-confirmdialog-delete-title": "删除该页面？",
 	"wikistories-confirmdialog-delete-accept": "删除",
 	"wikistories-builder-article-not-available": "文章正文不可用。请稍后再试",
 	"wikistories-builder-publishform-saveerror": "在发布 Wikistory 时发生错误。请尝试重新发布。",
