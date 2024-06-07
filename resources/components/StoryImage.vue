@@ -169,14 +169,10 @@ module.exports = {
 				this.containerSize.height / this.imageSize.height,
 				this.containerSize.width / this.imageSize.width
 			);
-			return [ 1, 1.33, 1.66, 2 ].map( function ( f ) {
-				return minScale * f;
-			} );
+			return [ 1, 1.33, 1.66, 2 ].map( ( f ) => minScale * f );
 		},
 		getNextScale: function () {
-			const deltas = this.scales.map( function ( s ) {
-				return Math.abs( this.scale - s );
-			}.bind( this ) );
+			const deltas = this.scales.map( ( s ) => Math.abs( this.scale - s ) );
 			let index = deltas.indexOf( Math.min.apply( null, deltas ) );
 			index = ( index === deltas.length - 1 ) ? 0 : index + 1;
 			return this.scales[ index ];

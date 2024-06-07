@@ -116,11 +116,9 @@ module.exports = {
 			this.toast.show = false;
 		},
 		editStory: function () {
-			const array = this.selection.map( function ( id ) {
+			const array = this.selection.map( ( id ) => {
 				const item = this.results.find(
-					function ( result ) {
-						return result.id === id;
-					}
+					( result ) => result.id === id
 				);
 				return {
 					url: item.url,
@@ -128,7 +126,7 @@ module.exports = {
 					filename: item.filename,
 					attribution: item.attribution
 				};
-			}.bind( this ) );
+			} );
 			this.addFrames( array );
 			this.routeReplace( 'story' );
 		}

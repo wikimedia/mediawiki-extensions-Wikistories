@@ -97,8 +97,7 @@ module.exports = {
 	&__list {
 		display: flex;
 		flex-wrap: wrap;
-		align-content: flex-start;
-		justify-content: flex-start;
+		place-content: flex-start flex-start;
 		max-width: calc( 100% + 16px );
 
 		&-image {

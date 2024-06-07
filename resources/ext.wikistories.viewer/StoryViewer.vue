@@ -259,9 +259,9 @@ module.exports = {
 			return this.$i18n( 'wikistories-storyviewer-textsize-label-' + name ).text();
 		},
 		playNextFrame: function () {
-			this.timer.setup( function () {
+			this.timer.setup( () => {
 				this.nextFrame();
-			}.bind( this ), this.frameDuration );
+			}, this.frameDuration );
 		},
 		playNextStory: function ( storyId ) {
 			this.logStoryViewEvent();
@@ -282,9 +282,9 @@ module.exports = {
 			}
 		},
 		endStory: function () {
-			this.timer.setup( function () {
+			this.timer.setup( () => {
 				this.setIsStoryEnd( true );
-			}.bind( this ), this.frameDuration );
+			}, this.frameDuration );
 		},
 		discardStory: function () {
 			if ( !this.allowClose ) {
@@ -300,9 +300,9 @@ module.exports = {
 			navigator.share( {
 				title: this.currentStoryTitle,
 				url: this.shareUrl
-			} ).then( function () {
+			} ).then( () => {
 				contributionEvents.logShareAction( this.currentStoryTitle );
-			}.bind( this ) );
+			} );
 		},
 		toggleStory: function () {
 			if ( this.timer.isPaused ) {

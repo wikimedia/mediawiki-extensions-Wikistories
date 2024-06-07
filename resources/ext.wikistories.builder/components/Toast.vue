@@ -25,9 +25,9 @@ module.exports = {
 		};
 	},
 	mounted: function () {
-		this.timeoutId = setTimeout( function () {
+		this.timeoutId = setTimeout( () => {
 			this.$emit( 'hide-toast' );
-		}.bind( this ), this.duration );
+		}, this.duration );
 	},
 	unmounted: function () {
 		clearTimeout( this.timeoutId );

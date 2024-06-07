@@ -180,7 +180,7 @@ module.exports = {
 			this.overlay = true;
 			this.savingInProgress = true;
 			const mustExist = this.mode === 'edit';
-			validateTitle( this.storyTitle, mustExist ).then( function ( validity ) {
+			validateTitle( this.storyTitle, mustExist ).then( ( validity ) => {
 				if ( !validity.valid ) {
 					this.overlay = false;
 					this.savingInProgress = false;
@@ -199,7 +199,7 @@ module.exports = {
 				saveStory( title.getPrefixedDb(), this.storySummary, this.storyForSave,
 					this.mode, this.watchlist, watchlistExpiry
 				).then(
-					function ( response ) {
+					( response ) => {
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
 							contributionEvents.logPublishSuccess(
@@ -212,14 +212,14 @@ module.exports = {
 						} else {
 							this.setErrorFeedback( response );
 						}
-					}.bind( this ),
-					function ( code, response ) {
+					},
+					( code, response ) => {
 						this.setErrorFeedback( response );
-					}.bind( this )
+					}
 				);
-			}.bind( this ) ).catch( function ( e ) {
+			} ).catch( ( e ) => {
 				this.setErrorFeedback( e );
-			}.bind( this ) );
+			} );
 		},
 		onBack: function () {
 			this.routeBack();
@@ -267,7 +267,7 @@ module.exports = {
 			navigator.share( {
 				title: title.getMainText(),
 				url: shareUrl.toString()
-			} ).then( function () {
+			} ).then( () => {
 				contributionEvents.logShareAction( title.getPrefixedDb() );
 			} );
 		}

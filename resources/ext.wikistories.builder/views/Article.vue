@@ -74,9 +74,7 @@ module.exports = {
 			return !!this.selectedSentences.length;
 		},
 		selectedText: function () {
-			return this.selectedSentences.map( function ( s ) {
-				return s.textContent;
-			} ).join( ' ' );
+			return this.selectedSentences.map( ( s ) => s.textContent ).join( ' ' );
 		}
 	} ),
 	methods: $.extend( mapActions( [ 'fetchArticle', 'setText', 'setTextFromArticle', 'routeBack' ] ), {
@@ -101,7 +99,7 @@ module.exports = {
 			}
 
 			// Renumber the selected sentences
-			this.selectedSentences.forEach( function ( s, i ) {
+			this.selectedSentences.forEach( ( s, i ) => {
 				s.dataset.selectedOrder = String( i + 1 );
 			} );
 		},

@@ -37,6 +37,7 @@
 			"off"
 		],
 		"mediawiki/msg-doc": "warn",
-		"vue/no-unused-properties": "warn"
+		"vue/no-unused-properties": "warn",
+		"no-jquery/no-extend": "warn"
 	}
 }
