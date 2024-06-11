@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Title\Title;
-use RequestContext;
 
 class StoryTrackingCategories {
 

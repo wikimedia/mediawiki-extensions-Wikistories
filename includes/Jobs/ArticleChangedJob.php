@@ -7,6 +7,7 @@ use IJobSpecification;
 use Job;
 use JobSpecification;
 use MediaWiki\Config\Config;
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\Wikistories\Hooks\EchoNotificationsHandlers;
 use MediaWiki\Extension\Wikistories\PageLinksSearch;
 use MediaWiki\Extension\Wikistories\StoryContent;
@@ -108,7 +109,7 @@ class ArticleChangedJob extends Job {
 	 * @param int $revId
 	 */
 	private function notify( UserIdentity $agent, Title $storyTitle, string $articleTitle, int $revId ) {
-		\EchoEvent::create( [
+		Event::create( [
 			'type' => EchoNotificationsHandlers::NOTIFICATION_TYPE,
 			'agent' => $agent,
 			'title' => $storyTitle,

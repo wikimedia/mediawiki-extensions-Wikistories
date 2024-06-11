@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\Wikistories;
 
 use Article;
 use FormlessAction;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Utils\UrlUtils;
 

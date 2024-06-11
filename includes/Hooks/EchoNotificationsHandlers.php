@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\Wikistories\Hooks;
 
-use EchoAttributeManager;
-use EchoEvent;
-use EchoUserLocator;
+use MediaWiki\Extension\Notifications\AttributeManager;
+use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Extension\Notifications\UserLocator;
 use MediaWiki\Extension\Wikistories\Notifications\ArticleChangedPresentationModel;
 
 class EchoNotificationsHandlers {
@@ -31,8 +31,8 @@ class EchoNotificationsHandlers {
 		];
 
 		$notifications[ self::NOTIFICATION_TYPE ] = [
-			EchoAttributeManager::ATTR_LOCATORS => [
-				EchoUserLocator::class . '::locateUsersWatchingTitle',
+			AttributeManager::ATTR_LOCATORS => [
+				UserLocator::class . '::locateUsersWatchingTitle',
 			],
 			'category' => 'wikistories-action',
 			'group' => 'neutral',
@@ -47,7 +47,7 @@ class EchoNotificationsHandlers {
 	}
 
 	/**
-	 * @param EchoEvent $event
+	 * @param Event $event
 	 * @param string &$bundleString
 	 */
 	public function onEchoGetBundleRules( $event, &$bundleString ) {

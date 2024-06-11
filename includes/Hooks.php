@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\Wikistories;
 use Article;
 use ManualLogEntry;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Wikistories\Jobs\ArticleChangedJob;
 use MediaWiki\Hook\ActionModifyFormFieldsHook;
@@ -27,7 +28,6 @@ use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use ParserCache;
 use ParserOptions;
-use RequestContext;
 use WikiPage;
 
 class Hooks implements

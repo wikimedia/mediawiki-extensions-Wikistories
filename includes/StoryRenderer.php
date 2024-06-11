@@ -4,13 +4,13 @@ namespace MediaWiki\Extension\Wikistories;
 
 use File;
 use FormatMetadata;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Html\Html;
 use MediaWiki\Page\PageLookup;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use RepoGroup;
-use RequestContext;
 
 class StoryRenderer {
 

@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use Content;
-use IContextSource;
 use JobQueueGroup;
 use JsonContentHandler;
 use MediaWiki\Category\TrackingCategories;
@@ -11,6 +10,7 @@ use MediaWiki\Content\Renderer\ContentParseParams;
 use MediaWiki\Content\Transform\PreloadTransformParams;
 use MediaWiki\Content\Transform\PreSaveTransformParams;
 use MediaWiki\Content\ValidationParams;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;

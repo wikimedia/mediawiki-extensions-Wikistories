@@ -4,10 +4,11 @@ namespace MediaWiki\Extension\Wikistories\Hooks;
 
 use ChangesListBooleanFilter;
 use HtmlArmor;
-use IContextSource;
 use Language;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Wikistories\StoryContent;
 use MediaWiki\Hook\EnhancedChangesListModifyBlockLineDataHook;
@@ -28,7 +29,6 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use RecentChange;
-use RequestContext;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class RecentChangesPropagationHooks implements

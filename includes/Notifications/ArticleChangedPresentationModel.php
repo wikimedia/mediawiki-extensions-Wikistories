@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\Wikistories\Notifications;
 
-use EchoEventPresentationModel;
+use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
 use MediaWiki\Extension\Wikistories\Hooks\EchoNotificationsHandlers;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPage;
