@@ -19,7 +19,7 @@ module.exports = {
 	data: function () {
 		return { height: 0 };
 	},
-	computed: $.extend( mapGetters( [ 'storyExists' ] ), {
+	computed: Object.assign( mapGetters( [ 'storyExists' ] ), {
 		style: function () {
 			return { height: this.height + 'px' };
 		}

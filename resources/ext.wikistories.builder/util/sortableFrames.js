@@ -184,7 +184,7 @@ const sortable = ( () => {
 	// initialization / kill
 	return {
 		set: ( el, options ) => {
-			el.sortOptions = $.extend( defaultOptions, options );// create options object
+			el.sortOptions = Object.assign( defaultOptions, options );// create options object
 
 			// mouse events (desktop)
 			el.addEventListener( 'mousedown', onMouseDown, false );

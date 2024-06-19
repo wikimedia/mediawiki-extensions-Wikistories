@@ -258,7 +258,7 @@ module.exports = {
 		title: ( state ) => state.storyTitle,
 		thumbnails: ( state ) => {
 			return state.frames.map( ( f, index ) => {
-				const newFrame = $.extend( {}, f );
+				const newFrame = Object.assign( {}, f );
 				if ( index === state.currentFrameIndex ) {
 					newFrame.selected = true;
 				}

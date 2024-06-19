@@ -112,7 +112,7 @@ module.exports = {
 			}
 		};
 	},
-	computed: $.extend( mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'mode', 'frameCount', 'editingText', 'isUserBlockedFromCurrentArticle' ] ), {
+	computed: Object.assign( mapGetters( [ 'currentFrame', 'missingFrames', 'framesWithoutText', 'fromArticle', 'mode', 'frameCount', 'editingText', 'isUserBlockedFromCurrentArticle' ] ), {
 		messages: function () {
 			// EDIT TEXT MODE
 			if ( this.editingText ) {
@@ -137,7 +137,7 @@ module.exports = {
 				};
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'removeFrame', 'routePush', 'routeReplace', 'setText', 'setEditingText', 'checkWarningStatus' ] ), {
+	methods: Object.assign( mapActions( [ 'removeFrame', 'routePush', 'routeReplace', 'setText', 'setEditingText', 'checkWarningStatus' ] ), {
 		showDeleteFrameConfirmationDialog: function () {
 			this.viewDeleteFrameConfirmDialog = true;
 		},

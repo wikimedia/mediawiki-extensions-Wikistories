@@ -29,7 +29,7 @@ const mapGetters = require( 'vuex' ).mapGetters;
 // @vue/component
 module.exports = {
 	name: 'ImageAttribution',
-	computed: $.extend( mapGetters( [ 'currentFrame' ] ), {
+	computed: Object.assign( mapGetters( [ 'currentFrame' ] ), {
 		presentAuthor: function () {
 			const author = this.currentFrame.imgAttribution.author;
 

@@ -66,7 +66,7 @@ module.exports = {
 			selectedSentences: []
 		};
 	},
-	computed: $.extend( mapGetters( [ 'currentArticle', 'fromArticle' ] ), {
+	computed: Object.assign( mapGetters( [ 'currentArticle', 'fromArticle' ] ), {
 		showInfoBar: function () {
 			return !this.selectedSentences.length && !this.infoDismissed;
 		},
@@ -77,7 +77,7 @@ module.exports = {
 			return this.selectedSentences.map( ( s ) => s.textContent ).join( ' ' );
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'fetchArticle', 'setText', 'setTextFromArticle', 'routeBack' ] ), {
+	methods: Object.assign( mapActions( [ 'fetchArticle', 'setText', 'setTextFromArticle', 'routeBack' ] ), {
 		onClick: function ( e ) {
 			// Find the sentence that was clicked
 			const sentence = e.target.closest( '.' + SENTENCE_CLASS );

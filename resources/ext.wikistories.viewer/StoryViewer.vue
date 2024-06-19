@@ -224,7 +224,7 @@ module.exports = {
 			tempTextsize: null
 		};
 	},
-	computed: $.extend( mapGetters( [
+	computed: Object.assign( mapGetters( [
 		'story', 'currentFrame', 'editUrl', 'talkUrl', 'shareUrl',
 		'isStoryEnd', 'isFirstFrame', 'isLastFrame', 'textsize', 'textsizes',
 		'isFramePlaying', 'isFrameDonePlaying', 'isFrameViewed', 'currentStoryTitle',
@@ -246,7 +246,7 @@ module.exports = {
 			return !!navigator.share;
 		}
 	} ),
-	methods: $.extend( mapActions( [
+	methods: Object.assign( mapActions( [
 		'setStories', 'setStoryId', 'nextStory', 'setTextsize',
 		'prevFrame', 'nextFrame', 'resetFrame', 'setIsStoryEnd',
 		'purgeStory'

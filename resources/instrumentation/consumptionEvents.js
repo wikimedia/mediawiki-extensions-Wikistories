@@ -1,6 +1,6 @@
 const logConsumptionEvent = ( data ) => {
 	const streamName = 'mediawiki.wikistories_consumption_event';
-	const event = $.extend( {
+	const event = Object.assign( {
 		$schema: '/analytics/mediawiki/wikistories_consumption_event/1.2.0',
 		meta: {
 			stream: streamName,

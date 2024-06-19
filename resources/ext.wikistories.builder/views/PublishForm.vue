@@ -150,7 +150,7 @@ module.exports = {
 			).text()
 		};
 	},
-	computed: $.extend( mapGetters( [
+	computed: Object.assign( mapGetters( [
 		'storyForSave', 'mode', 'title', 'storyExists', 'storyUrl',
 		'watchlistExpiryEnabled', 'watchlistExpiryOptions', 'watchDefault'
 	] ), {
@@ -174,7 +174,7 @@ module.exports = {
 			return !!navigator.share;
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'routeBack', 'setStoryPageId' ] ), {
+	methods: Object.assign( mapActions( [ 'routeBack', 'setStoryPageId' ] ), {
 		onSaveClick: function () {
 			this.error = null;
 			this.overlay = true;

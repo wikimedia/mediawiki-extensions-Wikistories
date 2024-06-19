@@ -66,7 +66,7 @@ module.exports = {
 			}
 		};
 	},
-	computed: $.extend( mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle', 'isBuilderRouteAvailable' ] ), {
+	computed: Object.assign( mapGetters( [ 'selection', 'loading', 'results', 'query', 'noResults', 'fromArticle', 'isBuilderRouteAvailable' ] ), {
 		navigatorMessage: function () {
 			if ( this.selection.length === 0 ) {
 				return this.$i18n( 'wikistories-search-navigator-title' ).text();
@@ -78,7 +78,7 @@ module.exports = {
 			return this.selection.length > 0;
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'select', 'search', 'clear', 'addFrames', 'setFrameImage', 'routeReplace', 'routeBack' ] ), {
+	methods: Object.assign( mapActions( [ 'select', 'search', 'clear', 'addFrames', 'setFrameImage', 'routeReplace', 'routeBack' ] ), {
 		onSubmit: function ( e ) {
 			return e.preventDefault();
 		},

@@ -2,7 +2,7 @@ const contributionAttemptId = mw.user.generateRandomSessionId();
 
 const logContributionEvent = ( data ) => {
 	const streamName = 'mediawiki.wikistories_contribution_event';
-	const event = $.extend( {
+	const event = Object.assign( {
 		/* eslint-disable camelcase */
 		$schema: '/analytics/mediawiki/wikistories_contribution_event/1.3.0',
 		meta: {

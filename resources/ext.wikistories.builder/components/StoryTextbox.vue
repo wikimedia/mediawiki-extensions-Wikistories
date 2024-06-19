@@ -55,7 +55,7 @@ module.exports = {
 			default: () => {}
 		}
 	},
-	computed: $.extend( mapGetters( [ 'currentFrame', 'editingText' ] ), {
+	computed: Object.assign( mapGetters( [ 'currentFrame', 'editingText' ] ), {
 		storyText: {
 			get: function () {
 				return this.currentFrame.text;
@@ -75,7 +75,7 @@ module.exports = {
 			return this.currentFrame.text || this.editingText;
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'setText' ] ), {
+	methods: Object.assign( mapActions( [ 'setText' ] ), {
 		setHeight: function () {
 			const textarea = this.$refs.textarea;
 			// 'height: auto' resets the textarea height before setting the height to scrollHeight

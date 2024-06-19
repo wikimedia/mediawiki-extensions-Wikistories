@@ -33,12 +33,12 @@ module.exports = {
 		'story-textbox': StoryTextbox
 	},
 	emits: [ 'select-text' ],
-	computed: $.extend( mapGetters( [ 'currentFrame', 'editingText' ] ), {
+	computed: Object.assign( mapGetters( [ 'currentFrame', 'editingText' ] ), {
 		showImageAttribution: function () {
 			return !this.editingText && !this.currentFrame.fileNotFound;
 		}
 	} ),
-	methods: $.extend( mapActions( [ 'setText', 'setEditingText', 'setLastEditedText', 'setImageFocalRect' ] ), {
+	methods: Object.assign( mapActions( [ 'setText', 'setEditingText', 'setLastEditedText', 'setImageFocalRect' ] ), {
 		beginTextEdit: function () {
 			this.setEditingText( true );
 			this.setLastEditedText( this.currentFrame.text );
