@@ -22,7 +22,7 @@
 	"wikistories-specialstorybuilder-invalidsubpage": "Во URL-адресата укажете статија за да создадете приказна или наслов на приказната што сакате да ја уредувате. Ќе треба да го ставите и именскиот простор на приказната.",
 	"wikistories-search-inputplaceholder": "Пребарај слики",
 	"wikistories-search-cuetext": "Пребарај слики поврзани со статијава.",
-	"wikistories-search-noresultstext": "Нема исход",
+	"wikistories-search-noresultstext": "Не најдов ништо",
 	"wikistories-search-navigator-title": "Изберете слики",
 	"wikistories-search-navigator-title-selected-info": "Избрани $1",
 	"wikistories-story-goto-publish": "Следно",
