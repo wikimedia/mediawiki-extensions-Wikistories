@@ -10,6 +10,7 @@
 	"right-edit-story": "تعديل القصص",
 	"action-edit-story": "تعديل القصص",
 	"wikistories-specialstorybuilder-loading": "جارٍ التحميل...",
+	"wikistories-search-noresultstext": "لا نتائج",
 	"wikistories-story-goto-publish": "التالي",
 	"wikistories-story-edittext-duplicate": "تم الكشف عن نص مكرر، <span class=\"ext-wikistories-warning-replace\">replace</span>?",
 	"wikistories-imageattribution-author-unknown": "المؤلف غير معروف",
