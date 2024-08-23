@@ -135,6 +135,7 @@ class StoryContentHandler extends JsonContentHandler {
 		if ( $cpoParams->getGenerateHtml() ) {
 			$parts = $this->storyRenderer->renderNoJS( $storyData );
 			$parserOutput->addModuleStyles( [ $parts['style'] ] );
+			// @phan-suppress-next-line SecurityCheck-XSS
 			$parserOutput->setText( $parts['html'] );
 		}
 	}
