@@ -73,14 +73,14 @@ class StoryRenderer {
 		if ( in_array( $this->storyTrackingCategories::TC_NO_ARTICLE, $storyData[ 'trackingCategories' ] ) ) {
 			$context = RequestContext::getMain();
 			$html .= Html::errorBox(
-				$context->msg( 'wikistories-nojs-viewer-no-article' )->text()
+				$context->msg( 'wikistories-nojs-viewer-no-article' )->parse()
 			);
 		}
 
 		if ( count( $missingImages ) > 0 ) {
 			$context = RequestContext::getMain();
 			$html .= Html::warningBox(
-				$context->msg( 'wikistories-nojs-viewer-error' )->params( count( $missingImages ) )->text()
+				$context->msg( 'wikistories-nojs-viewer-error' )->params( count( $missingImages ) )->parse()
 			);
 		}
 
