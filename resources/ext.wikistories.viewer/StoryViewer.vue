@@ -195,7 +195,7 @@ const DotsMenuItem = require( './DotsMenuItem.vue' );
 const Timer = require( './util/timer.js' );
 const isTouchDevice = require( './util/isTouchDevice.js' );
 const consumptionEvents = require( './consumptionEvents.js' );
-const contributionEvents = require( '../contributionEvents.js' );
+const contributionEvents = require( './contributionEvents.js' );
 
 // @vue/component
 module.exports = {
