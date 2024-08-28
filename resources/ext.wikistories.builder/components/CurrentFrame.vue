@@ -21,7 +21,7 @@
 const mapActions = require( 'vuex' ).mapActions;
 const mapGetters = require( 'vuex' ).mapGetters;
 const ImageAttribution = require( './ImageAttribution.vue' );
-const StoryImage = require( '../StoryImage.vue' );
+const StoryImage = require( '../../components/StoryImage.vue' );
 const StoryTextbox = require( './StoryTextbox.vue' );
 
 // @vue/component

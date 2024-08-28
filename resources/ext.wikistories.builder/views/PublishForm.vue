@@ -117,7 +117,7 @@ const Navigator = require( '../components/Navigator.vue' );
 const Toast = require( '../components/Toast.vue' );
 const saveStory = require( '../api/saveStory.js' );
 const validateTitle = require( '../util/validateTitle.js' );
-const contributionEvents = require( '../contributionEvents.js' );
+const contributionEvents = require( '../../instrumentation/contributionEvents.js' );
 const beforeUnloadListener = require( '../util/beforeUnloadListener.js' );
 const NS_STORY = mw.config.get( 'wgNamespaceIds' ).story;
 

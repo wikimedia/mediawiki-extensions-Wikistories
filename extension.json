@@ -209,30 +209,12 @@
 				"store/story.js",
 				"util/isTouchDevice.js",
 				"util/timer.js",
-				{
-					"name": "consumptionEvents.js",
-					"file": "../instrumentation/consumptionEvents.js"
-				},
-				{
-					"name": "contributionEvents.js",
-					"file": "../instrumentation/contributionEvents.js"
-				},
-				{
-					"name": "ConfirmDialog.vue",
-					"file": "../components/ConfirmDialog.vue"
-				},
-				{
-					"name": "DotsMenu.vue",
-					"file": "../components/DotsMenu.vue"
-				},
-				{
-					"name": "DotsMenuItem.vue",
-					"file": "../components/DotsMenuItem.vue"
-				},
-				{
-					"name": "StoryImage.vue",
-					"file": "../components/StoryImage.vue"
-				}
+				"../instrumentation/consumptionEvents.js",
+				"../instrumentation/contributionEvents.js",
+				"../components/ConfirmDialog.vue",
+				"../components/DotsMenu.vue",
+				"../components/DotsMenuItem.vue",
+				"../components/StoryImage.vue"
 			],
 			"styles": [
 				"viewer.less"
@@ -309,26 +291,11 @@
 				"views/PublishForm.vue",
 				"views/Search.vue",
 				"views/Story.vue",
-				{
-					"name": "contributionEvents.js",
-					"file": "../instrumentation/contributionEvents.js"
-				},
-				{
-					"name": "ConfirmDialog.vue",
-					"file": "../components/ConfirmDialog.vue"
-				},
-				{
-					"name": "DotsMenu.vue",
-					"file": "../components/DotsMenu.vue"
-				},
-				{
-					"name": "DotsMenuItem.vue",
-					"file": "../components/DotsMenuItem.vue"
-				},
-				{
-					"name": "StoryImage.vue",
-					"file": "../components/StoryImage.vue"
-				},
+				"../instrumentation/contributionEvents.js",
+				"../components/ConfirmDialog.vue",
+				"../components/DotsMenu.vue",
+				"../components/DotsMenuItem.vue",
+				"../components/StoryImage.vue",
 				{
 					"name": "sectionTitle.json",
 					"callback": "MediaWiki\\Extension\\Wikistories\\Hooks::getArticleSectionTitle"
@@ -414,13 +381,10 @@
 			],
 			"packageFiles": [
 				"index.js",
-				{
-					"name": "consumptionEvents.js",
-					"file": "../instrumentation/consumptionEvents.js"
-				},
 				"Discover.js",
 				"api/getStories.js",
 				"util/convertUrlToThumbnail.js",
+				"../instrumentation/consumptionEvents.js",
 				{
 					"name": "data.json",
 					"callback": "MediaWiki\\Extension\\Wikistories\\Hooks::getDiscoverBundleData"
@@ -443,11 +407,7 @@
 		"ext.wikistories.viewaction": {
 			"localBasePath": "resources/ext.wikistories.viewaction",
 			"packageFiles": [
-				"index.js",
-				{
-					"name": "consumptionEvents.js",
-					"file": "../instrumentation/consumptionEvents.js"
-				}
+				"index.js"
 			],
 			"dependencies": [
 				"ext.wikistories.viewer"
