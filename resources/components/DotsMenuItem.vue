@@ -64,23 +64,23 @@ module.exports = {
 		width: 24px;
 
 		&-replace {
-			background-image: url( ./images/replace.svg );
+			background-image: url( ../resources/images/replace.svg );
 		}
 
 		&-delete {
-			background-image: url( ./images/delete.svg );
+			background-image: url( ../resources/images/delete.svg );
 		}
 
 		&-edit {
-			background-image: url( ./images/edit.svg );
+			background-image: url( ../resources/images/edit.svg );
 		}
 
 		&-talk {
-			background-image: url( ./images/talk.svg );
+			background-image: url( ../resources/images/talk.svg );
 		}
 
 		&-textsize {
-			background-image: url( ./images/textsize.svg );
+			background-image: url( ../resources/images/textsize.svg );
 		}
 	}
 

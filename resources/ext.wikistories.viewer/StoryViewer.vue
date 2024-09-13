@@ -188,14 +188,14 @@ const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
 const ImageAttribution = require( './components/ImageAttribution.vue' );
 const Textbox = require( './components/Textbox.vue' );
-const ConfirmDialog = require( './ConfirmDialog.vue' );
-const StoryImage = require( './StoryImage.vue' );
-const DotsMenu = require( './DotsMenu.vue' );
-const DotsMenuItem = require( './DotsMenuItem.vue' );
+const ConfirmDialog = require( '../components/ConfirmDialog.vue' );
+const StoryImage = require( '../components/StoryImage.vue' );
+const DotsMenu = require( '../components/DotsMenu.vue' );
+const DotsMenuItem = require( '../components/DotsMenuItem.vue' );
 const Timer = require( './util/timer.js' );
 const isTouchDevice = require( './util/isTouchDevice.js' );
-const consumptionEvents = require( './consumptionEvents.js' );
-const contributionEvents = require( './contributionEvents.js' );
+const consumptionEvents = require( '../instrumentation/consumptionEvents.js' );
+const contributionEvents = require( '../instrumentation/contributionEvents.js' );
 
 // @vue/component
 module.exports = {

@@ -32,7 +32,7 @@
 const mapGetters = require( 'vuex' ).mapGetters;
 const mapActions = require( 'vuex' ).mapActions;
 const sortable = require( '../util/sortableFrames.js' );
-const StoryImage = require( '../StoryImage.vue' );
+const StoryImage = require( '../../components/StoryImage.vue' );
 
 // @vue/component
 module.exports = {

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-const events = require( './contributionEvents.js' );
+const events = require( '../instrumentation/contributionEvents.js' );
 const beforeUnloadListener = require( './util/beforeUnloadListener.js' );
 const RouterView = require( './components/RouterView.vue' );
 const mapGetters = require( 'vuex' ).mapGetters;
