@@ -263,7 +263,7 @@ module.exports = {
 		},
 		shareStory: function () {
 			const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
-			const shareUrl = new mw.Uri( title.getUrl( { action: 'storyview' } ) );
+			const shareUrl = new URL( title.getUrl( { action: 'storyview' } ), location.href );
 			navigator.share( {
 				title: title.getMainText(),
 				url: shareUrl.toString()

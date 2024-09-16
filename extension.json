@@ -222,7 +222,7 @@
 			"dependencies": [
 				"vue",
 				"vuex",
-				"mediawiki.Uri",
+				"web2017-polyfills",
 				"ext.eventLogging"
 			],
 			"messages": [

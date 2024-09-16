@@ -44,8 +44,8 @@ const logViewEvent = (
 };
 
 const logStoryView = ( storyTitle, frameCount, framesViewed, storyOpenTime, storiesCount ) => {
-	const uri = new mw.Uri();
-	const eventType = uri.query.action === 'storyview' ? 'story_share' : 'story_view';
+	const action = new URL( location.href ).searchParams.get( 'action' );
+	const eventType = action === 'storyview' ? 'story_share' : 'story_view';
 	logViewEvent( eventType, storyTitle, frameCount, framesViewed, storyOpenTime, storiesCount );
 };
 
