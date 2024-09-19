@@ -4,10 +4,11 @@
 			"MITO",
 			"Nike",
 			"Pyscowicz",
-			"Yupik"
+			"Yupik",
+			"Samoasambia"
 		]
 	},
-	"wikistories-extensiondesc": "Wikistories antaa muokkaajien luoda lyhyttä, visuaalista ja luotettavaa tietoa Wikimedian projekteista",
+	"wikistories-extensiondesc": "Wikistories antaa muokkaajien luoda lyhyttä, visuaalista ja luotettavaa tietoa Wikimedian hankkeista",
 	"right-edit-story": "Muokata tarinoita",
 	"action-edit-story": "muokkaa tarinoita",
 	"wikistories-recentchangesflags-title": "Wikitarinamuokkaus",
