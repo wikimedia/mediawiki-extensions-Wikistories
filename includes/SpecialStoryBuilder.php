@@ -83,7 +83,7 @@ class SpecialStoryBuilder extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function execute( $subPage ) {
-		$this->requireLogin( 'wikistories-specialstorybuilder-mustbeloggedin' );
+		$this->requireNamedUser( 'wikistories-specialstorybuilder-mustbeloggedin' );
 		parent::execute( $subPage );
 		$out = $this->getOutput();
 		$out->setPageTitleMsg( $this->msg( 'wikistories-specialstorybuilder-title' ) );
