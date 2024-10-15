@@ -158,6 +158,18 @@
 		"WikistoriesRestDomain": {
 			"description": "Sets the REST API domain. Defaults to null, in which case the domain of the current site will be used. Otherwise use 'wikipedia.org' for full article text when running locally",
 			"value": null
+		},
+		"WikistoriesTermsOfUseUrl": {
+			"description": "URL to the terms of use page",
+			"value": "https://foundation.wikimedia.org/wiki/Terms_of_Use"
+		},
+		"WikistoriesCCBYSAUrl": {
+			"description": "URL to the Creative Commons Attribution-ShareAlike 3.0 Unported license",
+			"value": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+		},
+		"WikistoriesGFDLUrl": {
+			"description": "URL to the GNU Free Documentation License",
+			"value": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License"
 		}
 	},
 	"DefaultUserOptions": {
@@ -299,6 +311,14 @@
 				{
 					"name": "sectionTitle.json",
 					"callback": "MediaWiki\\Extension\\Wikistories\\Hooks::getArticleSectionTitle"
+				},
+				{
+					"name": "config.json",
+					"config": [
+						"WikistoriesTermsOfUseUrl",
+						"WikistoriesCCBYSAUrl",
+						"WikistoriesGFDLUrl"
+					]
 				}
 			],
 			"dependencies": [

@@ -120,6 +120,7 @@ const validateTitle = require( '../util/validateTitle.js' );
 const contributionEvents = require( '../../instrumentation/contributionEvents.js' );
 const beforeUnloadListener = require( '../util/beforeUnloadListener.js' );
 const NS_STORY = mw.config.get( 'wgNamespaceIds' ).story;
+const config = require( '../config.json' );
 
 // @vue/component
 module.exports = {
@@ -157,9 +158,9 @@ module.exports = {
 		licenseHtml: function () {
 			const html = this.$i18n(
 				'wikistories-builder-licensing-with-terms',
-				'https://foundation.wikimedia.org/wiki/Terms_of_Use',
-				'https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License',
-				'https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License'
+				config.WikistoriesTermsOfUseUrl,
+				config.WikistoriesCCBYSAUrl,
+				config.WikistoriesGFDLUrl
 			).parse();
 			const doc = new DOMParser().parseFromString( html, 'text/html' );
 			for ( const a of doc.querySelectorAll( 'a' ) ) {
