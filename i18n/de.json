@@ -5,9 +5,11 @@
 		]
 	},
 	"wikistories-extensionname": "Wikigeschichten",
-	"wikistories-extensiondesc": "Mit Wikistories können Benutzer kurzes, visuelles und zuverlässiges Wissen aus Wikimedia-Projekten erstellen",
+	"wikistories-extensiondesc": "Mit Wikigeschichten können Benutzer kurzes, visuelles und zuverlässiges Wissen aus Wikimedia-Projekten erstellen",
 	"right-edit-story": "Geschichten bearbeiten",
 	"action-edit-story": "Geschichten bearbeiten",
+	"namespaceinfo-description-ns1704": "Namensraum für Wikigeschichten",
+	"namespaceinfo-description-ns1705": "Namensraum für Wikigeschichten-Diskussion",
 	"deletepage-deletestory": "Mit diesem Artikel verlinkte Wikigeschichten entfernen",
 	"wikistories-beta-feature-message": "Wikigeschichten",
 	"wikistories-beta-feature-description": "Ein Werkzeug, mit dem du Bilder auswählen und Fakten aus einem Artikel hervorheben kannst, um kurzes, visuelles und zuverlässiges Wissen aus Wikipedia für den schnellen Konsum zu erstellen. Aktiviere die Funktion, um Folgendes zu tun:<br>- Entdecke Geschichten, die mit einem Artikel verbunden sind.<br>- Klicke auf das [+]-Symbol unter dem Artikeltitel, um eine neue Geschichte zu erstellen.",
