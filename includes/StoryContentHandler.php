@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Content;
 use JobQueueGroup;
-use JsonContentHandler;
 use MediaWiki\Category\TrackingCategories;
+use MediaWiki\Content\Content;
+use MediaWiki\Content\JsonContentHandler;
 use MediaWiki\Content\Renderer\ContentParseParams;
 use MediaWiki\Content\Transform\PreloadTransformParams;
 use MediaWiki\Content\Transform\PreSaveTransformParams;

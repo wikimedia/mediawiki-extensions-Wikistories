@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use MediaWiki\Page\WikiPageFactory;
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 class StoriesCache {
 

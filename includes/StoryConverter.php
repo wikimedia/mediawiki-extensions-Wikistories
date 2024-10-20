@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use FormatJson;
 use LogicException;
+use MediaWiki\Json\FormatJson;
 
 class StoryConverter {
 

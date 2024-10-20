@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\Wikistories\Jobs;
 
-use ExtensionRegistry;
 use IJobSpecification;
 use Job;
 use JobSpecification;
@@ -13,6 +12,7 @@ use MediaWiki\Extension\Wikistories\PageLinksSearch;
 use MediaWiki\Extension\Wikistories\StoryContent;
 use MediaWiki\Extension\Wikistories\StoryContentAnalyzer;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;

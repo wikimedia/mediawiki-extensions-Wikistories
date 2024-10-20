@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\Wikistories\Hooks;
 
-use ExtensionRegistry;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
@@ -10,6 +9,7 @@ use MediaWiki\Extension\Wikistories\Hooks;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;

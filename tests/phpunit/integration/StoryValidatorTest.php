@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use File;
-use FormatJson;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
 use MediaWikiIntegrationTestCase;

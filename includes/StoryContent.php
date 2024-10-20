@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use IDBAccessObject;
-use JsonContent;
+use MediaWiki\Content\JsonContent;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Title\Title;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class StoryContent extends JsonContent {
 

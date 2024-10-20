@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\Wikistories\Tests;
 
-use FormatJson;
 use MediaWiki\Extension\Wikistories\StoryContent;
+use MediaWiki\Json\FormatJson;
 
 class StoryFactory {
 

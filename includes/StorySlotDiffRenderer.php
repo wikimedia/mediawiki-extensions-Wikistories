@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Content;
 use LogicException;
+use MediaWiki\Content\Content;
+use MediaWiki\Content\TextContent;
 use SlotDiffRenderer;
-use TextContent;
 use TextSlotDiffRenderer;
 
 class StorySlotDiffRenderer extends SlotDiffRenderer {

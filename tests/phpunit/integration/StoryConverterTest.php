@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use FormatJson;
+use MediaWiki\Json\FormatJson;
 use MediaWikiIntegrationTestCase;
 
 /**
