@@ -8,7 +8,8 @@
 			"Robby",
 			"Verdy p",
 			"Umherirrender",
-			"Yupik"
+			"Yupik",
+			"McDutchie"
 		]
 	},
 	"wikistories-extensionname": "{{name}}",
@@ -71,7 +72,7 @@
 	"wikistories-builder-publishform-invalidtitle-notfound": "Error message when trying to edit a story but a story with the given title doesn't seem to exist.",
 	"wikistories-builder-publishform-saveerror": "Error message when the publish request fails",
 	"wikistories-builder-publishform-saving": "Text shown while the app is attempting to save and publish story",
-	"wikistories-builder-licensing-with-terms": "Text notifying user of licenses that story will be published under.\nParameters:\n* $1 - terms of service URL\n* $2 - CC-BY-SA 3.0 license URL\n* $3 - GFDL license URL",
+	"wikistories-builder-licensing-with-terms": "Text notifying user of licenses that story will be published under.\nParameters:\n* $1 - terms of use URL\n* $2 - CC-BY-SA 3.0 license URL\n* $3 - GFDL license URL",
 	"wikistories-nojs-form-label-related-article": "Text for the no js form input label for related article",
 	"wikistories-nojs-form-label-frame": "Text for the no js form input label for frame.\nParameters:\n* $1 - Frame number, starting at 1",
 	"wikistories-nojs-form-label-image": "Text for the no js form input label for image\n\n{{Identical|Image}}",
