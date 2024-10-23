@@ -98,7 +98,7 @@
 	"wikistories-builder-publishform-saving-done": "Congratulation message on the publish form after a story has been successfully published.",
 	"wikistories-builder-publishform-gotostory": "Button text to view the story that has been published",
 	"wikistories-builder-publishform-sharestory": "Button text to share the story that has been published",
-	"wikistories-builder-licensing-with-terms": "Text notifying user of licenses that story will be published under.\nParameters:\n* $1 - terms of service URL\n* $2 - CC-BY-SA 3.0 license URL\n* $3 - GFDL license URL",
+	"wikistories-builder-licensing-with-terms": "Text notifying user of licenses that story will be published under.\nParameters:\n* $1 - terms of use URL\n* $2 - CC-BY-SA 3.0 license URL\n* $3 - GFDL license URL",
 	"wikistories-nojs-form-label-related-article": "Text for the no js form input label for related article",
 	"wikistories-nojs-form-label-frame": "Text for the no js form input label for frame.\nParameters:\n* $1 - Frame number, starting at 1",
 	"wikistories-nojs-form-label-image": "Text for the no js form input label for image\n\n{{Identical|Image}}",
