@@ -3,6 +3,7 @@
 		"authors": [
 			"Asma",
 			"FiberAhmed",
+			"Meno25",
 			"أَحمد",
 			"محمد أحمد عبد الفتاح"
 		]
@@ -30,7 +31,7 @@
 	"wikistories-nojs-form-label-image": "صورة",
 	"wikistories-nojs-form-label-text": "نص",
 	"wikistories-nojs-viewer-no-article": "مهم! المقالة المرتبطة بهذه القصة لم تعد متوفرة. قد تحتاج إلى حذف القصة للحفاظ على الدقة.",
-	"wikistories-storyviewer-edit": "تعديل",
+	"wikistories-storyviewer-edit": "تعديل هذه القصة",
 	"wikistories-storyviewer-cover-page-heading": "ويكيستوري",
 	"wikistories-no-related-article": "Story with no related article",
 	"wikistories-no-related-article-desc": "تم حذف المقالة المرتبطة بالقصة",
