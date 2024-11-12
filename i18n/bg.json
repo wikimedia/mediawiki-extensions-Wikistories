@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"StanProg"
 		]
 	},
-	"wikistories-builder-publishform-publishbutton": "Публикуване"
+	"wikistories-builder-publishform-publishbutton": "Публикуване",
+	"wikistories-storyviewer-next-story-header": "Прочетете повече"
 }
