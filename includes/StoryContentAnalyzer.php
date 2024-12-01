@@ -120,7 +120,7 @@ class StoryContentAnalyzer {
 			return false;
 		}
 
-		$html = $parserOutput->getText();
+		$html = $parserOutput->getRawText();
 		$text = $this->transformText( $html );
 		$this->cache[ $dbKey ] = $text;
 
