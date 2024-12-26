@@ -33,10 +33,10 @@
 	"wikistories-nojs-viewer-no-article": "مهم! المقالة المرتبطة بهذه القصة لم تعد متوفرة. قد تحتاج إلى حذف القصة للحفاظ على الدقة.",
 	"wikistories-storyviewer-edit": "تعديل هذه القصة",
 	"wikistories-storyviewer-cover-page-heading": "ويكيستوري",
-	"wikistories-no-related-article": "Story with no related article",
+	"wikistories-no-related-article": "قصة ليس لها مقالة ذات صلة",
 	"wikistories-no-related-article-desc": "تم حذف المقالة المرتبطة بالقصة",
 	"wikistories-outdated-text-category": "تحتوي القصة على نص قديم فيما يتعلق بمصدرها",
 	"wikistories-outdated-text-category-desc": "بعض النصوص المستخدمة في هذه القصة لم تعد موجودة في المقالة المصدر",
-	"echo-category-title-wikistories-action": "ويكي",
+	"echo-category-title-wikistories-action": "قصص ويكي",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> تم تحريره و\n<strong>$2</strong> يحتاج إلى مراجعة"
 }
