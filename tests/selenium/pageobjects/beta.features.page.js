@@ -3,8 +3,8 @@
 const Page = require( 'wdio-mediawiki/Page' );
 
 class BetaFeaturesPage extends Page {
-	open() {
-		super.openTitle( 'Special:Preferences', {}, 'mw-prefsection-betafeatures' );
+	async open() {
+		return super.openTitle( 'Special:Preferences', {}, 'mw-prefsection-betafeatures' );
 	}
 
 	get wikistories() {

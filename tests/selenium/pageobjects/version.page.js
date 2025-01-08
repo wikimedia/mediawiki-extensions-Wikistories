@@ -10,8 +10,8 @@ class VersionPage extends Page {
 	}
 
 	// this is just a sample on how to open a page
-	open() {
-		super.openTitle( 'Special:Version' );
+	async open() {
+		return super.openTitle( 'Special:Version' );
 	}
 }
 
