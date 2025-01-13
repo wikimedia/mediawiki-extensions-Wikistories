@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Asma",
+			"Cigaryno",
 			"FiberAhmed",
 			"Meno25",
 			"أَحمد",
@@ -10,6 +11,7 @@
 	},
 	"right-edit-story": "تعديل القصص",
 	"action-edit-story": "تعديل القصص",
+	"wikistories-beta-feature-message": "قصص ويكي",
 	"wikistories-specialstorybuilder-loading": "جارٍ التحميل...",
 	"wikistories-search-noresultstext": "لا نتائج",
 	"wikistories-story-goto-publish": "التالي",
@@ -31,6 +33,7 @@
 	"wikistories-nojs-form-label-image": "صورة",
 	"wikistories-nojs-form-label-text": "نص",
 	"wikistories-nojs-viewer-no-article": "مهم! المقالة المرتبطة بهذه القصة لم تعد متوفرة. قد تحتاج إلى حذف القصة للحفاظ على الدقة.",
+	"wikistories-storyviewer-next-story-viewtext": "عرض",
 	"wikistories-storyviewer-edit": "تعديل هذه القصة",
 	"wikistories-storyviewer-cover-page-heading": "ويكيستوري",
 	"wikistories-no-related-article": "قصة ليس لها مقالة ذات صلة",
