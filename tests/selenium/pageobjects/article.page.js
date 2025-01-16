@@ -3,8 +3,8 @@
 const Page = require( 'wdio-mediawiki/Page' );
 
 class ArticlePage extends Page {
-	open( name ) {
-		super.openTitle( name, { mobileaction: 'toggle_view_mobile' } );
+	async open( name ) {
+		return super.openTitle( name, { mobileaction: 'toggle_view_mobile' } );
 	}
 
 	get createStory() {

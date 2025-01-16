@@ -3,8 +3,8 @@
 const Page = require( 'wdio-mediawiki/Page' );
 
 class WikistoriesPage extends Page {
-	open( name ) {
-		super.openTitle( name, { mobileaction: 'toggle_view_mobile' } );
+	async open( name ) {
+		return super.openTitle( name, { mobileaction: 'toggle_view_mobile' } );
 	}
 
 	get addCTA() {
@@ -62,7 +62,7 @@ class WikistoriesPage extends Page {
 	}
 
 	async createStory( name ) {
-		this.open( 'Cats' );
+		await this.open( 'Cats' );
 		await this.createStoryButton.click();
 		await this.image1.click();
 		await this.image2.click();
