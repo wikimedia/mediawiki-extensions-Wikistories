@@ -21,6 +21,9 @@ module.exports = {
 	resolver: './jest.resolver.js',
 
 	testEnvironment: 'jsdom',
+	testEnvironmentOptions: {
+		customExportConditions: [ 'node', 'node-addons' ]
+	},
 
 	// Indicates whether the coverage information should be collected while executing the test
 	collectCoverage: true,
