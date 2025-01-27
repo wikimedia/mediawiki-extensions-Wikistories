@@ -52,12 +52,12 @@
 	"wikistories-confirmdialog-discardedits-title": "Abandonner les modifications ?",
 	"wikistories-confirmdialog-discardedits-message": "Vous perdrez toutes les modifications de pages, d’images ou de texte que vous avez effectuées.",
 	"wikistories-confirmdialog-discardstory-accept": "Abandonner",
-	"wikistories-toast-maxframes-addingmore": "Chaque récit peut comprendre au maximum $1 page{{PLURAL:$1||s}}. Pour ajouter une nouvelle page, veuillez supprimer une page existante.",
-	"wikistories-toast-maxframes-selecting": "Au plus $1 image{{PLURAL:$1| est autorisée|s sont autorisées}} par récit.",
+	"wikistories-toast-maxframes-addingmore": "Chaque récit peut comprendre au maximum $1 {{PLURAL:$1|page|pages}}. Pour ajouter une nouvelle page, veuillez supprimer une page existante.",
+	"wikistories-toast-maxframes-selecting": "Au plus $1 {{PLURAL:$1|image est autorisée|images sont autorisées}} par récit.",
 	"wikistories-error-notenoughframes-title": "Pas assez de pages",
-	"wikistories-error-notenoughframes-message": "Tous les Wikirécits nécessitent au moins {{PLURAL:$1|1=une|2=deux|3=trois|4=quatre|5=cinq|6=six|7=sept|8=huit|9=neuf|10=dix|$1}} page{{PLURAL:$1||s}}. Veuillez en ajouter {{PLURAL:$2|1=une|2=deux|3=trois|4=quatre|5=cinq|6=six|7=sept|8=huit|9=neuf|10=dix|$2}}.",
+	"wikistories-error-notenoughframes-message": "Tous les Wikirécits nécessitent au moins {{PLURAL:$1|1=une|2=deux|3=trois|4=quatre|5=cinq|6=six|7=sept|8=huit|9=neuf|10=dix|$1}} {{PLURAL:$1|page|pages}}. Veuillez en ajouter {{PLURAL:$2|1=une|2=deux|3=trois|4=quatre|5=cinq|6=six|7=sept|8=huit|9=neuf|10=dix|$2}}.",
 	"wikistories-error-frameswithouttext-title": "Texte manquant",
-	"wikistories-error-frameswithouttext-message": "Toutes les pages de Wikirécits nécessitent du texte. Veuillez ajouter du texte à $1 page{{PLURAL:$1||s}} du récit.",
+	"wikistories-error-frameswithouttext-message": "Toutes les pages de Wikirécits nécessitent du texte. Veuillez ajouter du texte à $1 {{PLURAL:$1|page|pages}} du récit.",
 	"wikistories-builder-publishform-navigator-title": "Publier le Wikirécit",
 	"wikistories-builder-publishform-placeholder": "Saisissez ici le titre du récit...",
 	"wikistories-builder-publishform-publishbutton": "Publier",
@@ -81,5 +81,5 @@
 	"wikistories-storyviewer-cover-page-heading": "Wikirécit",
 	"wikistories-file-not-found": "Fichier « $1 » introuvable.",
 	"wikistories-from-article-not-found": "Article « $1 » introuvable.",
-	"wikistories-text-too-long": "Le texte du cadre nº $1 est trop long. Il comporte $2 caractère{{PLURAL:$2||s}} mais le maximum autorisé est $3."
+	"wikistories-text-too-long": "Le texte du cadre nº $1 est trop long. Il comporte $2 {{PLURAL:$2|caractère|caractères}} mais le maximum autorisé est $3."
 }
