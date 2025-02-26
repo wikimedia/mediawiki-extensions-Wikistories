@@ -26,7 +26,7 @@
 	"storybuilder": "בונה הסיפורים",
 	"wikistories-specialstorybuilder-title": "בונה הסיפורים",
 	"wikistories-specialstorybuilder-loading": "טעינה...",
-	"wikistories-specialstorybuilder-nojswarning": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",
+	"wikistories-specialstorybuilder-nojswarning": "הדף המיוחד הזה דורש הפעלת JavaScript כדי לעבוד",
 	"wikistories-specialstorybuilder-mustbeloggedin": "נא להיכנס או ליצור חשבון כדי ליצור סיפורים",
 	"wikistories-specialstorybuilder-invalidsubpage": "ב־URL, יש לציין ערך שיש ליצור עליו סיפור או כותרת של סיפור לעריכה. חובה לכלול גם את מרחב השם של הסיפור.",
 	"wikistories-search-inputplaceholder": "חיפוש תמונות",
