@@ -3,9 +3,7 @@
 namespace MediaWiki\Extension\Wikistories;
 
 use Article;
-use ManualLogEntry;
 use MediaWiki\Config\Config;
-use MediaWiki\Context\RequestContext;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Wikistories\Jobs\ArticleChangedJob;
 use MediaWiki\Hook\ActionModifyFormFieldsHook;
@@ -13,28 +11,17 @@ use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\ParserCacheSaveCompleteHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticlePurgeHook;
-use MediaWiki\Page\Hook\PageDeleteCompleteHook;
-use MediaWiki\Page\Hook\PageUndeleteCompleteHook;
-use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Parser\ParserCache;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
-use MediaWiki\Permissions\Authority;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
-use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\Storage\EditResult;
-use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use MediaWiki\User\UserIdentity;
 use WikiPage;
 
 class Hooks implements
 	LoginFormValidErrorMessagesHook,
-	PageSaveCompleteHook,
-	PageDeleteCompleteHook,
-	PageUndeleteCompleteHook,
 	GetPreferencesHook,
 	ParserCacheSaveCompleteHook,
 	ArticlePurgeHook,
@@ -102,45 +89,6 @@ class Hooks implements
 	}
 
 	/**
-	 * @param ProperPageIdentity $page
-	 */
-	private static function purgeStories( ProperPageIdentity $page ) {
-		$services = MediaWikiServices::getInstance();
-		/** @var PageLinksSearch $pageLinksSearch */
-		$pageLinksSearch = $services->get( 'Wikistories.PageLinksSearch' );
-		$wikiPageFactory = $services->getWikiPageFactory();
-		$storiesId = $pageLinksSearch->getPageLinks( $page->getDBkey(), 99 );
-		foreach ( $storiesId as $storyId ) {
-			$page = $wikiPageFactory->newFromID( $storyId );
-			$page->doPurge();
-		}
-	}
-
-	/**
-	 * @param ProperPageIdentity $page
-	 * @param Authority $deleter
-	 */
-	private static function deleteStories( ProperPageIdentity $page, Authority $deleter ) {
-		$request = RequestContext::getMain()->getRequest();
-		$services = MediaWikiServices::getInstance();
-		/** @var PageLinksSearch $pageLinksSearch */
-		$pageLinksSearch = $services->get( 'Wikistories.PageLinksSearch' );
-		$wikiPageFactory = $services->getWikiPageFactory();
-		$deletePageFactory = $services->getDeletePageFactory();
-		$storiesId = $pageLinksSearch->getPageLinks( $page->getDBkey(), 99 );
-		foreach ( $storiesId as $storyId ) {
-			$page = $wikiPageFactory->newFromID( $storyId );
-			$deletePage = $deletePageFactory->newDeletePage(
-				$page,
-				$deleter
-			);
-			$deletePage
-				->setSuppress( $request->getBool( 'wpSuppress' ) )
-				->deleteIfAllowed( $request->getText( 'wpReason' ) );
-		}
-	}
-
-	/**
 	 * @return array Data used by the 'discover' module
 	 */
 	public static function getDiscoverBundleData(): array {
@@ -167,146 +115,6 @@ class Hooks implements
 	 */
 	public function onLoginFormValidErrorMessages( array &$messages ) {
 		$messages[] = 'wikistories-specialstorybuilder-mustbeloggedin';
-	}
-
-	/**
-	 * When editing a story with the form, it is possible to change the 'Related article'
-	 * to change which article the story will be shown on. The link to the new article will
-	 * be done automatically with the page links but it will still show on the previous
-	 * article because of the long-live stories cache.
-	 *
-	 * This hook invalidates the stories cache for the old article.
-	 *
-	 * @param WikiPage $wikiPage
-	 * @param UserIdentity $user
-	 * @param string $summary
-	 * @param int $flags
-	 * @param RevisionRecord $revisionRecord
-	 * @param EditResult $editResult
-	 */
-	public function onPageSaveComplete(
-		$wikiPage,
-		$user,
-		$summary,
-		$flags,
-		$revisionRecord,
-		$editResult
-	) {
-		if ( $wikiPage->getNamespace() !== NS_STORY ) {
-			return;
-		}
-
-		if ( $wikiPage->getContentModel() !== 'story' ) {
-			return;
-		}
-
-		DeferredUpdates::addCallableUpdate( static function () use ( $wikiPage, $revisionRecord ) {
-			$services = MediaWikiServices::getInstance();
-			/** @var StoriesCache $cache */
-			$cache = $services->get( 'Wikistories.Cache' );
-			/** @var StoryContent $story */
-			$story = $revisionRecord->getContent( 'main' );
-			'@phan-var StoryContent $story';
-			$articleTitle = $story->getArticleTitle();
-			if ( $articleTitle ) {
-				$cache->invalidateForArticle( $articleTitle->getId() );
-			}
-			$cache->invalidateStory( $wikiPage->getId() );
-		} );
-	}
-
-	/**
-	 * Do purge stories when article is deleted
-	 * Invalidate stories cache for the related article
-	 *
-	 * @param ProperPageIdentity $page
-	 * @param Authority $deleter
-	 * @param string $reason
-	 * @param int $pageID
-	 * @param RevisionRecord $deletedRev
-	 * @param ManualLogEntry $logEntry
-	 * @param int $archivedRevisionCount
-	 */
-	public function onPageDeleteComplete(
-		ProperPageIdentity $page,
-		Authority $deleter,
-		string $reason,
-		int $pageID,
-		RevisionRecord $deletedRev,
-		ManualLogEntry $logEntry,
-		int $archivedRevisionCount
-	) {
-		// NS_MAIN deletion
-		if ( $page->getNamespace() === NS_MAIN ) {
-			$deleteStories = RequestContext::getMain()->getRequest()->getBool( 'wpDeleteStory' );
-			DeferredUpdates::addCallableUpdate( static function () use ( $page, $deleter, $deleteStories ) {
-				if ( $deleteStories ) {
-					self::deleteStories( $page, $deleter );
-				} else {
-					self::purgeStories( $page );
-				}
-			} );
-			return;
-		}
-
-		// NS_STORY deletion
-		if ( $page->getNamespace() !== NS_STORY ) {
-			return;
-		}
-
-		$story = $deletedRev->getContent( 'main' );
-		if ( !( $story instanceof StoryContent ) ) {
-			return;
-		}
-
-		$articleTitle = $story->getArticleTitle();
-		if ( $articleTitle === null ) {
-			return;
-		}
-
-		$articlePageId = $articleTitle->getId();
-		if ( $articlePageId === 0 ) {
-			return;
-		}
-
-		DeferredUpdates::addCallableUpdate( static function () use ( $articlePageId ) {
-			$services = MediaWikiServices::getInstance();
-			/** @var StoriesCache $cache */
-			$cache = $services->get( 'Wikistories.Cache' );
-
-			$cache->invalidateForArticle( $articlePageId );
-		} );
-	}
-
-	/**
-	 * Do purge stories when article is undeleted
-	 *
-	 * @param ProperPageIdentity $page
-	 * @param Authority $restorer
-	 * @param string $reason
-	 * @param RevisionRecord $restoredRev
-	 * @param ManualLogEntry $logEntry
-	 * @param int $restoredRevisionCount
-	 * @param bool $created
-	 * @param array $restoredPageIds
-	 */
-	public function onPageUndeleteComplete(
-		ProperPageIdentity $page,
-		Authority $restorer,
-		string $reason,
-		RevisionRecord $restoredRev,
-		ManualLogEntry $logEntry,
-		int $restoredRevisionCount,
-		bool $created,
-		array $restoredPageIds
-	): void {
-		// NS_MAIN deletion
-		if ( $page->getNamespace() === NS_MAIN ) {
-			DeferredUpdates::addCallableUpdate( static function () use ( $page ) {
-				self::purgeStories( $page );
-			} );
-			return;
-		}
 	}
 
 	/**
