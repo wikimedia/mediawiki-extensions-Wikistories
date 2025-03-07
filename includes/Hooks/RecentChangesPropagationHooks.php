@@ -38,7 +38,7 @@ class RecentChangesPropagationHooks implements
 	OldChangesListRecentChangesLineHook,
 	ChangesListSpecialPageStructuredFiltersHook
 {
-	private const SRC_WIKISTORIES = 'src_wikistories';
+	public const SRC_WIKISTORIES = 'src_wikistories';
 
 	/** @var RevisionStore */
 	private $revisionStore;
