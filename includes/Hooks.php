@@ -259,11 +259,22 @@ class Hooks implements
 			return;
 		}
 
-		DeferredUpdates::addCallableUpdate( static function () use ( $pageID ) {
+		$articleTitle = $story->getArticleTitle();
+		if ( $articleTitle === null ) {
+			return;
+		}
+
+		$articlePageId = $articleTitle->getId();
+		if ( $articlePageId === 0 ) {
+			return;
+		}
+
+		DeferredUpdates::addCallableUpdate( static function () use ( $articlePageId ) {
 			$services = MediaWikiServices::getInstance();
 			/** @var StoriesCache $cache */
 			$cache = $services->get( 'Wikistories.Cache' );
-			$cache->invalidateForArticle( $pageID );
+
+			$cache->invalidateForArticle( $articlePageId );
 		} );
 	}
 
