@@ -7,32 +7,28 @@ use HtmlArmor;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Context\RequestContext;
-use MediaWiki\Deferred\DeferredUpdates;
-use MediaWiki\Extension\Wikistories\StoryContent;
 use MediaWiki\Hook\EnhancedChangesListModifyBlockLineDataHook;
 use MediaWiki\Hook\EnhancedChangesListModifyLineDataHook;
 use MediaWiki\Hook\OldChangesListRecentChangesLineHook;
 use MediaWiki\Html\Html;
 use MediaWiki\Language\Language;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\MainConfigNames;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\PageReference;
 use MediaWiki\Page\PageReferenceValue;
-use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\SpecialPage\Hook\ChangesListSpecialPageStructuredFiltersHook;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\Storage\Hook\PageSaveCompleteHook;
-use MediaWiki\Title\Title;
+use MediaWiki\Storage\EditResult;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentity;
 use RecentChange;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class RecentChangesPropagationHooks implements
-	PageSaveCompleteHook,
 	EnhancedChangesListModifyBlockLineDataHook,
 	EnhancedChangesListModifyLineDataHook,
 	OldChangesListRecentChangesLineHook,
@@ -85,32 +81,27 @@ class RecentChangesPropagationHooks implements
 	}
 
 	/**
-	 * When a story is saved (created or edited), create a recent changes
+	 * When a story is saved (created or edited), we create a recent changes
 	 * entry for the related article so that watchers of that article can
 	 * be aware of the story change.
 	 *
-	 * @inheritDoc
+	 * @note The logic for creating the fake RecentChanges entry is in this class
+	 * because this is where we define how that entry is later visualized.
+	 * The actual insertion of the fake RC entry is left to EventIngress, which
+	 * handles core events triggered by page changes.
 	 */
-	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ) {
-		if ( $wikiPage->getNamespace() !== NS_STORY ) {
-			// not the Story namespace
-			return;
-		}
-		/** @var StoryContent $newStory */
-		$newStory = $revisionRecord->getContent( 'main' );
-
-		if ( $newStory === null ) {
-			// can't get the content
-			return;
-		}
-
-		if ( !( $newStory instanceof StoryContent ) ) {
-			// not the story content format
-			return;
-		}
-
-		$article = Title::newFromText( $newStory->getFromArticle() );
-		$context = RequestContext::getMain();
+	public static function makeRecentChangesEntry(
+		PageIdentity $article,
+		RevisionRecord $revisionRecord,
+		UserIdentity $user,
+		string $summary,
+		string $requestIP,
+		bool $minor,
+		bool $bot,
+		int $patrolled,
+		?EditResult $editResult
+	): RecentChange {
+		// NOTE: $revisionRecord does not belong to $article!
 
 		$rc = new RecentChange;
 		$rc->mAttribs = [
@@ -119,18 +110,18 @@ class RecentChangesPropagationHooks implements
 			'rc_title' => $article->getDBkey(),
 			'rc_type' => RC_EXTERNAL,
 			'rc_source' => self::SRC_WIKISTORIES,
-			'rc_minor' => ( $flags & EDIT_MINOR ) > 0,
+			'rc_minor' => $minor,
 			'rc_cur_id' => $article->getId(),
 			'rc_user' => $user->getId(),
 			'rc_user_text' => $user->getName(),
-			'rc_comment' => &$summary,
-			'rc_comment_text' => &$summary,
+			'rc_comment' => $summary,
+			'rc_comment_text' => $summary,
 			'rc_comment_data' => null,
 			'rc_this_oldid' => (int)$revisionRecord->getId(),
 			'rc_last_oldid' => (int)$revisionRecord->getParentId(),
-			'rc_bot' => ( $flags & EDIT_FORCE_BOT ) > 0,
-			'rc_ip' => $context->getRequest()->getIP(),
-			'rc_patrolled' => $this->getPatrolled( $article, $context->getAuthority() ),
+			'rc_bot' => $bot,
+			'rc_ip' => $requestIP,
+			'rc_patrolled' => $patrolled,
 			'rc_new' => 0,
 			'rc_old_len' => 0,
 			'rc_new_len' => 0,
@@ -144,22 +135,22 @@ class RecentChangesPropagationHooks implements
 			] )
 		];
 
+		// TODO: deprecate the 'prefixedDBkey' entry, let callers do the formatting.
+		$formatter = MediaWikiServices::getInstance()->getTitleFormatter();
+
 		$rc->mExtra = [
-			'prefixedDBkey' => $article->getPrefixedDBkey(),
+			'prefixedDBkey' => $formatter->getPrefixedDBkey( $article ),
 			'lastTimestamp' => 0,
 			'oldSize' => 0,
 			'newSize' => 0,
 			'pageStatus' => 'changed'
 		];
 
-		DeferredUpdates::addCallableUpdate(
-			static function () use ( $rc, $editResult ) {
-				$rc->setEditResult( $editResult );
-				$rc->save();
-			},
-			DeferredUpdates::POSTSEND,
-			$this->loadBalancer->getConnection( DB_PRIMARY )
-		);
+		if ( $editResult ) {
+			$rc->setEditResult( $editResult );
+		}
+
+		return $rc;
 	}
 
 	/**
@@ -171,18 +162,6 @@ class RecentChangesPropagationHooks implements
 			$this->wordSep = $context->msg( 'word-separator' )->plain();
 		}
 		return $this->wordSep;
-	}
-
-	/**
-	 * @param Title $title
-	 * @param Authority $performer
-	 * @return int
-	 */
-	private function getPatrolled( Title $title, Authority $performer ): int {
-		$useRCPatrol = $this->config->get( MainConfigNames::UseRCPatrol );
-		return $useRCPatrol && $performer->definitelyCan( 'autopatrol', $title ) ?
-			RecentChange::PRC_AUTOPATROLLED :
-			RecentChange::PRC_UNPATROLLED;
 	}
 
 	/**

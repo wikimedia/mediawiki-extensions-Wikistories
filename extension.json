@@ -96,16 +96,10 @@
 		"GetBetaFeaturePreferences": "BetaFeaturesHandlers",
 		"BeforePageDisplay": "PageDisplayHandlers",
 		"LoginFormValidErrorMessages": "main",
-		"PageSaveComplete": [
-			"main",
-			"RecentChangesPropagationHooks"
-		],
 		"EnhancedChangesListModifyBlockLineData": "RecentChangesPropagationHooks",
 		"EnhancedChangesListModifyLineData": "RecentChangesPropagationHooks",
 		"OldChangesListRecentChangesLine": "RecentChangesPropagationHooks",
 		"ChangesListSpecialPageStructuredFilters": "RecentChangesPropagationHooks",
-		"PageDeleteComplete": "main",
-		"PageUndeleteComplete": "main",
 		"GetPreferences": "main",
 		"BeforeCreateEchoEvent": "EchoNotificationsHandlers",
 		"EchoGetBundleRules": "EchoNotificationsHandlers",
@@ -113,6 +107,22 @@
 		"ArticlePurge": "main",
 		"ActionModifyFormFields": "main"
 	},
+	"DomainEventSubscribers": [
+		{
+			"events": [
+				"PageUpdated",
+				"PageDeleted"
+			],
+			"class": "MediaWiki\\Extension\\Wikistories\\EventIngress",
+			"services": [
+				"Wikistories.Cache",
+				"Wikistories.PageLinksSearch",
+				"WikiPageFactory",
+				"DeletePageFactory",
+				"MainConfig"
+			]
+		}
+	],
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
