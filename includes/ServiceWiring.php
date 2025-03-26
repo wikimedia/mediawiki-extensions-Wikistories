@@ -29,7 +29,8 @@ return [
 				$services->getMainConfig()
 			),
 			$services->getRepoGroup(),
-			$services->getPageStore()
+			$services->getPageStore(),
+			$services->getTitleFactory()
 		);
 	},
 

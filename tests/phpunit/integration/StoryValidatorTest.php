@@ -6,6 +6,7 @@ use File;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
 use MediaWikiIntegrationTestCase;
@@ -60,7 +61,8 @@ class StoryValidatorTest extends MediaWikiIntegrationTestCase {
 		$validator = new StoryValidator(
 			$options,
 			$this->createRepoGroupMock(),
-			$this->createPageStoreMock()
+			$this->createPageStoreMock(),
+			MediaWikiServices::getInstance()->getTitleFactory()
 		);
 		$this->assertEquals( $expectedValid, $validator->isValid( $story )->isGood() );
 	}
@@ -151,6 +153,11 @@ class StoryValidatorTest extends MediaWikiIntegrationTestCase {
 						'image' => [ 'filename' => 'Cat_napping.jpg' ],
 						'text' => [ 'value' => 'Sleeping now...' ]
 					],
+				],
+				'categories' => [
+					'Wikistories',
+					// Looks invalid but will be normalized to 'Wikistories'
+					'wikistories___',
 				]
 			] ],
 			'Text too long' => [ false, [
@@ -179,6 +186,23 @@ class StoryValidatorTest extends MediaWikiIntegrationTestCase {
 						'image' => [ 'filename' => 'NOT-A-FILE.jpg' ],
 						'text' => [ 'value' => 'Sleeping now...' ]
 					],
+				]
+			] ],
+			'Invalid category name' => [ false, [
+				'schemaVersion' => 1,
+				'articleId' => 114,
+				'frames' => [
+					[
+						'image' => [ 'filename' => 'Cat_poster_1.jpg' ],
+						'text' => [ 'value' => 'This is a cat' ]
+					],
+					[
+						'image' => [ 'filename' => 'Cat_napping.jpg' ],
+						'text' => [ 'value' => 'Sleeping now...' ]
+					],
+				],
+				'categories' => [
+					'ws<>$#',
 				]
 			] ],
 			'Empty is OK' => [ true, (object)[] ]

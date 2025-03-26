@@ -4,8 +4,9 @@ namespace MediaWiki\Extension\Wikistories;
 
 use JsonSchema\Validator;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Page\PageLookup;
-use RepoGroup;
+use MediaWiki\Title\TitleFactory;
 use StatusValue;
 
 class StoryValidator {
@@ -25,20 +26,26 @@ class StoryValidator {
 	/** @var PageLookup */
 	private $pageLookup;
 
+	/** @var TitleFactory */
+	private $titleFactory;
+
 	/**
 	 * @param ServiceOptions $options
 	 * @param RepoGroup $repoGroup
 	 * @param PageLookup $pageLookup
+	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
 		ServiceOptions $options,
 		RepoGroup $repoGroup,
-		PageLookup $pageLookup
+		PageLookup $pageLookup,
+		TitleFactory $titleFactory
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
 		$this->repoGroup = $repoGroup;
 		$this->pageLookup = $pageLookup;
+		$this->titleFactory = $titleFactory;
 	}
 
 	/**
@@ -97,6 +104,14 @@ class StoryValidator {
 		foreach ( $filesUsed as $name ) {
 			if ( !isset( $files[ $name ] ) ) {
 				return StatusValue::newFatal( 'wikistories-file-not-found', $name );
+			}
+		}
+
+		// Categories must be valid but may not exist yet
+		foreach ( $story->getCategories() as $categoryName ) {
+			$categoryTitle = $this->titleFactory->makeTitleSafe( NS_CATEGORY, $categoryName );
+			if ( $categoryTitle === null ) {
+				return StatusValue::newFatal( 'wikistories-invalid-category-name', $categoryName );
 			}
 		}
 

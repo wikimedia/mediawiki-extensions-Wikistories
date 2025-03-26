@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use JobQueueGroup;
 use MediaWiki\Category\TrackingCategories;
 use MediaWiki\Content\Content;
 use MediaWiki\Content\JsonContentHandler;
@@ -11,10 +10,12 @@ use MediaWiki\Content\Transform\PreloadTransformParams;
 use MediaWiki\Content\Transform\PreSaveTransformParams;
 use MediaWiki\Content\ValidationParams;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\Jobs\RefreshLinksJob;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\Title\TitleValue;
-use RefreshLinksJob;
 
 class StoryContentHandler extends JsonContentHandler {
 
@@ -36,6 +37,9 @@ class StoryContentHandler extends JsonContentHandler {
 	/** @var JobQueueGroup */
 	private $jobQueueGroup;
 
+	/** @var TitleFactory */
+	private $titleFactory;
+
 	/**
 	 * @param string $modelId
 	 * @param StoryConverter $storyConverter
@@ -44,6 +48,7 @@ class StoryContentHandler extends JsonContentHandler {
 	 * @param StoryTrackingCategories $storyTrackingCategories
 	 * @param TrackingCategories $trackingCategories
 	 * @param JobQueueGroup $jobQueueGroup
+	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
 		$modelId,
@@ -52,7 +57,8 @@ class StoryContentHandler extends JsonContentHandler {
 		StoryRenderer $storyRenderer,
 		StoryTrackingCategories $storyTrackingCategories,
 		TrackingCategories $trackingCategories,
-		JobQueueGroup $jobQueueGroup
+		JobQueueGroup $jobQueueGroup,
+		TitleFactory $titleFactory
 	) {
 		parent::__construct( $modelId );
 		$this->storyConverter = $storyConverter;
@@ -61,6 +67,7 @@ class StoryContentHandler extends JsonContentHandler {
 		$this->storyTrackingCategories = $storyTrackingCategories;
 		$this->trackingCategories = $trackingCategories;
 		$this->jobQueueGroup = $jobQueueGroup;
+		$this->titleFactory = $titleFactory;
 	}
 
 	/**
@@ -113,8 +120,11 @@ class StoryContentHandler extends JsonContentHandler {
 		}
 
 		// Categories
-		foreach ( $story->getCategories() as $category ) {
-			$parserOutput->addCategory( $category, $storyPage->getDBkey() );
+		foreach ( $story->getCategories() as $categoryName ) {
+			$categoryTitle = $this->titleFactory->makeTitleSafe( NS_CATEGORY, $categoryName );
+			if ( $categoryTitle ) {
+				$parserOutput->addCategory( $categoryTitle, $storyPage->getDBkey() );
+			}
 		}
 
 		// Tracking categories

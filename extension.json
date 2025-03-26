@@ -22,7 +22,8 @@
 				"Wikistories.StoryRenderer",
 				"Wikistories.TrackingCategories",
 				"TrackingCategories",
-				"JobQueueGroup"
+				"JobQueueGroup",
+				"TitleFactory"
 			]
 		}
 	},

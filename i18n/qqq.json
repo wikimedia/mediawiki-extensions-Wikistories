@@ -124,6 +124,7 @@
 	"wikistories-not-enough-frames": "Error message when the story does not have enough frames",
 	"wikistories-too-many-frames": "Error message when the story has too many frames",
 	"wikistories-text-too-long": "Error message when the text on a frame is too long.\nParameters:\n* $1 - index of the frame (starting at 1)\n* $2 - Length of the text\n* $3 - Maximum length allowed",
+	"wikistories-invalid-category-name": "Error message when trying to add a category with an invalid name.\nParameters:\n* $1 - category name",
 	"wikistories-no-image-category": "Tracking Categories for story no image found\n\n{{Tracking category name}}",
 	"wikistories-no-image-category-desc": "Description of the Tracking Categories for story no image found",
 	"wikistories-no-related-article": "Tracking Categories for story has no related article\n\n{{Tracking category name}}",
