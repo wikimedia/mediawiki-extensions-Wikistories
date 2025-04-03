@@ -7,7 +7,7 @@ use MediaWiki\Json\FormatJson;
 
 class StoryFactory {
 
-	public static function makeValidStory() {
+	public static function makeValidStory(): StoryContent {
 		return new StoryContent( FormatJson::encode( [
 			'schemaVersion' => StoryContent::SCHEMA_VERSION,
 			'articleId' => 114,
@@ -25,7 +25,7 @@ class StoryFactory {
 		] ) );
 	}
 
-	public static function makeValidStoryData() {
+	public static function makeValidStoryData(): array {
 		return [
 			'articleTitle' => 'Cat',
 			'articleId' => 12,
@@ -55,7 +55,7 @@ class StoryFactory {
 		];
 	}
 
-	public static function makeV0Story() {
+	public static function makeV0Story(): StoryContent {
 		return new StoryContent( FormatJson::encode( [
 			'fromArticle' => 'Cat',
 			'frames' => [
