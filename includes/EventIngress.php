@@ -129,7 +129,7 @@ class EventIngress extends EventSubscriberBase {
 	 * Invalidate stories cache for the related article.
 	 */
 	public function handlePageDeletedEvent( PageDeletedEvent $event ) {
-		$page = $event->getPageStateBefore();
+		$page = $event->getDeletedPage();
 		$deletedRev = $event->getLatestRevisionBefore();
 
 		// NS_MAIN deletion
