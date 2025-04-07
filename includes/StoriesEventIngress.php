@@ -4,12 +4,12 @@ namespace MediaWiki\Extension\Wikistories;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\DomainEvent\EventSubscriberBase;
+use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Extension\Wikistories\Hooks\RecentChangesPropagationHooks;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Page\DeletePageFactory;
 use MediaWiki\Page\Event\PageDeletedEvent;
-use MediaWiki\Page\Event\PageUpdatedEvent;
+use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\Authority;
@@ -21,7 +21,7 @@ use RecentChange;
  * Event subscriber acting as an ingress for relevant events emitted
  * by MediaWiki core.
  */
-class EventIngress extends EventSubscriberBase {
+class StoriesEventIngress extends DomainEventIngress {
 
 	private StoriesCache $storiesCache;
 	private PageLinksSearch $linksSearch;
@@ -56,15 +56,17 @@ class EventIngress extends EventSubscriberBase {
 	 * Also, when a story is saved (created or edited), it creates a recent changes
 	 * entry for the related article so that watchers of that article can
 	 * be aware of the story change.
+	 *
+	 * @noinspection PhpUnused
 	 */
-	public function handlePageUpdatedEvent( PageUpdatedEvent $event ) {
+	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ) {
 		$page = $event->getPage();
-		$revisionRecord = $event->getNewRevision();
+		$revisionRecord = $event->getLatestRevisionAfter();
 
 		// Undeletion in the main namespace
 		if ( $page->getNamespace() === NS_MAIN &&
 			$event->isCreation() &&
-			$event->hasCause( PageUpdatedEvent::CAUSE_UNDELETE )
+			$event->hasCause( PageRevisionUpdatedEvent::CAUSE_UNDELETE )
 		) {
 			$this->purgeStories( $page );
 		}
@@ -127,6 +129,8 @@ class EventIngress extends EventSubscriberBase {
 	/**
 	 * Do purge stories when article is deleted.
 	 * Invalidate stories cache for the related article.
+	 *
+	 * @noinspection PhpUnused
 	 */
 	public function handlePageDeletedEvent( PageDeletedEvent $event ) {
 		$page = $event->getDeletedPage();

@@ -107,13 +107,13 @@
 		"ArticlePurge": "main",
 		"ActionModifyFormFields": "main"
 	},
-	"DomainEventSubscribers": [
+	"DomainEventIngresses": [
 		{
 			"events": [
-				"PageUpdated",
+				"PageRevisionUpdated",
 				"PageDeleted"
 			],
-			"class": "MediaWiki\\Extension\\Wikistories\\EventIngress",
+			"class": "MediaWiki\\Extension\\Wikistories\\StoriesEventIngress",
 			"services": [
 				"Wikistories.Cache",
 				"Wikistories.PageLinksSearch",
