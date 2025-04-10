@@ -116,6 +116,7 @@
 	"wikistories-not-enough-frames": "A historia non ten marcos suficientes",
 	"wikistories-too-many-frames": "A historia ten demasiados marcos",
 	"wikistories-text-too-long": "O texto do marco #$1 é demasiado longo. Ten $2 {{PLURAL:$2|carácter|caracteres}} pero o máximo permitido é de $3.",
+	"wikistories-invalid-category-name": "Nome de categoría non válido: $1",
 	"wikistories-no-image-category": "Historia sen ficheiro de imaxe",
 	"wikistories-no-image-category-desc": "Un dos marcos da historia non ten imaxe",
 	"wikistories-no-related-article": "Historia sen artigo relacionado",

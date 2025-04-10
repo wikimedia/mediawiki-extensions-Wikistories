@@ -115,6 +115,7 @@
 	"wikistories-not-enough-frames": "Die Geschichte hat nicht genug Bilder",
 	"wikistories-too-many-frames": "Die Geschichte hat zu viele Bilder",
 	"wikistories-text-too-long": "Der Text im Rahmen #$1 ist zu lang. Er hat {{PLURAL:$2|$2 Zeichen}}, aber es sind maximal $3 erlaubt.",
+	"wikistories-invalid-category-name": "Ungültiger Kategoriename: $1",
 	"wikistories-no-image-category": "Geschichte ohne Bild",
 	"wikistories-no-image-category-desc": "Eine der Geschichten hat kein Bild",
 	"wikistories-no-related-article": "Geschichte ohne verwandten Artikel",
