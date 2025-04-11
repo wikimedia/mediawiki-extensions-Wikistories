@@ -122,6 +122,7 @@
 	"wikistories-not-enough-frames": "De vertelling bevat niet genoeg kaders",
 	"wikistories-too-many-frames": "De vertelling bevat te veel kaders",
 	"wikistories-text-too-long": "De tekst op kader nummer $1 is te lang. Er staan $2 teken{{PLURAL:$2||s}} in, maar het maximum is $3.",
+	"wikistories-invalid-category-name": "Onjuiste categorienaam: $1",
 	"wikistories-no-image-category": "Vertellingen zonder afbeelding",
 	"wikistories-no-image-category-desc": "In één van de kaders in de vertelling staat geen afbeelding",
 	"wikistories-no-related-article": "Vertellingen zonder gerelateerd artikel",

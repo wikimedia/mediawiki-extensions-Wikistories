@@ -3,6 +3,7 @@
 		"authors": [
 			"Cuzy",
 			"Gomoko",
+			"JLTRY",
 			"Lewis2013",
 			"Mahabarata",
 			"Verdy p"
@@ -120,6 +121,7 @@
 	"wikistories-not-enough-frames": "Le récit ne comprend pas assez de cadres",
 	"wikistories-too-many-frames": "Le récit comprend trop de cadres",
 	"wikistories-text-too-long": "Le texte du cadre nº $1 est trop long. Il comporte $2 {{PLURAL:$2|caractère|caractères}} mais le maximum autorisé est $3.",
+	"wikistories-invalid-category-name": "Nom de catégorie invalide : $1",
 	"wikistories-no-image-category": "Récit sans fichier image",
 	"wikistories-no-image-category-desc": "Une des cadres du récit n’a aucune image",
 	"wikistories-no-related-article": "Récit sans article associé",

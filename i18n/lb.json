@@ -47,5 +47,6 @@
 	"wikistories-storyviewer-edit": "Dës Geschicht änneren",
 	"wikistories-storyviewer-talk": "Deelt Äre Feedback",
 	"wikistories-file-not-found": "Fichier \"$1\" net fonnt",
-	"wikistories-from-article-not-found": "Artikel „$1“ net fonnt"
+	"wikistories-from-article-not-found": "Artikel „$1“ net fonnt",
+	"wikistories-invalid-category-name": "Ongültege Kategoriennumm: $1"
 }

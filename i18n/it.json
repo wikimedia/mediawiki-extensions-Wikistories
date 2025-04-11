@@ -43,5 +43,6 @@
 	"wikistories-storyviewer-next-story-header": "Per saperne di più",
 	"wikistories-storyviewer-next-story-viewtext": "Visualizza",
 	"wikistories-storyviewer-textsize": "Modifica la dimensione del testo",
-	"wikistories-storyviewer-edit": "Modifica questa storia"
+	"wikistories-storyviewer-edit": "Modifica questa storia",
+	"wikistories-invalid-category-name": "Nome categoria non valido: $1"
 }

@@ -114,6 +114,7 @@
 	"wikistories-not-enough-frames": "Le historia non contine sufficiente quadros",
 	"wikistories-too-many-frames": "Le historia contine troppo de quadros",
 	"wikistories-text-too-long": "Le texto sur le quadro №$1 es troppo longe. Illo ha $2 character{{PLURAL:$2||es}} ma le maximo permittite es $3.",
+	"wikistories-invalid-category-name": "Nomine de categoria non valide: $1",
 	"wikistories-no-image-category": "Historia sin file de imagine",
 	"wikistories-no-image-category-desc": "Un del quadros del historia non ha imagine",
 	"wikistories-no-related-article": "Historia sin articulo associate",

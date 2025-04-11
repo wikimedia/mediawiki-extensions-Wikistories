@@ -117,6 +117,7 @@
 	"wikistories-not-enough-frames": "בסיפור אין מספיק שקופיות",
 	"wikistories-too-many-frames": "בסיפור יש יותר מדי שקופיות",
 	"wikistories-text-too-long": "הטקסט בשקופית מס' $1 ארוך מדי. יש בו {{PLURAL:$2|תו אחד|$2 תווים}}, אבל המספר המרבי המותר הוא $3.",
+	"wikistories-invalid-category-name": "שם קטגוריה בלתי־תקין: $1",
 	"wikistories-no-image-category": "סיפור ללא קובץ תמונה",
 	"wikistories-no-image-category-desc": "באחת ממסגרות הסיפור אין תמונה",
 	"wikistories-no-related-article": "סיפור ללא ערך משויך",
