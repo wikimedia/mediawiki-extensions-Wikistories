@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\Wikistories\Hooks;
 
-use ChangesListBooleanFilter;
 use HtmlArmor;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Config\Config;
@@ -17,6 +16,8 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\PageReference;
 use MediaWiki\Page\PageReferenceValue;
+use MediaWiki\RecentChanges\ChangesListBooleanFilter;
+use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\SpecialPage\Hook\ChangesListSpecialPageStructuredFiltersHook;
@@ -25,7 +26,6 @@ use MediaWiki\Storage\EditResult;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use RecentChange;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class RecentChangesPropagationHooks implements

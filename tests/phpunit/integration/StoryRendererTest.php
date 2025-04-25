@@ -2,14 +2,14 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use ForeignAPIFile;
 use MediaWiki\Extension\Wikistories\Tests\StoryFactory;
+use MediaWiki\FileRepo\File\ForeignAPIFile;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
-use RepoGroup;
 
 /**
  * @group Database

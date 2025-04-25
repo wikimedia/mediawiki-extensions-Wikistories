@@ -2,15 +2,15 @@
 
 namespace MediaWiki\Extension\Wikistories\Jobs;
 
-use IJobSpecification;
-use Job;
-use JobSpecification;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\Wikistories\Hooks\EchoNotificationsHandlers;
 use MediaWiki\Extension\Wikistories\PageLinksSearch;
 use MediaWiki\Extension\Wikistories\StoryContent;
 use MediaWiki\Extension\Wikistories\StoryContentAnalyzer;
+use MediaWiki\JobQueue\IJobSpecification;
+use MediaWiki\JobQueue\Job;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionLookup;

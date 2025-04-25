@@ -5,8 +5,9 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use ErrorPageError;
+use MediaWiki\Actions\WatchAction;
 use MediaWiki\Config\Config;
+use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Page\ExistingPageRecord;
@@ -17,7 +18,6 @@ use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\Watchlist\WatchedItemStore;
 use MediaWiki\Watchlist\WatchlistManager;
-use WatchAction;
 
 class SpecialStoryBuilder extends SpecialPage {
 

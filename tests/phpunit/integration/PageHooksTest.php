@@ -2,20 +2,20 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use LocalRepo;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\Wikistories\Hooks\RecentChangesPropagationHooks;
+use MediaWiki\FileRepo\LocalRepo;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Page\DeletePage;
 use MediaWiki\Page\DeletePageFactory;
 use MediaWiki\Page\PageIdentity;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiIntegrationTestCase;
 use PHPUnit\Framework\Assert;
-use RepoGroup;
-use WikiPage;
 
 /**
  * @group Database

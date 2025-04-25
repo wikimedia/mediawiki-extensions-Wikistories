@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Article;
 use MediaWiki\Config\Config;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\Wikistories\Jobs\ArticleChangedJob;
@@ -10,7 +9,9 @@ use MediaWiki\Hook\ActionModifyFormFieldsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\ParserCacheSaveCompleteHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\Article;
 use MediaWiki\Page\Hook\ArticlePurgeHook;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Parser\ParserCache;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
@@ -18,7 +19,6 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use WikiPage;
 
 class Hooks implements
 	LoginFormValidErrorMessagesHook,

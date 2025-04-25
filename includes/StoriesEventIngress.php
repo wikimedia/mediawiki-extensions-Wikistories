@@ -13,9 +13,9 @@ use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
-use RecentChange;
 
 /**
  * Event subscriber acting as an ingress for relevant events emitted

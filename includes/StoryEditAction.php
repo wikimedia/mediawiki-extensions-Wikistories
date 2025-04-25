@@ -2,7 +2,9 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-class StoryEditAction extends \EditAction {
+use MediaWiki\Actions\EditAction;
+
+class StoryEditAction extends EditAction {
 
 	public function show() {
 		$this->useTransactionalTimeLimit();

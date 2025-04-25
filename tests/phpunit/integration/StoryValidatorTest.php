@@ -2,15 +2,15 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use File;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
 use MediaWikiIntegrationTestCase;
-use RepoGroup;
 
 class StoryValidatorTest extends MediaWikiIntegrationTestCase {
 

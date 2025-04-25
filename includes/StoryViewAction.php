@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use Article;
-use FormlessAction;
+use MediaWiki\Actions\FormlessAction;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
+use MediaWiki\Page\Article;
 use MediaWiki\Utils\UrlUtils;
 
 class StoryViewAction extends FormlessAction {

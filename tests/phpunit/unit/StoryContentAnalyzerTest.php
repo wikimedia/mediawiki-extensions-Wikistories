@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWikiUnitTestCase;
 use MockTitleTrait;
-use WikiPage;
 
 class StoryContentAnalyzerTest extends MediaWikiUnitTestCase {
 
