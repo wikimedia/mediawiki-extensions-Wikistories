@@ -2,13 +2,20 @@
 	"@metadata": {
 		"authors": []
 	},
+	"rcshowhidewikistories-show": "Prikaži",
+	"rcshowhidewikistories-hide": "Sakrij",
+	"wikistories-story-navigator-title-edittext": "Uredi tekst",
 	"wikistories-confirmdialog-cancel": "Otkaži",
 	"wikistories-confirmdialog-ok": "U redu",
 	"wikistories-storyviewer-textsize-title": "Veličina teksta",
 	"wikistories-storyviewer-textsize-label-small": "Mala",
 	"wikistories-storyviewer-textsize-label-regular": "Normalna",
 	"wikistories-storyviewer-textsize-label-large": "Velika",
+	"wikistories-builder-publishform-gotostory": "Pročitaj priču",
+	"wikistories-builder-publishform-sharestory": "Deli priču",
+	"wikistories-nojs-form-categories-title": "Kategorije",
 	"wikistories-storyviewer-next-story-header": "Pročitaj još",
 	"wikistories-storyviewer-next-story-viewtext": "Prikaži",
-	"wikistories-storyviewer-textsize": "Promeni veličinu teksta"
+	"wikistories-storyviewer-textsize": "Promeni veličinu teksta",
+	"echo-category-title-wikistories-action": "Vikipriče"
 }
