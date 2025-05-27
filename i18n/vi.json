@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Minh Nguyen",
 			"Ngoxuannguyenchuong",
 			"Nguyenphutrong2",
 			"RiceCracker12"
@@ -10,7 +11,7 @@
 	"wikistories-search-inputplaceholder": "Tìm hình ảnh",
 	"wikistories-search-noresultstext": "Không có kết quả",
 	"wikistories-story-edittext-done": "Xong",
-	"wikistories-confirmdialog-delete-title": "Xoá trang này?",
-	"wikistories-confirmdialog-delete-accept": "Xoá",
+	"wikistories-confirmdialog-delete-title": "Xóa trang này?",
+	"wikistories-confirmdialog-delete-accept": "Xóa",
 	"wikistories-storyviewer-edit": "chỉnh sửa câu chuyện này"
 }
