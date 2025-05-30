@@ -102,7 +102,6 @@
 		"OldChangesListRecentChangesLine": "RecentChangesPropagationHooks",
 		"ChangesListSpecialPageStructuredFilters": "RecentChangesPropagationHooks",
 		"GetPreferences": "main",
-		"BeforeCreateEchoEvent": "EchoNotificationsHandlers",
 		"EchoGetBundleRules": "EchoNotificationsHandlers",
 		"ParserCacheSaveComplete": "main",
 		"ArticlePurge": "main",
@@ -468,5 +467,37 @@
 		"wikistories-no-related-article",
 		"wikistories-outdated-text-category"
 	],
+	"attributes": {
+		"Echo": {
+			"NotificationCategories": {
+				"wikistories-action": {
+					"priority": 5,
+					"title": "echo-category-title-wikistories-action",
+					"tooltip": "echo-pref-tooltip-wikistories-action"
+				}
+			},
+			"Notifications": {
+				"wikistories-articlechanged": {
+					"user-locators": [
+						"MediaWiki\\Extension\\Notifications\\UserLocator::locateUsersWatchingTitle"
+					],
+					"category": "wikistories-action",
+					"group": "neutral",
+					"section": "alert",
+					"presentation-model": "MediaWiki\\Extension\\Wikistories\\Notifications\\ArticleChangedPresentationModel",
+					"bundle": {
+						"web": true,
+						"email": true,
+						"expandable": false
+					}
+				}
+			},
+			"NotificationIcons": {
+				"wikistories-articlechanged": {
+					"path": "Wikistories/resources/images/edit.svg"
+				}
+			}
+		}
+	},
 	"manifest_version": 2
 }
