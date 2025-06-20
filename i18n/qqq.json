@@ -133,5 +133,6 @@
 	"wikistories-outdated-text-category-desc": "Description of the Tracking Categories for story with outdated text",
 	"ext-wikistories-storyviewaction-notfound-message": "Error message on story page with the storyview action when the story does not exist.",
 	"echo-category-title-wikistories-action": "Label for the Wikistories notification category on Special:Preferences",
+	"echo-pref-tooltip-wikistories-action": "Label for the Wikistories notification option on Special:Preferences.",
 	"wikistories-notification-articlechanged-header": "Main message for the notification indicating that a story needs to be reviewed following an article edit.\nParameters:\n* $1 - Title of the article that was edited\n* $2 - Title of the story that needs to be reviewed"
 }

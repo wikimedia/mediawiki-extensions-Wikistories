@@ -125,5 +125,6 @@
 	"wikistories-outdated-text-category-desc": "Some of the text used in this story is not present anymore in the source article",
 	"ext-wikistories-storyviewaction-notfound-message": "The Wikistory you're trying to access does not exist",
 	"echo-category-title-wikistories-action": "Wikistories",
+	"echo-pref-tooltip-wikistories-action": "Notify me when a Wikistory I watch needs updating.",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> was edited and <strong>$2</strong> needs to be reviewed"
 }
