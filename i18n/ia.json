@@ -123,5 +123,6 @@
 	"wikistories-outdated-text-category-desc": "Alcun del texto usate in iste historia non es plus presente in le articulo de fonte",
 	"ext-wikistories-storyviewaction-notfound-message": "Le Wikihistoria al qual tu tenta acceder non existe",
 	"echo-category-title-wikistories-action": "Wikihistorias",
+	"echo-pref-tooltip-wikistories-action": "Notificar me quando un Wikihistoria que io observa debe esser actualisate.",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> ha essite modificate e <strong>$2</strong> debe esser revidite"
 }

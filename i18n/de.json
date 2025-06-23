@@ -124,5 +124,6 @@
 	"wikistories-outdated-text-category-desc": "Ein Teil des in dieser Geschichte verwendeten Textes ist im Quellartikel nicht mehr vorhanden",
 	"ext-wikistories-storyviewaction-notfound-message": "Die Wikistory, auf die du zugreifen möchtest, existiert nicht",
 	"echo-category-title-wikistories-action": "Wikigeschichten",
+	"echo-pref-tooltip-wikistories-action": "Benachrichtige mich, wenn eine von mir beobachtete Wikistory aktualisiert werden muss.",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> wurde bearbeitet und <strong>$2</strong> muss überprüft werden"
 }

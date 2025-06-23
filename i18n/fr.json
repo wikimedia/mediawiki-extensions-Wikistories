@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Cuzy",
+			"Derugon",
 			"Gomoko",
 			"JLTRY",
 			"Lewis2013",
@@ -130,5 +131,6 @@
 	"wikistories-outdated-text-category-desc": "Une partie du texte utilisé dans ce récit ne figure plus dans l’article source",
 	"ext-wikistories-storyviewaction-notfound-message": "Le Wikirécit auquel vous essayez d’accéder n’existe pas",
 	"echo-category-title-wikistories-action": "Wikirécits",
+	"echo-pref-tooltip-wikistories-action": "Me prévenir lorsqu’un Wikirécit que je suit doit être mis à jour.",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> a été modifié et <strong>$2</strong> doit être relu"
 }

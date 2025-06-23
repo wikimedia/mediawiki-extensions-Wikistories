@@ -126,5 +126,6 @@
 	"wikistories-outdated-text-category-desc": "Дел од текстот на оваа приказна веќе не постои во изворната статија",
 	"ext-wikistories-storyviewaction-notfound-message": "Википриказната до која сакате да дојдете не постои",
 	"echo-category-title-wikistories-action": "Википриказни",
+	"echo-pref-tooltip-wikistories-action": "Извести ме кога ќе треба да се поднови википриказна што ја набљудувам.",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> е изменета и <strong>$2</strong> треба да се преработи"
 }
