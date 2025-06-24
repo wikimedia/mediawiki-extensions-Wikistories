@@ -125,5 +125,6 @@
 	"wikistories-outdated-text-category-desc": "Algúns dos textos utilizados nesta historia xa non están presentes no artigo de orixe",
 	"ext-wikistories-storyviewaction-notfound-message": "A wikihistoria á que estás intentando acceder non existe",
 	"echo-category-title-wikistories-action": "Wikihistorias",
+	"echo-pref-tooltip-wikistories-action": "Notificádeme cando algunha wikihistoria que vixío necesite actualizarse.",
 	"wikistories-notification-articlechanged-header": "\"<strong>$1</strong>\" foi editado e \"<strong>$2</strong>\" necesita unha revisión"
 }
