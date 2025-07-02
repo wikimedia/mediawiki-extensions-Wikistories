@@ -126,5 +126,6 @@
 	"wikistories-outdated-text-category-desc": "חלק מהטקסט המשמש בסיפור זה אינו קיים עוד בערך המקור",
 	"ext-wikistories-storyviewaction-notfound-message": "הוויקיסיפור שניסית לגשת אליו אינו קיים",
 	"echo-category-title-wikistories-action": "סיפורי ויקי",
+	"echo-pref-tooltip-wikistories-action": "להודיע לי כשיש צורך לעדכן סיפור ויקי שאני צופה בו.",
 	"wikistories-notification-articlechanged-header": "הדף <strong>$1</strong> נערך ויש לבדוק את הסיפור <strong>$2</strong>"
 }
