@@ -19,7 +19,9 @@
 	"wikistories-article-loading": "Йаззам чубаккхар...",
 	"wikistories-article-usetext": "Исторехь тӀетоха",
 	"wikistories-alert-okbuttontext": "Дика ду",
+	"wikistories-confirmdialog-cancel": "Йухайаккхар",
 	"wikistories-confirmdialog-ok": "OK",
+	"wikistories-confirmdialog-delete-title": "ХӀара агӀо дӀайаккха?",
 	"wikistories-confirmdialog-delete-accept": "ДӀайаккха",
 	"wikistories-confirmdialog-discardedits-title": "Йухадаха нисдарш?",
 	"wikistories-confirmdialog-discardstory-accept": "Йухадаккха",
@@ -31,7 +33,9 @@
 	"wikistories-nojs-form-label-image": "Сурт",
 	"wikistories-nojs-form-label-text": "Текст",
 	"wikistories-nojs-form-categories-title": "Категореш",
+	"wikistories-discover-cta-text": "Кхолла ВикиИстори",
 	"wikistories-storyviewer-next-story-header": "Ма-дарра",
 	"wikistories-storyviewer-next-story-viewtext": "Хьажа",
-	"wikistories-storyviewer-talk": "Хьайна хетарг йазде"
+	"wikistories-storyviewer-talk": "Хьайна хетарг йазде",
+	"wikistories-invalid-format": "Историн нийса йоцу формат"
 }
