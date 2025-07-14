@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"wikistories-specialstorybuilder-loading": "Чуйолуш…",
+	"wikistories-specialstorybuilder-nojswarning": "ХӀокху белхан агӀонна болх бан JavaScript оьшу.",
+	"wikistories-search-inputplaceholder": "Суьрташ лаха",
+	"wikistories-search-noresultstext": "ХӀумма а ца карийна",
+	"wikistories-story-goto-publish": "Кхин дӀа",
+	"wikistories-story-replaceimage": "ХӀара сурт хийца",
+	"wikistories-story-deleteframe": "ДӀайаккха хӀара агӀо",
+	"wikistories-imageattribution-author-unknown": "Ца вевза автор",
+	"wikistories-article-loading": "Йаззам чубаккхар...",
+	"wikistories-article-usetext": "Исторехь тӀетоха",
+	"wikistories-alert-okbuttontext": "Дика ду",
+	"wikistories-confirmdialog-delete-title": "ХӀара агӀо дӀайаккха?",
+	"wikistories-confirmdialog-delete-accept": "ДӀайаккха",
+	"wikistories-confirmdialog-discardedits-title": "Йухадаха нисдарш?",
+	"wikistories-confirmdialog-discardstory-accept": "Йухадаккха",
+	"wikistories-builder-publishform-publishbutton": "ДӀайазйан",
+	"wikistories-builder-publishform-saving": "ВикиИстори публикаци йеш йу…",
+	"wikistories-nojs-form-label-image": "Сурт",
+	"wikistories-nojs-form-label-text": "Текст",
+	"wikistories-discover-cta-text": "Кхолла ВикиИстори"
+}
