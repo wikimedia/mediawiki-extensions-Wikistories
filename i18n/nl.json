@@ -131,5 +131,6 @@
 	"wikistories-outdated-text-category-desc": "Een deel van de tekst die in deze vertelling wordt gebruikt, is niet meer aanwezig in het bronartikel",
 	"ext-wikistories-storyviewaction-notfound-message": "De wiki-vertelling die u probeert te openen bestaat niet",
 	"echo-category-title-wikistories-action": "Wiki-vertellingen",
+	"echo-pref-tooltip-wikistories-action": "Laat me weten wanneer een wiki-vertelling die ik volg moet worden bijgewerkt.",
 	"wikistories-notification-articlechanged-header": "<strong>$1</strong> is bewerkt en <strong>$2</strong> moet worden beoordeeld"
 }
