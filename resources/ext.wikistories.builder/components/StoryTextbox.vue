@@ -29,7 +29,7 @@
 		class="ext-wikistories-current-frame-textbox-select-cta"
 		@click="onSelect"
 	>
-		<span v-html="$i18n( 'wikistories-story-selecttext' ).text()"></span>
+		<span v-html="$i18n( 'wikistories-story-selecttext' ).parse()"></span>
 	</div>
 </template>
 
