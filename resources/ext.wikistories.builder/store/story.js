@@ -183,7 +183,7 @@ module.exports = {
 			const duplicates = {};
 			const warningMessage = {};
 			const duplicate = {
-				message: mw.msg( 'wikistories-story-edittext-duplicate' ),
+				message: mw.message( 'wikistories-story-edittext-duplicate' ).parse(),
 				icon: 'warning',
 				invertIconInDarkMode: true,
 				isAlwaysShown: true,
@@ -201,7 +201,7 @@ module.exports = {
 				// check if frame text is outdated (based on older version of article)
 				if ( frame.outdatedText ) {
 					warningMessage[ i ] = {
-						message: mw.msg( 'wikistories-story-edittext-outdated' ),
+						message: mw.message( 'wikistories-story-edittext-outdated' ).parse(),
 						icon: 'alert',
 						isAlwaysShown: true,
 						replace: true
