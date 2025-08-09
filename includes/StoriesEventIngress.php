@@ -9,7 +9,9 @@ use MediaWiki\Extension\Wikistories\Hooks\RecentChangesPropagationHooks;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Page\DeletePageFactory;
 use MediaWiki\Page\Event\PageDeletedEvent;
+use MediaWiki\Page\Event\PageDeletedListener;
 use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
+use MediaWiki\Page\Event\PageRevisionUpdatedListener;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\Authority;
@@ -21,7 +23,10 @@ use MediaWiki\Title\Title;
  * Event subscriber acting as an ingress for relevant events emitted
  * by MediaWiki core.
  */
-class StoriesEventIngress extends DomainEventIngress {
+class StoriesEventIngress
+	extends DomainEventIngress
+	implements PageRevisionUpdatedListener, PageDeletedListener
+{
 
 	private StoriesCache $storiesCache;
 	private PageLinksSearch $linksSearch;
@@ -59,7 +64,7 @@ class StoriesEventIngress extends DomainEventIngress {
 	 *
 	 * @noinspection PhpUnused
 	 */
-	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ) {
+	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
 		$page = $event->getPage();
 		$revisionRecord = $event->getLatestRevisionAfter();
 
@@ -132,7 +137,7 @@ class StoriesEventIngress extends DomainEventIngress {
 	 *
 	 * @noinspection PhpUnused
 	 */
-	public function handlePageDeletedEvent( PageDeletedEvent $event ) {
+	public function handlePageDeletedEvent( PageDeletedEvent $event ): void {
 		$page = $event->getDeletedPage();
 		$deletedRev = $event->getLatestRevisionBefore();
 
