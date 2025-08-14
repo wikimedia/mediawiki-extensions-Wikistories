@@ -122,7 +122,6 @@ class RecentChangesPropagationHooks implements
 			'rc_bot' => $bot,
 			'rc_ip' => $requestIP,
 			'rc_patrolled' => $patrolled,
-			'rc_new' => 0,
 			'rc_old_len' => 0,
 			'rc_new_len' => 0,
 			'rc_deleted' => 0,
