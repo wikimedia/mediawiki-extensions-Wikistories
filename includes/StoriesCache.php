@@ -65,7 +65,7 @@ class StoriesCache {
 	 * @param array $ids
 	 * @return mixed[]
 	 */
-	private function getStories( array $ids ) {
+	private function getStories( array $ids ): array {
 		$keys = $this->wanObjectCache->makeMultiKeys(
 			$ids,
 			function ( $id ) {
@@ -84,25 +84,16 @@ class StoriesCache {
 
 	/**
 	 * Clear the cached stories for the given article.
-	 *
-	 * @param int $articleId
 	 */
-	public function invalidateForArticle( int $articleId ) {
+	public function invalidateForArticle( int $articleId ): void {
 		$this->wanObjectCache->delete( $this->makeRelatedStoriesKey( $articleId ) );
 	}
 
-	/**
-	 * @param int $storyId
-	 */
-	public function invalidateStory( int $storyId ) {
+	public function invalidateStory( int $storyId ): void {
 		$this->wanObjectCache->delete( $this->makeStoryKey( $storyId ) );
 	}
 
-	/**
-	 * @param int $storyId
-	 * @return array|null
-	 */
-	private function loadAndRenderStory( int $storyId ) {
+	private function loadAndRenderStory( int $storyId ): ?array {
 		$page = $this->wikiPageFactory->newFromID( $storyId );
 		$storyContent = $page->getContent();
 		return $storyContent instanceof StoryContent ?
@@ -118,10 +109,6 @@ class StoriesCache {
 		return $this->wanObjectCache->makeKey( 'wikistories', self::CACHE_VERSION, 'related', $articleId );
 	}
 
-	/**
-	 * @param int $storyId
-	 * @return string
-	 */
 	private function makeStoryKey( int $storyId ): string {
 		return $this->wanObjectCache->makeKey( 'wikistories', self::CACHE_VERSION, 'story', $storyId );
 	}

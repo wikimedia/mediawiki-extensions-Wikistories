@@ -23,29 +23,16 @@ class PageDisplayHandlers implements BeforePageDisplayHook {
 	) {
 	}
 
-	/**
-	 * @param Skin $skin
-	 * @return bool
-	 */
-	private function shouldShowStoriesOnSkin( Skin $skin ) {
+	private function shouldShowStoriesOnSkin( Skin $skin ): bool {
 		$isMobileView = $this->mobileContext && $this->mobileContext->shouldDisplayMobileView();
 		return $skin->getSkinName() === 'minerva' && $isMobileView;
 	}
 
-	/**
-	 * @param IContextSource $context
-	 * @return bool
-	 */
-	private static function shouldShowStoriesForAction( IContextSource $context ) {
+	private static function shouldShowStoriesForAction( IContextSource $context ): bool {
 		return $context->getActionName() === 'view' &&
 			$context->getRequest()->getText( 'diff' ) === '';
 	}
 
-	/**
-	 * @param User $user
-	 * @param Config $config
-	 * @return bool
-	 */
 	private function shouldShowStoriesForUser( User $user, Config $config ): bool {
 		if ( Hooks::isBetaDiscoveryMode( $config ) ) {
 			return $user->isNamed()
@@ -60,23 +47,12 @@ class PageDisplayHandlers implements BeforePageDisplayHook {
 		}
 	}
 
-	/**
-	 * @param Title $title
-	 * @return bool
-	 */
 	private static function shouldShowStoriesOnPage( Title $title ): bool {
 		return !$title->isMainPage()
 			&& $title->inNamespace( NS_MAIN )
 			&& $title->exists();
 	}
 
-	/**
-	 * @param User $user
-	 * @param Title $title
-	 * @param Skin $skin
-	 * @param IContextSource $context
-	 * @return bool
-	 */
 	private function shouldShowStories( User $user, Title $title, Skin $skin, IContextSource $context ): bool {
 		return $this->shouldShowStoriesForUser( $user, $context->getConfig() )
 			&& $this->shouldShowStoriesOnSkin( $skin )

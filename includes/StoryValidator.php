@@ -26,10 +26,6 @@ class StoryValidator {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 	}
 
-	/**
-	 * @param StoryContent $story
-	 * @return StatusValue
-	 */
 	public function isValid( StoryContent $story ): StatusValue {
 		// Special case: empty content needs to be valid
 		// todo: make sure we can't save empty content stories with API

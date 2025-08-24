@@ -35,10 +35,6 @@ class ArticleChangedJob extends Job {
 		$params[ 'jobReleaseTimestamp' ] = time() + 60;
 	}
 
-	/**
-	 * @param int $pageId
-	 * @return IJobSpecification
-	 */
 	public static function newSpec( int $pageId ): IJobSpecification {
 		return new JobSpecification(
 			self::COMMAND,
@@ -52,7 +48,7 @@ class ArticleChangedJob extends Job {
 	 *
 	 * @return bool Success
 	 */
-	public function run() {
+	public function run(): bool {
 		$notify = ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) &&
 			$this->config->get( 'WikistoriesNotifyAboutStoryMaintenance' );
 		$articleId = $this->params[ 'article_id' ];
@@ -73,13 +69,7 @@ class ArticleChangedJob extends Job {
 		return true;
 	}
 
-	/**
-	 * @param UserIdentity $agent
-	 * @param Title $storyTitle
-	 * @param string $articleTitle
-	 * @param int $revId
-	 */
-	private function notify( UserIdentity $agent, Title $storyTitle, string $articleTitle, int $revId ) {
+	private function notify( UserIdentity $agent, Title $storyTitle, string $articleTitle, int $revId ): void {
 		Event::create( [
 			'type' => EchoNotificationsHandlers::NOTIFICATION_TYPE,
 			'agent' => $agent,

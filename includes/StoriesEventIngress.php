@@ -116,11 +116,6 @@ class StoriesEventIngress
 		$rc->save();
 	}
 
-	/**
-	 * @param Title $title
-	 * @param Authority $performer
-	 * @return int
-	 */
 	private function getPatrolled( Title $title, Authority $performer ): int {
 		return $this->useRCPatrol && $performer->definitelyCan( 'autopatrol', $title ) ?
 			RecentChange::PRC_AUTOPATROLLED :
@@ -180,10 +175,7 @@ class StoriesEventIngress
 		$this->storiesCache->invalidateForArticle( $articlePageId );
 	}
 
-	/**
-	 * @param ProperPageIdentity $page
-	 */
-	private function purgeStories( ProperPageIdentity $page ) {
+	private function purgeStories( ProperPageIdentity $page ): void {
 		$storiesId = $this->linksSearch->getPageLinks( $page->getDBkey(), 99 );
 		foreach ( $storiesId as $storyId ) {
 			$page = $this->wikiPageFactory->newFromID( $storyId );
@@ -191,7 +183,12 @@ class StoriesEventIngress
 		}
 	}
 
-	private function deleteStories( string $reason, ProperPageIdentity $page, Authority $authority, bool $suppress ) {
+	private function deleteStories(
+		string $reason,
+		ProperPageIdentity $page,
+		Authority $authority,
+		bool $suppress,
+	): void {
 		$storiesId = $this->linksSearch->getPageLinks( $page->getDBkey(), 99 );
 		foreach ( $storiesId as $storyId ) {
 			$page = $this->wikiPageFactory->newFromID( $storyId );

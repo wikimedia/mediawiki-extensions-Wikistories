@@ -19,17 +19,14 @@ class StoryViewAction extends FormlessAction {
 		parent::__construct( $article, $context );
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getName() {
+	public function getName(): string {
 		return 'storyview';
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function onView() {
+	public function onView(): string {
 		$out = $this->getOutput();
 		$out->setArticleBodyOnly( true );
 		$out->setPageTitle( $this->getTitle()->getText() );
@@ -68,7 +65,7 @@ class StoryViewAction extends FormlessAction {
 	/**
 	 * @param array $storyData
 	 */
-	private function addLinkPreviewTags( array $storyData ) {
+	private function addLinkPreviewTags( array $storyData ): void {
 		$out = $this->getOutput();
 		// Open graph: https://ogp.me/
 		$out->addMeta( 'og:title', $storyData[ 'storyTitle' ] );

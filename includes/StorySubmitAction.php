@@ -3,14 +3,11 @@
 namespace MediaWiki\Extension\Wikistories;
 
 class StorySubmitAction extends StoryEditAction {
-	/**
-	 * @return string
-	 */
-	public function getName() {
+	public function getName(): string {
 		return 'submit';
 	}
 
-	public function show() {
+	public function show(): void {
 		parent::show();
 	}
 }

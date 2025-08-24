@@ -23,10 +23,6 @@ class StoryContentAnalyzer {
 	) {
 	}
 
-	/**
-	 * @param StoryContent $story
-	 * @return bool
-	 */
 	public function hasOutdatedText( StoryContent $story ): bool {
 		$articleTitle = $story->getArticleTitle();
 		if ( $articleTitle === null ) {
@@ -50,12 +46,6 @@ class StoryContentAnalyzer {
 		return false;
 	}
 
-	/**
-	 * @param string $articleText
-	 * @param string $currentText
-	 * @param string $originalText
-	 * @return bool
-	 */
 	public function isOutdatedText( string $articleText, string $currentText, string $originalText ): bool {
 		return !$this->inText( $currentText, $articleText )
 			&& !$this->inText( $originalText, $articleText );
@@ -80,8 +70,6 @@ class StoryContentAnalyzer {
 
 	/**
 	 * Remove unnecessary elements from the html text
-	 * @param string $html
-	 * @return string
 	 */
 	public function transformText( string $html ): string {
 		// Remove HTML tags and convert entities

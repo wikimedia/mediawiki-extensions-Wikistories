@@ -45,10 +45,6 @@ class RecentChangesPropagationHooks implements
 		$this->sep = ' ' . Html::element( 'span', [ 'class' => 'mw-changeslist-separator' ], '' ) . ' ';
 	}
 
-	/**
-	 * @param IContextSource $context
-	 * @return string Word separator
-	 */
 	private function getWordSep( IContextSource $context ): string {
 		if ( $this->wordSep === null ) {
 			$this->wordSep = $context->msg( 'word-separator' )->plain();
@@ -56,21 +52,15 @@ class RecentChangesPropagationHooks implements
 		return $this->wordSep;
 	}
 
-	/**
-	 * @param RecentChange $rc
-	 * @return bool
-	 */
 	private function isWikiStoriesRelatedChange( RecentChange $rc ): bool {
 		return $rc->getAttribute( 'rc_source' ) === self::SRC_WIKISTORIES;
 	}
 
-	/**
-	 * @param IContextSource $context
-	 * @param PageReference $story
-	 * @param bool $parens
-	 * @return string
-	 */
-	private function makeStoryLink( IContextSource $context, PageReference $story, $parens = false ): string {
+	private function makeStoryLink(
+		IContextSource $context,
+		PageReference $story,
+		bool $parens = false,
+	): string {
 		$storyLink = $this->linkRenderer->makeKnownLink( $story );
 		$formattedLink = $parens ?
 			$context->msg( 'parentheses' )->rawParams( $storyLink )->text() :
@@ -82,10 +72,6 @@ class RecentChangesPropagationHooks implements
 		);
 	}
 
-	/**
-	 * @param PageReference $article
-	 * @return string
-	 */
 	private function makeArticleLink( PageReference $article ): string {
 		return Html::rawElement(
 			'span',
@@ -94,21 +80,11 @@ class RecentChangesPropagationHooks implements
 		);
 	}
 
-	/**
-	 * @param RecentChange $rc
-	 * @return int
-	 */
 	private function getStoryId( RecentChange $rc ): int {
 		$params = $rc->parseParams();
 		return $params[ 'story_id' ];
 	}
 
-	/**
-	 * @param IContextSource $context
-	 * @param PageReference $story
-	 * @param RecentChange $rc
-	 * @return string
-	 */
 	private function makeDiffLink( IContextSource $context, PageReference $story, RecentChange $rc ): string {
 		return Html::rawElement(
 			'span',
@@ -126,12 +102,6 @@ class RecentChangesPropagationHooks implements
 		);
 	}
 
-	/**
-	 * @param IContextSource $context
-	 * @param PageReference $story
-	 * @param RecentChange $rc
-	 * @return string
-	 */
 	private function makeHistLink( IContextSource $context, PageReference $story, RecentChange $rc ): string {
 		return Html::rawElement(
 			'span',
@@ -148,12 +118,6 @@ class RecentChangesPropagationHooks implements
 		);
 	}
 
-	/**
-	 * @param IContextSource $context
-	 * @param PageReference $story
-	 * @param RecentChange $rc
-	 * @return string
-	 */
 	private function makeDiffHistLinks(
 		IContextSource $context,
 		PageReference $story,
@@ -168,12 +132,6 @@ class RecentChangesPropagationHooks implements
 		);
 	}
 
-	/**
-	 * @param PageReference $story
-	 * @param RecentChange $rc
-	 * @param Language $lang
-	 * @return string
-	 */
 	private function makeTimestampLink( PageReference $story, RecentChange $rc, Language $lang ): string {
 		$user = $rc->getPerformerIdentity();
 		return $this->linkRenderer->makeKnownLink(
@@ -188,13 +146,7 @@ class RecentChangesPropagationHooks implements
 		);
 	}
 
-	/**
-	 * @param IContextSource $context
-	 * @param int $visibility
-	 * @param User $user
-	 * @return string
-	 */
-	private function makeUserLinks( IContextSource $context, int $visibility, User $user ) {
+	private function makeUserLinks( IContextSource $context, int $visibility, User $user ): string {
 		if ( !RevisionRecord::userCanBitfield(
 			$visibility,
 			RevisionRecord::DELETED_USER,
@@ -246,12 +198,7 @@ class RecentChangesPropagationHooks implements
 			);
 	}
 
-	/**
-	 * @param IContextSource $context
-	 * @param CommentStoreComment|null $comment
-	 * @return string
-	 */
-	private function makeComment( IContextSource $context, $comment ): string {
+	private function makeComment( IContextSource $context, ?CommentStoreComment $comment ): string {
 		$text = $comment ? $comment->text : null;
 		if ( $text !== null && $text !== '' ) {
 			return Html::rawElement(

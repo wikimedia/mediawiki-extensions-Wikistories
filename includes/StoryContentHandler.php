@@ -32,17 +32,11 @@ class StoryContentHandler extends JsonContentHandler {
 		parent::__construct( $modelId );
 	}
 
-	/**
-	 * @return string
-	 */
-	protected function getContentClass() {
+	protected function getContentClass(): string {
 		return StoryContent::class;
 	}
 
-	/**
-	 * @return array
-	 */
-	public function getActionOverrides() {
+	public function getActionOverrides(): array {
 		return [
 			'edit' => StoryEditAction::class,
 			'submit' => StorySubmitAction::class,
@@ -58,16 +52,12 @@ class StoryContentHandler extends JsonContentHandler {
 
 	/**
 	 * Outputs the plain html version of a story.
-	 *
-	 * @param Content $content
-	 * @param ContentParseParams $cpoParams
-	 * @param ParserOutput &$parserOutput
 	 */
 	public function fillParserOutput(
 		Content $content,
 		ContentParseParams $cpoParams,
 		ParserOutput &$parserOutput
-	) {
+	): void {
 		'@phan-var StoryContent $content';
 		/** @var StoryContent $story */
 		$story = $this->storyConverter->toLatest( $content );
@@ -114,7 +104,7 @@ class StoryContentHandler extends JsonContentHandler {
 	/**
 	 * @inheritDoc
 	 */
-	public function isParserCacheSupported() {
+	public function isParserCacheSupported(): bool {
 		return true;
 	}
 

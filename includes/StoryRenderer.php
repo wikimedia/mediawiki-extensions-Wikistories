@@ -81,11 +81,6 @@ class StoryRenderer {
 		];
 	}
 
-	/**
-	 * @param StoryContent $story
-	 * @param Title $storyTitle
-	 * @return array
-	 */
 	public function getStoryData(
 		StoryContent $story,
 		Title $storyTitle
@@ -142,12 +137,6 @@ class StoryRenderer {
 		return $data;
 	}
 
-	/**
-	 * @param array $files
-	 * @param string $filename
-	 * @param int $size
-	 * @return string
-	 */
 	private function getUrl( array $files, string $filename, int $size ): string {
 		/** @var File $file */
 		$file = $files[ strtr( $filename, ' ', '_' ) ] ?? false;
@@ -252,7 +241,7 @@ class StoryRenderer {
 	 * @param array $license
 	 * @return string html of the given license data
 	 */
-	private function getLicensesHtmlString( $license ): string {
+	private function getLicensesHtmlString( array $license ): string {
 		return implode( '', array_map( static function ( $licenseType ) {
 			return Html::rawElement(
 				'div',

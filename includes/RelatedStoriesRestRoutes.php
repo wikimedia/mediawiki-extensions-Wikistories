@@ -37,12 +37,10 @@ class RelatedStoriesRestRoutes extends SimpleHandler {
 	}
 
 	/**
-	 * @param string $title
-	 * @return Response
 	 * @throws LocalizedHttpException
 	 * @throws MalformedTitleException
 	 */
-	public function run( $title ) {
+	public function run( string $title ): Response {
 		$titleValue = $this->titleParser->parseTitle( $title );
 
 		if ( $titleValue->getNamespace() !== NS_MAIN ) {
@@ -72,14 +70,14 @@ class RelatedStoriesRestRoutes extends SimpleHandler {
 	/**
 	 * @inheritDoc
 	 */
-	public function needsWriteAccess() {
+	public function needsWriteAccess(): bool {
 		return false;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function getParamSettings() {
+	public function getParamSettings(): array {
 		return [
 			'title' => [
 				self::PARAM_SOURCE => 'path',

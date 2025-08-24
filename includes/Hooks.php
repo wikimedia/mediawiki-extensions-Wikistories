@@ -70,18 +70,10 @@ class Hooks implements
 		return $config->get( 'WikistoriesDiscoveryMode' );
 	}
 
-	/**
-	 * @param Config $config
-	 * @return bool
-	 */
 	public static function isBetaDiscoveryMode( Config $config ): bool {
 		return self::getDiscoveryMode( $config ) === self::WIKISTORIES_MODE_BETA;
 	}
 
-	/**
-	 * @param Config $config
-	 * @return bool
-	 */
 	public static function isPublicDiscoveryMode( Config $config ): bool {
 		return self::getDiscoveryMode( $config ) === self::WIKISTORIES_MODE_PUBLIC;
 	}

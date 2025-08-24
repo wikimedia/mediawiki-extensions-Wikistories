@@ -29,7 +29,7 @@ class StorySlotDiffRenderer extends SlotDiffRenderer {
 	 * @param Content|null $newContent
 	 * @return string HTML, one or more <tr> tags.
 	 */
-	public function getDiff( ?Content $oldContent = null, ?Content $newContent = null ) {
+	public function getDiff( ?Content $oldContent = null, ?Content $newContent = null ): string {
 		$this->normalizeContents( $oldContent, $newContent, [ StoryContent::class, TextContent::class ] );
 
 		return $this->textSlotDiffRenderer->getTextDiff(

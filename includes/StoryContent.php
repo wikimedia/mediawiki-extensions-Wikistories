@@ -13,17 +13,11 @@ class StoryContent extends JsonContent {
 
 	public const SCHEMA_VERSION = 1;
 
-	/**
-	 * @param string $text
-	 */
-	public function __construct( $text ) {
+	public function __construct( string $text ) {
 		parent::__construct( $text, 'story' );
 	}
 
-	/**
-	 * @return array
-	 */
-	public function getFrames() {
+	public function getFrames(): array {
 		$story = $this->getData()->getValue();
 		return $story->frames ?? [];
 	}
@@ -58,9 +52,6 @@ class StoryContent extends JsonContent {
 		return $story->articleId ?? -1;
 	}
 
-	/**
-	 * @return Title|null
-	 */
 	public function getArticleTitle(): ?Title {
 		$services = MediaWikiServices::getInstance();
 		$pageLookup = $services->getPageStore();
@@ -134,7 +125,7 @@ class StoryContent extends JsonContent {
 	/**
 	 * @return string A simple version of the story frames and categories as text for diff
 	 */
-	public function getTextForDiff() {
+	public function getTextForDiff(): string {
 		// story frames
 		$text = implode( "\n\n", array_map( static function ( $frame ) {
 			return $frame->image->filename . "\n" . $frame->text->value;

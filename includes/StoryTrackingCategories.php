@@ -26,8 +26,6 @@ class StoryTrackingCategories {
 
 	/**
 	 * get text form from all the tracking categories in WikiStory
-	 *
-	 * @return array
 	 */
 	private function getAllTextForms(): array {
 		if ( self::$ALL_TEXT_FORMS !== [] ) {
@@ -44,9 +42,6 @@ class StoryTrackingCategories {
 
 	/**
 	 * get text form from the category page
-	 *
-	 * @param string $key
-	 * @return string
 	 */
 	private function getTextForm( string $key ): string {
 		if ( !isset( self::$ALL_TEXT_FORMS[ $key ] ) ) {
@@ -56,12 +51,7 @@ class StoryTrackingCategories {
 		return self::$ALL_TEXT_FORMS[ $key ];
 	}
 
-	/**
-	 * @param array $categories
-	 * @param Title $title
-	 * @return bool
-	 */
-	public function hasDiff( $categories, Title $title ): bool {
+	public function hasDiff( array $categories, Title $title ): bool {
 		// find the existing wiki story tracking categories in this story title
 		$parentCategories = array_intersect(
 			array_map( static function ( $key ) {

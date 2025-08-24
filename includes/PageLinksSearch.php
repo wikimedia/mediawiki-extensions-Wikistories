@@ -76,8 +76,6 @@ class PageLinksSearch {
 
 	/**
 	 * Build a query for "pagelinks JOIN page ON pl_from=page_id"
-	 *
-	 * @return SelectQueryBuilder
 	 */
 	private function getPagelinksPageQuery(): SelectQueryBuilder {
 		return $this->connectionProvider

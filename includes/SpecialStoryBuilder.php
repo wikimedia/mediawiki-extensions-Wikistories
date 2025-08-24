@@ -69,11 +69,9 @@ class SpecialStoryBuilder extends SpecialPage {
 	}
 
 	/**
-	 * @param string|null $subPage
-	 * @return ExistingPageRecord
 	 * @throws ErrorPageError when the subpage is empty or invalid
 	 */
-	private function getSubPage( $subPage ): ExistingPageRecord {
+	private function getSubPage( ?string $subPage ): ExistingPageRecord {
 		if ( !$subPage ) {
 			throw new ErrorPageError(
 				'wikistories-specialstorybuilder-title',
@@ -90,11 +88,7 @@ class SpecialStoryBuilder extends SpecialPage {
 		return $page;
 	}
 
-	/**
-	 * @param ExistingPageRecord $page
-	 * @return bool
-	 */
-	private function getUserBlockStatus( $page ): bool {
+	private function getUserBlockStatus( ExistingPageRecord $page ): bool {
 		return $this->permissionManager->isBlockedFrom( $this->getUser(), $page );
 	}
 

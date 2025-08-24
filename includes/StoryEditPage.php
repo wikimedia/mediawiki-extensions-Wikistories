@@ -13,10 +13,9 @@ use OOUI\TextInputWidget;
 
 class StoryEditPage extends EditPage {
 
-	/** @var StoryContent */
-	private $wipStory = null;
+	private ?StoryContent $wipStory = null;
 
-	protected function showContentForm() {
+	protected function showContentForm(): void {
 		$maxFrames = $this->context->getConfig()->get( 'WikistoriesMaxFrames' );
 		$maxTextLength = $this->context->getConfig()->get( 'WikistoriesMaxTextLength' );
 		$out = $this->context->getOutput();
