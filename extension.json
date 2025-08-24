@@ -87,7 +87,13 @@
 			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\EchoNotificationsHandlers"
 		},
 		"PageDisplayHandlers": {
-			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\PageDisplayHandlers"
+			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\PageDisplayHandlers",
+			"services": [
+				"UserOptionsLookup"
+			],
+			"optional_services": [
+				"MobileFrontend.Context"
+			]
 		},
 		"BetaFeaturesHandlers": {
 			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\BetaFeaturesHandlers",

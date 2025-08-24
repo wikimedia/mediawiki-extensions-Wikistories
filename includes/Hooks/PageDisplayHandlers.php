@@ -6,7 +6,6 @@ use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\Extension\Wikistories\Hooks;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -14,16 +13,22 @@ use MediaWiki\Skin\Skin;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
+use MobileContext;
 
 class PageDisplayHandlers implements BeforePageDisplayHook {
+
+	public function __construct(
+		private readonly UserOptionsLookup $userOptionsLookup,
+		private readonly ?MobileContext $mobileContext = null,
+	) {
+	}
 
 	/**
 	 * @param Skin $skin
 	 * @return bool
 	 */
-	private static function shouldShowStoriesOnSkin( Skin $skin ) {
-		$isMobileView = ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) &&
-			MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' )->shouldDisplayMobileView();
+	private function shouldShowStoriesOnSkin( Skin $skin ) {
+		$isMobileView = $this->mobileContext && $this->mobileContext->shouldDisplayMobileView();
 		return $skin->getSkinName() === 'minerva' && $isMobileView;
 	}
 
@@ -41,16 +46,14 @@ class PageDisplayHandlers implements BeforePageDisplayHook {
 	 * @param Config $config
 	 * @return bool
 	 */
-	private static function shouldShowStoriesForUser( User $user, Config $config ): bool {
+	private function shouldShowStoriesForUser( User $user, Config $config ): bool {
 		if ( Hooks::isBetaDiscoveryMode( $config ) ) {
 			return $user->isNamed()
 				&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
 				&& BetaFeatures::isFeatureEnabled( $user, BetaFeaturesHandlers::WIKISTORIES_BETA_FEATURE );
 		} elseif ( Hooks::isPublicDiscoveryMode( $config ) ) {
-			/** @var UserOptionsLookup $userOptionsLookup */
-			$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 			return ( $user->isAnon() || $user->isTemp() )
-				|| (bool)$userOptionsLookup->getOption( $user, Hooks::WIKISTORIES_PREF_SHOW_DISCOVERY, true );
+				|| (bool)$this->userOptionsLookup->getOption( $user, Hooks::WIKISTORIES_PREF_SHOW_DISCOVERY, true );
 		} else {
 			// unknown discovery mode
 			return false;
@@ -74,9 +77,9 @@ class PageDisplayHandlers implements BeforePageDisplayHook {
 	 * @param IContextSource $context
 	 * @return bool
 	 */
-	private static function shouldShowStories( User $user, Title $title, Skin $skin, IContextSource $context ): bool {
-		return self::shouldShowStoriesForUser( $user, $context->getConfig() )
-			&& self::shouldShowStoriesOnSkin( $skin )
+	private function shouldShowStories( User $user, Title $title, Skin $skin, IContextSource $context ): bool {
+		return $this->shouldShowStoriesForUser( $user, $context->getConfig() )
+			&& $this->shouldShowStoriesOnSkin( $skin )
 			&& self::shouldShowStoriesOnPage( $title )
 			&& self::shouldShowStoriesForAction( $context );
 	}
@@ -87,7 +90,7 @@ class PageDisplayHandlers implements BeforePageDisplayHook {
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$title = $out->getTitle();
-		if ( self::shouldShowStories( $out->getUser(), $title, $out->getSkin(), $out->getContext() ) ) {
+		if ( $this->shouldShowStories( $out->getUser(), $title, $out->getSkin(), $out->getContext() ) ) {
 			$out->addModules( [ 'ext.wikistories.discover' ] );
 			$out->addModuleStyles( 'ext.wikistories.discover.styles' );
 		}
