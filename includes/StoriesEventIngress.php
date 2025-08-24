@@ -12,12 +12,16 @@ use MediaWiki\Page\Event\PageDeletedEvent;
 use MediaWiki\Page\Event\PageDeletedListener;
 use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
 use MediaWiki\Page\Event\PageRevisionUpdatedListener;
+use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Storage\EditResult;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFormatter;
+use MediaWiki\User\UserIdentity;
 
 /**
  * Event subscriber acting as an ingress for relevant events emitted
@@ -35,6 +39,7 @@ class StoriesEventIngress
 		private readonly PageLinksSearch $linksSearch,
 		private readonly WikiPageFactory $wikiPageFactory,
 		private readonly DeletePageFactory $deletePageFactory,
+		private readonly TitleFormatter $titleFormatter,
 		Config $config,
 	) {
 		$this->useRCPatrol = $config->get( MainConfigNames::UseRCPatrol );
@@ -96,7 +101,7 @@ class StoriesEventIngress
 		$requestIP = $context->getRequest()->getIP();
 		$patrolled = $this->getPatrolled( $article, $context->getAuthority() );
 
-		$rc = RecentChangesPropagationHooks::makeRecentChangesEntry(
+		$rc = $this->makeRecentChangesEntry(
 			$article,
 			$revisionRecord,
 			$event->getPerformer(),
@@ -199,4 +204,75 @@ class StoriesEventIngress
 				->deleteIfAllowed( $reason );
 		}
 	}
+
+	/**
+	 * When a story is saved (created or edited), we create a recent changes
+	 * entry for the related article so that watchers of that article can
+	 * be aware of the story change.
+	 *
+	 * @note The logic for creating the fake RecentChanges entry is in this class
+	 * because this is where we define how that entry is later visualized.
+	 * The actual insertion of the fake RC entry is left to EventIngress, which
+	 * handles core events triggered by page changes.
+	 */
+	private function makeRecentChangesEntry(
+		PageIdentity $article,
+		RevisionRecord $revisionRecord,
+		UserIdentity $user,
+		string $summary,
+		string $requestIP,
+		bool $minor,
+		bool $bot,
+		int $patrolled,
+		?EditResult $editResult
+	): RecentChange {
+		// NOTE: $revisionRecord does not belong to $article!
+
+		$rc = new RecentChange;
+		$rc->mAttribs = [
+			'rc_timestamp' => $revisionRecord->getTimestamp(),
+			'rc_namespace' => $article->getNamespace(),
+			'rc_title' => $article->getDBkey(),
+			'rc_type' => RC_EXTERNAL,
+			'rc_source' => RecentChangesPropagationHooks::SRC_WIKISTORIES,
+			'rc_minor' => $minor,
+			'rc_cur_id' => $article->getId(),
+			'rc_user' => $user->getId(),
+			'rc_user_text' => $user->getName(),
+			'rc_comment' => $summary,
+			'rc_comment_text' => $summary,
+			'rc_comment_data' => null,
+			'rc_this_oldid' => (int)$revisionRecord->getId(),
+			'rc_last_oldid' => (int)$revisionRecord->getParentId(),
+			'rc_bot' => $bot,
+			'rc_ip' => $requestIP,
+			'rc_patrolled' => $patrolled,
+			'rc_old_len' => 0,
+			'rc_new_len' => 0,
+			'rc_deleted' => 0,
+			'rc_logid' => 0,
+			'rc_log_type' => null,
+			'rc_log_action' => '',
+			'rc_params' => serialize( [
+				'story_title' => $revisionRecord->getPage()->getDBkey(),
+				'story_id' => $revisionRecord->getPage()->getId(),
+			] )
+		];
+
+		// TODO: deprecate the 'prefixedDBkey' entry, let callers do the formatting.
+		$rc->mExtra = [
+			'prefixedDBkey' => $this->titleFormatter->getPrefixedDBkey( $article ),
+			'lastTimestamp' => 0,
+			'oldSize' => 0,
+			'newSize' => 0,
+			'pageStatus' => 'changed'
+		];
+
+		if ( $editResult ) {
+			$rc->setEditResult( $editResult );
+		}
+
+		return $rc;
+	}
+
 }

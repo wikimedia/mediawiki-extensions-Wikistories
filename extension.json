@@ -122,6 +122,7 @@
 				"Wikistories.PageLinksSearch",
 				"WikiPageFactory",
 				"DeletePageFactory",
+				"TitleFormatter",
 				"MainConfig"
 			]
 		}

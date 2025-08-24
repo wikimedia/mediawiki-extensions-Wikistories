@@ -12,8 +12,6 @@ use MediaWiki\Hook\OldChangesListRecentChangesLineHook;
 use MediaWiki\Html\Html;
 use MediaWiki\Language\Language;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\MediaWikiServices;
-use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\PageReference;
 use MediaWiki\Page\PageReferenceValue;
 use MediaWiki\RecentChanges\ChangesListBooleanFilter;
@@ -22,10 +20,8 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\SpecialPage\Hook\ChangesListSpecialPageStructuredFiltersHook;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\Storage\EditResult;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
-use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class RecentChangesPropagationHooks implements
@@ -47,78 +43,6 @@ class RecentChangesPropagationHooks implements
 		private readonly UserFactory $userFactory,
 	) {
 		$this->sep = ' ' . Html::element( 'span', [ 'class' => 'mw-changeslist-separator' ], '' ) . ' ';
-	}
-
-	/**
-	 * When a story is saved (created or edited), we create a recent changes
-	 * entry for the related article so that watchers of that article can
-	 * be aware of the story change.
-	 *
-	 * @note The logic for creating the fake RecentChanges entry is in this class
-	 * because this is where we define how that entry is later visualized.
-	 * The actual insertion of the fake RC entry is left to EventIngress, which
-	 * handles core events triggered by page changes.
-	 */
-	public static function makeRecentChangesEntry(
-		PageIdentity $article,
-		RevisionRecord $revisionRecord,
-		UserIdentity $user,
-		string $summary,
-		string $requestIP,
-		bool $minor,
-		bool $bot,
-		int $patrolled,
-		?EditResult $editResult
-	): RecentChange {
-		// NOTE: $revisionRecord does not belong to $article!
-
-		$rc = new RecentChange;
-		$rc->mAttribs = [
-			'rc_timestamp' => $revisionRecord->getTimestamp(),
-			'rc_namespace' => $article->getNamespace(),
-			'rc_title' => $article->getDBkey(),
-			'rc_type' => RC_EXTERNAL,
-			'rc_source' => self::SRC_WIKISTORIES,
-			'rc_minor' => $minor,
-			'rc_cur_id' => $article->getId(),
-			'rc_user' => $user->getId(),
-			'rc_user_text' => $user->getName(),
-			'rc_comment' => $summary,
-			'rc_comment_text' => $summary,
-			'rc_comment_data' => null,
-			'rc_this_oldid' => (int)$revisionRecord->getId(),
-			'rc_last_oldid' => (int)$revisionRecord->getParentId(),
-			'rc_bot' => $bot,
-			'rc_ip' => $requestIP,
-			'rc_patrolled' => $patrolled,
-			'rc_old_len' => 0,
-			'rc_new_len' => 0,
-			'rc_deleted' => 0,
-			'rc_logid' => 0,
-			'rc_log_type' => null,
-			'rc_log_action' => '',
-			'rc_params' => serialize( [
-				'story_title' => $revisionRecord->getPage()->getDBkey(),
-				'story_id' => $revisionRecord->getPage()->getId(),
-			] )
-		];
-
-		// TODO: deprecate the 'prefixedDBkey' entry, let callers do the formatting.
-		$formatter = MediaWikiServices::getInstance()->getTitleFormatter();
-
-		$rc->mExtra = [
-			'prefixedDBkey' => $formatter->getPrefixedDBkey( $article ),
-			'lastTimestamp' => 0,
-			'oldSize' => 0,
-			'newSize' => 0,
-			'pageStatus' => 'changed'
-		];
-
-		if ( $editResult ) {
-			$rc->setEditResult( $editResult );
-		}
-
-		return $rc;
 	}
 
 	/**
