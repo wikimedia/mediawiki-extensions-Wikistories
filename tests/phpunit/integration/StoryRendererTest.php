@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\Wikistories;
 use MediaWiki\Extension\Wikistories\Tests\StoryFactory;
 use MediaWiki\FileRepo\File\ForeignAPIFile;
 use MediaWiki\FileRepo\RepoGroup;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
 use MediaWiki\Title\Title;
@@ -70,7 +69,7 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		$repoGroup = $this->createRepoGroupMock();
 		$renderer = new StoryRenderer(
 			$repoGroup,
-			MediaWikiServices::getInstance()->getRedirectLookup(),
+			$this->getServiceContainer()->getRedirectLookup(),
 			$this->createPageStoreMock(),
 			$this->createAnalyzerMock(),
 			$this->createMock( StoryTrackingCategories::class )
@@ -123,7 +122,7 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		$repoGroup = $this->createRepoGroupMock();
 		$renderer = new StoryRenderer(
 			$repoGroup,
-			MediaWikiServices::getInstance()->getRedirectLookup(),
+			$this->getServiceContainer()->getRedirectLookup(),
 			$this->createPageStoreMock(),
 			$this->createAnalyzerMock(),
 			$this->createMock( StoryTrackingCategories::class )

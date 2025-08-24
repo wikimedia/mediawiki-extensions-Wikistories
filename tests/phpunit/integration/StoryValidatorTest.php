@@ -7,7 +7,6 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Json\FormatJson;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\ExistingPageRecord;
 use MediaWiki\Page\PageLookup;
 use MediaWikiIntegrationTestCase;
@@ -62,7 +61,7 @@ class StoryValidatorTest extends MediaWikiIntegrationTestCase {
 			$options,
 			$this->createRepoGroupMock(),
 			$this->createPageStoreMock(),
-			MediaWikiServices::getInstance()->getTitleFactory()
+			$this->getServiceContainer()->getTitleFactory()
 		);
 		$this->assertEquals( $expectedValid, $validator->isValid( $story )->isGood() );
 	}
