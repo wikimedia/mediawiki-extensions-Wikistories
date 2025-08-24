@@ -14,40 +14,13 @@ use MediaWiki\Title\Title;
 
 class StoryRenderer {
 
-	/** @var RepoGroup */
-	private $repoGroup;
-
-	/** @var RedirectLookup */
-	private $redirectLookup;
-
-	/** @var PageLookup */
-	private $pageLookup;
-
-	/** @var StoryContentAnalyzer */
-	private $analyzer;
-
-	/** @var StoryTrackingCategories */
-	private $storyTrackingCategories;
-
-	/**
-	 * @param RepoGroup $repoGroup
-	 * @param RedirectLookup $redirectLookup
-	 * @param PageLookup $pageLookup
-	 * @param StoryContentAnalyzer $analyzer
-	 * @param StoryTrackingCategories $storyTrackingCategories
-	 */
 	public function __construct(
-		RepoGroup $repoGroup,
-		RedirectLookup $redirectLookup,
-		PageLookup $pageLookup,
-		StoryContentAnalyzer $analyzer,
-		StoryTrackingCategories $storyTrackingCategories
+		private readonly RepoGroup $repoGroup,
+		private readonly RedirectLookup $redirectLookup,
+		private readonly PageLookup $pageLookup,
+		private readonly StoryContentAnalyzer $analyzer,
+		private readonly StoryTrackingCategories $storyTrackingCategories,
 	) {
-		$this->repoGroup = $repoGroup;
-		$this->redirectLookup = $redirectLookup;
-		$this->pageLookup = $pageLookup;
-		$this->analyzer = $analyzer;
-		$this->storyTrackingCategories = $storyTrackingCategories;
 	}
 
 	/**

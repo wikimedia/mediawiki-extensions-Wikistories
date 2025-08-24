@@ -10,23 +10,11 @@ use MediaWiki\Utils\UrlUtils;
 
 class StoryViewAction extends FormlessAction {
 
-	/** @var StoriesCache */
-	private $storiesCache;
-
-	/** @var UrlUtils */
-	private $urlUtils;
-
-	/**
-	 * @param Article $article
-	 * @param IContextSource $context
-	 * @param StoriesCache $storiesCache
-	 * @param UrlUtils $urlUtils
-	 */
 	public function __construct(
 		Article $article,
 		IContextSource $context,
-		StoriesCache $storiesCache,
-		UrlUtils $urlUtils
+		private readonly StoriesCache $storiesCache,
+		private readonly UrlUtils $urlUtils,
 	) {
 		parent::__construct( $article, $context );
 		$this->storiesCache = $storiesCache;

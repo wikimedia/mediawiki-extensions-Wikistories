@@ -21,47 +21,18 @@ class ArticleChangedJob extends Job {
 
 	private const COMMAND = 'ArticleChangedJob';
 
-	/** @var StoryContentAnalyzer */
-	private $analyzer;
-
-	/** @var RevisionLookup */
-	private $revisionLookup;
-
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-
-	/** @var PageLinksSearch */
-	private $pageLinksSearch;
-
-	/** @var Config */
-	private $config;
-
-	/**
-	 * @param string $command
-	 * @param array $params
-	 * @param RevisionLookup $revisionLookup
-	 * @param StoryContentAnalyzer $analyzer
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param PageLinksSearch $pageLinksSearch
-	 * @param Config $config
-	 */
 	public function __construct(
-		$command,
-		$params,
-		RevisionLookup $revisionLookup,
-		StoryContentAnalyzer $analyzer,
-		WikiPageFactory $wikiPageFactory,
-		PageLinksSearch $pageLinksSearch,
-		Config $config
+		string $command,
+		array $params,
+		private readonly RevisionLookup $revisionLookup,
+		private readonly StoryContentAnalyzer $analyzer,
+		private readonly WikiPageFactory $wikiPageFactory,
+		private readonly PageLinksSearch $pageLinksSearch,
+		private readonly Config $config,
 	) {
 		parent::__construct( self::COMMAND, $params );
 		// Delay to let multiple edits be deduplicated
 		$params[ 'jobReleaseTimestamp' ] = time() + 60;
-		$this->analyzer = $analyzer;
-		$this->revisionLookup = $revisionLookup;
-		$this->wikiPageFactory = $wikiPageFactory;
-		$this->pageLinksSearch = $pageLinksSearch;
-		$this->config = $config;
 	}
 
 	/**

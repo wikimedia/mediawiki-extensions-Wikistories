@@ -17,35 +17,13 @@ class StoryValidator {
 		'WikistoriesMaxTextLength',
 	];
 
-	/** @var ServiceOptions */
-	private $options;
-
-	/** @var RepoGroup */
-	private $repoGroup;
-
-	/** @var PageLookup */
-	private $pageLookup;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/**
-	 * @param ServiceOptions $options
-	 * @param RepoGroup $repoGroup
-	 * @param PageLookup $pageLookup
-	 * @param TitleFactory $titleFactory
-	 */
 	public function __construct(
-		ServiceOptions $options,
-		RepoGroup $repoGroup,
-		PageLookup $pageLookup,
-		TitleFactory $titleFactory
+		private readonly ServiceOptions $options,
+		private readonly RepoGroup $repoGroup,
+		private readonly PageLookup $pageLookup,
+		private readonly TitleFactory $titleFactory,
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->options = $options;
-		$this->repoGroup = $repoGroup;
-		$this->pageLookup = $pageLookup;
-		$this->titleFactory = $titleFactory;
 	}
 
 	/**

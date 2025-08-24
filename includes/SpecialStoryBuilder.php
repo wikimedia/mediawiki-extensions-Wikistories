@@ -24,59 +24,17 @@ class SpecialStoryBuilder extends SpecialPage {
 	private const MODE_NEW = 'new';
 	private const MODE_EDIT = 'edit';
 
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-
-	/** @var PageLookup */
-	private $pageLookup;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
-	/** @var WatchlistManager */
-	private $watchlistManager;
-
-	/** @var Config */
-	private $config;
-
-	/** @var WatchedItemStore */
-	private $watchedItemStore;
-
-	/** @var StoriesCache */
-	private $storiesCache;
-
-	/** @var PermissionManager */
-	private $permissionManager;
-
-	/**
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param PageLookup $pageLookup
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param WatchlistManager $watchlistManager
-	 * @param WatchedItemStore $watchedItemStore
-	 * @param Config $config
-	 * @param StoriesCache $storiesCache
-	 * @param PermissionManager $permissionManager
-	 */
 	public function __construct(
-		WikiPageFactory $wikiPageFactory,
-		PageLookup $pageLookup,
-		UserOptionsLookup $userOptionsLookup,
-		WatchlistManager $watchlistManager,
-		WatchedItemStore $watchedItemStore,
-		Config $config,
-		StoriesCache $storiesCache,
-		PermissionManager $permissionManager
+		private readonly WikiPageFactory $wikiPageFactory,
+		private readonly PageLookup $pageLookup,
+		private readonly UserOptionsLookup $userOptionsLookup,
+		private readonly WatchlistManager $watchlistManager,
+		private readonly WatchedItemStore $watchedItemStore,
+		private readonly Config $config,
+		private readonly StoriesCache $storiesCache,
+		private readonly PermissionManager $permissionManager,
 	) {
 		parent::__construct( 'StoryBuilder' );
-		$this->wikiPageFactory = $wikiPageFactory;
-		$this->pageLookup = $pageLookup;
-		$this->userOptionsLookup = $userOptionsLookup;
-		$this->watchlistManager = $watchlistManager;
-		$this->config = $config;
-		$this->watchedItemStore = $watchedItemStore;
-		$this->storiesCache = $storiesCache;
-		$this->permissionManager = $permissionManager;
 	}
 
 	/**

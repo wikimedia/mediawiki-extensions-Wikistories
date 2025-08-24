@@ -36,14 +36,9 @@ class Hooks implements
 
 	private const WIKISTORIES_PREF_VIEWER_TEXTSIZE = 'wikistories-pref-viewertextsize';
 
-	/** @var Config */
-	private $mainConfig;
-
-	/**
-	 * @param Config $mainConfig
-	 */
-	public function __construct( Config $mainConfig ) {
-		$this->mainConfig = $mainConfig;
+	public function __construct(
+		private readonly Config $mainConfig,
+	) {
 	}
 
 	/**

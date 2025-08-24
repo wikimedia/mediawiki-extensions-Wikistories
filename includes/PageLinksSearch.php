@@ -11,19 +11,10 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class PageLinksSearch {
 
-	/** @var ILoadBalancer */
-	private $loadBalancer;
-
-	/** @var LinksMigration */
-	private $linksMigration;
-
-	/**
-	 * @param ILoadBalancer $loadBalancer
-	 * @param LinksMigration $linksMigration
-	 */
-	public function __construct( ILoadBalancer $loadBalancer, LinksMigration $linksMigration ) {
-		$this->loadBalancer = $loadBalancer;
-		$this->linksMigration = $linksMigration;
+	public function __construct(
+		private readonly ILoadBalancer $loadBalancer,
+		private readonly LinksMigration $linksMigration,
+	) {
 	}
 
 	/**

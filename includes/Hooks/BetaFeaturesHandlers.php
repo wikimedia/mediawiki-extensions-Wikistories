@@ -12,14 +12,9 @@ class BetaFeaturesHandlers implements GetBetaFeaturePreferencesHook {
 
 	public const WIKISTORIES_BETA_FEATURE = 'wikistories-storiesonarticles';
 
-	/** @var Config */
-	private $mainConfig;
-
-	/**
-	 * @param Config $mainConfig
-	 */
-	public function __construct( Config $mainConfig ) {
-		$this->mainConfig = $mainConfig;
+	public function __construct(
+		private readonly Config $mainConfig,
+	) {
 	}
 
 	/**

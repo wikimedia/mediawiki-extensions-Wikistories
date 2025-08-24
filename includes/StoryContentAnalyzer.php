@@ -13,21 +13,14 @@ class StoryContentAnalyzer {
 	 */
 	private const SENTENCE_SEPARATOR_REGEX = '/[.:;]/';
 
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-
 	/**
 	 * @var array Instance cache of article text indexed by title
 	 */
 	private $cache = [];
 
-	/**
-	 * @param WikiPageFactory $wikiPageFactory
-	 */
 	public function __construct(
-		WikiPageFactory $wikiPageFactory
+		private readonly WikiPageFactory $wikiPageFactory,
 	) {
-		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
 	/**

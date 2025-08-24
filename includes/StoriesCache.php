@@ -21,34 +21,12 @@ class StoriesCache {
 	 */
 	private const CACHE_TTL = WANObjectCache::TTL_WEEK;
 
-	/** @var WANObjectCache */
-	private $wanObjectCache;
-
-	/** @var PageLinksSearch */
-	private $pageLinksSearch;
-
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-
-	/** @var StoryRenderer */
-	private $storyRenderer;
-
-	/**
-	 * @param WANObjectCache $wanObjectCache
-	 * @param PageLinksSearch $pageLinksSearch
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param StoryRenderer $storyRenderer
-	 */
 	public function __construct(
-		WANObjectCache $wanObjectCache,
-		PageLinksSearch $pageLinksSearch,
-		WikiPageFactory $wikiPageFactory,
-		StoryRenderer $storyRenderer
+		private readonly WANObjectCache $wanObjectCache,
+		private readonly PageLinksSearch $pageLinksSearch,
+		private readonly WikiPageFactory $wikiPageFactory,
+		private readonly StoryRenderer $storyRenderer,
 	) {
-		$this->wanObjectCache = $wanObjectCache;
-		$this->pageLinksSearch = $pageLinksSearch;
-		$this->wikiPageFactory = $wikiPageFactory;
-		$this->storyRenderer = $storyRenderer;
 	}
 
 	/**

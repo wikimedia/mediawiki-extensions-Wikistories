@@ -19,55 +19,17 @@ use MediaWiki\Title\TitleValue;
 
 class StoryContentHandler extends JsonContentHandler {
 
-	/** @var StoryConverter */
-	private $storyConverter;
-
-	/** @var StoryValidator */
-	private $storyValidator;
-
-	/** @var StoryRenderer */
-	private $storyRenderer;
-
-	/** @var StoryTrackingCategories */
-	private $storyTrackingCategories;
-
-	/** @var TrackingCategories */
-	private $trackingCategories;
-
-	/** @var JobQueueGroup */
-	private $jobQueueGroup;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/**
-	 * @param string $modelId
-	 * @param StoryConverter $storyConverter
-	 * @param StoryValidator $storyValidator
-	 * @param StoryRenderer $storyRenderer
-	 * @param StoryTrackingCategories $storyTrackingCategories
-	 * @param TrackingCategories $trackingCategories
-	 * @param JobQueueGroup $jobQueueGroup
-	 * @param TitleFactory $titleFactory
-	 */
 	public function __construct(
-		$modelId,
-		StoryConverter $storyConverter,
-		StoryValidator $storyValidator,
-		StoryRenderer $storyRenderer,
-		StoryTrackingCategories $storyTrackingCategories,
-		TrackingCategories $trackingCategories,
-		JobQueueGroup $jobQueueGroup,
-		TitleFactory $titleFactory
+		string $modelId,
+		private readonly StoryConverter $storyConverter,
+		private readonly StoryValidator $storyValidator,
+		private readonly StoryRenderer $storyRenderer,
+		private readonly StoryTrackingCategories $storyTrackingCategories,
+		private readonly TrackingCategories $trackingCategories,
+		private readonly JobQueueGroup $jobQueueGroup,
+		private readonly TitleFactory $titleFactory,
 	) {
 		parent::__construct( $modelId );
-		$this->storyConverter = $storyConverter;
-		$this->storyValidator = $storyValidator;
-		$this->storyRenderer = $storyRenderer;
-		$this->storyTrackingCategories = $storyTrackingCategories;
-		$this->trackingCategories = $trackingCategories;
-		$this->jobQueueGroup = $jobQueueGroup;
-		$this->titleFactory = $titleFactory;
 	}
 
 	/**

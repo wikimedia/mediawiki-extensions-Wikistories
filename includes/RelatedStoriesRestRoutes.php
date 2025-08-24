@@ -28,34 +28,12 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class RelatedStoriesRestRoutes extends SimpleHandler {
 
-	/** @var TitleFormatter */
-	private $titleFormatter;
-
-	/** @var TitleParser */
-	private $titleParser;
-
-	/** @var PageLookup */
-	private $pageLookup;
-
-	/** @var StoriesCache */
-	private $storiesCache;
-
-	/**
-	 * @param TitleFormatter $titleFormatter
-	 * @param TitleParser $titleParser
-	 * @param PageLookup $pageLookup
-	 * @param StoriesCache $storiesCache
-	 */
 	public function __construct(
-		TitleFormatter $titleFormatter,
-		TitleParser $titleParser,
-		PageLookup $pageLookup,
-		StoriesCache $storiesCache
+		private readonly TitleFormatter $titleFormatter,
+		private readonly TitleParser $titleParser,
+		private readonly PageLookup $pageLookup,
+		private readonly StoriesCache $storiesCache,
 	) {
-		$this->titleFormatter = $titleFormatter;
-		$this->titleParser = $titleParser;
-		$this->pageLookup = $pageLookup;
-		$this->storiesCache = $storiesCache;
 	}
 
 	/**

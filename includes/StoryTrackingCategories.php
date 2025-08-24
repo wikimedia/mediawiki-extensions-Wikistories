@@ -18,12 +18,8 @@ class StoryTrackingCategories {
 	 */
 	private static $ALL_TEXT_FORMS = [];
 
-	/** @var RequestContext */
-	private $context;
+	private readonly RequestContext $context;
 
-	/**
-	 * Constructor
-	 */
 	public function __construct() {
 		$this->context = RequestContext::getMain();
 	}

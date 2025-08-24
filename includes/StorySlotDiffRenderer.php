@@ -10,15 +10,10 @@ use TextSlotDiffRenderer;
 
 class StorySlotDiffRenderer extends SlotDiffRenderer {
 
-	private StoryConverter $storyConverter;
-	private TextSlotDiffRenderer $textSlotDiffRenderer;
-
 	public function __construct(
-		StoryConverter $storyConverter,
-		TextSlotDiffRenderer $textSlotDiffRenderer
+		private readonly StoryConverter $storyConverter,
+		private readonly TextSlotDiffRenderer $textSlotDiffRenderer,
 	) {
-		$this->storyConverter = $storyConverter;
-		$this->textSlotDiffRenderer = $textSlotDiffRenderer;
 	}
 
 	/**

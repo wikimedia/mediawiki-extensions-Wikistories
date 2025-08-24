@@ -28,24 +28,15 @@ class StoriesEventIngress
 	implements PageRevisionUpdatedListener, PageDeletedListener
 {
 
-	private StoriesCache $storiesCache;
-	private PageLinksSearch $linksSearch;
-	private WikiPageFactory $wikiPageFactory;
-	private DeletePageFactory $deletePageFactory;
-	private bool $useRCPatrol;
+	private readonly bool $useRCPatrol;
 
 	public function __construct(
-		StoriesCache $storiesCache,
-		PageLinksSearch $linksSearch,
-		WikiPageFactory $wikiPageFactory,
-		DeletePageFactory $deletePageFactory,
-		Config $config
+		private readonly StoriesCache $storiesCache,
+		private readonly PageLinksSearch $linksSearch,
+		private readonly WikiPageFactory $wikiPageFactory,
+		private readonly DeletePageFactory $deletePageFactory,
+		Config $config,
 	) {
-		$this->deletePageFactory = $deletePageFactory;
-		$this->linksSearch = $linksSearch;
-		$this->storiesCache = $storiesCache;
-		$this->wikiPageFactory = $wikiPageFactory;
-
 		$this->useRCPatrol = $config->get( MainConfigNames::UseRCPatrol );
 	}
 

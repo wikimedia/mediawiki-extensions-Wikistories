@@ -36,47 +36,16 @@ class RecentChangesPropagationHooks implements
 {
 	public const SRC_WIKISTORIES = 'src_wikistories';
 
-	/** @var RevisionStore */
-	private $revisionStore;
+	private readonly string $sep;
+	private ?string $wordSep = null;
 
-	/** @var Config */
-	private $config;
-
-	/** @var LinkRenderer */
-	private $linkRenderer;
-
-	/** @var ILoadBalancer */
-	private $loadBalancer;
-
-	/** @var string */
-	private $sep;
-
-	/** @var string */
-	private $wordSep = null;
-
-	/** @var UserFactory */
-	private $userFactory;
-
-	/**
-	 * @param RevisionStore $revisionStore
-	 * @param Config $config
-	 * @param LinkRenderer $linkRenderer
-	 * @param ILoadBalancer $loadBalancer
-	 * @param UserFactory $userFactory
-	 */
 	public function __construct(
-		RevisionStore $revisionStore,
-		Config $config,
-		LinkRenderer $linkRenderer,
-		ILoadBalancer $loadBalancer,
-		UserFactory $userFactory
+		private readonly RevisionStore $revisionStore,
+		private readonly Config $config,
+		private readonly LinkRenderer $linkRenderer,
+		private readonly ILoadBalancer $loadBalancer,
+		private readonly UserFactory $userFactory,
 	) {
-		$this->revisionStore = $revisionStore;
-		$this->config = $config;
-		$this->linkRenderer = $linkRenderer;
-		$this->loadBalancer = $loadBalancer;
-		$this->userFactory = $userFactory;
-
 		$this->sep = ' ' . Html::element( 'span', [ 'class' => 'mw-changeslist-separator' ], '' ) . ' ';
 	}
 
