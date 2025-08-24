@@ -67,7 +67,10 @@
 		"main": {
 			"class": "MediaWiki\\Extension\\Wikistories\\Hooks",
 			"services": [
-				"MainConfig"
+				"MainConfig",
+				"JobQueueGroup",
+				"Wikistories.Cache",
+				"Wikistories.PageLinksSearch"
 			]
 		},
 		"RecentChangesPropagationHooks": {

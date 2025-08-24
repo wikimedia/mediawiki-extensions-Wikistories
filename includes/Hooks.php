@@ -8,7 +8,7 @@ use MediaWiki\Extension\Wikistories\Jobs\ArticleChangedJob;
 use MediaWiki\Hook\ActionModifyFormFieldsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\ParserCacheSaveCompleteHook;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\JobQueue\JobQueueGroup;
 use MediaWiki\Page\Article;
 use MediaWiki\Page\Hook\ArticlePurgeHook;
 use MediaWiki\Page\WikiPage;
@@ -38,6 +38,9 @@ class Hooks implements
 
 	public function __construct(
 		private readonly Config $mainConfig,
+		private readonly JobQueueGroup $jobQueueGroup,
+		private readonly StoriesCache $storiesCache,
+		private readonly PageLinksSearch $pageLinksSearch,
 	) {
 	}
 
@@ -135,16 +138,14 @@ class Hooks implements
 			return;
 		}
 
-		DeferredUpdates::addCallableUpdate( static function () use ( $title ) {
-			/** @var PageLinksSearch $pageLinkSearch */
-			$pageLinkSearch = MediaWikiServices::getInstance()->get( 'Wikistories.PageLinksSearch' );
-			$links = $pageLinkSearch->getPageLinks( $title->getDBkey(), 1 );
+		DeferredUpdates::addCallableUpdate( function () use ( $title ) {
+			$links = $this->pageLinksSearch->getPageLinks( $title->getDBkey(), 1 );
 			if ( count( $links ) === 0 ) {
 				return;
 			}
 
 			$job = ArticleChangedJob::newSpec( $title->getId() );
-			MediaWikiServices::getInstance()->getJobQueueGroup()->push( $job );
+			$this->jobQueueGroup->push( $job );
 		} );
 	}
 
@@ -157,10 +158,7 @@ class Hooks implements
 			return;
 		}
 
-		$services = MediaWikiServices::getInstance();
-		/** @var StoriesCache $cache */
-		$cache = $services->get( 'Wikistories.Cache' );
-		$cache->invalidateStory( $wikiPage->getId() );
+		$this->storiesCache->invalidateStory( $wikiPage->getId() );
 	}
 
 	/**
@@ -179,9 +177,8 @@ class Hooks implements
 		}
 
 		// skip when no stories found in this article
-		$pageLinkSearch = MediaWikiServices::getInstance()->get( 'Wikistories.PageLinksSearch' );
 		$title = $article->getPage()->getTitle()->getDBkey();
-		$links = $pageLinkSearch->getPageLinks( $title, 1 );
+		$links = $this->pageLinksSearch->getPageLinks( $title, 1 );
 		if ( count( $links ) === 0 ) {
 			return;
 		}
