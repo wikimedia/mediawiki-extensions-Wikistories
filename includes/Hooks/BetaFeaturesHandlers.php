@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\Wikistories\Hooks;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\BetaFeatures\Hooks\GetBetaFeaturePreferencesHook;
 use MediaWiki\Extension\Wikistories\Hooks;
+use MediaWiki\MainConfigNames;
 use MediaWiki\User\User;
 
 class BetaFeaturesHandlers implements GetBetaFeaturePreferencesHook {
@@ -32,7 +33,7 @@ class BetaFeaturesHandlers implements GetBetaFeaturePreferencesHook {
 		if ( !Hooks::isBetaDiscoveryMode( $this->mainConfig ) ) {
 			return;
 		}
-		$extensionAssetsPath = $this->mainConfig->get( 'ExtensionAssetsPath' );
+		$extensionAssetsPath = $this->mainConfig->get( MainConfigNames::ExtensionAssetsPath );
 		$betaFeatures[ self::WIKISTORIES_BETA_FEATURE ] = [
 			'label-message' => 'wikistories-beta-feature-message',
 			'desc-message' => 'wikistories-beta-feature-description',
