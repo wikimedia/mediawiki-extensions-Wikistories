@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Olve Utne"
+			"Olve Utne",
+			"Yupik"
 		]
 	},
 	"wikistories-story-edittext-done": "Ållånam",
-	"wikistories-alert-okbuttontext": "Miededav"
+	"wikistories-alert-okbuttontext": "Miededav",
+	"wikistories-nojs-form-label-text": "Täkksta"
 }
