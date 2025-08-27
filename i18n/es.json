@@ -5,7 +5,8 @@
 			"DiegoAmbrocio",
 			"Fitoschido",
 			"Josuert",
-			"Yupik"
+			"Yupik",
+			"No se"
 		]
 	},
 	"rcshowhidewikistories-hide": "Ocultar",
@@ -25,5 +26,7 @@
 	"wikistories-builder-publishform-info": "Las historias publicadas estarán disponibles en la página de artículos.",
 	"wikistories-builder-publishform-invalidtitle-empty": "Introduce el título de la historia",
 	"wikistories-builder-publishform-invalidtitle-format": "Título de la historia inválido",
-	"wikistories-builder-publishform-saveerror": "Se ha producido un error al publicar la historia. Por favor, inténtalo de nuevo más tarde."
+	"wikistories-builder-publishform-saveerror": "Se ha producido un error al publicar la historia. Por favor, inténtalo de nuevo más tarde.",
+	"wikistories-nojs-form-label-text": "Texto",
+	"echo-category-title-wikistories-action": "Wikihistorias"
 }

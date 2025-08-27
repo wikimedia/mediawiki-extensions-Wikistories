@@ -117,6 +117,7 @@
 	"wikistories-not-enough-frames": "故事沒有足夠的架構",
 	"wikistories-too-many-frames": "故事包含太多架構",
 	"wikistories-text-too-long": "在架構 #$1 的文字太長。內容裡有 {{PLURAL:$2|$2}} 個字元，但最多僅允許 $3 個。",
+	"wikistories-invalid-category-name": "無效的分類名稱：$1",
 	"wikistories-no-image-category": "沒有圖片檔案的故事",
 	"wikistories-no-image-category-desc": "故事架構當中之一沒有圖片",
 	"wikistories-no-related-article": "沒有相關條目的故事",
