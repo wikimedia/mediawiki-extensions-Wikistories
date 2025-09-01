@@ -11,5 +11,6 @@
 	"wikistories-story-goto-publish": "Čuovvovaš",
 	"wikistories-article-cancelselection": "Gurre",
 	"wikistories-confirmdialog-delete-accept": "Sihko",
-	"wikistories-confirmdialog-delete-cancel": "Šluhtte"
+	"wikistories-confirmdialog-delete-cancel": "Šluhtte",
+	"wikistories-nojs-form-label-text": "Teaksta"
 }
