@@ -470,6 +470,11 @@
 		"wikistories-no-related-article",
 		"wikistories-outdated-text-category"
 	],
+	"RecentChangeSources": {
+		"src_wikistories": {
+			"revision": true
+		}
+	},
 	"attributes": {
 		"Echo": {
 			"NotificationCategories": {
