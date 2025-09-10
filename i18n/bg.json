@@ -5,6 +5,8 @@
 			"StanProg"
 		]
 	},
+	"wikistories-confirmdialog-cancel": "Отказ",
+	"wikistories-confirmdialog-ok": "Добре",
 	"wikistories-builder-publishform-publishbutton": "Публикуване",
 	"wikistories-storyviewer-next-story-header": "Прочетете повече"
 }
