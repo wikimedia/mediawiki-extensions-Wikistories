@@ -4,5 +4,5 @@
 			"Jon Harald Søby"
 		]
 	},
-	"wikistories-rest-unsupported-namespace": "Navnerommet ($1) støttes ikke av dette API-endepunktet. Historier kan bare være assosiert med artikler i hovednavnerommet."
+	"wikistories-rest-unsupported-namespace": "Navnerommet ($1) støttes ikke av dette API-endepunktet. Storyer kan bare være assosiert med artikler i hovednavnerommet."
 }
