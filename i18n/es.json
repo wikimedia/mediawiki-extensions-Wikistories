@@ -11,6 +11,7 @@
 	},
 	"rcshowhidewikistories-hide": "Ocultar",
 	"wikistories-specialstorybuilder-title": "Crear historia",
+	"wikistories-specialstorybuilder-invalidsubpage": "En la URL, especifica el artículo sobre el que crearás una historia o el título de una historia para editar. También debes incluir el espacio de nombres de la historia.",
 	"wikistories-search-inputplaceholder": "Buscar imágenes",
 	"wikistories-search-cuetext": "Buscar imágenes relacionadas al artículo.",
 	"wikistories-search-noresultstext": "Sin resultados",
