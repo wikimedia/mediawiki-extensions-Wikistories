@@ -50,7 +50,7 @@ return [
 
 	'Wikistories.PageLinksSearch' => static function ( MediaWikiServices $services ): PageLinksSearch {
 		return new PageLinksSearch(
-			$services->getDBLoadBalancer(),
+			$services->getConnectionProvider(),
 			$services->getLinksMigration()
 		);
 	},

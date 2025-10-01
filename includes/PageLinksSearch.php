@@ -2,17 +2,18 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
+use MediaWiki\Deferred\LinksUpdate\PageLinksTable;
 use MediaWiki\Linker\LinksMigration;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class PageLinksSearch {
 
 	public function __construct(
-		private readonly ILoadBalancer $loadBalancer,
+		private readonly IConnectionProvider $connectionProvider,
 		private readonly LinksMigration $linksMigration,
 	) {
 	}
@@ -79,7 +80,9 @@ class PageLinksSearch {
 	 * @return SelectQueryBuilder
 	 */
 	private function getPagelinksPageQuery(): SelectQueryBuilder {
-		return $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+		return $this->connectionProvider
+			->getReplicaDatabase( PageLinksTable::VIRTUAL_DOMAIN )
+			->newSelectQueryBuilder()
 			->queryInfo( $this->linksMigration->getQueryInfo( 'pagelinks' ) )
 			->join( 'page', null, 'pl_from=page_id' );
 	}
