@@ -117,7 +117,6 @@ const Navigator = require( '../components/Navigator.vue' );
 const Toast = require( '../components/Toast.vue' );
 const saveStory = require( '../api/saveStory.js' );
 const validateTitle = require( '../util/validateTitle.js' );
-const contributionEvents = require( '../../instrumentation/contributionEvents.js' );
 const beforeUnloadListener = require( '../util/beforeUnloadListener.js' );
 const NS_STORY = mw.config.get( 'wgNamespaceIds' ).story;
 const config = require( '../config.json' );
@@ -152,7 +151,7 @@ module.exports = {
 		};
 	},
 	computed: Object.assign( mapGetters( [
-		'storyForSave', 'mode', 'title', 'storyExists', 'storyUrl',
+		'storyForSave', 'mode', 'title', 'storyUrl',
 		'watchlistExpiryEnabled', 'watchlistExpiryOptions', 'watchDefault'
 	] ), {
 		licenseHtml: function () {
@@ -188,11 +187,6 @@ module.exports = {
 					// The messages are documented in store/story.js checkWarningStatus()
 					// eslint-disable-next-line mediawiki/msg-doc
 					this.error = this.$i18n( validity.message ).text();
-					contributionEvents.logPublishFailure(
-						this.storyTitle,
-						this.storyExists,
-						this.error
-					);
 					return;
 				}
 				const title = mw.Title.newFromUserInput( this.storyTitle, NS_STORY );
@@ -203,9 +197,6 @@ module.exports = {
 					( response ) => {
 						// response is { result, title, newrevid, pageid, and more }
 						if ( response.result === 'Success' ) {
-							contributionEvents.logPublishSuccess(
-								this.storyTitle, this.storyExists
-							);
 							window.removeEventListener( 'beforeunload', beforeUnloadListener );
 							this.setStoryPageId( response.pageid );
 							this.savingInProgress = false;
@@ -248,10 +239,6 @@ module.exports = {
 				this.error = response;
 				this.showUnknownErrorToast();
 			}
-			contributionEvents.logPublishFailure(
-				this.storyTitle,
-				this.error
-			);
 		},
 		showUnknownErrorToast: function () {
 			this.toast.message = this.$i18n( 'wikistories-builder-publishform-saveerror' ).text();
@@ -268,8 +255,6 @@ module.exports = {
 			navigator.share( {
 				title: title.getMainText(),
 				url: shareUrl.toString()
-			} ).then( () => {
-				contributionEvents.logShareAction( title.getPrefixedDb() );
 			} );
 		}
 	} ),

@@ -194,8 +194,6 @@ const DotsMenu = require( '../components/DotsMenu.vue' );
 const DotsMenuItem = require( '../components/DotsMenuItem.vue' );
 const Timer = require( './util/timer.js' );
 const isTouchDevice = require( './util/isTouchDevice.js' );
-const consumptionEvents = require( '../instrumentation/consumptionEvents.js' );
-const contributionEvents = require( '../instrumentation/contributionEvents.js' );
 
 // @vue/component
 module.exports = {
@@ -269,14 +267,6 @@ module.exports = {
 		},
 		logStoryViewEvent: function () {
 			if ( this.storyStart !== 0 ) {
-				const storyOpenTime = Date.now() - this.storyStart;
-				consumptionEvents.logStoryView(
-					this.currentStoryTitle,
-					this.story.length,
-					this.frameViewedCount,
-					storyOpenTime,
-					this.stories.length
-				);
 				this.frameViewedCount = 0;
 				this.storyStart = 0;
 			}
@@ -300,8 +290,6 @@ module.exports = {
 			navigator.share( {
 				title: this.currentStoryTitle,
 				url: this.shareUrl
-			} ).then( () => {
-				contributionEvents.logShareAction( this.currentStoryTitle );
 			} );
 		},
 		toggleStory: function () {

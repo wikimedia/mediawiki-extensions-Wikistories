@@ -5,10 +5,8 @@
 </template>
 
 <script>
-const events = require( '../instrumentation/contributionEvents.js' );
 const beforeUnloadListener = require( './util/beforeUnloadListener.js' );
 const RouterView = require( './components/RouterView.vue' );
-const mapGetters = require( 'vuex' ).mapGetters;
 
 // @vue/component
 module.exports = {
@@ -19,18 +17,15 @@ module.exports = {
 	data: function () {
 		return { height: 0 };
 	},
-	computed: Object.assign( mapGetters( [ 'storyExists' ] ), {
+	computed: {
 		style: function () {
 			return { height: this.height + 'px' };
 		}
-	} ),
+	},
 	methods: {
 		updateHeight: function () {
 			this.height = window.innerHeight - ( $( document.body ).find( 'header' ).height() || 0 );
 		}
-	},
-	created: function () {
-		events.logStoryBuilderOpen( this.storyExists );
 	},
 	beforeMount: function () {
 		this.updateHeight();

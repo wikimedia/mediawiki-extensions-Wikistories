@@ -1,7 +1,6 @@
 const getDiscoverSection = require( './Discover.js' ).getDiscoverSection;
 const addStoriesToDiscoverSection = require( './Discover.js' ).addStoriesToDiscoverSection;
 const getStories = require( './api/getStories.js' );
-const consumptionEvents = require( '../instrumentation/consumptionEvents.js' );
 
 const loadingViewer = mw.loader.using( 'ext.wikistories.viewer' );
 const articleTitle = mw.config.get( 'wgPageName' );
@@ -37,10 +36,6 @@ getStories( articleTitle ).then( function ( stories ) {
 	};
 
 	addStoriesToDiscoverSection( $discover, stories );
-
-	if ( stories.length ) {
-		consumptionEvents.logStoriesImpression( stories.length );
-	}
 
 	// Load Story Viewer App if necessary
 	renderStoryViewer();
