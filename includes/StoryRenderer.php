@@ -113,11 +113,13 @@ class StoryRenderer {
 				if ( $url === '' ) {
 					$trackingCategories[] = $this->storyTrackingCategories::TC_NO_IMAGE;
 				}
-				$outdatedText = $article && $this->analyzer->isOutdatedText(
-					$this->analyzer->getArticleText( $article ),
-					$frame->text->value,
-					$frame->text->fromArticle->originalText ?? ''
-				);
+				$outdatedText = $article &&
+					( $articleText = $this->analyzer->getArticleText( $article ) ) !== null &&
+					$this->analyzer->isOutdatedText(
+						$articleText,
+						$frame->text->value,
+						$frame->text->fromArticle->originalText ?? ''
+					);
 				if ( $outdatedText ) {
 					$trackingCategories[] = $this->storyTrackingCategories::TC_OUTDATED_TEXT;
 				}

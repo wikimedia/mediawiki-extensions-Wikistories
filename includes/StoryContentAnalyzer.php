@@ -30,7 +30,7 @@ class StoryContentAnalyzer {
 		}
 
 		$articleText = $this->getArticleText( $articleTitle );
-		if ( $articleText === false ) {
+		if ( $articleText === null ) {
 			return false;
 		}
 
@@ -83,11 +83,7 @@ class StoryContentAnalyzer {
 		return $text;
 	}
 
-	/**
-	 * @param Title $articleTitle
-	 * @return string|false
-	 */
-	public function getArticleText( Title $articleTitle ) {
+	public function getArticleText( Title $articleTitle ): ?string {
 		$dbKey = $articleTitle->getDBkey();
 		if ( isset( $this->cache[ $dbKey ] ) ) {
 			return $this->cache[ $dbKey ];
@@ -98,7 +94,7 @@ class StoryContentAnalyzer {
 		$parserOutput = $page->getParserOutput( $parserOptions );
 
 		if ( !$parserOutput ) {
-			return false;
+			return null;
 		}
 
 		$html = $parserOutput->getRawText();
