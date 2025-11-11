@@ -17,8 +17,6 @@ class StoryViewAction extends FormlessAction {
 		private readonly UrlUtils $urlUtils,
 	) {
 		parent::__construct( $article, $context );
-		$this->storiesCache = $storiesCache;
-		$this->urlUtils = $urlUtils;
 	}
 
 	/**
