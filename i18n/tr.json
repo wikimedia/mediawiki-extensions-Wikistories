@@ -49,7 +49,7 @@
 	"wikistories-confirmdialog-delete-cancel": "İptal",
 	"wikistories-confirmdialog-discardstory-title": "Bu Vikiöyküyü sil?",
 	"wikistories-confirmdialog-discardstory-message": "Yaptığınız tüm sayfa, görüntü ve metin eklemelerini kaybedeceksiniz.",
-	"wikistories-confirmdialog-discardedits-title": "Düzenlemeleri sil?",
+	"wikistories-confirmdialog-discardedits-title": "Değişiklikler silinsin mi?",
 	"wikistories-confirmdialog-discardedits-message": "Yaptığınız tüm sayfa, görüntü ve metin değişikliklerini kaybedeceksiniz.",
 	"wikistories-confirmdialog-discardstory-accept": "Sil",
 	"wikistories-toast-maxframes-addingmore": "Her öyküde en fazla $1 {{PLURAL:$1|sayfa}} olabilir. Yeni bir sayfa eklemek için, lütfen var olan bir tanesini silin.",
