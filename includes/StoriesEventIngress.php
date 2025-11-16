@@ -230,7 +230,6 @@ class StoriesEventIngress
 			'rc_timestamp' => $revisionRecord->getTimestamp(),
 			'rc_namespace' => $article->getNamespace(),
 			'rc_title' => $article->getDBkey(),
-			'rc_type' => RC_EXTERNAL,
 			'rc_source' => RecentChangesPropagationHooks::SRC_WIKISTORIES,
 			'rc_minor' => $minor,
 			'rc_cur_id' => $article->getId(),

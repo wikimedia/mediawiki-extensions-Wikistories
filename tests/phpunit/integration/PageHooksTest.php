@@ -271,7 +271,7 @@ class PageHooksTest extends MediaWikiIntegrationTestCase {
 		$rc = $this->getDb()->newSelectQueryBuilder()
 			->select( '*' )->from( 'recentchanges' )
 			->where( [
-					'rc_type' => RC_EXTERNAL,
+					'rc_source' => RecentChangesPropagationHooks::SRC_WIKISTORIES,
 					'rc_cur_id' => $articleTitle->getId()
 			] )
 			->caller( __METHOD__ )
