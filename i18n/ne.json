@@ -6,6 +6,28 @@
 			"पर्वत सुबेदी"
 		]
 	},
+	"right-edit-story": "कथाहरू सम्पादन गर्नुहोस्",
+	"action-edit-story": "कथाहरू सम्पादन गर्नुहोस्",
+	"wikistories-beta-feature-message": "विकिकथा",
+	"prefs-wikistories": "विकिकथा",
+	"storybuilder": "कथा निर्माता",
+	"wikistories-specialstorybuilder-title": "कथा निर्माता",
+	"wikistories-specialstorybuilder-loading": "खुल्दै छ…",
+	"wikistories-search-inputplaceholder": "छविहरू खोज्नुहोस्",
+	"wikistories-search-noresultstext": "कुनै पनि नतिजा फेला परेनन्",
+	"wikistories-search-navigator-title": "छविहरू चयन गर्नुहोस्",
+	"wikistories-search-navigator-title-selected-info": "$1 चयन गरियो",
+	"wikistories-story-goto-publish": "अर्को",
+	"wikistories-alert-okbuttontext": "ठीक",
+	"wikistories-confirmdialog-delete-title": "यो पृष्ठ मेटाउने हो?",
 	"wikistories-confirmdialog-delete-accept": "मेट्ने",
-	"wikistories-nojs-form-label-image": "चित्र"
+	"wikistories-confirmdialog-discardstory-accept": "खारेज गर्नुहोस्",
+	"wikistories-builder-publishform-navigator-title": "विकिकथा प्रकाशित गर्नुहोस्",
+	"wikistories-builder-publishform-placeholder": "कथाको शीर्षक प्रविष्ट गर्नुहोस्...",
+	"wikistories-builder-publishform-publishbutton": "प्रकाशित गर्नुहोस्",
+	"wikistories-nojs-form-label-related-article": "सम्बन्धित लेख",
+	"wikistories-nojs-form-label-image": "चित्र",
+	"wikistories-nojs-form-label-text": "पाठ",
+	"wikistories-discover-cta-text": "विकिकथा सिर्जना गर्नुहोस्",
+	"wikistories-storyviewer-cover-page-heading": "विकिकथा"
 }
