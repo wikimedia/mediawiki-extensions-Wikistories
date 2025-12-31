@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sabelöga",
-			"Yupik"
+			"Yupik",
+			"Stefan2255"
 		]
 	},
 	"wikistories-extensiondesc": "Wikistories låter redigerare skapa kort, visuell och pålitlig kunskap från Wikimedias projekt",
@@ -21,6 +22,7 @@
 	"wikistories-article-usetext": "Lägg till i berättelse",
 	"wikistories-confirmdialog-delete-title": "Radera denna sida?",
 	"wikistories-confirmdialog-delete-accept": "Radera",
+	"wikistories-builder-licensing-with-terms": "Genom att fortsätta, godkänner du [$1 Användarvillkoren] och du samtycker oåterkalleligen till att släppa ditt bidrag under [$2 CC BY-SA 3.0] och [$3 GFDL] licenserna.",
 	"wikistories-nojs-form-label-related-article": "Relaterad artikel",
 	"wikistories-nojs-form-label-frame": "Ram $1",
 	"wikistories-nojs-form-label-image": "Bild",
