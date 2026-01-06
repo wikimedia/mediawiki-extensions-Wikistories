@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stefan2255"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "Namnrymden ($1) stöds inte av denna API-slutpunkt. Berättelser kan bara associeras med artiklar i huvudnamnrymden."
+}
