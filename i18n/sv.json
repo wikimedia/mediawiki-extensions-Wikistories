@@ -115,7 +115,7 @@
 	"wikistories-invalid-format": "Ogiltigt berättelseformat",
 	"wikistories-not-enough-frames": "Berättelsen har inte tillräckligt med ramar",
 	"wikistories-too-many-frames": "Berättelsen har för många ramar",
-	"wikistories-text-too-long": "Texten i ram nr. $1 är för lång. Den har {{PLURAL:$2|$2 tecken|$2 tecken}} men det maximala tillåtna antalet är $3.",
+	"wikistories-text-too-long": "Texten i ram nr. $1 är för lång. Den har {{PLURAL:$2|$2 tecken}} men det maximala tillåtna antalet är $3.",
 	"wikistories-invalid-category-name": "Ogiltigt kategorinamn: $1",
 	"wikistories-no-image-category": "Berättelse utan bildfil",
 	"wikistories-no-image-category-desc": "En av berättelseramarna saknar bild",
