@@ -6,5 +6,6 @@
 	},
 	"wikistories-specialstorybuilder-loading": "Ладаваньне…",
 	"wikistories-article-loading": "Ладаваньне артыкулу...",
-	"wikistories-confirmdialog-cancel": "Скасаваць"
+	"wikistories-confirmdialog-cancel": "Скасаваць",
+	"wikistories-error-frameswithouttext-title": "Брак тэксту"
 }
