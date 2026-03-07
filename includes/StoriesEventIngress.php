@@ -10,8 +10,8 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\Page\DeletePageFactory;
 use MediaWiki\Page\Event\PageDeletedEvent;
 use MediaWiki\Page\Event\PageDeletedListener;
-use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
-use MediaWiki\Page\Event\PageRevisionUpdatedListener;
+use MediaWiki\Page\Event\PageLatestRevisionChangedEvent;
+use MediaWiki\Page\Event\PageLatestRevisionChangedListener;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Page\WikiPageFactory;
@@ -19,6 +19,7 @@ use MediaWiki\Permissions\Authority;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
+use MediaWiki\Storage\PageUpdateCauses;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFormatter;
 use MediaWiki\User\UserIdentity;
@@ -26,10 +27,12 @@ use MediaWiki\User\UserIdentity;
 /**
  * Event subscriber acting as an ingress for relevant events emitted
  * by MediaWiki core.
+ *
+ * @noinspection PhpUnused
  */
 class StoriesEventIngress
 	extends DomainEventIngress
-	implements PageRevisionUpdatedListener, PageDeletedListener
+	implements PageLatestRevisionChangedListener, PageDeletedListener
 {
 
 	private readonly bool $useRCPatrol;
@@ -60,14 +63,16 @@ class StoriesEventIngress
 	 *
 	 * @noinspection PhpUnused
 	 */
-	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
+	public function handlePageLatestRevisionChangedEvent(
+		PageLatestRevisionChangedEvent $event
+	): void {
 		$page = $event->getPage();
 		$revisionRecord = $event->getLatestRevisionAfter();
 
 		// Undeletion in the main namespace
 		if ( $page->getNamespace() === NS_MAIN &&
 			$event->isCreation() &&
-			$event->hasCause( PageRevisionUpdatedEvent::CAUSE_UNDELETE )
+			$event->hasCause( PageUpdateCauses::CAUSE_UNDELETE )
 		) {
 			$this->purgeStories( $page );
 		}

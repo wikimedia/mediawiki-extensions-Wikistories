@@ -119,7 +119,7 @@
 	"DomainEventIngresses": [
 		{
 			"events": [
-				"PageRevisionUpdated",
+				"PageLatestRevisionChanged",
 				"PageDeleted"
 			],
 			"class": "MediaWiki\\Extension\\Wikistories\\StoriesEventIngress",
