@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"Aca"
 		]
 	},
 	"wikistories-beta-feature-message": "Wikipriče",
@@ -9,7 +10,7 @@
 	"wikistories-pref-showdiscovery-message": "Prikaži priče u stranicama za članke",
 	"wikistories-specialstorybuilder-loading": "Učitavanje...",
 	"wikistories-specialstorybuilder-nojswarning": "Ova posebna stranica zahtijeva JavaScript za rad",
-	"wikistories-specialstorybuilder-mustbeloggedin": "Molimo prijavite se ili otvorite račun za pravljenje priča",
+	"wikistories-specialstorybuilder-mustbeloggedin": "Prijavite se ili otvorite račun za pravljenje priča",
 	"wikistories-specialstorybuilder-invalidsubpage": "U URL-u naznačite članak o kojem želite napraviti priču ili naslov priče za uređivati. Morate uključiti i imenski prostor za priče.",
 	"wikistories-search-inputplaceholder": "Pretraži slike",
 	"wikistories-search-noresultstext": "Nema rezultata",
@@ -17,7 +18,7 @@
 	"wikistories-search-navigator-title-selected-info": "Izabrano: $1",
 	"wikistories-story-goto-publish": "Sljedeće",
 	"wikistories-story-edittext-done": "Gotovo",
-	"wikistories-story-replaceimage": "Smijeni ovu sliku",
+	"wikistories-story-replaceimage": "Zamijeni ovu sliku",
 	"wikistories-story-deleteframe": "Izbriši ovu stranicu",
 	"wikistories-imageattribution-author-unknown": "Nepoznat autor",
 	"wikistories-confirmdialog-cancel": "Otkaži",
