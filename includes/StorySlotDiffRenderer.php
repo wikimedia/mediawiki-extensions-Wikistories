@@ -5,8 +5,8 @@ namespace MediaWiki\Extension\Wikistories;
 use LogicException;
 use MediaWiki\Content\Content;
 use MediaWiki\Content\TextContent;
-use SlotDiffRenderer;
-use TextSlotDiffRenderer;
+use MediaWiki\Diff\SlotDiffRenderer;
+use MediaWiki\Diff\TextSlotDiffRenderer;
 
 class StorySlotDiffRenderer extends SlotDiffRenderer {
 

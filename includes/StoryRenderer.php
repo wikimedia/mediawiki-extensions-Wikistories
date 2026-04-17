@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\Wikistories;
 
-use FormatMetadata;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Html\Html;
+use MediaWiki\Media\FormatMetadata;
 use MediaWiki\Page\PageLookup;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\SpecialPage\SpecialPage;

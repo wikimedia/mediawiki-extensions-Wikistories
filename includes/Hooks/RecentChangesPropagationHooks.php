@@ -2,19 +2,18 @@
 
 namespace MediaWiki\Extension\Wikistories\Hooks;
 
-use HtmlArmor;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Hook\EnhancedChangesListModifyBlockLineDataHook;
-use MediaWiki\Hook\EnhancedChangesListModifyLineDataHook;
-use MediaWiki\Hook\OldChangesListRecentChangesLineHook;
 use MediaWiki\Html\Html;
 use MediaWiki\Language\Language;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Page\PageReference;
 use MediaWiki\Page\PageReferenceValue;
 use MediaWiki\RecentChanges\ChangesListBooleanFilter;
+use MediaWiki\RecentChanges\Hook\EnhancedChangesListModifyBlockLineDataHook;
+use MediaWiki\RecentChanges\Hook\EnhancedChangesListModifyLineDataHook;
+use MediaWiki\RecentChanges\Hook\OldChangesListRecentChangesLineHook;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
@@ -22,6 +21,7 @@ use MediaWiki\SpecialPage\Hook\ChangesListSpecialPageStructuredFiltersHook;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
+use Wikimedia\HtmlArmor\HtmlArmor;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class RecentChangesPropagationHooks implements
