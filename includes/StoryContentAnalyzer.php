@@ -97,7 +97,7 @@ class StoryContentAnalyzer {
 			return null;
 		}
 
-		$html = $parserOutput->getRawText();
+		$html = $parserOutput->getContentHolderText();
 		$text = $this->transformText( $html );
 		$this->cache[ $dbKey ] = $text;
 
