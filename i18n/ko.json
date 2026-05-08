@@ -25,6 +25,7 @@
 	"wikistories-search-cuetext": "문서와 관련된 이미지를 검색합니다.",
 	"wikistories-search-noresultstext": "결과 없음",
 	"wikistories-search-navigator-title": "이미지 선택",
+	"wikistories-search-navigator-title-selected-info": "$1개 선택됨",
 	"wikistories-story-goto-publish": "다음",
 	"wikistories-story-selecttext": "<span class=\"ext-wikistories-wikipedia\">위키백과</span>에서 스토리 문구를 선택하세요",
 	"wikistories-story-edittext-done": "완료",
