@@ -118,7 +118,7 @@
 	"wikistories-storyviewer-cover-page-heading": "Wiki-vertelling",
 	"wikistories-file-not-found": "Bestand “$1” niet gevonden",
 	"wikistories-from-article-not-found": "Artikel “$1” niet gevonden",
-	"wikistories-invalid-format": "Ongeldig formaat vertelling",
+	"wikistories-invalid-format": "Onjuist formaat vertelling",
 	"wikistories-not-enough-frames": "De vertelling bevat niet genoeg kaders",
 	"wikistories-too-many-frames": "De vertelling bevat te veel kaders",
 	"wikistories-text-too-long": "De tekst op kader nummer $1 is te lang. Er staan $2 teken{{PLURAL:$2||s}} in, maar het maximum is $3.",
