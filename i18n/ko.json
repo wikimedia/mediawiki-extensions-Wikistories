@@ -8,6 +8,7 @@
 			"Tensama0415"
 		]
 	},
+	"wikistories-extensionname": "위키스토리",
 	"wikistories-extensiondesc": "위키스토리는 편집자들이 위키미디어 프로젝트에서 얻은 정보를 바탕으로 간결하고 시각적이며 신뢰할 수 있는 지식 콘텐츠를 만들 수 있도록 해줍니다.",
 	"right-edit-story": "스토리 편집",
 	"action-edit-story": "스토리 편집",
@@ -19,6 +20,7 @@
 	"prefs-wikistories": "위키스토리",
 	"wikistories-pref-showdiscovery-message": "문서 페이지에서 스토리를 표시하기",
 	"wikistories-pref-showdiscovery-help-message": "위키스토리는 위키백과 문서의 텍스트와 이미지를 사용하여 짧은 이야기 형식의 콘텐츠를 만들 수 있는 새로운 기능입니다.",
+	"wikistories-recentchangesflags-letter": "스",
 	"wikistories-recentchangesflags-title": "위키스토리 편집",
 	"wikistories-recentchangesflags-legend": "이것은 문서에 연결된 위키스토리를 편집한 것입니다.",
 	"wikistories-rcfilters-hidewikistories-label": "위키스토리",
@@ -75,7 +77,7 @@
 	"wikistories-toast-maxframes-selecting": "스토리당 최대 {{PLURAL:$1|$1개 이미지}}가 허용됩니다.",
 	"wikistories-notice-user-block": "현재 당신의 계정은 위키스토리를 편집하거나 생성하는 데 제한이 있습니다.",
 	"wikistories-error-notenoughframes-title": "문서가 충분하지 않습니다",
-	"wikistories-error-notenoughframes-message": "모든 위키스토리는 최소 {{PLURAL:$1|$1개}} {{PLURAL:$1|페이지}}가 필요합니다. {{PLURAL:$2|$2개}} {{PLURAL:$2| 페이지|페이지}}를 더 추가해 주세요.",
+	"wikistories-error-notenoughframes-message": "모든 위키스토리는 최소 {{PLURAL:$1|$1개}} {{PLURAL:$1|페이지}}가 필요합니다. {{PLURAL:$2|$2개}} {{PLURAL:$2|페이지}}를 더 추가해 주세요.",
 	"wikistories-error-frameswithouttext-title": "텍스트 없음",
 	"wikistories-error-frameswithouttext-message": "모든 위키스토리 페이지에는 텍스트가 필요합니다. {{PLURAL:$1|$1개 스토리 페이지}}에 텍스트를 추가해 주세요.",
 	"wikistories-builder-article-not-available": "문서 내용을 사용할 수 없습니다. 나중에 다시 시도해 주세요.",
