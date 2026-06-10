@@ -4,13 +4,14 @@
 			"MathXplore",
 			"Mugenpman",
 			"Sou0012",
-			"もなー(偽物)"
+			"もなー(偽物)",
+			"Tensama0415"
 		]
 	},
 	"prefs-wikistories": "ウィキストーリー",
 	"rcshowhidewikistories-show": "表示",
 	"rcshowhidewikistories-hide": "非表示",
-	"wikistories-specialstorybuilder-title": "ストーリーを作成",
+	"wikistories-specialstorybuilder-title": "ストーリービルダー",
 	"wikistories-specialstorybuilder-loading": "読み込み中...",
 	"wikistories-specialstorybuilder-nojswarning": "この特別ページの動作にはJavaScriptが必要です",
 	"wikistories-specialstorybuilder-invalidsubpage": "URLで、ストーリーを作成する記事または編集するストーリーのタイトルを指定します。 ストーリーの名前空間も含める必要があります。",
@@ -43,7 +44,7 @@
 	"wikistories-builder-publishform-placeholder": "ストーリーの題名を入力してください",
 	"wikistories-builder-publishform-publishbutton": "公開",
 	"wikistories-builder-publishform-invalidtitle-empty": "ストーリーの題名を入力してください",
-	"wikistories-builder-publishform-invalidtitle-duplicate": "同名のストーリーが既に存在します。重複しない題名を入力してください。",
+	"wikistories-builder-publishform-invalidtitle-duplicate": "この題名のストーリーが既に存在します。新しい題名を入力してください。",
 	"wikistories-builder-publishform-invalidtitle-notfound": "ストーリーが見つかりません。",
 	"wikistories-builder-publishform-saveerror": "ウィキストーリーの公開時にエラーが発生しました。再度、公開をお試しください。",
 	"wikistories-builder-publishform-watch": "このストーリーをウォッチします",
@@ -55,6 +56,6 @@
 	"wikistories-storyviewer-next-story-header": "さらに読む",
 	"wikistories-storyviewer-next-story-viewtext": "表示",
 	"wikistories-storyviewer-textsize": "文字サイズの変更",
-	"wikistories-storyviewer-edit": "編集",
+	"wikistories-storyviewer-edit": "このストーリーを編集",
 	"wikistories-storyviewer-talk": "フィードバックを共有する"
 }
