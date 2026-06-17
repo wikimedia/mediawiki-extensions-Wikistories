@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"wikistories-rest-unsupported-namespace": "Menný priestor ($1) nie je podporovaný týmto koncovým bodom API. Príbehy možno priradiť iba k článkom v hlavnom mennom priestore."
+}
