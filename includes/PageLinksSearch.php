@@ -29,7 +29,7 @@ class PageLinksSearch {
 	 * @param string $articleTitle
 	 * @param int $limit
 	 * @param bool $followRedirects
-	 * @return array Page ids of the related stories
+	 * @return int[] Page ids of the related stories
 	 */
 	public function getPageLinks( string $articleTitle, int $limit, bool $followRedirects = true ): array {
 		$tv = new TitleValue( NS_MAIN, $articleTitle );
@@ -53,7 +53,7 @@ class PageLinksSearch {
 	/**
 	 * @param LinkTarget $articleTitle
 	 * @param int $limit
-	 * @return array Story page IDs
+	 * @return int[] Story page IDs
 	 */
 	private function getStoriesLinkingToArticle( LinkTarget $articleTitle, int $limit ): array {
 		$conds = $this->linksMigration->getLinksConditions( 'pagelinks', $articleTitle );

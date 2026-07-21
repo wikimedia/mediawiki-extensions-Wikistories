@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\Wikistories\Hooks;
 
 use MediaWiki\CommentStore\CommentStoreComment;
-use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Language\Language;
@@ -22,7 +21,6 @@ use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use Wikimedia\HtmlArmor\HtmlArmor;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 class RecentChangesPropagationHooks implements
 	EnhancedChangesListModifyBlockLineDataHook,
@@ -37,18 +35,14 @@ class RecentChangesPropagationHooks implements
 
 	public function __construct(
 		private readonly RevisionStore $revisionStore,
-		private readonly Config $config,
 		private readonly LinkRenderer $linkRenderer,
-		private readonly ILoadBalancer $loadBalancer,
 		private readonly UserFactory $userFactory,
 	) {
 		$this->sep = ' ' . Html::element( 'span', [ 'class' => 'mw-changeslist-separator' ], '' ) . ' ';
 	}
 
 	private function getWordSep( IContextSource $context ): string {
-		if ( $this->wordSep === null ) {
-			$this->wordSep = $context->msg( 'word-separator' )->plain();
-		}
+		$this->wordSep ??= $context->msg( 'word-separator' )->plain();
 		return $this->wordSep;
 	}
 
@@ -199,7 +193,7 @@ class RecentChangesPropagationHooks implements
 	}
 
 	private function makeComment( IContextSource $context, ?CommentStoreComment $comment ): string {
-		$text = $comment ? $comment->text : null;
+		$text = $comment?->text;
 		if ( $text !== null && $text !== '' ) {
 			return Html::rawElement(
 				'span',
@@ -292,7 +286,7 @@ class RecentChangesPropagationHooks implements
 		$user = $this->userFactory->newFromUserIdentity( $rc->getPerformerIdentity() );
 		$lang = $changeslist->getLanguage();
 		$context = $changeslist->getContext();
-		$comment = $rev !== null ? $rev->getComment( RevisionRecord::FOR_PUBLIC, $user ) : null;
+		$comment = $rev?->getComment( RevisionRecord::FOR_PUBLIC, $user );
 
 		$flag = $changeslist->recentChangesFlags(
 			[

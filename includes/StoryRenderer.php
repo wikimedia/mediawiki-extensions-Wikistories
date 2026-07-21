@@ -7,8 +7,6 @@ use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Html\Html;
 use MediaWiki\Media\FormatMetadata;
-use MediaWiki\Page\PageLookup;
-use MediaWiki\Page\RedirectLookup;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 
@@ -16,8 +14,6 @@ class StoryRenderer {
 
 	public function __construct(
 		private readonly RepoGroup $repoGroup,
-		private readonly RedirectLookup $redirectLookup,
-		private readonly PageLookup $pageLookup,
 		private readonly StoryContentAnalyzer $analyzer,
 		private readonly StoryTrackingCategories $storyTrackingCategories,
 	) {

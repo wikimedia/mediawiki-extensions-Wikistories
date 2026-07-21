@@ -13,9 +13,7 @@ class StoryTrackingCategories {
 
 	public const TC_OUTDATED_TEXT = 'wikistories-outdated-text-category';
 
-	/**
-	 * @var string[] ALL_TEXT_FORMS
-	 */
+	/** @var array<string,string> */
 	private static $ALL_TEXT_FORMS = [];
 
 	private readonly RequestContext $context;
@@ -26,6 +24,8 @@ class StoryTrackingCategories {
 
 	/**
 	 * get text form from all the tracking categories in WikiStory
+	 *
+	 * @return array<string,string>
 	 */
 	private function getAllTextForms(): array {
 		if ( self::$ALL_TEXT_FORMS !== [] ) {

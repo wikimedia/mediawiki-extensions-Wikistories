@@ -6,8 +6,4 @@ class StorySubmitAction extends StoryEditAction {
 	public function getName(): string {
 		return 'submit';
 	}
-
-	public function show(): void {
-		parent::show();
-	}
 }

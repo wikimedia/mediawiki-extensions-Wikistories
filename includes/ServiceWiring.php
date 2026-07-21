@@ -37,8 +37,6 @@ return [
 	'Wikistories.StoryRenderer' => static function ( MediaWikiServices $services ): StoryRenderer {
 		return new StoryRenderer(
 			$services->getRepoGroup(),
-			$services->getRedirectLookup(),
-			$services->getPageStore(),
 			$services->get( 'Wikistories.Analyzer' ),
 			$services->get( 'Wikistories.TrackingCategories' )
 		);

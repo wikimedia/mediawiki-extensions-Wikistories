@@ -30,9 +30,9 @@ class ArticleChangedJob extends Job {
 		private readonly PageLinksSearch $pageLinksSearch,
 		private readonly Config $config,
 	) {
-		parent::__construct( self::COMMAND, $params );
 		// Delay to let multiple edits be deduplicated
 		$params[ 'jobReleaseTimestamp' ] = time() + 60;
+		parent::__construct( self::COMMAND, $params );
 	}
 
 	public static function newSpec( int $pageId ): IJobSpecification {

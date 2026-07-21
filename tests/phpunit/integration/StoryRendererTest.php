@@ -5,8 +5,6 @@ namespace MediaWiki\Extension\Wikistories;
 use MediaWiki\Extension\Wikistories\Tests\StoryFactory;
 use MediaWiki\FileRepo\File\ForeignAPIFile;
 use MediaWiki\FileRepo\RepoGroup;
-use MediaWiki\Page\ExistingPageRecord;
-use MediaWiki\Page\PageLookup;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 
@@ -49,18 +47,6 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		return $repoGroup;
 	}
 
-	private function createPageStoreMock() {
-		$pageRecordMock = $this->createMock( ExistingPageRecord::class );
-		$pageRecordMock->method( 'getDbKey' )->willReturn( 'Main_page' );
-
-		$pageStore = $this->createMock( PageLookup::class );
-		$pageStore->method( 'getPageById' )->willReturnMap( [
-			[ 114, 0, $pageRecordMock ],
-			[ 999, 0, null ],
-		] );
-		return $pageStore;
-	}
-
 	/**
 	 * @covers MediaWiki\Extension\Wikistories\StoryRenderer::getStoryData
 	 */
@@ -69,8 +55,6 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		$repoGroup = $this->createRepoGroupMock();
 		$renderer = new StoryRenderer(
 			$repoGroup,
-			$this->getServiceContainer()->getRedirectLookup(),
-			$this->createPageStoreMock(),
 			$this->createAnalyzerMock(),
 			$this->createMock( StoryTrackingCategories::class )
 		);
@@ -122,8 +106,6 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 		$repoGroup = $this->createRepoGroupMock();
 		$renderer = new StoryRenderer(
 			$repoGroup,
-			$this->getServiceContainer()->getRedirectLookup(),
-			$this->createPageStoreMock(),
 			$this->createAnalyzerMock(),
 			$this->createMock( StoryTrackingCategories::class )
 		);

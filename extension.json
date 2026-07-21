@@ -77,9 +77,7 @@
 			"class": "MediaWiki\\Extension\\Wikistories\\Hooks\\RecentChangesPropagationHooks",
 			"services": [
 				"RevisionStore",
-				"MainConfig",
 				"LinkRenderer",
-				"DBLoadBalancer",
 				"UserFactory"
 			]
 		},
