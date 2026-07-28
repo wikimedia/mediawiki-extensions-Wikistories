@@ -1,9 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Пан Хаунд"
+			"Пан Хаунд",
+			"Repakr"
 		]
 	},
 	"action-edit-story": "редагувати історії",
-	"wikistories-specialstorybuilder-loading": "Завантаження…"
+	"rcshowhidewikistories-show": "Показати",
+	"wikistories-specialstorybuilder-loading": "Завантаження…",
+	"wikistories-search-noresultstext": "Немає результатів",
+	"wikistories-story-navigator-title-edittext": "Редагувати текст",
+	"wikistories-article-loading": "Завантаження статті...",
+	"wikistories-alert-okbuttontext": "Гаразд",
+	"wikistories-confirmdialog-cancel": "Скасувати",
+	"wikistories-confirmdialog-ok": "Гаразд",
+	"wikistories-confirmdialog-discardstory-accept": "Відкинути",
+	"wikistories-storyviewer-textsize-title": "Розмір тексту",
+	"wikistories-storyviewer-textsize-label-small": "Малий",
+	"wikistories-storyviewer-textsize-label-regular": "Звичайний",
+	"wikistories-storyviewer-textsize-label-large": "Великий",
+	"wikistories-builder-publishform-publishbutton": "Опублікувати",
+	"wikistories-nojs-form-label-image": "Зображення",
+	"wikistories-nojs-form-label-text": "Текст",
+	"wikistories-nojs-form-categories-title": "Категорії"
 }
