@@ -4,6 +4,7 @@
 		"stylelint-config-wikimedia"
 	],
 	"rules": {
-		"declaration-property-unit-disallowed-list": {}
+		"declaration-property-unit-disallowed-list": {},
+		"no-descending-specificity": null
 	}
 }

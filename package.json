@@ -36,7 +36,7 @@
 		"jquery": "3.7.1",
 		"postcss-html": "^1.4.1",
 		"stylelint-config-recommended-vue": "^1.4.0",
-		"stylelint-config-wikimedia": "0.18.0",
+		"stylelint-config-wikimedia": "0.19.3",
 		"vue": "3.5.13",
 		"vue-loader": "^16.8.3",
 		"vuex": "4.0.2"
