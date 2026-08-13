@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hanna Tardos"
+			"Hanna Tardos",
+			"Dj"
 		]
 	},
 	"prefs-wikistories": "Wikisztorik",
-	"wikistories-pref-showdiscovery-help-message": "Az új Wikisztorik segítségével rövid, sztori-jellegű tartalmat hozhatsz létre, Wikipédia cikkekből származó szövegek és képek felhasználásával."
+	"wikistories-pref-showdiscovery-help-message": "Az új Wikisztorik segítségével rövid, sztori-jellegű tartalmat hozhatsz létre, Wikipédia cikkekből származó szövegek és képek felhasználásával.",
+	"wikistories-rcfilters-hidewikistories-label": "Wikisztorik"
 }
