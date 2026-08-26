@@ -19,7 +19,7 @@ use PHPUnit\Framework\Assert;
 
 /**
  * @group Database
- * @covers MediaWiki\Extension\Wikistories\Hooks
+ * @covers \MediaWiki\Extension\Wikistories\Hooks
  */
 class PageHooksTest extends MediaWikiIntegrationTestCase {
 
@@ -240,7 +240,7 @@ class PageHooksTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\Hooks\RecentChangesPropagationHooks
+	 * @covers \MediaWiki\Extension\Wikistories\Hooks\RecentChangesPropagationHooks
 	 */
 	public function testRecentChangesPropagationOnStoryEdit() {
 		// Create the target article

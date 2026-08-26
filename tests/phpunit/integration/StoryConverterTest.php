@@ -11,7 +11,7 @@ use MediaWikiIntegrationTestCase;
 class StoryConverterTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryConverter::withSchemaVersion
+	 * @covers \MediaWiki\Extension\Wikistories\StoryConverter::withSchemaVersion
 	 */
 	public function testWithSchemaVersion() {
 		$content = [
@@ -37,7 +37,7 @@ class StoryConverterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryConverter::toLatest
+	 * @covers \MediaWiki\Extension\Wikistories\StoryConverter::toLatest
 	 */
 	public function testToLatest() {
 		$contentBefore = [

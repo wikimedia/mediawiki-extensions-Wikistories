@@ -42,7 +42,7 @@ class StoryValidatorTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideIsValidStories
-	 * @covers MediaWiki\Extension\Wikistories\StoryValidator::isValid
+	 * @covers \MediaWiki\Extension\Wikistories\StoryValidator::isValid
 	 * @param bool $expectedValid
 	 * @param array $obj Story object structure
 	 */

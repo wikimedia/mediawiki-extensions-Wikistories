@@ -31,7 +31,7 @@ class StoryContentAnalyzerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryContentAnalyzer::isOutdatedText
+	 * @covers \MediaWiki\Extension\Wikistories\StoryContentAnalyzer::isOutdatedText
 	 * @dataProvider provideIsOutdatedText
 	 * @param string $htmlText
 	 * @param string $currentText

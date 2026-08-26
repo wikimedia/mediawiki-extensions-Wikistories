@@ -48,7 +48,7 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryRenderer::getStoryData
+	 * @covers \MediaWiki\Extension\Wikistories\StoryRenderer::getStoryData
 	 */
 	public function testGetStoryData() {
 		$story = StoryFactory::makeValidStory();
@@ -99,7 +99,7 @@ class StoryRendererTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryRenderer::renderNoJS
+	 * @covers \MediaWiki\Extension\Wikistories\StoryRenderer::renderNoJS
 	 */
 	public function testRenderNoJS() {
 		$storyData = StoryFactory::makeValidStoryData();

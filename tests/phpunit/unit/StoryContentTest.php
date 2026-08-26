@@ -8,7 +8,7 @@ use MediaWikiUnitTestCase;
 class StoryContentTest extends MediaWikiUnitTestCase {
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryContent::isValid
+	 * @covers \MediaWiki\Extension\Wikistories\StoryContent::isValid
 	 */
 	public function testIsValid() {
 		$story = new StoryContent( '{}' );
@@ -16,7 +16,7 @@ class StoryContentTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryContent::isLatestVersion
+	 * @covers \MediaWiki\Extension\Wikistories\StoryContent::isLatestVersion
 	 */
 	public function testIsLatestVersion_empty() {
 		$story = new StoryContent( '{}' );
@@ -24,7 +24,7 @@ class StoryContentTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryContent::isLatestVersion
+	 * @covers \MediaWiki\Extension\Wikistories\StoryContent::isLatestVersion
 	 */
 	public function testIsLatestVersion_latest() {
 		$story = StoryFactory::makeValidStory();
@@ -32,7 +32,7 @@ class StoryContentTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryContent::isLatestVersion
+	 * @covers \MediaWiki\Extension\Wikistories\StoryContent::isLatestVersion
 	 */
 	public function testIsLatestVersion_v0() {
 		$story = StoryFactory::makeV0Story();
@@ -40,7 +40,7 @@ class StoryContentTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryContent::getTextForDiff
+	 * @covers \MediaWiki\Extension\Wikistories\StoryContent::getTextForDiff
 	 */
 	public function testGetTextForDiff() {
 		$story = StoryFactory::makeValidStory();
@@ -56,7 +56,7 @@ class StoryContentTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers MediaWiki\Extension\Wikistories\StoryContent::getTextForSummary
+	 * @covers \MediaWiki\Extension\Wikistories\StoryContent::getTextForSummary
 	 */
 	public function testGetTextForSummary() {
 		$story = StoryFactory::makeValidStory();
