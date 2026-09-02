@@ -8,6 +8,7 @@
 			"Lanyun1103",
 			"LittlePaw365",
 			"NACHOgao3",
+			"Shizhao",
 			"StarrySky",
 			"沈澄心"
 		]
@@ -17,6 +18,9 @@
 	"right-edit-story": "编辑故事",
 	"action-edit-story": "编辑故事",
 	"deletepage-deletestory": "删除链接到此条目的Wikistories",
+	"wikistories-beta-feature-message": "维基故事",
+	"wikistories-beta-feature-description": "一款工具，可让您从条目中选择图像并突出显示事实，从而创建简短、直观且可靠的维基百科知识库，方便快速阅读。启用后，它可执行以下操作：<br> - 发现条目背后的故事。<br> - 点击/轻触条目标题下方的 [+] 图标，即可创建新故事。",
+	"prefs-wikistories": "维基故事",
 	"rcshowhidewikistories-show": "显示",
 	"rcshowhidewikistories-hide": "隐藏",
 	"wikistories-specialstorybuilder-title": "故事生成器",
