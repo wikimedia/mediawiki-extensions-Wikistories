@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\Wikistories\Jobs;
 
 use MediaWiki\Config\Config;
-use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\Wikistories\Hooks\EchoNotificationsHandlers;
 use MediaWiki\Extension\Wikistories\PageLinksSearch;
 use MediaWiki\Extension\Wikistories\StoryContent;
@@ -11,6 +10,9 @@ use MediaWiki\Extension\Wikistories\StoryContentAnalyzer;
 use MediaWiki\JobQueue\IJobSpecification;
 use MediaWiki\JobQueue\Job;
 use MediaWiki\JobQueue\JobSpecification;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Notification\RecipientSet;
+use MediaWiki\Notification\Types\WikiNotification;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionLookup;
@@ -70,15 +72,13 @@ class ArticleChangedJob extends Job {
 	}
 
 	private function notify( UserIdentity $agent, Title $storyTitle, string $articleTitle, int $revId ): void {
-		Event::create( [
-			'type' => EchoNotificationsHandlers::NOTIFICATION_TYPE,
-			'agent' => $agent,
-			'title' => $storyTitle,
-			'extra' => [
+		MediaWikiServices::getInstance()->getNotificationService()->notify(
+			new WikiNotification( EchoNotificationsHandlers::NOTIFICATION_TYPE, $storyTitle, $agent, [
 				'articleTitle' => $articleTitle,
 				'articleRevId' => $revId,
 				'notifyAgent' => true,
-			],
-		] );
+			] ),
+			new RecipientSet( [] )
+		);
 	}
 }
