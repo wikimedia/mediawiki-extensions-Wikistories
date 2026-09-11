@@ -202,7 +202,7 @@ class RecentChangesPropagationHooks implements
 	private function makeStoryLink( IContextSource $context, PageReference $story, $parens = false ): string {
 		$storyLink = $this->linkRenderer->makeKnownLink( $story );
 		$formattedLink = $parens ?
-			$context->msg( 'parentheses' )->rawParams( $storyLink )->text() :
+			$context->msg( 'parentheses' )->rawParams( $storyLink )->escaped() :
 			$storyLink;
 		return Html::rawElement(
 			'span',
