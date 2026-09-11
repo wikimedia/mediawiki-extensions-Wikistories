@@ -63,7 +63,7 @@ class RecentChangesPropagationHooks implements
 	): string {
 		$storyLink = $this->linkRenderer->makeKnownLink( $story );
 		$formattedLink = $parens ?
-			$context->msg( 'parentheses' )->rawParams( $storyLink )->text() :
+			$context->msg( 'parentheses' )->rawParams( $storyLink )->escaped() :
 			$storyLink;
 		return Html::rawElement(
 			'span',
