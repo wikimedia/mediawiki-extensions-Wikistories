@@ -33,11 +33,8 @@ class StoryContentAnalyzerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers \MediaWiki\Extension\Wikistories\StoryContentAnalyzer::isOutdatedText
 	 * @dataProvider provideIsOutdatedText
-	 * @param string $htmlText
-	 * @param string $currentText
-	 * @param string $originalText
 	 */
-	public function testIsOutdatedText( $htmlText, $currentText, $originalText ) {
+	public function testIsOutdatedText( string $htmlText, string $currentText, string $originalText ) {
 		$analyzer = new StoryContentAnalyzer(
 			$this->createPageFactoryMock()
 		);

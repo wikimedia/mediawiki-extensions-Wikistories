@@ -43,10 +43,8 @@ class StoryValidatorTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider provideIsValidStories
 	 * @covers \MediaWiki\Extension\Wikistories\StoryValidator::isValid
-	 * @param bool $expectedValid
-	 * @param array $obj Story object structure
 	 */
-	public function testIsValid( $expectedValid, $obj ) {
+	public function testIsValid( bool $expectedValid, mixed $obj ) {
 		$options = new ServiceOptions(
 			StoryValidator::CONSTRUCTOR_OPTIONS,
 			new HashConfig( [
