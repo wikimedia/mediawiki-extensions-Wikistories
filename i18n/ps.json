@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"شاه زمان پټان"
+			"شاه زمان پټان",
+			"باران"
 		]
 	},
 	"wikistories-extensionname": "ويکي‌کيسې",
@@ -92,7 +93,7 @@
 	"wikistories-builder-publishform-watch": "دا کيسه ليدل",
 	"wikistories-builder-publishform-saving-done": "مبارک شه! ويکي‌کيسه خپره شوه",
 	"wikistories-builder-publishform-gotostory": "کيسه لوستل",
-	"wikistories-builder-publishform-sharestory": "کيسله شريکول",
+	"wikistories-builder-publishform-sharestory": "کيسه شريکول",
 	"wikistories-builder-licensing-with-terms": "په دوام ورکولو سره تاسو د [$1 منښتون کارونې] سره همغږي ياست او تاسو په نه بدلېدونکي ډول منئ چې خپله ونډه مو د [$2 CC BY-SA 3.0] او [$3 جي‌اېف‌ډي‌اېل] منښتليکونو لاندې خپروئ.",
 	"wikistories-nojs-form-label-related-article": "ليکنه لوستل",
 	"wikistories-nojs-form-label-frame": "$1 چوکاټ",
