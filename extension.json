@@ -250,7 +250,6 @@
 			"dependencies": [
 				"vue",
 				"vuex",
-				"web2017-polyfills",
 				"ext.eventLogging"
 			],
 			"messages": [
