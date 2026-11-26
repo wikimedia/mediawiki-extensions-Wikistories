@@ -3,7 +3,8 @@
 		"authors": [
 			"Jeeputer",
 			"Mohammad ebz",
-			"Mojtabakd"
+			"Mojtabakd",
+			"LProfo"
 		]
 	},
 	"wikistories-beta-feature-message": "ویکی‌داستان",
@@ -20,6 +21,7 @@
 	"wikistories-confirmdialog-delete-accept": "حذف",
 	"wikistories-storyviewer-textsize-label-large": "بزرگ",
 	"wikistories-builder-publishform-saving": "در حال انتشار ویکی‌داستان...",
+	"wikistories-builder-publishform-sharestory": "هم‌رسانی داستان",
 	"wikistories-nojs-form-label-related-article": "مقالهٔ مرتبط",
 	"wikistories-nojs-form-label-frame": "قاب $1",
 	"wikistories-nojs-form-label-image": "تصویر",
